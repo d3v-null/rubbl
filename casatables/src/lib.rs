@@ -628,8 +628,8 @@ impl TableDesc {
 
     /// Add an array column to the TableDesc
     ///
-    /// If dimensions (`dims`) are provided, then the column has fixed dimensions,
-    /// other wise the column is not fixed.
+    /// If you would like to specify a number of dimensions for this column
+    /// without specifying a fixed shape, you can use [`add_array_column_ndims`]
     pub fn add_array_column(
         &mut self,
         data_type: glue::GlueDataType,
@@ -665,11 +665,50 @@ impl TableDesc {
                     data_type,
                     &cname,
                     &ccomment,
+                    -1,
                     direct,
                     undefined,
                     &mut self.exc_info,
                 )
             }
+        };
+
+        if new_handle.is_null() {
+            return self.exc_info.as_err();
+        }
+
+        Ok(())
+    }
+
+    /// Add an array column to the TableDesc with the specified number of dimensions
+    ///
+    pub fn add_array_column_ndims(
+        &mut self,
+        data_type: glue::GlueDataType,
+        col_name: &str,
+        comment: Option<&str>,
+        n_dims: i32,
+        direct: bool,
+        undefined: bool,
+    ) -> Result<(), Error> {
+        let cname = glue::StringBridge::from_rust(col_name);
+        let comment = if let Some(comment_) = comment {
+            comment_
+        } else {
+            ""
+        };
+        let ccomment = glue::StringBridge::from_rust(comment);
+        let new_handle = unsafe {
+            glue::tabledesc_add_array_column(
+                self.handle,
+                data_type,
+                &cname,
+                &ccomment,
+                n_dims,
+                direct,
+                undefined,
+                &mut self.exc_info,
+            )
         };
 
         if new_handle.is_null() {
@@ -1752,7 +1791,7 @@ mod tests {
 
     use super::*;
     use crate::glue::{GlueDataType, TableDescCreateMode};
-    use ndarray::array;
+    use ndarray::{Array2, array};
     use rubbl_core::Complex;
     use tempfile::tempdir;
 
@@ -1875,7 +1914,6 @@ mod tests {
             .unwrap();
 
         let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
-
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
 
@@ -1919,6 +1957,37 @@ mod tests {
         // and extract the cell value we wrote earlier
         let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("UVW", 0).unwrap();
         assert_eq!(cell_value, extracted_cell_value);
+    }
+
+    #[test]
+    fn table_create_with_ndim_float_matrix_desc() {
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+
+        let col_name = "test_string_var";
+
+        let mut table_desc = TableDesc::new("TEST", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        table_desc
+            .add_array_column_ndims(GlueDataType::TpFloat, &col_name, None, 2, false, false)
+            .unwrap();
+
+        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+
+        let cell_value:  Array2<f64> = array![
+            [1.0, 2.0],
+            [3.0, 4.0]
+        ];
+        table.put_cell(col_name, 0, &cell_value).unwrap();
+
+        assert_eq!(table.n_rows(), 123);
+        assert_eq!(table.n_columns(), 1);
+
+        let column_info = table.get_col_desc(&col_name).unwrap();
+        assert_eq!(column_info.data_type(), GlueDataType::TpString);
+        assert_eq!(column_info.name(), col_name);
+        assert!(!column_info.is_scalar());
+        assert!(!column_info.is_fixed_shape());
+        assert_eq!(column_info.shape(), None);
     }
 
     #[test]
@@ -2086,4 +2155,5 @@ mod tests {
         assert_eq!(data_tabledesc.shape().unwrap(), data_shape);
         assert_eq!(uvw_tabledesc.shape().unwrap(), &[3]);
     }
+
 }

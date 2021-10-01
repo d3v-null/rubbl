@@ -223,9 +223,11 @@ extern "C" {
         GlueDataType data_type,
         const StringBridge &col_name,
         const StringBridge &comment,
+        // number of dimensions (or -1 if not fixed)
+        const int n_dims,
         // see casacore::ColumnDesc::Direct
         bool direct,
-        // undefined values are possible, see casacore::ColumnDesc::Direct
+        // allow undefined cell values, see casacore::ColumnDesc::Direct
         bool undefined,
         ExcInfo &exc
     )
@@ -246,7 +248,7 @@ extern "C" {
                 table_desc.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
                     bridge_string(col_name), \
                     bridge_string(comment), \
-                    -1, \
+                    n_dims, \
                     opt \
                 )); \
                 break; \

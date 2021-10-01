@@ -202,6 +202,7 @@ extern "C" {
         data_type: GlueDataType,
         col_name: *const StringBridge,
         comment: *const StringBridge,
+        n_dims: ::std::os::raw::c_int,
         direct: bool,
         undefined: bool,
         exc: *mut ExcInfo,
