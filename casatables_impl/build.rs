@@ -10,6 +10,7 @@ fn main() {
         .flag_if_supported("-std=c++11")
         .define("USE_THREADS", "1")
         .include(".")
+        .define("casacore", "rubbl_casacore")
         .files(FILES)
         .compile("libcasatables_impl.a");
 
