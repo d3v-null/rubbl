@@ -20,9 +20,10 @@ lazy_static! {
 
 // Benchmark the data writing speed of casatables::Table::put_cell with synthetic visibility data.
 fn bench_write(crt: &mut Criterion) {
-    let baseline_indices: Vec<usize> = (0..(127 * 128 / 2)).collect();
-    let timestep_range: Range<usize> = 0..10;
-    let fine_channel_range: Range<usize> = 0..(24 * 32);
+    let baselines = 127 * 128 / 2;
+    let timesteps = 10;
+    let n_rows = baselines * timesteps;
+    let fine_channels = 24 * 32;
 
     crt.bench_function("casatables::Table::put_cell", |bch| {
         bch.iter(|| {
@@ -42,7 +43,8 @@ fn bench_write(crt: &mut Criterion) {
             let mut table = Table::open(table_path, TableOpenMode::ReadWrite).unwrap();
 
             // Add an array column for the data.
-            let data_shape = [fine_channel_range.len() as _, 4];
+            let data_shape = [fine_channels, 4];
+            let data_elements: u64 = data_shape.iter().product();
             table
                 .add_array_column(
                     GlueDataType::TpComplex,
@@ -54,30 +56,23 @@ fn bench_write(crt: &mut Criterion) {
                 )
                 .unwrap();
             table
-                .add_rows(baseline_indices.len() * timestep_range.len())
+                .add_rows(n_rows)
                 .unwrap();
 
             // Write synthetic visibility data to the data column of the table.
-            for (row_index, (baseline_index, timestep_index)) in
-                iproduct!(timestep_range.clone().into_iter(), baseline_indices.iter()).enumerate()
+            for row_index in 0..n_rows
             {
-                let visibility_data = Array::<Complex<f32>, _>::from_shape_fn(
-                    (data_shape[0] as usize, data_shape[1] as usize),
-                    |(fine_channel_index, polarization_index): (usize, usize)| {
-                        Complex::<f32>::new(
-                            row_index as f32,
-                            (fine_channel_index * fine_channel_range.len() + polarization_index)
-                                as f32,
-                        )
-                    },
-                );
+                // each element in the visibility array is a complex number, whose real component is
+                // the row index and whose imaginary component is the element index.
+                let visibility_data = Array::from_iter(
+                    (0..data_elements)
+                        .map(|d| Complex::<f32>::new(row_index as _, d as _)),
+                )
+                .into_shape((data_shape[0] as _, data_shape[1] as _))
+                .unwrap();
 
                 table
-                    .put_cell(
-                        &"DATA",
-                        (baseline_index * baseline_indices.len() + timestep_index) as u64,
-                        &visibility_data,
-                    )
+                    .put_cell(&"DATA", row_index as _, &visibility_data)
                     .unwrap();
             }
         });
