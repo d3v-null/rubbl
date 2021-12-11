@@ -34,3 +34,16 @@ rubbl_core = { version = "0.0.0-dev.0", path = "../core", features = [
     "notifications",
 ] }
 tempfile = "3.21.0"
+
+# Benchmark dependencies (from benches branch)
+criterion = "0.3.*"
+glob = "0.3"
+flate2 = "1.0.20"
+itertools = "0.10"
+lazy_static = "1.4.0"
+tar = "0.4.37"
+
+[[bench]]
+name = "bench"
+# don't use path here, it breaks things.
+harness = false
