@@ -389,11 +389,487 @@ fn bench_table_put_cell_preload_iter(crt: &mut Criterion) {
     });
 }
 
+
+fn bench_table_put_cell_chj(crt: &mut Criterion) {
+    let n_baselines = N_ANTS * (N_ANTS - 1) / 2;
+    let n_rows = n_baselines * N_TIMESTEPS;
+    let data_shape = vec![N_CHANNELS, N_POLS];
+    let shape = (N_TIMESTEPS, N_CHANNELS, n_baselines, N_POLS);
+    let (vis_array, weight_array, flag_array) = synthesize_test_data(shape);
+
+    // Create arrays to store synthetic visiblity data, re-used each row.
+    let mut uvw_tmp = vec![0.; 3];
+    let mut data_tmp = Array2::<Complex<f32>>::zeros((N_CHANNELS, N_POLS));
+    let mut weights_tmp = Array2::<f32>::zeros((N_CHANNELS, N_POLS));
+    let mut weights_pols_tmp = vec![0 as f32; N_POLS];
+    let mut flags_tmp = Array::from_elem((N_CHANNELS, N_POLS), false);
+    let sigma_tmp: Vec<f32> = vec![1., 1., 1., 1.];
+
+    crt.bench_function("casatables::Table::put_cell columnwise one at a time", |bch| {
+        bch.iter(|| {
+            // Create a new temporary directory to write to each time
+            let tmp_dir = tempfile::tempdir().unwrap();
+            let table_path = tmp_dir.path().join("table.ms");
+            let mut table = setup_main_table(table_path, n_rows, data_shape.iter().map(|&x| x as u64).collect());
+
+            let mut row_idx = 0;
+
+            // Write synthetic visibility data into the main table
+            for vis_timestep_view in vis_array.outer_iter() {
+                for vis_baseline_view in vis_timestep_view.axis_iter(Axis(1)) {
+                    data_tmp.assign(&vis_baseline_view);
+                    table.put_cell("DATA", row_idx as _, &data_tmp).unwrap();
+
+                    row_idx+=1;
+                }
+            }
+
+            // // row_idx = 0;
+            // // for (timestep_idx, weight_timestep_view) in izip!(
+            // //     0..N_TIMESTEPS, 
+            // //     weight_array.outer_iter(),
+            // // ) {
+            // //     for(baseline_idx, weight_baseline_view) in izip!(
+            // //         0..n_baselines,
+            // //         weight_timestep_view.axis_iter(Axis(1)),
+            // //     ) {
+            // //         weights_tmp.assign(&weight_baseline_view);    
+            // //         weights_pols_tmp.iter_mut().zip(weights_tmp.axis_iter(Axis(1))).for_each(|(elt, weights_pol)| {
+            // //             *elt = weights_pol.sum();
+            // //         });
+    
+            // //         table.put_cell("WEIGHT_SPECTRUM", row_idx as _, &weights_tmp).unwrap();
+            // //         table.put_cell("WEIGHT", row_idx as _, &weights_pols_tmp).unwrap();
+
+            // //         row_idx+=1;
+            // //     }
+            // // }
+
+            // row_idx = 0;
+            // for weight_timestep_view in weight_array.outer_iter() {
+            //     for weight_baseline_view in weight_timestep_view.axis_iter(Axis(1)) {
+            //         weights_tmp.assign(&weight_baseline_view);    
+            //         table.put_cell("WEIGHT_SPECTRUM", row_idx as _, &weights_tmp).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+
+            // row_idx = 0;
+            // for weight_timestep_view in weight_array.outer_iter() {
+            //     for weight_baseline_view in weight_timestep_view.axis_iter(Axis(1)) {
+            //         weights_pols_tmp.iter_mut().zip(weight_baseline_view.axis_iter(Axis(1))).for_each(|(elt, weights_pol)| {
+            //             *elt = weights_pol.sum();
+            //         });
+            //         table.put_cell("WEIGHT", row_idx as _, &weights_pols_tmp).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+
+            // row_idx = 0;
+            // for flag_timestep_view in flag_array.outer_iter() {
+            //     for flag_baseline_view in flag_timestep_view.axis_iter(Axis(1)) {
+            //         flags_tmp.assign(&flag_baseline_view);
+            //         table.put_cell("FLAG", row_idx as _, &flags_tmp).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+
+            // row_idx = 0;
+            // for timestep_idx in 0..N_TIMESTEPS {
+            //     for _ in 0..n_baselines {
+            //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+            //         row_idx+=1;
+            //     }
+            // }
+            // row_idx = 0;
+            // for timestep_idx in 0..N_TIMESTEPS {
+            //     for _ in 0..n_baselines {
+            //         table
+            //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+            //             .unwrap();
+            //         row_idx+=1;
+            //     }
+            // }
+            // row_idx = 0;
+            // for _ in 0..N_TIMESTEPS {
+            //     for baseline_idx in 0..n_baselines {
+            //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+            //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+            //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+            //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+            //         row_idx+=1;
+            //     }
+            // }
+            // row_idx = 0;
+            // for timestep_idx in 0..N_TIMESTEPS {
+            //     for baseline_idx in 0..n_baselines {
+            //         table.put_cell("DATA_DESC_ID", row_idx as _, &0_i32).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+            // row_idx = 0;
+            // for timestep_idx in 0..N_TIMESTEPS {
+            //     for baseline_idx in 0..n_baselines {
+            //         // Calculate the uvw coordinates for this row.
+            //         uvw_tmp[0] = row_idx as _;
+            //         uvw_tmp[1] = baseline_idx as _;
+            //         uvw_tmp[2] = timestep_idx as _;
+            //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+            // row_idx = 0;
+            // for timestep_idx in 0..N_TIMESTEPS {
+            //     for baseline_idx in 0..n_baselines {
+            //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+            //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+            //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+            //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+            //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+            //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+            //         row_idx+=1;
+            //     }
+            // }
+            // // row_idx = 0;
+            // // for timestep_idx in 0..N_TIMESTEPS {
+            // //     for baseline_idx in 0..n_baselines {
+            // //         // Calculate the uvw coordinates for this row.
+            // //         uvw_tmp[0] = row_idx as _;
+            // //         uvw_tmp[1] = baseline_idx as _;
+            // //         uvw_tmp[2] = timestep_idx as _;
+
+            // //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+            // //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+            // //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+            // //         table
+            // //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+            // //             .unwrap();
+            // //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+            // //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+            // //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+            // //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+            // //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+            // //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+            // //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+            // //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+            // //         row_idx+=1;
+            // //     }
+            // // }
+            // // row_idx = 0;
+            // // for timestep_idx in 0..N_TIMESTEPS {
+            // //     for baseline_idx in 0..n_baselines {
+            // //         // Calculate the uvw coordinates for this row.
+            // //         uvw_tmp[0] = row_idx as _;
+            // //         uvw_tmp[1] = baseline_idx as _;
+            // //         uvw_tmp[2] = timestep_idx as _;
+
+            // //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+            // //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+            // //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+            // //         table
+            // //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+            // //             .unwrap();
+            // //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+            // //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+            // //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+            // //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+            // //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+            // //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+            // //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+            // //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+            // //         row_idx+=1;
+            // //     }
+            // // }
+            // // row_idx = 0;
+            // // for timestep_idx in 0..N_TIMESTEPS {
+            // //     for baseline_idx in 0..n_baselines {
+            // //         // Calculate the uvw coordinates for this row.
+            // //         uvw_tmp[0] = row_idx as _;
+            // //         uvw_tmp[1] = baseline_idx as _;
+            // //         uvw_tmp[2] = timestep_idx as _;
+
+            // //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+            // //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+            // //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+            // //         table
+            // //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+            // //             .unwrap();
+            // //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+            // //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+            // //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+            // //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+            // //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+            // //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+            // //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+            // //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+            // //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+            // //         row_idx+=1;
+            // //     }
+            // // }
+        })
+    });
+}
+
+fn bench_table_put_cell_chj2(crt: &mut Criterion) {
+    let n_baselines = N_ANTS * (N_ANTS - 1) / 2;
+    let n_rows = n_baselines * N_TIMESTEPS;
+    let data_shape = vec![N_CHANNELS, N_POLS];
+    let shape = (N_TIMESTEPS, N_CHANNELS, n_baselines, N_POLS);
+    let (vis_array, weight_array, flag_array) = synthesize_test_data(shape);
+
+    // Create arrays to store synthetic visiblity data, re-used each row.
+    let mut uvw_tmp = vec![0.; 3];
+    let mut data_tmp = Array2::<Complex<f32>>::zeros((N_CHANNELS, N_POLS));
+    let mut weights_tmp = Array2::<f32>::zeros((N_CHANNELS, N_POLS));
+    let mut weights_pols_tmp = vec![0 as f32; N_POLS];
+    let mut flags_tmp = Array::from_elem((N_CHANNELS, N_POLS), false);
+    let sigma_tmp: Vec<f32> = vec![1., 1., 1., 1.];
+
+    crt.bench_function("casatables::Table::put_cell columnwise one at a time iter", |bch| {
+        bch.iter(|| {
+            // Create a new temporary directory to write to each time
+            let tmp_dir = tempfile::tempdir().unwrap();
+            let table_path = tmp_dir.path().join("table.ms");
+            let mut table = setup_main_table(table_path, n_rows, data_shape.iter().map(|&x| x as u64).collect());
+
+            let mut row_idx = 0;
+
+            // Write synthetic visibility data into the main table
+            vis_array.outer_iter().for_each(|vis_timestep_view|  {
+                vis_timestep_view.axis_iter(Axis(1)).for_each(|vis_baseline_view| {
+                    data_tmp.assign(&vis_baseline_view);
+                    table.put_cell("DATA", row_idx as _, &data_tmp).unwrap();
+                    row_idx += 1;
+                });
+            });
+
+        //     // row_idx = 0;
+        //     // for (timestep_idx, weight_timestep_view) in izip!(
+        //     //     0..N_TIMESTEPS, 
+        //     //     weight_array.outer_iter(),
+        //     // ) {
+        //     //     for(baseline_idx, weight_baseline_view) in izip!(
+        //     //         0..n_baselines,
+        //     //         weight_timestep_view.axis_iter(Axis(1)),
+        //     //     ) {
+        //     //         weights_tmp.assign(&weight_baseline_view);    
+        //     //         weights_pols_tmp.iter_mut().zip(weights_tmp.axis_iter(Axis(1))).for_each(|(elt, weights_pol)| {
+        //     //             *elt = weights_pol.sum();
+        //     //         });
+    
+        //     //         table.put_cell("WEIGHT_SPECTRUM", row_idx as _, &weights_tmp).unwrap();
+        //     //         table.put_cell("WEIGHT", row_idx as _, &weights_pols_tmp).unwrap();
+
+        //     //         row_idx+=1;
+        //     //     }
+        //     // }
+
+        //     row_idx = 0;
+        //     for weight_timestep_view in weight_array.outer_iter() {
+        //         for weight_baseline_view in weight_timestep_view.axis_iter(Axis(1)) {
+        //             weights_tmp.assign(&weight_baseline_view);    
+        //             table.put_cell("WEIGHT_SPECTRUM", row_idx as _, &weights_tmp).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+
+        //     row_idx = 0;
+        //     for weight_timestep_view in weight_array.outer_iter() {
+        //         for weight_baseline_view in weight_timestep_view.axis_iter(Axis(1)) {
+        //             weights_pols_tmp.iter_mut().zip(weight_baseline_view.axis_iter(Axis(1))).for_each(|(elt, weights_pol)| {
+        //                 *elt = weights_pol.sum();
+        //             });
+        //             table.put_cell("WEIGHT", row_idx as _, &weights_pols_tmp).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+
+        //     row_idx = 0;
+        //     for flag_timestep_view in flag_array.outer_iter() {
+        //         for flag_baseline_view in flag_timestep_view.axis_iter(Axis(1)) {
+        //             flags_tmp.assign(&flag_baseline_view);
+        //             table.put_cell("FLAG", row_idx as _, &flags_tmp).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+
+        //     row_idx = 0;
+        //     for timestep_idx in 0..N_TIMESTEPS {
+        //         for _ in 0..n_baselines {
+        //             table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     row_idx = 0;
+        //     for timestep_idx in 0..N_TIMESTEPS {
+        //         for _ in 0..n_baselines {
+        //             table
+        //                 .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+        //                 .unwrap();
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     row_idx = 0;
+        //     for _ in 0..N_TIMESTEPS {
+        //         for baseline_idx in 0..n_baselines {
+        //             let antenna1 = (baseline_idx % N_ANTS) as i32;
+        //             let antenna2 = (baseline_idx / N_ANTS) as i32;
+        //             table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+        //             table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     row_idx = 0;
+        //     for timestep_idx in 0..N_TIMESTEPS {
+        //         for baseline_idx in 0..n_baselines {
+        //             table.put_cell("DATA_DESC_ID", row_idx as _, &0_i32).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     row_idx = 0;
+        //     for timestep_idx in 0..N_TIMESTEPS {
+        //         for baseline_idx in 0..n_baselines {
+        //             // Calculate the uvw coordinates for this row.
+        //             uvw_tmp[0] = row_idx as _;
+        //             uvw_tmp[1] = baseline_idx as _;
+        //             uvw_tmp[2] = timestep_idx as _;
+        //             table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     row_idx = 0;
+        //     for timestep_idx in 0..N_TIMESTEPS {
+        //         for baseline_idx in 0..n_baselines {
+        //             table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+        //             table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+        //             table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+        //             table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+        //             table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+        //             table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+        //             row_idx+=1;
+        //         }
+        //     }
+        //     // row_idx = 0;
+        //     // for timestep_idx in 0..N_TIMESTEPS {
+        //     //     for baseline_idx in 0..n_baselines {
+        //     //         // Calculate the uvw coordinates for this row.
+        //     //         uvw_tmp[0] = row_idx as _;
+        //     //         uvw_tmp[1] = baseline_idx as _;
+        //     //         uvw_tmp[2] = timestep_idx as _;
+
+        //     //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+        //     //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+        //     //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+        //     //         table
+        //     //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+        //     //             .unwrap();
+        //     //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+        //     //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+        //     //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+        //     //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+        //     //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+        //     //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+        //     //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+        //     //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+        //     //         row_idx+=1;
+        //     //     }
+        //     // }
+        //     // row_idx = 0;
+        //     // for timestep_idx in 0..N_TIMESTEPS {
+        //     //     for baseline_idx in 0..n_baselines {
+        //     //         // Calculate the uvw coordinates for this row.
+        //     //         uvw_tmp[0] = row_idx as _;
+        //     //         uvw_tmp[1] = baseline_idx as _;
+        //     //         uvw_tmp[2] = timestep_idx as _;
+
+        //     //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+        //     //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+        //     //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+        //     //         table
+        //     //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+        //     //             .unwrap();
+        //     //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+        //     //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+        //     //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+        //     //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+        //     //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+        //     //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+        //     //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+        //     //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+        //     //         row_idx+=1;
+        //     //     }
+        //     // }
+        //     // row_idx = 0;
+        //     // for timestep_idx in 0..N_TIMESTEPS {
+        //     //     for baseline_idx in 0..n_baselines {
+        //     //         // Calculate the uvw coordinates for this row.
+        //     //         uvw_tmp[0] = row_idx as _;
+        //     //         uvw_tmp[1] = baseline_idx as _;
+        //     //         uvw_tmp[2] = timestep_idx as _;
+
+        //     //         let antenna1 = (baseline_idx % N_ANTS) as i32;
+        //     //         let antenna2 = (baseline_idx / N_ANTS) as i32;
+    
+        //     //         table.put_cell("TIME", row_idx as _, &(timestep_idx as f64)).unwrap();
+        //     //         table
+        //     //             .put_cell("TIME_CENTROID", row_idx as _, &(timestep_idx as f64))
+        //     //             .unwrap();
+        //     //         table.put_cell("ANTENNA1", row_idx as _, &antenna1).unwrap();
+        //     //         table.put_cell("ANTENNA2", row_idx as _, &antenna2).unwrap();
+        //     //         table.put_cell("DATA_DESC_ID", row_idx as _, &(0 as i32)).unwrap();
+        //     //         table.put_cell("UVW", row_idx as _, &uvw_tmp).unwrap();
+        //     //         table.put_cell("INTERVAL", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("EXPOSURE", row_idx as _, &(1. as f64)).unwrap();
+        //     //         table.put_cell("PROCESSOR_ID", row_idx as _, &(-1. as i32)).unwrap();
+        //     //         table.put_cell("SCAN_NUMBER", row_idx as _, &(1 as i32)).unwrap();
+        //     //         table.put_cell("STATE_ID", row_idx as _, &(-1 as i32)).unwrap();
+        //     //         table.put_cell("SIGMA", row_idx as _, &sigma_tmp).unwrap();
+
+        //     //         row_idx+=1;
+        //     //     }
+        //     // }
+        })
+    });
+}
+
 // criterion_group!(benches, bench_table_put_cell_data, bench_table_put_cell_main);
 criterion_group!(
     name = benches;
     config = Criterion::default().sample_size(10);
     targets = 
+        bench_table_put_cell_chj,    
+        bench_table_put_cell_chj2,
         bench_table_put_cell_on_fly,
         bench_table_put_cell_preload_slice,
         bench_table_put_cell_preload_iter,
