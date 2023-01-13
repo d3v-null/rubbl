@@ -95,6 +95,7 @@ pub struct StringBridge {
     pub n_bytes: ::std::os::raw::c_ulong,
 }
 #[test]
+#[allow(deref_nullptr)]
 fn bindgen_test_layout_StringBridge() {
     assert_eq!(
         ::std::mem::size_of::<StringBridge>(),
@@ -133,6 +134,7 @@ pub struct ExcInfo {
     pub message: [::std::os::raw::c_char; 512usize],
 }
 #[test]
+#[allow(deref_nullptr)]
 fn bindgen_test_layout_ExcInfo() {
     assert_eq!(
         ::std::mem::size_of::<ExcInfo>(),
@@ -594,6 +596,18 @@ extern "C" {
 }
 extern "C" {
     pub fn table_put_cell(
+        table: *mut GlueTable,
+        col_name: *const StringBridge,
+        row_number: ::std::os::raw::c_ulong,
+        data_type: GlueDataType,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn table_put_cells(
         table: *mut GlueTable,
         col_name: *const StringBridge,
         row_number: ::std::os::raw::c_ulong,

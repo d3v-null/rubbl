@@ -55,10 +55,7 @@ impl glue::ExcInfo {
     fn as_error(&self) -> CasacoreError {
         let c_str = unsafe { std::ffi::CStr::from_ptr(self.message.as_ptr()) };
 
-        let msg = match c_str.to_str() {
-            Ok(s) => s,
-            Err(_) => "[un-translatable C++ exception]",
-        };
+        let msg = c_str.to_str().unwrap_or("[un-translatable C++ exception]");
 
         CasacoreError(msg.to_owned())
     }
@@ -86,37 +83,37 @@ impl glue::GlueDataType {
 impl fmt::Display for glue::GlueDataType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         f.pad(match self {
-            &glue::GlueDataType::TpBool => "bool",
-            &glue::GlueDataType::TpChar => "i8",
-            &glue::GlueDataType::TpUChar => "u8",
-            &glue::GlueDataType::TpShort => "i16",
-            &glue::GlueDataType::TpUShort => "u16",
-            &glue::GlueDataType::TpInt => "i32",
-            &glue::GlueDataType::TpUInt => "u32",
-            &glue::GlueDataType::TpFloat => "f32",
-            &glue::GlueDataType::TpDouble => "f64",
-            &glue::GlueDataType::TpComplex => "c32",
-            &glue::GlueDataType::TpDComplex => "c64",
-            &glue::GlueDataType::TpString => "string",
-            &glue::GlueDataType::TpTable => "table",
-            &glue::GlueDataType::TpArrayBool => "arr<bool>",
-            &glue::GlueDataType::TpArrayChar => "arr<i8>",
-            &glue::GlueDataType::TpArrayUChar => "arr<u8>",
-            &glue::GlueDataType::TpArrayShort => "arr<i16>",
-            &glue::GlueDataType::TpArrayUShort => "arr<u16>",
-            &glue::GlueDataType::TpArrayInt => "arr<i32>",
-            &glue::GlueDataType::TpArrayUInt => "arr<u32>",
-            &glue::GlueDataType::TpArrayFloat => "arr<f32>",
-            &glue::GlueDataType::TpArrayDouble => "arr<f64>",
-            &glue::GlueDataType::TpArrayComplex => "arr<c32>",
-            &glue::GlueDataType::TpArrayDComplex => "arr<c64>",
-            &glue::GlueDataType::TpArrayString => "arr<string>",
-            &glue::GlueDataType::TpRecord => "record",
-            &glue::GlueDataType::TpOther => "other",
-            &glue::GlueDataType::TpQuantity => "quantity",
-            &glue::GlueDataType::TpArrayQuantity => "arr<quantity>",
-            &glue::GlueDataType::TpInt64 => "i64",
-            &glue::GlueDataType::TpArrayInt64 => "arr<i64>",
+            glue::GlueDataType::TpBool => "bool",
+            glue::GlueDataType::TpChar => "i8",
+            glue::GlueDataType::TpUChar => "u8",
+            glue::GlueDataType::TpShort => "i16",
+            glue::GlueDataType::TpUShort => "u16",
+            glue::GlueDataType::TpInt => "i32",
+            glue::GlueDataType::TpUInt => "u32",
+            glue::GlueDataType::TpFloat => "f32",
+            glue::GlueDataType::TpDouble => "f64",
+            glue::GlueDataType::TpComplex => "c32",
+            glue::GlueDataType::TpDComplex => "c64",
+            glue::GlueDataType::TpString => "string",
+            glue::GlueDataType::TpTable => "table",
+            glue::GlueDataType::TpArrayBool => "arr<bool>",
+            glue::GlueDataType::TpArrayChar => "arr<i8>",
+            glue::GlueDataType::TpArrayUChar => "arr<u8>",
+            glue::GlueDataType::TpArrayShort => "arr<i16>",
+            glue::GlueDataType::TpArrayUShort => "arr<u16>",
+            glue::GlueDataType::TpArrayInt => "arr<i32>",
+            glue::GlueDataType::TpArrayUInt => "arr<u32>",
+            glue::GlueDataType::TpArrayFloat => "arr<f32>",
+            glue::GlueDataType::TpArrayDouble => "arr<f64>",
+            glue::GlueDataType::TpArrayComplex => "arr<c32>",
+            glue::GlueDataType::TpArrayDComplex => "arr<c64>",
+            glue::GlueDataType::TpArrayString => "arr<string>",
+            glue::GlueDataType::TpRecord => "record",
+            glue::GlueDataType::TpOther => "other",
+            glue::GlueDataType::TpQuantity => "quantity",
+            glue::GlueDataType::TpArrayQuantity => "arr<quantity>",
+            glue::GlueDataType::TpInt64 => "i64",
+            glue::GlueDataType::TpArrayInt64 => "arr<i64>",
         })
     }
 }
@@ -263,6 +260,7 @@ macro_rules! impl_vec_data_type {
         impl CasaDataType for Vec<$rust_type> {
             const DATA_TYPE: glue::GlueDataType = glue::GlueDataType::$casa_type;
 
+            #[allow(clippy::uninit_vec)]
             fn casatables_alloc(shape: &[u64]) -> Result<Self, TableError> {
                 if shape.len() != 1 {
                     Err(DimensionMismatchError {
@@ -311,6 +309,7 @@ impl_vec_data_type! { Complex<f64>, TpArrayDComplex }
 impl CasaDataType for Vec<String> {
     const DATA_TYPE: glue::GlueDataType = glue::GlueDataType::TpArrayString;
 
+    #[allow(clippy::uninit_vec)]
     fn casatables_alloc(shape: &[u64]) -> Result<Self, TableError> {
         if shape.len() != 1 {
             Err(DimensionMismatchError {
@@ -1046,6 +1045,10 @@ pub enum TableError {
     /// but do not.
     #[error(transparent)]
     DimensionMismatch(#[from] DimensionMismatchError),
+
+    /// Received a scalar where an array was expected
+    #[error("Expected an array value, found scalar")]
+    UnexpectedScalar,
 }
 
 /// A Rust wrapper for a casacore table.
@@ -1130,8 +1133,8 @@ impl Table {
         }
 
         Ok(Table {
-            handle: handle,
-            exc_info: exc_info,
+            handle,
+            exc_info,
         })
     }
 
@@ -1725,7 +1728,7 @@ impl Table {
         }
 
         if is_scalar == 0 || is_fixed_shape == 0 || n_dim != 0 {
-            return Err(TableError::NotScalarColumnError(data_type).into());
+            return Err(TableError::NotScalarColumnError(data_type));
         }
 
         if data_type != T::DATA_TYPE {
@@ -1800,7 +1803,7 @@ impl Table {
 
         let result = if data_type != glue::GlueDataType::TpString {
             let mut result =
-                T::casatables_alloc(&dims[..n_dim as usize]).map_err(|e| TableError::from(e))?;
+                T::casatables_alloc(&dims[..n_dim as usize]).map_err(TableError::from)?;
 
             let rv = unsafe {
                 glue::table_get_cell(
@@ -1993,6 +1996,84 @@ impl Table {
         Ok(())
     }
 
+    /// Put an array of cell values into the table, starting at row.
+    pub fn put_cells<T: CasaDataType>(
+        &mut self,
+        col_name: &str,
+        row: u64,
+        value: &T,
+    ) -> Result<(), TableError> {
+        let ccol_name = glue::StringBridge::from_rust(col_name);
+        let mut shape = Vec::new();
+
+        value.casatables_put_shape(&mut shape);
+
+        // TODO: this is probably wrong?
+        if shape.is_empty() {
+            return Err(TableError::UnexpectedScalar);
+        }
+
+        if T::DATA_TYPE == glue::GlueDataType::TpString {
+            let as_string = T::casatables_string_pass_through_out(value);
+            let glue_string = glue::StringBridge::from_rust(&as_string);
+
+            let rv = unsafe {
+                glue::table_put_cells(
+                    self.handle,
+                    &ccol_name,
+                    row,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    &glue_string as *const glue::StringBridge as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        } else if T::DATA_TYPE == glue::GlueDataType::TpArrayString {
+            let glue_strings = T::casatables_stringvec_pass_through_out(value);
+
+            let rv = unsafe {
+                glue::table_put_cells(
+                    self.handle,
+                    &ccol_name,
+                    row,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    glue_strings.as_ptr() as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        } else {
+            let rv = unsafe {
+                glue::table_put_cells(
+                    self.handle,
+                    &ccol_name,
+                    row,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        }
+
+        Ok(())
+    }
+
     /// Add additional, empty rows to the table.
     pub fn add_rows(&mut self, n_rows: usize) -> Result<(), CasacoreError> {
         if unsafe { glue::table_add_rows(self.handle, n_rows as u64, &mut self.exc_info) != 0 } {
@@ -2088,8 +2169,8 @@ impl Table {
         }
 
         let mut row = TableRow {
-            handle: handle,
-            exc_info: exc_info,
+            handle,
+            exc_info,
         };
 
         for row_number in row_range {
@@ -2118,8 +2199,8 @@ impl Table {
         }
 
         let mut row = TableRow {
-            handle: handle,
-            exc_info: exc_info,
+            handle,
+            exc_info,
         };
 
         for &row_number in rows {
@@ -2741,7 +2822,7 @@ mod tests {
 
     use super::*;
     use crate::glue::{GlueDataType, TableDescCreateMode};
-    use ndarray::array;
+    use ndarray::{array, Array2, Array3};
     use tempfile::tempdir;
 
     #[allow(non_camel_case_types)]
@@ -2756,7 +2837,7 @@ mod tests {
 
         let mut table_desc = TableDesc::new("TEST", TableDescCreateMode::TDM_SCRATCH).unwrap();
         table_desc
-            .add_scalar_column(GlueDataType::TpUInt, &col_name, None, false, false)
+            .add_scalar_column(GlueDataType::TpUInt, col_name, None, false, false)
             .unwrap();
 
         let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
@@ -2764,7 +2845,7 @@ mod tests {
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
 
-        let column_info = table.get_col_desc(&col_name).unwrap();
+        let column_info = table.get_col_desc(col_name).unwrap();
         assert_eq!(column_info.data_type(), GlueDataType::TpUInt);
         assert_eq!(column_info.name(), col_name);
         assert!(column_info.is_scalar());
@@ -2779,7 +2860,7 @@ mod tests {
 
         let mut table_desc = TableDesc::new("TEST", TableDescCreateMode::TDM_SCRATCH).unwrap();
         table_desc
-            .add_scalar_column(GlueDataType::TpString, &col_name, None, false, false)
+            .add_scalar_column(GlueDataType::TpString, col_name, None, false, false)
             .unwrap();
 
         let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
@@ -2787,7 +2868,7 @@ mod tests {
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
 
-        let column_info = table.get_col_desc(&col_name).unwrap();
+        let column_info = table.get_col_desc(col_name).unwrap();
         assert_eq!(column_info.data_type(), GlueDataType::TpString);
         assert_eq!(column_info.name(), col_name);
         assert!(column_info.is_scalar());
@@ -2809,7 +2890,7 @@ mod tests {
 
         let mut table_desc = TableDesc::new("TEST", TableDescCreateMode::TDM_SCRATCH).unwrap();
         table_desc
-            .add_scalar_column(GlueDataType::TpString, &col_name, None, false, false)
+            .add_scalar_column(GlueDataType::TpString, col_name, None, false, false)
             .unwrap();
 
         // NewNoReplace should fail if table exists.
@@ -2830,7 +2911,7 @@ mod tests {
         table_desc
             .add_array_column(
                 GlueDataType::TpString,
-                &col_name,
+                col_name,
                 None,
                 Some(&[1, 2, 3]),
                 false,
@@ -2843,7 +2924,7 @@ mod tests {
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
 
-        let column_info = table.get_col_desc(&col_name).unwrap();
+        let column_info = table.get_col_desc(col_name).unwrap();
         assert_eq!(column_info.data_type(), GlueDataType::TpString);
         assert_eq!(column_info.name(), col_name);
         assert!(!column_info.is_scalar());
@@ -2860,7 +2941,7 @@ mod tests {
 
         let mut table_desc = TableDesc::new("TEST", TableDescCreateMode::TDM_SCRATCH).unwrap();
         table_desc
-            .add_array_column(GlueDataType::TpString, &col_name, None, None, false, false)
+            .add_array_column(GlueDataType::TpString, col_name, None, None, false, false)
             .unwrap();
 
         let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
@@ -2868,7 +2949,7 @@ mod tests {
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
 
-        let column_info = table.get_col_desc(&col_name).unwrap();
+        let column_info = table.get_col_desc(col_name).unwrap();
         assert_eq!(column_info.data_type(), GlueDataType::TpString);
         assert_eq!(column_info.name(), col_name);
         assert!(!column_info.is_scalar());
@@ -2909,6 +2990,193 @@ mod tests {
         let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("UVW", 0).unwrap();
         assert_eq!(cell_value, extracted_cell_value);
     }
+
+    #[test]
+    fn table_create_write_open_read_cells_scalar() {
+        // tempdir is only necessary to avoid writing to disk each time this example is run
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+        // First create a table description for our base table.
+        // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+        let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        // Define the columns in your table description
+        table_desc
+            .add_scalar_column(
+                GlueDataType::TpDouble,
+                "DATE",
+                Some("Modified Julian Day, at midpoint of scan"),
+                true,
+                false,
+            )
+            .unwrap();
+        // Create your new table with 3 rows
+        let mut table = Table::new(&table_path, table_desc, 3, TableCreateMode::New).unwrap();
+        // write to the first row in the uvw column
+        let cell_values: Vec<f64> = vec![1., 2., 3.];
+        table.put_cells("DATE", 0, &cell_values).unwrap();
+        // This writes the table to disk and closes the file pointer.
+        drop(table);
+
+        // now open the table again for reading cells
+        let mut table = Table::open(&table_path, TableOpenMode::Read).unwrap();
+        // and extract the cell values we wrote earlier
+        let extracted_cell_values: Vec<f64> = table.get_col_as_vec("DATE").unwrap();
+        assert_eq!(extracted_cell_values, vec![1., 2., 3.]);
+    }
+
+    #[test]
+    fn table_put_cells_with_scalar() {
+        // tempdir is only necessary to avoid writing to disk each time this example is run
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+        // First create a table description for our base table.
+        // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+        let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        // Define the columns in your table description
+        table_desc
+            .add_scalar_column(
+                GlueDataType::TpDouble,
+                "DATE",
+                Some("Modified Julian Day, at midpoint of scan"),
+                true,
+                false,
+            )
+            .unwrap();
+        // Create your new table with 3 rows
+        let mut table = Table::new(&table_path, table_desc, 3, TableCreateMode::New).unwrap();
+        // put cells expects an array, but we're giving it a scalar
+        let cell_value: f64 = 1.;
+        let result = table.put_cells("DATE", 0, &cell_value);
+        assert!(matches!(result, Err(_)));
+    }
+
+    #[test]
+    fn table_create_write_open_read_cells_array1() {
+        // tempdir is only necessary to avoid writing to disk each time this example is run
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+        // First create a table description for our base table.
+        // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+        let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        // Define the columns in your table description
+        table_desc
+            .add_array_column(
+                GlueDataType::TpDouble,
+                "UVW",
+                Some("Vector with uvw coordinates (in meters)"),
+                Some(&[3]),
+                false,
+                false,
+            )
+            .unwrap();
+        // Create your new table with 2 rows
+        let mut table = Table::new(&table_path, table_desc, 2, TableCreateMode::New).unwrap();
+        // write to the first row in the uvw column
+        let cell_values: Array2<f64> = array![
+            [1., 2., 3.],
+            [4., 5., 6.],
+        ];
+        table.put_cells("UVW", 0, &cell_values).unwrap();
+        // This writes the table to disk and closes the file pointer.
+        drop(table);
+
+        // now open the table again for reading cells
+        let mut table = Table::open(&table_path, TableOpenMode::Read).unwrap();
+        // and extract the cell value we wrote earlier
+        let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("UVW", 0).unwrap();
+        assert_eq!(extracted_cell_value, vec![1., 2., 3.]);
+        let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("UVW", 1).unwrap();
+        assert_eq!(extracted_cell_value, vec![4., 5., 6.]);
+    }
+
+    #[test]
+    fn table_create_write_open_read_cells_array2() {
+        // tempdir is only necessary to avoid writing to disk each time this example is run
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+        // First create a table description for our base table.
+        // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+        let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        // Define the columns in your table description
+        table_desc
+            .add_array_column(
+                GlueDataType::TpDouble,
+                "DATA",
+                Some("test"),
+                Some(&[4, 3]),
+                false,
+                false,
+            )
+            .unwrap();
+        // Create your new table with 2 rows
+        let mut table = Table::new(&table_path, table_desc, 2, TableCreateMode::New).unwrap();
+        // write to the first row
+        let cell_values: Array3<f64> = array![
+            [
+                [1., 2., 3.],
+                [4., 5., 6.],
+                [7., 8., 9.],
+                [10., 11., 12.],
+            ],
+            [
+                [13., 14., 15.],
+                [16., 17., 18.],
+                [19., 20., 21.],
+                [22., 23., 24.],
+            ],
+        ];
+        table.put_cells("DATA", 0, &cell_values).unwrap();
+        // This writes the table to disk and closes the file pointer.
+        drop(table);
+
+        // now open the table again for reading cells
+        let mut table = Table::open(&table_path, TableOpenMode::Read).unwrap();
+        // and extract the cell value we wrote earlier
+        for (i, expected_row) in cell_values.outer_iter().enumerate() {
+            let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("DATA", i as _).unwrap();
+            assert_eq!(&extracted_cell_value, expected_row.as_slice().unwrap());
+        }
+    }
+
+
+    // #[test]
+    // fn table_create_write_open_read_cells_array1_string() {
+    //     // tempdir is only necessary to avoid writing to disk each time this example is run
+    //     let tmp_dir = tempdir().unwrap();
+    //     let table_path = tmp_dir.path().join("test.ms");
+    //     // First create a table description for our base table.
+    //     // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+    //     let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+    //     // Define the columns in your table description
+    //     table_desc
+    //         .add_array_column(
+    //             GlueDataType::TpString,
+    //             "DATA",
+    //             Some("test"),
+    //             Some(&[3]),
+    //             false,
+    //             false,
+    //         )
+    //         .unwrap();
+    //     // Create your new table with 2 rows
+    //     let mut table = Table::new(&table_path, table_desc, 2, TableCreateMode::New).unwrap();
+    //     // write to the first row
+    //     let cell_values: Array2<String> = array![
+    //         ["1".into(), "2".into(), "3".into()],
+    //         ["4".into(), "5".into(), "6".into()],
+    //     ];
+    //     table.put_cells("DATA", 0, &cell_values).unwrap();
+    //     // This writes the table to disk and closes the file pointer.
+    //     drop(table);
+
+    //     // now open the table again for reading cells
+    //     let mut table = Table::open(&table_path, TableOpenMode::Read).unwrap();
+    //     // and extract the cell value we wrote earlier
+    //     for (i, expected_row) in cell_values.outer_iter().enumerate() {
+    //         let extracted_cell_value: Vec<String> = table.get_cell_as_vec("DATA", i as _).unwrap();
+    //         assert_eq!(&extracted_cell_value, expected_row.as_slice().unwrap());
+    //     }
+    // }
 
     #[test]
     fn table_add_scalar_column() {

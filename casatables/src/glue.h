@@ -21,17 +21,17 @@ typedef enum GlueDataType
 {
     /**A boolean value.*/
     TpBool,
-    /**A signed 8-bit integer value.*/ 
+    /**A signed 8-bit integer value.*/
     TpChar,
-    /**An unsigned 8-bit integer value.*/ 
+    /**An unsigned 8-bit integer value.*/
     TpUChar,
-    /**A signed 16-bit integer value.*/ 
+    /**A signed 16-bit integer value.*/
     TpShort,
-    /**An unsigned 16-bit integer value.*/ 
+    /**An unsigned 16-bit integer value.*/
     TpUShort,
-    /**A signed 32-bit integer value.*/ 
+    /**A signed 32-bit integer value.*/
     TpInt,
-    /**An unsigned 32-bit integer value.*/ 
+    /**An unsigned 32-bit integer value.*/
     TpUInt,
     /**A 32-bit IEEE754 floating-point value.*/
     TpFloat,
@@ -45,7 +45,7 @@ typedef enum GlueDataType
     TpString,
     /**A value that is its own CASA table.*/
     TpTable,
-    /**A value that is an array of booleans.*/ 
+    /**A value that is an array of booleans.*/
     TpArrayBool,
     /**A value that is an array of signed 8-bit integers.*/
     TpArrayChar,
@@ -77,7 +77,7 @@ typedef enum GlueDataType
     TpQuantity,
     /**A value that is an array of physical quantities with associated dimensions.*/
     TpArrayQuantity,
-    /**A signed 64-bit integer value.*/ 
+    /**A signed 64-bit integer value.*/
     TpInt64,
     /**A value that is an array of unsigned 8-bit integers.*/
     TpArrayInt64,
@@ -86,7 +86,7 @@ typedef enum GlueDataType
 typedef struct GlueTable GlueTable;
 typedef struct GlueTableRow GlueTableRow;
 typedef struct GlueTableDesc GlueTableDesc;
-typedef struct GlueTableRecord GlueTableRecord; 
+typedef struct GlueTableRecord GlueTableRecord;
 
 #endif
 
@@ -184,9 +184,9 @@ extern "C"
         ExcInfo &exc);
     int
     tablerec_get_keyword_repr(
-        const GlueTableRecord &rec, 
-        KeywordReprCallback callback, 
-        void *ctxt, 
+        const GlueTableRecord &rec,
+        KeywordReprCallback callback,
+        void *ctxt,
         ExcInfo &exc
     );
     int tablerec_get_field_info(
@@ -287,7 +287,7 @@ extern "C"
         void *data,
         ExcInfo &exc
     );
-    
+
     // Table
 
     GlueTable *table_create(const StringBridge &path, GlueTableDesc &table_desc,
@@ -355,6 +355,10 @@ extern "C"
                                     const unsigned long row_number, StringBridgeCallback callback,
                                     void *ctxt, ExcInfo &exc);
     int table_put_cell(GlueTable &table, const StringBridge &col_name,
+                       const unsigned long row_number, const GlueDataType data_type,
+                       const unsigned long n_dims, const unsigned long *dims,
+                       void *data, ExcInfo &exc);
+    int table_put_cells(GlueTable &table, const StringBridge &col_name,
                        const unsigned long row_number, const GlueDataType data_type,
                        const unsigned long n_dims, const unsigned long *dims,
                        void *data, ExcInfo &exc);

@@ -136,7 +136,7 @@ extern "C" {
 
     // Table Records
 
-    GlueTableRecord * 
+    GlueTableRecord *
     tablerec_create(ExcInfo &exc)
     {
         try {
@@ -148,7 +148,7 @@ extern "C" {
         }
     }
 
-    GlueTableRecord * 
+    GlueTableRecord *
     tablerec_copy(const GlueTableRecord& other, ExcInfo &exc)
     {
         try {
@@ -160,7 +160,7 @@ extern "C" {
         }
     }
 
-    bool 
+    bool
     tablerec_eq(const GlueTableRecord& rec, const GlueTableRecord& other)
     {
         return rec.description() == other.description();
@@ -168,9 +168,9 @@ extern "C" {
 
     int
     tablerec_get_keyword_info(
-        const GlueTableRecord &rec, 
-        KeywordInfoCallback callback, 
-        void *ctxt, 
+        const GlueTableRecord &rec,
+        KeywordInfoCallback callback,
+        void *ctxt,
         ExcInfo &exc
     )
     {
@@ -197,9 +197,9 @@ extern "C" {
 
     int
     tablerec_get_keyword_repr(
-        const GlueTableRecord &rec, 
-        KeywordReprCallback callback, 
-        void *ctxt, 
+        const GlueTableRecord &rec,
+        KeywordReprCallback callback,
+        void *ctxt,
         ExcInfo &exc
     )
     {
@@ -242,11 +242,11 @@ extern "C" {
 
     int
     tablerec_get_field_info(
-        const GlueTableRecord &rec, 
+        const GlueTableRecord &rec,
         const StringBridge &col_name,
-        GlueDataType *data_type, 
+        GlueDataType *data_type,
         int *n_dim,
-        unsigned long dims[8], 
+        unsigned long dims[8],
         ExcInfo &exc
     )
     {
@@ -278,12 +278,12 @@ extern "C" {
         }
         return 0;
     }
-    
+
     int
     tablerec_get_field(
-        const GlueTableRecord &rec, 
+        const GlueTableRecord &rec,
         const StringBridge &field_name,
-        void *data, 
+        void *data,
         ExcInfo &exc
     )
     {
@@ -298,7 +298,7 @@ extern "C" {
                 throw std::runtime_error(s);
             }
 
-            if (!desc.isScalar(field_num)) {                
+            if (!desc.isScalar(field_num)) {
                 shape = rec.shape(field_num);
             }
 
@@ -346,7 +346,7 @@ extern "C" {
 #undef SCALAR_CASE
 #undef VECTOR_CASE
 
-            case casacore::TpRecord: 
+            case casacore::TpRecord:
                 throw std::runtime_error("you must use tablerec_get_field_subrecord() for record fields");
             case casacore::TpString:
                 throw std::runtime_error("you must use tablerec_get_field_string() for string fields");
@@ -365,9 +365,9 @@ extern "C" {
 
     int
     tablerec_get_field_string(
-        const GlueTableRecord &rec, 
+        const GlueTableRecord &rec,
         const StringBridge &col_name,
-        StringBridgeCallback callback, 
+        StringBridgeCallback callback,
         void *ctxt,
         ExcInfo &exc
     )
@@ -397,7 +397,7 @@ extern "C" {
 
     int
     tablerec_get_field_string_array(
-        const GlueTableRecord &rec, 
+        const GlueTableRecord &rec,
         const StringBridge &col_name,
         StringBridgeCallback callback,
         void *ctxt,
@@ -431,7 +431,7 @@ extern "C" {
 
     int
     tablerec_get_field_subrecord(
-        const GlueTableRecord &rec, 
+        const GlueTableRecord &rec,
         const StringBridge &col_name,
         GlueTableRecord &sub_rec,
         ExcInfo &exc
@@ -448,7 +448,7 @@ extern "C" {
 
             if (rec.type(field_num) != casacore::TpRecord)
                 throw std::runtime_error("row cell must be of TpRecord type");
-            
+
             sub_rec.assign(rec.subRecord( field_num ));
         } catch (...) {
             handle_exception(exc);
@@ -460,12 +460,12 @@ extern "C" {
 
     int
     tablerec_put_field(
-        GlueTableRecord &rec, 
+        GlueTableRecord &rec,
         const StringBridge &field_name,
-        const GlueDataType data_type, 
+        const GlueDataType data_type,
         const unsigned long n_dims,
-        const unsigned long *dims, 
-        void *data, 
+        const unsigned long *dims,
+        void *data,
         ExcInfo &exc
     )
     {
@@ -801,11 +801,11 @@ extern "C" {
     int
     tabledesc_put_keyword(
         GlueTableDesc &table_desc,
-        const StringBridge &kw_name, 
-        const GlueDataType data_type, 
+        const StringBridge &kw_name,
+        const GlueDataType data_type,
         const unsigned long n_dims,
-        const unsigned long *dims, 
-        void *data, 
+        const unsigned long *dims,
+        void *data,
         ExcInfo &exc
     )
     {
@@ -838,7 +838,7 @@ extern "C" {
         }
     }
 
-    const GlueTableRecord * 
+    const GlueTableRecord *
     tabledesc_get_keywords( GlueTableDesc &table_desc, ExcInfo &exc )
     {
         try {
@@ -849,7 +849,7 @@ extern "C" {
         }
     }
 
-    const GlueTableRecord * 
+    const GlueTableRecord *
     tabledesc_get_column_keywords( GlueTableDesc &table_desc, const StringBridge &col_name, ExcInfo &exc )
     {
         try {
@@ -864,7 +864,7 @@ extern "C" {
 
     GlueTable *
     table_create(
-        const StringBridge &path, 
+        const StringBridge &path,
         // Description of columns and keys in the table
         GlueTableDesc &table_desc,
         // number of rows
@@ -955,7 +955,7 @@ extern "C" {
     int
     table_get_file_name(
         const GlueTable &table,
-        StringBridgeCallback callback, 
+        StringBridgeCallback callback,
         void *ctxt,
         ExcInfo &exc
     )
@@ -999,11 +999,11 @@ extern "C" {
 
     // TODO: dedup this from tabledesc_add_scalar_column
 
-    int 
+    int
     table_add_scalar_column(
-        GlueTable &table, 
+        GlueTable &table,
         GlueDataType data_type,
-        const StringBridge &col_name, 
+        const StringBridge &col_name,
         const StringBridge &comment,
         // see casacore::ColumnDesc::Direct
         bool direct,
@@ -1197,9 +1197,9 @@ extern "C" {
 
     int
     table_get_keyword_info(
-        const GlueTable &table, 
-        KeywordInfoCallback callback, 
-        void *ctxt, 
+        const GlueTable &table,
+        KeywordInfoCallback callback,
+        void *ctxt,
         ExcInfo &exc
     )
     {
@@ -1213,10 +1213,10 @@ extern "C" {
 
     int
     table_get_column_keyword_info(
-        const GlueTable &table, 
-        const StringBridge &col_name, 
+        const GlueTable &table,
+        const StringBridge &col_name,
         KeywordInfoCallback callback,
-        void *ctxt, 
+        void *ctxt,
         ExcInfo &exc
     )
     {
@@ -1229,9 +1229,9 @@ extern "C" {
         }
     }
 
-    const GlueTableRecord* 
+    const GlueTableRecord*
     table_get_keywords(
-        GlueTable &table, 
+        GlueTable &table,
         ExcInfo &exc
     )
     {
@@ -1243,10 +1243,10 @@ extern "C" {
         }
     }
 
-    const GlueTableRecord* 
+    const GlueTableRecord*
     table_get_column_keywords(
-        GlueTable &table, 
-        const StringBridge &col_name, 
+        GlueTable &table,
+        const StringBridge &col_name,
         ExcInfo &exc
     )
     {
@@ -1261,12 +1261,12 @@ extern "C" {
 
     int
     table_put_keyword(
-        GlueTable &table, 
-        const StringBridge &kw_name, 
-        const GlueDataType data_type, 
+        GlueTable &table,
+        const StringBridge &kw_name,
+        const GlueDataType data_type,
         const unsigned long n_dims,
-        const unsigned long *dims, 
-        void *data, 
+        const unsigned long *dims,
+        void *data,
         ExcInfo &exc
     )
     {
@@ -1282,11 +1282,11 @@ extern "C" {
 
     int
     table_put_column_keyword(
-        GlueTable &table, 
-        const StringBridge &col_name, 
-        const StringBridge &kw_name, 
-        const GlueDataType data_type, 
-        const unsigned long n_dims, const unsigned long *dims, void *data, 
+        GlueTable &table,
+        const StringBridge &col_name,
+        const StringBridge &kw_name,
+        const GlueDataType data_type,
+        const unsigned long n_dims, const unsigned long *dims, void *data,
         ExcInfo &exc
     )
     {
@@ -1638,6 +1638,72 @@ extern "C" {
                 col.put(row_number, bridge_string_array((const StringBridge *) data, shape));
                 break;
             }
+
+            default:
+                throw std::runtime_error("unhandled cell data type");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+
+        return 0;
+    }
+
+
+    int
+    table_put_cells(
+        GlueTable &table, const StringBridge &col_name,
+        const unsigned long row_number, const GlueDataType data_type,
+        const unsigned long n_dims, const unsigned long *dims,
+        void *data, ExcInfo &exc
+    ) {
+        casacore::RefRows rownrs(row_number, row_number + dims[0] - 1);
+        casacore::IPosition shape(n_dims); \
+        for (casacore::uInt i = 0; i < n_dims; i++) {
+            shape[i] = dims[n_dims - 1 - i];
+        }
+        try {
+            switch (data_type) {
+
+#define CASE(DTYPE, CPPTYPE) \
+            case casacore::DTYPE: { \
+                if (n_dims == 1) { \
+                    casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                    casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
+                    col.putColumnCells( rownrs, array ); \
+                } else { \
+                    casacore::ArrayColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                    casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
+                    col.putColumnCells( rownrs, array ); \
+                } \
+                break; \
+            }
+
+            CASE(TpArrayBool, casacore::Bool)
+            CASE(TpArrayChar, casacore::Char)
+            CASE(TpArrayUChar, casacore::uChar)
+            CASE(TpArrayShort, casacore::Short)
+            CASE(TpArrayUShort, casacore::uShort)
+            CASE(TpArrayInt, casacore::Int)
+            CASE(TpArrayUInt, casacore::uInt)
+            CASE(TpArrayFloat, float)
+            CASE(TpArrayDouble, double)
+            CASE(TpArrayComplex, casacore::Complex)
+            CASE(TpArrayDComplex, casacore::DComplex)
+
+#undef CASE
+            // TODO: strings
+            // case casacore::TpArrayString: {
+            //     if (n_dims == 1) {
+            //         casacore::ScalarColumn<casacore::String> col(table, bridge_string(col_name));
+            //         col.putColumnCells( rownrs, bridge_string_array((const StringBridge *) data, shape) );
+            //     } else {
+            //         casacore::ArrayColumn<casacore::String> col(table, bridge_string(col_name));
+            //         col.putColumnCells( rownrs, bridge_string_array((const StringBridge *) data, shape) );
+            //     }
+            //     break;
+            // }
 
             default:
                 throw std::runtime_error("unhandled cell data type");
