@@ -1717,6 +1717,70 @@ extern "C" {
     }
 
     int
+    table_put_column(
+        GlueTable &table, const StringBridge &col_name,
+        const GlueDataType data_type,
+        const unsigned long n_dims, const unsigned long *dims,
+        void *data, ExcInfo &exc
+    ) {
+        casacore::IPosition shape(n_dims); \
+        for (casacore::uInt i = 0; i < n_dims; i++) {
+            shape[i] = dims[n_dims - 1 - i];
+        }
+        try {
+            switch (data_type) {
+
+#define CASE(DTYPE, CPPTYPE) \
+            case casacore::DTYPE: { \
+                if (n_dims == 1) { \
+                    casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                    casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
+                    col.putColumn( array ); \
+                } else { \
+                    casacore::ArrayColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                    casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
+                    col.putColumn( array ); \
+                } \
+                break; \
+            }
+
+            CASE(TpArrayBool, casacore::Bool)
+            CASE(TpArrayChar, casacore::Char)
+            CASE(TpArrayUChar, casacore::uChar)
+            CASE(TpArrayShort, casacore::Short)
+            CASE(TpArrayUShort, casacore::uShort)
+            CASE(TpArrayInt, casacore::Int)
+            CASE(TpArrayUInt, casacore::uInt)
+            CASE(TpArrayFloat, float)
+            CASE(TpArrayDouble, double)
+            CASE(TpArrayComplex, casacore::Complex)
+            CASE(TpArrayDComplex, casacore::DComplex)
+
+#undef CASE
+            // TODO: strings
+            // case casacore::TpArrayString: {
+            //     if (n_dims == 1) {
+            //         casacore::ScalarColumn<casacore::String> col(table, bridge_string(col_name));
+            //         col.putColumn( bridge_string_array((const StringBridge *) data, shape) );
+            //     } else {
+            //         casacore::ArrayColumn<casacore::String> col(table, bridge_string(col_name));
+            //         col.putColumn( bridge_string_array((const StringBridge *) data, shape) );
+            //     }
+            //     break;
+            // }
+
+            default:
+                throw std::runtime_error("unhandled cell data type");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+
+        return 0;
+    }
+
+    int
     table_add_rows(GlueTable &table, const unsigned long n_rows, ExcInfo &exc)
     {
         try {

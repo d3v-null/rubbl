@@ -359,9 +359,13 @@ extern "C"
                        const unsigned long n_dims, const unsigned long *dims,
                        void *data, ExcInfo &exc);
     int table_put_cells(GlueTable &table, const StringBridge &col_name,
-                       const unsigned long row_number, const GlueDataType data_type,
-                       const unsigned long n_dims, const unsigned long *dims,
-                       void *data, ExcInfo &exc);
+                        const unsigned long row_number, const GlueDataType data_type,
+                        const unsigned long n_dims, const unsigned long *dims,
+                        void *data, ExcInfo &exc);
+    int table_put_column(GlueTable &table, const StringBridge &col_name,
+                         const GlueDataType data_type,
+                         const unsigned long n_dims, const unsigned long *dims,
+                         void *data, ExcInfo &exc);
     int table_add_rows(GlueTable &table, const unsigned long n_rows, ExcInfo &exc);
 
     GlueTableRow *table_row_alloc(const GlueTable &table, const unsigned char is_read_only, ExcInfo &exc);

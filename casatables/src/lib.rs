@@ -2074,6 +2074,80 @@ impl Table {
         Ok(())
     }
 
+    /// Put an array of cell values into a column of the table.
+    pub fn put_column<T: CasaDataType>(
+        &mut self,
+        col_name: &str,
+        value: &T,
+    ) -> Result<(), TableError> {
+        let ccol_name = glue::StringBridge::from_rust(col_name);
+        let mut shape = Vec::new();
+
+        value.casatables_put_shape(&mut shape);
+
+        // TODO: this is probably wrong?
+        if shape.is_empty() {
+            return Err(TableError::UnexpectedScalar);
+        }
+
+        if T::DATA_TYPE == glue::GlueDataType::TpString {
+            let as_string = T::casatables_string_pass_through_out(value);
+            let glue_string = glue::StringBridge::from_rust(&as_string);
+
+            let rv = unsafe {
+                glue::table_put_column(
+                    self.handle,
+                    &ccol_name,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    &glue_string as *const glue::StringBridge as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        } else if T::DATA_TYPE == glue::GlueDataType::TpArrayString {
+            let glue_strings = T::casatables_stringvec_pass_through_out(value);
+
+            let rv = unsafe {
+                glue::table_put_column(
+                    self.handle,
+                    &ccol_name,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    glue_strings.as_ptr() as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        } else {
+            let rv = unsafe {
+                glue::table_put_column(
+                    self.handle,
+                    &ccol_name,
+                    T::DATA_TYPE,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+        }
+
+        Ok(())
+    }
+
     /// Add additional, empty rows to the table.
     pub fn add_rows(&mut self, n_rows: usize) -> Result<(), CasacoreError> {
         if unsafe { glue::table_add_rows(self.handle, n_rows as u64, &mut self.exc_info) != 0 } {
@@ -3177,6 +3251,56 @@ mod tests {
     //         assert_eq!(&extracted_cell_value, expected_row.as_slice().unwrap());
     //     }
     // }
+
+
+    #[test]
+    fn table_create_write_open_read_column_array2() {
+        // tempdir is only necessary to avoid writing to disk each time this example is run
+        let tmp_dir = tempdir().unwrap();
+        let table_path = tmp_dir.path().join("test.ms");
+        // First create a table description for our base table.
+        // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
+        let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+        // Define the columns in your table description
+        table_desc
+            .add_array_column(
+                GlueDataType::TpDouble,
+                "DATA",
+                Some("test"),
+                Some(&[4, 3]),
+                false,
+                false,
+            )
+            .unwrap();
+        // Create your new table with 2 rows
+        let mut table = Table::new(&table_path, table_desc, 2, TableCreateMode::New).unwrap();
+        // write to the first row
+        let cell_values: Array3<f64> = array![
+            [
+                [1., 2., 3.],
+                [4., 5., 6.],
+                [7., 8., 9.],
+                [10., 11., 12.],
+            ],
+            [
+                [13., 14., 15.],
+                [16., 17., 18.],
+                [19., 20., 21.],
+                [22., 23., 24.],
+            ],
+        ];
+        table.put_column("DATA", &cell_values).unwrap();
+        // This writes the table to disk and closes the file pointer.
+        drop(table);
+
+        // now open the table again for reading cells
+        let mut table = Table::open(&table_path, TableOpenMode::Read).unwrap();
+        // and extract the cell value we wrote earlier
+        for (i, expected_row) in cell_values.outer_iter().enumerate() {
+            let extracted_cell_value: Vec<f64> = table.get_cell_as_vec("DATA", i as _).unwrap();
+            assert_eq!(&extracted_cell_value, expected_row.as_slice().unwrap());
+        }
+    }
 
     #[test]
     fn table_add_scalar_column() {
