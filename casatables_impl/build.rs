@@ -4,23 +4,56 @@
 use std::{env, fs, path::PathBuf};
 
 fn main() {
+    // sanity checks: all files and headers exist
+    let cwd = std::path::PathBuf::from(".").canonicalize().unwrap();
+    for file in FILES {
+        println!("cargo:rerun-if-changed={}", file);
+        if ! cwd.join(file).exists() {
+            println!(
+                "cargo:warning=file not found {}",
+                cwd.join(file).to_string_lossy()
+            );
+        }
+    }
+    for header in HEADERS {
+        println!("cargo:rerun-if-changed={}", header);
+        if ! cwd.join(header).exists() {
+            println!(
+                "cargo:warning=header not found {}",
+                cwd.join(header).to_string_lossy()
+            );
+        }
+    }
+    // sanity check: no file left behind
+    for entry in fs::read_dir(&cwd).unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.is_file() {
+            let path = path.strip_prefix(&cwd).unwrap();
+            let path = path.to_str().unwrap();
+            let ext = path.split('.').last().unwrap();
+            if ext == "cc" && ! FILES.contains(&path) {
+                println!("cargo:warning=untracked file {}", path);
+            }
+            if (ext == "h" || ext == ".tcc") && ! HEADERS.contains(&path) {
+                println!("cargo:warning=untracked header {}", path);
+            }
+        }
+    }
+
     cc::Build::new()
         .cpp(true)
         .warnings(true)
         .flag_if_supported("-std=c++11")
-        // This allows us to treat rubbl's modified casacore as a separate 
+        // This allows us to treat rubbl's modified casacore as a separate
         // namespace, so that both vanilla casacore and rubbl can be linked
-        // at the same time. 
+        // at the same time.
         .define("casacore", "rubbl_casacore")
         // Without this, using casa in multiple threads causes segfaults
         .define("USE_THREADS", "1")
         .include(".")
         .files(FILES)
         .compile("libcasatables_impl.a");
-
-    for file in FILES {
-        println!("cargo:rerun-if-changed={}", file);
-    }
 
     // Install the C++ headers into the output directory so that dependent
     // packages (namely, rubbl_casatables) can use them. This is modeled off of
@@ -41,34 +74,34 @@ fn main() {
     println!("cargo:include={}/include", dst.to_str().unwrap());
 }
 
+// cd ~/src/casacore/casa; find . -name '*.cc' | grep -vE 'aips.cc|Input.cc|Param.cc|Json|OMP.cc|AppState.cc'
+// find ~/src/casacore/tables -name '*.cc' | grep -vE 'aips.cc|Input.cc|Param.cc|Json|OMP.cc|AppState.cc'
 const FILES: &[&str] = &[
-    "casacore/casa/Arrays/Array2.cc",
-    "casacore/casa/Arrays/Array2Math.cc",
     "casacore/casa/Arrays/ArrayBase.cc",
     "casacore/casa/Arrays/ArrayError.cc",
     "casacore/casa/Arrays/ArrayOpsDiffShapes.cc",
     "casacore/casa/Arrays/ArrayPartMath.cc",
     "casacore/casa/Arrays/ArrayPosIter.cc",
-    "casacore/casa/Arrays/Array_tmpl.cc",
     "casacore/casa/Arrays/ArrayUtil2.cc",
+    "casacore/casa/Arrays/Array2.cc",
+    "casacore/casa/Arrays/Array2Math.cc",
+    "casacore/casa/Arrays/Array_tmpl.cc",
+    "casacore/casa/Arrays/Vector_tmpl.cc",
     "casacore/casa/Arrays/AxesMapping.cc",
     "casacore/casa/Arrays/AxesSpecifier.cc",
     "casacore/casa/Arrays/ExtendSpecifier.cc",
-    "casacore/casa/Arrays/IPosition2.cc",
     "casacore/casa/Arrays/IPosition.cc",
     "casacore/casa/Arrays/MaskArrMath2.cc",
     "casacore/casa/Arrays/Matrix2Math.cc",
     "casacore/casa/Arrays/Matrix_tmpl.cc",
     "casacore/casa/Arrays/Slice.cc",
     "casacore/casa/Arrays/Slicer.cc",
-    "casacore/casa/Arrays/Vector_tmpl.cc",
     "casacore/casa/BasicMath/Math.cc",
     "casacore/casa/BasicMath/Primes.cc",
     "casacore/casa/BasicMath/Random.cc",
     "casacore/casa/BasicSL/Complex.cc",
     "casacore/casa/BasicSL/Constants.cc",
     "casacore/casa/BasicSL/IComplex.cc",
-    "casacore/casa/BasicSL/RegexBase.cc",
     "casacore/casa/BasicSL/STLMath.cc",
     "casacore/casa/BasicSL/String.cc",
     "casacore/casa/Containers/Allocator.cc",
@@ -112,6 +145,7 @@ const FILES: &[&str] = &[
     "casacore/casa/IO/FilebufIO.cc",
     "casacore/casa/IO/FiledesIO.cc",
     "casacore/casa/IO/FileLocker.cc",
+    "casacore/casa/IO/IPositionIO.cc",
     "casacore/casa/IO/LECanonicalIO.cc",
     "casacore/casa/IO/LockFile.cc",
     "casacore/casa/IO/MemoryIO.cc",
@@ -213,13 +247,11 @@ const FILES: &[&str] = &[
     "casacore/casa/System/PGPlotterInterface.cc",
     "casacore/casa/System/PGPlotterNull.cc",
     "casacore/casa/System/ProgressMeter.cc",
-    "casacore/casa/Utilities/AlignMemory.cc",
     "casacore/casa/Utilities/BitVector.cc",
     "casacore/casa/Utilities/Compare.cc",
     "casacore/casa/Utilities/CompositeNumber.cc",
     "casacore/casa/Utilities/Copy2.cc",
     "casacore/casa/Utilities/CountedPtr2.cc",
-    "casacore/casa/Utilities/cregex.cc",
     "casacore/casa/Utilities/DataType.cc",
     "casacore/casa/Utilities/DynBuffer.cc",
     "casacore/casa/Utilities/Fallible2.cc",
@@ -239,6 +271,7 @@ const FILES: &[&str] = &[
     "casacore/tables/DataMan/CompressFloat.cc",
     "casacore/tables/DataMan/DataManAccessor.cc",
     "casacore/tables/DataMan/DataManager.cc",
+    "casacore/tables/DataMan/DataManagerColumn.cc",
     "casacore/tables/DataMan/DataManError.cc",
     "casacore/tables/DataMan/DataManInfo.cc",
     "casacore/tables/DataMan/ForwardCol.cc",
@@ -270,6 +303,7 @@ const FILES: &[&str] = &[
     "casacore/tables/DataMan/StIndArray.cc",
     "casacore/tables/DataMan/StManAipsIO.cc",
     "casacore/tables/DataMan/StManColumn.cc",
+    "casacore/tables/DataMan/StManColumnBase.cc",
     "casacore/tables/DataMan/TiledCellStMan.cc",
     "casacore/tables/DataMan/TiledColumnStMan.cc",
     "casacore/tables/DataMan/TiledDataStManAccessor.cc",
@@ -290,8 +324,13 @@ const FILES: &[&str] = &[
     "casacore/tables/DataMan/TSMOption.cc",
     "casacore/tables/DataMan/TSMShape.cc",
     "casacore/tables/DataMan/VirtColEng.cc",
+    "casacore/tables/DataMan/VirtScaCol.cc",
+    "casacore/tables/DataMan/VirtArrCol.cc",
     "casacore/tables/Tables/ArrayColumn_tmpl.cc",
     "casacore/tables/Tables/ArrColDesc_tmpl.cc",
+    "casacore/tables/Tables/ArrayColumnBase.cc",
+    "casacore/tables/Tables/ArrColDesc.cc",
+    "casacore/tables/Tables/ArrColData.cc",
     "casacore/tables/Tables/BaseColDesc.cc",
     "casacore/tables/Tables/BaseColumn.cc",
     "casacore/tables/Tables/BaseTabIter.cc",
@@ -315,6 +354,7 @@ const FILES: &[&str] = &[
     "casacore/tables/Tables/RefRows.cc",
     "casacore/tables/Tables/RefTable.cc",
     "casacore/tables/Tables/RowCopier.cc",
+    "casacore/tables/Tables/RowNumbers.cc",
     "casacore/tables/Tables/ScaColDesc_tmpl.cc",
     "casacore/tables/Tables/ScalarColumn_tmpl.cc",
     "casacore/tables/Tables/ScaRecordColData.cc",
@@ -344,6 +384,7 @@ const FILES: &[&str] = &[
 ];
 
 const HEADERS: &[&str] = &[
+    "casacore/casa/Arrays.h",
     "casacore/casa/aipsdef.h",
     "casacore/casa/aipsenv.h",
     "casacore/casa/aips.h",
@@ -353,8 +394,6 @@ const HEADERS: &[&str] = &[
     "casacore/casa/Arrays/ArrayBase.h",
     "casacore/casa/Arrays/ArrayError.h",
     "casacore/casa/Arrays/Array.h",
-    "casacore/casa/Arrays/ArrayIO.h",
-    "casacore/casa/Arrays/ArrayIO.tcc",
     "casacore/casa/Arrays/ArrayIter.h",
     "casacore/casa/Arrays/ArrayIter.tcc",
     "casacore/casa/Arrays/ArrayLogical.h",
@@ -367,6 +406,8 @@ const HEADERS: &[&str] = &[
     "casacore/casa/Arrays/ArrayPartMath.h",
     "casacore/casa/Arrays/ArrayPartMath.tcc",
     "casacore/casa/Arrays/ArrayPosIter.h",
+    "casacore/casa/Arrays/ArrayStr.tcc",
+    "casacore/casa/Arrays/ArrayStr.h",
     "casacore/casa/Arrays/Array.tcc",
     "casacore/casa/Arrays/ArrayUtil.h",
     "casacore/casa/Arrays/ArrayUtil.tcc",
@@ -374,10 +415,10 @@ const HEADERS: &[&str] = &[
     "casacore/casa/Arrays/AxesSpecifier.h",
     "casacore/casa/Arrays/Cube.h",
     "casacore/casa/Arrays/Cube.tcc",
+    "casacore/casa/Arrays/ElementFunctions.h",
     "casacore/casa/Arrays/ExtendSpecifier.h",
-    "casacore/casa/Arrays.h",
     "casacore/casa/Arrays/IPosition.h",
-    "casacore/casa/Arrays/LogiArrayFwd.h",
+    "casacore/casa/Arrays/ArrayFwd.h",
     "casacore/casa/Arrays/LogiArray.h",
     "casacore/casa/Arrays/LogiCube.h",
     "casacore/casa/Arrays/LogiMatrix.h",
@@ -398,14 +439,16 @@ const HEADERS: &[&str] = &[
     "casacore/casa/Arrays/MatrixMath.h",
     "casacore/casa/Arrays/MatrixMath.tcc",
     "casacore/casa/Arrays/Matrix.tcc",
+    "casacore/casa/Arrays/Memory.h",
     "casacore/casa/Arrays/Slice.h",
     "casacore/casa/Arrays/Slicer.h",
-    "casacore/casa/Arrays/Vector2.tcc",
+    "casacore/casa/Arrays/Storage.h",
     "casacore/casa/Arrays/Vector.h",
+    "casacore/casa/Arrays/Vector.tcc",
+    "casacore/casa/Arrays/Vector2.tcc",
     "casacore/casa/Arrays/VectorIter.h",
     "casacore/casa/Arrays/VectorIter.tcc",
     "casacore/casa/Arrays/VectorSTLIterator.h",
-    "casacore/casa/Arrays/Vector.tcc",
     "casacore/casa/BasicMath/ConvertScalar.h",
     "casacore/casa/BasicMath/Functional.h",
     "casacore/casa/BasicMath/Functional.tcc",
@@ -420,7 +463,6 @@ const HEADERS: &[&str] = &[
     "casacore/casa/BasicSL/Constants.h",
     "casacore/casa/BasicSL.h",
     "casacore/casa/BasicSL/IComplex.h",
-    "casacore/casa/BasicSL/RegexBase.h",
     "casacore/casa/BasicSL/STLIO.h",
     "casacore/casa/BasicSL/STLIO.tcc",
     "casacore/casa/BasicSL/STLMath.h",
@@ -467,6 +509,8 @@ const HEADERS: &[&str] = &[
     "casacore/casa/IO/AipsIOCarray.h",
     "casacore/casa/IO/AipsIOCarray.tcc",
     "casacore/casa/IO/AipsIO.h",
+    "casacore/casa/IO/ArrayIO.h",
+    "casacore/casa/IO/ArrayIO.tcc",
     "casacore/casa/IO/BaseSinkSource.h",
     "casacore/casa/IO/BucketBase.h",
     "casacore/casa/IO/BucketBuffered.h",
@@ -628,7 +672,6 @@ const HEADERS: &[&str] = &[
     "casacore/casa/Utilities/CountedPtr.tcc",
     "casacore/casa/Utilities/COWPtr.h",
     "casacore/casa/Utilities/COWPtr.tcc",
-    "casacore/casa/Utilities/cregex.h",
     "casacore/casa/Utilities/DataType.h",
     "casacore/casa/Utilities/DefaultValue.h",
     "casacore/casa/Utilities/DynBuffer.h",
@@ -668,6 +711,7 @@ const HEADERS: &[&str] = &[
     "casacore/tables/DataMan/CompressFloat.h",
     "casacore/tables/DataMan/DataManAccessor.h",
     "casacore/tables/DataMan/DataManager.h",
+    "casacore/tables/DataMan/DataManagerColumn.h",
     "casacore/tables/DataMan/DataManError.h",
     "casacore/tables/DataMan/DataManInfo.h",
     "casacore/tables/DataMan/ForwardCol.h",
@@ -710,6 +754,7 @@ const HEADERS: &[&str] = &[
     "casacore/tables/DataMan/StIndArray.h",
     "casacore/tables/DataMan/StManAipsIO.h",
     "casacore/tables/DataMan/StManColumn.h",
+    "casacore/tables/DataMan/StManColumnBase.h",
     "casacore/tables/DataMan/TiledCellStMan.h",
     "casacore/tables/DataMan/TiledColumnStMan.h",
     "casacore/tables/DataMan/TiledDataStManAccessor.h",
@@ -736,12 +781,14 @@ const HEADERS: &[&str] = &[
     "casacore/tables/DataMan/VirtScaCol.tcc",
     "casacore/tables/DataMan/VSCEngine.h",
     "casacore/tables/DataMan/VSCEngine.tcc",
+    "casacore/tables/DataMan/VACEngine.tcc",
+    "casacore/tables/DataMan/VACEngine.h",
     "casacore/tables/LogTables.h",
     "casacore/tables/Tables/ArrayColumnFunc.h",
     "casacore/tables/Tables/ArrayColumn.h",
+    "casacore/tables/Tables/ArrayColumnBase.h",
     "casacore/tables/Tables/ArrayColumn.tcc",
     "casacore/tables/Tables/ArrColData.h",
-    "casacore/tables/Tables/ArrColData.tcc",
     "casacore/tables/Tables/ArrColDesc.h",
     "casacore/tables/Tables/ArrColDesc.tcc",
     "casacore/tables/Tables/BaseColDesc.h",
@@ -770,6 +817,7 @@ const HEADERS: &[&str] = &[
     "casacore/tables/Tables/RefRows.h",
     "casacore/tables/Tables/RefTable.h",
     "casacore/tables/Tables/RowCopier.h",
+    "casacore/tables/Tables/RowNumbers.h",
     "casacore/tables/Tables/ScaColData.h",
     "casacore/tables/Tables/ScaColData.tcc",
     "casacore/tables/Tables/ScaColDesc.h",

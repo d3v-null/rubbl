@@ -36,7 +36,7 @@
 #include <casacore/casa/Quanta/QLogical.h>
 #include <casacore/casa/Arrays/ArrayMath.h>
 #include <casacore/casa/Arrays/ArrayLogical.h>
-#include <casacore/casa/Arrays/ArrayIO.h>
+#include <casacore/casa/IO/ArrayIO.h>
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -48,13 +48,6 @@ MVEarthMagnetic::MVEarthMagnetic() :
 
 MVEarthMagnetic::MVEarthMagnetic(const MVPosition &other) : 
   MVPosition(other) {}
-
-MVEarthMagnetic &MVEarthMagnetic::operator=(const MVEarthMagnetic &other) {
-  if (this != &other) {
-    xyz = other.xyz;
-  }
-  return *this;
-}
 
 MVEarthMagnetic::MVEarthMagnetic(Double in) :
   MVPosition(in) {}
@@ -161,9 +154,6 @@ MVEarthMagnetic::MVEarthMagnetic(const Vector<Quantity> &other) :
       throw (AipsError("Illegal quantity vector in MVEarthMagnetic constructor"));
     }
   }
-
-//# Destructor
-MVEarthMagnetic::~MVEarthMagnetic() {}
 
 //# Operators
 Bool MVEarthMagnetic::

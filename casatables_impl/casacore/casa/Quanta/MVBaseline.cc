@@ -36,7 +36,7 @@
 #include <casacore/casa/Quanta/QLogical.h>
 #include <casacore/casa/Arrays/ArrayMath.h>
 #include <casacore/casa/Arrays/ArrayLogical.h>
-#include <casacore/casa/Arrays/ArrayIO.h>
+#include <casacore/casa/IO/ArrayIO.h>
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -45,13 +45,6 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //# Constructors
 MVBaseline::MVBaseline() :
   MVPosition() {}
-
-MVBaseline &MVBaseline::operator=(const MVBaseline &other) {
-  if (this != &other) {
-    xyz = other.xyz;
-  }
-  return *this;
-}
 
 MVBaseline::MVBaseline(Double in) :
   MVPosition(in) {}
@@ -93,9 +86,6 @@ MVBaseline::MVBaseline(const MVPosition &pos, const MVPosition &base) :
 
 MVBaseline::MVBaseline(const MVPosition &other) :
   MVPosition(other) {}
-
-//# Destructor
-MVBaseline::~MVBaseline() {}
 
 //# Operators
 Bool MVBaseline::

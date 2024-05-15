@@ -284,7 +284,6 @@ void ValType::getCanonicalFunc (DataType dt,
     case TpComplex:
     case TpArrayComplex:
       nrElementsPerValue = 2;
-      /* falls through */
     case TpFloat:
     case TpArrayFloat:
       readFunc  = CanonicalConversion::getToLocal (static_cast<float*>(0));
@@ -293,7 +292,6 @@ void ValType::getCanonicalFunc (DataType dt,
     case TpDComplex:
     case TpArrayDComplex:
       nrElementsPerValue = 2;
-      /* falls through */
     case TpDouble:
     case TpArrayDouble:
       readFunc  = CanonicalConversion::getToLocal (static_cast<double*>(0));
@@ -348,7 +346,6 @@ void ValType::getCanonicalFunc (DataType dt,
     case TpComplex:
     case TpArrayComplex:
       nrElementsPerValue = 2;
-      /* falls through */
     case TpFloat:
     case TpArrayFloat:
       readFunc  = LECanonicalConversion::getToLocal (static_cast<float*>(0));
@@ -357,7 +354,6 @@ void ValType::getCanonicalFunc (DataType dt,
     case TpDComplex:
     case TpArrayDComplex:
       nrElementsPerValue = 2;
-      /* falls through */
     case TpDouble:
     case TpArrayDouble:
       readFunc  = LECanonicalConversion::getToLocal (static_cast<double*>(0));
@@ -382,21 +378,17 @@ Bool ValType::isPromotable (DataType from, DataType to)
     case TpChar:
 	if (to == TpShort)
 	    return True;
-        /* falls through */
     case TpShort:
 	if (to == TpInt)
 	    return True;
-        /* falls through */
     case TpInt:
 	if (to == TpInt64)
 	    return True;
-        /* falls through */
     case TpInt64:
     case TpFloat:
     case TpDouble:
 	if (to == TpFloat  ||  to == TpDouble)
 	    return True;
-        /* falls through */
     case TpComplex:
     case TpDComplex:
 	if (to == TpComplex  ||  to == TpDComplex)
@@ -405,11 +397,9 @@ Bool ValType::isPromotable (DataType from, DataType to)
     case TpUChar:
 	if (to == TpUShort)
 	    return True;
-        /* falls through */
     case TpUShort:
 	if (to == TpUInt)
 	    return True;
-        /* falls through */
     case TpUInt:
         if (to == TpInt64)
             return True;

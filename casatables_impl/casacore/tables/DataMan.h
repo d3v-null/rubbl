@@ -75,7 +75,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // DataMan is the abbreviation of data managers.
 // </etymology>
 
-// <synopsis> 
+// <synopsis>
 // Tables are the fundamental storage mechanism for Casacore.
 // Tables themselves are a logical organization of the data.
 // Table data are physically stored (or calculated on the fly)

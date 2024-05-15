@@ -71,7 +71,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <module>
 
 // <summary>
-// Tables are the data storage mechanism for Casacore
+// CTDS (Cascore Table Data System) is the data storage mechanism for Casacore
 // </summary>
 
 // <use visibility=export>
@@ -84,7 +84,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // </prerequisite>
 
 // <etymology>
-// "Table" is a formal term from relational database theory: 
+// "Table" is a formal term from relational database theory:
 //   <em> "The organizing principle in a relational database is the TABLE,
 //    a rectangular, row/column arrangement of data values."</em>
 // Casacore tables are extensions to traditional tables, but are similar
@@ -94,10 +94,10 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // storage mechanism.
 // </etymology>
 
-// <synopsis> 
+// <synopsis>
 // Tables are the fundamental storage mechanism for Casacore. This document
 // explains <A HREF="#Tables:motivation">why</A> they had to be made,
-// <A HREF="#Tables:properties">what</A> their properties are, and 
+// <A HREF="#Tables:properties">what</A> their properties are, and
 // <A HREF="#Tables:open">how</A> to use them. The last subject is
 // discussed and illustrated in a sequence of sections:
 // <UL>
@@ -129,7 +129,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // as laid out in the
 // <A HREF="http://aips2.cv.nrao.edu/aips++/docs/reference/Database.ps.gz">
 // AIPS++ Database document</A>, from where the following paragraph is taken:
-// 
+//
 // <p>
 // Traditional relational database tables have two features that
 // decisively limit their applicability to scientific data.  First, an item of
@@ -149,7 +149,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // in various states.  The restrictions imposed by the relational model
 // make it very difficult to deal with complex problems of this nature.
 // <p>
-// 
+//
 // In response to these limitations, and other needs, the Casacore tables were
 // designed.
 // </motivation>
@@ -165,7 +165,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //       pair for a column could, for instance, define its unit.
 //  <li> Each table has a <A HREF="#Tables:Table Description">description</A>
 //       which specifies the number and type of columns, and maybe initial
-//       keyword sets and default values for the columns. 
+//       keyword sets and default values for the columns.
 //  <li> A cell in a column may contain
 //       <UL>
 //        <LI> a scalar;
@@ -174,7 +174,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //             table itself;
 //        <LI> an "indirect" array -- which may have different shapes in
 //             different cells of the same column, is arbitrarily large,
-//             and is stored in a separate file; or
+//             and is stored in a separate file;
 //       </UL>
 //  <li> A column may be
 //       <UL>
@@ -184,7 +184,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //       </UL>
 //  <li> Only the standard Casacore data types can be used in filled
 //       columns, be they scalars or arrays:  Bool, uChar, Short, uShort,
-//       Int, uInt, float, double, Complex, DComplex and String.
+//       Int, uInt, Int64, float, double, Complex, DComplex and String.
 //       Furthermore scalars containing
 //       <linkto class=TableRecord>record</linkto> values are possible
 //  <li> A column can have a default value, which will automatically be stored
@@ -197,18 +197,18 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //  <li> Table data are stored in a canonical format, so they can be read
 //       on any machine. To avoid needless swapping of bytes, the data can
 //       be stored in big endian (as used on e.g. SUN) or little endian
-//       (as used on Intel PC-s) canonical format. 
+//       (as used on Intel PC-s) canonical format.
 //       By default it uses the format specified in the aipsrc variable
 //       <code>table.endianformat</code> which defaults to
-//       <code>Table::LocalEndian</code> (thus the endian format of the
-//       machine being used).
+//       <code>Table::LocalEndian</code> (the endian format of the
+//       machine being used when creating the table).
 //  <li> The SQL-like
 //       <a href="../notes/199.html">Table Query Language</a> (TaQL)
 //       can be used to do operations on tables like
 //       select, sort, update, insert, delete, and create.
 // </ul>
 //
-// Tables can be in one of three forms:
+// Tables can be in one of four forms:
 // <ul>
 // <li> A plain table is a table stored on disk.
 //      It can be shared by multiple processes.
@@ -223,6 +223,9 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //      original table are changed.
 //      The <linkto class=Table>Table::deepCopy</linkto> function can be
 //      used to turn a reference table into a plain table.
+// <li> <A HREF="#Tables:concatenation">a concatenated table</A>
+//      is a union of tables (of any form) with the same description.
+//      They are concatenated in a virtual way, thus no copy is made.
 // </ul>
 // Concurrent access from different processes to the same plain table is
 // fully supported by means of a <A HREF="#Tables:LockSync">
@@ -231,8 +234,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <p>
 // A (somewhat primitive) mechanism is available to do a
 // <A HREF="#Tables:KeyLookup">table lookup</A> based on the contents
-// of a key. In the future this might be replaced by a proper B+-tree index
-// mechanism.
+// of a key.
 
 // <ANCHOR NAME="Tables:open">
 // <h3>Opening an Existing Table</h3></ANCHOR>
@@ -248,7 +250,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // </srcblock>
 //
 // The constructor option determines whether the table will be opened as
-// readonly or as read/write. A readonly table file must be opened 
+// readonly or as read/write. A readonly table file must be opened
 // as readonly, otherwise an exception is thrown. The functions
 // <linkto class="Table">Table::isWritable(...)</linkto>
 // can be used to determine if a table is writable.
@@ -266,7 +268,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <linkto class="ArrayColumn:description">ArrayColumn&lt;T&gt;</linkto>.
 // For scalars of a standard data type (i.e. Bool, uChar, Int, Short,
 // uShort, uInt, float, double, Complex, DComplex and String) you could
-// instead use 
+// instead use
 // <linkto class="TableColumn">TableColumn::getScalar(...)</linkto> or
 // <linkto class="TableColumn">TableColumn::asXXX(...)</linkto>.
 // These functions offer an extra: they do automatic data type promotion;
@@ -291,7 +293,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // #include <casacore/casa/Arrays/Slicer.h>
 // #include <casacore/casa/Arrays/ArrayMath.h>
 // #include <iostream>
-// 
+//
 // main()
 // {
 //     // Open the table (readonly).
@@ -346,7 +348,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // creation of a memory table is exactly the same. The only difference
 // is that in call to construct the Table object the Table::Memory
 // type has to be given. Note that in the SetupNewTable object the columns
-// can be bound to any data manager. <src>MemoryTable</src> will rebind 
+// can be bound to any data manager. <src>MemoryTable</src> will rebind
 // stored columns to the <linkto class=MemoryStMan>MemoryStMan</linkto>
 // storage manager, but virtual columns bindings are not changed.
 
@@ -365,7 +367,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // #include <casacore/tables/Tables/ArrColDesc.h>
 // #include <casacore/tables/Tables/StandardStMan.h>
 // #include <casacore/tables/Tables/IncrementalStMan.h>
-// 
+//
 // main()
 // {
 //     // Step1 -- Build the table description.
@@ -379,7 +381,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //     td.addColumn (ArrayColumnDesc<Float> ("arr1",3,ColumnDesc::Direct));
 //     td.addColumn (ArrayColumnDesc<Float> ("arr2",0));
 //     td.addColumn (ArrayColumnDesc<Float> ("arr3",0,ColumnDesc::Direct));
-// 
+//
 //     // Step 2 -- Setup a new table from the description.
 //     SetupNewTable newtab("newtab.data", td, Table::New);
 //
@@ -387,7 +389,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //     StandardStMan stmanStand_1;
 //     StandardStMan stmanStand_2;
 //     IncrementalStMan stmanIncr;
-// 
+//
 //     // Step 4 -- First, bind all columns to the first storage
 //     // manager. Then, bind a few columns to another storage manager
 //     // (which will overwrite the previous bindings).
@@ -395,15 +397,15 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //     newtab.bindColumn ("ab", stmanStand_2);
 //     newtab.bindColumn ("ae", stmanIncr);
 //     newtab.bindColumn ("arr3", stmanIncr);
-// 
+//
 //     // Step 5 -- Define the shape of the direct columns.
 //     // (this could have been done in the column description).
 //     newtab.setShapeColumn( "arr1", IPosition(3,2,3,4));
 //     newtab.setShapeColumn( "arr3", IPosition(3,3,4,5));
-// 
+//
 //     // Step 6 -- Finally, create the table consisting of 10 rows.
 //     Table tab(newtab, 10);
-// 
+//
 //     // Now we can fill the table, which is shown in a next section.
 //     // The Table destructor will flush the table to the files.
 // }
@@ -458,7 +460,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // #include <casacore/casa/Arrays/Slicer.h>
 // #include <casacore/casa/Arrays/ArrayMath.h>
 // #include <iostream>
-// 
+//
 // main()
 // {
 //     // First build the table description.
@@ -466,7 +468,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //     td.comment() = "A test of class SetupNewTable";
 //     td.addColumn (ScalarColumnDesc<Int> ("ac"));
 //     td.addColumn (ArrayColumnDesc<Float> ("arr2",0));
-// 
+//
 //     // Setup a new table from the description,
 //     // and create the (still empty) table.
 //     // Note that since we do not explicitly bind columns to
@@ -488,7 +490,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //         tab.addRow();               // First add a row.
 //         ac.put (i, i+10);           // value is i+10 in row i
 //         indgen (vec2, float(i+20)); // vec2 gets i+20, i+21, ..., i+119
-//         arr2.put (i, vec2); 
+//         arr2.put (i, vec2);
 //     }
 //
 //     // Finally, show the entire column ac,
@@ -510,7 +512,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //     tab.addRow()
 // </srcblock>
 //
-// The classes 
+// The classes
 // <linkto class="TableColumn:description">TableColumn</linkto>,
 // <linkto class="ScalarColumn:description">ScalarColumn&lt;T&gt;</linkto>, and
 // <linkto class="ArrayColumn:description">ArrayColumn&lt;T&gt;</linkto>
@@ -657,7 +659,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //    Table table ("Table.name");
 //    Table result = table (table.col("RA") > 10);
 // </srcblock>
-// while in the next one we select rows with RA and DEC in the given 
+// while in the next one we select rows with RA and DEC in the given
 // intervals:
 // <srcblock>
 //    Table result = table (table.col("RA") > 10
@@ -879,7 +881,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //      Units = mJy
 //      Reference Pixel = 320
 // </srcblock>
-// The class 
+// The class
 // <linkto class="TableRecord:description">TableRecord</linkto>
 // represents the keywords in a table.
 // It is (indirectly) derived from the standard record classes in the class
@@ -982,14 +984,18 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <ol>
 //  <li> <A HREF="#Tables:storage managers">Storage managers</A> --
 //   which store the data as such. They can only handle the standard
-//   data type (Bool,...,String) as discussed in the section about the
+//   data types (Bool,...,String) as discussed in the section about the
 //   <A HREF="#Tables:properties">table properties</A>).
 //  <li> <A HREF="#Tables:virtual column engines">Virtual column engines</A>
 //   -- which manipulate the data.
 //   An engine could be a simple thing like scaling the data (as done
 //   in classic AIPS to reduce data storage), but it could also be an
 //   elaborate thing like applying corrections on-the-fly.
-//   <br>An engine must be used to store data objects with a non-standard type.
+//   <br>A special engine is VirtualTaQLColumn which can be used to define
+//   the contents of a column by means of a TaQL expression. In particular,
+//   it can be used to define a constant value for the entire column.
+//   But it can also be used to calculate the UVW-coordinates on-the-fly.
+//   <br>An engine must be used when storing data objects with a non-standard type.
 //   It has to break down the object into items with standard data types
 //   which can be stored with a storage manager.
 // </ol>
@@ -1117,7 +1123,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // by the data acquisition system of a telescope. The file is simultaneously
 // used as a table using a dedicated storage manager. The table
 // system and storage manager provide a sync function to synchronize
-// the processes, i.e. to make the table system aware of changes
+// the processes, i.e. to make CTDS aware of changes
 // in the file size (thus in the table size) by the filling process.
 //
 // <note role=tip>
@@ -1291,7 +1297,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <h3>Virtual Column Engines</h3></ANCHOR>
 //
 // Virtual column engines are used to implement the virtual (i.e.
-// calculated-on-the-fly) columns. The Table system provides
+// calculated-on-the-fly) columns. CTDS provides
 // an abstract base class (or "interface class")
 // <linkto class="VirtualColumnEngine:description">VirtualColumnEngine</linkto>
 // that specifies the protocol for these engines.
@@ -1307,7 +1313,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // cells of the two other columns. So the result is that accessing a
 // particular cell of the virtual column invokes the virtual column engine,
 // which then gets the values from the other two columns, and returns their
-// difference. This particular example could be done using 
+// difference. This particular example could be done using
 // <linkto class="VirtualTaQLColumn:description">VirtualTaQLColumn</linkto>.
 // <p>
 // Several virtual column engines exist:
@@ -1317,7 +1323,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 //   makes it possible to define a column as an arbitrary expression of
 //   other columns. It uses the <a href="../notes/199.html">TaQL</a>
 //   CALC command. The virtual column can be a scalar or an array and
-//   can have one of the standard data types supported by the Table System.
+//   can have one of the standard data types supported by CTDS.
 //  <li> The class
 //   <linkto class="BitFlagsEngine:description">BitFlagsEngine</linkto>
 //   maps an integer bit flags column to a Bool column. A read and write mask
@@ -1560,7 +1566,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <ANCHOR NAME="Tables:performance">
 // <h3>Performance and robustness considerations</h3></ANCHOR>
 //
-// The Table System resembles a database system, but it is not as robust.
+// CTDS resembles a database system, but it is not as robust.
 // It lacks the transaction and logging facilities common to data base systems.
 // It means that in case of a crash data might be lost.
 // To reduce the risk of data loss to
@@ -1570,7 +1576,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // So one should find the right balance between robustness and performance.
 //
 // To get a good feeling for the performance issues, it is important to
-// understand some of the internals of the Table System.
+// understand some of the internals of CTDS.
 // <br>The storage managers drive the performance. All storage managers use
 // buckets (called tiles for the TiledStMan) which contain the data.
 // All IO is done by bucket. The bucket/tile size is defined when creating
