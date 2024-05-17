@@ -17,7 +17,7 @@
 //# Inc., 675 Massachusetts Ave, Cambridge, MA 02139, USA.
 //#
 //# Correspondence concerning AIPS++ should be addressed as follows:
-//#        Internet email: aips2-request@nrao.edu.
+//#        Internet email: casa-feedback@nrao.edu.
 //#        Postal address: AIPS++ Project Office
 //#                        National Radio Astronomy Observatory
 //#                        520 Edgemont Road
@@ -32,10 +32,10 @@
 #include <casacore/casa/aips.h>
 
 #define CASACORE_MAJOR_VERSION 3
-#define CASACORE_MINOR_VERSION 1
+#define CASACORE_MINOR_VERSION 5
 #define CASACORE_PATCH_VERSION 0
 
-#define CASACORE_VERSION CASACORE_STRINGIFY(CASACORE_MAJOR_VERSION.CASACORE_MINOR_VERSION.CASACORE_PATCH_VERSION)
+#define CASACORE_VERSION CASACORE_STRINGIFY(3.5.0)
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
