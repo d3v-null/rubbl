@@ -10,7 +10,8 @@ use rubbl_miriad::visdata::{
 };
 use rubbl_miriad::{DataSet, ReadStream, Type, WriteStream};
 use std::collections::HashMap;
-use std::ffi::{OsStr, OsString};
+use std::ffi::OsStr;
+use std::path::PathBuf;
 use std::io;
 use std::process;
 use std::time::Instant;
@@ -25,21 +26,23 @@ fn main() {
             Arg::new("INPATH")
                 .help("The path to the input dataset directory")
                 .required(true)
+                .value_parser(clap::value_parser!(PathBuf))
                 .index(1),
         )
         .arg(
             Arg::new("OUTPATH")
                 .help("The path to the (preexistin!) output dataset directory")
                 .required(true)
+                .value_parser(clap::value_parser!(PathBuf))
                 .index(2),
         )
         .get_matches();
 
-    let in_path = matches.get_one::<OsString>("INPATH").unwrap();
-    let out_path = matches.get_one::<OsString>("OUTPATH").unwrap();
+    let in_path = matches.get_one::<PathBuf>("INPATH").unwrap();
+    let out_path = matches.get_one::<PathBuf>("OUTPATH").unwrap();
 
     process::exit(
-        match UvInflator::process(in_path.as_ref(), out_path.as_ref()) {
+        match UvInflator::process(in_path.as_os_str(), out_path.as_os_str()) {
             Ok(code) => code,
 
             Err(e) => {
