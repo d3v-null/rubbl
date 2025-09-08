@@ -4,7 +4,8 @@
 use std::{env, fs, path::PathBuf};
 
 fn main() {
-    cc::Build::new()
+    let mut build = cc::Build::new();
+    build
         .cpp(true)
         .warnings(true)
         .flag_if_supported("-std=c++11")
@@ -17,8 +18,14 @@ fn main() {
         // Without this, using casa in multiple threads causes segfaults
         .define("USE_THREADS", "1")
         .include(".")
-        .files(FILES)
-        .compile("libcasatables_impl.a");
+        .files(FILES);
+
+    // Enable debug symbols for better stack traces
+    if cfg!(debug_assertions) {
+        build.flag("-g").flag("-ggdb").flag("-O0"); // Disable optimizations in debug mode
+    }
+
+    build.compile("libcasatables_impl.a");
 
     for file in FILES {
         println!("cargo:rerun-if-changed={file}");

@@ -161,35 +161,141 @@ class SyscallAnalyzer:
         return stack_trace
 
     def analyze_file(self, filepath):
-        """Analyze strace output file with enhanced metrics"""
+        """Analyze a trace file. Supports strace/dtruss-like and LLDB outputs in one pass."""
         print(f"Analyzing {filepath}...")
 
-        with open(filepath, 'r') as f:
-            for line_num, line in enumerate(f):
-                parsed = self.parse_strace_line(line)
+        current_syscall = None
+        current_frames: List[str] = []
+
+        def flush_lldb_block():
+            nonlocal current_syscall, current_frames
+            if current_syscall:
+                self.syscall_counts[current_syscall] += 1
+                self.total_syscalls += 1
+                if current_frames:
+                    self.syscall_stacks[current_syscall].append(current_frames[:])
+            current_syscall = None
+            current_frames = []
+
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                raw = line.rstrip('\n')
+                sline = raw.strip()
+                if not sline:
+                    continue
+
+                # LLDB kernel frame detection (most reliable on macOS)
+                m0 = re.match(r'^frame #0: .*libsystem_kernel.*`([A-Za-z_][A-Za-z0-9_\$]*)', sline)
+                if m0:
+                    flush_lldb_block()
+                    sym = m0.group(1)
+                    sym = sym.lstrip('_').replace('$NOCANCEL', '')
+                    current_syscall = sym
+                    current_frames.append(sline)
+                    continue
+
+                # LLDB explicit marker handling (if present)
+                if 'SYSCALL:' in sline or 'RUNTIME_SYSCALL:' in sline:
+                    flush_lldb_block()
+                    m = re.search(r'(?:^|\s)(?:RUNTIME_SYSCALL|SYSCALL):\s*([A-Za-z_][A-Za-z0-9_]*)', sline)
+                    if m:
+                        current_syscall = m.group(1)
+                    continue
+
+                # LLDB frame accumulation for current block
+                if current_syscall:
+                    if sline.startswith('frame #') or sline.startswith('* thread') or 'libsystem_kernel' in sline or 'casacore' in sline or 'rubbl' in sline:
+                        current_frames.append(sline)
+                        continue
+
+                # Try strace/dtruss/GDB style parse (GDB markers followed by bt)
+                parsed = self.parse_strace_line(sline)
                 if parsed:
                     syscall = parsed['syscall']
                     self.syscall_counts[syscall] += 1
                     self.total_syscalls += 1
-
-                    # Collect enhanced metrics
                     if parsed['stack_trace']:
                         self.syscall_stacks[syscall].append(parsed['stack_trace'])
-
                     if parsed['timing'] is not None:
                         self.syscall_times[syscall].append(parsed['timing'])
-
                     if parsed['io_size'] is not None:
                         self.syscall_sizes[syscall].append(parsed['io_size'])
-
                     if parsed['fd'] is not None:
                         self.syscall_fds[syscall].append(parsed['fd'])
-
                     if parsed['is_error']:
                         self.syscall_errors[syscall].append(parsed['return_value'])
+                    continue
+
+                # GDB marker lines
+                if sline.startswith('SYSCALL: '):
+                    flush_lldb_block()
+                    name = sline.split('SYSCALL: ',1)[1].strip()
+                    if name:
+                        current_syscall = name
+                    continue
+                if current_syscall and sline.startswith('#'):
+                    # GDB backtrace frames
+                    current_frames.append(sline)
+                    continue
+
+        # flush any pending LLDB block at EOF
+        flush_lldb_block()
 
         print(f"Found {self.total_syscalls} syscalls from {len(self.syscall_counts)} unique syscalls")
-        print(f"Enhanced metrics collected: I/O sizes, file descriptors, error patterns")
+        print("Enhanced metrics collected: I/O sizes, file descriptors, error patterns")
+
+    def _analyze_strace_file(self, filepath):
+        with open(filepath, 'r') as f:
+            for line in f:
+                parsed = self.parse_strace_line(line)
+                if not parsed:
+                    continue
+                syscall = parsed['syscall']
+                self.syscall_counts[syscall] += 1
+                self.total_syscalls += 1
+                if parsed['stack_trace']:
+                    self.syscall_stacks[syscall].append(parsed['stack_trace'])
+                if parsed['timing'] is not None:
+                    self.syscall_times[syscall].append(parsed['timing'])
+                if parsed['io_size'] is not None:
+                    self.syscall_sizes[syscall].append(parsed['io_size'])
+                if parsed['fd'] is not None:
+                    self.syscall_fds[syscall].append(parsed['fd'])
+                if parsed['is_error']:
+                    self.syscall_errors[syscall].append(parsed['return_value'])
+
+    def _analyze_lldb_file(self, filepath):
+        """Parse LLDB 'SYSCALL: <name>' blocks with subsequent 'bt' frames."""
+        current_syscall = None
+        current_frames = []
+        def flush_block():
+            nonlocal current_syscall, current_frames
+            if current_syscall:
+                self.syscall_counts[current_syscall] += 1
+                self.total_syscalls += 1
+                if current_frames:
+                    self.syscall_stacks[current_syscall].append(current_frames[:])
+            current_syscall = None
+            current_frames = []
+
+        with open(filepath, 'r') as f:
+            for raw in f:
+                line = raw.strip()
+                if not line:
+                    continue
+                # Only treat lines that start with the runtime marker, not LLDB command setup lines
+                if line.startswith('RUNTIME_SYSCALL: '):
+                    m = re.match(r'^RUNTIME_SYSCALL:\s*(\w+)\s*$', line)
+                    if m:
+                        flush_block()
+                        current_syscall = m.group(1)
+                        continue
+                if current_syscall:
+                    # Collect frames like: 'frame #0: 0x...'
+                    if line.startswith('frame #') or line.startswith('* thread') or 'libsystem_kernel' in line or 'casacore' in line or 'rubbl' in line:
+                        current_frames.append(line)
+        # flush last
+        flush_block()
 
     def _calculate_category_statistics(self) -> Dict[str, Dict]:
         """Calculate statistics for each I/O pattern category"""
@@ -249,7 +355,11 @@ class SyscallAnalyzer:
         return metrics
 
     def generate_report(self, output_format='html', output_dir='syscall_analysis'):
-        """Generate analysis report"""
+        """Generate analysis report.
+
+        Note: Regardless of output_format, always emit both JSON and HTML so that
+        downstream tools (e.g., dashboards) have a stable data source.
+        """
         output_path = Path(output_dir)
         output_path.mkdir(exist_ok=True)
 
@@ -277,11 +387,12 @@ class SyscallAnalyzer:
                 'sample_stacks': self.syscall_stacks[syscall][:5]  # First 5 stack traces
             }
 
-        if output_format == 'json':
-            self._generate_json_report(data, output_path)
-        elif output_format == 'html':
-            self._generate_html_report(data, output_path)
-        elif output_format == 'text':
+        # Always generate JSON and HTML for downstream tools and human review
+        self._generate_json_report(data, output_path)
+        self._generate_html_report(data, output_path)
+
+        # Optionally generate text if specifically requested
+        if output_format == 'text':
             self._generate_text_report(data, output_path)
 
         return data
@@ -289,8 +400,14 @@ class SyscallAnalyzer:
     def _generate_json_report(self, data, output_path):
         """Generate JSON report"""
         json_file = output_path / 'syscall_analysis.json'
-        with open(json_file, 'w') as f:
+        with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
+            f.flush()
+            try:
+                import os
+                os.fsync(f.fileno())
+            except Exception:
+                pass
         print(f"JSON report saved to {json_file}")
 
     def _generate_html_report(self, data, output_path):
@@ -301,6 +418,48 @@ class SyscallAnalyzer:
         syscall_names = list(data['syscalls'].keys())[:20]
         syscall_counts = [data['syscalls'][name]['count'] for name in syscall_names]
         syscall_percentages = [data['syscalls'][name]['percentage'] for name in syscall_names]
+
+        # Pre-render complex HTML snippets to avoid brittle nested f-strings
+        io_patterns_html_parts = []
+        for category, info in data.get('io_patterns', {}).items():
+            io_patterns_html_parts.append(f'''
+                <div class="syscall-item">
+                    <h4>{category.replace('_', ' ').title()}</h4>
+                    <div class="syscall-stats">
+                        <span class="stat">Count: {info['count']:,}</span>
+                        <span class="stat">Percentage: {info['percentage']:.2f}%</span>
+                        <span class="stat">Avg Time: {info['avg_time']:.6f}s</span>
+                        <span class="stat">Total Time: {info['total_time']:.6f}s</span>
+                    </div>
+                    <p><strong>Syscalls:</strong> {', '.join(info['syscalls'])}</p>
+                </div>
+            ''')
+        io_patterns_html = "".join(io_patterns_html_parts)
+
+        top_syscalls_html_parts = []
+        for name, info in list(data['syscalls'].items())[:20]:
+            avg_time_html = f'<span class="stat">Avg Time: {info["avg_time"]:.6f}s</span>' if info.get('avg_time', 0) > 0 else ''
+            stack_snippets = ""
+            sample_stacks = info.get('sample_stacks') or []
+            for stack in sample_stacks[:2]:
+                stack_snippets += f'''
+                <div class="stack-trace">
+                    <pre>{chr(10).join(stack)}</pre>
+                </div>
+                '''
+            top_syscalls_html_parts.append(f'''
+            <div class="syscall-item">
+                <h4>{name}</h4>
+                <div class="syscall-stats">
+                    <span class="stat">Count: {info['count']:,}</span>
+                    <span class="stat">Percentage: {info['percentage']:.2f}%</span>
+                    <span class="stat">Stack Traces: {info['stack_traces']}</span>
+                    {avg_time_html}
+                </div>
+                {stack_snippets}
+            </div>
+            ''')
+        top_syscalls_html = "".join(top_syscalls_html_parts)
 
         html_content = f"""
 <!DOCTYPE html>
@@ -446,37 +605,11 @@ class SyscallAnalyzer:
         <div class="syscall-details">
             <h2>I/O Pattern Analysis</h2>
             <div class="io-patterns">
-                {"".join([f'''
-                <div class="syscall-item">
-                    <h4>{category.replace('_', ' ').title()}</h4>
-                    <div class="syscall-stats">
-                        <span class="stat">Count: {info['count']:,}</span>
-                        <span class="stat">Percentage: {info['percentage']:.2f}%</span>
-                        <span class="stat">Avg Time: {info['avg_time']:.6f}s</span>
-                        <span class="stat">Total Time: {info['total_time']:.6f}s</span>
-                    </div>
-                    <p><strong>Syscalls:</strong> {', '.join(info['syscalls'])}</p>
-                </div>
-                ''' for category, info in data.get('io_patterns', {}).items()])}
+                {io_patterns_html}
             </div>
 
             <h2>Top Syscall Details</h2>
-            {"".join([f'''
-            <div class="syscall-item">
-                <h4>{name}</h4>
-                <div class="syscall-stats">
-                    <span class="stat">Count: {info['count']:,}</span>
-                    <span class="stat">Percentage: {info['percentage']:.2f}%</span>
-                    <span class="stat">Stack Traces: {info['stack_traces']}</span>
-                    {"".join([f'<span class="stat">Avg Time: {info["avg_time"]:.6f}s</span>' for _ in [None] if info['avg_time'] > 0])}
-                </div>
-                {"".join([f'''
-                <div class="stack-trace">
-                    <pre>{chr(10).join(stack)}</pre>
-                </div>
-                ''' for stack in info['sample_stacks'][:2]]) if info['sample_stacks'] else ""}
-            </div>
-            ''' for name, info in list(data['syscalls'].items())[:20]])}
+            {top_syscalls_html}
         </div>
     </div>
 
@@ -621,15 +754,21 @@ class SyscallAnalyzer:
 </html>
 """
 
-        with open(html_file, 'w') as f:
+        with open(html_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
+            f.flush()
+            try:
+                import os
+                os.fsync(f.fileno())
+            except Exception:
+                pass
         print(f"HTML report saved to {html_file}")
 
     def _generate_text_report(self, data, output_path):
         """Generate text report"""
         text_file = output_path / 'syscall_analysis.txt'
 
-        with open(text_file, 'w') as f:
+        with open(text_file, 'w', encoding='utf-8') as f:
             f.write(f"{data['title']}\n")
             f.write("=" * len(data['title']) + "\n\n")
             f.write(f"Generated on: {data['timestamp']}\n\n")
@@ -670,8 +809,7 @@ def compare_analyses(analysis1, analysis2, title1="Analysis 1", title2="Analysis
     print(f"Total in {title2}: {len(analysis2.syscall_counts)}")
 
     # Compare top syscalls
-    print("
-Top syscall differences:")
+    print("\nTop syscall differences:")
     all_syscalls = set(analysis1.syscall_counts.keys()) | set(analysis2.syscall_counts.keys())
 
     diffs = []
@@ -713,8 +851,7 @@ def main():
         analyzer2.analyze_file(args.compare)
         compare_analyses(analyzer, analyzer2, "Main", "Comparison")
 
-    print("
-Analysis completed!")
+    print("\nAnalysis completed!")
 
 if __name__ == '__main__':
     main()

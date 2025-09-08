@@ -9,21 +9,25 @@
 #include <casacore/tables/Tables/SetupNewTab.h>
 #include <casacore/tables/Tables/ScalarColumn.h>
 #include <casacore/tables/Tables/ArrayColumn.h>
+#include <casacore/tables/Tables/ScaColDesc.h>
+#include <casacore/tables/Tables/ArrColDesc.h>
 #include <casacore/casa/Arrays/Vector.h>
 #include <casacore/casa/Arrays/Matrix.h>
 #include <casacore/casa/Arrays/IPosition.h>
 #include <casacore/casa/BasicSL/Complex.h>
 
+// Use the casacore namespace
+using namespace casacore;
+
 int main() {
     std::cout << "Starting C++ syscall tracer with casacore..." << std::endl;
 
     try {
-        // Initialize casacore
-        casa::initCasa();
+        // CasaCore initialization is handled automatically
 
         // Simple operations for syscall analysis
-        casa::uInt n_rows = 10;
-        casa::IPosition data_shape(2, 16, 4);  // 16x4 matrix
+        uInt n_rows = 10;
+        IPosition data_shape(2, 16, 4);  // 16x4 matrix
 
         // Create temporary directory
         auto tmp_dir = std::filesystem::temp_directory_path() / "syscall_test_cpp";
@@ -33,51 +37,51 @@ int main() {
         std::cout << "Creating casacore table..." << std::endl;
 
         // Create table description
-        casa::TableDesc td("syscall_test", "1", casa::TableDesc::Scratch);
+        TableDesc td("syscall_test", "1", TableDesc::Scratch);
 
         // Add scalar columns
-        td.addColumn(casa::ScalarColumnDesc<casa::Double>("TIME", "Observation time"));
-        td.addColumn(casa::ScalarColumnDesc<casa::Int>("ANTENNA1", "First antenna"));
-        td.addColumn(casa::ScalarColumnDesc<casa::Int>("ANTENNA2", "Second antenna"));
-        td.addColumn(casa::ScalarColumnDesc<casa::Bool>("FLAG_ROW", "Row flag"));
+        td.addColumn(ScalarColumnDesc<Double>("TIME", "Observation time"));
+        td.addColumn(ScalarColumnDesc<Int>("ANTENNA1", "First antenna"));
+        td.addColumn(ScalarColumnDesc<Int>("ANTENNA2", "Second antenna"));
+        td.addColumn(ScalarColumnDesc<Bool>("FLAG_ROW", "Row flag"));
 
         // Add array columns
-        td.addColumn(casa::ArrayColumnDesc<casa::Complex>("DATA", "Visibility data", data_shape, casa::ColumnDesc::FixedShape));
-        td.addColumn(casa::ArrayColumnDesc<casa::Bool>("FLAG", "Data flags", data_shape, casa::ColumnDesc::FixedShape));
+        td.addColumn(ArrayColumnDesc<Complex>("DATA", "Visibility data", data_shape, ColumnDesc::FixedShape));
+        td.addColumn(ArrayColumnDesc<Bool>("FLAG", "Data flags", data_shape, ColumnDesc::FixedShape));
 
         // Create the table
-        casa::SetupNewTable setup(table_path, td, casa::Table::New);
-        casa::Table table(setup, n_rows);
+        SetupNewTable setup(table_path, td, Table::New);
+        Table table(setup, n_rows);
 
         std::cout << "Writing data..." << std::endl;
 
         // Create column objects
-        casa::ScalarColumn<casa::Double> time_col(table, "TIME");
-        casa::ScalarColumn<casa::Int> ant1_col(table, "ANTENNA1");
-        casa::ScalarColumn<casa::Int> ant2_col(table, "ANTENNA2");
-        casa::ScalarColumn<casa::Bool> flag_row_col(table, "FLAG_ROW");
-        casa::ArrayColumn<casa::Complex> data_col(table, "DATA");
-        casa::ArrayColumn<casa::Bool> flag_col(table, "FLAG");
+        ScalarColumn<Double> time_col(table, "TIME");
+        ScalarColumn<Int> ant1_col(table, "ANTENNA1");
+        ScalarColumn<Int> ant2_col(table, "ANTENNA2");
+        ScalarColumn<Bool> flag_row_col(table, "FLAG_ROW");
+        ArrayColumn<Complex> data_col(table, "DATA");
+        ArrayColumn<Bool> flag_col(table, "FLAG");
 
         // Write a few rows
-        for (casa::uInt row_idx = 0; row_idx < 3; ++row_idx) {
+        for (uInt row_idx = 0; row_idx < 3; ++row_idx) {
             // Create test data
-            casa::Matrix<casa::Complex> data_matrix(data_shape);
-            casa::Matrix<casa::Bool> flag_matrix(data_shape, false);
+            Matrix<Complex> data_matrix(data_shape);
+            Matrix<Bool> flag_matrix(data_shape, false);
 
             // Fill data matrix with test values
-            for (casa::uInt i = 0; i < data_shape[0]; ++i) {
-                for (casa::uInt j = 0; j < data_shape[1]; ++j) {
-                    casa::uInt idx = i * data_shape[1] + j;
-                    data_matrix(i, j) = casa::Complex(static_cast<float>(idx), 0.0f);
+            for (uInt i = 0; i < data_shape[0]; ++i) {
+                for (uInt j = 0; j < data_shape[1]; ++j) {
+                    uInt idx = i * data_shape[1] + j;
+                    data_matrix(i, j) = Complex(static_cast<float>(idx), 0.0f);
                     flag_matrix(i, j) = (idx % 13 == 0);  // Some pattern for flags
                 }
             }
 
             // Write data to columns
-            time_col.put(row_idx, static_cast<casa::Double>(row_idx));
-            ant1_col.put(row_idx, static_cast<casa::Int>(row_idx % 128));
-            ant2_col.put(row_idx, static_cast<casa::Int>((row_idx + 1) % 128));
+            time_col.put(row_idx, static_cast<Double>(row_idx));
+            ant1_col.put(row_idx, static_cast<Int>(row_idx % 128));
+            ant2_col.put(row_idx, static_cast<Int>((row_idx + 1) % 128));
             flag_row_col.put(row_idx, (row_idx % 2 == 0));
             data_col.put(row_idx, data_matrix);
             flag_col.put(row_idx, flag_matrix);
@@ -86,18 +90,18 @@ int main() {
         std::cout << "Reading data..." << std::endl;
 
         // Read some data back
-        for (casa::uInt row_idx = 0; row_idx < 3; ++row_idx) {
-            casa::Double time_val = time_col(row_idx);
-            casa::Int ant1_val = ant1_col(row_idx);
-            casa::Int ant2_val = ant2_col(row_idx);
-            casa::Bool flag_row_val = flag_row_col(row_idx);
-            casa::Matrix<casa::Complex> data_matrix = data_col(row_idx);
-            casa::Matrix<casa::Bool> flag_matrix = flag_col(row_idx);
+        for (uInt row_idx = 0; row_idx < 3; ++row_idx) {
+            Double time_val = time_col(row_idx);
+            Int ant1_val = ant1_col(row_idx);
+            Int ant2_val = ant2_col(row_idx);
+            Bool flag_row_val = flag_row_col(row_idx);
+            Matrix<Complex> data_matrix = data_col(row_idx);
+            Matrix<Bool> flag_matrix = flag_col(row_idx);
 
             // Some processing to generate syscalls
-            casa::Double processed_time = time_val * 2.0;
-            casa::Int baseline = ant1_val + ant2_val;
-            casa::Bool combined_flag = flag_row_val || casa::anyTrue(flag_matrix);
+            Double processed_time = time_val * 2.0;
+            Int baseline = ant1_val + ant2_val;
+            Bool combined_flag = flag_row_val || anyTrue(flag_matrix);
         }
 
         std::cout << "Performing additional I/O operations..." << std::endl;
@@ -149,7 +153,7 @@ int main() {
 
         std::cout << "C++ syscall tracer with casacore completed successfully." << std::endl;
 
-    } catch (const casa::AipsError& e) {
+    } catch (const AipsError& e) {
         std::cerr << "CasaCore error: " << e.getMesg() << std::endl;
         return 1;
     } catch (const std::exception& e) {
