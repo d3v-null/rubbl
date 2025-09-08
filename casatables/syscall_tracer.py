@@ -1,82 +1,125 @@
 #!/usr/bin/env python3
 """
-Python version of the syscall tracer for comparison with Rust casatables.
-This creates mock casatables operations to compare syscall patterns.
+Python version of the syscall tracer using python-casacore.
+This creates real casacore table operations for accurate syscall comparison.
 """
 
 import numpy as np
 import tempfile
 import os
 import json
+import sys
 
-class MockTable:
-    def __init__(self, path, n_rows, data_shape):
-        self.path = path
-        self.n_rows = n_rows
-        self.data_shape = data_shape
-        self.data = {}
-        print(f"Mock table created at {path}")
-
-    def put_cell(self, column, row_idx, value):
-        if column not in self.data:
-            self.data[column] = [None] * self.n_rows
-        self.data[column][row_idx] = value
-
-    def get_cell(self, column, row_idx):
-        return self.data[column][row_idx]
+def check_casacore():
+    """Check if python-casacore is available"""
+    try:
+        import casacore.tables as ct
+        return True
+    except ImportError:
+        print("python-casacore not found. Install with: pip install python-casacore")
+        return False
 
 def main():
-    print("Starting Python syscall tracer...")
+    if not check_casacore():
+        sys.exit(1)
 
-    # Simple operations for syscall analysis
-    n_rows = 10
-    data_shape = [16, 4]
+    import casacore.tables as ct
 
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        table_path = os.path.join(tmp_dir, "syscall_test_python.ms")
+    print("Starting Python syscall tracer with casacore...")
 
-        print("Creating table...")
-        table = MockTable(table_path, n_rows, data_shape)
+    try:
+        # Simple operations for syscall analysis
+        n_rows = 100
+        data_shape = [32, 4]
 
-        data_tmp = np.zeros((16, 4), dtype=np.complex64)
-        flags_tmp = np.zeros((16, 4), dtype=bool)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            table_path = os.path.join(tmp_dir, "syscall_test_python.ms")
 
-        # Fill with simple data
-        for idx in range(data_tmp.size):
-            data_tmp.flat[idx] = complex(idx, 0.0)
+            print("Creating casacore table...")
 
-        print("Writing data...")
-        # Write a few rows
-        for row_idx in range(3):
-            table.put_cell("DATA", row_idx, data_tmp.copy())
-            table.put_cell("FLAG", row_idx, flags_tmp.copy())
-            table.put_cell("TIME", row_idx, float(row_idx))
+            # Create table description
+            desc = ct.maketabdesc([
+                ct.makescacoldesc("TIME", 0.0, comment="Observation time"),
+                ct.makescacoldesc("ANTENNA1", 0, comment="First antenna"),
+                ct.makescacoldesc("ANTENNA2", 0, comment="Second antenna"),
+                ct.makescacoldesc("FLAG_ROW", False, comment="Row flag"),
+                ct.makearrcoldesc("DATA", np.complex64(0), shape=data_shape, comment="Visibility data"),
+                ct.makearrcoldesc("FLAG", False, shape=data_shape, comment="Data flags")
+            ])
 
-        print("Reading data...")
-        # Read some data back
-        for row_idx in range(3):
-            _ = table.get_cell("DATA", row_idx)
-            _ = table.get_cell("FLAG", row_idx)
+            # Create the table
+            table = ct.table(table_path, desc, nrow=n_rows, readonly=False)
 
-        # Some file I/O operations
-        test_file = os.path.join(tmp_dir, "test_data.npy")
-        np.save(test_file, data_tmp)
-        loaded_data = np.load(test_file)
+            print("Writing data...")
 
-        # JSON operations
-        metadata = {
-            "n_rows": n_rows,
-            "data_shape": data_shape,
-            "test_value": 42
-        }
-        metadata_file = os.path.join(tmp_dir, "metadata.json")
-        with open(metadata_file, 'w') as f:
-            json.dump(metadata, f)
+            # Prepare test data
+            data_matrix = np.zeros(data_shape, dtype=np.complex64)
+            flag_matrix = np.zeros(data_shape, dtype=bool)
 
-        with open(metadata_file, 'r') as f:
-            loaded_metadata = json.load(f)
+            # Write a few rows
+            for row_idx in range(min(10, n_rows)):  # Write fewer rows for efficiency
+                # Create test data with some pattern
+                for i in range(data_shape[0]):
+                    for j in range(data_shape[1]):
+                        idx = i * data_shape[1] + j
+                        data_matrix[i, j] = complex(float(idx % 100), 0.0)
+                        flag_matrix[i, j] = (idx + row_idx) % 13 == 0
 
-    print("Python syscall tracer completed.")
+                # Write to table
+                table.putcell("TIME", row_idx, float(row_idx))
+                table.putcell("ANTENNA1", row_idx, (row_idx % 128))
+                table.putcell("ANTENNA2", row_idx, ((row_idx + 1) % 128))
+                table.putcell("FLAG_ROW", row_idx, (row_idx % 2 == 0))
+                table.putcell("DATA", row_idx, data_matrix)
+                table.putcell("FLAG", row_idx, flag_matrix)
+
+            print("Reading data...")
+
+            # Read some data back
+            for row_idx in range(min(5, n_rows)):
+                time_val = table.getcell("TIME", row_idx)
+                ant1_val = table.getcell("ANTENNA1", row_idx)
+                ant2_val = table.getcell("ANTENNA2", row_idx)
+                flag_row_val = table.getcell("FLAG_ROW", row_idx)
+                data_matrix = table.getcell("DATA", row_idx)
+                flag_matrix = table.getcell("FLAG", row_idx)
+
+                # Some processing to generate syscalls
+                processed_time = time_val * 2.0
+                baseline = ant1_val + ant2_val
+                combined_flag = flag_row_val or np.any(flag_matrix)
+
+            print("Performing additional I/O operations...")
+
+            # Additional file I/O operations
+            test_file = os.path.join(tmp_dir, "test_data.npy")
+            np.save(test_file, data_matrix)
+            loaded_data = np.load(test_file)
+
+            # JSON operations
+            metadata = {
+                "n_rows": n_rows,
+                "data_shape": data_shape,
+                "test_value": 42,
+                "library": "python-casacore"
+            }
+            metadata_file = os.path.join(tmp_dir, "metadata.json")
+            with open(metadata_file, 'w') as f:
+                json.dump(metadata, f)
+
+            with open(metadata_file, 'r') as f:
+                loaded_metadata = json.load(f)
+
+            # Close table
+            table.close()
+
+        print("Python syscall tracer with casacore completed successfully.")
+
+    except Exception as e:
+        print(f"Error in Python syscall tracer: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
