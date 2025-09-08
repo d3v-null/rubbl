@@ -8,7 +8,7 @@ This document shows quick, copy-pasteable commands to run Rubbl examples locally
 
 ### 1) Prepare a small Measurement Set with Birli
 
-We’ll convert the picket-fence FITS data into a small CASA Measurement Set (MS) for the casatables example. Limiting to a single coarse-channel pair keeps it fast.
+We'll convert the picket-fence FITS data into a small CASA Measurement Set (MS) for the casatables example. Limiting to a single coarse-channel pair keeps it fast.
 
 ```bash
 # From this repo root
@@ -22,7 +22,7 @@ cargo run --manifest-path "../Birli/Cargo.toml" -- \
   "../Birli/tests/data/1119683928_picket/1119683928_20150630071834_gpubox01_00.fits"
 ```
 
-Note: Birli appends the coarse-channel range to the MS filename; you should see something like `testdata/1119683928_picket_ch62-63.ms/` created.
+Note: depending on channel selection, Birli appends the coarse-channel range to the MS filename; you should see something like `testdata/1119683928_picket_ch62-63.ms/` created.
 
 ### 2) casatables example: tableinfo (summarize an MS)
 
@@ -51,15 +51,15 @@ The MIRIAD examples expect a MIRIAD dataset directory (not a FITS file, not an M
 
 ```bash
 # List items in the dataset
-dcargo run -p rubbl_miriad --example dsls -- \
+cargo run -p rubbl_miriad --example dsls -- \
   "/path/to/miriad_uv_dataset"
 
 # Dump history
-dcargo run -p rubbl_miriad --example dshistory -- \
+cargo run -p rubbl_miriad --example dshistory -- \
   "/path/to/miriad_uv_dataset"
 
 # Print initial header variables
-dcargo run -p rubbl_miriad --example uvheadervars -- \
+cargo run -p rubbl_miriad --example uvheadervars -- \
   "/path/to/miriad_uv_dataset"
 
 # Diagnostic UV dump (verbose)
