@@ -5,7 +5,8 @@ use anyhow::Context;
 use clap::{Arg, Command};
 use rubbl_core::io::AligningReader;
 use rubbl_fits::LowLevelFitsItem;
-use std::ffi::{OsStr, OsString};
+use std::ffi::OsStr;
+use std::path::PathBuf;
 use std::fs;
 use std::process;
 use std::str;
@@ -19,13 +20,14 @@ fn main() {
             Arg::new("PATH")
                 .help("The path to the data file")
                 .required(true)
+                .value_parser(clap::value_parser!(PathBuf))
                 .index(1),
         )
         .get_matches();
 
-    let path = matches.get_one::<OsString>("PATH").unwrap();
+    let path = matches.get_one::<PathBuf>("PATH").unwrap();
 
-    process::exit(match inner(path.as_ref()) {
+    process::exit(match inner(path.as_os_str()) {
         Ok(code) => code,
 
         Err(e) => {
