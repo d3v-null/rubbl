@@ -49,62 +49,7 @@ select_trace() {
     echo ""
 }
 
-# Debugger-based syscall stack trace collection (GDB only)
-run_with_gdb() {
-    local out_file=$1
-    shift
-    local cmd=("$@")
-
-    if ! command -v gdb >/dev/null 2>&1; then
-        return 1
-    fi
-
-    local gdb_cmds
-    gdb_cmds="$(mktemp -t gdb_cmds.XXXXXX)"
-    cat > "$gdb_cmds" << 'GDBEOF'
-set logging overwrite on
-set logging file gdb_traces.txt
-set logging on
-set pagination 0
-catch syscall read
-commands
-  printf "SYSCALL: read\n"
-  bt
-  continue
-end
-catch syscall write
-commands
-  printf "SYSCALL: write\n"
-  bt
-  continue
-end
-catch syscall open
-commands
-  printf "SYSCALL: open\n"
-  bt
-  continue
-end
-catch syscall openat
-commands
-  printf "SYSCALL: openat\n"
-  bt
-  continue
-end
-run
-GDBEOF
-
-    if gdb -q -batch --args "${cmd[@]}" -x "$gdb_cmds" >/dev/null 2>&1; then
-        if [ -f gdb_traces.txt ]; then
-            mv gdb_traces.txt "$out_file"
-            rm -f "$gdb_cmds"
-            return 0
-        fi
-    fi
-    rm -f "$gdb_cmds" gdb_traces.txt 2>/dev/null || true
-    return 1
-}
-
-    # LLDB disabled per user; GDB only
+    # LLDB disabled per user; GDB removed
 
 # Linux syscall trace collection using strace (preferred on Linux)
 run_with_strace() {
@@ -259,9 +204,6 @@ else
     if run_with_strace "$OUTPUT_DIR/strace_rust.txt" "$RUST_BIN"; then
         print_file_stats "$OUTPUT_DIR/strace_rust.txt"
         run_analysis "Rust - Casatables" "$OUTPUT_DIR/strace_rust.txt" "$OUTPUT_DIR/rust_analysis"
-    elif run_with_gdb "$OUTPUT_DIR/gdb_rust.txt" "$RUST_BIN"; then
-        print_file_stats "$OUTPUT_DIR/gdb_rust.txt"
-        run_analysis "Rust - Casatables" "$OUTPUT_DIR/gdb_rust.txt" "$OUTPUT_DIR/rust_analysis"
     else
         echo -e "${RED}✗ Failed to capture Rust trace. Skipping Rust analysis.${NC}"
     fi
@@ -273,9 +215,6 @@ if [ "$SKIP_PYTHON" != "true" ]; then
     if run_with_strace "$OUTPUT_DIR/strace_python.txt" "$PYTHON_BIN" "$SCRIPT_DIR/syscall_tracer.py"; then
         print_file_stats "$OUTPUT_DIR/strace_python.txt"
         run_analysis "Python - Casacore" "$OUTPUT_DIR/strace_python.txt" "$OUTPUT_DIR/python_analysis"
-    elif run_with_gdb "$OUTPUT_DIR/gdb_python.txt" "$PYTHON_BIN" "$SCRIPT_DIR/syscall_tracer.py"; then
-        print_file_stats "$OUTPUT_DIR/gdb_python.txt"
-        run_analysis "Python - Casacore" "$OUTPUT_DIR/gdb_python.txt" "$OUTPUT_DIR/python_analysis"
     else
         echo -e "${RED}✗ Failed to capture Python trace. Skipping Python analysis.${NC}"
     fi
@@ -287,9 +226,6 @@ if [ "$SKIP_CPP" != "true" ]; then
     if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
         print_file_stats "$OUTPUT_DIR/strace_cpp.txt"
         run_analysis "C++ - CasaCore" "$OUTPUT_DIR/strace_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
-    elif run_with_gdb "$OUTPUT_DIR/gdb_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
-        print_file_stats "$OUTPUT_DIR/gdb_cpp.txt"
-        run_analysis "C++ - CasaCore" "$OUTPUT_DIR/gdb_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
     else
         echo -e "${RED}✗ Failed to capture C++ trace. Skipping C++ analysis.${NC}"
     fi
@@ -501,6 +437,45 @@ EOF
 echo -e "${GREEN}✓ Comparison dashboard created${NC}"
 echo
 
+# 4. Generate strace -k based per-syscall flamegraphs (no GDB required)
+echo -e "${BLUE}4. Generating strace -k syscall flamegraphs${NC}"
+STACK_COLLAPSER="$SCRIPT_DIR/stackcollapse_strace_k.py"
+FLAMEGRAPH_DIR="/home/dev/src/IO-ProfilingTools/FlameGraph"
+if [ -x "$FLAMEGRAPH_DIR/flamegraph.pl" ] && [ -f "$STACK_COLLAPSER" ]; then
+    gen_strace_k_flames() {
+        local name=$1
+        shift
+        local cmd=("$@")
+        local outdir="$OUTPUT_DIR/stracek_flamegraphs/$name"
+        mkdir -p "$outdir"
+        local raw="$outdir/${name}_k.txt"
+        # Capture with kernel-provided call stacks
+        if strace -q -f -k -s 256 -o "$raw" -- "${cmd[@]}" >/dev/null 2>&1; then
+            python3 "$STACK_COLLAPSER" "$raw" --out-dir "$outdir" --flamegraph "$FLAMEGRAPH_DIR/flamegraph.pl" >/dev/null 2>&1 || true
+            local any_svg
+            any_svg=$(ls -1 "$outdir"/*flamegraph.svg 2>/dev/null | head -1 || true)
+            if [ -n "$any_svg" ]; then
+                echo -e "${GREEN}✓ $name: strace-k flamegraphs in $outdir${NC}"
+            else
+                echo -e "${YELLOW}⚠ $name: no flamegraphs generated from strace -k${NC}"
+            fi
+        else
+            echo -e "${YELLOW}⚠ $name: strace -k capture failed${NC}"
+        fi
+    }
+
+    # Rust
+    if [ "$SKIP_RUST" != "true" ] && [ -n "$RUST_BIN" ]; then
+        gen_strace_k_flames rust "$RUST_BIN"
+    fi
+    # C++
+    if [ "$SKIP_CPP" != "true" ]; then
+        gen_strace_k_flames cpp "$SCRIPT_DIR/syscall_tracer_cpp"
+    fi
+else
+    echo -e "${YELLOW}⚠ FlameGraph or stackcollapser missing; skipping strace -k flamegraphs${NC}"
+fi
+
 # Print summary
 echo -e "${GREEN}Cross-Language Syscall Analysis Complete!${NC}"
 echo
@@ -512,7 +487,9 @@ echo "  ├── rust_analysis/               # Rust analysis report"
 echo "  ├── python_analysis/             # Python analysis report"
 echo "  ├── cpp_analysis/                # C++ analysis report"
 echo "  └── comparison_dashboard.html    # Interactive comparison dashboard"
+echo "  (optional) stracek_flamegraphs/   # strace -k syscall flamegraphs (per-syscall)"
 echo
+
 echo -e "${YELLOW}Analysis Features:${NC}"
 echo "  - I/O Pattern Categorization (file I/O, memory, network, etc.)"
 echo "  - Performance Metrics (timing, error rates, I/O efficiency)"
@@ -520,12 +497,14 @@ echo "  - Cross-Language Comparison using CasaCore"
 echo "  - Interactive Visualizations"
 echo "  - Stack Trace Integration"
 echo
+
 echo -e "${PURPLE}To explore the results:${NC}"
 echo "  1. Open $OUTPUT_DIR/comparison_dashboard.html in your browser"
 echo "  2. Click through individual analysis reports"
 echo "  3. Compare syscall patterns across Rust, Python, and C++"
 echo "  4. Analyze performance differences and optimization opportunities"
 echo
+
 echo -e "${BLUE}Analysis Tips:${NC}"
 echo "  - Compare syscall counts between implementations"
 echo "  - Look at I/O pattern distributions"
