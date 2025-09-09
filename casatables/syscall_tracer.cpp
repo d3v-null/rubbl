@@ -56,6 +56,7 @@ int main() {
         // Create the table with optional storage option via env STORAGE_MANAGER
         const char* sm_env = std::getenv("STORAGE_MANAGER");
         std::string sm = sm_env ? std::string(sm_env) : std::string("default");
+        std::cout << "Using storage manager: " << sm << std::endl;
         SetupNewTable setup(table_path, td, Table::New);
         // Map STORAGE_MANAGER to TSMOption and pass into Table constructor (consistent with Rust)
         TSMOption::Option opt = TSMOption::Default;
