@@ -53,10 +53,20 @@ $(TARGET): $(SRCS) $(EXTRA_OBJS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(SRCS) $(EXTRA_OBJS) $$LIB_PATH $(LDFLAGS) -o $(TARGET)
 	@echo "Build complete: $(TARGET)"
 
-# Build target for cpp_benchmark_instrumented (simple wrapper)
-$(CPP_BENCHMARK_TARGET): $(CPP_BENCHMARK_SRCS)
-	@echo "Compiling $(CPP_BENCHMARK_TARGET) (simple wrapper)..."
-	$(CXX) -std=c++11 -O2 -static-libstdc++ -static-libgcc $(CPP_BENCHMARK_SRCS) -o $(CPP_BENCHMARK_TARGET)
+# Build target for cpp_benchmark_instrumented (direct casacore implementation)
+$(CPP_BENCHMARK_TARGET): $(CPP_BENCHMARK_SRCS) $(EXTRA_OBJS)
+	@echo "Compiling $(CPP_BENCHMARK_TARGET) (direct casacore implementation)..."
+	@if [ -z "$(CASA_IMPL_LIB)" ]; then \
+		echo "Building rubbl_casatables_impl to produce libcasatables_impl.a..."; \
+		(cd $(RUBBL_ROOT) && cargo build -p rubbl_casatables_impl >/dev/null); \
+	fi
+	@LIB_PATH=$(firstword $(wildcard $(DEBUG_LIB)) $(wildcard $(RELEASE_LIB))); \
+	if [ -z "$$LIB_PATH" ]; then \
+		echo "Error: libcasatables_impl.a not found in target. Aborting."; \
+		exit 1; \
+	fi; \
+	echo "Linking with $$LIB_PATH"; \
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(CPP_BENCHMARK_SRCS) $(EXTRA_OBJS) $$LIB_PATH $(LDFLAGS) -o $(CPP_BENCHMARK_TARGET)
 	@echo "Build complete: $(CPP_BENCHMARK_TARGET)"
 
 $(EXTRA_OBJS): %.o: %.cc
@@ -79,6 +89,6 @@ help:
 	@echo ""
 	@echo "Targets:"
 	@echo "  syscall_tracer               - Uses casacore for syscall tracing"
-	@echo "  cpp_benchmark_instrumented   - Simple wrapper that calls Rust benchmark"
+	@echo "  cpp_benchmark_instrumented   - Direct casacore C++ implementation of benchmark"
 
 .PHONY: clean help
