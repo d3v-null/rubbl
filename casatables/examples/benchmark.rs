@@ -98,13 +98,13 @@ fn main() {
                         for row_idx in 0..num_rows {
                             let value = (col_idx as f64) * 1000.0 + (row_idx as f64);
                             ctry!(
-                                table.put_cell(&col_name, row_idx as u64, &value);
+                                table.put_cell_cached(&col_name, row_idx as u64, &value);
                                 "failed to put cell value for column {} row {}", col_name, row_idx
                             );
                         }
                     }
 
-                    // Write UVW data
+                    // Write UVW data with caching
                     for row_idx in 0..num_rows {
                         let uvw_data = vec![
                             row_idx as f64 * 0.1,
@@ -112,7 +112,7 @@ fn main() {
                             row_idx as f64 * 0.3,
                         ];
                         ctry!(
-                            table.put_cell("UVW", row_idx as u64, &uvw_data);
+                            table.put_cell_cached("UVW", row_idx as u64, &uvw_data);
                             "failed to put UVW cell for row {}", row_idx
                         );
                     }
