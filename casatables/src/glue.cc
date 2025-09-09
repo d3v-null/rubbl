@@ -12,9 +12,24 @@
 #include <casacore/casa/Arrays/Array.h>
 #include <casacore/casa/Arrays/Matrix.h>
 #include <casacore/casa/Containers/ValueHolder.h>
+#include <map>
+#include <memory>
+#include <string>
 
 #define CASA_TYPES_ALREADY_DECLARED
-#define GlueTable casacore::Table
+
+// Forward declaration of our wrapper structure
+struct TableWithColumnCache {
+    casacore::Table table;
+    // Cache for scalar columns: column_name -> (data_type, column_object)
+    std::map<std::string, std::pair<casacore::DataType, std::shared_ptr<void>>> scalar_column_cache;
+    // Cache for array columns: column_name -> (data_type, column_object)
+    std::map<std::string, std::pair<casacore::DataType, std::shared_ptr<void>>> array_column_cache;
+
+    TableWithColumnCache(const casacore::Table& t) : table(t) {}
+};
+
+#define GlueTable TableWithColumnCache
 #define GlueTableDesc casacore::TableDesc
 #define GlueTableRow casacore::ROTableRow
 #define GlueDataType casacore::DataType
@@ -114,6 +129,52 @@ unbridge_string_array(const casacore::Array<casacore::String> &input,
         bridge.n_bytes = (*i).length();
         callback(&bridge, ctxt);
     }
+}
+
+// Column caching helper functions
+
+template<typename T>
+static casacore::ScalarColumn<T>* get_cached_scalar_column(
+    TableWithColumnCache& table_wrapper,
+    const std::string& col_name,
+    casacore::DataType data_type)
+{
+    auto cache_key = col_name;
+    auto& cache = table_wrapper.scalar_column_cache;
+
+    auto it = cache.find(cache_key);
+    if (it != cache.end() && it->second.first == data_type) {
+        // Found cached column with matching type
+        return static_cast<casacore::ScalarColumn<T>*>(it->second.second.get());
+    }
+
+    // Create new column object and cache it
+    auto column = std::make_shared<casacore::ScalarColumn<T>>(table_wrapper.table, col_name);
+    cache[cache_key] = std::make_pair(data_type, std::static_pointer_cast<void>(column));
+
+    return column.get();
+}
+
+template<typename T>
+static casacore::ArrayColumn<T>* get_cached_array_column(
+    TableWithColumnCache& table_wrapper,
+    const std::string& col_name,
+    casacore::DataType data_type)
+{
+    auto cache_key = col_name;
+    auto& cache = table_wrapper.array_column_cache;
+
+    auto it = cache.find(cache_key);
+    if (it != cache.end() && it->second.first == data_type) {
+        // Found cached column with matching type
+        return static_cast<casacore::ArrayColumn<T>*>(it->second.second.get());
+    }
+
+    // Create new column object and cache it
+    auto column = std::make_shared<casacore::ArrayColumn<T>>(table_wrapper.table, col_name);
+    cache[cache_key] = std::make_pair(data_type, std::static_pointer_cast<void>(column));
+
+    return column.get();
 }
 
 // The API helpers that we export to the Rust layer
@@ -907,15 +968,15 @@ extern "C" {
         GlueTable::TableType type = GlueTable::TableType::Plain;
 
         // always use the local endianness
-        GlueTable::EndianFormat endian_format = GlueTable::EndianFormat::LocalEndian;
+        casacore::Table::EndianFormat endian_format = casacore::Table::EndianFormat::LocalEndian;
 
         try {
-            GlueTable::TableOption table_option;
+            casacore::Table::TableOption table_option;
 
             switch(mode) {
-                case TCM_NEW: table_option = GlueTable::TableOption::New; break;
-                case TCM_NEW_NO_REPLACE: table_option = GlueTable::TableOption::NewNoReplace; break;
-                case TCM_SCRATCH: table_option = GlueTable::TableOption::Scratch; break;
+                case TCM_NEW: table_option = casacore::Table::TableOption::New; break;
+                case TCM_NEW_NO_REPLACE: table_option = casacore::Table::TableOption::NewNoReplace; break;
+                case TCM_SCRATCH: table_option = casacore::Table::TableOption::Scratch; break;
                 default: throw std::invalid_argument( "invalid TableCreateMode" );
             }
 
@@ -945,15 +1006,16 @@ extern "C" {
     GlueTable *
     table_alloc_and_open(const StringBridge &path, const TableOpenMode mode, ExcInfo &exc)
     {
-        GlueTable::TableOption option = GlueTable::Old;
+        casacore::Table::TableOption option = casacore::Table::Old;
 
         if (mode == TOM_OPEN_RW)
-            option = GlueTable::Update;
+            option = casacore::Table::Update;
         else if (mode == TOM_CREATE)
-            option = GlueTable::NewNoReplace;
+            option = casacore::Table::NewNoReplace;
 
         try {
-            return new GlueTable(bridge_string(path), option, casacore::TSMOption());
+            casacore::Table casa_table(bridge_string(path), option, casacore::TSMOption());
+            return new GlueTable(casa_table);
         } catch (...) {
             handle_exception(exc);
             return NULL;
@@ -974,14 +1036,14 @@ extern "C" {
     table_n_rows(const GlueTable &table)
     {
         // I *think* we can safely say that this code should never trigger an exception.
-        return table.nrow();
+        return table.table.nrow();
     }
 
     unsigned long
     table_n_columns(const GlueTable &table)
     {
         // I *think* we can safely say that this code should never trigger an exception.
-        return table.actualTableDesc().columnDescSet().ncolumn();
+        return table.table.actualTableDesc().columnDescSet().ncolumn();
     }
 
     int
@@ -993,7 +1055,7 @@ extern "C" {
     )
     {
         try {
-            casacore::String file_name = table.tableName();
+            casacore::String file_name = table.table.tableName();
             unbridge_string(file_name, callback, ctxt);
         } catch (...) {
             handle_exception(exc);
@@ -1007,7 +1069,7 @@ extern "C" {
                            void *ctxt, ExcInfo &exc)
     {
         try {
-            unbridge_string_array(table.actualTableDesc().columnNames(), callback, ctxt);
+            unbridge_string_array(table.table.actualTableDesc().columnNames(), callback, ctxt);
         } catch (...) {
             handle_exception(exc);
             return 1;
@@ -1020,7 +1082,7 @@ extern "C" {
     table_remove_column(GlueTable &table, const StringBridge &col_name, ExcInfo &exc)
     {
         try {
-            table.removeColumn(bridge_string(col_name));
+            table.table.removeColumn(bridge_string(col_name));
         } catch (...) {
             handle_exception(exc);
             return 1;
@@ -1057,7 +1119,7 @@ extern "C" {
 
 #define CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                table.addColumn(casacore::ScalarColumnDesc<CPPTYPE>( \
+                table.table.addColumn(casacore::ScalarColumnDesc<CPPTYPE>( \
                     bridge_string(col_name), \
                     bridge_string(comment), \
                     opt \
@@ -1117,7 +1179,7 @@ extern "C" {
 
 #define CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                table.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
+                table.table.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
                     bridge_string(col_name), \
                     bridge_string(comment), \
                     -1, \
@@ -1186,7 +1248,7 @@ extern "C" {
 
 #define CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                table.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
+                table.table.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
                     bridge_string(col_name), \
                     bridge_string(comment), \
                     shape, \
@@ -1224,7 +1286,7 @@ extern "C" {
     unsigned long
     table_n_keywords(const GlueTable &table)
     {
-        return table.keywordSet().nfields();
+        return table.table.keywordSet().nfields();
     }
 
     int
@@ -1236,7 +1298,7 @@ extern "C" {
     )
     {
         try {
-            return tablerec_get_keyword_info(table.keywordSet(), callback, ctxt, exc);
+            return tablerec_get_keyword_info(table.table.keywordSet(), callback, ctxt, exc);
         } catch (...) {
             handle_exception(exc);
             return 1;
@@ -1253,7 +1315,7 @@ extern "C" {
     )
     {
         try {
-            const casacore::TableColumn col(table, bridge_string(col_name));
+            const casacore::TableColumn col(table.table, bridge_string(col_name));
             return tablerec_get_keyword_info(col.keywordSet(), callback, ctxt, exc);
         } catch (...) {
             handle_exception(exc);
@@ -1268,7 +1330,7 @@ extern "C" {
     )
     {
         try {
-            return &table.keywordSet();
+            return &table.table.keywordSet();
         } catch (...) {
             handle_exception(exc);
             return NULL;
@@ -1283,7 +1345,7 @@ extern "C" {
     )
     {
         try {
-            const casacore::TableColumn col(table, bridge_string(col_name));
+            const casacore::TableColumn col(table.table, bridge_string(col_name));
             return &col.keywordSet();
         } catch (...) {
             handle_exception(exc);
@@ -1304,7 +1366,7 @@ extern "C" {
     {
         try {
             return tablerec_put_field(
-                table.rwKeywordSet(), kw_name, data_type, n_dims, dims, data, exc
+                table.table.rwKeywordSet(), kw_name, data_type, n_dims, dims, data, exc
             );
         } catch (...) {
             handle_exception(exc);
@@ -1323,7 +1385,7 @@ extern "C" {
     )
     {
         try {
-            casacore::TableColumn col(table, bridge_string(col_name));
+            casacore::TableColumn col(table.table, bridge_string(col_name));
             return tablerec_put_field(col.rwKeywordSet(), kw_name, data_type, n_dims, dims, data, exc);
         } catch (...) {
             handle_exception(exc);
@@ -1335,7 +1397,7 @@ extern "C" {
     table_copy_rows(const GlueTable &source, GlueTable &dest, ExcInfo &exc)
     {
         try {
-            casacore::TableCopy::copyRows(dest, source);
+            casacore::TableCopy::copyRows(dest.table, source.table);
         } catch (...) {
             handle_exception(exc);
             return 1;
@@ -1348,11 +1410,11 @@ extern "C" {
     table_deep_copy_no_rows(const GlueTable &table, const StringBridge &dest_path, ExcInfo &exc)
     {
         try {
-            table.deepCopy(
+            table.table.deepCopy(
                 bridge_string(dest_path),
-                GlueTable::NewNoReplace,
+                casacore::Table::NewNoReplace,
                 casacore::True, // "valueCopy"
-                GlueTable::LocalEndian,
+                casacore::Table::LocalEndian,
                 casacore::True // "noRows"
             );
         } catch (...) {
@@ -1370,14 +1432,14 @@ extern "C" {
                           unsigned long dims[8], ExcInfo &exc)
     {
         try {
-            casacore::TableColumn col(table, bridge_string(col_name));
+            casacore::TableColumn col(table.table, bridge_string(col_name));
             const casacore::ColumnDesc &desc = col.columnDesc();
             const casacore::IPosition &shape = desc.shape();
 
             if (shape.size() > 8)
                 throw std::runtime_error("cannot handle columns with data of dimensionality greater than 8");
 
-            *n_rows = table.nrow();
+            *n_rows = table.table.nrow();
             *data_type = desc.dataType();
             *is_scalar = (int) desc.isScalar();
             *is_fixed_shape = (int) desc.isFixedShape();
@@ -1400,15 +1462,15 @@ extern "C" {
                                  void *data, ExcInfo &exc)
     {
         try {
-            const casacore::TableColumn col = casacore::TableColumn(table, bridge_string(col_name));
+            const casacore::TableColumn col(table.table, bridge_string(col_name));
             const casacore::ColumnDesc &desc = col.columnDesc();
-            casacore::IPosition shape(1, table.nrow());
+            casacore::IPosition shape(1, table.table.nrow());
 
             switch (desc.dataType()) {
 
 #define CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::ScalarColumn<CPPTYPE> col(table.table, bridge_string(col_name)); \
                 casacore::Vector<CPPTYPE> vec(shape, (CPPTYPE *) data, casacore::SHARE); \
                 col.getColumn(vec); \
                 break; \
@@ -1447,8 +1509,8 @@ extern "C" {
                                         StringBridgeCallback callback, void *ctxt, ExcInfo &exc)
     {
         try {
-            casacore::ScalarColumn<casacore::String> col(table, bridge_string(col_name));
-            casacore::IPosition shape(1, table.nrow());
+            casacore::ScalarColumn<casacore::String> col(table.table, bridge_string(col_name));
+            casacore::IPosition shape(1, table.table.nrow());
             casacore::Vector<casacore::String> vec(shape);
 
             col.getColumn(vec);
@@ -1466,15 +1528,16 @@ extern "C" {
                                  const GlueDataType data_type, void *data, ExcInfo &exc)
     {
         try {
-            casacore::IPosition shape(1, table.nrow());
+            casacore::IPosition shape(1, table.table.nrow());
+            std::string col_name_str = bridge_string(col_name);
 
             switch (data_type) {
 
 #define CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::ScalarColumn<CPPTYPE>* col = get_cached_scalar_column<CPPTYPE>(table, col_name_str, data_type); \
                 casacore::Vector<CPPTYPE> vec(shape, (CPPTYPE *) data, casacore::SHARE); \
-                col.putColumn(vec); \
+                col->putColumn(vec); \
                 break; \
             }
 
@@ -1512,7 +1575,7 @@ extern "C" {
                         int *n_dim, unsigned long dims[8], ExcInfo &exc)
     {
         try {
-            casacore::TableColumn col(table, bridge_string(col_name));
+            casacore::TableColumn col(table.table, bridge_string(col_name));
             const casacore::ColumnDesc &desc = col.columnDesc();
 
             *data_type = desc.dataType();
@@ -1545,7 +1608,7 @@ extern "C" {
                    const unsigned long row_number, void *data, ExcInfo &exc)
     {
         try {
-            casacore::TableColumn col(table, bridge_string(col_name));
+            casacore::TableColumn col(table.table, bridge_string(col_name));
             const casacore::ColumnDesc &desc = col.columnDesc();
             casacore::IPosition shape;
 
@@ -1556,14 +1619,14 @@ extern "C" {
 
 #define SCALAR_CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::ScalarColumn<CPPTYPE> col(table.table, bridge_string(col_name)); \
                 *((CPPTYPE *) data) = col.get(row_number); \
                 break; \
             }
 
 #define VECTOR_CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ArrayColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::ArrayColumn<CPPTYPE> col(table.table, bridge_string(col_name)); \
                 casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
                 col.get(row_number, array, casacore::False); \
                 break; \
@@ -1619,7 +1682,7 @@ extern "C" {
                           void *ctxt, ExcInfo &exc)
     {
         try {
-            casacore::ScalarColumn<casacore::String> col(table, bridge_string(col_name));
+            casacore::ScalarColumn<casacore::String> col(table.table, bridge_string(col_name));
             unbridge_string(col.get(row_number), callback, ctxt);
         } catch (...) {
             handle_exception(exc);
@@ -1635,7 +1698,7 @@ extern "C" {
                                 void *ctxt, ExcInfo &exc)
     {
         try {
-            casacore::ArrayColumn<casacore::String> col(table, bridge_string(col_name));
+            casacore::ArrayColumn<casacore::String> col(table.table, bridge_string(col_name));
             casacore::IPosition shape = col.shape(row_number);
             casacore::Array<casacore::String> array(shape);
             col.get(row_number, array, casacore::False);
@@ -1655,23 +1718,24 @@ extern "C" {
                    void *data, ExcInfo &exc)
     {
         try {
+            std::string col_name_str = bridge_string(col_name);
             switch (data_type) {
 
 #define SCALAR_CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
-                col.put(row_number, *(CPPTYPE *) data); \
+                casacore::ScalarColumn<CPPTYPE>* col = get_cached_scalar_column<CPPTYPE>(table, col_name_str, data_type); \
+                col->put(row_number, *(CPPTYPE *) data); \
                 break; \
             }
 
 #define VECTOR_CASE(DTYPE, CPPTYPE) \
             case casacore::DTYPE: { \
-                casacore::ArrayColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::ArrayColumn<CPPTYPE>* col = get_cached_array_column<CPPTYPE>(table, col_name_str, data_type); \
                 casacore::IPosition shape(n_dims); \
                 for (casacore::uInt i = 0; i < n_dims; i++) \
                     shape[i] = dims[n_dims - 1 - i]; \
                 casacore::Array<CPPTYPE> array(shape, (CPPTYPE *) data, casacore::SHARE); \
-                col.put(row_number, array); \
+                col->put(row_number, array); \
                 break; \
             }
 
@@ -1703,17 +1767,17 @@ extern "C" {
 #undef VECTOR_CASE
 
             case casacore::TpString: {
-                casacore::ScalarColumn<casacore::String> col(table, bridge_string(col_name));
-                col.put(row_number, bridge_string(*((StringBridge *) data)));
+                casacore::ScalarColumn<casacore::String>* col = get_cached_scalar_column<casacore::String>(table, col_name_str, data_type);
+                col->put(row_number, bridge_string(*((StringBridge *) data)));
                 break;
             }
 
             case casacore::TpArrayString: {
-                casacore::ArrayColumn<casacore::String> col(table, bridge_string(col_name));
+                casacore::ArrayColumn<casacore::String>* col = get_cached_array_column<casacore::String>(table, col_name_str, data_type);
                 casacore::IPosition shape(n_dims);
                 for (casacore::uInt i = 0; i < n_dims; i++)
                     shape[i] = dims[n_dims - 1 - i];
-                col.put(row_number, bridge_string_array((const StringBridge *) data, shape));
+                col->put(row_number, bridge_string_array((const StringBridge *) data, shape));
                 break;
             }
 
@@ -1732,7 +1796,7 @@ extern "C" {
     table_add_rows(GlueTable &table, const unsigned long n_rows, ExcInfo &exc)
     {
         try {
-            table.addRow(n_rows);
+            table.table.addRow(n_rows);
         } catch (...) {
             handle_exception(exc);
             return 1;
@@ -2122,9 +2186,9 @@ extern "C" {
     {
         try {
             if (is_read_only)
-                return new casacore::ROTableRow(table);
+                return new casacore::ROTableRow(table.table);
             else
-                return new casacore::TableRow(table);
+                return new casacore::TableRow(table.table);
         } catch (...) {
             handle_exception(exc);
             return NULL;
