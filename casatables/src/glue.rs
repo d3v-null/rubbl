@@ -202,6 +202,21 @@ pub enum TableDescCreateMode {
     #[doc = " Create a table description without an associated file on disk."]
     TDM_SCRATCH = 2,
 }
+#[repr(u32)]
+#[doc = "Table Storage Manager options for controlling I/O behavior."]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum TSMOption {
+    #[doc = " Use caching storage manager."]
+    TSM_CACHE = 0,
+    #[doc = " Use buffering storage manager."]
+    TSM_BUFFER = 1,
+    #[doc = " Use memory-mapped I/O (can reduce syscalls)."]
+    TSM_MMAP = 2,
+    #[doc = " Use default storage manager."]
+    TSM_DEFAULT = 3,
+    #[doc = " Use AIPSRC configuration."]
+    TSM_AIPSRC = 4,
+}
 #[doc = "Different modes for creating a CASA table description."]
 pub use self::TableDescCreateMode as TableDescOption;
 extern "C" {
@@ -382,6 +397,7 @@ extern "C" {
         table_desc: *mut GlueTableDesc,
         n_rows: ::std::os::raw::c_ulong,
         mode: TableCreateMode,
+        tsm_option: TSMOption,
         exc: *mut ExcInfo,
     ) -> *mut GlueTable;
 }
@@ -703,6 +719,15 @@ extern "C" {
 extern "C" {
     pub fn array_column_put_column(
         col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        n_rows: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+    pub fn array_column_put_column_shared(
+        col_handle: *mut ::std::ffi::c_void,
         data_type: GlueDataType,
         n_rows: ::std::os::raw::c_ulong,
         n_dims: ::std::os::raw::c_ulong,

@@ -31,14 +31,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let table_path = tmp_dir.path().join("syscall_tracer_example.ms");
 
     println!("🏗️  Creating table...");
-    let mut table = create_test_table(&table_path, n_rows, &data_shape)?;
+    // Use default TSMOption for table creation (match C++: no explicit storage manager)
+    let mut table = create_test_table(&table_path, n_rows, &data_shape, None)?;
 
     // Prepare test data
     let data_template = create_test_data(&data_shape);
     let flags_template = create_test_flags(&data_shape);
 
     println!("✍️  Writing data...");
-    // Select write mode via env: WRITE_MODE={put_cell|column_put|column_put_bulk}
+    // Select write mode via env: WRITE_MODE={put_cell|column_put|column_put_bulk|column_put_shared|column_put_mmap}
     let mode = std::env::var("WRITE_MODE").unwrap_or_else(|_| "column_put".to_string());
     match mode.as_str() {
         "table_put_cell" => {
@@ -55,6 +56,22 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         "column_put_bulk" => {
             write_test_data_column_put_bulk(
+                &mut table,
+                &data_shape,
+                &data_template,
+                &flags_template,
+            )?;
+        }
+        "column_put_shared" => {
+            write_test_data_column_put_shared(
+                &mut table,
+                &data_shape,
+                &data_template,
+                &flags_template,
+            )?;
+        }
+        "column_put_mmap" => {
+            write_test_data_column_put_mmap(
                 &mut table,
                 &data_shape,
                 &data_template,
@@ -80,20 +97,45 @@ fn create_test_table(
     table_path: &PathBuf,
     n_rows: usize,
     data_shape: &[u64],
+    tsm_option: Option<rubbl_casatables::TSMOption>,
 ) -> Result<Table, Box<dyn std::error::Error>> {
     // Create a fresh table using the rubbl API that mirrors the C++ demo
     // Build the same schema as the C++ example using existing rubbl APIs
-    let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH)?;
-    // Scalars
-    table_desc.add_scalar_column(GlueDataType::TpDouble, "TIME", None, false, false)?;
-    table_desc.add_scalar_column(GlueDataType::TpInt, "ANTENNA1", None, false, false)?;
-    table_desc.add_scalar_column(GlueDataType::TpInt, "ANTENNA2", None, false, false)?;
-    table_desc.add_scalar_column(GlueDataType::TpBool, "FLAG_ROW", None, false, false)?;
-    // Fixed-shape arrays
+    let mut table_desc = TableDesc::new("syscall_test", TableDescCreateMode::TDM_SCRATCH)?;
+    // Scalars - match C++ exactly
+    table_desc.add_scalar_column(
+        GlueDataType::TpDouble,
+        "TIME",
+        Some("Observation time"),
+        false,
+        false,
+    )?;
+    table_desc.add_scalar_column(
+        GlueDataType::TpInt,
+        "ANTENNA1",
+        Some("First antenna"),
+        false,
+        false,
+    )?;
+    table_desc.add_scalar_column(
+        GlueDataType::TpInt,
+        "ANTENNA2",
+        Some("Second antenna"),
+        false,
+        false,
+    )?;
+    table_desc.add_scalar_column(
+        GlueDataType::TpBool,
+        "FLAG_ROW",
+        Some("Row flag"),
+        false,
+        false,
+    )?;
+    // Fixed-shape arrays - match C++ exactly (no comments for arrays)
     table_desc.add_array_column(
         GlueDataType::TpComplex,
         "DATA",
-        Some("Visibility data"),
+        None, // C++ doesn't provide comment for arrays
         Some(data_shape),
         false,
         false,
@@ -101,13 +143,19 @@ fn create_test_table(
     table_desc.add_array_column(
         GlueDataType::TpBool,
         "FLAG",
-        Some("Data flags"),
+        None, // C++ doesn't provide comment for arrays
         Some(data_shape),
         false,
         false,
     )?;
 
-    let table = Table::new(table_path, table_desc, n_rows, TableCreateMode::New)?;
+    let table = Table::new(
+        table_path,
+        table_desc,
+        n_rows,
+        TableCreateMode::New,
+        tsm_option,
+    )?;
     Ok(table)
 }
 
@@ -235,11 +283,14 @@ fn write_test_data_column_put_bulk(
     let mut data_buf: Vec<Complex<f32>> = vec![Complex::new(0.0, 0.0); total_cells];
     let mut flag_buf: Vec<bool> = vec![false; total_cells];
 
-    for r in 0..rows_to_write as usize {
+    // Fill data in the order expected by casacore after dimension reversal
+    // Original shape: [32, 4] -> After reversal: [4, 32]
+    // So we need to fill in [j, i, r] order instead of [r, i, j]
+    for j in 0..n1 {
         for i in 0..n0 {
-            for j in 0..n1 {
-                let idx2 = i * n1 + j;
-                let flat = r * (n0 * n1) + idx2;
+            for r in 0..rows_to_write as usize {
+                let idx2 = i * n1 + j; // Same as before for compatibility
+                let flat = r * (n0 * n1) + idx2; // Same flat index calculation
                 let v = (idx2 as u32) as f32;
                 data_buf[flat] = Complex::new(v, 0.0);
                 flag_buf[flat] = ((idx2 as u32) % 13) == 0;
@@ -254,6 +305,106 @@ fn write_test_data_column_put_bulk(
         data_buf.as_ptr() as *const u8,
     )?;
     flag_col.put_column::<bool>(rows_to_write, data_shape, flag_buf.as_ptr() as *const u8)?;
+
+    Ok(())
+}
+
+fn write_test_data_column_put_shared(
+    table: &mut Table,
+    data_shape: &[u64],
+    _data_template: &Array2<Complex<f32>>,
+    _flags_template: &ndarray::Array2<bool>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    use rubbl_casatables::GlueDataType::*;
+
+    let rows_to_write = table.n_rows();
+    let n0 = data_shape[0] as usize;
+    let n1 = data_shape[1] as usize;
+
+    // Open column handles once
+    let mut data_col = table.open_array_column("DATA", TpArrayComplex)?;
+    let mut flag_col = table.open_array_column("FLAG", TpArrayBool)?;
+
+    // Prepare contiguous buffers: rows x n0 x n1
+    let total_cells = (rows_to_write as usize) * n0 * n1;
+    let mut data_buf: Vec<Complex<f32>> = vec![Complex::new(0.0, 0.0); total_cells];
+    let mut flag_buf: Vec<bool> = vec![false; total_cells];
+
+    // Fill data in the order expected by casacore after dimension reversal
+    // Original shape: [32, 4] -> After reversal: [4, 32]
+    // So we need to fill in [j, i, r] order instead of [r, i, j]
+    for j in 0..n1 {
+        for i in 0..n0 {
+            for r in 0..rows_to_write as usize {
+                let idx2 = i * n1 + j; // Same as before for compatibility
+                let flat = r * (n0 * n1) + idx2; // Same flat index calculation
+                let v = (idx2 as u32) as f32;
+                data_buf[flat] = Complex::new(v, 0.0);
+                flag_buf[flat] = ((idx2 as u32) % 13) == 0;
+            }
+        }
+    }
+
+    // Put all rows in one go per column using shared storage (no copy)
+    data_col.put_column_shared::<Complex<f32>>(
+        rows_to_write,
+        data_shape,
+        data_buf.as_ptr() as *const u8,
+    )?;
+    flag_col.put_column_shared::<bool>(
+        rows_to_write,
+        data_shape,
+        flag_buf.as_ptr() as *const u8,
+    )?;
+
+    Ok(())
+}
+
+fn write_test_data_column_put_mmap(
+    table: &mut Table,
+    data_shape: &[u64],
+    _data_template: &Array2<Complex<f32>>,
+    _flags_template: &ndarray::Array2<bool>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    use rubbl_casatables::GlueDataType::*;
+
+    let rows_to_write = table.n_rows();
+    let n0 = data_shape[0] as usize;
+    let n1 = data_shape[1] as usize;
+
+    // Open column handles once
+    let mut data_col = table.open_array_column("DATA", TpArrayComplex)?;
+    let mut flag_col = table.open_array_column("FLAG", TpArrayBool)?;
+
+    // Prepare contiguous buffers: rows x n0 x n1
+    let total_cells = (rows_to_write as usize) * n0 * n1;
+    let mut data_buf: Vec<Complex<f32>> = vec![Complex::new(0.0, 0.0); total_cells];
+    let mut flag_buf: Vec<bool> = vec![false; total_cells];
+
+    for r in 0..rows_to_write as usize {
+        for i in 0..n0 {
+            for j in 0..n1 {
+                let idx2 = i * n1 + j;
+                let flat = r * (n0 * n1) + idx2;
+                let v = (idx2 as u32) as f32;
+                data_buf[flat] = Complex::new(v, 0.0);
+                flag_buf[flat] = ((idx2 as u32) % 13) == 0;
+            }
+        }
+    }
+
+    // Put all rows in one go per column using shared storage (no copy) - same as shared mode
+    // The difference is that the table was created with TSM_MMAP option
+    data_col.put_column_shared::<Complex<f32>>(
+        rows_to_write,
+        data_shape,
+        data_buf.as_ptr() as *const u8,
+    )?;
+    flag_col.put_column_shared::<bool>(
+        rows_to_write,
+        data_shape,
+        flag_buf.as_ptr() as *const u8,
+    )?;
 
     Ok(())
 }

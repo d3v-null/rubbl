@@ -140,6 +140,21 @@ typedef enum TableCreateMode
     TCM_SCRATCH = 3,
 } TableCreateMode;
 
+/**Table Storage Manager options for controlling I/O behavior.*/
+typedef enum TSMOption
+{
+    /** Use caching storage manager.*/
+    TSM_CACHE = 0,
+    /** Use buffering storage manager.*/
+    TSM_BUFFER = 1,
+    /** Use memory-mapped I/O (can reduce syscalls).*/
+    TSM_MMAP = 2,
+    /** Use default storage manager.*/
+    TSM_DEFAULT = 3,
+    /** Use AIPSRC configuration.*/
+    TSM_AIPSRC = 4,
+} TSMOption;
+
 /**Different modes for creating a CASA table description.*/
 typedef enum TableDescCreateMode
 {
@@ -195,6 +210,10 @@ extern "C"
     int array_column_put_column(void *col_handle, const GlueDataType data_type,
                                 const unsigned long n_rows, const unsigned long n_dims,
                                 const unsigned long *dims, void *data, ExcInfo &exc);
+    // Put an entire column using shared storage (no copy from input buffer)
+    int array_column_put_column_shared(void *col_handle, const GlueDataType data_type,
+                                       const unsigned long n_rows, const unsigned long n_dims,
+                                       const unsigned long *dims, void *data, ExcInfo &exc);
     // Create a persistent Matrix object for reuse
     void *array_column_create_persistent_matrix(void *col_handle, const GlueDataType data_type,
                                                const unsigned long n_dims, const unsigned long *dims, ExcInfo &exc);
@@ -326,7 +345,7 @@ extern "C"
     // Table
 
     GlueTable *table_create(const StringBridge &path, GlueTableDesc &table_desc,
-                            unsigned long n_rows, const TableCreateMode mode, ExcInfo &exc);
+                            unsigned long n_rows, const TableCreateMode mode, const TSMOption tsm_option, ExcInfo &exc);
     GlueTable *table_alloc_and_open(const StringBridge &path, const TableOpenMode mode, ExcInfo &exc);
     void table_close_and_free(GlueTable *table, ExcInfo &exc);
     unsigned long table_n_rows(const GlueTable &table);

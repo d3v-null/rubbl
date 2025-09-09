@@ -873,6 +873,7 @@ extern "C" {
         // number of rows
         unsigned long n_rows,
         const TableCreateMode mode,
+        const TSMOption tsm_option,
         ExcInfo &exc
     )
     {
@@ -880,8 +881,17 @@ extern "C" {
         // the enum is either either `Plain` or `Memory`
         GlueTable::TableType type = GlueTable::TableType::Plain;
 
-        // TODO: expose this as an argument?
-        // const casacore::TSMOption tsmOption();
+        // Create TSMOption from parameter
+        casacore::TSMOption::Option casacore_tsm_option;
+        switch (tsm_option) {
+            case TSM_CACHE: casacore_tsm_option = casacore::TSMOption::Cache; break;
+            case TSM_BUFFER: casacore_tsm_option = casacore::TSMOption::Buffer; break;
+            case TSM_MMAP: casacore_tsm_option = casacore::TSMOption::MMap; break;
+            case TSM_DEFAULT: casacore_tsm_option = casacore::TSMOption::Default; break;
+            case TSM_AIPSRC: casacore_tsm_option = casacore::TSMOption::Aipsrc; break;
+            default: casacore_tsm_option = casacore::TSMOption::Default; break;
+        }
+        casacore::TSMOption tsmOption(casacore_tsm_option);
 
         // TODO: expose this as an argument?
         casacore::Bool initialize = true;
@@ -905,7 +915,7 @@ extern "C" {
                 table_desc,
                 table_option
             );
-            return new GlueTable(newTable, type, n_rows, initialize, endian_format, casacore::TSMOption());
+            return new GlueTable(newTable, type, n_rows, initialize, endian_format, tsmOption);
         } catch (...) {
             handle_exception(exc);
             return NULL;
@@ -1962,6 +1972,49 @@ extern "C" {
                 for (casacore::uInt i = 0; i < n_dims; i++) arrShape[i] = cellShape[i];
                 arrShape[n_dims] = n_rows;
                 casacore::Array<casacore::Bool> arr(arrShape, (casacore::Bool *) data, casacore::COPY);
+                // Put all rows at once
+                col->putColumn(arr);
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype for putColumn");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
+    array_column_put_column_shared(void *col_handle, const GlueDataType data_type,
+                                   const unsigned long n_rows, const unsigned long n_dims,
+                                   const unsigned long *dims, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
+                casacore::IPosition cellShape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) cellShape[i] = dims[n_dims - 1 - i];
+                casacore::IPosition arrShape(1 + n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) arrShape[i] = cellShape[i];
+                arrShape[n_dims] = n_rows;
+                // Use SHARE instead of COPY to avoid data copying
+                casacore::Array<casacore::Complex> arr(arrShape, (casacore::Complex *) data, casacore::SHARE);
+                // Put all rows at once
+                col->putColumn(arr);
+                break;
+            }
+            case casacore::TpArrayBool: {
+                auto *col = (casacore::ArrayColumn<casacore::Bool> *) col_handle;
+                casacore::IPosition cellShape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) cellShape[i] = dims[n_dims - 1 - i];
+                casacore::IPosition arrShape(1 + n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) arrShape[i] = cellShape[i];
+                arrShape[n_dims] = n_rows;
+                // Use SHARE instead of COPY to avoid data copying
+                casacore::Array<casacore::Bool> arr(arrShape, (casacore::Bool *) data, casacore::SHARE);
                 // Put all rows at once
                 col->putColumn(arr);
                 break;

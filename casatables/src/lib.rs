@@ -42,7 +42,7 @@ pub use rubbl_core::{Array, Complex, CowArray};
 
 #[allow(missing_docs)]
 mod glue;
-pub use glue::{GlueDataType, TableDescCreateMode};
+pub use glue::{GlueDataType, TSMOption, TableDescCreateMode};
 
 // Exceptions
 
@@ -1136,13 +1136,14 @@ impl Table {
     /// ).unwrap();
     ///
     /// // Create your new table with 0 rows.
-    /// Table::new(&table_path, table_desc, 0, TableCreateMode::New).unwrap();
+    /// Table::new(&table_path, table_desc, 0, TableCreateMode::New, None).unwrap();
     /// ```
     pub fn new<P: AsRef<Path>>(
         path: P,
         table_desc: TableDesc,
         n_rows: usize,
         mode: TableCreateMode,
+        tsm_option: Option<glue::TSMOption>,
     ) -> Result<Self, TableError> {
         let spath = match path.as_ref().to_str() {
             Some(s) => s,
@@ -1160,12 +1161,16 @@ impl Table {
             // TableCreateMode::Scratch => glue::TableCreateMode::TCM_SCRATCH,
         };
 
+        // Use default TSMOption if none provided
+        let ctsm_option = tsm_option.unwrap_or(glue::TSMOption::TSM_DEFAULT);
+
         let handle = unsafe {
             glue::table_create(
                 &cpath,
                 table_desc.handle,
                 n_rows as u64,
                 cmode,
+                ctsm_option,
                 &mut exc_info,
             )
         };
@@ -1213,7 +1218,7 @@ impl Table {
     /// ).unwrap();
     ///
     /// // Create the new table with 1 row.
-    /// let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+    /// let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
     ///
     /// // Write to the first row in the uvw column
     /// let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
@@ -2250,6 +2255,31 @@ impl ArrayColumnWriter {
         }
         Ok(())
     }
+
+    /// Put an entire column (all rows) at once using shared storage (no data copying)
+    /// This is the most efficient path that mirrors the C++ fast path
+    pub fn put_column_shared<T: CasaDataType>(
+        &mut self,
+        n_rows: u64,
+        cell_shape: &[u64],
+        data_ptr: *const u8,
+    ) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::array_column_put_column_shared(
+                self.handle,
+                self.dtype,
+                n_rows,
+                cell_shape.len() as u64,
+                cell_shape.as_ptr(),
+                data_ptr as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
     /// Put an array value at the given row using a pre-opened array column handle.
     pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
         // Use cached shape if available, otherwise extract it
@@ -3022,7 +3052,8 @@ mod tests {
             .add_scalar_column(GlueDataType::TpUInt, col_name, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table =
+            Table::new(table_path, table_desc, 123, TableCreateMode::New, None).unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -3045,7 +3076,8 @@ mod tests {
             .add_scalar_column(GlueDataType::TpString, col_name, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table =
+            Table::new(table_path, table_desc, 123, TableCreateMode::New, None).unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -3078,7 +3110,13 @@ mod tests {
 
         // NewNoReplace should fail if table exists.
         assert!(matches!(
-            Table::new(table_path, table_desc, 123, TableCreateMode::NewNoReplace),
+            Table::new(
+                table_path,
+                table_desc,
+                123,
+                TableCreateMode::NewNoReplace,
+                None
+            ),
             Err(TableError::Casacore { .. })
         ));
     }
@@ -3102,7 +3140,8 @@ mod tests {
             )
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table =
+            Table::new(table_path, table_desc, 123, TableCreateMode::New, None).unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -3127,7 +3166,8 @@ mod tests {
             .add_array_column(GlueDataType::TpString, col_name, None, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table =
+            Table::new(table_path, table_desc, 123, TableCreateMode::New, None).unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -3160,7 +3200,7 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3194,7 +3234,7 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3237,7 +3277,7 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3288,7 +3328,7 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3361,7 +3401,7 @@ mod tests {
             .unwrap();
         table_desc.set_ndims("APP_PARAMS", 1).unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, None).unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<String> = vec!["app params".to_string()];
         table.put_cell("APP_PARAMS", 0, &cell_value).unwrap();
@@ -3399,16 +3439,28 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut root_table =
-            Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        let mut root_table = Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            None,
+        )
+        .unwrap();
 
         let mut sub_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
         sub_table_desc
             .add_scalar_column(GlueDataType::TpInt, "int", None, true, false)
             .unwrap();
 
-        let sub_table =
-            Table::new(&sub_table_path, sub_table_desc, 1, TableCreateMode::New).unwrap();
+        let sub_table = Table::new(
+            &sub_table_path,
+            sub_table_desc,
+            1,
+            TableCreateMode::New,
+            None,
+        )
+        .unwrap();
         root_table.put_table_keyword("SUB", sub_table).unwrap();
 
         assert_eq!(root_table.table_keyword_names().unwrap(), ["SUB"]);
@@ -3422,7 +3474,14 @@ mod tests {
         // First create a table description for our base table.
         // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
         let root_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
-        Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            None,
+        )
+        .unwrap();
 
         let mut source_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
         source_table_desc
@@ -3455,6 +3514,7 @@ mod tests {
             source_table_desc,
             1,
             TableCreateMode::New,
+            None,
         )
         .unwrap();
 
@@ -3499,8 +3559,14 @@ mod tests {
         // First create a table description for our base table.
         // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
         let root_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
-        let root_table =
-            Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        let root_table = Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(
             root_table.file_name().unwrap(),
