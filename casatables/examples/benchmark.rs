@@ -45,9 +45,13 @@ fn main() {
             let num_rows = *matches.get_one::<usize>("rows").unwrap();
             let num_cols = *matches.get_one::<usize>("cols").unwrap();
 
-            let write_mode = env::var("WRITE_MODE").unwrap_or_else(|_| "column_put_bulk".to_string());
+            let write_mode =
+                env::var("WRITE_MODE").unwrap_or_else(|_| "column_put_bulk".to_string());
 
-            println!("Creating table with {} rows and {} columns", num_rows, num_cols);
+            println!(
+                "Creating table with {} rows and {} columns",
+                num_rows, num_cols
+            );
 
             // Create table description
             let mut table_desc = ctry!(
@@ -84,7 +88,7 @@ fn main() {
 
             // Create table
             let mut table = ctry!(
-                Table::new(table_path, table_desc, num_rows, TableCreateMode::New);
+                Table::new(table_path, table_desc, num_rows, TableCreateMode::New, None);
                 "failed to create table at \"{}\"", table_path.display()
             );
 
@@ -98,7 +102,7 @@ fn main() {
                         let column_data: Vec<f64> = (0..num_rows)
                             .map(|row_idx| (col_idx as f64) * 1000.0 + (row_idx as f64))
                             .collect();
-                        
+
                         ctry!(
                             table.put_scalar_column_bulk(&col_name, &column_data);
                             "failed to put column data for column {}", col_name
@@ -125,7 +129,7 @@ fn main() {
                         let column_data: Vec<f64> = (0..num_rows)
                             .map(|row_idx| (col_idx as f64) * 1000.0 + (row_idx as f64))
                             .collect();
-                        
+
                         ctry!(
                             table.put_scalar_column_bulk(&col_name, &column_data);
                             "failed to put column data for column {}", col_name
@@ -151,7 +155,7 @@ fn main() {
                         table.get_row_writer();
                         "failed to get row writer"
                     );
-                    
+
                     for row_idx in 0..num_rows {
                         ctry!(
                             table.read_row(&mut row, row_idx as u64);
@@ -176,7 +180,7 @@ fn main() {
                             row.put_cell("UVW", &uvw_data);
                             "failed to put UVW row cell for row {}", row_idx
                         );
-                        
+
                         ctry!(
                             row.put(row_idx as u64);
                             "failed to write row {}", row_idx

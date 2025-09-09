@@ -1836,11 +1836,11 @@ extern "C" {
                       (int)col_name.n_bytes, (const char*)col_name.data, (int)data_type);
             switch (data_type) {
             case casacore::TpDouble:
-                return new casacore::ScalarColumn<double>(table, bridge_string(col_name));
+                return new casacore::ScalarColumn<double>(table.table, bridge_string(col_name));
             case casacore::TpInt:
-                return new casacore::ScalarColumn<casacore::Int>(table, bridge_string(col_name));
+                return new casacore::ScalarColumn<casacore::Int>(table.table, bridge_string(col_name));
             case casacore::TpBool:
-                return new casacore::ScalarColumn<casacore::Bool>(table, bridge_string(col_name));
+                return new casacore::ScalarColumn<casacore::Bool>(table.table, bridge_string(col_name));
             default:
                 throw std::runtime_error("unsupported scalar dtype");
             }
@@ -1912,9 +1912,9 @@ extern "C" {
                       (int)col_name.n_bytes, (const char*)col_name.data, (int)data_type);
             switch (data_type) {
             case casacore::TpArrayComplex:
-                return new casacore::ArrayColumn<casacore::Complex>(table, bridge_string(col_name));
+                return new casacore::ArrayColumn<casacore::Complex>(table.table, bridge_string(col_name));
             case casacore::TpArrayBool:
-                return new casacore::ArrayColumn<casacore::Bool>(table, bridge_string(col_name));
+                return new casacore::ArrayColumn<casacore::Bool>(table.table, bridge_string(col_name));
             default:
                 throw std::runtime_error("unsupported array dtype");
             }
