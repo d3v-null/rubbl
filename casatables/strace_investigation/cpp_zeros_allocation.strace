@@ -1,54 +1,157 @@
-10145 execve("./cpp_benchmark_instrumented", ["./cpp_benchmark_instrumented", "allocation_test.ms"], 0x7ffe005ba100 /* 155 vars */) = 0
-10145 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f566bb02000
-10145 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
-10145 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
-10145 fstat(3, {st_mode=S_IFREG|0644, st_size=38519, ...}) = 0
-10145 mmap(NULL, 38519, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f566baf8000
-10145 close(3)                          = 0
-10145 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
-10145 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
-10145 fstat(3, {st_mode=S_IFREG|0644, st_size=2592224, ...}) = 0
-10145 mmap(NULL, 2609472, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f566b800000
-10145 mmap(0x7f566b89d000, 1343488, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9d000) = 0x7f566b89d000
-10145 mmap(0x7f566b9e5000, 552960, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e5000) = 0x7f566b9e5000
-10145 mmap(0x7f566ba6c000, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26b000) = 0x7f566ba6c000
-10145 mmap(0x7f566ba7a000, 12608, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f566ba7a000
-10145 close(3)                          = 0
-10145 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
-10145 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
-10145 fstat(3, {st_mode=S_IFREG|0644, st_size=183024, ...}) = 0
-10145 mmap(NULL, 185256, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f566baca000
-10145 mmap(0x7f566bace000, 147456, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7f566bace000
-10145 mmap(0x7f566baf2000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f566baf2000
-10145 mmap(0x7f566baf6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2b000) = 0x7f566baf6000
-10145 close(3)                          = 0
-10145 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
-10145 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\243\2\0\0\0\0\0"..., 832) = 832
-10145 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
-10145 fstat(3, {st_mode=S_IFREG|0755, st_size=2125328, ...}) = 0
-10145 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
-10145 mmap(NULL, 2170256, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f566b400000
-10145 mmap(0x7f566b428000, 1605632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f566b428000
-10145 mmap(0x7f566b5b0000, 323584, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b0000) = 0x7f566b5b0000
-10145 mmap(0x7f566b5ff000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1fe000) = 0x7f566b5ff000
-10145 mmap(0x7f566b605000, 52624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f566b605000
-10145 close(3)                          = 0
-10145 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
-10145 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
-10145 fstat(3, {st_mode=S_IFREG|0644, st_size=952616, ...}) = 0
-10145 mmap(NULL, 950296, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f566b717000
-10145 mmap(0x7f566b727000, 520192, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x10000) = 0x7f566b727000
-10145 mmap(0x7f566b7a6000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8f000) = 0x7f566b7a6000
-10145 mmap(0x7f566b7fe000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe7000) = 0x7f566b7fe000
-10145 close(3)                          = 0
-10145 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f566bac8000
-10145 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f566bac5000
-10145 write(2, "Usage: ", 7)            = 7
-10145 write(2, "./cpp_benchmark_instrumented", 28) = 28
-10145 write(2, " <table_name> <num_rows> <num_co"..., 35) = 35
-10145 write(2, "\n", 1)                 = 1
-10145 write(2, "Environment variables:", 22) = 22
-10145 write(2, "\n", 1)                 = 1
-10145 write(2, "  CPP_ALLOC_METHOD=ftruncate|fal"..., 44) = 44
-10145 write(2, "\n", 1)                 = 1
-10145 +++ exited with 1 +++
+1931692 execve("./cpp_benchmark_instrumented", ["./cpp_benchmark_instrumented", "allocation_test.ms", "1000", "10"], 0x7fff1c2db3e0 /* 66 vars */) = 0
+1931692 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3d9cf37000
+1931692 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+1931692 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+1931692 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=92572, ...}, AT_EMPTY_PATH) = 0
+1931692 mmap(NULL, 92572, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3d9cf20000
+1931692 close(3)                        = 0
+1931692 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+1931692 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+1931692 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931692 pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+1931692 pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\325\31p\226\367\t\200\30)\261\30\257\33|\366c"..., 68, 896) = 68
+1931692 newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+1931692 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931692 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3d9ccf7000
+1931692 mmap(0x7f3d9cd1f000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f3d9cd1f000
+1931692 mmap(0x7f3d9ceb4000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bd000) = 0x7f3d9ceb4000
+1931692 mmap(0x7f3d9cf0d000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x215000) = 0x7f3d9cf0d000
+1931692 mmap(0x7f3d9cf13000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f3d9cf13000
+1931692 close(3)                        = 0
+1931692 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3d9ccf4000
+1931692 newfstatat(1, "", {st_mode=S_IFIFO|0600, st_size=0, ...}, AT_EMPTY_PATH) = 0
+1931692 write(1, "C++ Mock Benchmark - Allocation "..., 46) = 46
+1931692 write(1, "Creating mock table with 1000 ro"..., 50) = 50
+1931692 mmap(NULL, 36864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7f3d9cf2e000
+1931693 execve("/bin/sh", ["sh", "-c", "mkdir -p allocation_test.ms"], 0x7ffe92cadb60 /* 66 vars */) = 0
+1931693 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3721630000
+1931693 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+1931693 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+1931693 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=92572, ...}, AT_EMPTY_PATH) = 0
+1931693 mmap(NULL, 92572, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3721619000
+1931693 close(3)                        = 0
+1931693 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+1931693 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+1931693 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931693 pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+1931693 pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\325\31p\226\367\t\200\30)\261\30\257\33|\366c"..., 68, 896) = 68
+1931693 newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+1931693 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931693 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f37213f0000
+1931693 mmap(0x7f3721418000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f3721418000
+1931693 mmap(0x7f37215ad000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bd000) = 0x7f37215ad000
+1931693 mmap(0x7f3721606000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x215000) = 0x7f3721606000
+1931693 mmap(0x7f372160c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f372160c000
+1931693 close(3)                        = 0
+1931693 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f37213ed000
+1931693 newfstatat(AT_FDCWD, "/home/dev/src/rubbl/casatables/benchmark_workspace", {st_mode=S_IFDIR|0775, st_size=4096, ...}, 0) = 0
+1931693 newfstatat(AT_FDCWD, ".", {st_mode=S_IFDIR|0775, st_size=4096, ...}, 0) = 0
+1931693 newfstatat(AT_FDCWD, "/home/dev/.local/bin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/opt/conda/condabin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/opt/bin//mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/usr/local/go/bin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/home/dev/.local/bin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/home/dev/.cargo/bin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/home/dev/.cursor-server/cli/servers/Stable-de327274300c6f38ec9f4240d11e82c3b0660b20/server/bin/remote-cli/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/usr/local/sbin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/usr/local/bin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/usr/sbin/mkdir", 0x7ffe80c83df0, 0) = -1 ENOENT (No such file or directory)
+1931693 newfstatat(AT_FDCWD, "/usr/bin/mkdir", {st_mode=S_IFREG|0755, st_size=68104, ...}, 0) = 0
+1931694 execve("/usr/bin/mkdir", ["mkdir", "-p", "allocation_test.ms"], 0x561f92e10118 /* 66 vars */) = 0
+1931694 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f7751a27000
+1931694 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+1931694 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=92572, ...}, AT_EMPTY_PATH) = 0
+1931694 mmap(NULL, 92572, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f7751a10000
+1931694 close(3)                        = 0
+1931694 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+1931694 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=166280, ...}, AT_EMPTY_PATH) = 0
+1931694 mmap(NULL, 177672, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f77519e4000
+1931694 mmap(0x7f77519ea000, 106496, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7f77519ea000
+1931694 mmap(0x7f7751a04000, 28672, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x20000) = 0x7f7751a04000
+1931694 mmap(0x7f7751a0c000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x27000) = 0x7f7751a0c000
+1931694 mmap(0x7f7751a0e000, 5640, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f7751a0e000
+1931694 close(3)                        = 0
+1931694 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+1931694 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+1931694 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931694 pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+1931694 pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\325\31p\226\367\t\200\30)\261\30\257\33|\366c"..., 68, 896) = 68
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+1931694 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+1931694 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f77517bb000
+1931694 mmap(0x7f77517e3000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f77517e3000
+1931694 mmap(0x7f7751978000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bd000) = 0x7f7751978000
+1931694 mmap(0x7f77519d1000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x215000) = 0x7f77519d1000
+1931694 mmap(0x7f77519d7000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f77519d7000
+1931694 close(3)                        = 0
+1931694 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3
+1931694 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=613064, ...}, AT_EMPTY_PATH) = 0
+1931694 mmap(NULL, 615184, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f7751724000
+1931694 mmap(0x7f7751726000, 438272, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f7751726000
+1931694 mmap(0x7f7751791000, 163840, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6d000) = 0x7f7751791000
+1931694 mmap(0x7f77517b9000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x94000) = 0x7f77517b9000
+1931694 close(3)                        = 0
+1931694 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f7751721000
+1931694 statfs("/sys/fs/selinux", 0x7ffccde98a30) = -1 ENOENT (No such file or directory)
+1931694 statfs("/selinux", 0x7ffccde98a30) = -1 ENOENT (No such file or directory)
+1931694 openat(AT_FDCWD, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0444, st_size=0, ...}, AT_EMPTY_PATH) = 0
+1931694 read(3, "nodev\tsysfs\nnodev\ttmpfs\nnodev\tbd"..., 1024) = 466
+1931694 read(3, "", 1024)               = 0
+1931694 close(3)                        = 0
+1931694 access("/etc/selinux/config", F_OK) = -1 ENOENT (No such file or directory)
+1931694 openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+1931694 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=3048928, ...}, AT_EMPTY_PATH) = 0
+1931694 mmap(NULL, 3048928, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f7751438000
+1931694 close(3)                        = 0
+1931694 mkdir("allocation_test.ms", 0777) = 0
+1931694 close(1)                        = 0
+1931694 close(2)                        = 0
+1931694 +++ exited with 0 +++
+1931693 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=1931694, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+1931693 +++ exited with 0 +++
+1931692 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=1931693, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+1931692 write(1, "Creating file: allocation_test.m"..., 44) = 44
+1931692 openat(AT_FDCWD, "allocation_test.ms/table.dat", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+1931692 newfstatat(3, "", {st_mode=S_IFREG|0664, st_size=0, ...}, AT_EMPTY_PATH) = 0
+1931692 write(3, "Mock file for allocation_test.ms"..., 43) = 43
+1931692 close(3)                        = 0
+1931692 write(1, "Creating file: allocation_test.m"..., 43) = 43
+1931692 openat(AT_FDCWD, "allocation_test.ms/table.f0", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+1931692 write(1, "  Allocating space for column da"..., 43) = 43
+1931692 write(1, "  Data size: 80000 bytes, blocks"..., 37) = 37
+1931692 write(1, "  Writing zeros explicitly (inef"..., 48) = 48
+1931692 newfstatat(3, "", {st_mode=S_IFREG|0664, st_size=0, ...}, AT_EMPTY_PATH) = 0
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 4096) = 4096
+1931692 write(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 2176) = 2176
+1931692 close(3)                        = 0
+1931692 write(1, "Creating file: allocation_test.m"..., 45) = 45
+1931692 openat(AT_FDCWD, "allocation_test.ms/table.info", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+1931692 newfstatat(3, "", {st_mode=S_IFREG|0664, st_size=0, ...}, AT_EMPTY_PATH) = 0
+1931692 write(3, "Mock file for allocation_test.ms"..., 44) = 44
+1931692 close(3)                        = 0
+1931692 write(1, "Simulating data operations...\n", 30) = 30
+1931692 write(1, "Mock benchmark completed in 12ms"..., 33) = 33
+1931692 write(1, "Checksum: 2.24775e+07\n", 22) = 22
+1931692 +++ exited with 0 +++
