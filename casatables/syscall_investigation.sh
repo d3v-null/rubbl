@@ -172,4 +172,49 @@ Bottom line: prealloc is verified; the remaining overhead is zero-initialization
 EOF
 
 echo
+
+# Summarize JSON-based syscall analyses if available
+LATEST_ANALYSIS_DIR=$(ls -d ../syscall_analysis_* 2>/dev/null | sort | tail -1)
+if [ -n "${LATEST_ANALYSIS_DIR}" ] && [ -d "${LATEST_ANALYSIS_DIR}" ]; then
+    RUST_JSON="${LATEST_ANALYSIS_DIR}/rust_analysis/syscall_analysis.json"
+    CPP_JSON="${LATEST_ANALYSIS_DIR}/cpp_analysis/syscall_analysis.json"
+
+    if [ -f "${RUST_JSON}" ] && [ -f "${CPP_JSON}" ]; then
+        # Helper: extract a top-level numeric field
+        get_top_number() {
+            local file="$1"; local key="$2"
+            awk -v k="\""$key"\"" -F ':' '$1~k { gsub(/[^0-9.]/, "", $2); print $2; exit }' "${file}"
+        }
+        # Helper: extract syscall count for a given syscall name
+        get_syscall_count() {
+            local file="$1"; local sc="$2"
+            awk -v sc="\""$sc"\"" -F ':' '
+                $0 ~ sc" *\\{" { inblk=1; next }
+                inblk && /"count"/ { gsub(/[^0-9]/, "", $2); print $2; exit }
+                inblk && /}/ { inblk=0 }
+            ' "${file}"
+        }
+
+        rust_total=$(get_top_number "${RUST_JSON}" total_syscalls)
+        cpp_total=$(get_top_number "${CPP_JSON}" total_syscalls)
+        rust_time=$(awk -F ':' '/"total_syscall_time"/ { gsub(/[^0-9.]/, "", $2); print $2; exit }' "${RUST_JSON}")
+        cpp_time=$(awk -F ':' '/"total_syscall_time"/ { gsub(/[^0-9.]/, "", $2); print $2; exit }' "${CPP_JSON}")
+
+        rust_lseek=$(get_syscall_count "${RUST_JSON}" lseek)
+        cpp_lseek=$(get_syscall_count "${CPP_JSON}" lseek)
+        rust_write=$(get_syscall_count "${RUST_JSON}" write)
+        cpp_write=$(get_syscall_count "${CPP_JSON}" write)
+        rust_ftruncate=$(get_syscall_count "${RUST_JSON}" ftruncate)
+        cpp_ftruncate=$(get_syscall_count "${CPP_JSON}" ftruncate)
+
+        echo "=== JSON Analysis Summary (latest: $(basename "${LATEST_ANALYSIS_DIR}") ) ==="
+        echo "Totals:   Rust=${rust_total:-N/A}  C++=${cpp_total:-N/A}  Δ=$(( ${rust_total:-0} - ${cpp_total:-0} ))"
+        echo "Time(s):  Rust=${rust_time:-N/A}  C++=${cpp_time:-N/A}  Δ=$(printf '%.6f' "$(awk -v r=${rust_time:-0} -v c=${cpp_time:-0} 'BEGIN{printf r-c}' )")"
+        echo "lseek:    Rust=${rust_lseek:-N/A}  C++=${cpp_lseek:-N/A}  Δ=$(( ${rust_lseek:-0} - ${cpp_lseek:-0} ))"
+        echo "write:    Rust=${rust_write:-N/A}  C++=${cpp_write:-N/A}  Δ=$(( ${rust_write:-0} - ${cpp_write:-0} ))"
+        echo "ftruncate:Rust=${rust_ftruncate:-N/A}  C++=${cpp_ftruncate:-N/A}  Δ=$(( ${rust_ftruncate:-0} - ${cpp_ftruncate:-0} ))"
+        echo
+    fi
+fi
+
 echo "Investigation complete!"
