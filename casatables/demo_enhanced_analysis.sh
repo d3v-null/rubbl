@@ -118,10 +118,10 @@ run_with_strace() {
 
     # Use a single merged output file (-f to follow forks)
     # Include timings (-ttT), decode fds (-yy), increase string sizes (-s 256)
-    if strace -q -f -ttT -yy -v -s 256 -o "$out_file" -- "${cmd[@]}" >/dev/null 2>&1; then
-        if [ -s "$out_file" ]; then
-            return 0
-        fi
+    # Note: target program may exit non-zero; accept success if trace file exists and is non-empty
+    strace -q -f -ttT -yy -v -s 256 -o "$out_file" -- "${cmd[@]}" >/dev/null 2>&1 || true
+    if [ -s "$out_file" ]; then
+        return 0
     fi
     return 1
 }
