@@ -32,6 +32,7 @@
 use ndarray::{ArrayBase, Dimension};
 use rubbl_core::num::{DimFromShapeSlice, DimensionMismatchError};
 use std::{
+    collections::HashMap,
     fmt::{self, Debug},
     mem::MaybeUninit as StdMaybeUninit,
     path::Path,
@@ -2093,14 +2094,14 @@ impl Table {
         &mut self,
         col_name: &str,
         values: &[T],
-    ) -> Result<(), TableError> 
+    ) -> Result<(), TableError>
     where
         T: Clone,
     {
         if values.len() != self.n_rows() as usize {
             return Err(TableError::UserMessage(format!(
-                "Column data length {} does not match table rows {}", 
-                values.len(), 
+                "Column data length {} does not match table rows {}",
+                values.len(),
                 self.n_rows()
             )));
         }
