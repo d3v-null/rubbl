@@ -30,7 +30,20 @@
 #include <casacore/casa/IO/BucketCache.h>
 #include <casacore/casa/Exceptions/Error.h>
 #include <casacore/casa/iostream.h>
+#include <iostream>
+#include <unistd.h>
+#include <sys/types.h>
 
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -236,6 +249,7 @@ char* BucketCache::getBucket (uInt bucketNr)
 
 void BucketCache::extend (uInt nrBucket)
 {
+    CASACORE_DEBUG("BucketCache::extend: adding " << nrBucket << " buckets, bucketSize=" << its_BucketSize);
     its_NewNrOfBuckets += nrBucket;
     uInt oldSize = its_SlotNr.nelements();
     if (oldSize < its_NewNrOfBuckets) {
@@ -249,7 +263,7 @@ void BucketCache::extend (uInt nrBucket)
 	}
     }
 }
-    
+
 uInt BucketCache::addBucket (char* data)
 {
     uInt bucketNr;

@@ -42,6 +42,18 @@
 #include <fcntl.h>
 #include <errno.h>                // needed for errno
 #include <casacore/casa/string.h>          // needed for strerror
+#include <iostream>
+
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 #if defined(AIPS_DARWIN) || defined(AIPS_BSD)
 #undef trace3OPEN
@@ -207,6 +219,7 @@ uInt BucketFile::read (void* buffer, uInt length)
 
 uInt BucketFile::write (const void* buffer, uInt length)
 {
+  CASACORE_DEBUG("BucketFile::write: " << name_p << " length=" << length);
   file_p->write (length, buffer);
     return length;
 }

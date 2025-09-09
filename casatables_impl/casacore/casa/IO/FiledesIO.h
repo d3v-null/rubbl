@@ -44,12 +44,12 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <reviewed reviewer="Friso Olnon" date="1996/11/06" tests="tByteIO" demos="">
 // </reviewed>
 
-// <prerequisite> 
+// <prerequisite>
 //    <li> <linkto class=ByteIO>ByteIO</linkto> class
 //    <li> file descriptors
 // </prerequisite>
 
-// <synopsis> 
+// <synopsis>
 // This class is a specialization of class
 // <linkto class=ByteIO>ByteIO</linkto>. It uses a file descriptor
 // to read/write data.
@@ -79,7 +79,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // </srcblock>
 // </example>
 
-// <motivation> 
+// <motivation>
 // Make it possible to use the Casacore IO functionality on any file.
 // In this way any device can be hooked to the IO framework.
 // </motivation>
@@ -87,7 +87,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
 class FiledesIO: public ByteIO
 {
-public: 
+public:
     // Default constructor.
     // A stream can be attached using the attach function.
     FiledesIO();
@@ -120,7 +120,7 @@ public:
     // read, or an error occured, unless throwException is set to False. Will
     // always throw an exception if the descriptor is not readable or the
     // system call returned an undocumented value.
-    virtual Int64 read (Int64 size, void* buf, Bool throwException=True);    
+    virtual Int64 read (Int64 size, void* buf, Bool throwException=True);
 
     // Like read except reads from offset of the start of the file.
     // The file offset is not changed
@@ -128,7 +128,7 @@ public:
 
     // Get the length of the byte stream.
     virtual Int64 length();
-       
+
     // Is the IO stream readable?
     virtual Bool isReadable() const;
 
@@ -148,6 +148,9 @@ public:
     // Fsync the file (i.e. force the data to be physically written).
     virtual void fsync();
 
+    // Get the file descriptor.
+    int fd() const { return itsFile; }
+
     // Some static convenience functions for file create/open/close.
     // Close is only done if the fd is non-negative.
     // <group>
@@ -159,10 +162,6 @@ public:
 
 
 protected:
-    // Get the file descriptor.
-    int fd() const
-      { return itsFile; }
-
     // Determine if the file descriptor is readable and/or writable.
     void fillRWFlags (int fd);
 

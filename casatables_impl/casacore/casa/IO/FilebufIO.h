@@ -44,7 +44,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // <reviewed reviewer="UNKNOWN" date="before2004/08/25" tests="tByteIO" demos="">
 // </reviewed>
 
-// <prerequisite> 
+// <prerequisite>
 //  <li> <linkto class=ByteIO>ByteIO</linkto>
 // </prerequisite>
 
@@ -83,7 +83,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 // </srcblock>
 // </example>
 
-// <motivation> 
+// <motivation>
 // The stdio package was used, but it proved to be very slow on SOlaris.
 // After a seek the buffer was refreshed, which increased the number
 // of file accesses enormously.
@@ -93,7 +93,7 @@ namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
 class FilebufIO: public ByteIO
 {
-public: 
+public:
     // Default constructor.
     // A stream can be attached using the attach function.
     FilebufIO();
@@ -111,7 +111,7 @@ public:
     // The destructor closes the file when it was owned and opened and not
     // closed yet.
     virtual ~FilebufIO();
-    
+
     // Write the number of bytes.
     virtual void write (Int64 size, const void* buf);
 
@@ -120,17 +120,17 @@ public:
     // number of bytes could not be read unless throwException is set to
     // False. Will always throw an exception if the file is not readable or
     // the system call returns an undocumented value.
-    virtual Int64 read (Int64 size, void* buf, Bool throwException=True);    
+    virtual Int64 read (Int64 size, void* buf, Bool throwException=True);
 
     // Flush the current buffer.
     virtual void flush();
 
     // Resync the file (i.e. empty the current buffer).
     virtual void resync();
-  
+
     // Get the length of the byte stream.
     virtual Int64 length();
-       
+
     // Is the IO stream readable?
     virtual Bool isReadable() const;
 
@@ -146,6 +146,10 @@ public:
     // Get the buffer size.
     uInt bufferSize() const
       { return itsBufSize; }
+
+    // Get the file descriptor.
+    int fd() const
+      { return itsFile; }
 
 protected:
     // Detach the FILE. Close it when needed.

@@ -34,7 +34,18 @@
 #include <fcntl.h>
 #include <errno.h>                     // needed for errno
 #include <casacore/casa/string.h>               // needed for strerror
+#include <iostream>
 
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -99,6 +110,7 @@ void FiledesIO::write (Int64 size, const void* buf)
 	throw AipsError ("FiledesIO::write - " + itsFileName
                          + " is not writable");
     }
+    CASACORE_DEBUG("FiledesIO::write: " << itsFileName.chars() << " fd=" << itsFile << " size=" << size);
     if (::traceWRITE(itsFile, (Char *)buf, size) != size) {
         int error = errno;
 	throw AipsError ("FiledesIO::write - write error in "
@@ -114,6 +126,7 @@ void FiledesIO::pwrite (Int64 size, Int64 offset, const void* buf)
 	throw AipsError ("FiledesIO::pwrite - " + itsFileName
                          + " is not writable");
     }
+    CASACORE_DEBUG("FiledesIO::pwrite: " << itsFileName.chars() << " fd=" << itsFile << " size=" << size << " offset=" << offset);
     if (::tracePWRITE(itsFile, (Char *)buf, size, offset) != size) {
         int error = errno;
 	throw AipsError ("FiledesIO::pwrite - write error in "
@@ -137,7 +150,7 @@ Int64 FiledesIO::read (Int64 size, void* buf, Bool throwException)
   if (bytesRead != size  &&  throwException == True) {
     if (bytesRead < 0) {
       throw AipsError ("FiledesIO::read " + itsFileName +
-                       " - error returned by system call: " + 
+                       " - error returned by system call: " +
                        strerror(error));
     } else if (bytesRead < size) {
       throw AipsError ("FiledesIO::read - incorrect number of bytes ("
@@ -165,7 +178,7 @@ Int64 FiledesIO::pread (Int64 size, Int64 offset, void* buf, Bool throwException
   if (bytesRead != size  &&  throwException == True) {
     if (bytesRead < 0) {
       throw AipsError ("FiledesIO::pread " + itsFileName +
-                       " - error returned by system call: " + 
+                       " - error returned by system call: " +
                        strerror(error));
     } else if (bytesRead < size) {
       throw AipsError ("FiledesIO::pread - incorrect number of bytes ("
@@ -179,15 +192,23 @@ Int64 FiledesIO::pread (Int64 size, Int64 offset, void* buf, Bool throwException
 
 Int64 FiledesIO::doSeek (Int64 offset, ByteIO::SeekOption dir)
 {
+    Int64 result;
     switch (dir) {
     case ByteIO::Begin:
-	return ::traceLSEEK (itsFile, offset, SEEK_SET);
+	CASACORE_DEBUG("FiledesIO::seek: " << itsFileName.chars() << " fd=" << itsFile << " offset=" << offset << " from BEGIN");
+	result = ::traceLSEEK (itsFile, offset, SEEK_SET);
+	break;
     case ByteIO::End:
-        return ::traceLSEEK (itsFile, offset, SEEK_END);
+	CASACORE_DEBUG("FiledesIO::seek: " << itsFileName.chars() << " fd=" << itsFile << " offset=" << offset << " from END");
+        result = ::traceLSEEK (itsFile, offset, SEEK_END);
+	break;
     default:
+	CASACORE_DEBUG("FiledesIO::seek: " << itsFileName.chars() << " fd=" << itsFile << " offset=" << offset << " from CURRENT");
+	result = ::traceLSEEK (itsFile, offset, SEEK_CUR);
 	break;
     }
-    return ::traceLSEEK (itsFile, offset, SEEK_CUR);
+    CASACORE_DEBUG("FiledesIO::seek: " << itsFileName.chars() << " result=" << result);
+    return result;
 }
 
 Int64 FiledesIO::length()
@@ -205,7 +226,7 @@ Int64 FiledesIO::length()
     return len;
 }
 
-   
+
 Bool FiledesIO::isReadable() const
 {
     return itsReadable;
@@ -234,12 +255,14 @@ void FiledesIO::fsync()
 
 int FiledesIO::create (const Char* name, int mode)
 {
+    CASACORE_DEBUG("FiledesIO::create: " << name << " mode=" << std::oct << mode);
     int fd = ::trace3OPEN ((Char *)name, O_RDWR | O_CREAT | O_TRUNC, mode);
     int error = errno;
     if (fd == -1) {
       throw AipsError ("FiledesIO: file " + String(name) +
                        " could not be created: " + strerror(error));
     }
+    CASACORE_DEBUG("FiledesIO::create: " << name << " -> fd=" << fd);
     return fd;
 }
 
