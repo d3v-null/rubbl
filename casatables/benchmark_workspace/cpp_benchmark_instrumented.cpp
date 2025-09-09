@@ -66,40 +66,102 @@ public:
 
             std::cout << "Table description created with " << num_cols << " scalar columns and 1 array column" << std::endl;
 
-            // Create table
+            // Pass TSMOption consistent with Rust
+            const char* sm_env = std::getenv("STORAGE_MANAGER");
+            std::string sm = sm_env ? std::string(sm_env) : std::string("default");
+            rubbl_casacore::TSMOption::Option opt = rubbl_casacore::TSMOption::Default;
+            if (sm == "mmap") opt = rubbl_casacore::TSMOption::MMap;
+            else if (sm == "buffer") opt = rubbl_casacore::TSMOption::Buffer;
+            else if (sm == "cache") opt = rubbl_casacore::TSMOption::Cache;
+            else if (sm == "aipsrc") opt = rubbl_casacore::TSMOption::Aipsrc;
+
             rubbl_casacore::SetupNewTable newTable(table_path, tableDesc, rubbl_casacore::Table::New);
-            rubbl_casacore::Table table(newTable, rubbl_casacore::Table::Plain, num_rows);
+            rubbl_casacore::Table table(
+                newTable,
+                rubbl_casacore::Table::Plain,
+                num_rows,
+                false,
+                rubbl_casacore::Table::LocalEndian,
+                rubbl_casacore::TSMOption(opt)
+            );
 
             std::cout << "Table created successfully" << std::endl;
             std::cout << "Starting write operations..." << std::endl;
+            const char* mode_env = std::getenv("WRITE_MODE");
+            std::string write_mode = mode_env ? std::string(mode_env) : std::string("column_put_bulk");
 
-            // Write scalar columns using bulk operations (like Rust's column_put_bulk mode)
-            for (int col_idx = 0; col_idx < num_cols; ++col_idx) {
-                std::string colName = "COL_" + std::to_string(col_idx);
-                rubbl_casacore::ScalarColumn<rubbl_casacore::Double> column(table, colName);
-
-                // Create data vector
-                rubbl_casacore::Vector<rubbl_casacore::Double> columnData(num_rows);
+            if (write_mode == "table_put_row") {
+                // Row-wise writes via TableRow
+                rubbl_casacore::TableRow row(table);
                 for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
-                    columnData(row_idx) = static_cast<rubbl_casacore::Double>(col_idx) * 1000.0 + static_cast<rubbl_casacore::Double>(row_idx);
+                    rubbl_casacore::TableRecord& rec = row.record();
+                    for (int col_idx = 0; col_idx < num_cols; ++col_idx) {
+                        std::string colName = "COL_" + std::to_string(col_idx);
+                        double value = static_cast<double>(col_idx) * 1000.0 + static_cast<double>(row_idx);
+                        rec.define(colName, value);
+                    }
+                    rubbl_casacore::Vector<rubbl_casacore::Double> uvwData(3);
+                    uvwData(0) = static_cast<double>(row_idx) * 0.1;
+                    uvwData(1) = static_cast<double>(row_idx) * 0.2;
+                    uvwData(2) = static_cast<double>(row_idx) * 0.3;
+                    rec.define("UVW", uvwData);
+                    row.put(row_idx);
                 }
-
-                // Put the entire column at once
-                column.putColumn(columnData);
-                std::cout << "  Wrote column " << colName << " with " << num_rows << " values" << std::endl;
+            } else if (write_mode == "table_put_cell") {
+                // Per-cell (by column, per row)
+                for (int col_idx = 0; col_idx < num_cols; ++col_idx) {
+                    std::string colName = "COL_" + std::to_string(col_idx);
+                    rubbl_casacore::ScalarColumn<rubbl_casacore::Double> column(table, colName);
+                    for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                        double value = static_cast<double>(col_idx) * 1000.0 + static_cast<double>(row_idx);
+                        column.put(row_idx, value);
+                    }
+                }
+                rubbl_casacore::ArrayColumn<rubbl_casacore::Double> uvwColumn(table, "UVW");
+                for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                    rubbl_casacore::Vector<rubbl_casacore::Double> uvwData(3);
+                    uvwData(0) = static_cast<double>(row_idx) * 0.1;
+                    uvwData(1) = static_cast<double>(row_idx) * 0.2;
+                    uvwData(2) = static_cast<double>(row_idx) * 0.3;
+                    uvwColumn.put(row_idx, uvwData);
+                }
+            } else if (write_mode == "column_put") {
+                for (int col_idx = 0; col_idx < num_cols; ++col_idx) {
+                    std::string colName = "COL_" + std::to_string(col_idx);
+                    rubbl_casacore::ScalarColumn<rubbl_casacore::Double> column(table, colName);
+                    for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                        double value = static_cast<double>(col_idx) * 1000.0 + static_cast<double>(row_idx);
+                        column.put(row_idx, value);
+                    }
+                }
+                rubbl_casacore::ArrayColumn<rubbl_casacore::Double> uvwColumn(table, "UVW");
+                for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                    rubbl_casacore::Vector<rubbl_casacore::Double> uvwData(3);
+                    uvwData(0) = static_cast<double>(row_idx) * 0.1;
+                    uvwData(1) = static_cast<double>(row_idx) * 0.2;
+                    uvwData(2) = static_cast<double>(row_idx) * 0.3;
+                    uvwColumn.put(row_idx, uvwData);
+                }
+            } else { // column_put_bulk (default)
+                for (int col_idx = 0; col_idx < num_cols; ++col_idx) {
+                    std::string colName = "COL_" + std::to_string(col_idx);
+                    rubbl_casacore::ScalarColumn<rubbl_casacore::Double> column(table, colName);
+                    rubbl_casacore::Vector<rubbl_casacore::Double> columnData(num_rows);
+                    for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                        columnData(row_idx) = static_cast<double>(col_idx) * 1000.0 + static_cast<double>(row_idx);
+                    }
+                    column.putColumn(columnData);
+                }
+                rubbl_casacore::ArrayColumn<rubbl_casacore::Double> uvwColumn(table, "UVW");
+                for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
+                    rubbl_casacore::Vector<rubbl_casacore::Double> uvwData(3);
+                    uvwData(0) = static_cast<double>(row_idx) * 0.1;
+                    uvwData(1) = static_cast<double>(row_idx) * 0.2;
+                    uvwData(2) = static_cast<double>(row_idx) * 0.3;
+                    uvwColumn.put(row_idx, uvwData);
+                }
+                std::cout << "  Wrote UVW array column with " << num_rows << " 3-element arrays" << std::endl;
             }
-
-            // Write UVW array column using individual cell operations
-            rubbl_casacore::ArrayColumn<rubbl_casacore::Double> uvwColumn(table, "UVW");
-            for (int row_idx = 0; row_idx < num_rows; ++row_idx) {
-                rubbl_casacore::Vector<rubbl_casacore::Double> uvwData(3);
-                uvwData(0) = static_cast<rubbl_casacore::Double>(row_idx) * 0.1;
-                uvwData(1) = static_cast<rubbl_casacore::Double>(row_idx) * 0.2;
-                uvwData(2) = static_cast<rubbl_casacore::Double>(row_idx) * 0.3;
-
-                uvwColumn.put(row_idx, uvwData);
-            }
-            std::cout << "  Wrote UVW array column with " << num_rows << " 3-element arrays" << std::endl;
 
             std::cout << "Starting read operations for verification..." << std::endl;
 

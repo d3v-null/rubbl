@@ -12,10 +12,13 @@
 #include <casacore/tables/Tables/ArrayColumn.h>
 #include <casacore/tables/Tables/ScaColDesc.h>
 #include <casacore/tables/Tables/ArrColDesc.h>
+#include <casacore/tables/Tables/TableRow.h>
+#include <casacore/tables/Tables/TableRecord.h>
 #include <casacore/casa/Arrays/Vector.h>
 #include <casacore/casa/Arrays/Matrix.h>
 #include <casacore/casa/Arrays/IPosition.h>
 #include <casacore/casa/BasicSL/Complex.h>
+#include <casacore/tables/DataMan/TSMOption.h>
 
 // Use the casacore namespace
 using namespace casacore;
@@ -46,17 +49,28 @@ int main() {
         td.addColumn(ScalarColumnDesc<Int>("ANTENNA2", "Second antenna"));
         td.addColumn(ScalarColumnDesc<Bool>("FLAG_ROW", "Row flag"));
 
-        // Add array columns
+        // Add array columns (default SSM)
         td.addColumn(ArrayColumnDesc<Complex>("DATA", "Visibility data", data_shape, ColumnDesc::FixedShape));
         td.addColumn(ArrayColumnDesc<Bool>("FLAG", "Data flags", data_shape, ColumnDesc::FixedShape));
 
-        // Create the table
+        // Create the table with optional storage option via env STORAGE_MANAGER
+        const char* sm_env = std::getenv("STORAGE_MANAGER");
+        std::string sm = sm_env ? std::string(sm_env) : std::string("default");
         SetupNewTable setup(table_path, td, Table::New);
-        Table table(setup, n_rows);
+        // Map STORAGE_MANAGER to TSMOption and pass into Table constructor (consistent with Rust)
+        TSMOption::Option opt = TSMOption::Default;
+        if (sm == "mmap") opt = TSMOption::MMap;
+        else if (sm == "buffer") opt = TSMOption::Buffer;
+        else if (sm == "cache") opt = TSMOption::Cache;
+        else if (sm == "aipsrc") opt = TSMOption::Aipsrc;
+        TSMOption tsmOpt(opt);
+        Table::EndianFormat endian = Table::LocalEndian;
+        Bool initialize = False;
+        Table table(setup, Table::Plain, n_rows, initialize, endian, tsmOpt);
 
         std::cout << "Writing data..." << std::endl;
 
-        // Write mode via env: WRITE_MODE={column_put|column_put_bulk}
+        // Write mode via env: WRITE_MODE={table_put_row|table_put_cell|column_put|column_put_bulk}
         const char *mode_env = std::getenv("WRITE_MODE");
         std::string write_mode = mode_env ? std::string(mode_env) : std::string("column_put");
 
@@ -68,7 +82,30 @@ int main() {
         ArrayColumn<Complex> data_col(table, "DATA");
         ArrayColumn<Bool> flag_col(table, "FLAG");
 
-        if (write_mode == "column_put_bulk") {
+        if (write_mode == "table_put_row") {
+            // Row-wise path using TableRow and TableRecord
+            TableRow row(table);
+            for (uInt row_idx = 0; row_idx < n_rows; ++row_idx) {
+                TableRecord &rec = row.record();
+                rec.define("TIME", static_cast<Double>(row_idx));
+                rec.define("ANTENNA1", static_cast<Int>(row_idx % 128));
+                rec.define("ANTENNA2", static_cast<Int>((row_idx + 1) % 128));
+                rec.define("FLAG_ROW", (row_idx % 2 == 0));
+
+                Matrix<Complex> data_matrix(data_shape);
+                Matrix<Bool> flag_matrix(data_shape, false);
+                for (uInt i = 0; i < data_shape[0]; ++i) {
+                    for (uInt j = 0; j < data_shape[1]; ++j) {
+                        uInt idx = i * data_shape[1] + j;
+                        data_matrix(i, j) = Complex(static_cast<float>(idx), 0.0f);
+                        flag_matrix(i, j) = (idx % 13 == 0);
+                    }
+                }
+                rec.define("DATA", data_matrix);
+                rec.define("FLAG", flag_matrix);
+                row.put(row_idx);
+            }
+        } else if (write_mode == "column_put_bulk") {
             // Bulk path: write arrays for first 3 rows in one call each, mirroring Rust bulk
             // Use Fortran ordering [i, j, row] to match putColumn expectation
             IPosition arrShape(3, data_shape[0], data_shape[1], n_rows);
@@ -105,6 +142,31 @@ int main() {
             flag_col.putColumn(flag_arr);
 
             // Note: to mirror Rust bulk, we skip scalar column writes here
+        } else if (write_mode == "table_put_cell") {
+            // Per-cell (by column, per row)
+            for (uInt col_idx = 0; col_idx < (uInt)3; ++col_idx) {
+                std::string colName = "COL_" + std::to_string(col_idx);
+                ScalarColumn<Double> column(table, colName);
+                for (uInt row_idx = 0; row_idx < n_rows; ++row_idx) {
+                    double value = static_cast<Double>(col_idx) * 1000.0 + static_cast<Double>(row_idx);
+                    column.put(row_idx, value);
+                }
+            }
+            ArrayColumn<Complex> data_col(table, "DATA");
+            ArrayColumn<Bool> flag_col(table, "FLAG");
+            for (uInt row_idx = 0; row_idx < n_rows; ++row_idx) {
+                Matrix<Complex> data_matrix(data_shape);
+                Matrix<Bool> flag_matrix(data_shape, false);
+                for (uInt i = 0; i < data_shape[0]; ++i) {
+                    for (uInt j = 0; j < data_shape[1]; ++j) {
+                        uInt idx = i * data_shape[1] + j;
+                        data_matrix(i, j) = Complex(static_cast<float>(idx), 0.0f);
+                        flag_matrix(i, j) = (idx % 13 == 0);
+                    }
+                }
+                data_col.put(row_idx, data_matrix);
+                flag_col.put(row_idx, flag_matrix);
+            }
         } else if (write_mode == "column_put") {
             // Per-row path: write a few rows
             for (uInt row_idx = 0; row_idx < n_rows; ++row_idx) {

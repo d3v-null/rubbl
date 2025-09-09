@@ -31,15 +31,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let table_path = tmp_dir.path().join("syscall_tracer_example.ms");
 
     println!("🏗️  Creating table...");
-    // Use default TSMOption for table creation (match C++: no explicit storage manager)
-    let mut table = create_test_table(&table_path, n_rows, &data_shape, None)?;
+    // Select storage manager via env STORAGE_MANAGER={default|mmap|buffer|cache|aipsrc|tsm|tiled}
+    let tsm_env = std::env::var("STORAGE_MANAGER").unwrap_or_else(|_| "default".to_string());
+    println!("📦 Using storage manager: {}", tsm_env);
+    let tsm_opt = match tsm_env.as_str() {
+        "mmap" => Some(rubbl_casatables::TSMOption::TSM_MMAP),
+        "buffer" => Some(rubbl_casatables::TSMOption::TSM_BUFFER),
+        "cache" => Some(rubbl_casatables::TSMOption::TSM_CACHE),
+        "aipsrc" => Some(rubbl_casatables::TSMOption::TSM_AIPSRC),
+        // For tiled, still pass Default; the tracer focuses on syscalls not on exact tile API
+        "tsm" | "tiled" => Some(rubbl_casatables::TSMOption::TSM_DEFAULT),
+        _ => None,
+    };
+    let mut table = create_test_table(&table_path, n_rows, &data_shape, tsm_opt)?;
 
     // Prepare test data
     let data_template = create_test_data(&data_shape);
     let flags_template = create_test_flags(&data_shape);
 
     println!("✍️  Writing data...");
-    // Select write mode via env: WRITE_MODE={put_cell|column_put|column_put_bulk|column_put_shared|column_put_mmap}
+    // Select write mode via env: WRITE_MODE={table_put_row|table_put_cell|column_put|column_put_bulk|column_put_shared|column_put_mmap}
     let mode = std::env::var("WRITE_MODE").unwrap_or_else(|_| "column_put".to_string());
     match mode.as_str() {
         "table_put_cell" => {
@@ -132,10 +143,11 @@ fn create_test_table(
         false,
     )?;
     // Fixed-shape arrays - match C++ exactly (no comments for arrays)
+    // For now we always add arrays the same way; backend SM selection is handled by TSMOption
     table_desc.add_array_column(
         GlueDataType::TpComplex,
         "DATA",
-        None, // C++ doesn't provide comment for arrays
+        None,
         Some(data_shape),
         false,
         false,
@@ -143,7 +155,7 @@ fn create_test_table(
     table_desc.add_array_column(
         GlueDataType::TpBool,
         "FLAG",
-        None, // C++ doesn't provide comment for arrays
+        None,
         Some(data_shape),
         false,
         false,

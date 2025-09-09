@@ -210,7 +210,7 @@ echo -e "${YELLOW}Rust Analysis:${NC}"
 if [ "$SKIP_RUST" = "true" ]; then
     echo -e "${RED}Skipping Rust analysis due to build failure${NC}"
 else
-    if run_with_strace "$OUTPUT_DIR/strace_rust.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" "$RUST_BIN"; then
+    if run_with_strace "$OUTPUT_DIR/strace_rust.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" CASACORE_SKIP_ZERO_INIT=${CASACORE_SKIP_ZERO_INIT:-1} "$RUST_BIN"; then
         print_file_stats "$OUTPUT_DIR/strace_rust.txt"
         run_analysis "Rust - Casatables" "$OUTPUT_DIR/strace_rust.txt" "$OUTPUT_DIR/rust_analysis"
     else
@@ -232,7 +232,7 @@ fi
 # C++ analysis
 if [ "$SKIP_CPP" != "true" ]; then
     echo -e "${YELLOW}C++ Analysis:${NC}"
-    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" "$SCRIPT_DIR/syscall_tracer"; then
+    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" CASACORE_SKIP_ZERO_INIT=${CASACORE_SKIP_ZERO_INIT:-1} "$SCRIPT_DIR/syscall_tracer"; then
         print_file_stats "$OUTPUT_DIR/strace_cpp.txt"
         run_analysis "C++ - CasaCore" "$OUTPUT_DIR/strace_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
     else
@@ -479,7 +479,7 @@ if [ -x "$FLAMEGRAPH_DIR/flamegraph.pl" ] && [ -f "$STACK_COLLAPSER" ]; then
     # Rust
     if [ "$SKIP_RUST" != "true" ]; then
         if [ -n "$RUST_BIN" ] && [ -x "$RUST_BIN" ]; then
-            gen_strace_k_flames rust env WRITE_MODE="${WRITE_MODE:-column_put}" "$RUST_BIN"
+            gen_strace_k_flames rust env WRITE_MODE="${WRITE_MODE:-column_put}" CASACORE_SKIP_ZERO_INIT=${CASACORE_SKIP_ZERO_INIT:-1} "$RUST_BIN"
         else
             echo -e "${YELLOW}⚠ rust: binary missing or not executable: '$RUST_BIN'${NC}"
         fi
@@ -487,7 +487,7 @@ if [ -x "$FLAMEGRAPH_DIR/flamegraph.pl" ] && [ -f "$STACK_COLLAPSER" ]; then
     # C++
     if [ "$SKIP_CPP" != "true" ]; then
         if [ -x "$SCRIPT_DIR/syscall_tracer" ]; then
-            gen_strace_k_flames cpp env WRITE_MODE="${WRITE_MODE:-column_put}" "$SCRIPT_DIR/syscall_tracer"
+            gen_strace_k_flames cpp env WRITE_MODE="${WRITE_MODE:-column_put}" CASACORE_SKIP_ZERO_INIT=${CASACORE_SKIP_ZERO_INIT:-1} "$SCRIPT_DIR/syscall_tracer"
         else
             echo -e "${YELLOW}⚠ cpp: binary missing or not executable: '$SCRIPT_DIR/syscall_tracer'${NC}"
         fi
