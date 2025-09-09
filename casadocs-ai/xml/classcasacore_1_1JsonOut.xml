@@ -1,0 +1,771 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1JsonOut" kind="class" language="C++" prot="public">
+    <compoundname>casacore::JsonOut</compoundname>
+    <includes refid="JsonOut_8h" local="no">JsonOut.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1a3582f8f03c10441437906d6d10c3402d" prot="private" static="no" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream casacore::JsonOut::itsFile</definition>
+        <argsstring></argsstring>
+        <name>itsFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="228" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1adaaf63e22260be556bf1cdd22dc0f628" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; casacore::JsonOut::itsStream</definition>
+        <argsstring></argsstring>
+        <name>itsStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="229" column="18" bodyfile="casa/Json/JsonOut.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1ab643f844c74a183fb387c54f7170d3e7" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::itsIndent</definition>
+        <argsstring></argsstring>
+        <name>itsIndent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="230" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1afb1fbf7a8c99f0398341739aaa9896c8" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::itsIndentStep</definition>
+        <argsstring></argsstring>
+        <name>itsIndentStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="231" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1a51b1e06f6242421ff2db21c0c0a29270" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int casacore::JsonOut::itsLevel</definition>
+        <argsstring></argsstring>
+        <name>itsLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="232" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1af870e4788d68eeadc52e493743f6713f" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::itsCommentStart</definition>
+        <argsstring></argsstring>
+        <name>itsCommentStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="233" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1a1780714a07527665a66bc1328d39ea95" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::itsCommentEnd</definition>
+        <argsstring></argsstring>
+        <name>itsCommentEnd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="234" column="19" bodyfile="casa/Json/JsonOut.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1JsonOut_1aafc3a89042ca01e45a6c9dc375300a7c" prot="private" static="no" mutable="no">
+        <type>vector&lt; <ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> &gt;</type>
+        <definition>vector&lt;Bool&gt; casacore::JsonOut::itsFirstName</definition>
+        <argsstring></argsstring>
+        <name>itsFirstName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="235" column="13" bodyfile="casa/Json/JsonOut.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aa057fe899eb4d9a2c7b895b8b3abe602" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::JsonOut::JsonOut</definition>
+        <argsstring>()</argsstring>
+        <name>JsonOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="113" column="5" bodyfile="casa/Json/JsonOut.cc" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a27448a57676752cd73fcac83e9e9feaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::JsonOut::JsonOut</definition>
+        <argsstring>(const String &amp;name)</argsstring>
+        <name>JsonOut</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="116" column="5" bodyfile="casa/Json/JsonOut.cc" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a0aa060ba99d7ce4cbbe272a9f0043373" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::JsonOut::JsonOut</definition>
+        <argsstring>(ostream &amp;os)</argsstring>
+        <name>JsonOut</name>
+        <param>
+          <type>ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="119" column="5" bodyfile="casa/Json/JsonOut.cc" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a3fd68d26008ebf7a277d1c0e0946cd8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::JsonOut::~JsonOut</definition>
+        <argsstring>()</argsstring>
+        <name>~JsonOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="122" column="5" bodyfile="casa/Json/JsonOut.cc" bodystart="58" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a76602924fac1bfb936de1420c74be967" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::start</definition>
+        <argsstring>(const String &amp;commentStart=String(), const String &amp;commentEnd=String(), const String &amp;indent=&quot;  &quot;)</argsstring>
+        <name>start</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>commentStart</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>commentEnd</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>indent</declname>
+          <defval>&quot;  &quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="129" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="61" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1afead2f853534e5464acd88306e8d431e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="135" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="75" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a50ad3c3a5086f1b7f0aca0ed022e26fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::startNested</definition>
+        <argsstring>(const String &amp;name, const String &amp;comment=String())</argsstring>
+        <name>startNested</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>comment</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="140" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="83" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1afee7ec414c60c52dd10e5eeb3b7d4ac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::endNested</definition>
+        <argsstring>()</argsstring>
+        <name>endNested</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="144" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="95" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a9c64671faa88b70568d0d416db3c6c73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::write</definition>
+        <argsstring>(const String &amp;name, T value, const String &amp;comment=String())</argsstring>
+        <name>write</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>comment</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="153" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a2d3ce43bf7560118ef9585125fc77f34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::writeComment</definition>
+        <argsstring>(const String &amp;comment)</argsstring>
+        <name>writeComment</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>comment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="157" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="172" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1abc39bda540d427703c063f896517b850" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::putNull</definition>
+        <argsstring>()</argsstring>
+        <name>putNull</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="160" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="201" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aecf8106461501008ae624565adb8784b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(T value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="169" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aae0294850252cd11d6aa2340bdc7f008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(Bool value)</argsstring>
+        <name>put</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="170" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="206" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a9f481aa63b598d172b32c76033fc94df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(Float value)</argsstring>
+        <name>put</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="171" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="210" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1ac1d40e3be9a0db08b5fb64c7985631d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(Double value)</argsstring>
+        <name>put</name>
+        <param>
+          <type><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="172" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="231" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a8da46d9804236739fb94941ad149b5a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(const Complex &amp;value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="173" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="252" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aa31d055cb6b8ad50b25dbb27ef610738" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(const DComplex &amp;value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="174" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="260" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a408a69df8d80ad7e0abd280b056f17ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(const char *value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="175" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="268" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a0290d15d859e5fcc0754abdd760a9c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(const String &amp;value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="176" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="270" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1ac2d78663837344bdb17ef31d9a938461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::putArray</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;value, const String &amp;indent, Bool firstLine)</argsstring>
+        <name>putArray</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>indent</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>firstLine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="185" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1ac0cf77656940c3bf4d90f0658575903b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::putArray</definition>
+        <argsstring>(const Array&lt; String &gt; &amp;value, const String &amp;indent, Bool firstLine)</argsstring>
+        <name>putArray</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>indent</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>firstLine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="187" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a6578de59d97b340cf2e47a4c674b9be9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::putArray</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;value, const String &amp;indent, Bool firstLine, Bool valueEndl)</argsstring>
+        <name>putArray</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>indent</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>firstLine</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>valueEndl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="190" column="10"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a9676e80a1a40335d2ab02feb5cb4380c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::escapeString</definition>
+        <argsstring>(const String &amp;in)</argsstring>
+        <name>escapeString</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="194" column="19" bodyfile="casa/Json/JsonOut.cc" bodystart="289" bodyend="327"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aa967349d1936621fff60bcfcd1d24ad3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::JsonOut::JsonOut</definition>
+        <argsstring>(const JsonOut &amp;other)</argsstring>
+        <name>JsonOut</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1JsonOut" kindref="compound">JsonOut</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="198" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a29aef89b2bc1ec2154608229c4fec24e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1JsonOut" kindref="compound">JsonOut</ref> &amp;</type>
+        <definition>JsonOut&amp; casacore::JsonOut::operator=</definition>
+        <argsstring>(const JsonOut &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1JsonOut" kindref="compound">JsonOut</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="201" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a770eddf37b46215d79528c579389d7e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::putName</definition>
+        <argsstring>(const String &amp;name)</argsstring>
+        <name>putName</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="204" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="189" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a2851059fc3f6eea38ccffc144d2f8160" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::writeKV</definition>
+        <argsstring>(const String &amp;name, T value)</argsstring>
+        <name>writeKV</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="209" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a2696528eda5fe8f8b8969a0d013ff841" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::JsonOut::writeKV</definition>
+        <argsstring>(const String &amp;name, const Array&lt; T &gt; &amp;value)</argsstring>
+        <name>writeKV</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="213" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a2858e0387fc1dc6e2011f893790198a5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::writeKV</definition>
+        <argsstring>(const String &amp;name, const ValueHolder &amp;vh)</argsstring>
+        <name>writeKV</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ValueHolder" kindref="compound">ValueHolder</ref> &amp;</type>
+          <declname>vh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="216" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="103" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1a9c005350370036a211246d4a093c4b67" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::JsonOut::put</definition>
+        <argsstring>(const Record &amp;)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <defname>rec</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="220" column="10" bodyfile="casa/Json/JsonOut.cc" bodystart="273" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1JsonOut_1aea7e175f4834e43c2d11add51407fce4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::JsonOut::indentValue</definition>
+        <argsstring>(const String &amp;indent, const String &amp;name) const</argsstring>
+        <name>indentValue</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>indent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Json/JsonOut.h" line="225" column="12" bodyfile="casa/Json/JsonOut.cc" bodystart="183" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="casa/Json/JsonOut.h" line="109" column="3" bodyfile="casa/Json/JsonOut.h" bodystart="110" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1JsonOut_1afead2f853534e5464acd88306e8d431e" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>end</name></member>
+      <member refid="classcasacore_1_1JsonOut_1afee7ec414c60c52dd10e5eeb3b7d4ac5" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>endNested</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a9676e80a1a40335d2ab02feb5cb4380c" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>escapeString</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aea7e175f4834e43c2d11add51407fce4" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>indentValue</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a1780714a07527665a66bc1328d39ea95" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsCommentEnd</name></member>
+      <member refid="classcasacore_1_1JsonOut_1af870e4788d68eeadc52e493743f6713f" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsCommentStart</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a3582f8f03c10441437906d6d10c3402d" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsFile</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aafc3a89042ca01e45a6c9dc375300a7c" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsFirstName</name></member>
+      <member refid="classcasacore_1_1JsonOut_1ab643f844c74a183fb387c54f7170d3e7" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsIndent</name></member>
+      <member refid="classcasacore_1_1JsonOut_1afb1fbf7a8c99f0398341739aaa9896c8" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsIndentStep</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a51b1e06f6242421ff2db21c0c0a29270" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsLevel</name></member>
+      <member refid="classcasacore_1_1JsonOut_1adaaf63e22260be556bf1cdd22dc0f628" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>itsStream</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aa057fe899eb4d9a2c7b895b8b3abe602" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>JsonOut</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a27448a57676752cd73fcac83e9e9feaf" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>JsonOut</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a0aa060ba99d7ce4cbbe272a9f0043373" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>JsonOut</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aa967349d1936621fff60bcfcd1d24ad3" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>JsonOut</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a29aef89b2bc1ec2154608229c4fec24e" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aecf8106461501008ae624565adb8784b" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aae0294850252cd11d6aa2340bdc7f008" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a9f481aa63b598d172b32c76033fc94df" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1ac1d40e3be9a0db08b5fb64c7985631d7" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a8da46d9804236739fb94941ad149b5a8" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1aa31d055cb6b8ad50b25dbb27ef610738" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a408a69df8d80ad7e0abd280b056f17ea" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a0290d15d859e5fcc0754abdd760a9c06" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a9c005350370036a211246d4a093c4b67" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>put</name></member>
+      <member refid="classcasacore_1_1JsonOut_1ac2d78663837344bdb17ef31d9a938461" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>putArray</name></member>
+      <member refid="classcasacore_1_1JsonOut_1ac0cf77656940c3bf4d90f0658575903b" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>putArray</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a6578de59d97b340cf2e47a4c674b9be9" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>putArray</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a770eddf37b46215d79528c579389d7e3" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>putName</name></member>
+      <member refid="classcasacore_1_1JsonOut_1abc39bda540d427703c063f896517b850" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>putNull</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a76602924fac1bfb936de1420c74be967" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>start</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a50ad3c3a5086f1b7f0aca0ed022e26fd" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>startNested</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a9c64671faa88b70568d0d416db3c6c73" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>write</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a2d3ce43bf7560118ef9585125fc77f34" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>writeComment</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a2851059fc3f6eea38ccffc144d2f8160" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>writeKV</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a2696528eda5fe8f8b8969a0d013ff841" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>writeKV</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a2858e0387fc1dc6e2011f893790198a5" prot="private" virt="non-virtual"><scope>casacore::JsonOut</scope><name>writeKV</name></member>
+      <member refid="classcasacore_1_1JsonOut_1a3fd68d26008ebf7a277d1c0e0946cd8e" prot="public" virt="non-virtual"><scope>casacore::JsonOut</scope><name>~JsonOut</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

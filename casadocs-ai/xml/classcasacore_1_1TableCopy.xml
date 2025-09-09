@@ -1,0 +1,587 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TableCopy" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TableCopy</compoundname>
+    <includes refid="TableCopy_8h" local="no">TableCopy.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a1e39a80c6e5ac3928a46d004869cfeb2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref></type>
+        <definition>Table casacore::TableCopy::makeEmptyTable</definition>
+        <argsstring>(const String &amp;newName, const Record &amp;dataManagerInfo, const Table &amp;tab, Table::TableOption option, Table::EndianFormat endianFormat, Bool replaceTSM=True, Bool noRows=False, const StorageOption &amp;=StorageOption())</argsstring>
+        <name>makeEmptyTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>dataManagerInfo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>tab</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref></type>
+          <declname>option</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table_1a65e02b6f560c596cb5dde2d07dcb0cb3" kindref="member">Table::EndianFormat</ref></type>
+          <declname>endianFormat</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>replaceTSM</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1StorageOption" kindref="compound">StorageOption</ref> &amp;</type>
+          <defname>stopt</defname>
+          <defval><ref refid="classcasacore_1_1StorageOption" kindref="compound">StorageOption</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="90" column="16" bodyfile="tables/Tables/TableCopy.cc" bodystart="46" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a108dd20e63334bf4e1a4f1d099982cda" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref></type>
+        <definition>Table casacore::TableCopy::makeEmptyMemoryTable</definition>
+        <argsstring>(const String &amp;newName, const Table &amp;tab, Bool noRows=False)</argsstring>
+        <name>makeEmptyMemoryTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>tab</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="103" column="16" bodyfile="tables/Tables/TableCopy.cc" bodystart="77" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1af6216667f45d513ed54713dc694203b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::TableCopy::copyRows</definition>
+        <argsstring>(Table &amp;out, const Table &amp;in, Bool flush=True)</argsstring>
+        <name>copyRows</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>flush</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="116" column="15" bodyfile="tables/Tables/TableCopy.h" bodystart="116" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a9d1e87e8d354e97f5233101810bd729d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::copyRows</definition>
+        <argsstring>(Table &amp;out, const Table &amp;in, rownr_t startout, rownr_t startin, rownr_t nrrow, Bool flush=True)</argsstring>
+        <name>copyRows</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>startout</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>startin</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>flush</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="118" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="88" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1ab07225a51a29c042fc67f4e4df532811" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::copyInfo</definition>
+        <argsstring>(Table &amp;out, const Table &amp;in)</argsstring>
+        <name>copyInfo</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="124" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1aef8be80cc29ce2d9a1c655c4e55b0789" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::copySubTables</definition>
+        <argsstring>(Table &amp;out, const Table &amp;in, Bool noRows=False, const Block&lt; String &gt; &amp;omit=Block&lt; String &gt;())</argsstring>
+        <name>copySubTables</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>omit</declname>
+          <defval><ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="130" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="132" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a3e3166bcf625f8b2bcd6f9e71642f4d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::copySubTables</definition>
+        <argsstring>(TableRecord &amp;outKeys, const TableRecord &amp;inKeys, const String &amp;outName, Table::TableType outType, const Table &amp;in, Bool noRows=False, const Block&lt; String &gt; &amp;omit=Block&lt; String &gt;())</argsstring>
+        <name>copySubTables</name>
+        <param>
+          <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+          <declname>outKeys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+          <declname>inKeys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>outName</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table_1ac8328c6b0f8cfbe9f75ffdd76c618203" kindref="member">Table::TableType</ref></type>
+          <declname>outType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>omit</declname>
+          <defval><ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="137" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="154" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a12483a20b6d36d09e08150c1d43fad58" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::cloneColumn</definition>
+        <argsstring>(const Table &amp;fromTable, const String &amp;fromColumn, Table &amp;toTable, const String &amp;newColumn, const String &amp;dataManagerName=String(), const Record &amp;newdmInfo=Record())</argsstring>
+        <name>cloneColumn</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>toTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newColumn</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataManagerName</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>newdmInfo</declname>
+          <defval><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="149" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="196" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a44a534e39598790e1185427ccdc59c23" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void casacore::TableCopy::cloneColumnTyped</definition>
+        <argsstring>(const Table &amp;fromTable, const String &amp;fromColumn, Table &amp;toTable, const String &amp;newColumn, const String &amp;dataManagerName=String(), const Record &amp;newdmInfo=Record())</argsstring>
+        <name>cloneColumnTyped</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>toTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newColumn</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataManagerName</declname>
+          <defval><ref refid="classcasacore_1_1String" kindref="compound">String</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>newdmInfo</declname>
+          <defval><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="158" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a69fb43823dc7c250085ba0e70f31a4a6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::copyColumnData</definition>
+        <argsstring>(const Table &amp;fromTable, const String &amp;fromColumn, Table &amp;toTable, const String &amp;toColumn, Bool preserveTileShape=True)</argsstring>
+        <name>copyColumnData</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>toTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>toColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>preserveTileShape</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="185" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="239" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a0b1aaa8f982b6f01c0869edfab0035c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void casacore::TableCopy::fillArrayColumn</definition>
+        <argsstring>(Table &amp;table, const String &amp;column, const Array&lt; T &gt; &amp;value)</argsstring>
+        <name>fillArrayColumn</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="194" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a6d99b11f3811c13d05dcf637d58756ee" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void casacore::TableCopy::fillColumnData</definition>
+        <argsstring>(Table &amp;table, const String &amp;column, const T &amp;value)</argsstring>
+        <name>fillColumnData</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="201" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1acde2776941c6b9a2af7d7fee0717f527" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::TableCopy::fillColumnData</definition>
+        <argsstring>(Table &amp;table, const String &amp;column, const char *value)</argsstring>
+        <name>fillColumnData</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="204" column="15" bodyfile="tables/Tables/TableCopy.h" bodystart="204" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a004826c74412d7fa15fb58fa33c97e0c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void casacore::TableCopy::fillColumnData</definition>
+        <argsstring>(Table &amp;table, const String &amp;column, const T &amp;value, const Table &amp;fromTable, const String &amp;fromColumn, Bool preserveTileShape=True)</argsstring>
+        <name>fillColumnData</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>preserveTileShape</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="214" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a9533ccd9f1561a0eb285313852992e75" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::TableCopy::fillColumnData</definition>
+        <argsstring>(Table &amp;table, const String &amp;column, const char *value, const Table &amp;fromTable, const String &amp;fromColumn, Bool preserveTileShape=True)</argsstring>
+        <name>fillColumnData</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>preserveTileShape</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="219" column="15" bodyfile="tables/Tables/TableCopy.h" bodystart="219" bodyend="224"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TableCopy_1a450e3724831ac503c61f59b5113a9d2b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCopy::doCloneColumn</definition>
+        <argsstring>(const Table &amp;fromTable, const String &amp;fromColumn, Table &amp;toTable, const ColumnDesc &amp;newColumn, const String &amp;dataManagerName, const Record &amp;newdmInfo)</argsstring>
+        <name>doCloneColumn</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>fromTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fromColumn</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>toTable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+          <declname>newColumn</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataManagerName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>newdmInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCopy.h" line="227" column="15" bodyfile="tables/Tables/TableCopy.cc" bodystart="207" bodyend="237"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/Tables/TableCopy.h" line="76" column="1" bodyfile="tables/Tables/TableCopy.h" bodystart="77" bodyend="231"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TableCopy_1a12483a20b6d36d09e08150c1d43fad58" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>cloneColumn</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a44a534e39598790e1185427ccdc59c23" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>cloneColumnTyped</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a69fb43823dc7c250085ba0e70f31a4a6" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copyColumnData</name></member>
+      <member refid="classcasacore_1_1TableCopy_1ab07225a51a29c042fc67f4e4df532811" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copyInfo</name></member>
+      <member refid="classcasacore_1_1TableCopy_1af6216667f45d513ed54713dc694203b4" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copyRows</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a9d1e87e8d354e97f5233101810bd729d" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copyRows</name></member>
+      <member refid="classcasacore_1_1TableCopy_1aef8be80cc29ce2d9a1c655c4e55b0789" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copySubTables</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a3e3166bcf625f8b2bcd6f9e71642f4d0" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>copySubTables</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a450e3724831ac503c61f59b5113a9d2b" prot="private" virt="non-virtual"><scope>casacore::TableCopy</scope><name>doCloneColumn</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a0b1aaa8f982b6f01c0869edfab0035c1" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>fillArrayColumn</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a6d99b11f3811c13d05dcf637d58756ee" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>fillColumnData</name></member>
+      <member refid="classcasacore_1_1TableCopy_1acde2776941c6b9a2af7d7fee0717f527" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>fillColumnData</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a004826c74412d7fa15fb58fa33c97e0c" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>fillColumnData</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a9533ccd9f1561a0eb285313852992e75" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>fillColumnData</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a108dd20e63334bf4e1a4f1d099982cda" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>makeEmptyMemoryTable</name></member>
+      <member refid="classcasacore_1_1TableCopy_1a1e39a80c6e5ac3928a46d004869cfeb2" prot="public" virt="non-virtual"><scope>casacore::TableCopy</scope><name>makeEmptyTable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

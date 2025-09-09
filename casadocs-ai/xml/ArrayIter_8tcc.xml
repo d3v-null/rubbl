@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ArrayIter_8tcc" kind="file" language="C++">
+    <compoundname>ArrayIter.tcc</compoundname>
+    <includedby refid="ArrayIter_8h" local="yes">casa/Arrays/ArrayIter.h</includedby>
+    <invincdepgraph>
+      <node id="7">
+        <label>tables/DataMan/CompressFloat.cc</label>
+        <link refid="CompressFloat_8cc"/>
+      </node>
+      <node id="15">
+        <label>tables/TaQL/ExprMathNodeArray.cc</label>
+        <link refid="ExprMathNodeArray_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/CompressComplex.cc</label>
+        <link refid="CompressComplex_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/ArrayIter.h</label>
+        <link refid="ArrayIter_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="14">
+        <label>tables/TaQL/ExprGroupAggrFuncArray.cc</label>
+        <link refid="ExprGroupAggrFuncArray_8cc"/>
+      </node>
+      <node id="16">
+        <label>tables/TaQL/ExprNodeArray.cc</label>
+        <link refid="ExprNodeArray_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/Tables/PlainColumn.cc</label>
+        <link refid="PlainColumn_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/TaQL/MArrayMath.h</label>
+        <link refid="MArrayMath_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tables/TaQL/ExprFuncNode.cc</label>
+        <link refid="ExprFuncNode_8cc"/>
+      </node>
+      <node id="13">
+        <label>tables/TaQL/ExprFuncNodeArray.cc</label>
+        <link refid="ExprFuncNodeArray_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/ArrayIter.tcc</label>
+        <link refid="ArrayIter_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casa/Arrays/VectorIter.h</label>
+        <link refid="VectorIter_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/MatrixIter.h</label>
+        <link refid="MatrixIter_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/StManColumn.cc</label>
+        <link refid="StManColumn_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/Tables/ArrColData.cc</label>
+        <link refid="ArrColData_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>ArrayIter.cc:<sp/>Iterate<sp/>an<sp/>Array<sp/>cursor<sp/>through<sp/>another<sp/>Array</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1997,1999,2003</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_ARRAYITER_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_ARRAYITER_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayIter.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>ArrayIterator&lt;T&gt;::ArrayIterator(const<sp/>Array&lt;T&gt;<sp/>&amp;a,<sp/>size_t<sp/>byDim)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>ArrayPositionIterator(a.shape(),<sp/>byDim),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pOriginalArray_p()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init(a);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>ArrayIterator&lt;T&gt;::ArrayIterator(const<sp/>Array&lt;T&gt;<sp/>&amp;a,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition<sp/>&amp;axes,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>axesAreCursor)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>ArrayPositionIterator(a.shape(),<sp/>axes,<sp/>axesAreCursor),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pOriginalArray_p()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init(a);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/>&lt;item&gt;<sp/>ArrayIteratorError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>ArrayIterator&lt;T&gt;::init(const<sp/>Array&lt;T&gt;<sp/>&amp;a)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pOriginalArray_p.reference<sp/>(a);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataPtr_p<sp/>=<sp/>pOriginalArray_p.begin_p;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(dimIter()<sp/>&lt;<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayIteratorError(&quot;ArrayIterator&lt;T&gt;::ArrayIterator&lt;T&gt;<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>at<sp/>the<sp/>moment<sp/>cannot<sp/>iterate<sp/>by<sp/>scalars&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>blc(pOriginalArray_p.ndim(),<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>trc(pOriginalArray_p.endPosition());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Calculate<sp/>what<sp/>the<sp/>offset<sp/>for<sp/>ap_p-&gt;begin<sp/>is<sp/>for<sp/>each<sp/>step.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>offset<sp/>is<sp/>the<sp/>value<sp/>that<sp/>has<sp/>to<sp/>be<sp/>added<sp/>to<sp/>dataPtr_p<sp/>to<sp/>go</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>to<sp/>the<sp/>next<sp/>chunk.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>offset<sp/>calculation<sp/>must<sp/>match<sp/>the<sp/>way<sp/>nextStep<sp/>is<sp/>iterating.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>iteration<sp/>is<sp/>such<sp/>that<sp/>shape(i)-1<sp/>steps<sp/>are<sp/>made<sp/>for<sp/>axis<sp/>i.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>iAxes<sp/>=<sp/>iterAxes();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>steps<sp/>=<sp/>pOriginalArray_p.steps();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>shape<sp/>=<sp/>pOriginalArray_p.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset_p.resize<sp/>(a.ndim());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset_p<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>lastoff<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>i=0;<sp/>i&lt;iAxes.nelements();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>axis<sp/>=<sp/>iAxes(i);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(trc(axis)<sp/>&gt;<sp/>0)<sp/>trc(axis)<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>offset_p(axis)<sp/>=<sp/>steps(axis)<sp/>-<sp/>lastoff;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lastoff<sp/>+=<sp/>(shape(axis)-1)*steps(axis);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>diddle<sp/>with<sp/>the<sp/>internal<sp/>array<sp/>to<sp/>ensure<sp/>that<sp/>it<sp/>is<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>correct<sp/>shape.<sp/>We<sp/>only<sp/>want<sp/>to<sp/>remove<sp/>the<sp/>iteration<sp/>axes,<sp/>not<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>possible<sp/>degenerate<sp/>axes<sp/>in<sp/>the<sp/>cursor).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(dimIter()<sp/>&lt;<sp/>pOriginalArray_p.ndim())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ap_p.reset(<sp/>new<sp/>Array&lt;T&gt;(pOriginalArray_p(blc,trc).nonDegenerate(cursorAxes()))<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Same<sp/>dimensionality,<sp/>so<sp/>no<sp/>degenerate<sp/>axes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ap_p.reset(<sp/>new<sp/>Array&lt;T&gt;(pOriginalArray_p)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/>&lt;item&gt;<sp/>ArrayIteratorError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>ArrayIterator&lt;T&gt;::apSetPointer(int<sp/>stepDim)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(ap_p<sp/>==<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayIteratorError(&quot;ArrayIterator&lt;T&gt;::apSetPointer()&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>no<sp/>iteration<sp/>array!&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(pastEnd())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;begin_p<sp/>=<sp/>0;<sp/><sp/>//<sp/>Mark<sp/>it<sp/>&quot;invalid&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(stepDim<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dataPtr_p<sp/>=<sp/>pOriginalArray_p.begin_p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dataPtr_p<sp/>+=<sp/>offset_p(stepDim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;begin_p<sp/>=<sp/>dataPtr_p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;setEndIter();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>ArrayIterator&lt;T&gt;::reset()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArrayPositionIterator::reset();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>apSetPointer(-1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>ArrayIterator&lt;T&gt;::next()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>stepDim<sp/>=<sp/>ArrayPositionIterator::nextStep();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>apSetPointer(stepDim);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>ArrayIterator&lt;T&gt;::set<sp/>(const<sp/>IPosition&amp;<sp/>cursorPos)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArrayPositionIterator::set<sp/>(cursorPos);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(ap_p<sp/>==<sp/>nullptr)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayIteratorError(&quot;ArrayIterator&lt;T&gt;::apSetPointer()&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>no<sp/>iteration<sp/>array!&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(pastEnd())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;begin_p<sp/>=<sp/>0;<sp/><sp/>//<sp/>Mark<sp/>it<sp/>&quot;invalid&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataPtr_p<sp/>=<sp/>&amp;(pOriginalArray_p(pos()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;begin_p<sp/>=<sp/>dataPtr_p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ap_p-&gt;setEndIter();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>ArrayBase&amp;<sp/>ArrayIterator&lt;T&gt;::getArray()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>array();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/ArrayIter.tcc"/>
+  </compounddef>
+</doxygen>

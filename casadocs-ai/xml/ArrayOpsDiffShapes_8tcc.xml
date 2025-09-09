@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ArrayOpsDiffShapes_8tcc" kind="file" language="C++">
+    <compoundname>ArrayOpsDiffShapes.tcc</compoundname>
+    <includedby refid="ArrayOpsDiffShapes_8h" local="yes">casa/Arrays/ArrayOpsDiffShapes.h</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>casa/Arrays/ArrayOpsDiffShapes.cc</label>
+        <link refid="ArrayOpsDiffShapes_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/ArrayOpsDiffShapes.tcc</label>
+        <link refid="ArrayOpsDiffShapes_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/ArrayOpsDiffShapes.h</label>
+        <link refid="ArrayOpsDiffShapes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>ArrayOpsDiffShapes.tcc:<sp/>Operations<sp/>for<sp/>2<sp/>Arrays<sp/>with<sp/>possibly<sp/>different<sp/>shapes.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>2009</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/></highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Foundation,<sp/>Inc.,<sp/>675<sp/>Mass<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_ARRAYOPSDIFFSHAPES_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_ARRAYOPSDIFFSHAPES_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayMath.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayLogical.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;IPosition.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">LogicalArray<sp/>reformedMask(const<sp/>Array&lt;T&gt;&amp;<sp/>data,<sp/>const<sp/>T<sp/>truthvalue,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>desiredform)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(data.shape().nelements()<sp/>==<sp/>desiredform.nelements()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>data.shape()<sp/>==<sp/>desiredform){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(data<sp/>==<sp/>truthvalue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>if(static_cast&lt;int&gt;(data.nelements())<sp/>==<sp/>desiredform.product()){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(data<sp/>==<sp/>truthvalue).reform(desiredform);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(rightExpandableToLeft(data.shape(),<sp/>desiredform)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>n_data_dim<sp/>=<sp/>data.shape().nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>n_desired_dim<sp/>=<sp/>desiredform.nelements();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Create<sp/>an<sp/>array<sp/>with<sp/>desiredform&apos;s<sp/>shape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArray<sp/>collapseddata(desiredform);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ReadOnlyArrayIterator&lt;T&gt;<sp/>data_cursor(data,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IPosition::otherAxes(n_data_dim,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IPosition::makeAxisPath(n_desired_dim)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IPosition<sp/>collapsedPos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Go<sp/>through<sp/>each<sp/>position<sp/>in<sp/>the<sp/>new<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(ArrayPositionIterator<sp/>positer(desiredform,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>!positer.pastEnd();<sp/>positer.next()){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>collapsedPos<sp/>=<sp/>positer.pos();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>data_cursor.set(collapsedPos);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>collapseddata(collapsedPos)<sp/>=<sp/>anyEQ(data_cursor.array(),<sp/>truthvalue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>////<sp/>Apparently<sp/>it<sp/>would<sp/>be<sp/>expensive<sp/>to<sp/>put<sp/>this<sp/>inside<sp/>the<sp/>for<sp/>statement.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//LogicalArray::iterator<sp/>iterend(collapseddata.end());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>for(LogicalArray::iterator<sp/>it<sp/>=<sp/>collapseddata.begin();<sp/>it<sp/>!=<sp/>iterend;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++it)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>*it<sp/>=<sp/>data(it.itsCurPos).anyEQ(truthvalue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>collapseddata;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>os;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;reformedMask():<sp/>Could<sp/>not<sp/>reconcile<sp/>the<sp/>input<sp/>shape<sp/>(&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>&lt;&lt;<sp/>data.shape()<sp/>&lt;&lt;<sp/>&quot;)\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;with<sp/>the<sp/>output<sp/>shape<sp/>(&quot;<sp/>&lt;&lt;<sp/>desiredform<sp/>&lt;&lt;<sp/>&quot;).&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>throw(ArrayConformanceError(os.str()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>L,<sp/>typename<sp/>R,<sp/>typename<sp/>BinaryOperator&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>binOpExpandInPlace(Array&lt;L&gt;&amp;<sp/>leftarr,<sp/>const<sp/>Array&lt;R&gt;&amp;<sp/>rightarr,<sp/>BinaryOperator<sp/>op)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>IPosition<sp/>leftShape<sp/><sp/>=<sp/>leftarr.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>IPosition<sp/>rightShape<sp/>=<sp/>rightarr.shape();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>leftarr.conform(rightarr)<sp/>fails<sp/>if<sp/>e.g.<sp/>L<sp/>==<sp/>double<sp/>and<sp/>R<sp/>==<sp/>float.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(leftShape.nelements()<sp/>==<sp/>rightShape.nelements()<sp/>&amp;&amp;<sp/>leftShape<sp/>==<sp/>rightShape){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrayTransformInPlace(leftarr,<sp/>rightarr,<sp/>op);<sp/><sp/>//<sp/>Autochecks<sp/>contiguity.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>if(leftarr.nelements()<sp/>==<sp/>rightarr.nelements()){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrayTransformInPlace(leftarr,<sp/>rightarr.reform(leftShape),<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>n_right_dim<sp/>=<sp/>rightShape.nelements();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(rightExpandableToLeft(leftShape,<sp/>rightShape)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IPosition<sp/>iteraxes(IPosition::otherAxes(leftShape.nelements(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IPosition::makeAxisPath(n_right_dim)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ArrayIterator&lt;L&gt;<sp/>left_cursor(leftarr,<sp/>iteraxes);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IPosition<sp/>rightPos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Go<sp/>through<sp/>each<sp/>position<sp/>in<sp/>the<sp/>new<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for(ArrayPositionIterator<sp/>positer(rightShape,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>!positer.pastEnd();<sp/>positer.next()){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rightPos<sp/>=<sp/>positer.pos();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>left_cursor.set(rightPos);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>&quot;leftChunk<sp/>op=<sp/>rightEntry&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrayTransformInPlace(left_cursor.array(),<sp/>rightarr(rightPos),<sp/>op);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>os;<sp/><sp/>//<sp/>String(rightShape)<sp/>is<sp/>not<sp/>supported.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;binOpExpandInPlace():<sp/>rightarr&apos;s<sp/>shape<sp/>(&quot;<sp/>&lt;&lt;<sp/>rightShape<sp/>&lt;&lt;<sp/>&quot;)\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;<sp/>has<sp/>more<sp/>dimensions<sp/>than<sp/>leftarr&apos;s<sp/>(&quot;<sp/>&lt;&lt;<sp/>leftShape<sp/>&lt;&lt;<sp/>&quot;)!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>throw(ArrayConformanceError(os.str()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#End<sp/>casa<sp/>namespace</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/ArrayOpsDiffShapes.tcc"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="rowtimeblockencoder_8cc" kind="file" language="C++">
+    <compoundname>rowtimeblockencoder.cc</compoundname>
+    <includes refid="rowtimeblockencoder_8h" local="yes">rowtimeblockencoder.h</includes>
+    <includes refid="stochasticencoder_8h" local="yes">stochasticencoder.h</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>iterator</label>
+      </node>
+      <node id="11">
+        <label>cmath</label>
+      </node>
+      <node id="4">
+        <label>uvector.h</label>
+        <link refid="uvector_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>stdexcept</label>
+      </node>
+      <node id="15">
+        <label>random</label>
+      </node>
+      <node id="12">
+        <label>timeblockbuffer.h</label>
+        <link refid="timeblockbuffer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>timeblockencoder.h</label>
+        <link refid="timeblockencoder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>vector</label>
+      </node>
+      <node id="2">
+        <label>rowtimeblockencoder.h</label>
+        <link refid="rowtimeblockencoder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+      <node id="1">
+        <label>tables/Dysco/rowtimeblockencoder.cc</label>
+        <link refid="rowtimeblockencoder_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stochasticencoder.h</label>
+        <link refid="stochasticencoder_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>complex</label>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="6">
+        <label>cstring</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rowtimeblockencoder_8h" kindref="compound">rowtimeblockencoder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stochasticencoder_8h" kindref="compound">stochasticencoder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacedyscostman" kindref="compound">dyscostman</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><ref refid="classRowTimeBlockEncoder_1a16d01d68453cd2225d89c64a928c9bf2" kindref="member">RowTimeBlockEncoder::RowTimeBlockEncoder</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nPol,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nChannels)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>_nPol(nPol),</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_nChannels(nChannels),</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_ditherDist(<ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">StochasticEncoder</ref>&lt;float&gt;::GetDitherDistribution()),</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_rowFactors()<sp/>{}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRowTimeBlockEncoder_1a0f68e77e07576f79a790748f12651c0e" kindref="member">RowTimeBlockEncoder::InitializeDecode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*metaBuffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nRow,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*nAntennae*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>_rowFactors.<ref refid="classao_1_1uvector_1acb06505af16be08f01f5a0028da9fe88" kindref="member">assign</ref>(metaBuffer,<sp/>metaBuffer<sp/>+<sp/>nRow);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRowTimeBlockEncoder_1a766cfe01346ee6193079f8c06b92fdd1" kindref="member">RowTimeBlockEncoder::Decode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">StochasticEncoder&lt;float&gt;</ref><sp/>&amp;gausEncoder,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FBuffer<sp/>&amp;buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>symbol_t<sp/>*symbolBuffer,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>blockRow,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>antenna1,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>antenna2)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><ref refid="classTimeBlockEncoder_1a9128a7125086ffacb872aca4a3bcc742" kindref="member">FBufferRow</ref><sp/>&amp;row<sp/>=<sp/>buffer[blockRow];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>row.antenna1<sp/>=<sp/>antenna1;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>row.antenna2<sp/>=<sp/>antenna2;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>row.visibilities.resize(_nChannels<sp/>*<sp/>_nPol);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>std::complex&lt;float&gt;<sp/>*destination<sp/>=<sp/>row.visibilities.data();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref><sp/>*srcRowPtr<sp/>=<sp/>symbolBuffer<sp/>+<sp/>blockRow<sp/>*<sp/><ref refid="classRowTimeBlockEncoder_1abc401588ad3f3e628242f23fa71a84ed" kindref="member">SymbolsPerRow</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>visPerRow<sp/>=<sp/>_nPol<sp/>*<sp/>_nChannels;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>visPerRow;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>factor<sp/>=<sp/>_rowFactors[blockRow];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>destination-&gt;real(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" kindref="member">Decode</ref>(*srcRowPtr))<sp/>*<sp/>factor);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>++srcRowPtr;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>destination-&gt;imag(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" kindref="member">Decode</ref>(*srcRowPtr))<sp/>*<sp/>factor);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>++srcRowPtr;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>++destination;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>UseDithering&gt;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RowTimeBlockEncoder::encode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">StochasticEncoder&lt;float&gt;</ref><sp/>&amp;gausEncoder,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FBuffer<sp/>&amp;buffer,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*metaBuffer,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>symbol_t<sp/>*symbolBuffer,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*antennaCount*/</highlight><highlight class="normal">,<sp/>std::mt19937<sp/>*rnd)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>encoding<sp/>is<sp/>performed<sp/>with<sp/>doubles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>std::vector&lt;DBufferRow&gt;<sp/>data;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>buffer.ConvertVector&lt;std::complex&lt;double&gt;&gt;(data);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>visPerRow<sp/>=<sp/>_nPol<sp/>*<sp/>_nChannels;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Scale<sp/>every<sp/>maximum<sp/>per<sp/>row<sp/>to<sp/>the<sp/>max<sp/>level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>maxLevel<sp/>=<sp/>gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1a43fe5825d91654232952af5c85621461" kindref="member">MaxQuantity</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>rowIndex<sp/>=<sp/>0;<sp/>rowIndex<sp/>!=<sp/>data.size();<sp/>++rowIndex)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" kindref="member">DBufferRow</ref><sp/>&amp;row<sp/>=<sp/>data[rowIndex];</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>maxVal<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>visPerRow;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::complex&lt;double&gt;<sp/>v<sp/>=<sp/>row.visibilities[i];</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>m<sp/>=<sp/><ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">std::max</ref>(<ref refid="namespacecasacore_1a4861fb104ff2017605fb4cfd8cb2313c" kindref="member">std::fabs</ref>(v.real()),<sp/><ref refid="namespacecasacore_1a4861fb104ff2017605fb4cfd8cb2313c" kindref="member">std::fabs</ref>(v.imag()));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1_1arrays__internal_1a3cf71da9c9565e64651036e50ee046fd" kindref="member">std::isfinite</ref>(m))<sp/>maxVal<sp/>=<sp/><ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">std::max</ref>(maxVal,<sp/>m);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>factor<sp/>=<sp/>(maxVal<sp/>==<sp/>0.0)<sp/>?<sp/>1.0<sp/>:<sp/>maxLevel<sp/>/<sp/>maxVal;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>visPerRow;<sp/>++i)<sp/>row.visibilities[i]<sp/>*=<sp/>factor;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>metaBuffer[rowIndex]<sp/>=<sp/>maxVal<sp/>/<sp/>maxLevel;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref><sp/>*symbolBufferPtr<sp/>=<sp/>symbolBuffer;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" kindref="member">DBufferRow</ref><sp/>&amp;row<sp/>:<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>visPerRow;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(UseDithering)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>symbolBufferPtr[i<sp/>*<sp/>2]<sp/>=<sp/>gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1ac0bb79f9d0c710f2e83459872215b77c" kindref="member">EncodeWithDithering</ref>(</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>row.visibilities[i].real(),<sp/>_ditherDist(*rnd));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>symbolBufferPtr[i<sp/>*<sp/>2<sp/>+<sp/>1]<sp/>=<sp/>gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1ac0bb79f9d0c710f2e83459872215b77c" kindref="member">EncodeWithDithering</ref>(</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>row.visibilities[i].imag(),<sp/>_ditherDist(*rnd));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>symbolBufferPtr[i<sp/>*<sp/>2]<sp/>=<sp/>gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1a626e354453b71ef62e2adbe9f9d87cf3" kindref="member">Encode</ref>(row.visibilities[i].real());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>symbolBufferPtr[i<sp/>*<sp/>2<sp/>+<sp/>1]<sp/>=</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gausEncoder.<ref refid="classdyscostman_1_1StochasticEncoder_1a626e354453b71ef62e2adbe9f9d87cf3" kindref="member">Encode</ref>(row.visibilities[i].imag());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>symbolBufferPtr<sp/>+=<sp/>visPerRow<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="tables/Dysco/rowtimeblockencoder.cc"/>
+  </compounddef>
+</doxygen>

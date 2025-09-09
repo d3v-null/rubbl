@@ -1,0 +1,1800 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1BaseColumn" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::BaseColumn</compoundname>
+    <derivedcompoundref refid="classcasacore_1_1ConcatColumn" prot="public" virt="non-virtual">casacore::ConcatColumn</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1PlainColumn" prot="public" virt="non-virtual">casacore::PlainColumn</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1RefColumn" prot="public" virt="non-virtual">casacore::RefColumn</derivedcompoundref>
+    <includes refid="BaseColumn_8h" local="no">BaseColumn.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1BaseColumn_1a841f663aec3e2e3254a7c1f3b1ccd051" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="classcasacore_1_1BaseColumnDesc" kindref="compound">BaseColumnDesc</ref> *</type>
+        <definition>const BaseColumnDesc* casacore::BaseColumn::colDescPtr_p</definition>
+        <argsstring></argsstring>
+        <name>colDescPtr_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="314" column="27" bodyfile="tables/Tables/BaseColumn.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1BaseColumn_1abfbe5d9f3dacabdc8e64520fa8520f9f" prot="private" static="no" mutable="yes">
+        <type><ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref></type>
+        <definition>ColumnDesc casacore::BaseColumn::colDesc_p</definition>
+        <argsstring></argsstring>
+        <name>colDesc_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="319" column="28" bodyfile="tables/Tables/BaseColumn.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a9c4f63d0eae513d8f38dcb7077eb48dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::BaseColumn::BaseColumn</definition>
+        <argsstring>(const BaseColumnDesc *)</argsstring>
+        <name>BaseColumn</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1BaseColumnDesc" kindref="compound">BaseColumnDesc</ref> *</type>
+          <defname>cdp</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="101" column="5" bodyfile="tables/Tables/BaseColumn.cc" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ab1efd82846c9d846fce103f1a9dd8d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::BaseColumn::~BaseColumn</definition>
+        <argsstring>()</argsstring>
+        <name>~BaseColumn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="103" column="13" bodyfile="tables/Tables/BaseColumn.cc" bodystart="37" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1adac4e659f669a9a5b69584448b4ebe2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseColumn::isWritable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isWritable</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a8365151c269c79003759140bbdda88d7">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1a4d09c17e799cb562ff5d1364395e4f52">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a2ba4fde5fb690dabfa7199a1878bd592">isWritable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="106" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ab5ed198d4c5980cdc24fb3b69ee21c5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseColumn::isStored</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isStored</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1ac91f0ef1d70298387dc75bc6e8cb6388">isStored</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1a22f15f915977fbb7c0c37cfd0a26630f">isStored</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a3af07f2316926e47d36de1e4f3d5c177">isStored</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="109" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a8551965b50bbadbfcdfd149c30a349af" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+        <definition>virtual TableRecord&amp; casacore::BaseColumn::rwKeywordSet</definition>
+        <argsstring>()=0</argsstring>
+        <name>rwKeywordSet</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a4df69acd5a0f4d1d608935600c73a186">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1a6779141bdb86e8487fa98def33ab6e10">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1ab81ead53d2b208f13c6e2655e7d57886">rwKeywordSet</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="113" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a2059b93dec4db4d3eed52bc8fccc8b80" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+        <definition>virtual TableRecord&amp; casacore::BaseColumn::keywordSet</definition>
+        <argsstring>()=0</argsstring>
+        <name>keywordSet</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a3b8587c0408b181254d0ce987abb35c0">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1aa9158b678cb411f33e5d43289f2e7c1d">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a93637257dee0f251a6acd15cdadffca2">keywordSet</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="114" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af4b899f56993f45afc0a9bacc690f3c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+        <definition>const ColumnDesc &amp; casacore::BaseColumn::columnDesc</definition>
+        <argsstring>() const</argsstring>
+        <name>columnDesc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="118" column="22" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1053" bodyend="1057"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a0d68bd40628248cccd51cf096b9eafc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+        <definition>virtual rownr_t casacore::BaseColumn::nrow</definition>
+        <argsstring>() const =0</argsstring>
+        <name>nrow</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a6d12ccae5a7b8124e0a742e01dae6421">nrow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1affc8cd2f1a2f41597b10bdb122bba1d2">nrow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1af99a5e385912c73c1a50dd7950e18500">nrow</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="121" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a7187f1e30ae5aa606098e610f830285a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseColumn::isDefined</definition>
+        <argsstring>(rownr_t rownr) const =0</argsstring>
+        <name>isDefined</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a79b4acb899ec66eeeebf086d0bd946cd">isDefined</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a29580f50dee7ec10e92543f4d899b26c">isDefined</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a4ba74230f9699ac2aa34611796b8f00e">isDefined</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a244161bb3546e1eee587f3f9c1ec6319">isDefined</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a313febf41140fff1ea0d93f010b16969">isDefined</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="124" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aa91f34eda1d832a9da5164cf487af5e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::setShape</definition>
+        <argsstring>(rownr_t rownr, const IPosition &amp;shape)</argsstring>
+        <name>setShape</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a28bfc111a7fe9c82f6383068cf3d9e66">setShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a36e6c85eac4604d3a91db75bb5d2ccc4">setShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1ad95bfcc1ee21c2096e01990355db65b6">setShape</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="127" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ad3cb13bb9746df8b5bd0a91128016a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::setShape</definition>
+        <argsstring>(rownr_t rownr, const IPosition &amp;shape, const IPosition &amp;tileShape)</argsstring>
+        <name>setShape</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a634a971421dd89c283bc6e8210fe12e5">setShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1af21c081232893cc0486e72f3ec62acca">setShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1aac4d0656ed72b19c2d2a41cc1c69934f">setShape</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>tileShape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="130" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a76039cb9266fd53216c5703881bf0187" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::BaseColumn::ndimColumn</definition>
+        <argsstring>() const</argsstring>
+        <name>ndimColumn</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1aee25057a62b447b9dfab002f4c89616d">ndimColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1aa6117443553ced6cc58e9437cdd226cc">ndimColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a4e89e31f1a252507a4f2af51512a4182">ndimColumn</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="134" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="56" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a6823f826aab3f57e7eb642e0bc2d8109" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::BaseColumn::shapeColumn</definition>
+        <argsstring>() const</argsstring>
+        <name>shapeColumn</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1ae07374c56f7cbf8e729b10d3d6390613">shapeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a6a237e84d0f70d7d6ccfecaf57606124">shapeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a33e831283b2bbcb82b8ec21e70141314">shapeColumn</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="137" column="23" bodyfile="tables/Tables/BaseColumn.cc" bodystart="63" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a2e65fcd594e5f75ceecd5940863bb71c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::BaseColumn::ndim</definition>
+        <argsstring>(rownr_t rownr) const</argsstring>
+        <name>ndim</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a2ee35237a83462f966ce15f56fdbb09f">ndim</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1aff30988ff772b401fa0e883a3e3a68bf">ndim</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a4226e07ea4d2632b37b540a4f0e40c11">ndim</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="140" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aca602d56f7a181257af9ce3b3d2c21f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::BaseColumn::shape</definition>
+        <argsstring>(rownr_t rownr) const</argsstring>
+        <name>shape</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a8b567ccdf6b3e9e44239ceb5ed64194d">shape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a104010300e1e55c6977dc2f09e122895">shape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1ac3838d9520cb0c5f64bb9df2431dc7ac">shape</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="143" column="23" bodyfile="tables/Tables/BaseColumn.cc" bodystart="77" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a727fb475804b83721910ca55390996e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::BaseColumn::tileShape</definition>
+        <argsstring>(rownr_t rownr) const</argsstring>
+        <name>tileShape</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a9f22c4dbc4a64852174454d736701952">tileShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1af96ce14eaf74138ec4ee1cdff9dd4cb8">tileShape</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="146" column="23" bodyfile="tables/Tables/BaseColumn.cc" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a16e34edc74a1f064703e5bc8ebba16cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseColumn::canChangeShape</definition>
+        <argsstring>() const</argsstring>
+        <name>canChangeShape</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a9fbf6cbfcbe58f6918e3fa268b4dc7b5">canChangeShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1adc414163de0a4644b5a7051a489119d9">canChangeShape</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a503d69a3326916ea3860d3e5d0a5148d">canChangeShape</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="150" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1abe68d9fec96eb2798d7d89c48c8671bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseColumn::initialize</definition>
+        <argsstring>(rownr_t startRownr, rownr_t endRownr)=0</argsstring>
+        <name>initialize</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1ac17525e530667f0c14091de0f4f2685b">initialize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1aaac264afdd6d2ced2c7597c5a9829ccb">initialize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a689d92e7aae436e8cc41822812b89660">initialize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a280b2038e741ccb20288a521a0b87930">initialize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1ae578cb6fab5546f13a04c46ddea611e6">initialize</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>startRownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>endRownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="154" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a32ecba4e112e6c096fbb41f920b3b6c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::get</definition>
+        <argsstring>(rownr_t rownr, void *dataPtr) const</argsstring>
+        <name>get</name>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a712a4e9a61546d4c53dd662f70a64f14">get</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a1545148cf689c14f7011ef53471c72fd">get</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a3e2958a33888beea5db8ca9c1260c42f">get</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a7fc82f2d935ac074c3891c474f611185">get</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="157" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="96" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a2f76adc0dca31d616182b359736584b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getArray</definition>
+        <argsstring>(rownr_t rownr, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getArray</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a935851be32ed51e80af40c94795323ae">getArray</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a79e5db49c4890557f1fd83bc18541aaf">getArray</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a9dec254a5505240b65c7dea3bf9fed46">getArray</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="160" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="102" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a503b3a5b7fba198a39e275efc88925c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getSlice</definition>
+        <argsstring>(rownr_t rownr, const Slicer &amp;, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getSlice</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a1b5bd1b887739f8de407efe965a283f4">getSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a2885ac3b151aa3f707845b10b795748c">getSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1af38025f70ddc7a2b4ec3b2ed2ce1e083">getSlice</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="163" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af1999a651473ccc3a356f8705297321b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalarColumn</definition>
+        <argsstring>(ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getScalarColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1a5689bd182bb002426826ebdfa64e3f0a">getScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a8d0ef96304be7d48117dad882f7cd8b0">getScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a543c00d84305a041cec43733d4218333">getScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a6fc871e71147914f0d0acceb3910d536">getScalarColumn</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="166" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ad7d0b59f6fa5ee60787e440e7b0ca248" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getArrayColumn</definition>
+        <argsstring>(ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getArrayColumn</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a82cab00bf001a7ac81ef78ef2c1b519c">getArrayColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a0222048fa5f8b55e23e862d83afbcd26">getArrayColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a1c9ebe13368b764c51f945575a771d24">getArrayColumn</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="171" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="120" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ae603b47e2e00d14978ace188b577aae6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getColumnSlice</definition>
+        <argsstring>(const Slicer &amp;, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getColumnSlice</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a1bdef841425a8f4ff6f18b3eb2671f85">getColumnSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1ae8755f1cba63bb4678428a430d385ca3">getColumnSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a6725140bc300bb75bde4347d62d0c219">getColumnSlice</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="176" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="145" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a6fad25ee2fff79e48ff936fcae87c78b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalarColumnCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getScalarColumnCells</name>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1a28ceb41e6c56d31020608bc903476e45">getScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a66a8cfc085dd23abfd023b4a630e2d76">getScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a4c385883f7cfee4445b8e9644ec75eed">getScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a88907aa455dab3e93bf4336b72677a33">getScalarColumnCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="179" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ad72642e6e1e214d27bc77c6ded51dc4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getArrayColumnCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getArrayColumnCells</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a817bfde4d43103501657d34404c8ecff">getArrayColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a95f1d77e9a0859eaa7d36f50626361b7">getArrayColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a4d7f58d31826abef6fa296213ac825d7">getArrayColumnCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="185" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="132" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a00453757667b5f083c55dc57587e684c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getColumnSliceCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, const Slicer &amp;, ArrayBase &amp;dataPtr) const</argsstring>
+        <name>getColumnSliceCells</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a204e701b6526afad6aa04bf231b4ee70">getColumnSliceCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a63ae65a063a1c2eb0c9667c64d06a569">getColumnSliceCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a3bd889daf72133f84dcc4ef47800243e">getColumnSliceCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="191" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="138" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af56174d5226644a0e63603dc4f228643" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::put</definition>
+        <argsstring>(rownr_t rownr, const void *dataPtr)</argsstring>
+        <name>put</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a9aa0eb159580f0ba3081968790ef10d0">put</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a9a1ba47cd728076b23f939b1762c03a9">put</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a3857a7926afa1047aeb95671e84bcfe8">put</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1af7e7d5fd7d6296ad3cf8c56e168482ca">put</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="195" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="151" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a5e71df5acfe69bcff4ba482720676da4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putArray</definition>
+        <argsstring>(rownr_t rownr, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putArray</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a9196d7a62fea35463cfe0b6de7de82f1">putArray</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a626a161629db68a8d919139e6e202aec">putArray</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a913f2ee89cbcdd54cc2852f008cca352">putArray</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="198" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="157" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1afba1f723a85f50560b4404b0024f80e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putSlice</definition>
+        <argsstring>(rownr_t rownr, const Slicer &amp;, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putSlice</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a7c0d7e6157234e7fe48cf4bcc162660b">putSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1af78d4ff43134aab144dc21b4f3bf6f3c">putSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a907c94b6d6aca2fc8b73f6eeee4acb48">putSlice</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="201" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="163" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aa642e9a0a0c721993fdb5217f8f0ade1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalarColumn</definition>
+        <argsstring>(const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putScalarColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1a7c24d4ae90567d4d9401fb9f809678e8">putScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a853d77412f0f7b0e969c9cad673da781">putScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a1141cbf6aef2667d6ac6cf1345a5e7bd">putScalarColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a0d5370eb2825edc99ffb34cb9882a39f">putScalarColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="204" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="169" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a302ef12389085623d7ed6c78f58bef33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putArrayColumn</definition>
+        <argsstring>(const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putArrayColumn</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1af1103b26c274daeadbcb2d0be73930bf">putArrayColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a9136dfc63344b00ea3c14f1cd903bbb3">putArrayColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a50760d881fe866832a61a3ceae7fce66">putArrayColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="209" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="175" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a2b208f3f4c5fc9bc4759f9ea828e9b79" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putColumnSlice</definition>
+        <argsstring>(const Slicer &amp;, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putColumnSlice</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a9dea27156e53493f199bf67c0b691c9c">putColumnSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1af388cf6b0315e7826568a250dce89563">putColumnSlice</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a37d48c7664bc4e81dea56d0382791c54">putColumnSlice</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="214" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="193" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aa3db0a4c7c9862e264fff49f09e80b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalarColumnCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putScalarColumnCells</name>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1af7f99c1fa73ea9de2c6dd236275007ca">putScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a129c298e3ba76005ed8df9a80b919004">putScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a7992d7ab0c713782a40c6773cfabe367">putScalarColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1ae32a11859e8e4c3b101766a8563e14cb">putScalarColumnCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="217" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="181" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af5c8b712b68796c9c05916f8dd5a8088" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putArrayColumnCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putArrayColumnCells</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1a34868ccc2703b788f3a212657786dec1">putArrayColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a21a58295a1f5c26f10e9a059dd0b83c2">putArrayColumnCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a2ff03b1a6a892010a2a8e8054ccacb69">putArrayColumnCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="223" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="187" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a1a13982abf540ebc3a0f3eea06078620" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putColumnSliceCells</definition>
+        <argsstring>(const RefRows &amp;rownrs, const Slicer &amp;, const ArrayBase &amp;dataPtr)</argsstring>
+        <name>putColumnSliceCells</name>
+        <reimplementedby refid="classcasacore_1_1ArrayColumnData_1aaffc7eb181bb3178ff0db630d891d8dd">putColumnSliceCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a2c91f151d0e90983dae23c5e6a7f3e3f">putColumnSliceCells</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a0ebb371904b6fb1420aa1b12a46e53e6">putColumnSliceCells</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="229" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="199" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a6a6bfe9d5feeeba9e782e38a6ad8b16c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, Bool &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="237" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="231" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1acb42afdc5be9dbc4397a598465d626d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, uChar &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a016442aacbe9faceef443b62ab555eb9" kindref="member">uChar</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="238" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="245" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a36c1c19cb67ccced0ab6e69c4380e6bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, Short &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a53f2a3afd42e85d94a0a009052a442a6" kindref="member">Short</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="239" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="259" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ad79425c8e9d005b350252a7d1d488f9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, uShort &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a659a7f6002b9b5c7984b02aef64b77ad" kindref="member">uShort</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="240" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="273" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a27eff77f2b56ea38d553b6ea614639d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, Int &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="241" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="292" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a6ca2672bdbcdf1a4536fcf96dfb171e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, uInt &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="242" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="321" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a828c91195db7959d1953cc4a282c2e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, Int64 &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="243" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="345" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a86b86efdc474c23943614a9e7eb2e61d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, float &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="244" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="384" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a6e65e223c0eb270edb25f8910b3a9537" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, double &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="245" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="433" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1acb2d0510915b79935612135b948500e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, Complex &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="246" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="482" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a3eff30f1322c9b5e59ea7b1f4afdf11a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, DComplex &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="247" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="542" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a4823c96b02a566198ac79df334f09d38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, String &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="248" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="601" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af72504d2bfb8a8ef47a957d57fc26490" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, TableRecord &amp;value) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="249" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="615" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a3341a3c710b21562d1b98cf64beb007f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, void *value, const String &amp;dataTypeId) const</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataTypeId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="254" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="629" bodyend="640"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aedf5e09aa72fc600661a2cfa30bf8730" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Bool &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="259" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="643" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a60b778d609db609ef4bac952f580ad24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const uChar &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a016442aacbe9faceef443b62ab555eb9" kindref="member">uChar</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="260" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="657" bodyend="712"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a1cd84f2fd3e3105cdba80d41c684356d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Short &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a53f2a3afd42e85d94a0a009052a442a6" kindref="member">Short</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="261" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="714" bodyend="754"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1abdbf2b5f340e0ae4f79234681a738916" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const uShort &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a659a7f6002b9b5c7984b02aef64b77ad" kindref="member">uShort</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="262" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="756" bodyend="801"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a8efb18af82564a1db2335e4be6bc15dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Int &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="263" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="803" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ae176a38f34229f6687888dd93280d2b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const uInt &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="264" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="840" bodyend="875"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a67c2905d05a1c191922c5d84b2250680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Int64 &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="265" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="877" bodyend="907"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a9d3ff0e4a463d7e846d7a2f0f133158f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const float &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="266" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="909" bodyend="934"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a2a1152b02d97a90f7bf9157b6f6c8303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const double &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="267" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="936" bodyend="961"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1adb840d32b70b1738fd046e1248b60a1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Complex &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="268" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="963" bodyend="979"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af3082ca4cb0594ec8d2ff85d63f9f0cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const DComplex &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="269" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="981" bodyend="997"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1afe9506e5553eb93d718980c7e8694e6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const String &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="270" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="999" bodyend="1011"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a05f7817d75969173f443d7a17f89c4e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const Char *value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1aee8247dad3ca180405bdb6835513a5ad" kindref="member">Char</ref> *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="271" column="10" bodyfile="tables/Tables/BaseColumn.h" bodystart="271" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1aee906ec5a8675bb8c165615734534c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const TableRecord &amp;value)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="273" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1013" bodyend="1025"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a9973e54097c01e3ac19a24368ecbbcc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1ColumnCache" kindref="compound">ColumnCache</ref> &amp;</type>
+        <definition>virtual ColumnCache&amp; casacore::BaseColumn::columnCache</definition>
+        <argsstring>()=0</argsstring>
+        <name>columnCache</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1a81ad6049055f05b4b3490cf2c1208f31">columnCache</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1ac804179fd53d130052cd9b3a6563c808">columnCache</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a32c4909cea217f3b2d7d00731f08b494">columnCache</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="277" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a59a6e81db95ad65463032fde8507aaf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseColumn::setMaximumCacheSize</definition>
+        <argsstring>(uInt nbytes)=0</argsstring>
+        <name>setMaximumCacheSize</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1ad4440b82bc2944fe89dc5681f82fd3b3">setMaximumCacheSize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainColumn_1a6a0da2c80b6c332c5518c30e78e45096">setMaximumCacheSize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a3fc6c20d26ad8149a2793efe125d96f2">setMaximumCacheSize</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>nbytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="280" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a0505dae9ced67c63b94efefca5feafea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::makeSortKey</definition>
+        <argsstring>(Sort &amp;, std::shared_ptr&lt; BaseCompare &gt; &amp;cmpObj, Int order, std::shared_ptr&lt; ArrayBase &gt; &amp;dataSave)</argsstring>
+        <name>makeSortKey</name>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a16c8bc01afd221af1ec713abf16bea2a">makeSortKey</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1ab878a6f48ba71034a6e4e3762bb9b4f6">makeSortKey</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a373edfe121895c62e2af7988b57a06fa">makeSortKey</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1a7d8e00429ae44e74e5e0a8d65020ddea">makeSortKey</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1Sort" kindref="compound">Sort</ref> &amp;</type>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt; &amp;</type>
+          <declname>cmpObj</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &gt; &amp;</type>
+          <declname>dataSave</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="287" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="207" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ac5dede3d4da3c43a4a8cea438f09afb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::makeRefSortKey</definition>
+        <argsstring>(Sort &amp;, std::shared_ptr&lt; BaseCompare &gt; &amp;cmpObj, Int order, const Vector&lt; rownr_t &gt; &amp;rownrs, std::shared_ptr&lt; ArrayBase &gt; &amp;dataSave)</argsstring>
+        <name>makeRefSortKey</name>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a7e9ed5375ee2943a7e7310eab87ea5de">makeRefSortKey</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a5f4e7df353252dcc37ed6bdb6d5339f2">makeRefSortKey</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatScalarColumn_1a2baa3a16425d1de5a23ae910cc377426">makeRefSortKey</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1Sort" kindref="compound">Sort</ref> &amp;</type>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt; &amp;</type>
+          <declname>cmpObj</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &gt; &amp;</type>
+          <declname>dataSave</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="290" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="213" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1acf9918c1ea364e1ff0b0833110d48514" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::allocIterBuf</definition>
+        <argsstring>(void *&amp;lastVal, void *&amp;curVal, std::shared_ptr&lt; BaseCompare &gt; &amp;cmpObj)</argsstring>
+        <name>allocIterBuf</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1ad8581b83d2de745e331482ed74c3c648">allocIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1ae5a966d412cbb9362eef39a82c53ae55">allocIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1a90824941f4aa0355197850bad170377e">allocIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1abab531abf79ca90b827a7733eacb5418">allocIterBuf</reimplementedby>
+        <param>
+          <type>void *&amp;</type>
+          <declname>lastVal</declname>
+        </param>
+        <param>
+          <type>void *&amp;</type>
+          <declname>curVal</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt; &amp;</type>
+          <declname>cmpObj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="298" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1a7f4bfaddcb1ed9ae0e405c4c07cae2a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::freeIterBuf</definition>
+        <argsstring>(void *&amp;lastVal, void *&amp;curVal)</argsstring>
+        <name>freeIterBuf</name>
+        <reimplementedby refid="classcasacore_1_1ConcatColumn_1ae8d7ce1e1c65157f2f019a1b59f6a0f1">freeIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefColumn_1a72154cf5330bc2f258007e248e3d9f58">freeIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarColumnData_1ade9df23c19f3b17a9cbb36408b3cb7c2">freeIterBuf</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ScalarRecordColumnData_1a47733faa643628b6a2ace013e02898e5">freeIterBuf</reimplementedby>
+        <param>
+          <type>void *&amp;</type>
+          <declname>lastVal</declname>
+        </param>
+        <param>
+          <type>void *&amp;</type>
+          <declname>curVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="302" column="18" bodyfile="tables/Tables/BaseColumn.cc" bodystart="224" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1adb3ff77c0be187e92f6839bb92b97f3b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::throwGetScalar</definition>
+        <argsstring>() const</argsstring>
+        <name>throwGetScalar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="307" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1027" bodyend="1031"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1acd98757a002ec6a8f3694021f1e756a3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::throwPutScalar</definition>
+        <argsstring>() const</argsstring>
+        <name>throwPutScalar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="308" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1033" bodyend="1037"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1af8c0ceb496eba02d50706cb80c07a180" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::throwGetType</definition>
+        <argsstring>(const String &amp;type) const</argsstring>
+        <name>throwGetType</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="309" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1039" bodyend="1044"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseColumn_1ae3e64320fcbfbb546472325de85d2573" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseColumn::throwPutType</definition>
+        <argsstring>(const String &amp;type) const</argsstring>
+        <name>throwPutType</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseColumn.h" line="310" column="10" bodyfile="tables/Tables/BaseColumn.cc" bodystart="1046" bodyend="1051"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>casacore::ScalarColumnData&lt; T &gt;</label>
+        <link refid="classcasacore_1_1ScalarColumnData"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore::ScalarRecordColumnData</label>
+        <link refid="classcasacore_1_1ScalarRecordColumnData"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::ArrayColumnData</label>
+        <link refid="classcasacore_1_1ArrayColumnData"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore::RefColumn</label>
+        <link refid="classcasacore_1_1RefColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::PlainColumn</label>
+        <link refid="classcasacore_1_1PlainColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::BaseColumn</label>
+        <link refid="classcasacore_1_1BaseColumn"/>
+      </node>
+      <node id="2">
+        <label>casacore::ConcatColumn</label>
+        <link refid="classcasacore_1_1ConcatColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::ConcatScalarColumn&lt; T &gt;</label>
+        <link refid="classcasacore_1_1ConcatScalarColumn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>casacore::BaseColumnDesc</label>
+        <link refid="classcasacore_1_1BaseColumnDesc"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>shape_p</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>keySetPtr_p</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>colName_p</edgelabel>
+          <edgelabel>comment_p</edgelabel>
+          <edgelabel>dataManGroup_p</edgelabel>
+          <edgelabel>dataManType_p</edgelabel>
+          <edgelabel>dtypeId_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::IPosition</label>
+        <link refid="classcasacore_1_1IPosition"/>
+      </node>
+      <node id="8">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="4">
+        <label>casacore::TableRecord</label>
+        <link refid="classcasacore_1_1TableRecord"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::RecordInterface</label>
+        <link refid="classcasacore_1_1RecordInterface"/>
+      </node>
+      <node id="1">
+        <label>casacore::BaseColumn</label>
+        <link refid="classcasacore_1_1BaseColumn"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>colDescPtr_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::string</label>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="tables/Tables/BaseColumn.h" line="96" column="1" bodyfile="tables/Tables/BaseColumn.h" bodystart="97" bodyend="320"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1BaseColumn_1acf9918c1ea364e1ff0b0833110d48514" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>allocIterBuf</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a9c4f63d0eae513d8f38dcb7077eb48dd" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>BaseColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a16e34edc74a1f064703e5bc8ebba16cc" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>canChangeShape</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1abfbe5d9f3dacabdc8e64520fa8520f9f" prot="private" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>colDesc_p</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a841f663aec3e2e3254a7c1f3b1ccd051" prot="protected" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>colDescPtr_p</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a9973e54097c01e3ac19a24368ecbbcc7" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>columnCache</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af4b899f56993f45afc0a9bacc690f3c5" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>columnDesc</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a7f4bfaddcb1ed9ae0e405c4c07cae2a7" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>freeIterBuf</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a32ecba4e112e6c096fbb41f920b3b6c2" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a2f76adc0dca31d616182b359736584b3" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getArray</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ad7d0b59f6fa5ee60787e440e7b0ca248" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getArrayColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ad72642e6e1e214d27bc77c6ded51dc4f" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getArrayColumnCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ae603b47e2e00d14978ace188b577aae6" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getColumnSlice</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a00453757667b5f083c55dc57587e684c" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getColumnSliceCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a6a6bfe9d5feeeba9e782e38a6ad8b16c" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1acb42afdc5be9dbc4397a598465d626d8" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a36c1c19cb67ccced0ab6e69c4380e6bc" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ad79425c8e9d005b350252a7d1d488f9f" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a27eff77f2b56ea38d553b6ea614639d3" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a6ca2672bdbcdf1a4536fcf96dfb171e1" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a828c91195db7959d1953cc4a282c2e6d" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a86b86efdc474c23943614a9e7eb2e61d" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a6e65e223c0eb270edb25f8910b3a9537" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1acb2d0510915b79935612135b948500e2" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a3eff30f1322c9b5e59ea7b1f4afdf11a" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a4823c96b02a566198ac79df334f09d38" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af72504d2bfb8a8ef47a957d57fc26490" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a3341a3c710b21562d1b98cf64beb007f" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af1999a651473ccc3a356f8705297321b" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getScalarColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a6fad25ee2fff79e48ff936fcae87c78b" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getScalarColumnCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a503b3a5b7fba198a39e275efc88925c6" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>getSlice</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1abe68d9fec96eb2798d7d89c48c8671bb" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>initialize</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a7187f1e30ae5aa606098e610f830285a" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>isDefined</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ab5ed198d4c5980cdc24fb3b69ee21c5c" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>isStored</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1adac4e659f669a9a5b69584448b4ebe2b" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>isWritable</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a2059b93dec4db4d3eed52bc8fccc8b80" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>keywordSet</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ac5dede3d4da3c43a4a8cea438f09afb5" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>makeRefSortKey</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a0505dae9ced67c63b94efefca5feafea" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>makeSortKey</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a2e65fcd594e5f75ceecd5940863bb71c" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>ndim</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a76039cb9266fd53216c5703881bf0187" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>ndimColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a0d68bd40628248cccd51cf096b9eafc6" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>nrow</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af56174d5226644a0e63603dc4f228643" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a5e71df5acfe69bcff4ba482720676da4" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putArray</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a302ef12389085623d7ed6c78f58bef33" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putArrayColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af5c8b712b68796c9c05916f8dd5a8088" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putArrayColumnCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a2b208f3f4c5fc9bc4759f9ea828e9b79" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putColumnSlice</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a1a13982abf540ebc3a0f3eea06078620" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putColumnSliceCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aedf5e09aa72fc600661a2cfa30bf8730" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a60b778d609db609ef4bac952f580ad24" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a1cd84f2fd3e3105cdba80d41c684356d" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1abdbf2b5f340e0ae4f79234681a738916" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a8efb18af82564a1db2335e4be6bc15dc" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ae176a38f34229f6687888dd93280d2b1" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a67c2905d05a1c191922c5d84b2250680" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a9d3ff0e4a463d7e846d7a2f0f133158f" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a2a1152b02d97a90f7bf9157b6f6c8303" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1adb840d32b70b1738fd046e1248b60a1c" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af3082ca4cb0594ec8d2ff85d63f9f0cb" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1afe9506e5553eb93d718980c7e8694e6c" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a05f7817d75969173f443d7a17f89c4e5" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aee906ec5a8675bb8c165615734534c02" prot="public" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aa642e9a0a0c721993fdb5217f8f0ade1" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putScalarColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aa3db0a4c7c9862e264fff49f09e80b83" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putScalarColumnCells</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1afba1f723a85f50560b4404b0024f80e7" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>putSlice</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a8551965b50bbadbfcdfd149c30a349af" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>rwKeywordSet</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a59a6e81db95ad65463032fde8507aaf5" prot="public" virt="pure-virtual"><scope>casacore::BaseColumn</scope><name>setMaximumCacheSize</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aa91f34eda1d832a9da5164cf487af5e0" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ad3cb13bb9746df8b5bd0a91128016a93" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1aca602d56f7a181257af9ce3b3d2c21f5" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>shape</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a6823f826aab3f57e7eb642e0bc2d8109" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>shapeColumn</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1adb3ff77c0be187e92f6839bb92b97f3b" prot="protected" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>throwGetScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1af8c0ceb496eba02d50706cb80c07a180" prot="protected" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>throwGetType</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1acd98757a002ec6a8f3694021f1e756a3" prot="protected" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>throwPutScalar</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ae3e64320fcbfbb546472325de85d2573" prot="protected" virt="non-virtual"><scope>casacore::BaseColumn</scope><name>throwPutType</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1a727fb475804b83721910ca55390996e0" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>tileShape</name></member>
+      <member refid="classcasacore_1_1BaseColumn_1ab1efd82846c9d846fce103f1a9dd8d4c" prot="public" virt="virtual"><scope>casacore::BaseColumn</scope><name>~BaseColumn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

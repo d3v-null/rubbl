@@ -1,0 +1,2372 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1Array" kind="class" language="C++" prot="public">
+    <compoundname>casacore::Array</compoundname>
+    <basecompoundref refid="classcasacore_1_1ArrayBase" prot="public" virt="non-virtual">casacore::ArrayBase</basecompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; double &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; rownr_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; casacore::MVTime &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; size_t &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; casacore::Slicer * &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Cube" prot="public" virt="non-virtual">casacore::Cube&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Matrix" prot="public" virt="non-virtual">casacore::Matrix&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Vector" prot="public" virt="non-virtual">casacore::Vector&lt; T &gt;</derivedcompoundref>
+    <includes refid="Array_8h" local="no">Array.h</includes>
+    <innerclass refid="classcasacore_1_1Array_1_1BaseIteratorSTL" prot="public">casacore::Array::BaseIteratorSTL</innerclass>
+    <innerclass refid="classcasacore_1_1Array_1_1ConstIteratorSTL" prot="public">casacore::Array::ConstIteratorSTL</innerclass>
+    <innerclass refid="classcasacore_1_1Array_1_1IteratorSTL" prot="public">casacore::Array::IteratorSTL</innerclass>
+    <innerclass refid="structcasacore_1_1Array_1_1uninitializedType" prot="public">casacore::Array::uninitializedType</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1af4639e5eaecf7ce267d9dfcb985b576f" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T casacore::Array&lt; T &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="828" column="15" bodyfile="casa/Arrays/Array.h" bodystart="828" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a4d9a1764b325ff59da7917fc95cb32f0" prot="public" static="no">
+        <type>const T &amp;</type>
+        <definition>typedef const T&amp; casacore::Array&lt; T &gt;::const_reference</definition>
+        <argsstring></argsstring>
+        <name>const_reference</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="832" column="21" bodyfile="casa/Arrays/Array.h" bodystart="832" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1aa1239f27965bd4a512911e4c99687db9" prot="public" static="no">
+        <type>T *</type>
+        <definition>typedef T* casacore::Array&lt; T &gt;::pointer</definition>
+        <argsstring></argsstring>
+        <name>pointer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="834" column="15" bodyfile="casa/Arrays/Array.h" bodystart="834" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a5d88eac61fd940edac1f6636006218e2" prot="public" static="no">
+        <type>const T *</type>
+        <definition>typedef const T* casacore::Array&lt; T &gt;::const_pointer</definition>
+        <argsstring></argsstring>
+        <name>const_pointer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="836" column="21" bodyfile="casa/Arrays/Array.h" bodystart="836" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a01b61adef85b4fd63f94ef41b89a486c" prot="public" static="no">
+        <type><ref refid="classcasacore_1_1Array_1_1IteratorSTL" kindref="compound">IteratorSTL</ref></type>
+        <definition>typedef IteratorSTL casacore::Array&lt; T &gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="837" column="30" bodyfile="casa/Arrays/Array.h" bodystart="837" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a3d3bc7f293b55248806467f721b12177" prot="public" static="no">
+        <type><ref refid="classcasacore_1_1Array_1_1ConstIteratorSTL" kindref="compound">ConstIteratorSTL</ref></type>
+        <definition>typedef ConstIteratorSTL casacore::Array&lt; T &gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="838" column="30" bodyfile="casa/Arrays/Array.h" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a43502f18c6ff10f1702a8d1fbe2c5de8" prot="public" static="no">
+        <type>T *</type>
+        <definition>typedef T* casacore::Array&lt; T &gt;::contiter</definition>
+        <argsstring></argsstring>
+        <name>contiter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="839" column="29" bodyfile="casa/Arrays/Array.h" bodystart="839" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcasacore_1_1Array_1a2f9b042a8e96ffdea465babce2068de2" prot="public" static="no">
+        <type>const T *</type>
+        <definition>typedef const T* casacore::Array&lt; T &gt;::const_contiter</definition>
+        <argsstring></argsstring>
+        <name>const_contiter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="840" column="29" bodyfile="casa/Arrays/Array.h" bodystart="840" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1Array_1ab93a46b6daff97d3fa3d3861b74ff9cf" prot="public" static="yes" mutable="no">
+        <type>struct casacore::Array::uninitializedType</type>
+        <definition>struct casacore::Array::uninitializedType casacore::Array&lt; T &gt;::uninitialized</definition>
+        <argsstring></argsstring>
+        <name>uninitialized</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="179" column="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcasacore_1_1Array_1a24c1725f909aae3465c388e4587975d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class ArrayIterator&lt; T &gt;</definition>
+        <argsstring></argsstring>
+        <name>ArrayIterator&lt; T &gt;</name>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayIterator" kindref="compound">ArrayIterator</ref>&lt; T &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="654" column="18" bodyfile="casa/Arrays/Array.h" bodystart="660" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classcasacore_1_1Array_1a5367976bb27e41f5603015eb419ba612" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ST</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(Array&lt; ST &gt; &amp;left, Array&lt; ST &gt; &amp;right)</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; ST &gt; &amp;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; ST &gt; &amp;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="906" column="17"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1Array_1a20d3927cb44d1a4728e98384d1aacde6" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1arrays__internal_1_1Storage" kindref="compound">arrays_internal::Storage</ref>&lt; T &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;arrays_internal::Storage&lt;T&gt; &gt; casacore::Array&lt; T &gt;::data_p</definition>
+        <argsstring></argsstring>
+        <name>data_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="962" column="21" bodyfile="casa/Arrays/Array.h" bodystart="962" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" prot="protected" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* casacore::Array&lt; T &gt;::begin_p</definition>
+        <argsstring></argsstring>
+        <name>begin_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="968" column="7" bodyfile="casa/Arrays/Array.h" bodystart="968" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Array_1aed7332aed275a0097b203587c4cbe484" prot="protected" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* casacore::Array&lt; T &gt;::end_p</definition>
+        <argsstring></argsstring>
+        <name>end_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="971" column="7" bodyfile="casa/Arrays/Array.h" bodystart="971" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1Array_1aeae23521ec2f6e539be36e048b99f28f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>()</argsstring>
+        <name>Array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="158" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad388cd5a3e1befde8f63668eadf0e4e0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="171" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a466c3cc776cf7e71d3de7907857d00d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, const T &amp;initialValue)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>initialValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="176" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a3ef872f266ba773fa8af661c443eefea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, uninitializedType)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>uninitializedType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="186" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a21cf8a62aa2fa1093420b07d35c567ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(std::initializer_list&lt; T &gt; list)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>std::initializer_list&lt; T &gt;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="193" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ab89e9bbc0c48f2140a44848c919d50e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="196" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a9c3f3f84c9ade371fdf77b6416d893f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(Array&lt; T &gt; &amp;&amp;source) noexcept</argsstring>
+        <name>Array</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;&amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="199" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1a3fbd04b2dcb3f3db853d7b0160e3e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, T *storage, StorageInitPolicy policy=COPY)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534b" kindref="member">StorageInitPolicy</ref></type>
+          <declname>policy</declname>
+          <defval><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534ba46b2e4579af5e1f449bb55cfd9f1c9bc" kindref="member">COPY</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="213" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a18fbe516a9c57a7883d929717e29de07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, const T *storage)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const T *</type>
+          <declname>storage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="218" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a73cec3be79c87dcc7ec3de5aa9bb39b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, InputIterator startIter)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>startIter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="222" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1abf986a9a7d16a04ea4b3e62e3cf475f1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual casacore::Array&lt; T &gt;::~Array</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="225" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a3f494cd7835bce9e319cb5d051743752" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt;ArrayBase&gt; casacore::Array&lt; T &gt;::makeArray</definition>
+        <argsstring>() const override</argsstring>
+        <name>makeArray</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a48bdc6b4a2c8343047969780aa92b607">makeArray</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="228" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1040b0c990fb0eea5cc6c9b12f32aef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::assign</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other)</argsstring>
+        <name>assign</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="233" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1af75f7e51459a32083c4341e61e01898e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::assignBase</definition>
+        <argsstring>(const ArrayBase &amp;other, bool checkType=true) override</argsstring>
+        <name>assignBase</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a9a879c37f8dbd78d68dee4d39fb26af2">assignBase</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>checkType</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="235" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad9c9856db5a41305e6a0e13cd8a9e5b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::set</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>set</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="240" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ae2fe80dd9ede20fd352e267ba4762a0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Callable</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::apply</definition>
+        <argsstring>(Callable function)</argsstring>
+        <name>apply</name>
+        <param>
+          <type>Callable</type>
+          <declname>function</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="246" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1adcfb6bd1f6e0a70dc1c2909739e09d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::reference</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other)</argsstring>
+        <name>reference</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="258" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a130f253be7ff5c2febc9ba71ab21dcc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::assign_conforming</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other)</argsstring>
+        <name>assign_conforming</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="277" column="11" bodyfile="casa/Arrays/Array.h" bodystart="277" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a90971bc764f51888d028fe92a388291f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::assign_conforming</definition>
+        <argsstring>(const MaskedArray&lt; T &gt; &amp;marray)</argsstring>
+        <name>assign_conforming</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt; &amp;</type>
+          <declname>marray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="288" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a9df8bd7ccbf71a3c95e9ea4d8657d243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::operator=</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="291" column="11" bodyfile="casa/Arrays/Array.h" bodystart="291" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a833f0646ac4bfdb1f992c2c582bf5b92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::operator=</definition>
+        <argsstring>(const MaskedArray&lt; T &gt; &amp;marray)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt; &amp;</type>
+          <declname>marray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="295" column="11" bodyfile="casa/Arrays/Array.h" bodystart="295" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ab5300ac209673f694dd569b27ce8bb46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::operator=</definition>
+        <argsstring>(Array&lt; T &gt; &amp;&amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="300" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1afa79567b18d4d7635bbbd700cf57ebbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::operator=</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="304" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ae3fff081ee53ee0b783eb269f077f059" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::copy</definition>
+        <argsstring>() const</argsstring>
+        <name>copy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="331" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad3fb387d33b6a9fe6e33e5fde2dd5055" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::copyMatchingPart</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;from)</argsstring>
+        <name>copyMatchingPart</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="339" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a31e7341087c1aa29f72fb847ddca2884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::unique</definition>
+        <argsstring>()</argsstring>
+        <name>unique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="359" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aa908cb659ebfc6b458a5cfcf50158e4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::tovector</definition>
+        <argsstring>(std::vector&lt; T, U &gt; &amp;out) const</argsstring>
+        <name>tovector</name>
+        <param>
+          <type>std::vector&lt; T, U &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="369" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a28e84db09e32dffc0b646edd6c5cc6ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; casacore::Array&lt; T &gt;::tovector</definition>
+        <argsstring>() const</argsstring>
+        <name>tovector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="370" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ae3764f9ea7491ff114eae15cefb4e158" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::reform</definition>
+        <argsstring>(const IPosition &amp;shape) const</argsstring>
+        <name>reform</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="387" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ae2ffc38271140ea8a8cdf7b2f366f0ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Array&lt; T &gt;::reformOrResize</definition>
+        <argsstring>(const IPosition &amp;newShape, size_t resizePercentage=0, bool resizeIfNeeded=true)</argsstring>
+        <name>reformOrResize</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>newShape</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>resizePercentage</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>resizeIfNeeded</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="414" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a208f58b08f5340d75d2dc457ad6d8114" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Array&lt; T &gt;::adjustLastAxis</definition>
+        <argsstring>(const IPosition &amp;newShape, size_t resizePercentage=0, bool resizeIfNeeded=true)</argsstring>
+        <name>adjustLastAxis</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>newShape</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>resizePercentage</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>resizeIfNeeded</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="429" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1af2763e8931efb6edb12019ed1aacf6bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t casacore::Array&lt; T &gt;::capacity</definition>
+        <argsstring>() const</argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="436" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a354e4d00c3e1b832f4ae8acb848af708" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::nonDegenerate</definition>
+        <argsstring>(size_t startingAxis=0, bool throwIfError=true) const</argsstring>
+        <name>nonDegenerate</name>
+        <param>
+          <type>size_t</type>
+          <declname>startingAxis</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwIfError</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="457" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1add83ce95d1252e5086655351907acb97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::nonDegenerate</definition>
+        <argsstring>(const IPosition &amp;ignoreAxes) const</argsstring>
+        <name>nonDegenerate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>ignoreAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="458" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aaf21218585f716354b2e2c2234376daa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::nonDegenerate</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other, size_t startingAxis=0, bool throwIfError=true)</argsstring>
+        <name>nonDegenerate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>startingAxis</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwIfError</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="459" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a7b27b4cc852373ab6f6fc2325815d67b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::nonDegenerate</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other, const IPosition &amp;ignoreAxes)</argsstring>
+        <name>nonDegenerate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>ignoreAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="461" column="10" bodyfile="casa/Arrays/Array.h" bodystart="461" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad534a1326d33fdf40607d4aff40cbaf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::removeDegenerate</definition>
+        <argsstring>(size_t startingAxis=0, bool throwIfError=true)</argsstring>
+        <name>removeDegenerate</name>
+        <param>
+          <type>size_t</type>
+          <declname>startingAxis</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>throwIfError</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="469" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a95ccae2df54a57485d5bdb8505be8d3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::removeDegenerate</definition>
+        <argsstring>(const IPosition &amp;ignoreAxes)</argsstring>
+        <name>removeDegenerate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>ignoreAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="471" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ab690830b2aacd3fd6244b7ed77b6970c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>const Array&lt;T&gt; casacore::Array&lt; T &gt;::addDegenerate</definition>
+        <argsstring>(size_t numAxes) const</argsstring>
+        <name>addDegenerate</name>
+        <param>
+          <type>size_t</type>
+          <declname>numAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="479" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1af3e68742da99e645798694d2e8fbfd3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::addDegenerate</definition>
+        <argsstring>(size_t numAxes)</argsstring>
+        <name>addDegenerate</name>
+        <param>
+          <type>size_t</type>
+          <declname>numAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="480" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ab41051812dde58e2e343c3860433bbf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::resize</definition>
+        <argsstring>()</argsstring>
+        <name>resize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="498" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a080a3e3fcfb907503808fc81faf7ce34" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::resize</definition>
+        <argsstring>(const IPosition &amp;newShape, bool copyValues=false) override</argsstring>
+        <name>resize</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1ac808b4d3a04a0ba12fdd2f98cd687214">resize</reimplements>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e">resize</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>newShape</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copyValues</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="500" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="507" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a7f5f533cf7aac03b0511a8af8748baa5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T&amp; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="508" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad4b66a755ee54dacaa33f2eb1e3bf520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;start, const IPosition &amp;end)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="514" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a2cddee52dfa885a41237897c644e702c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>const Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;start, const IPosition &amp;end) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="516" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a2b1344333c735857a91213ca9f97a3b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;start, const IPosition &amp;end, const IPosition &amp;inc)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="519" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad722c25af36b9aa86f2dfc70a15a1607" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>const Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const IPosition &amp;start, const IPosition &amp;end, const IPosition &amp;inc) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="522" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1af825a7cefd9142d6ad86e0ea798494d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const Slicer &amp;)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="529" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a9635ecc38e8a60bb75c59ef0ac53201e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>const Array&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const Slicer &amp;) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="530" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a85a924449764f0e02d724ce46b003257" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ArrayBase&gt; casacore::Array&lt; T &gt;::getSection</definition>
+        <argsstring>(const Slicer &amp;) const override</argsstring>
+        <name>getSection</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1aef6128501ab2939b39c56d5b8b855ca4">getSection</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="535" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a24e0c12809bf84c384ab0f6ac069cf07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::operator[]</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="544" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a2565cbc85ca2cf3088fb0e4c07c56680" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::Array&lt; T &gt;::diagonals</definition>
+        <argsstring>(size_t firstAxis=0, long long diag=0) const</argsstring>
+        <name>diagonals</name>
+        <param>
+          <type>size_t</type>
+          <declname>firstAxis</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>long long</type>
+          <declname>diag</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="549" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aaae1f4a85b65f290038dc67711f7cd5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt;</type>
+        <definition>const MaskedArray&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const LogicalArray &amp;mask) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a863dbf26a1e602513158145a3fb71183" kindref="member">LogicalArray</ref> &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="554" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a8bb23ee71849cebe7c526c5ae70322cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt;</type>
+        <definition>MaskedArray&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const LogicalArray &amp;mask)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a863dbf26a1e602513158145a3fb71183" kindref="member">LogicalArray</ref> &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="555" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1eb65caa42cce5b66c67255858e919de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt;</type>
+        <definition>const MaskedArray&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const MaskedLogicalArray &amp;mask) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a2fcefc5b8c886fc497db5f36299cac4c" kindref="member">MaskedLogicalArray</ref> &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="563" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ac7c84f9ca0005362dc30039325bf2a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt;</type>
+        <definition>MaskedArray&lt;T&gt; casacore::Array&lt; T &gt;::operator()</definition>
+        <argsstring>(const MaskedLogicalArray &amp;mask)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a2fcefc5b8c886fc497db5f36299cac4c" kindref="member">MaskedLogicalArray</ref> &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="564" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1bee899463c14291a489f19fb2b63310" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t casacore::Array&lt; T &gt;::nrefs</definition>
+        <argsstring>() const</argsstring>
+        <name>nrefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="575" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a96d0f55685f0d432e497d9e0a40206df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool casacore::Array&lt; T &gt;::ok</definition>
+        <argsstring>() const override</argsstring>
+        <name>ok</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a0b2061a5abe8d4943a19ef204b347a70">ok</reimplements>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Cube_1ab1875d8bbc9d5fb2b38a193f9172edf2">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1ab1d13555869be3eab0999491f4ab1420">ok</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1ab1d13555869be3eab0999491f4ab1420">ok</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="580" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aa3e448a287d39fc112708fbc64d09990" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Array&lt; T &gt;::conform</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other) const</argsstring>
+        <name>conform</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="584" column="10" bodyfile="casa/Arrays/Array.h" bodystart="584" bodyend="585"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ac795d9811d4ba0255741219d7649f593" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Array&lt; T &gt;::conform</definition>
+        <argsstring>(const MaskedArray&lt; T &gt; &amp;other) const</argsstring>
+        <name>conform</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="586" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a43f2b7438f5620df00610beeebc69b53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T* casacore::Array&lt; T &gt;::data</definition>
+        <argsstring>()</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="592" column="7" bodyfile="casa/Arrays/Array.h" bodystart="592" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a09b034d96996edfde3bf5ec3cf514d74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T* casacore::Array&lt; T &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="594" column="13" bodyfile="casa/Arrays/Array.h" bodystart="594" bodyend="595"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1abd8980b0c53fb632c8674d9088c83db8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T *</type>
+        <definition>T* casacore::Array&lt; T &gt;::getStorage</definition>
+        <argsstring>(bool &amp;deleteIt)</argsstring>
+        <name>getStorage</name>
+        <param>
+          <type>bool &amp;</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="619" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a12ff4ed66a4afac966dfe87d6c71d336" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T* casacore::Array&lt; T &gt;::getStorage</definition>
+        <argsstring>(bool &amp;deleteIt) const</argsstring>
+        <name>getStorage</name>
+        <param>
+          <type>bool &amp;</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="620" column="13" bodyfile="casa/Arrays/Array.h" bodystart="620" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a3b7a0a76cac334f57c5d3ac63fae4454" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void *</type>
+        <definition>void* casacore::Array&lt; T &gt;::getVStorage</definition>
+        <argsstring>(bool &amp;deleteIt) override</argsstring>
+        <name>getVStorage</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1af30a766eaa8005f147c7623769e424d7">getVStorage</reimplements>
+        <param>
+          <type>bool &amp;</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="625" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aff6becab0f4ce499c173371f3cc530d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const void *</type>
+        <definition>const void* casacore::Array&lt; T &gt;::getVStorage</definition>
+        <argsstring>(bool &amp;deleteIt) const override</argsstring>
+        <name>getVStorage</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a686e1bc4d590b2ece76b3454c49e5fe8">getVStorage</reimplements>
+        <param>
+          <type>bool &amp;</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="626" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad81e6bf195ad038bb4c2928adac5fb49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::putStorage</definition>
+        <argsstring>(T *&amp;storage, bool deleteAndCopy)</argsstring>
+        <name>putStorage</name>
+        <param>
+          <type>T *&amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteAndCopy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="631" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a330151faa8ff8136d4cc704fefbae4b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::putVStorage</definition>
+        <argsstring>(void *&amp;storage, bool deleteAndCopy) override</argsstring>
+        <name>putVStorage</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a9e2fb30c48c2651bef515b76b47879f0">putVStorage</reimplements>
+        <param>
+          <type>void *&amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteAndCopy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="632" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a49a8ffd126699fe7239d890b798d22b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::freeStorage</definition>
+        <argsstring>(const T *&amp;storage, bool deleteIt) const</argsstring>
+        <name>freeStorage</name>
+        <param>
+          <type>const T *&amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="639" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a12b10de9a85a8104b991c21ca6a99cde" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::freeVStorage</definition>
+        <argsstring>(const void *&amp;storage, bool deleteIt) const override</argsstring>
+        <name>freeVStorage</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a671b5f86ae9ec42b58956bf8ec42dab8">freeVStorage</reimplements>
+        <param>
+          <type>const void *&amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deleteIt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="640" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aced59eeb9ed3325380d264f9324254bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::takeStorage</definition>
+        <argsstring>(const IPosition &amp;shape, T *storage, StorageInitPolicy policy=COPY)</argsstring>
+        <name>takeStorage</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534b" kindref="member">StorageInitPolicy</ref></type>
+          <declname>policy</declname>
+          <defval><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534ba46b2e4579af5e1f449bb55cfd9f1c9bc" kindref="member">COPY</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="649" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a1d7d7d74d1b8ee910e3bd44a7f901612" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::takeStorage</definition>
+        <argsstring>(const IPosition &amp;shape, const T *storage)</argsstring>
+        <name>takeStorage</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const T *</type>
+          <declname>storage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="654" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a939261a3697dbce8a178909580fea180" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classcasacore_1_1ArrayPositionIterator" kindref="compound">ArrayPositionIterator</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ArrayPositionIterator&gt; casacore::Array&lt; T &gt;::makeIterator</definition>
+        <argsstring>(size_t byDim) const override</argsstring>
+        <name>makeIterator</name>
+        <reimplements refid="classcasacore_1_1ArrayBase_1a47897aa22e2dfd7842ef5864cfaee5a8">makeIterator</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>byDim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="663" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a29c4632d120dfa99fd2c3549593feb67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a01b61adef85b4fd63f94ef41b89a486c" kindref="member">iterator</ref></type>
+        <definition>iterator casacore::Array&lt; T &gt;::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="844" column="14" bodyfile="casa/Arrays/Array.h" bodystart="844" bodyend="845"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a82769a5997d9a8928b4036ac0f16a71d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a3d3bc7f293b55248806467f721b12177" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator casacore::Array&lt; T &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="846" column="20" bodyfile="casa/Arrays/Array.h" bodystart="846" bodyend="847"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad40f8c12830ed55a35c7d2e7a5fc24e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a01b61adef85b4fd63f94ef41b89a486c" kindref="member">iterator</ref></type>
+        <definition>iterator casacore::Array&lt; T &gt;::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="848" column="14" bodyfile="casa/Arrays/Array.h" bodystart="848" bodyend="849"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a966c6b9ecca4348182b63e99fdfb13ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a3d3bc7f293b55248806467f721b12177" kindref="member">const_iterator</ref></type>
+        <definition>const_iterator casacore::Array&lt; T &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="850" column="20" bodyfile="casa/Arrays/Array.h" bodystart="850" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a40af0ed02d935164404ae293f0cb2fe0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a43502f18c6ff10f1702a8d1fbe2c5de8" kindref="member">contiter</ref></type>
+        <definition>contiter casacore::Array&lt; T &gt;::cbegin</definition>
+        <argsstring>()</argsstring>
+        <name>cbegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="856" column="14" bodyfile="casa/Arrays/Array.h" bodystart="856" bodyend="857"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a855b099ae385bad5f2be4de45c5620bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a2f9b042a8e96ffdea465babce2068de2" kindref="member">const_contiter</ref></type>
+        <definition>const_contiter casacore::Array&lt; T &gt;::cbegin</definition>
+        <argsstring>() const</argsstring>
+        <name>cbegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="858" column="20" bodyfile="casa/Arrays/Array.h" bodystart="858" bodyend="859"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a303e2200ab006fbdcb742ce8c3f1411d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a43502f18c6ff10f1702a8d1fbe2c5de8" kindref="member">contiter</ref></type>
+        <definition>contiter casacore::Array&lt; T &gt;::cend</definition>
+        <argsstring>()</argsstring>
+        <name>cend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="860" column="14" bodyfile="casa/Arrays/Array.h" bodystart="860" bodyend="861"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ab3d2f59484e01106710585557fee2454" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array_1a2f9b042a8e96ffdea465babce2068de2" kindref="member">const_contiter</ref></type>
+        <definition>const_contiter casacore::Array&lt; T &gt;::cend</definition>
+        <argsstring>() const</argsstring>
+        <name>cend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="862" column="20" bodyfile="casa/Arrays/Array.h" bodystart="862" bodyend="863"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1Array_1aeb293675fcc86a2fa4b3cbd6dfa2086d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Integral</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, Integral startIter, std::true_type)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>Integral</type>
+          <declname>startIter</declname>
+        </param>
+        <param>
+          <type>std::true_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="874" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a231c7edc49c1d8aa3d0a7e44bb1e5fe4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(const IPosition &amp;shape, InputIterator startIter, std::false_type)</argsstring>
+        <name>Array</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>startIter</declname>
+        </param>
+        <param>
+          <type>std::false_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="880" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a065911baa2feaa44b41d19d12cd56c20" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::assign_conforming_implementation</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other, std::true_type)</argsstring>
+        <name>assign_conforming_implementation</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>std::true_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="883" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aeb4069b627c0d51a3eecf4449d7c9ac0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::Array&lt; T &gt;::assign_conforming_implementation</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;, std::false_type)</argsstring>
+        <name>assign_conforming_implementation</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        </param>
+        <param>
+          <type>std::false_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="885" column="9" bodyfile="casa/Arrays/Array.h" bodystart="885" bodyend="888"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a5438d4660b639e49b1a2294678d6aee7" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Array&lt; T &gt;::isUnique</definition>
+        <argsstring>() const</argsstring>
+        <name>isUnique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="896" column="8" bodyfile="casa/Arrays/Array.h" bodystart="896" bodyend="899"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcasacore_1_1Array_1af8cfa44d6506d5b5a43a8f33243c41a5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::Array&lt; T &gt;::copyToContiguousStorage</definition>
+        <argsstring>(T *dst, Array&lt; T &gt; const &amp;src, std::true_type)</argsstring>
+        <name>copyToContiguousStorage</name>
+        <param>
+          <type>T *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>std::true_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="889" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a07929e04522ee25da24beed478aa2fef" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::Array&lt; T &gt;::copyToContiguousStorage</definition>
+        <argsstring>(T *, Array&lt; T &gt; const &amp;, std::false_type)</argsstring>
+        <name>copyToContiguousStorage</name>
+        <param>
+          <type>T *</type>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; const &amp;</type>
+        </param>
+        <param>
+          <type>std::false_type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="890" column="15" bodyfile="casa/Arrays/Array.h" bodystart="890" bodyend="893"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1Array_1aa98f78e991fcd5d9037ca13afd303259" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Array&lt; T &gt;::Array</definition>
+        <argsstring>(Array&lt; T &gt; &amp;&amp;source, const IPosition &amp;shapeForSource) noexcept</argsstring>
+        <name>Array</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;&amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shapeForSource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="903" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ac6e697c02f1a98c667702a722324ef0f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::swap</definition>
+        <argsstring>(Array&lt; T &gt; &amp;other)</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="910" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a0b039d8c5e666e8e27506c676a22b129" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::preTakeStorage</definition>
+        <argsstring>(const IPosition &amp;)</argsstring>
+        <name>preTakeStorage</name>
+        <reimplementedby refid="classcasacore_1_1Cube_1acfe2e2b2ce2253e019871d3579001118">preTakeStorage</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1aa772466cb97d2d0dbddcc57a97e15fab">preTakeStorage</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1aa772466cb97d2d0dbddcc57a97e15fab">preTakeStorage</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="913" column="18" bodyfile="casa/Arrays/Array.h" bodystart="913" bodyend="913"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a510687a00bfad5e5d5919ea8f16db17b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::postTakeStorage</definition>
+        <argsstring>()</argsstring>
+        <name>postTakeStorage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="915" column="18" bodyfile="casa/Arrays/Array.h" bodystart="915" bodyend="915"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a7777880a87617531bf2903648f350a2b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::checkBeforeResize</definition>
+        <argsstring>(const IPosition &amp;newShape)</argsstring>
+        <name>checkBeforeResize</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>newShape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="924" column="10" bodyfile="casa/Arrays/Array.h" bodystart="924" bodyend="930"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1aa3a92cf6b56124be17ac8d41b2cc7a24" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t casacore::Array&lt; T &gt;::fixedDimensionality</definition>
+        <argsstring>() const</argsstring>
+        <name>fixedDimensionality</name>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Cube_1a5c1af1bc52632f29f4a66f36b8d5baf5">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1aefbe1892510c989bdf22a60ffd0f312e">fixedDimensionality</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1aefbe1892510c989bdf22a60ffd0f312e">fixedDimensionality</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="938" column="20" bodyfile="casa/Arrays/Array.h" bodystart="938" bodyend="938"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1ad6ee419e2ea1657dc5e0ca7be8ea4e46" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::checkAssignableType</definition>
+        <argsstring>(ArrayBase &amp;arrayBase) const</argsstring>
+        <name>checkAssignableType</name>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>arrayBase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="940" column="18" bodyfile="casa/Arrays/Array.h" bodystart="940" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a91b2937c9796ac9340278c82c7324eed" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Array&lt; T &gt;::doNonDegenerate</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;other, const IPosition &amp;ignoreAxes)</argsstring>
+        <name>doNonDegenerate</name>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1ad4871032b79549fff4433255198d4d81">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Cube_1a4d3f874e1bd692864c84d3ddd62d24ee">doNonDegenerate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Matrix_1ad4871032b79549fff4433255198d4d81">doNonDegenerate</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>ignoreAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="957" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a5b50299d3cb42b3c2060ad0cb8a52e6b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::makeSteps</definition>
+        <argsstring>()</argsstring>
+        <name>makeSteps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="975" column="10" bodyfile="casa/Arrays/Array.h" bodystart="975" bodyend="976"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Array_1a9a0c8703894f0b429e5f878225986b9e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Array&lt; T &gt;::setEndIter</definition>
+        <argsstring>()</argsstring>
+        <name>setEndIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="979" column="10" bodyfile="casa/Arrays/Array.h" bodystart="979" bodyend="981"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classcasacore_1_1Array_1a6d65816bd2fc01e3f47cb949ec75d7e1" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void casacore::Array&lt; T &gt;::copyToContiguousStorage</definition>
+        <argsstring>(T *dst, Array&lt; T &gt; const &amp;src)</argsstring>
+        <name>copyToContiguousStorage</name>
+        <param>
+          <type>T *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/Array.h" line="948" column="17" bodyfile="casa/Arrays/Array.h" bodystart="948" bodyend="951"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>casacore::ArrayBase</label>
+        <link refid="classcasacore_1_1ArrayBase"/>
+      </node>
+      <node id="5">
+        <label>casacore::RowNumbers</label>
+        <link refid="classcasacore_1_1RowNumbers"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>casacore::Matrix&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Matrix"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore::Vector&lt; size_t &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::Vector&lt; double &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::Vector&lt; rownr_t &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::Array&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Array"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore::Vector&lt; casacore::Slicer * &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore::Vector&lt; casacore::MVTime &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore::Cube&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Cube"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>casacore::Vector&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Vector"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>casacore::Array&lt; T &gt;::uninitializedType</label>
+      </node>
+      <node id="2">
+        <label>casacore::ArrayBase</label>
+        <link refid="classcasacore_1_1ArrayBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>inc_p</edgelabel>
+          <edgelabel>length_p</edgelabel>
+          <edgelabel>originalLength_p</edgelabel>
+          <edgelabel>steps_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::IPosition</label>
+        <link refid="classcasacore_1_1IPosition"/>
+      </node>
+      <node id="1">
+        <label>casacore::Array&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Array"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>data_p</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>uninitialized</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::shared_ptr&lt; casacore::arrays_internal::Storage&lt; T &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="casa/Arrays/Array.h" line="154" column="11" bodyfile="casa/Arrays/Array.h" bodystart="155" bodyend="982"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1Array_1ab690830b2aacd3fd6244b7ed77b6970c" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>addDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1af3e68742da99e645798694d2e8fbfd3d" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>addDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1a208f58b08f5340d75d2dc457ad6d8114" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>adjustLastAxis</name></member>
+      <member refid="classcasacore_1_1Array_1ae2fe80dd9ede20fd352e267ba4762a0c" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>apply</name></member>
+      <member refid="classcasacore_1_1Array_1aeae23521ec2f6e539be36e048b99f28f" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1ad388cd5a3e1befde8f63668eadf0e4e0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a466c3cc776cf7e71d3de7907857d00d3" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a3ef872f266ba773fa8af661c443eefea" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a21cf8a62aa2fa1093420b07d35c567ba" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1ab89e9bbc0c48f2140a44848c919d50e5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a9c3f3f84c9ade371fdf77b6416d893f3" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a1a3fbd04b2dcb3f3db853d7b0160e3e8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a18fbe516a9c57a7883d929717e29de07" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a73cec3be79c87dcc7ec3de5aa9bb39b9" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1aeb293675fcc86a2fa4b3cbd6dfa2086d" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1a231c7edc49c1d8aa3d0a7e44bb1e5fe4" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1Array_1aa98f78e991fcd5d9037ca13afd303259" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>Array</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a64bfcef3a280672fbff97e81986114e7" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayBase</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a91ed9204473ba8e56c000aec28f897a9" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayBase</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a30c9620b87a61de748defab245f98407" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayBase</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a91c406375f8b065beec9bed16d8e0e32" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayBase</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a3454e95efccfe3459a5c762e0334d8a2" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayBase</name></member>
+      <member refid="classcasacore_1_1Array_1a24c1725f909aae3465c388e4587975d8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ArrayIterator&lt; T &gt;</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a0f47e6343d3fc033f46e0e0f2f53e854" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>arrayVersion</name></member>
+      <member refid="classcasacore_1_1Array_1a1040b0c990fb0eea5cc6c9b12f32aef5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>assign</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a17d259e424fc691632ac988d0d26072f" prot="public" virt="non-virtual" ambiguityscope="casacore::ArrayBase::"><scope>casacore::Array</scope><name>assign</name></member>
+      <member refid="classcasacore_1_1Array_1a130f253be7ff5c2febc9ba71ab21dcc8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>assign_conforming</name></member>
+      <member refid="classcasacore_1_1Array_1a90971bc764f51888d028fe92a388291f" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>assign_conforming</name></member>
+      <member refid="classcasacore_1_1Array_1a065911baa2feaa44b41d19d12cd56c20" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>assign_conforming_implementation</name></member>
+      <member refid="classcasacore_1_1Array_1aeb4069b627c0d51a3eecf4449d7c9ac0" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>assign_conforming_implementation</name></member>
+      <member refid="classcasacore_1_1Array_1af75f7e51459a32083c4341e61e01898e" prot="public" virt="virtual"><scope>casacore::Array</scope><name>assignBase</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a7d67fa669db04596d96f5256ca22f56a" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>baseAddDegenerate</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a8c41931c3a6b36e65daf32efbc145e36" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>baseMakeSteps</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a1ff75013c8d149ee61e682be1d47e173" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>baseNonDegenerate</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a22f2e55098a069d8f2fb1aafe317e528" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>baseReform</name></member>
+      <member refid="classcasacore_1_1Array_1a29c4632d120dfa99fd2c3549593feb67" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>begin</name></member>
+      <member refid="classcasacore_1_1Array_1a82769a5997d9a8928b4036ac0f16a71d" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>begin</name></member>
+      <member refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>begin_p</name></member>
+      <member refid="classcasacore_1_1Array_1af2763e8931efb6edb12019ed1aacf6bc" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>capacity</name></member>
+      <member refid="classcasacore_1_1Array_1a40af0ed02d935164404ae293f0cb2fe0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>cbegin</name></member>
+      <member refid="classcasacore_1_1Array_1a855b099ae385bad5f2be4de45c5620bc" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>cbegin</name></member>
+      <member refid="classcasacore_1_1Array_1a303e2200ab006fbdcb742ce8c3f1411d" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>cend</name></member>
+      <member refid="classcasacore_1_1Array_1ab3d2f59484e01106710585557fee2454" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>cend</name></member>
+      <member refid="classcasacore_1_1Array_1ad6ee419e2ea1657dc5e0ca7be8ea4e46" prot="protected" virt="virtual"><scope>casacore::Array</scope><name>checkAssignableType</name></member>
+      <member refid="classcasacore_1_1Array_1a7777880a87617531bf2903648f350a2b" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>checkBeforeResize</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1af2c82bc4afae2c73a2ccc962f88059c0" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>checkCubeShape</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a2ff72758e9d4bc7a349784896aa0764e" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>checkMatrixShape</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ac41a8e183c0ab44b35b3cccf5ba344a2" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>checkVectorShape</name></member>
+      <member refid="classcasacore_1_1Array_1aa3e448a287d39fc112708fbc64d09990" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>conform</name></member>
+      <member refid="classcasacore_1_1Array_1ac795d9811d4ba0255741219d7649f593" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>conform</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1adb3aa731897427afdb82f4223c24fa07" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>conform2</name></member>
+      <member refid="classcasacore_1_1Array_1a2f9b042a8e96ffdea465babce2068de2" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>const_contiter</name></member>
+      <member refid="classcasacore_1_1Array_1a3d3bc7f293b55248806467f721b12177" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>const_iterator</name></member>
+      <member refid="classcasacore_1_1Array_1a5d88eac61fd940edac1f6636006218e2" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>const_pointer</name></member>
+      <member refid="classcasacore_1_1Array_1a4d9a1764b325ff59da7917fc95cb32f0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>const_reference</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a7bb4791a0a456441f19d97c36ce836b1" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>contiguous_p</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1aa2c7221a5660fe7f6afd16a487db68a9" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>contiguousStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a43502f18c6ff10f1702a8d1fbe2c5de8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>contiter</name></member>
+      <member refid="classcasacore_1_1Array_1ae3fff081ee53ee0b783eb269f077f059" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>copy</name></member>
+      <member refid="classcasacore_1_1Array_1ad3fb387d33b6a9fe6e33e5fde2dd5055" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>copyMatchingPart</name></member>
+      <member refid="classcasacore_1_1Array_1af8cfa44d6506d5b5a43a8f33243c41a5" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>copyToContiguousStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a07929e04522ee25da24beed478aa2fef" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>copyToContiguousStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a6d65816bd2fc01e3f47cb949ec75d7e1" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>copyToContiguousStorage</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a27aed382ddf851b7e18a5d94e8c34b52" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>copyVectorHelper</name></member>
+      <member refid="classcasacore_1_1Array_1a43f2b7438f5620df00610beeebc69b53" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>data</name></member>
+      <member refid="classcasacore_1_1Array_1a09b034d96996edfde3bf5ec3cf514d74" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>data</name></member>
+      <member refid="classcasacore_1_1Array_1a20d3927cb44d1a4728e98384d1aacde6" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>data_p</name></member>
+      <member refid="classcasacore_1_1Array_1a2565cbc85ca2cf3088fb0e4c07c56680" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>diagonals</name></member>
+      <member refid="classcasacore_1_1Array_1a91b2937c9796ac9340278c82c7324eed" prot="protected" virt="virtual"><scope>casacore::Array</scope><name>doNonDegenerate</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1aa400d2bdb5f646f91f613888a9fea1fc" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>empty</name></member>
+      <member refid="classcasacore_1_1Array_1ad40f8c12830ed55a35c7d2e7a5fc24e5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>end</name></member>
+      <member refid="classcasacore_1_1Array_1a966c6b9ecca4348182b63e99fdfb13ed" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>end</name></member>
+      <member refid="classcasacore_1_1Array_1aed7332aed275a0097b203587c4cbe484" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>end_p</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ae1e1fda8ecbb7697e4297409c6b4fec5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>endPosition</name></member>
+      <member refid="classcasacore_1_1Array_1aa3a92cf6b56124be17ac8d41b2cc7a24" prot="protected" virt="virtual"><scope>casacore::Array</scope><name>fixedDimensionality</name></member>
+      <member refid="classcasacore_1_1Array_1a49a8ffd126699fe7239d890b798d22b8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>freeStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a12b10de9a85a8104b991c21ca6a99cde" prot="public" virt="virtual"><scope>casacore::Array</scope><name>freeVStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a85a924449764f0e02d724ce46b003257" prot="public" virt="virtual"><scope>casacore::Array</scope><name>getSection</name></member>
+      <member refid="classcasacore_1_1Array_1abd8980b0c53fb632c8674d9088c83db8" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>getStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a12ff4ed66a4afac966dfe87d6c71d336" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>getStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a3b7a0a76cac334f57c5d3ac63fae4454" prot="public" virt="virtual"><scope>casacore::Array</scope><name>getVStorage</name></member>
+      <member refid="classcasacore_1_1Array_1aff6becab0f4ce499c173371f3cc530d6" prot="public" virt="virtual"><scope>casacore::Array</scope><name>getVStorage</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a83d5bbd97070fc1e0c5f5a5596c247b0" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>inc_p</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1af9ca18536fc7a9c864573cbb744315f0" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>isStorageContiguous</name></member>
+      <member refid="classcasacore_1_1Array_1a5438d4660b639e49b1a2294678d6aee7" prot="private" virt="non-virtual"><scope>casacore::Array</scope><name>isUnique</name></member>
+      <member refid="classcasacore_1_1Array_1a01b61adef85b4fd63f94ef41b89a486c" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>iterator</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ab1d08aacff0367d78e33b4d9137e8527" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>length_p</name></member>
+      <member refid="classcasacore_1_1Array_1a3f494cd7835bce9e319cb5d051743752" prot="public" virt="virtual"><scope>casacore::Array</scope><name>makeArray</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1abff01903adce877d71aefd8be11298c8" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>makeDiagonal</name></member>
+      <member refid="classcasacore_1_1Array_1a939261a3697dbce8a178909580fea180" prot="public" virt="virtual"><scope>casacore::Array</scope><name>makeIterator</name></member>
+      <member refid="classcasacore_1_1Array_1a5b50299d3cb42b3c2060ad0cb8a52e6b" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>makeSteps</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a74ecf3661363376aa05c0bcb585b51cf" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>makeSubset</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a4d0d9bac0a3181d2b1d8ae155a88a457" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>ndim</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a7ad07fdbd04830846d9847e3ea32e620" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>ndimen_p</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a6ac6abf9a184f4e270ff4a36d0be7f30" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nelements</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a4d5272ad5674505e20d8945acfe9c666" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>nels_p</name></member>
+      <member refid="classcasacore_1_1Array_1a354e4d00c3e1b832f4ae8acb848af708" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nonDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1add83ce95d1252e5086655351907acb97" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nonDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1aaf21218585f716354b2e2c2234376daa" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nonDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1a7b27b4cc852373ab6f6fc2325815d67b" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nonDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1a1bee899463c14291a489f19fb2b63310" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>nrefs</name></member>
+      <member refid="classcasacore_1_1Array_1a96d0f55685f0d432e497d9e0a40206df" prot="public" virt="virtual"><scope>casacore::Array</scope><name>ok</name></member>
+      <member refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a7f5f533cf7aac03b0511a8af8748baa5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1ad4b66a755ee54dacaa33f2eb1e3bf520" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a2cddee52dfa885a41237897c644e702c" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a2b1344333c735857a91213ca9f97a3b0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1ad722c25af36b9aa86f2dfc70a15a1607" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1af825a7cefd9142d6ad86e0ea798494d0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a9635ecc38e8a60bb75c59ef0ac53201e" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1aaae1f4a85b65f290038dc67711f7cd5f" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a8bb23ee71849cebe7c526c5ae70322cc" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a1eb65caa42cce5b66c67255858e919de" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1ac7c84f9ca0005362dc30039325bf2a46" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1Array_1a9df8bd7ccbf71a3c95e9ea4d8657d243" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1Array_1a833f0646ac4bfdb1f992c2c582bf5b92" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1Array_1ab5300ac209673f694dd569b27ce8bb46" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1Array_1afa79567b18d4d7635bbbd700cf57ebbb" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a5e4e395a4de526d462b8dbff44c956c6" prot="public" virt="non-virtual" ambiguityscope="casacore::ArrayBase::"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a08bea94bbd534130a3a04c3db37973df" prot="public" virt="non-virtual" ambiguityscope="casacore::ArrayBase::"><scope>casacore::Array</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1Array_1a24e0c12809bf84c384ab0f6ac069cf07" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>operator[]</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a8195fae04c02bad814a4a352747c1ead" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>originalLength_p</name></member>
+      <member refid="classcasacore_1_1Array_1aa1239f27965bd4a512911e4c99687db9" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>pointer</name></member>
+      <member refid="classcasacore_1_1Array_1a510687a00bfad5e5d5919ea8f16db17b" prot="protected" virt="virtual"><scope>casacore::Array</scope><name>postTakeStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a0b039d8c5e666e8e27506c676a22b129" prot="protected" virt="virtual"><scope>casacore::Array</scope><name>preTakeStorage</name></member>
+      <member refid="classcasacore_1_1Array_1ad81e6bf195ad038bb4c2928adac5fb49" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>putStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a330151faa8ff8136d4cc704fefbae4b8" prot="public" virt="virtual"><scope>casacore::Array</scope><name>putVStorage</name></member>
+      <member refid="classcasacore_1_1Array_1adcfb6bd1f6e0a70dc1c2909739e09d07" prot="public" virt="virtual"><scope>casacore::Array</scope><name>reference</name></member>
+      <member refid="classcasacore_1_1Array_1ae3764f9ea7491ff114eae15cefb4e158" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>reform</name></member>
+      <member refid="classcasacore_1_1Array_1ae2ffc38271140ea8a8cdf7b2f366f0ca" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>reformOrResize</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1aa234412772be1fa6c37f1240760f04cf" prot="protected" virt="non-virtual" ambiguityscope="casacore::ArrayBase::"><scope>casacore::Array</scope><name>reformOrResize</name></member>
+      <member refid="classcasacore_1_1Array_1ad534a1326d33fdf40607d4aff40cbaf4" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>removeDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1a95ccae2df54a57485d5bdb8505be8d3a" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>removeDegenerate</name></member>
+      <member refid="classcasacore_1_1Array_1ab41051812dde58e2e343c3860433bbf3" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>resize</name></member>
+      <member refid="classcasacore_1_1Array_1a080a3e3fcfb907503808fc81faf7ce34" prot="public" virt="virtual"><scope>casacore::Array</scope><name>resize</name></member>
+      <member refid="classcasacore_1_1Array_1ad9c9856db5a41305e6a0e13cd8a9e5b0" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>set</name></member>
+      <member refid="classcasacore_1_1Array_1a9a0c8703894f0b429e5f878225986b9e" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>setEndIter</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a334ba82928c03556a0863d7ab1d5c5a5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>shape</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a6d6fb11ed68abc6a6f190b2966e0fa16" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>size</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ad87a3699f27dd5e00da5aca71aa59aaa" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>steps</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ad19b3969a0875a2ead7c4611de6b2d4f" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>steps_p</name></member>
+      <member refid="classcasacore_1_1Array_1a5367976bb27e41f5603015eb419ba612" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>swap</name></member>
+      <member refid="classcasacore_1_1Array_1ac6e697c02f1a98c667702a722324ef0f" prot="protected" virt="non-virtual"><scope>casacore::Array</scope><name>swap</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a53752abbc58307ad2a997d3e2c577e9f" prot="protected" virt="non-virtual" ambiguityscope="casacore::ArrayBase::"><scope>casacore::Array</scope><name>swap</name></member>
+      <member refid="classcasacore_1_1Array_1aced59eeb9ed3325380d264f9324254bc" prot="public" virt="virtual"><scope>casacore::Array</scope><name>takeStorage</name></member>
+      <member refid="classcasacore_1_1Array_1a1d7d7d74d1b8ee910e3bd44a7f901612" prot="public" virt="virtual"><scope>casacore::Array</scope><name>takeStorage</name></member>
+      <member refid="classcasacore_1_1Array_1aa908cb659ebfc6b458a5cfcf50158e4e" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>tovector</name></member>
+      <member refid="classcasacore_1_1Array_1a28e84db09e32dffc0b646edd6c5cc6ec" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>tovector</name></member>
+      <member refid="classcasacore_1_1Array_1ab93a46b6daff97d3fa3d3861b74ff9cf" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>uninitialized</name></member>
+      <member refid="classcasacore_1_1Array_1a31e7341087c1aa29f72fb847ddca2884" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>unique</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a1021ec0b6f5de196087db028337e0673" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>validateConformance</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a5adffbe5b38cbe247f607e1577c22ac3" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>validateIndex</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1ab101dd25093d4a6988d8a666d1c9a8af" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>validateIndex</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1aab345e15084fe87a5a6eb30870851b68" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>validateIndex</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a08551fd10c4ab63551a36c78c8884eb5" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>validateIndex</name></member>
+      <member refid="classcasacore_1_1Array_1af4639e5eaecf7ce267d9dfcb985b576f" prot="public" virt="non-virtual"><scope>casacore::Array</scope><name>value_type</name></member>
+      <member refid="classcasacore_1_1Array_1abf986a9a7d16a04ea4b3e62e3cf475f1" prot="public" virt="virtual"><scope>casacore::Array</scope><name>~Array</name></member>
+      <member refid="classcasacore_1_1ArrayBase_1a240403ee536c8341f8e87761d8ab0823" prot="public" virt="virtual"><scope>casacore::Array</scope><name>~ArrayBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

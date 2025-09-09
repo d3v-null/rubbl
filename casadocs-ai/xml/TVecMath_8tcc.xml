@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="TVecMath_8tcc" kind="file" language="C++">
+    <compoundname>TVecMath.tcc</compoundname>
+    <includedby refid="TVecMath_8h" local="no">tables/Tables/TVecMath.h</includedby>
+    <invincdepgraph>
+      <node id="4">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="2">
+        <label>tables/Tables/TVecMath.h</label>
+        <link refid="TVecMath_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tables/Tables/TabVecMath.h</label>
+        <link refid="TabVecMath_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tables/Tables/TVecMath.tcc</label>
+        <link refid="TVecMath_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>TVecMath.cc:<sp/>Global<sp/>helper<sp/>functions<sp/>for<sp/>table<sp/>vector<sp/>mathematics</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1997</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_TVECMATH_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_TVECMATH_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TVecMath.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TVec.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TVecTemp.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/ArrayError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicMath/Math.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Add,<sp/>subtract,<sp/>multiply,<sp/>divide<sp/>table<sp/>vector.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Define<sp/>it<sp/>for<sp/>a<sp/>vector<sp/>and<sp/>scalar,<sp/>2<sp/>vectors,<sp/>2<sp/>vectors<sp/>with<sp/>assign.</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TVECMATHOPER(NAME,OP,OPA)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>aips_name2(tabVecRepvalr,NAME)<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T&amp;<sp/>val)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tv.newVec();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>vec(i));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>OPA<sp/>val;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>aips_name2(tabVecRepvall,NAME)<sp/>(const<sp/>T&amp;<sp/>val,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tv.newVec();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>=<sp/>val<sp/>OP<sp/>tmp;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>aips_name2(tabVecReptv,NAME)<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvl,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvr)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tvr.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvl.validateConformance(nr);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tvl.newVec();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tvl.getVal<sp/>(i,<sp/>vec(i));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>OPA<sp/>tvr.value(i);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>aips_name2(tabVecRepvalass,NAME)<sp/>(TabVecRep&lt;T&gt;&amp;<sp/>tv,<sp/>const<sp/>T&amp;<sp/>val)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tmp<sp/>OPA<sp/>val;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.putVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>aips_name2(tabVecReptvass,NAME)<sp/>(TabVecRep&lt;T&gt;&amp;<sp/>tvl,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvr)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tvr.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvl.validateConformance(nr);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tvl.getVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tmp<sp/>OPA<sp/>tvr.value(i);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tvl.putVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TVECMATHOPER(add,+,+=)</highlight></codeline>
+<codeline><highlight class="normal">TVECMATHOPER(sub,-,-=)</highlight></codeline>
+<codeline><highlight class="normal">TVECMATHOPER(tim,*,*=)</highlight></codeline>
+<codeline><highlight class="normal">TVECMATHOPER(div,/,/=)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>tabVecRepnegate(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tv.newVec();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>=<sp/>-tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>tabVecRepminmax<sp/>(T&amp;<sp/>min,<sp/>T&amp;<sp/>max,<sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nr<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;void<sp/>minMax(T&amp;<sp/>min,<sp/>T&amp;<sp/>max,<sp/>const<sp/>TabVecRep&lt;T&gt;&amp;)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;TabVecRep<sp/>has<sp/>no<sp/>elements&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tv.getVal<sp/>(0,<sp/>min);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max<sp/>=<sp/>min;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=1;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(tmp<sp/>&lt;<sp/>min)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>min<sp/>=<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(tmp<sp/>&gt;<sp/>max)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>=<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>tabVecRepindgen(TabVecRep&lt;T&gt;&amp;<sp/>tv,<sp/>T<sp/>start,<sp/>T<sp/>inc)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.putVal<sp/>(i,<sp/>start<sp/>+<sp/>i*inc);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TABVECFUNC(NAME)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>aips_name2(tabVecRep,NAME)<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tv.newVec();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>=<sp/>NAME(tmp);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TABVECFUNC2(NAME)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>aips_name2(tabVecRep,NAME)<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvl,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvr)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tvr.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvl.validateConformance(nr);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tvl.newVec();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmpl,<sp/>tmpr;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tvl.getVal<sp/>(i,<sp/>tmpl);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tvr.getVal<sp/>(i,<sp/>tmpr);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>=<sp/>NAME(tmpl,<sp/>tmpr);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(cos)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(cosh)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(exp)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(log)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(log10)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC2(pow)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(sin)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(sinh)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(sqrt)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(acos)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(asin)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(atan)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC2(atan2)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(ceil)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(fabs)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(floor)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC2(fmod)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(tan)</highlight></codeline>
+<codeline><highlight class="normal">TABVECFUNC<sp/>(tanh)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>tabVecReppowd<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv,<sp/>const<sp/>double&amp;<sp/>exp)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tv.newVec();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vec(i)<sp/>=<sp/>pow(tmp,<sp/>exp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T<sp/>tabVecRepsum<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nr<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;T<sp/>sum(const<sp/>TabVecRep&lt;T&gt;&amp;)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;TabVecRep<sp/>has<sp/>no<sp/>elements&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp,<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tv.getVal<sp/>(0,<sp/>res);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=1;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res<sp/>+=<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T<sp/>tabVecRepproduct<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nr<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;T<sp/>product(const<sp/>TabVecRep&lt;T&gt;&amp;)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;TabVecRep<sp/>has<sp/>no<sp/>elements&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp,<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tv.getVal<sp/>(0,<sp/>res);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=1;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res<sp/>*=<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T<sp/>tabVecRepinnerproduct<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvl,<sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tvr.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvl.validateConformance(nr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res<sp/>+=<sp/>tvl.value(i)<sp/>*<sp/>tvr.value(i);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T<sp/>tabVecRepnorm<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tv)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>tv.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nr;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tv.getVal<sp/>(i,<sp/>tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res<sp/>+=<sp/>tmp*tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>sqrt(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>3-space<sp/>cross/vector<sp/>product</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">TabVecRep&lt;T&gt;&amp;<sp/>tabVecRepcrossproduct<sp/>(const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvl,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TabVecRep&lt;T&gt;&amp;<sp/>tvr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvl.validateConformance(3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tvr.validateConformance(3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TabVecTemp&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>*(TabVecTemp&lt;T&gt;*)tvl.newVec();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vec(0)<sp/>=<sp/>tvl.value(1)<sp/>*<sp/>tvr.value(2)<sp/><sp/>-<sp/><sp/>tvl.value(2)<sp/>*<sp/>tvr.value(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vec(1)<sp/>=<sp/>tvl.value(2)<sp/>*<sp/>tvr.value(0)<sp/><sp/>-<sp/><sp/>tvl.value(0)<sp/>*<sp/>tvr.value(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vec(2)<sp/>=<sp/>tvl.value(0)<sp/>*<sp/>tvr.value(1)<sp/><sp/>-<sp/><sp/>tvl.value(1)<sp/>*<sp/>tvr.value(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>vec;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/Tables/TVecMath.tcc"/>
+  </compounddef>
+</doxygen>

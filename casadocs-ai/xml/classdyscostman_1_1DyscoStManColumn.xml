@@ -1,0 +1,791 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classdyscostman_1_1DyscoStManColumn" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>dyscostman::DyscoStManColumn</compoundname>
+    <basecompoundref refid="classcasacore_1_1StManColumnBase" prot="public" virt="non-virtual">casacore::StManColumnBase</basecompoundref>
+    <derivedcompoundref refid="classdyscostman_1_1ThreadedDyscoColumn" prot="public" virt="non-virtual">dyscostman::ThreadedDyscoColumn&lt; float &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classdyscostman_1_1ThreadedDyscoColumn" prot="public" virt="non-virtual">dyscostman::ThreadedDyscoColumn&lt; std::complex&lt; float &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classdyscostman_1_1ThreadedDyscoColumn" prot="public" virt="non-virtual">dyscostman::ThreadedDyscoColumn&lt; DataType &gt;</derivedcompoundref>
+    <includes refid="dyscostmancol_8h" local="no">dyscostmancol.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classdyscostman_1_1DyscoStManColumn_1a5fec29744c5901c82148902831aa385e" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::_offsetInBlock</definition>
+        <argsstring></argsstring>
+        <name>_offsetInBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="116" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdyscostman_1_1DyscoStManColumn_1a0630f3c2432bb76290172cd4359a9e00" prot="private" static="no" mutable="no">
+        <type><ref refid="classdyscostman_1_1DyscoStMan" kindref="compound">DyscoStMan</ref> *</type>
+        <definition>DyscoStMan* dyscostman::DyscoStManColumn::_storageManager</definition>
+        <argsstring></argsstring>
+        <name>_storageManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="117" column="14" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a8c0377ca942cd7888d08ce86b9b18ab5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::DyscoStManColumn::DyscoStManColumn</definition>
+        <argsstring>(DyscoStMan *parent, int dtype)</argsstring>
+        <name>DyscoStManColumn</name>
+        <param>
+          <type><ref refid="classdyscostman_1_1DyscoStMan" kindref="compound">DyscoStMan</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dtype</declname>
+        </param>
+        <briefdescription>
+<para>Constructor, to be overloaded by subclass. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parent stman to which this column belongs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dtype</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column&apos;s type as defined by Casacore. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="29" column="12" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a82499aeafc4811a16605769e0de06d53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual dyscostman::DyscoStManColumn::~DyscoStManColumn</definition>
+        <argsstring>()</argsstring>
+        <name>~DyscoStManColumn</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="35" column="11" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1ab4c67d9b80eeddd8fe54002488e591f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void dyscostman::DyscoStManColumn::shutdown</definition>
+        <argsstring>()=0</argsstring>
+        <name>shutdown</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ae6b0d4510a5a382fe6ab0f4eee4ab368">shutdown</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ae6b0d4510a5a382fe6ab0f4eee4ab368">shutdown</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ae6b0d4510a5a382fe6ab0f4eee4ab368">shutdown</reimplementedby>
+        <briefdescription>
+<para>To be called before destructing the class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="38" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a81d04cb2f1d6f46d51e1ba21cc1f0cb0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">casacore::Bool</ref></type>
+        <definition>virtual casacore::Bool dyscostman::DyscoStManColumn::isWritable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isWritable</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a3f3b88b6a3dd470de3ed510c148f4508">isWritable</reimplements>
+        <briefdescription>
+<para>Whether this column is writable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="44" column="26" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a79754a68cbcc0422dd6537aa4c2c5bf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void dyscostman::DyscoStManColumn::Prepare</definition>
+        <argsstring>(DyscoDistribution distribution, Normalization normalization, double studentsTNu, double distributionTruncation)=0</argsstring>
+        <name>Prepare</name>
+        <reimplementedby refid="classdyscostman_1_1DyscoDataColumn_1a3e9c37589afaecd5346a17a0bc593139">Prepare</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1DyscoWeightColumn_1a1a5c71b538584335b82cacc617f53fc0">Prepare</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a99e9fd14ee75135e60402073d6551235">Prepare</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a99e9fd14ee75135e60402073d6551235">Prepare</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a99e9fd14ee75135e60402073d6551235">Prepare</reimplementedby>
+        <param>
+          <type><ref refid="namespacedyscostman_1a51fef6aed8056e66e5f06a91ce658654" kindref="member">DyscoDistribution</ref></type>
+          <declname>distribution</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacedyscostman_1a0310ef73fb535ced1f64687d171da9a2" kindref="member">Normalization</ref></type>
+          <declname>normalization</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>studentsTNu</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>distributionTruncation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="46" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a084a9ecd631984c98bfe123bc0167033" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void dyscostman::DyscoStManColumn::InitializeAfterNRowsPerBlockIsKnown</definition>
+        <argsstring>()=0</argsstring>
+        <name>InitializeAfterNRowsPerBlockIsKnown</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a0a4ee4a7f9c9e29e6abc0271b9ebea43">InitializeAfterNRowsPerBlockIsKnown</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a0a4ee4a7f9c9e29e6abc0271b9ebea43">InitializeAfterNRowsPerBlockIsKnown</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a0a4ee4a7f9c9e29e6abc0271b9ebea43">InitializeAfterNRowsPerBlockIsKnown</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="50" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a1f1397bad682f7f6ee50538878da795a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t dyscostman::DyscoStManColumn::CalculateBlockSize</definition>
+        <argsstring>(size_t nRowsInBlock, size_t nAntennae) const =0</argsstring>
+        <name>CalculateBlockSize</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1aef0847291ce7376acb739b2f406096c3">CalculateBlockSize</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1aef0847291ce7376acb739b2f406096c3">CalculateBlockSize</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1aef0847291ce7376acb739b2f406096c3">CalculateBlockSize</reimplementedby>
+        <param>
+          <type>size_t</type>
+          <declname>nRowsInBlock</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nAntennae</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="52" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a54a184a5aeda9ec00380a936f137f260" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t dyscostman::DyscoStManColumn::ExtraHeaderSize</definition>
+        <argsstring>() const</argsstring>
+        <name>ExtraHeaderSize</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1abd8f9d2c1ad321070ee8131b1aeaa891">ExtraHeaderSize</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1abd8f9d2c1ad321070ee8131b1aeaa891">ExtraHeaderSize</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1abd8f9d2c1ad321070ee8131b1aeaa891">ExtraHeaderSize</reimplementedby>
+        <briefdescription>
+<para>Get number of bytes needed for column header of this column. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is excluding the generic column header. <simplesect kind="return"><para>Size of column header </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="60" column="18" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a2cafbe324da166490e14c8c8d2646956" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void dyscostman::DyscoStManColumn::SerializeExtraHeader</definition>
+        <argsstring>(std::ostream &amp;stream) const =0</argsstring>
+        <name>SerializeExtraHeader</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ac5770a010512f50b47f90bade2ab4e69">SerializeExtraHeader</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ac5770a010512f50b47f90bade2ab4e69">SerializeExtraHeader</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1ac5770a010512f50b47f90bade2ab4e69">SerializeExtraHeader</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="62" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1ab04cea12b30b5397d295fda260aed994" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void dyscostman::DyscoStManColumn::UnserializeExtraHeader</definition>
+        <argsstring>(std::istream &amp;stream)=0</argsstring>
+        <name>UnserializeExtraHeader</name>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a9589f065dffd01cf206dfffdbf9aecf7">UnserializeExtraHeader</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a9589f065dffd01cf206dfffdbf9aecf7">UnserializeExtraHeader</reimplementedby>
+        <reimplementedby refid="classdyscostman_1_1ThreadedDyscoColumn_1a9589f065dffd01cf206dfffdbf9aecf7">UnserializeExtraHeader</reimplementedby>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="64" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1abaeff0fa7c15ea4441121a74d01bcb99" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::OffsetInBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>OffsetInBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="66" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a71a96de4e9acbfbc957358956fe4a88b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::DyscoStManColumn::SetOffsetInBlock</definition>
+        <argsstring>(size_t offsetInBlock)</argsstring>
+        <name>SetOffsetInBlock</name>
+        <param>
+          <type>size_t</type>
+          <declname>offsetInBlock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="68" column="8" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="68" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1afb54ae1e24c51a6a5dbe2059fe7bc604" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1DyscoStMan" kindref="compound">DyscoStMan</ref> &amp;</type>
+        <definition>DyscoStMan&amp; dyscostman::DyscoStManColumn::storageManager</definition>
+        <argsstring>() const</argsstring>
+        <name>storageManager</name>
+        <briefdescription>
+<para>Get the storage manager for this column. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="74" column="14" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a5d296245e15efedfdd95159060e3be49" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::DyscoStManColumn::readCompressedData</definition>
+        <argsstring>(size_t blockIndex, unsigned char *dest, size_t size)</argsstring>
+        <name>readCompressedData</name>
+        <param>
+          <type>size_t</type>
+          <declname>blockIndex</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Read a row of compressed data from the stman file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>blockIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The block index of the row to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination buffer, should be at least of size Stride(). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nr of bytes to be read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="82" column="8" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a0e5483647281f8deed83e4a3e472bb9f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::DyscoStManColumn::writeCompressedData</definition>
+        <argsstring>(size_t blockIndex, const unsigned char *data, size_t size)</argsstring>
+        <name>writeCompressedData</name>
+        <param>
+          <type>size_t</type>
+          <declname>blockIndex</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Write a row of compressed data to the stman file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>blockIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The block index of the row to write. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data buffer containing Stride() bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nr of bytes to be written. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="90" column="8" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="132" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a18825634739fe8d1c557edc0d4116c64" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t dyscostman::DyscoStManColumn::nBlocksInFile</definition>
+        <argsstring>() const</argsstring>
+        <name>nBlocksInFile</name>
+        <briefdescription>
+<para>Get the actual number of blocks in the file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="96" column="12" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1abfa30a0b0247f39a356562663a6954ab" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::getBlockIndex</definition>
+        <argsstring>(uint64_t row) const</argsstring>
+        <name>getBlockIndex</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="98" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a6ad70c0a01037818c74d6f3fad95b580" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::getRowWithinBlock</definition>
+        <argsstring>(uint64_t row) const</argsstring>
+        <name>getRowWithinBlock</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="100" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1af20fbf22c65ef59a39dccc5363336c98" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::nRowsInBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>nRowsInBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="102" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1abd731c1e00bfb45d12e6e0f8cc5de030" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::DyscoStManColumn::nAntennae</definition>
+        <argsstring>() const</argsstring>
+        <name>nAntennae</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="104" column="10" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="150" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a15be087a37cae1e63156aadadee210ba" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t dyscostman::DyscoStManColumn::getRowIndex</definition>
+        <argsstring>(size_t block) const</argsstring>
+        <name>getRowIndex</name>
+        <param>
+          <type>size_t</type>
+          <declname>block</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="106" column="12" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a58b84f78946b8d41b35a707d60bec8b6" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool dyscostman::DyscoStManColumn::areOffsetsInitialized</definition>
+        <argsstring>() const</argsstring>
+        <name>areOffsetsInitialized</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="108" column="8" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="162" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1aba039757ce862bb6cc5797cca85b80be" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::DyscoStManColumn::initializeRowsPerBlock</definition>
+        <argsstring>(size_t rowsPerBlock, size_t antennaCount)</argsstring>
+        <name>initializeRowsPerBlock</name>
+        <param>
+          <type>size_t</type>
+          <declname>rowsPerBlock</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="110" column="8" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="166" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a8114a402656d954a346fb53ab59f3003" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::DyscoStManColumn::DyscoStManColumn</definition>
+        <argsstring>(const DyscoStManColumn &amp;source)=delete</argsstring>
+        <name>DyscoStManColumn</name>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1DyscoStManColumn" kindref="compound">DyscoStManColumn</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="113" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1DyscoStManColumn_1a4fbb08b39e52df06e6303ad69c17a393" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::DyscoStManColumn::operator=</definition>
+        <argsstring>(const DyscoStManColumn &amp;source)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1DyscoStManColumn" kindref="compound">DyscoStManColumn</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/dyscostmancol.h" line="114" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for columns of the <ref refid="classdyscostman_1_1DyscoStMan" kindref="compound">DyscoStMan</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>André Dysco </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7">
+        <label>dyscostman::DyscoDataColumn</label>
+        <link refid="classdyscostman_1_1DyscoDataColumn"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>dyscostman::ThreadedDyscoColumn&lt; std::complex&lt; float &gt; &gt;</label>
+        <link refid="classdyscostman_1_1ThreadedDyscoColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>dyscostman::ThreadedDyscoColumn&lt; DataType &gt;</label>
+        <link refid="classdyscostman_1_1ThreadedDyscoColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::StManColumnBase</label>
+        <link refid="classcasacore_1_1StManColumnBase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>dyscostman::ThreadedDyscoColumn&lt; float &gt;</label>
+        <link refid="classdyscostman_1_1ThreadedDyscoColumn"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::DataManagerColumn</label>
+        <link refid="classcasacore_1_1DataManagerColumn"/>
+      </node>
+      <node id="5">
+        <label>dyscostman::DyscoWeightColumn</label>
+        <link refid="classdyscostman_1_1DyscoWeightColumn"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>dyscostman::DyscoStManColumn</label>
+        <link refid="classdyscostman_1_1DyscoStManColumn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>casacore::StManColumnBase</label>
+        <link refid="classcasacore_1_1StManColumnBase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::DataManagerColumn</label>
+        <link refid="classcasacore_1_1DataManagerColumn"/>
+      </node>
+      <node id="1">
+        <label>dyscostman::DyscoStManColumn</label>
+        <link refid="classdyscostman_1_1DyscoStManColumn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="tables/Dysco/dyscostmancol.h" line="22" column="1" bodyfile="tables/Dysco/dyscostmancol.h" bodystart="22" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a5fec29744c5901c82148902831aa385e" prot="private" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>_offsetInBlock</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a0630f3c2432bb76290172cd4359a9e00" prot="private" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>_storageManager</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a58b84f78946b8d41b35a707d60bec8b6" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>areOffsetsInitialized</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a1f1397bad682f7f6ee50538878da795a" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>CalculateBlockSize</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a5b1cd2bbb7197bd3b4d0c7d12907cd09" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>canChangeShape</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aea0d77495b04f1547e5cc8ac6b304e6c" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>columnCache</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a61c1b8c81282d69774e0d8c98ad13de5" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>columnCachePtr</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a67d5168021d32e0ddc06f5d7fa24866b" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>columnName</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1adc883463238a8eb0e67e2cc29a2ae2a5" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>DataManagerColumn</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a5c3cfaa92da547a8816fcb03156bbdd1" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>DataManagerColumn</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a2e2531f5b5d145931d78ae2b0956f2f2" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>dataType</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3eec55560a8b5026fc7ca1c2e39fdfa2" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>dataTypeId</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a749454a6dda09b9d73300e7cc3848ad9" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>dtype</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a8c0377ca942cd7888d08ce86b9b18ab5" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>DyscoStManColumn</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a8114a402656d954a346fb53ab59f3003" prot="private" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>DyscoStManColumn</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ad0e2bdb7fa92cf9a8c95cef6345faf78" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>elemSize</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a54a184a5aeda9ec00380a936f137f260" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>ExtraHeaderSize</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3478f69f8817c92a2474ea18d7c47ae7" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad0df6be85de67bcdd52937abbbb19fed" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a45a97180a559d17bb177a8f9745b7c96" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a06bd7631c7e06a55c66b9a6ba7e29080" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab31c526cefee4e90f7c73fb9252d462b" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a56e05a4408239eea23fde52942edbd43" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a38afb9bb8e6edc0ac3688fc019e8f956" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a7899f67ec707aadb532b63d60744a5b8" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ae6393e56da98e8149a35bf8d0053627c" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1af40cfe61cec232996b16f1ed3b7c5aac" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3fc86e66cb96bce55136ce279f4405a3" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9416b8662b0d5ee7390c27e30a2db736" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a42e1cf8bcaa08d6c8156f05558e70791" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aad49c8d24af95c4b1ff9f790a9bc99e7" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getArrayColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a641fcd00eecbcd74ebbece29e860d2e3" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getArrayColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a8a757f8282241d8b865cc6a05540e389" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getArrayColumnCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a5555ef76a93226d3bf6264dae754db2c" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getArrayColumnV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a647005e52df222336325b0b97ef9ca81" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getArrayV</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1abfa30a0b0247f39a356562663a6954ab" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getBlockIndex</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1af1fec31cd437177d5578c79b3c8e6b62" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getBool</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a964e162c59f1399bd3eca53378725de4" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getColumnSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac58073607856ada4de0ba3430a3a57f8" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getColumnSliceCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aff1ffdd4fc3c7211a9a25f3108fb22e3" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getColumnSliceCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3f363a9f2b23d40e3312d77183480432" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getColumnSliceV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a729b36a592084d01c258481e070f6c86" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getComplex</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3497237ab2a3394fe4827930f21eb71d" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getDComplex</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4b6b285f97685cc16b2a5b55225a3822" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getdouble</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab9967870cb5b690e5556b4b8f4481cb8" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getfloat</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab73ea146f72175a037880441d3602cf7" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getInt</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a1e33c4572c664a15d198578bdffdbb25" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getInt64</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a29bb79103626576c24678a47ca64d56f" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getOther</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a15be087a37cae1e63156aadadee210ba" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getRowIndex</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a6ad70c0a01037818c74d6f3fad95b580" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getRowWithinBlock</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aafd921de6e3eea20e231fac9223bd283" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getScalarColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad843f323f7df55ed5044720cd27b87c9" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getScalarColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac317dab45d06c286b1dafedd5fb388eb" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getScalarColumnCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a26d610812ed63d16ee57f4a4599e8de1" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getScalarColumnV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aa2bf11cb70c32870a57038b9eca87825" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getShort</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a70cf9939496be79701f35c1ccc77b31c" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a33849a5e627401d31f571ec469075779" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getSliceV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a6013be63ce30180da4eec8be74dc4276" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getString</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a686864367d3d1b31162290d4aded865c" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getuChar</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1acc1f45e8f11fcc57e81280594777d5b1" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getuInt</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a6e223c14a1a6ca2ab4a097aeeb3f6a3b" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>getuShort</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a084a9ecd631984c98bfe123bc0167033" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>InitializeAfterNRowsPerBlockIsKnown</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1aba039757ce862bb6cc5797cca85b80be" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>initializeRowsPerBlock</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac6e85e7a3d8e1934bf6992f26c5f2715" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>isFixedShape</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a58370b5996dadefc8454aeb64f34a904" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>isNativeDataType</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abf187f834eaead1d31530446aa65ddf2" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>isShapeDefined</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a81d04cb2f1d6f46d51e1ba21cc1f0cb0" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>isWritable</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1abd731c1e00bfb45d12e6e0f8cc5de030" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>nAntennae</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a18825634739fe8d1c557edc0d4116c64" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>nBlocksInFile</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4584529a26f85dadc083a14929ecdfbe" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>ndim</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1af20fbf22c65ef59a39dccc5363336c98" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>nRowsInBlock</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1abaeff0fa7c15ea4441121a74d01bcb99" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>OffsetInBlock</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a4fbb08b39e52df06e6303ad69c17a393" prot="private" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ad15fe5e80300758768f4a1e7e22394c6" prot="public" virt="non-virtual" ambiguityscope="casacore::StManColumnBase::"><scope>dyscostman::DyscoStManColumn</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a05522ac176f05d032a2d362c3e8e6550" prot="public" virt="non-virtual" ambiguityscope="casacore::DataManagerColumn::"><scope>dyscostman::DyscoStManColumn</scope><name>operator=</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a79754a68cbcc0422dd6537aa4c2c5bf3" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>Prepare</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a8baadc37f03980b1fdf53c7bd087d70a" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aa65a627278d68b8d9024d8ef854d78b2" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1afa54289bb0c430d20bc4b3209d5cb77c" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a8cd68b2f96c4cc8c8080c9cd14498ebe" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2a7e60453359ae9063cd4cde9a99a929" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aacec4772b87707cfd1c3067d6ca4ee5b" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4636e5a027b7df2a6c95efcbb33c63eb" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a0d3195eeefab996eaae9b6f13f2eb16d" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac094fa120f7e7e769598b88346e82e4e" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a96cafee908a73b4e889b900d854f4b63" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab9c0339fa45487a455ea081a9a500472" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a28cabb9458c61207dcc94335e9bf9e75" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3f462e962eabc69a1d21696a078bf902" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3ff15d8eaaa3e385918e877d8e991503" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putArrayColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a443d905b852eb0a10b8a684ffac2c6ac" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putArrayColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab39f60299a7bb9746a1feb219aa46cd9" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putArrayColumnCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2fd81a3e6233c10baca2e5b45a3625ed" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putArrayColumnV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a84f1ff5b464d55704a84391539faebcc" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putArrayV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad90aca6b251ae200a5cd81e7f2e47c97" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putBool</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a973af841796290587d138ee4e57c0011" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putColumnSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a17080871b1dd117e828a369c048b8f72" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putColumnSliceCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab048602da5d57653296a7ec2b49b8a65" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putColumnSliceCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4b3e3efa09ad1a1febe38e071ce2ccab" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putColumnSliceV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9efaebbd56f35fcf45670c9c25399f7a" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putComplex</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aa5c90bc8ae4fe5a2ba1873cdc3be9f3a" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putDComplex</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a0da9b0b766ccf48e885676e47805e2a8" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putdouble</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abf7f34f545d80f20f58188a1f1ea94e3" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putfloat</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9e342de619df1a46f6ae562a93a13d8e" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putInt</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ae467123630dbdf05f723b3d7cad09936" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putInt64</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2dfabb57cad6817a4f2f4b2c1d40f028" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putOther</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a56e3ce854a4c13c09adf93817d2e77df" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putScalarColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab4a844516dd6cf344c3cc814d5050b9f" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putScalarColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab71c3a16c01aada35a3bb7c72f8cfad4" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putScalarColumnCellsV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1afaa475320df238ade52a741f4ced6c46" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putScalarColumnV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aede92a3f3124c5cac2715c33a8135444" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putShort</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4718e1685266ea1467d711590740f631" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab47d8291aa53383b906faa7da7411859" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putSliceV</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1afffe30b2298920900e5681231128e6fd" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putString</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a15d273ac628707320d6a7a143312307e" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putuChar</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a16b19cd6e0cbf9902af33844db48d73c" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putuInt</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aabe45170be6237d5584ce0a891edf0cd" prot="protected" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>putuShort</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a5d296245e15efedfdd95159060e3be49" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>readCompressedData</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a2cafbe324da166490e14c8c8d2646956" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>SerializeExtraHeader</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abb6e47508ed0791274ffc936ab0f0583" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setColumnName</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a565ab0bbdb4367f0deccd65252b4d58d" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setFixedShapeColumn</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad6cc0187ac2f6b949e38646d8fd8c289" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setIsFixedShape</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2fb35b4e8347e9565b1819209e3fa8eb" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setMaxLength</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a71a96de4e9acbfbc957358956fe4a88b" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>SetOffsetInBlock</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9af8089c07083e75bb43f94cc63dcfb7" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aaec2242b42bf0de885ef66077a8cb964" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>setShapeTiled</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a5ced3c23b1a05041a3df39e091fc5dd2" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>shape</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1ab4c67d9b80eeddd8fe54002488e591f7" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>shutdown</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a19360c50e73f812688da59e40df0ca69" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>StManColumnBase</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a0763369356c29737c5fc2daa2523e3c4" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>StManColumnBase</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1afb54ae1e24c51a6a5dbe2059fe7bc604" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>storageManager</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a09ed06bd3ef47015de4c5fa83e46620e" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>throwGet</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a98482de618e227e244fec2556968a2ec" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>throwPut</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9af9510c329904b99af837c56331de06" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>tileShape</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1ab04cea12b30b5397d295fda260aed994" prot="public" virt="pure-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>UnserializeExtraHeader</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a0e5483647281f8deed83e4a3e472bb9f" prot="protected" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>writeCompressedData</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abd119fc54a89ce776259313c76e1ff33" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>~DataManagerColumn</name></member>
+      <member refid="classdyscostman_1_1DyscoStManColumn_1a82499aeafc4811a16605769e0de06d53" prot="public" virt="virtual"><scope>dyscostman::DyscoStManColumn</scope><name>~DyscoStManColumn</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ae7d231535d6c218808cc5991ea0e7430" prot="public" virt="non-virtual"><scope>dyscostman::DyscoStManColumn</scope><name>~StManColumnBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

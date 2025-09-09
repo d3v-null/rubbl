@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1CountedPtr" kind="class" language="C++" prot="public">
+    <compoundname>casacore::CountedPtr</compoundname>
+    <includes refid="CountedPtr_8h" local="no">CountedPtr.h</includes>
+    <innerclass refid="classcasacore_1_1CountedPtr_1_1Deleter" prot="protected">casacore::CountedPtr::Deleter</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class t</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classcasacore_1_1CountedPtr_1a10ec5834ec30f4001772f2357ce52fc8" prot="private" static="no">
+        <type>std::shared_ptr&lt; t &gt;</type>
+        <definition>typedef std::shared_ptr&lt;t&gt; casacore::CountedPtr&lt; t &gt;::PointerRep</definition>
+        <argsstring></argsstring>
+        <name>PointerRep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="248" column="29" bodyfile="casa/Utilities/CountedPtr.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcasacore_1_1CountedPtr_1ae7db19162dcfa97421b8b546221a8fa0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TP</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class CountedPtr</definition>
+        <argsstring></argsstring>
+        <name>CountedPtr</name>
+        <param>
+          <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="246" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1CountedPtr_1a34d8d3ad15987b5c6da72c2399d9f98b" prot="private" static="no" mutable="no">
+        <type>PointerRep</type>
+        <definition>PointerRep casacore::CountedPtr&lt; t &gt;::pointerRep_p</definition>
+        <argsstring></argsstring>
+        <name>pointerRep_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="250" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1ae25f8f624b087ca2cdfb800a5710880d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::CountedPtr</definition>
+        <argsstring>()</argsstring>
+        <name>CountedPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="104" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1ad506f5e4b2c1de9b3a10c01214893046" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::CountedPtr</definition>
+        <argsstring>(t *val, Bool delit=True)</argsstring>
+        <name>CountedPtr</name>
+        <param>
+          <type>t *</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>delit</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="116" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="116" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1acff3a5d6e03909200e02d8e932fcb96f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TP</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::CountedPtr</definition>
+        <argsstring>(const CountedPtr&lt; TP &gt; &amp;that)</argsstring>
+        <name>CountedPtr</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; TP &gt; &amp;</type>
+          <declname>that</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="124" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a688e62492f088642bd173ef9a72056bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::CountedPtr</definition>
+        <argsstring>(const std::shared_ptr&lt; t &gt; &amp;rep)</argsstring>
+        <name>CountedPtr</name>
+        <param>
+          <type>const std::shared_ptr&lt; t &gt; &amp;</type>
+          <declname>rep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="129" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="129" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a522c3399bc65de2ec036b17dad69da0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::~CountedPtr</definition>
+        <argsstring>()</argsstring>
+        <name>~CountedPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="135" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="135" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a61fce22355210abca93c2cee06386f73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TP</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; t &gt; &amp;</type>
+        <definition>CountedPtr&lt;t&gt;&amp; casacore::CountedPtr&lt; t &gt;::operator=</definition>
+        <argsstring>(const CountedPtr&lt; TP &gt; &amp;that)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; TP &gt; &amp;</type>
+          <declname>that</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="141" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="141" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a83da9c576cb31cc807bcb0c19c19ae67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::CountedPtr&lt; t &gt;::reset</definition>
+        <argsstring>(t *val, Bool delit=True)</argsstring>
+        <name>reset</name>
+        <param>
+          <type>t *</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>delit</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="149" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="149" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a724877539ad6f0b84abb142daf2629d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::CountedPtr&lt; t &gt;::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="151" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="151" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a1339d76d1864295dc55c994733766a7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>t &amp;</type>
+        <definition>t&amp; casacore::CountedPtr&lt; t &gt;::operator*</definition>
+        <argsstring>() const</argsstring>
+        <name>operator*</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="164" column="7" bodyfile="casa/Utilities/CountedPtr.h" bodystart="164" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a6f9718d1f26938fb5df8c53fb4f71c39" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>t *</type>
+        <definition>t* casacore::CountedPtr&lt; t &gt;::operator-&gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator-&gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="178" column="7" bodyfile="casa/Utilities/CountedPtr.h" bodystart="178" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1aa0c0517a97cd089c440cafa4243baf85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>t *</type>
+        <definition>t* casacore::CountedPtr&lt; t &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="183" column="7" bodyfile="casa/Utilities/CountedPtr.h" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a4359c1414d3cb7d252205681b3c30cd8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::CountedPtr&lt; t &gt;::operator==</definition>
+        <argsstring>(const CountedPtr&lt; t &gt; &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; t &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="189" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="189" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1aaa0b1473f7812aeff1229d4812a8a058" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::CountedPtr&lt; t &gt;::operator==</definition>
+        <argsstring>(int ptr) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>int</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="193" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="193" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1ac31da1f17576d7211bba90934583940a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::CountedPtr&lt; t &gt;::operator!=</definition>
+        <argsstring>(const CountedPtr&lt; t &gt; &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; t &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="199" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1aa12ae0ff0d2630732c5859f50221cb35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::CountedPtr&lt; t &gt;::operator!=</definition>
+        <argsstring>(int ptr) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>int</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="203" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a5251faa80a3ddc8985e1dd049b1d1fd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; t &gt; &amp;</type>
+        <definition>CountedPtr&lt;t&gt;&amp; casacore::CountedPtr&lt; t &gt;::operator=</definition>
+        <argsstring>(t *v)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>t *</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="210" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="210" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a5f3aa1c28302008d78a1fc5a449a8646" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; U &gt;</type>
+        <definition>CountedPtr&lt;U&gt; casacore::CountedPtr&lt; t &gt;::static_ptr_cast</definition>
+        <argsstring>() const</argsstring>
+        <name>static_ptr_cast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="219" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="219" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1acb9852fed64591f4a8940c1edefa1e8f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; U &gt;</type>
+        <definition>CountedPtr&lt;U&gt; casacore::CountedPtr&lt; t &gt;::const_ptr_cast</definition>
+        <argsstring>() const</argsstring>
+        <name>const_ptr_cast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="222" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="222" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a5780d22851559f3ed2ccd468ab1daad9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classcasacore_1_1CountedPtr" kindref="compound">CountedPtr</ref>&lt; U &gt;</type>
+        <definition>CountedPtr&lt;U&gt; casacore::CountedPtr&lt; t &gt;::dynamic_ptr_cast</definition>
+        <argsstring>() const</argsstring>
+        <name>dynamic_ptr_cast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="225" column="16" bodyfile="casa/Utilities/CountedPtr.h" bodystart="225" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1ae99b2ff1fbba1211d44eb5967f112d13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::CountedPtr&lt; t &gt;::nrefs</definition>
+        <argsstring>() const</argsstring>
+        <name>nrefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="232" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="232" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1a930f81ef614ab3d721750c0e10671ec1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::CountedPtr&lt; t &gt;::null</definition>
+        <argsstring>() const</argsstring>
+        <name>null</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="237" column="10" bodyfile="casa/Utilities/CountedPtr.h" bodystart="237" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1CountedPtr_1af8079b1a7bbcab38304f727bbdd91a94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::CountedPtr&lt; t &gt;::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/CountedPtr.h" line="241" column="5" bodyfile="casa/Utilities/CountedPtr.h" bodystart="241" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="casa/Utilities/CountedPtr.h" line="80" column="1" bodyfile="casa/Utilities/CountedPtr.h" bodystart="81" bodyend="251"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1CountedPtr_1acb9852fed64591f4a8940c1edefa1e8f" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>const_ptr_cast</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1ae7db19162dcfa97421b8b546221a8fa0" prot="private" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>CountedPtr</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1ae25f8f624b087ca2cdfb800a5710880d" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>CountedPtr</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1ad506f5e4b2c1de9b3a10c01214893046" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>CountedPtr</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1acff3a5d6e03909200e02d8e932fcb96f" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>CountedPtr</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a688e62492f088642bd173ef9a72056bb" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>CountedPtr</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a5780d22851559f3ed2ccd468ab1daad9" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>dynamic_ptr_cast</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1aa0c0517a97cd089c440cafa4243baf85" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>get</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1ae99b2ff1fbba1211d44eb5967f112d13" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>nrefs</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a930f81ef614ab3d721750c0e10671ec1" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>null</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1af8079b1a7bbcab38304f727bbdd91a94" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator bool</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1ac31da1f17576d7211bba90934583940a" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator!=</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1aa12ae0ff0d2630732c5859f50221cb35" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator!=</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a1339d76d1864295dc55c994733766a7f" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator*</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a6f9718d1f26938fb5df8c53fb4f71c39" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator-&gt;</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a61fce22355210abca93c2cee06386f73" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a5251faa80a3ddc8985e1dd049b1d1fd3" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a4359c1414d3cb7d252205681b3c30cd8" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator==</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1aaa0b1473f7812aeff1229d4812a8a058" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>operator==</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a10ec5834ec30f4001772f2357ce52fc8" prot="private" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>PointerRep</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a34d8d3ad15987b5c6da72c2399d9f98b" prot="private" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>pointerRep_p</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a83da9c576cb31cc807bcb0c19c19ae67" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>reset</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a724877539ad6f0b84abb142daf2629d1" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>reset</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a5f3aa1c28302008d78a1fc5a449a8646" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>static_ptr_cast</name></member>
+      <member refid="classcasacore_1_1CountedPtr_1a522c3399bc65de2ec036b17dad69da0a" prot="public" virt="non-virtual"><scope>casacore::CountedPtr</scope><name>~CountedPtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

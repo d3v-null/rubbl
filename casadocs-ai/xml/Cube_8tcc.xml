@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Cube_8tcc" kind="file" language="C++">
+    <compoundname>Cube.tcc</compoundname>
+    <includedby refid="Cube_8h" local="yes">casa/Arrays/Cube.h</includedby>
+    <invincdepgraph>
+      <node id="4">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/Cube.h</label>
+        <link refid="Cube_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/LogiCube.h</label>
+        <link refid="LogiCube_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/Cube.tcc</label>
+        <link refid="Cube_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>Cube.cc:<sp/>A<sp/>3-D<sp/>Specialization<sp/>of<sp/>the<sp/>Array<sp/>Class</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_CUBE_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_CUBE_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Cube.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Matrix.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Slice.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;MaskedArray.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube()</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>Array&lt;T&gt;(IPosition(3,<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(size_t<sp/>l1,<sp/>size_t<sp/>l2,<sp/>size_t<sp/>l3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;initialValue)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>Array&lt;T&gt;(IPosition(3,<sp/>l1,<sp/>l2,<sp/>l3),<sp/>initialValue)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(size_t<sp/>l1,<sp/>size_t<sp/>l2,<sp/>size_t<sp/>l3,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>typename<sp/>Array&lt;T&gt;::uninitializedType)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>Array&lt;T&gt;(IPosition(3,<sp/>l1,<sp/>l2,<sp/>l3),<sp/>Array&lt;T&gt;::uninitialized)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(const<sp/>IPosition<sp/>&amp;length,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;initialValue)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(length,<sp/>initialValue)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>this-&gt;checkBeforeResize(length);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(const<sp/>IPosition<sp/>&amp;length,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>typename<sp/>Array&lt;T&gt;::uninitializedType)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(length,<sp/>Array&lt;T&gt;::uninitialized)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>this-&gt;checkBeforeResize(length);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(const<sp/>Cube&lt;T&gt;<sp/>&amp;source)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(source)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(Cube&lt;T&gt;&amp;&amp;<sp/>source)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(std::move(source),<sp/>IPosition(3,<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/>&lt;item&gt;<sp/>ArrayNDimError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(const<sp/>Array&lt;T&gt;<sp/>&amp;source)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>Array&lt;T&gt;(source)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>this-&gt;checkCubeShape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;::Cube(Array&lt;T&gt;&amp;&amp;<sp/>source)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>Array&lt;T&gt;(std::move(source))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>this-&gt;checkCubeShape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>Cube&lt;T&gt;::resize(size_t<sp/>nx,<sp/>size_t<sp/>ny,<sp/>size_t<sp/>nz,<sp/>bool<sp/>copyValues)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>l(3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>l(0)<sp/>=<sp/>nx;<sp/>l(1)<sp/>=<sp/>ny;<sp/>l(2)<sp/>=<sp/>nz;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;::resize(l,<sp/>copyValues);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>&lt;item&gt;<sp/>ArrayError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Cube&lt;T&gt;<sp/>Cube&lt;T&gt;::operator()(const<sp/>Slice<sp/>&amp;sliceX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Slice<sp/>&amp;sliceY,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Slice<sp/>&amp;sliceZ)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>long<sp/>long<sp/>b1,<sp/>l1,<sp/>s1,<sp/>b2,<sp/>l2,<sp/>s2,<sp/>b3,s3,l3;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>begin<sp/>length<sp/>step</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sliceX.all())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b1<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l1<sp/>=<sp/>this-&gt;length_p(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s1<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b1<sp/>=<sp/>sliceX.start();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l1<sp/>=<sp/>sliceX.length();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s1<sp/>=<sp/>sliceX.inc();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sliceY.all())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b2<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l2<sp/>=<sp/>this-&gt;length_p(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s2<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b2<sp/>=<sp/>sliceY.start();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l2<sp/>=<sp/>sliceY.length();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s2<sp/>=<sp/>sliceY.inc();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sliceZ.all())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b3<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l3<sp/>=<sp/>this-&gt;length_p(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s3<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>b3<sp/>=<sp/>sliceZ.start();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>l3<sp/>=<sp/>sliceZ.length();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>s3<sp/>=<sp/>sliceZ.inc();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Check<sp/>that<sp/>the<sp/>selected<sp/>slice<sp/>is<sp/>valid</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(s1<sp/>&lt;<sp/>1<sp/>||<sp/>s2<sp/>&lt;<sp/>1<sp/>||<sp/>s3<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;Cube&lt;T&gt;::operator()(Slice,Slice,Slice)<sp/>:<sp/>step<sp/>&lt;<sp/>1&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(l1<sp/>&lt;<sp/>0<sp/><sp/>||<sp/>l2<sp/>&lt;<sp/>0<sp/>||<sp/>l3<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;Cube&lt;T&gt;::operator()(Slice,Slice,Slice):<sp/>length<sp/>&lt;<sp/>0&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>((b1+(l1-1)*s1<sp/>&gt;=<sp/>this-&gt;length_p(0))<sp/>||<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(b2+(l2-1)*s2<sp/>&gt;=<sp/>this-&gt;length_p(1))<sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(b3+(l3-1)*s3<sp/>&gt;=<sp/>this-&gt;length_p(2)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;Cube&lt;T&gt;::operator()(Slice,Slice,Slice)<sp/>:<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Desired<sp/>slice<sp/>extends<sp/>beyond<sp/>the<sp/>end<sp/>of<sp/>the<sp/>array&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(b1<sp/>&lt;<sp/>0<sp/>||<sp/>b2<sp/>&lt;<sp/>0<sp/>||<sp/>b3<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayError(&quot;Cube&lt;T&gt;::operator()(Slice,Slice,Slice)<sp/>:<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;start<sp/>of<sp/>slice<sp/>before<sp/>beginning<sp/>of<sp/>cube&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>For<sp/>simplicity,<sp/>just<sp/>use<sp/>the<sp/>Array&lt;T&gt;<sp/>slicing.<sp/>If<sp/>this<sp/>is<sp/>found<sp/>to<sp/>be</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>a<sp/>performance<sp/>drag,<sp/>we<sp/>could<sp/>special<sp/>case<sp/>this<sp/>as<sp/>we<sp/>do<sp/>for<sp/>Vector.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>blc(3,b1,b2,b3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>trc(3,b1+(l1-1)*s1,b2+(l2-1)*s2,b3+(l3-1)*s3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>incr(3,s1,s2,s3);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>this-&gt;operator()(blc,trc,incr);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>const<sp/>Cube&lt;T&gt;<sp/>Cube&lt;T&gt;::operator()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(const<sp/>Slice<sp/>&amp;sliceX,<sp/>const<sp/>Slice<sp/>&amp;sliceY,<sp/>const<sp/>Slice<sp/>&amp;sliceZ)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>const_cast&lt;Cube&lt;T&gt;*&gt;(this)-&gt;operator()<sp/>(sliceX,<sp/>sliceY,<sp/>sliceZ);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>Cube&lt;T&gt;::doNonDegenerate<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;other,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition<sp/>&amp;ignoreAxes)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>tmp(*this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.nonDegenerate<sp/>(other,<sp/>ignoreAxes);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(tmp.ndim()<sp/>!=<sp/>3)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayError<sp/>(&quot;Cube::nonDegenerate<sp/>(other,<sp/>ignoreAxes)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;removing<sp/>degenerate<sp/>axes<sp/>from<sp/>other<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;does<sp/>not<sp/>result<sp/>in<sp/>cube&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;reference<sp/>(tmp);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/>&lt;item&gt;<sp/>ArrayConformanceError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::xyPlane(size_t<sp/>which)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((long<sp/>long)(which)<sp/>&gt;=<sp/>this-&gt;length_p(2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayConformanceError(&quot;Cube&lt;T&gt;::xyPlane<sp/>-<sp/>plane<sp/>&gt;<sp/>end&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>tmp((*this)(Slice(),<sp/>Slice(),<sp/>which));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.ndimen_p<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.length_p.resize<sp/>(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.inc_p.resize<sp/>(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.originalLength_p.resize<sp/>(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.makeSteps();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>Matrix&lt;T&gt;(tmp);<sp/>//<sp/>should<sp/>match<sp/>Matrix&lt;T&gt;(const<sp/>Array&lt;T&gt;<sp/>&amp;)</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>const<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::xyPlane(size_t<sp/>which)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>*This<sp/>=<sp/>const_cast&lt;Cube&lt;T&gt;*&gt;(this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Cast<sp/>away<sp/>constness,<sp/>but<sp/>the<sp/>return<sp/>type<sp/>is<sp/>a<sp/>const<sp/>Matrix&lt;T&gt;,<sp/>so</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>this<sp/>should<sp/>still<sp/>be<sp/>safe.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>This-&gt;xyPlane(which);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::xzPlane(size_t<sp/>which)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((long<sp/>long)(which)<sp/>&gt;=<sp/>this-&gt;length_p(1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayConformanceError(&quot;Cube&lt;T&gt;::xzPlane<sp/>-<sp/>plane<sp/>&gt;<sp/>end&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>tmp((*this)(Slice(),<sp/>which,<sp/>Slice()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Keep<sp/>axes<sp/>0<sp/>and<sp/>2,<sp/>even<sp/>if<sp/>they<sp/>have<sp/>length<sp/>1.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>tmp.nonDegenerate(IPosition(2,0,2));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>const<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::xzPlane(size_t<sp/>which)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>*This<sp/>=<sp/>const_cast&lt;Cube&lt;T&gt;*&gt;(this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Cast<sp/>away<sp/>constness,<sp/>but<sp/>the<sp/>return<sp/>type<sp/>is<sp/>a<sp/>const<sp/>Matrix&lt;T&gt;,<sp/>so</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>this<sp/>should<sp/>still<sp/>be<sp/>safe.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>This-&gt;xzPlane(which);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::yzPlane(size_t<sp/>which)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((long<sp/>long)(which)<sp/>&gt;=<sp/>this-&gt;length_p(0))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw(ArrayConformanceError(&quot;Cube&lt;T&gt;::yzPlane<sp/>-<sp/>plane<sp/>&gt;<sp/>end&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>tmp((*this)(which,<sp/>Slice(),<sp/>Slice()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Keep<sp/>axes<sp/>1<sp/>and<sp/>2,<sp/>even<sp/>if<sp/>they<sp/>have<sp/>length<sp/>1.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>tmp.nonDegenerate(IPosition(2,1,2));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>const<sp/>Matrix&lt;T&gt;<sp/>Cube&lt;T&gt;::yzPlane(size_t<sp/>which)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Cube&lt;T&gt;<sp/>*This<sp/>=<sp/>const_cast&lt;Cube&lt;T&gt;*&gt;(this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Cast<sp/>away<sp/>constness,<sp/>but<sp/>the<sp/>return<sp/>type<sp/>is<sp/>a<sp/>const<sp/>Matrix&lt;T&gt;,<sp/>so</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>this<sp/>should<sp/>still<sp/>be<sp/>safe.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>This-&gt;yzPlane(which);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>bool<sp/>Cube&lt;T&gt;::ok()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>NDEBUG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(this-&gt;ndim()<sp/>!=<sp/>3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>std::runtime_error(&quot;ndim()<sp/>==<sp/>&quot;<sp/>+<sp/>std::to_string(this-&gt;ndim()));</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>this-&gt;ndim()<sp/>==<sp/>3<sp/>&amp;&amp;<sp/>Array&lt;T&gt;::ok();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Cube&lt;T&gt;::Cube(const<sp/>IPosition<sp/>&amp;shape,<sp/>T<sp/>*storage,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>StorageInitPolicy<sp/>policy)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(shape,<sp/>storage,<sp/>policy)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(shape.nelements()<sp/>!=<sp/>3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>ArrayError(&quot;len.nelements()<sp/>!=<sp/>3&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Cube&lt;T&gt;::Cube(const<sp/>IPosition<sp/>&amp;shape,<sp/>const<sp/>T<sp/>*storage)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>Array&lt;T&gt;(shape,<sp/>storage)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>if(shape.nelements()<sp/>!=<sp/>3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>ArrayError(&quot;len.nelements()<sp/>!=<sp/>3&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>Cube&lt;T&gt;::preTakeStorage(const<sp/>IPosition<sp/>&amp;shape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Array&lt;T&gt;::preTakeStorage(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(shape.nelements()<sp/>!=<sp/>3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>ArrayError(&quot;len.nelements()<sp/>!=<sp/>3&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#End<sp/>casa<sp/>namespace</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/Cube.tcc"/>
+  </compounddef>
+</doxygen>

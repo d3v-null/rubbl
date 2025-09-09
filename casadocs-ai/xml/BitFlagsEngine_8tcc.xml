@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="BitFlagsEngine_8tcc" kind="file" language="C++">
+    <compoundname>BitFlagsEngine.tcc</compoundname>
+    <includedby refid="BitFlagsEngine_8h" local="no">tables/DataMan/BitFlagsEngine.h</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>tables/DataMan/BitFlagsEngine.cc</label>
+        <link refid="BitFlagsEngine_8cc"/>
+      </node>
+      <node id="2">
+        <label>tables/DataMan/BitFlagsEngine.h</label>
+        <link refid="BitFlagsEngine_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/DataManager.cc</label>
+        <link refid="DataManager_8cc"/>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/BitFlagsEngine.tcc</label>
+        <link refid="BitFlagsEngine_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>BitFlagsEngine.tcc:<sp/>Templated<sp/>virtual<sp/>column<sp/>engine<sp/>to<sp/>map<sp/>bit<sp/>flags<sp/>to<sp/>a<sp/>Bool</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>2009</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_BITFLAGSENGINE_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_BITFLAGSENGINE_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/BitFlagsEngine.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/Table.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScalarColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ArrayColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ColumnDesc.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableRecord.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/DataManError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Array.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/ArrayMath.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Containers/Record.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicSL/String.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/ValTypeId.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BitFlagsEngine&lt;T&gt;::BitFlagsEngine<sp/>(const<sp/>String&amp;<sp/>virtualColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>storedColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>readMask,<sp/>T<sp/>writeMask)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>BaseMappedArrayEngine&lt;Bool,T&gt;<sp/>(virtualColumnName,<sp/>storedColumnName),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEReadMask<sp/><sp/>(readMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEWriteMask<sp/>(writeMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsReadMask<sp/><sp/><sp/><sp/><sp/>(readMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsWriteMask<sp/><sp/><sp/><sp/>(writeMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsIsNew<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(False)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BitFlagsEngine&lt;T&gt;::BitFlagsEngine<sp/>(const<sp/>String&amp;<sp/>virtualColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>storedColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;String&gt;&amp;<sp/>readMaskKeys,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;String&gt;&amp;<sp/>writeMaskKeys)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>BaseMappedArrayEngine&lt;Bool,T&gt;<sp/>(virtualColumnName,<sp/>storedColumnName),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEReadMask<sp/><sp/>(readMaskKeys,<sp/>0xffffffff),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEWriteMask<sp/>(writeMaskKeys,<sp/>1),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsReadMask<sp/><sp/><sp/><sp/><sp/>(0xffffffff),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsWriteMask<sp/><sp/><sp/><sp/>(1),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsIsNew<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(False)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BitFlagsEngine&lt;T&gt;::BitFlagsEngine<sp/>(const<sp/>Record&amp;<sp/>spec)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>BaseMappedArrayEngine&lt;Bool,T&gt;(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsIsNew<sp/>(False)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(spec.isDefined(&quot;SOURCENAME&quot;)<sp/><sp/>&amp;&amp;<sp/><sp/>spec.isDefined(&quot;TARGETNAME&quot;))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>setNames<sp/>(spec.asString(&quot;SOURCENAME&quot;),<sp/>spec.asString(&quot;TARGETNAME&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>setProperties<sp/>(spec);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BitFlagsEngine&lt;T&gt;::BitFlagsEngine<sp/>(const<sp/>BitFlagsEngine&lt;T&gt;&amp;<sp/>that)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>:<sp/>BaseMappedArrayEngine&lt;Bool,T&gt;<sp/>(that),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEReadMask<sp/><sp/><sp/>(that.itsBFEReadMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEWriteMask<sp/><sp/>(that.itsBFEWriteMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsReadMask<sp/><sp/><sp/><sp/><sp/><sp/>(that.itsReadMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsWriteMask<sp/><sp/><sp/><sp/><sp/>(that.itsWriteMask),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsIsNew<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(that.itsIsNew)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BitFlagsEngine&lt;T&gt;::~BitFlagsEngine()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//#<sp/>Clone<sp/>the<sp/>engine<sp/>object.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DataManager*<sp/>BitFlagsEngine&lt;T&gt;::clone()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager*<sp/>dmPtr<sp/>=<sp/>new<sp/>BitFlagsEngine&lt;T&gt;<sp/>(*this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>dmPtr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//#<sp/>Return<sp/>the<sp/>type<sp/>name<sp/>of<sp/>the<sp/>engine<sp/>(i.e.<sp/>its<sp/>class<sp/>name).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>String<sp/>BitFlagsEngine&lt;T&gt;::dataManagerType()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>className();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//#<sp/>Return<sp/>the<sp/>class<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//#<sp/>Get<sp/>the<sp/>data<sp/>type<sp/>names<sp/>using<sp/>class<sp/>ValType.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>String<sp/>BitFlagsEngine&lt;T&gt;::className()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>&quot;BitFlagsEngine&lt;&quot;<sp/>+<sp/>valDataTypeId<sp/>(static_cast&lt;T*&gt;(0));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>String<sp/>BitFlagsEngine&lt;T&gt;::dataManagerName()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>virtualName();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Record<sp/>BitFlagsEngine&lt;T&gt;::dataManagerSpec()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Record<sp/>spec<sp/>=<sp/>getProperties();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spec.define<sp/>(&quot;SOURCENAME&quot;,<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spec.define<sp/>(&quot;TARGETNAME&quot;,<sp/>storedName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>spec;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Record<sp/>BitFlagsEngine&lt;T&gt;::getProperties()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Record<sp/>spec;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEReadMask.toRecord<sp/><sp/>(spec,<sp/>&quot;Read&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEWriteMask.toRecord<sp/>(spec,<sp/>&quot;Write&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>spec;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::setProperties<sp/>(const<sp/>Record&amp;<sp/>spec)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEReadMask.fromRecord<sp/><sp/>(spec,<sp/>column(),<sp/>&quot;Read&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsBFEWriteMask.fromRecord<sp/>(spec,<sp/>column(),<sp/>&quot;Write&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsReadMask<sp/><sp/>=<sp/>T(itsBFEReadMask.getMask());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsWriteMask<sp/>=<sp/>T(itsBFEWriteMask.getMask());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DataManager*<sp/>BitFlagsEngine&lt;T&gt;::makeObject<sp/>(const<sp/>String&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Record&amp;<sp/>spec)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager*<sp/>dmPtr<sp/>=<sp/>new<sp/>BitFlagsEngine&lt;T&gt;(spec);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>dmPtr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::registerClass()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager::registerCtor<sp/>(className(),<sp/>makeObject);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::create64<sp/>(rownr_t<sp/>initialNrrow)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseMappedArrayEngine&lt;Bool,T&gt;::create64<sp/>(initialNrrow);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsIsNew<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::prepare()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseMappedArrayEngine&lt;Bool,T&gt;::prepare();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>If<sp/>a<sp/>new<sp/>table,<sp/>derive<sp/>the<sp/>mask<sp/>here.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>cannot<sp/>be<sp/>done<sp/>in<sp/>create,<sp/>because<sp/>the<sp/>other<sp/>column<sp/>may<sp/>not</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>be<sp/>created<sp/>yet.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(itsIsNew)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEReadMask.makeMask<sp/>(column());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEWriteMask.makeMask(column());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Store<sp/>the<sp/>various<sp/>parameters<sp/>as<sp/>keywords<sp/>in<sp/>this<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(table(),<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEReadMask.toRecord<sp/>(thisCol.rwKeywordSet(),<sp/>&quot;_BitFlagsEngine_Read&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEWriteMask.toRecord(thisCol.rwKeywordSet(),<sp/>&quot;_BitFlagsEngine_Write&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Existing<sp/>table,<sp/>get<sp/>masks<sp/>from<sp/>the<sp/>keywords.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(table(),<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEReadMask.fromRecord<sp/>(thisCol.keywordSet(),<sp/>column(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;_BitFlagsEngine_Read&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsBFEWriteMask.fromRecord(thisCol.keywordSet(),<sp/>column(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;_BitFlagsEngine_Write&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsReadMask<sp/><sp/>=<sp/>T(itsBFEReadMask.getMask());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>itsWriteMask<sp/>=<sp/>T(itsBFEWriteMask.getMask());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getArray<sp/>(rownr_t<sp/>rownr,<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().get<sp/>(rownr,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putArray<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().put<sp/>(rownr,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getSlice<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getSlice<sp/>(rownr,<sp/>slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putSlice<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putSlice<sp/>(rownr,<sp/>slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getArrayColumn<sp/>(Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumn<sp/>(target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putArrayColumn<sp/>(const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumn<sp/>(target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getArrayColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumnCells<sp/>(rownrs,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putArrayColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumnCells<sp/>(rownrs,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getColumnSlice<sp/>(const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumn<sp/>(slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putColumnSlice<sp/>(const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumn<sp/>(slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::getColumnSliceCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumnCells<sp/>(rownrs,<sp/>slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::putColumnSliceCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Slicer&amp;<sp/>slicer,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;Bool&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>target(array.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumnCells<sp/>(rownrs,<sp/>slicer,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::mapOnGet<sp/>(Array&lt;Bool&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;&amp;<sp/>stored)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrayTransform<sp/>(stored,<sp/>array,<sp/>FlagsToBool(itsReadMask));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>BitFlagsEngine&lt;T&gt;::mapOnPut<sp/>(const<sp/>Array&lt;Bool&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;T&gt;&amp;<sp/>stored)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrayTransformInPlace<sp/>(stored,<sp/>array,<sp/>BoolToFlags(itsWriteMask));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/BitFlagsEngine.tcc"/>
+  </compounddef>
+</doxygen>

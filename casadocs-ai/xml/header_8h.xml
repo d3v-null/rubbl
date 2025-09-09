@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="header_8h" kind="file" language="C++">
+    <compoundname>header.h</compoundname>
+    <includes refid="serializable_8h" local="yes">serializable.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="dyscostman_8cc" local="yes">tables/Dysco/dyscostman.cc</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>tables/Dysco/header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>serializable.h</label>
+        <link refid="serializable_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>complex</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>tables/Dysco/dyscostman.cc</label>
+        <link refid="dyscostman_8cc"/>
+      </node>
+      <node id="1">
+        <label>tables/Dysco/header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structdyscostman_1_1Header" prot="public">dyscostman::Header</innerclass>
+    <innerclass refid="structdyscostman_1_1GenericColumnHeader" prot="public">dyscostman::GenericColumnHeader</innerclass>
+    <innernamespace refid="namespacedyscostman">dyscostman</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>DYSCO_HEADER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DYSCO_HEADER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="serializable_8h" kindref="compound">serializable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacedyscostman" kindref="compound">dyscostman</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DOXYGEN_SHOULD_SKIP_THIS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="structdyscostman_1_1Header" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdyscostman_1_1Header" kindref="compound">Header</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classSerializable" kindref="compound">Serializable</ref><sp/>{</highlight></codeline>
+<codeline lineno="13" refid="structdyscostman_1_1Header_1afe8472f8b5221e5edbd2799ac3badc01" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1afe8472f8b5221e5edbd2799ac3badc01" kindref="member">headerSize</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structdyscostman_1_1Header_1a428497a68b6cbc7d7c7a2966eed40ede" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1a428497a68b6cbc7d7c7a2966eed40ede" kindref="member">columnHeaderOffset</ref>;</highlight></codeline>
+<codeline lineno="17" refid="structdyscostman_1_1Header_1af445f216a04e4851d113bb3e6d85e967" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1af445f216a04e4851d113bb3e6d85e967" kindref="member">columnCount</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structdyscostman_1_1Header_1a14886da1cc26fbfda825d4f4930d469a" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structdyscostman_1_1Header_1a14886da1cc26fbfda825d4f4930d469a" kindref="member">storageManagerName</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="structdyscostman_1_1Header_1ae57e304b0dc0fcced8dd46a0adac92f6" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1ae57e304b0dc0fcced8dd46a0adac92f6" kindref="member">rowsPerBlock</ref>;</highlight></codeline>
+<codeline lineno="22" refid="structdyscostman_1_1Header_1a9fa708814448d740fc39b50d195a7c6c" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1a9fa708814448d740fc39b50d195a7c6c" kindref="member">antennaCount</ref>;</highlight></codeline>
+<codeline lineno="23" refid="structdyscostman_1_1Header_1ab90d58aec9ecc853957a9fc3eb6a42be" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1ab90d58aec9ecc853957a9fc3eb6a42be" kindref="member">blockSize</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structdyscostman_1_1Header_1aa7128bdbc37e5a657da2da70e86147e6" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structdyscostman_1_1Header_1aa7128bdbc37e5a657da2da70e86147e6" kindref="member">versionMajor</ref>,<sp/><ref refid="structdyscostman_1_1Header_1a8f93b9e9f56899d4717ea519376c84f4" kindref="member">versionMinor</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="structdyscostman_1_1Header_1a659fcba16462f58318d85ffdc38f22ea" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structdyscostman_1_1Header_1a659fcba16462f58318d85ffdc38f22ea" kindref="member">dataBitCount</ref>;</highlight></codeline>
+<codeline lineno="29" refid="structdyscostman_1_1Header_1a7b88ca52bfac7b91bf0c99f19d6c344f" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structdyscostman_1_1Header_1a7b88ca52bfac7b91bf0c99f19d6c344f" kindref="member">weightBitCount</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structdyscostman_1_1Header_1a9176fece2a5961b91b89ab63d534e75c" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structdyscostman_1_1Header_1a9176fece2a5961b91b89ab63d534e75c" kindref="member">distribution</ref>;</highlight></codeline>
+<codeline lineno="31" refid="structdyscostman_1_1Header_1a0a3a80b78082b807ab68da862ca25a6d" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structdyscostman_1_1Header_1a0a3a80b78082b807ab68da862ca25a6d" kindref="member">normalization</ref>;</highlight></codeline>
+<codeline lineno="32" refid="structdyscostman_1_1Header_1a17046c87892fc22c14669c75746732a3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structdyscostman_1_1Header_1a277fda208c1ea8ab4def8290241b2009" kindref="member">studentTNu</ref>,<sp/><ref refid="structdyscostman_1_1Header_1a17046c87892fc22c14669c75746732a3" kindref="member">distributionTruncation</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structdyscostman_1_1Header_1a9d41a66d77f0e092c702e7f61d71bc4c" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1Header_1a9d41a66d77f0e092c702e7f61d71bc4c" kindref="member">calculateColumnHeaderOffset</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>7<sp/>*<sp/>4<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>6<sp/>x<sp/>uint32<sp/>+<sp/>string<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a14886da1cc26fbfda825d4f4930d469a" kindref="member">storageManagerName</ref>.size()<sp/>+<sp/>2<sp/>*<sp/>2<sp/>+<sp/><sp/></highlight><highlight class="comment">//<sp/>2<sp/>x<sp/>uint16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4<sp/>*<sp/>1<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>4<sp/>x<sp/>uint8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/>*<sp/>8;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2<sp/>x<sp/>double</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structdyscostman_1_1Header_1a15370a7c94d2d72e77b3f0c9db864f86" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structdyscostman_1_1Header_1a15370a7c94d2d72e77b3f0c9db864f86" kindref="member">Serialize</ref>(std::ostream<sp/>&amp;stream)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1afe8472f8b5221e5edbd2799ac3badc01" kindref="member">headerSize</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a428497a68b6cbc7d7c7a2966eed40ede" kindref="member">columnHeaderOffset</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1af445f216a04e4851d113bb3e6d85e967" kindref="member">columnCount</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a950888edef5aea03f1fa6e9e66c27f51" kindref="member">SerializeTo32bString</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a14886da1cc26fbfda825d4f4930d469a" kindref="member">storageManagerName</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1ae57e304b0dc0fcced8dd46a0adac92f6" kindref="member">rowsPerBlock</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a9fa708814448d740fc39b50d195a7c6c" kindref="member">antennaCount</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1ab90d58aec9ecc853957a9fc3eb6a42be" kindref="member">blockSize</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a18041b303a2963056fdc95f305be1bc3" kindref="member">SerializeToUInt16</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1aa7128bdbc37e5a657da2da70e86147e6" kindref="member">versionMajor</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a18041b303a2963056fdc95f305be1bc3" kindref="member">SerializeToUInt16</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a8f93b9e9f56899d4717ea519376c84f4" kindref="member">versionMinor</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" kindref="member">SerializeToUInt8</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a659fcba16462f58318d85ffdc38f22ea" kindref="member">dataBitCount</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" kindref="member">SerializeToUInt8</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a7b88ca52bfac7b91bf0c99f19d6c344f" kindref="member">weightBitCount</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" kindref="member">SerializeToUInt8</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a9176fece2a5961b91b89ab63d534e75c" kindref="member">distribution</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" kindref="member">SerializeToUInt8</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a0a3a80b78082b807ab68da862ca25a6d" kindref="member">normalization</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a3c7b44d88b0f26e99ce7c12b14860ba1" kindref="member">SerializeToDouble</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a277fda208c1ea8ab4def8290241b2009" kindref="member">studentTNu</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1a3c7b44d88b0f26e99ce7c12b14860ba1" kindref="member">SerializeToDouble</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a17046c87892fc22c14669c75746732a3" kindref="member">distributionTruncation</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="structdyscostman_1_1Header_1a9640991ddae669a941c2a5d30853f0fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structdyscostman_1_1Header_1a9640991ddae669a941c2a5d30853f0fe" kindref="member">Unserialize</ref>(std::istream<sp/>&amp;stream)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1afe8472f8b5221e5edbd2799ac3badc01" kindref="member">headerSize</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a428497a68b6cbc7d7c7a2966eed40ede" kindref="member">columnHeaderOffset</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1af445f216a04e4851d113bb3e6d85e967" kindref="member">columnCount</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1aaa5adb427c574b2f0c7841c6262d8525" kindref="member">Unserialize32bString</ref>(stream,<sp/><ref refid="structdyscostman_1_1Header_1a14886da1cc26fbfda825d4f4930d469a" kindref="member">storageManagerName</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1ae57e304b0dc0fcced8dd46a0adac92f6" kindref="member">rowsPerBlock</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a9fa708814448d740fc39b50d195a7c6c" kindref="member">antennaCount</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1ab90d58aec9ecc853957a9fc3eb6a42be" kindref="member">blockSize</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1aa7128bdbc37e5a657da2da70e86147e6" kindref="member">versionMajor</ref><sp/>=<sp/><ref refid="classSerializable_1a04f50e7e411991b2e93974f237f3f9dc" kindref="member">UnserializeUInt16</ref>(stream);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a8f93b9e9f56899d4717ea519376c84f4" kindref="member">versionMinor</ref><sp/>=<sp/><ref refid="classSerializable_1a04f50e7e411991b2e93974f237f3f9dc" kindref="member">UnserializeUInt16</ref>(stream);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a659fcba16462f58318d85ffdc38f22ea" kindref="member">dataBitCount</ref><sp/>=<sp/><ref refid="classSerializable_1adef1387b72a669a1740f8fe818f08b37" kindref="member">UnserializeUInt8</ref>(stream);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a7b88ca52bfac7b91bf0c99f19d6c344f" kindref="member">weightBitCount</ref><sp/>=<sp/><ref refid="classSerializable_1adef1387b72a669a1740f8fe818f08b37" kindref="member">UnserializeUInt8</ref>(stream);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a9176fece2a5961b91b89ab63d534e75c" kindref="member">distribution</ref><sp/>=<sp/><ref refid="classSerializable_1adef1387b72a669a1740f8fe818f08b37" kindref="member">UnserializeUInt8</ref>(stream);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a0a3a80b78082b807ab68da862ca25a6d" kindref="member">normalization</ref><sp/>=<sp/><ref refid="classSerializable_1adef1387b72a669a1740f8fe818f08b37" kindref="member">UnserializeUInt8</ref>(stream);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a277fda208c1ea8ab4def8290241b2009" kindref="member">studentTNu</ref><sp/>=<sp/><ref refid="classSerializable_1aad831d7a22fa11252891c7a22b6497e2" kindref="member">UnserializeDouble</ref>(stream);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1Header_1a17046c87892fc22c14669c75746732a3" kindref="member">distributionTruncation</ref><sp/>=<sp/><ref refid="classSerializable_1aad831d7a22fa11252891c7a22b6497e2" kindref="member">UnserializeDouble</ref>(stream);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>column<sp/>headers<sp/>start<sp/>here<sp/>(first<sp/>generic<sp/>header,<sp/>then<sp/>column<sp/>specific</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>header)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="structdyscostman_1_1GenericColumnHeader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdyscostman_1_1GenericColumnHeader" kindref="compound">GenericColumnHeader</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classSerializable" kindref="compound">Serializable</ref><sp/>{</highlight></codeline>
+<codeline lineno="88" refid="structdyscostman_1_1GenericColumnHeader_1ad78a7ca7f4db81f48ba369280e80420a" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1ad78a7ca7f4db81f48ba369280e80420a" kindref="member">columnHeaderSize</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="structdyscostman_1_1GenericColumnHeader_1a7288c7236c6342d39d74ccf47b1bc0fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1a7288c7236c6342d39d74ccf47b1bc0fe" kindref="member">Serialize</ref>(std::ostream<sp/>&amp;stream)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" kindref="member">SerializeToUInt32</ref>(stream,<sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1ad78a7ca7f4db81f48ba369280e80420a" kindref="member">columnHeaderSize</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="structdyscostman_1_1GenericColumnHeader_1a5ad7288a8d104145334e80966fdb1248" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1a5ad7288a8d104145334e80966fdb1248" kindref="member">Unserialize</ref>(std::istream<sp/>&amp;stream)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1ad78a7ca7f4db81f48ba369280e80420a" kindref="member">columnHeaderSize</ref><sp/>=<sp/><ref refid="classSerializable_1a842396774fef51f186675c8766ac73ce" kindref="member">UnserializeUInt32</ref>(stream);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="structdyscostman_1_1GenericColumnHeader_1a0d01e7face04a354fd3d7dda5e3cff38" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="structdyscostman_1_1GenericColumnHeader_1a0d01e7face04a354fd3d7dda5e3cff38" kindref="member">calculateSize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;<sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/Dysco/header.h"/>
+  </compounddef>
+</doxygen>

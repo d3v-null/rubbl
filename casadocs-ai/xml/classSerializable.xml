@@ -1,0 +1,585 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classSerializable" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Serializable</compoundname>
+    <derivedcompoundref refid="structdyscostman_1_1GenericColumnHeader" prot="public" virt="non-virtual">dyscostman::GenericColumnHeader</derivedcompoundref>
+    <derivedcompoundref refid="structdyscostman_1_1Header" prot="public" virt="non-virtual">dyscostman::Header</derivedcompoundref>
+    <includes refid="serializable_8h" local="no">serializable.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSerializable_1ad52cc2c51dcd678990321ff70993c4eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Serializable::~Serializable</definition>
+        <argsstring>()</argsstring>
+        <name>~Serializable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="11" column="11" bodyfile="tables/Dysco/serializable.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a767f528bb9da41bf34441f9cf9981d1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Serializable::Serialize</definition>
+        <argsstring>(std::ostream &amp;stream) const =0</argsstring>
+        <name>Serialize</name>
+        <reimplementedby refid="structdyscostman_1_1Header_1a15370a7c94d2d72e77b3f0c9db864f86">Serialize</reimplementedby>
+        <reimplementedby refid="structdyscostman_1_1GenericColumnHeader_1a7288c7236c6342d39d74ccf47b1bc0fe">Serialize</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="12" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a0033c3835add4fa9e9ca37605ffd256d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Serializable::Unserialize</definition>
+        <argsstring>(std::istream &amp;stream)=0</argsstring>
+        <name>Unserialize</name>
+        <reimplementedby refid="structdyscostman_1_1Header_1a9640991ddae669a941c2a5d30853f0fe">Unserialize</reimplementedby>
+        <reimplementedby refid="structdyscostman_1_1GenericColumnHeader_1a5ad7288a8d104145334e80966fdb1248">Unserialize</reimplementedby>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="13" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classSerializable_1a9f078b37c6e1f479beefb28d259a8045" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Serializable::SerializeToUInt64</definition>
+        <argsstring>(std::ostream &amp;stream, T value)</argsstring>
+        <name>SerializeToUInt64</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="16" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Serializable::SerializeToUInt32</definition>
+        <argsstring>(std::ostream &amp;stream, T value)</argsstring>
+        <name>SerializeToUInt32</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="22" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a18041b303a2963056fdc95f305be1bc3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Serializable::SerializeToUInt16</definition>
+        <argsstring>(std::ostream &amp;stream, T value)</argsstring>
+        <name>SerializeToUInt16</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="28" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Serializable::SerializeToUInt8</definition>
+        <argsstring>(std::ostream &amp;stream, T value)</argsstring>
+        <name>SerializeToUInt8</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="34" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aca2430bb04e79bbc2589350ebe90c731" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToBool8</definition>
+        <argsstring>(std::ostream &amp;stream, bool value)</argsstring>
+        <name>SerializeToBool8</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="39" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a21f37e824f0107091786811f326dcf4c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToFloat</definition>
+        <argsstring>(std::ostream &amp;stream, float value)</argsstring>
+        <name>SerializeToFloat</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="44" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a3c7b44d88b0f26e99ce7c12b14860ba1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToDouble</definition>
+        <argsstring>(std::ostream &amp;stream, double value)</argsstring>
+        <name>SerializeToDouble</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="48" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a7f867564a676c9463facf95f83e46f54" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToLDouble</definition>
+        <argsstring>(std::ostream &amp;stream, long double value)</argsstring>
+        <name>SerializeToLDouble</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>long double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="52" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1af7516618262d0da83a32e50f50d36593" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToLDoubleC</definition>
+        <argsstring>(std::ostream &amp;stream, std::complex&lt; long double &gt; value)</argsstring>
+        <name>SerializeToLDoubleC</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>std::complex&lt; long double &gt;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="56" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1ad356c9c058a5d27a41c53e06cf729438" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeToString</definition>
+        <argsstring>(std::ostream &amp;stream, const std::string &amp;str)</argsstring>
+        <name>SerializeToString</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="61" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a950888edef5aea03f1fa6e9e66c27f51" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::SerializeTo32bString</definition>
+        <argsstring>(std::ostream &amp;stream, const std::string &amp;str)</argsstring>
+        <name>SerializeTo32bString</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="66" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aab07c25c34b37bfa2df4b95724d96861" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t Serializable::UnserializeUInt64</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeUInt64</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="72" column="19" bodyfile="tables/Dysco/serializable.h" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a842396774fef51f186675c8766ac73ce" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t Serializable::UnserializeUInt32</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeUInt32</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="76" column="19" bodyfile="tables/Dysco/serializable.h" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a04f50e7e411991b2e93974f237f3f9dc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>static uint16_t Serializable::UnserializeUInt16</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeUInt16</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="80" column="19" bodyfile="tables/Dysco/serializable.h" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1adef1387b72a669a1740f8fe818f08b37" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t Serializable::UnserializeUInt8</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeUInt8</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="84" column="18" bodyfile="tables/Dysco/serializable.h" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aed6c49ab9c6d7eb4572bbf92a724f4fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Serializable::UnserializeBool8</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeBool8</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="88" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="88" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aaef539c4ab03fa2bcf845587f3c171ce" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Serializable::UnserializeFloat</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeFloat</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="92" column="17" bodyfile="tables/Dysco/serializable.h" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aad831d7a22fa11252891c7a22b6497e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Serializable::UnserializeDouble</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeDouble</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="96" column="17" bodyfile="tables/Dysco/serializable.h" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1a5ed605b827b5fea0d2a7b36dc036a874" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>long double</type>
+        <definition>static long double Serializable::UnserializeLDouble</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeLDouble</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="100" column="22" bodyfile="tables/Dysco/serializable.h" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1ad4af84cbc9de560a45ce5afa064d23c4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::complex&lt; long double &gt;</type>
+        <definition>static std::complex&lt;long double&gt; Serializable::UnserializeLDoubleC</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>UnserializeLDoubleC</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="104" column="23" bodyfile="tables/Dysco/serializable.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aa682231a48ca067cb1db075594a27c8d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::UnserializeString</definition>
+        <argsstring>(std::istream &amp;stream, std::string &amp;destStr)</argsstring>
+        <name>UnserializeString</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>destStr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="108" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="108" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerializable_1aaa5adb427c574b2f0c7841c6262d8525" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Serializable::Unserialize32bString</definition>
+        <argsstring>(std::istream &amp;stream, std::string &amp;destStr)</argsstring>
+        <name>Unserialize32bString</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>destStr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="116" column="15" bodyfile="tables/Dysco/serializable.h" bodystart="116" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classSerializable_1a0090e979a809b57f11d32a5b8279f56d" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>static T Serializable::Unserialize</definition>
+        <argsstring>(std::istream &amp;stream)</argsstring>
+        <name>Unserialize</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/serializable.h" line="126" column="12" bodyfile="tables/Dysco/serializable.h" bodystart="126" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Serializable</label>
+        <link refid="classSerializable"/>
+      </node>
+      <node id="3">
+        <label>dyscostman::Header</label>
+        <link refid="structdyscostman_1_1Header"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>dyscostman::GenericColumnHeader</label>
+        <link refid="structdyscostman_1_1GenericColumnHeader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="tables/Dysco/serializable.h" line="9" column="1" bodyfile="tables/Dysco/serializable.h" bodystart="9" bodyend="131"/>
+    <listofallmembers>
+      <member refid="classSerializable_1a767f528bb9da41bf34441f9cf9981d1b" prot="public" virt="pure-virtual"><scope>Serializable</scope><name>Serialize</name></member>
+      <member refid="classSerializable_1a950888edef5aea03f1fa6e9e66c27f51" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeTo32bString</name></member>
+      <member refid="classSerializable_1aca2430bb04e79bbc2589350ebe90c731" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToBool8</name></member>
+      <member refid="classSerializable_1a3c7b44d88b0f26e99ce7c12b14860ba1" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToDouble</name></member>
+      <member refid="classSerializable_1a21f37e824f0107091786811f326dcf4c" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToFloat</name></member>
+      <member refid="classSerializable_1a7f867564a676c9463facf95f83e46f54" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToLDouble</name></member>
+      <member refid="classSerializable_1af7516618262d0da83a32e50f50d36593" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToLDoubleC</name></member>
+      <member refid="classSerializable_1ad356c9c058a5d27a41c53e06cf729438" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToString</name></member>
+      <member refid="classSerializable_1a18041b303a2963056fdc95f305be1bc3" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToUInt16</name></member>
+      <member refid="classSerializable_1af2b794fd2c34cde6e30f61d1cef208e4" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToUInt32</name></member>
+      <member refid="classSerializable_1a9f078b37c6e1f479beefb28d259a8045" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToUInt64</name></member>
+      <member refid="classSerializable_1a8a2759f87f19884e4cfab8bafffae964" prot="public" virt="non-virtual"><scope>Serializable</scope><name>SerializeToUInt8</name></member>
+      <member refid="classSerializable_1a0033c3835add4fa9e9ca37605ffd256d" prot="public" virt="pure-virtual"><scope>Serializable</scope><name>Unserialize</name></member>
+      <member refid="classSerializable_1a0090e979a809b57f11d32a5b8279f56d" prot="private" virt="non-virtual"><scope>Serializable</scope><name>Unserialize</name></member>
+      <member refid="classSerializable_1aaa5adb427c574b2f0c7841c6262d8525" prot="public" virt="non-virtual"><scope>Serializable</scope><name>Unserialize32bString</name></member>
+      <member refid="classSerializable_1aed6c49ab9c6d7eb4572bbf92a724f4fe" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeBool8</name></member>
+      <member refid="classSerializable_1aad831d7a22fa11252891c7a22b6497e2" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeDouble</name></member>
+      <member refid="classSerializable_1aaef539c4ab03fa2bcf845587f3c171ce" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeFloat</name></member>
+      <member refid="classSerializable_1a5ed605b827b5fea0d2a7b36dc036a874" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeLDouble</name></member>
+      <member refid="classSerializable_1ad4af84cbc9de560a45ce5afa064d23c4" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeLDoubleC</name></member>
+      <member refid="classSerializable_1aa682231a48ca067cb1db075594a27c8d" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeString</name></member>
+      <member refid="classSerializable_1a04f50e7e411991b2e93974f237f3f9dc" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeUInt16</name></member>
+      <member refid="classSerializable_1a842396774fef51f186675c8766ac73ce" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeUInt32</name></member>
+      <member refid="classSerializable_1aab07c25c34b37bfa2df4b95724d96861" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeUInt64</name></member>
+      <member refid="classSerializable_1adef1387b72a669a1740f8fe818f08b37" prot="public" virt="non-virtual"><scope>Serializable</scope><name>UnserializeUInt8</name></member>
+      <member refid="classSerializable_1ad52cc2c51dcd678990321ff70993c4eb" prot="public" virt="virtual"><scope>Serializable</scope><name>~Serializable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

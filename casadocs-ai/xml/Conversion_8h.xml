@@ -1,0 +1,2505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Conversion_8h" kind="file" language="C++">
+    <compoundname>Conversion.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="string_8h" local="no">casacore/casa/string.h</includes>
+    <includedby refid="TypeIO_8cc" local="no">casa/IO/TypeIO.cc</includedby>
+    <includedby refid="CanonicalConversion_8h" local="no">casa/OS/CanonicalConversion.h</includedby>
+    <includedby refid="Conversion_8cc" local="no">casa/OS/Conversion.cc</includedby>
+    <includedby refid="DataConversion_8h" local="no">casa/OS/DataConversion.h</includedby>
+    <includedby refid="LECanonicalConversion_8h" local="no">casa/OS/LECanonicalConversion.h</includedby>
+    <includedby refid="OS_8h" local="no">casa/OS.h</includedby>
+    <includedby refid="ValType_8h" local="no">casa/Utilities/ValType.h</includedby>
+    <includedby refid="ISMColumn_8h" local="no">tables/DataMan/ISMColumn.h</includedby>
+    <includedby refid="SSMColumn_8h" local="no">tables/DataMan/SSMColumn.h</includedby>
+    <includedby refid="SSMStringHandler_8h" local="no">tables/DataMan/SSMStringHandler.h</includedby>
+    <includedby refid="TiledStMan_8h" local="no">tables/DataMan/TiledStMan.h</includedby>
+    <includedby refid="TSMCube_8cc" local="no">tables/DataMan/TSMCube.cc</includedby>
+    <includedby refid="TSMCube_8h" local="no">tables/DataMan/TSMCube.h</includedby>
+    <includedby refid="TSMCubeBuff_8cc" local="no">tables/DataMan/TSMCubeBuff.cc</includedby>
+    <includedby refid="TSMCubeMMap_8cc" local="no">tables/DataMan/TSMCubeMMap.cc</includedby>
+    <includedby refid="TSMDataColumn_8h" local="no">tables/DataMan/TSMDataColumn.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore/casa/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/OS/Conversion.h</label>
+        <link refid="Conversion_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="8">
+        <label>cstring</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="123">
+        <label>tables/Tables/RowCopier.cc</label>
+        <link refid="RowCopier_8cc"/>
+      </node>
+      <node id="213">
+        <label>tables/TaQL/TaQLShow.cc</label>
+        <link refid="TaQLShow_8cc"/>
+      </node>
+      <node id="139">
+        <label>tables/Tables/TableLocker.cc</label>
+        <link refid="TableLocker_8cc"/>
+      </node>
+      <node id="72">
+        <label>tables/apps/showtablelock.cc</label>
+        <link refid="showtablelock_8cc"/>
+      </node>
+      <node id="30">
+        <label>tables/DataMan/SSMIndColumn.cc</label>
+        <link refid="SSMIndColumn_8cc"/>
+      </node>
+      <node id="80">
+        <label>tables/DataMan/CompressFloat.cc</label>
+        <link refid="CompressFloat_8cc"/>
+      </node>
+      <node id="196">
+        <label>tables/TaQL/ExprGroupAggrFunc.h</label>
+        <link refid="ExprGroupAggrFunc_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+      </node>
+      <node id="215">
+        <label>tables/TaQL/ExprLogicNode.h</label>
+        <link refid="ExprLogicNode_8h"/>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>tables/TaQL/TaQLResult.cc</label>
+        <link refid="TaQLResult_8cc"/>
+      </node>
+      <node id="181">
+        <label>tables/TaQL/ExprDerNode.h</label>
+        <link refid="ExprDerNode_8h"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>tables/DataMan/TiledCellStMan.cc</label>
+        <link refid="TiledCellStMan_8cc"/>
+      </node>
+      <node id="168">
+        <label>tables/TaQL/ExprMathNodeArray.cc</label>
+        <link refid="ExprMathNodeArray_8cc"/>
+      </node>
+      <node id="79">
+        <label>tables/DataMan/CompressComplex.cc</label>
+        <link refid="CompressComplex_8cc"/>
+      </node>
+      <node id="182">
+        <label>tables/TaQL/ExprLogicNode.cc</label>
+        <link refid="ExprLogicNode_8cc"/>
+      </node>
+      <node id="13">
+        <label>casa/OS/CanonicalDataConversion.cc</label>
+        <link refid="CanonicalDataConversion_8cc"/>
+      </node>
+      <node id="58">
+        <label>tables/DataMan/TiledStMan.cc</label>
+        <link refid="TiledStMan_8cc"/>
+      </node>
+      <node id="166">
+        <label>tables/TaQL/ExprLogicNodeArray.cc</label>
+        <link refid="ExprLogicNodeArray_8cc"/>
+      </node>
+      <node id="124">
+        <label>tables/Tables/ScaRecordColData.cc</label>
+        <link refid="ScaRecordColData_8cc"/>
+      </node>
+      <node id="173">
+        <label>tables/TaQL/ExprUDFNodeArray.h</label>
+        <link refid="ExprUDFNodeArray_8h"/>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>tables/DataMan/DataManInfo.cc</label>
+        <link refid="DataManInfo_8cc"/>
+      </node>
+      <node id="96">
+        <label>tables/DataMan/TiledDataStManAccessor.cc</label>
+        <link refid="TiledDataStManAccessor_8cc"/>
+      </node>
+      <node id="89">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="33">
+        <label>casa/OS/Conversion.cc</label>
+        <link refid="Conversion_8cc"/>
+      </node>
+      <node id="175">
+        <label>tables/TaQL/ExprUnitNode.h</label>
+        <link refid="ExprUnitNode_8h"/>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>tables/TaQL/ExprGroup.h</label>
+        <link refid="ExprGroup_8h"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+      </node>
+      <node id="258">
+        <label>tables/DataMan/TSMCubeMMap.cc</label>
+        <link refid="TSMCubeMMap_8cc"/>
+      </node>
+      <node id="37">
+        <label>casa/OS/DataConversion.cc</label>
+        <link refid="DataConversion_8cc"/>
+      </node>
+      <node id="18">
+        <label>casa/OS/LittleEndianConversion.cc</label>
+        <link refid="LittleEndianConversion_8cc"/>
+      </node>
+      <node id="254">
+        <label>tables/DataMan/TiledShapeStMan.h</label>
+        <link refid="TiledShapeStMan_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>tables/Tables/BaseTabIter.cc</label>
+        <link refid="BaseTabIter_8cc"/>
+      </node>
+      <node id="198">
+        <label>tables/TaQL/ExprGroupAggrFuncArray.h</label>
+        <link refid="ExprGroupAggrFuncArray_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="232">
+        <label>tables/DataMan/StManAipsIO.cc</label>
+        <link refid="StManAipsIO_8cc"/>
+      </node>
+      <node id="135">
+        <label>tables/Tables/TableIterProxy.h</label>
+        <link refid="TableIterProxy_8h"/>
+        <childnode refid="136" relation="include">
+        </childnode>
+      </node>
+      <node id="199">
+        <label>tables/TaQL/ExprUDFNode.cc</label>
+        <link refid="ExprUDFNode_8cc"/>
+      </node>
+      <node id="45">
+        <label>casa/OS/LECanonicalConversion.h</label>
+        <link refid="LECanonicalConversion_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="225">
+        <label>tables/TaQL/UDFBase.cc</label>
+        <link refid="UDFBase_8cc"/>
+      </node>
+      <node id="21">
+        <label>casa/OS/VAXDataConversion.cc</label>
+        <link refid="VAXDataConversion_8cc"/>
+      </node>
+      <node id="143">
+        <label>tables/Tables/TableRecordRep.cc</label>
+        <link refid="TableRecordRep_8cc"/>
+      </node>
+      <node id="189">
+        <label>tables/TaQL/TaQLNodeHandler.h</label>
+        <link refid="TaQLNodeHandler_8h"/>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>tables/TaQL/ExprGroupAggrFuncArray.cc</label>
+        <link refid="ExprGroupAggrFuncArray_8cc"/>
+      </node>
+      <node id="113">
+        <label>tables/Tables/ConcatTable.h</label>
+        <link refid="ConcatTable_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>tables/DataMan/BitFlagsEngine.cc</label>
+        <link refid="BitFlagsEngine_8cc"/>
+      </node>
+      <node id="128">
+        <label>tables/Tables/MemoryTable.cc</label>
+        <link refid="MemoryTable_8cc"/>
+      </node>
+      <node id="261">
+        <label>tables/DataMan/TiledFileAccess.h</label>
+        <link refid="TiledFileAccess_8h"/>
+        <childnode refid="235" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>tables/Tables/BaseTabIter.h</label>
+        <link refid="BaseTabIter_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+      </node>
+      <node id="217">
+        <label>tables/TaQL/ExprNodeSetElem.h</label>
+        <link refid="ExprNodeSetElem_8h"/>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="219">
+        <label>tables/TaQL/ExprNodeSetOpt.h</label>
+        <link refid="ExprNodeSetOpt_8h"/>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>tables/TaQL/ExprDerNodeArray.h</label>
+        <link refid="ExprDerNodeArray_8h"/>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>casa/OS/VAXConversion.h</label>
+        <link refid="VAXConversion_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
+        <label>tables/TaQL/ExprConeNode.cc</label>
+        <link refid="ExprConeNode_8cc"/>
+      </node>
+      <node id="246">
+        <label>tables/DataMan/SSMStringHandler.h</label>
+        <link refid="SSMStringHandler_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="152">
+        <label>tables/TaQL/ExprDerNodeArray.cc</label>
+        <link refid="ExprDerNodeArray_8cc"/>
+      </node>
+      <node id="145">
+        <label>tables/Tables/TableRow.cc</label>
+        <link refid="TableRow_8cc"/>
+      </node>
+      <node id="25">
+        <label>casa/OS.h</label>
+        <link refid="OS_8h"/>
+      </node>
+      <node id="169">
+        <label>tables/TaQL/ExprNodeArray.cc</label>
+        <link refid="ExprNodeArray_8cc"/>
+      </node>
+      <node id="148">
+        <label>tables/TaQL/ExprDerNode.cc</label>
+        <link refid="ExprDerNode_8cc"/>
+      </node>
+      <node id="144">
+        <label>tables/Tables/TableRow.h</label>
+        <link refid="TableRow_8h"/>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="205">
+        <label>tables/TaQL/RecordExpr.h</label>
+        <link refid="RecordExpr_8h"/>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>tables/DataMan/ForwardCol.h</label>
+        <link refid="ForwardCol_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>tables/TaQL/ExprNodeSet.cc</label>
+        <link refid="ExprNodeSet_8cc"/>
+      </node>
+      <node id="55">
+        <label>casa/Utilities.h</label>
+        <link refid="Utilities_8h"/>
+      </node>
+      <node id="259">
+        <label>tables/DataMan/TSMIdColumn.cc</label>
+        <link refid="TSMIdColumn_8cc"/>
+      </node>
+      <node id="65">
+        <label>tables/TaQL/ExprNodeSetOpt.cc</label>
+        <link refid="ExprNodeSetOpt_8cc"/>
+      </node>
+      <node id="255">
+        <label>tables/DataMan/TiledShapeStMan.cc</label>
+        <link refid="TiledShapeStMan_8cc"/>
+      </node>
+      <node id="17">
+        <label>casa/OS/LittleEndianConversion.h</label>
+        <link refid="LittleEndianConversion_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>tables/LogTables/TableLogSink.cc</label>
+        <link refid="TableLogSink_8cc"/>
+      </node>
+      <node id="239">
+        <label>tables/Tables/BaseColumn.cc</label>
+        <link refid="BaseColumn_8cc"/>
+      </node>
+      <node id="38">
+        <label>casa/OS/IBMDataConversion.h</label>
+        <link refid="IBMDataConversion_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>casa/OS/CanonicalConversion.cc</label>
+        <link refid="CanonicalConversion_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/TSMCube.cc</label>
+        <link refid="TSMCube_8cc"/>
+      </node>
+      <node id="263">
+        <label>tables/DataMan/TSMCubeMMap.h</label>
+        <link refid="TSMCubeMMap_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+      </node>
+      <node id="201">
+        <label>tables/TaQL/TableParseGroupby.h</label>
+        <link refid="TableParseGroupby_8h"/>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>casa/OS/ModcompDataConversion.h</label>
+        <link refid="ModcompDataConversion_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>casa/Utilities/GenSort.h</label>
+        <link refid="GenSort_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>tables/TaQL/TableParseJoin.h</label>
+        <link refid="TableParseJoin_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>tables/TaQL/RecordGram.cc</label>
+        <link refid="RecordGram_8cc"/>
+      </node>
+      <node id="34">
+        <label>casa/OS/DataConversion.h</label>
+        <link refid="DataConversion_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="206">
+        <label>tables/TaQL/TableParseProject.h</label>
+        <link refid="TableParseProject_8h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+      </node>
+      <node id="207">
+        <label>tables/TaQL/TableParseSortKey.h</label>
+        <link refid="TableParseSortKey_8h"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>tables/DataMan/VirtualTaQLColumn.cc</label>
+        <link refid="VirtualTaQLColumn_8cc"/>
+      </node>
+      <node id="223">
+        <label>tables/TaQL/TableParseTableList.h</label>
+        <link refid="TableParseTableList_8h"/>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/ISMBase.cc</label>
+        <link refid="ISMBase_8cc"/>
+      </node>
+      <node id="155">
+        <label>tables/TaQL/TableParseTableList.cc</label>
+        <link refid="TableParseTableList_8cc"/>
+      </node>
+      <node id="91">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="67">
+        <label>tables/TaQL/TaQLJoin.cc</label>
+        <link refid="TaQLJoin_8cc"/>
+      </node>
+      <node id="44">
+        <label>casa/OS/VAXDataConversion.h</label>
+        <link refid="VAXDataConversion_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="179">
+        <label>tables/TaQL/TableParseUpdate.cc</label>
+        <link refid="TableParseUpdate_8cc"/>
+      </node>
+      <node id="4">
+        <label>casa/IO/BucketCache.h</label>
+        <link refid="BucketCache_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>tables/TaQL/ExprGroupAggrFunc.cc</label>
+        <link refid="ExprGroupAggrFunc_8cc"/>
+      </node>
+      <node id="49">
+        <label>casa/Containers/RecordRep.cc</label>
+        <link refid="RecordRep_8cc"/>
+      </node>
+      <node id="28">
+        <label>tables/DataMan/ISMIndColumn.cc</label>
+        <link refid="ISMIndColumn_8cc"/>
+      </node>
+      <node id="248">
+        <label>tables/DataMan/TiledCellStMan.h</label>
+        <link refid="TiledCellStMan_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casa/IO/CanonicalIO.cc</label>
+        <link refid="CanonicalIO_8cc"/>
+      </node>
+      <node id="20">
+        <label>casa/OS/VAXConversion.cc</label>
+        <link refid="VAXConversion_8cc"/>
+      </node>
+      <node id="209">
+        <label>tables/TaQL/TaQLResult.h</label>
+        <link refid="TaQLResult_8h"/>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>tables/Tables/NullTable.cc</label>
+        <link refid="NullTable_8cc"/>
+      </node>
+      <node id="40">
+        <label>casa/OS/LECanonicalDataConversion.cc</label>
+        <link refid="LECanonicalDataConversion_8cc"/>
+      </node>
+      <node id="102">
+        <label>tables/LogTables/TableLogSink.h</label>
+        <link refid="TableLogSink_8h"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="231">
+        <label>tables/DataMan/SSMDirColumn.cc</label>
+        <link refid="SSMDirColumn_8cc"/>
+      </node>
+      <node id="36">
+        <label>casa/OS/CanonicalDataConversion.h</label>
+        <link refid="CanonicalDataConversion_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="165">
+        <label>tables/TaQL/ExprLogicNodeArray.h</label>
+        <link refid="ExprLogicNodeArray_8h"/>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>tables/Tables/TableCopy.h</label>
+        <link refid="TableCopy_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="176">
+        <label>tables/TaQL/ExprFuncNode.cc</label>
+        <link refid="ExprFuncNode_8cc"/>
+      </node>
+      <node id="54">
+        <label>casa/Utilities/CompositeNumber.cc</label>
+        <link refid="CompositeNumber_8cc"/>
+      </node>
+      <node id="92">
+        <label>tables/DataMan/SSMIndStringColumn.cc</label>
+        <link refid="SSMIndStringColumn_8cc"/>
+      </node>
+      <node id="197">
+        <label>tables/TaQL/TableParseGroupby.cc</label>
+        <link refid="TableParseGroupby_8cc"/>
+      </node>
+      <node id="163">
+        <label>tables/TaQL/TableParseFunc.cc</label>
+        <link refid="TableParseFunc_8cc"/>
+      </node>
+      <node id="48">
+        <label>casa/Utilities/ValType.h</label>
+        <link refid="ValType_8h"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>tables/TaQL/RecordExpr.cc</label>
+        <link refid="RecordExpr_8cc"/>
+      </node>
+      <node id="121">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="262">
+        <label>tables/DataMan/TSMCubeBuff.h</label>
+        <link refid="TSMCubeBuff_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>casa/Utilities/Sort.cc</label>
+        <link refid="Sort_8cc"/>
+      </node>
+      <node id="252">
+        <label>tables/DataMan/TiledFileHelper.h</label>
+        <link refid="TiledFileHelper_8h"/>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="253" relation="include">
+        </childnode>
+      </node>
+      <node id="146">
+        <label>tables/Tables/TableRowProxy.h</label>
+        <link refid="TableRowProxy_8h"/>
+        <childnode refid="141" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>tables/Tables/ColumnsIndexArray.h</label>
+        <link refid="ColumnsIndexArray_8h"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>tables/DataMan/ISMColumn.cc</label>
+        <link refid="ISMColumn_8cc"/>
+      </node>
+      <node id="125">
+        <label>tables/Tables/SetupNewTab.cc</label>
+        <link refid="SetupNewTab_8cc"/>
+      </node>
+      <node id="43">
+        <label>casa/OS/RawDataConversion.cc</label>
+        <link refid="RawDataConversion_8cc"/>
+      </node>
+      <node id="164">
+        <label>tables/TaQL/ExprFuncNodeArray.cc</label>
+        <link refid="ExprFuncNodeArray_8cc"/>
+      </node>
+      <node id="87">
+        <label>tables/DataMan/ForwardColRow.cc</label>
+        <link refid="ForwardColRow_8cc"/>
+      </node>
+      <node id="180">
+        <label>tables/TaQL/ExprNodeRep.h</label>
+        <link refid="ExprNodeRep_8h"/>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>tables/DataMan/StArrayFile.cc</label>
+        <link refid="StArrayFile_8cc"/>
+      </node>
+      <node id="257">
+        <label>tables/DataMan/TSMCubeBuff.cc</label>
+        <link refid="TSMCubeBuff_8cc"/>
+      </node>
+      <node id="108">
+        <label>tables/Tables/ColumnsIndex.h</label>
+        <link refid="ColumnsIndex_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="142">
+        <label>tables/Tables/TableRecord.cc</label>
+        <link refid="TableRecord_8cc"/>
+      </node>
+      <node id="245">
+        <label>tables/DataMan/SSMIndColumn.h</label>
+        <link refid="SSMIndColumn_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="138">
+        <label>tables/Tables/TableLocker.h</label>
+        <link refid="TableLocker_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+      </node>
+      <node id="234">
+        <label>tables/DataMan/StManColumnBase.cc</label>
+        <link refid="StManColumnBase_8cc"/>
+      </node>
+      <node id="184">
+        <label>tables/TaQL/TaQLJoin.h</label>
+        <link refid="TaQLJoin_8h"/>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="222">
+        <label>tables/TaQL/ExprUDFNode.h</label>
+        <link refid="ExprUDFNode_8h"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>tables/Tables/PlainTable.cc</label>
+        <link refid="PlainTable_8cc"/>
+      </node>
+      <node id="236">
+        <label>tables/DataMan/TSMColumn.cc</label>
+        <link refid="TSMColumn_8cc"/>
+      </node>
+      <node id="218">
+        <label>tables/TaQL/ExprNodeSet.h</label>
+        <link refid="ExprNodeSet_8h"/>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>casa/IO/ConversionIO.cc</label>
+        <link refid="ConversionIO_8cc"/>
+      </node>
+      <node id="126">
+        <label>tables/Tables/SetupNewTab.h</label>
+        <link refid="SetupNewTab_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>casa/OS/RawDataConversion.h</label>
+        <link refid="RawDataConversion_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="220">
+        <label>tables/TaQL/ExprNodeUtil.h</label>
+        <link refid="ExprNodeUtil_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>tables/Tables/TableIter.h</label>
+        <link refid="TableIter_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>casa/OS/LECanonicalDataConversion.h</label>
+        <link refid="LECanonicalDataConversion_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>tables/DataMan/Adios2StManImpl.h</label>
+        <link refid="Adios2StManImpl_8h"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>casa/OS/ModcompConversion.cc</label>
+        <link refid="ModcompConversion_8cc"/>
+      </node>
+      <node id="221">
+        <label>tables/TaQL/ExprNodeUtil.cc</label>
+        <link refid="ExprNodeUtil_8cc"/>
+      </node>
+      <node id="90">
+        <label>tables/DataMan/IncrStManAccessor.cc</label>
+        <link refid="IncrStManAccessor_8cc"/>
+      </node>
+      <node id="132">
+        <label>tables/Tables/TableColumn.cc</label>
+        <link refid="TableColumn_8cc"/>
+      </node>
+      <node id="56">
+        <label>tables/apps/taql.cc</label>
+        <link refid="taql_8cc"/>
+      </node>
+      <node id="130">
+        <label>tables/Tables/TableAttr.cc</label>
+        <link refid="TableAttr_8cc"/>
+      </node>
+      <node id="66">
+        <label>tables/TaQL/TableParseQuery.cc</label>
+        <link refid="TableParseQuery_8cc"/>
+      </node>
+      <node id="187">
+        <label>tables/TaQL/TableParseQuery.h</label>
+        <link refid="TableParseQuery_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>tables/Tables/ColumnSet.cc</label>
+        <link refid="ColumnSet_8cc"/>
+      </node>
+      <node id="77">
+        <label>tables/DataMan/Adios2StManColumn.cc</label>
+        <link refid="Adios2StManColumn_8cc"/>
+      </node>
+      <node id="250">
+        <label>tables/DataMan/TiledDataStMan.h</label>
+        <link refid="TiledDataStMan_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>tables/Tables/ReadAsciiTable.cc</label>
+        <link refid="ReadAsciiTable_8cc"/>
+      </node>
+      <node id="15">
+        <label>casa/OS/IBMConversion.cc</label>
+        <link refid="IBMConversion_8cc"/>
+      </node>
+      <node id="251">
+        <label>tables/DataMan/TiledDataStMan.cc</label>
+        <link refid="TiledDataStMan_8cc"/>
+      </node>
+      <node id="170">
+        <label>tables/TaQL/ExprNodeRecord.h</label>
+        <link refid="ExprNodeRecord_8h"/>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>tables/Tables/ConcatColumn.cc</label>
+        <link refid="ConcatColumn_8cc"/>
+      </node>
+      <node id="107">
+        <label>tables/Tables/TableIter.cc</label>
+        <link refid="TableIter_8cc"/>
+      </node>
+      <node id="260">
+        <label>tables/DataMan/TSMCube.h</label>
+        <link refid="TSMCube_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="262" relation="include">
+        </childnode>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+      </node>
+      <node id="241">
+        <label>tables/DataMan/ISMIndColumn.h</label>
+        <link refid="ISMIndColumn_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="244">
+        <label>tables/DataMan/SSMIndStringColumn.h</label>
+        <link refid="SSMIndStringColumn_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>tables/DataMan/SSMStringHandler.cc</label>
+        <link refid="SSMStringHandler_8cc"/>
+      </node>
+      <node id="194">
+        <label>tables/TaQL/ExprAggrNode.cc</label>
+        <link refid="ExprAggrNode_8cc"/>
+      </node>
+      <node id="73">
+        <label>tables/DataMan/Adios2StMan.h</label>
+        <link refid="Adios2StMan_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>tables/LogTables/LogFilterExpr.cc</label>
+        <link refid="LogFilterExpr_8cc"/>
+      </node>
+      <node id="190">
+        <label>tables/TaQL/TableParse.cc</label>
+        <link refid="TableParse_8cc"/>
+      </node>
+      <node id="216">
+        <label>tables/TaQL/ExprMathNode.h</label>
+        <link refid="ExprMathNode_8h"/>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>tables/Tables/TableIndexProxy.h</label>
+        <link refid="TableIndexProxy_8h"/>
+        <childnode refid="110" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>casa/IO/LECanonicalIO.cc</label>
+        <link refid="LECanonicalIO_8cc"/>
+      </node>
+      <node id="160">
+        <label>tables/TaQL/ExprGroup.cc</label>
+        <link refid="ExprGroup_8cc"/>
+      </node>
+      <node id="161">
+        <label>tables/TaQL/ExprConeNode.h</label>
+        <link refid="ExprConeNode_8h"/>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>tables/TaQL/ExprNodeRep.cc</label>
+        <link refid="ExprNodeRep_8cc"/>
+      </node>
+      <node id="150">
+        <label>tables/TaQL/ExprNodeArray.h</label>
+        <link refid="ExprNodeArray_8h"/>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>tables/Tables/TableCopy.cc</label>
+        <link refid="TableCopy_8cc"/>
+      </node>
+      <node id="186">
+        <label>tables/TaQL/TableParseJoin.cc</label>
+        <link refid="TableParseJoin_8cc"/>
+      </node>
+      <node id="60">
+        <label>tables/Tables/ColumnsIndexArray.cc</label>
+        <link refid="ColumnsIndexArray_8cc"/>
+      </node>
+      <node id="75">
+        <label>tables/DataMan/Adios2StMan.cc</label>
+        <link refid="Adios2StMan_8cc"/>
+      </node>
+      <node id="193">
+        <label>tables/TaQL/ExprAggrNode.h</label>
+        <link refid="ExprAggrNode_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="229">
+        <label>tables/DataMan/VirtScaCol.cc</label>
+        <link refid="VirtScaCol_8cc"/>
+      </node>
+      <node id="214">
+        <label>tables/TaQL/TableParseFunc.h</label>
+        <link refid="TableParseFunc_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>tables/TaQL.h</label>
+        <link refid="TaQL_8h"/>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="200">
+        <label>tables/TaQL/TableExprIdAggr.h</label>
+        <link refid="TableExprIdAggr_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="137">
+        <label>tables/Tables/TableKeyword.cc</label>
+        <link refid="TableKeyword_8cc"/>
+      </node>
+      <node id="177">
+        <label>tables/TaQL/ExprMathNode.cc</label>
+        <link refid="ExprMathNode_8cc"/>
+      </node>
+      <node id="140">
+        <label>tables/Tables/TableProxy.h</label>
+        <link refid="TableProxy_8h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+      </node>
+      <node id="203">
+        <label>tables/TaQL/ExprNode.h</label>
+        <link refid="ExprNode_8h"/>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casa/IO/BucketCache.cc</label>
+        <link refid="BucketCache_8cc"/>
+      </node>
+      <node id="149">
+        <label>tables/TaQL/ExprNode.cc</label>
+        <link refid="ExprNode_8cc"/>
+      </node>
+      <node id="16">
+        <label>casa/OS/IBMDataConversion.cc</label>
+        <link refid="IBMDataConversion_8cc"/>
+      </node>
+      <node id="29">
+        <label>tables/DataMan/SSMColumn.cc</label>
+        <link refid="SSMColumn_8cc"/>
+      </node>
+      <node id="82">
+        <label>tables/DataMan/DataManager.cc</label>
+        <link refid="DataManager_8cc"/>
+      </node>
+      <node id="174">
+        <label>tables/TaQL/ExprUDFNodeArray.cc</label>
+        <link refid="ExprUDFNodeArray_8cc"/>
+      </node>
+      <node id="171">
+        <label>tables/TaQL/ExprNodeRecord.cc</label>
+        <link refid="ExprNodeRecord_8cc"/>
+      </node>
+      <node id="227">
+        <label>tables/TaQL/TableParseUtil.h</label>
+        <link refid="TableParseUtil_8h"/>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>tables/TaQL/ExprMathNodeArray.h</label>
+        <link refid="ExprMathNodeArray_8h"/>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>tables/DataMan/TiledFileHelper.cc</label>
+        <link refid="TiledFileHelper_8cc"/>
+      </node>
+      <node id="69">
+        <label>tables/Tables/ColumnsIndex.cc</label>
+        <link refid="ColumnsIndex_8cc"/>
+      </node>
+      <node id="57">
+        <label>tables/DataMan/ISMBucket.cc</label>
+        <link refid="ISMBucket_8cc"/>
+      </node>
+      <node id="136">
+        <label>tables/Tables/TableIterProxy.cc</label>
+        <link refid="TableIterProxy_8cc"/>
+      </node>
+      <node id="105">
+        <label>tables/Tables/ArrayColumnBase.cc</label>
+        <link refid="ArrayColumnBase_8cc"/>
+      </node>
+      <node id="26">
+        <label>casa/Utilities/ValType.cc</label>
+        <link refid="ValType_8cc"/>
+      </node>
+      <node id="64">
+        <label>tables/TaQL/ExprNodeSetElem.cc</label>
+        <link refid="ExprNodeSetElem_8cc"/>
+      </node>
+      <node id="97">
+        <label>tables/DataMan/TiledStManAccessor.cc</label>
+        <link refid="TiledStManAccessor_8cc"/>
+      </node>
+      <node id="115">
+        <label>tables/Tables/TableUtil.cc</label>
+        <link refid="TableUtil_8cc"/>
+      </node>
+      <node id="11">
+        <label>casa/IO/MultiFile.cc</label>
+        <link refid="MultiFile_8cc"/>
+      </node>
+      <node id="14">
+        <label>casa/OS/IBMConversion.h</label>
+        <link refid="IBMConversion_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>tables/Tables/TableIndexProxy.cc</label>
+        <link refid="TableIndexProxy_8cc"/>
+      </node>
+      <node id="230">
+        <label>tables/Tables/ScaRecordColDesc.cc</label>
+        <link refid="ScaRecordColDesc_8cc"/>
+      </node>
+      <node id="86">
+        <label>tables/DataMan/ForwardColRow.h</label>
+        <link refid="ForwardColRow_8h"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="119">
+        <label>tables/Tables/ReadAsciiTable.h</label>
+        <link refid="ReadAsciiTable_8h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>tables/DataMan/TiledColumnStMan.cc</label>
+        <link refid="TiledColumnStMan_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/OS/Conversion.h</label>
+        <link refid="Conversion_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="246" relation="include">
+        </childnode>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="260" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>casa/Utilities/Sort.h</label>
+        <link refid="Sort_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>tables/DataMan/StandardStManAccessor.cc</label>
+        <link refid="StandardStManAccessor_8cc"/>
+      </node>
+      <node id="249">
+        <label>tables/DataMan/TiledColumnStMan.h</label>
+        <link refid="TiledColumnStMan_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>tables/Dysco/tests/testdyscostman.cc</label>
+        <link refid="testdyscostman_8cc"/>
+      </node>
+      <node id="224">
+        <label>tables/TaQL/UDFBase.h</label>
+        <link refid="UDFBase_8h"/>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>tables/TaQL/RecordGram.h</label>
+        <link refid="RecordGram_8h"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casa/OS/CanonicalConversion.h</label>
+        <link refid="CanonicalConversion_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="210">
+        <label>tables/TaQL/TableParse.h</label>
+        <link refid="TableParse_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>casa/Containers/ValueHolderRep.cc</label>
+        <link refid="ValueHolderRep_8cc"/>
+      </node>
+      <node id="76">
+        <label>tables/DataMan/Adios2StManColumn.h</label>
+        <link refid="Adios2StManColumn_8h"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>tables/Tables/BaseTable.cc</label>
+        <link refid="BaseTable_8cc"/>
+      </node>
+      <node id="103">
+        <label>tables/LogTables/LoggerHolder.cc</label>
+        <link refid="LoggerHolder_8cc"/>
+      </node>
+      <node id="264">
+        <label>tables/DataMan/TSMDataColumn.h</label>
+        <link refid="TSMDataColumn_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>casa/Utilities/ValTypeId.h</label>
+        <link refid="ValTypeId_8h"/>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>tables/DataMan/ForwardCol.cc</label>
+        <link refid="ForwardCol_8cc"/>
+      </node>
+      <node id="178">
+        <label>tables/TaQL/ExprUnitNode.cc</label>
+        <link refid="ExprUnitNode_8cc"/>
+      </node>
+      <node id="240">
+        <label>tables/DataMan/ISMColumn.h</label>
+        <link refid="ISMColumn_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+      </node>
+      <node id="156">
+        <label>tables/TaQL/TableParseUtil.cc</label>
+        <link refid="TableParseUtil_8cc"/>
+      </node>
+      <node id="24">
+        <label>casa/OS/ModcompDataConversion.cc</label>
+        <link refid="ModcompDataConversion_8cc"/>
+      </node>
+      <node id="147">
+        <label>tables/Tables/TableUtil.h</label>
+        <link refid="TableUtil_8h"/>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>tables/DataMan/DataManAccessor.cc</label>
+        <link refid="DataManAccessor_8cc"/>
+      </node>
+      <node id="47">
+        <label>casa/OS/LECanonicalConversion.cc</label>
+        <link refid="LECanonicalConversion_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/IO/TypeIO.cc</label>
+        <link refid="TypeIO_8cc"/>
+      </node>
+      <node id="242">
+        <label>tables/DataMan/SSMColumn.h</label>
+        <link refid="SSMColumn_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/SSMBase.cc</label>
+        <link refid="SSMBase_8cc"/>
+      </node>
+      <node id="192">
+        <label>tables/TaQL/ExprFuncNode.h</label>
+        <link refid="ExprFuncNode_8h"/>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>tables/LogTables/NewFile.cc</label>
+        <link refid="NewFile_8cc"/>
+      </node>
+      <node id="22">
+        <label>casa/OS/ModcompConversion.h</label>
+        <link refid="ModcompConversion_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>tables/DataMan/TSMDataColumn.cc</label>
+        <link refid="TSMDataColumn_8cc"/>
+      </node>
+      <node id="191">
+        <label>tables/TaQL/TaQLNodeHandler.cc</label>
+        <link refid="TaQLNodeHandler_8cc"/>
+      </node>
+      <node id="243">
+        <label>tables/DataMan/SSMDirColumn.h</label>
+        <link refid="SSMDirColumn_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+      </node>
+      <node id="208">
+        <label>tables/TaQL/TableParseUpdate.h</label>
+        <link refid="TableParseUpdate_8h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>tables/Tables/ConcatTable.cc</label>
+        <link refid="ConcatTable_8cc"/>
+      </node>
+      <node id="10">
+        <label>casa/IO/LockFile.cc</label>
+        <link refid="LockFile_8cc"/>
+      </node>
+      <node id="71">
+        <label>tables/apps/showtableinfo.cc</label>
+        <link refid="showtableinfo_8cc"/>
+      </node>
+      <node id="131">
+        <label>tables/Tables/TableCache.cc</label>
+        <link refid="TableCache_8cc"/>
+      </node>
+      <node id="256">
+        <label>tables/DataMan/TSMCoordColumn.cc</label>
+        <link refid="TSMCoordColumn_8cc"/>
+      </node>
+      <node id="233">
+        <label>tables/DataMan/StManColumn.cc</label>
+        <link refid="StManColumn_8cc"/>
+      </node>
+      <node id="188">
+        <label>tables/TaQL/TableParseProject.cc</label>
+        <link refid="TableParseProject_8cc"/>
+      </node>
+      <node id="141">
+        <label>tables/Tables/TableRowProxy.cc</label>
+        <link refid="TableRowProxy_8cc"/>
+      </node>
+      <node id="158">
+        <label>tables/TaQL/ExprAggrNodeArray.h</label>
+        <link refid="ExprAggrNodeArray_8h"/>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="235">
+        <label>tables/DataMan/TiledFileAccess.cc</label>
+        <link refid="TiledFileAccess_8cc"/>
+      </node>
+      <node id="70">
+        <label>tables/Tables/Table.h</label>
+        <link refid="Table_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+      </node>
+      <node id="247">
+        <label>tables/DataMan/TiledStMan.h</label>
+        <link refid="TiledStMan_8h"/>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="159">
+        <label>tables/TaQL/ExprAggrNodeArray.cc</label>
+        <link refid="ExprAggrNodeArray_8cc"/>
+      </node>
+      <node id="120">
+        <label>tables/apps/tablefromascii.cc</label>
+        <link refid="tablefromascii_8cc"/>
+      </node>
+      <node id="202">
+        <label>tables/TaQL/TableParseSortKey.cc</label>
+        <link refid="TableParseSortKey_8cc"/>
+      </node>
+      <node id="122">
+        <label>tables/Tables/RefTable.cc</label>
+        <link refid="RefTable_8cc"/>
+      </node>
+      <node id="114">
+        <label>tables/Tables/Table.cc</label>
+        <link refid="Table_8cc"/>
+      </node>
+      <node id="98">
+        <label>tables/DataMan/TSMFile.cc</label>
+        <link refid="TSMFile_8cc"/>
+      </node>
+      <node id="238">
+        <label>tables/Tables/ArrColData.cc</label>
+        <link refid="ArrColData_8cc"/>
+      </node>
+      <node id="157">
+        <label>tables/TaQL/ExprFuncNodeArray.h</label>
+        <link refid="ExprFuncNodeArray_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1Conversion" prot="public">casacore::Conversion</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>Conversion.h:<sp/>A<sp/>class<sp/>with<sp/>general<sp/>conversion<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1996,1999,2001,2002,2003</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_CONVERSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_CONVERSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="string_8h" kindref="compound">casacore/casa/string.h</ref>&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needed<sp/>for<sp/>memcpy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>class<sp/>with<sp/>general<sp/>conversion<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;Friso<sp/>Olnon&quot;<sp/>date=&quot;1996/11/06&quot;<sp/>tests=&quot;tConversion&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>class<sp/>contains<sp/>the<sp/>general<sp/>definitions<sp/>for<sp/>the<sp/>Conversion<sp/>classes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>defines<sp/>the<sp/>signature<sp/>for<sp/>the<sp/>functions<sp/>converting<sp/>from<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>output<sp/>format<sp/>(e.g.<sp/>from<sp/>local<sp/>to<sp/>canonical<sp/>format).<sp/>There<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>version<sp/>where<sp/>the<sp/>number<sp/>of<sp/>values<sp/>is<sp/>given<sp/>and<sp/>a<sp/>version<sp/>where</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>number<sp/>of<sp/>bytes<sp/>is<sp/>given.<sp/>The<sp/>latter<sp/>is<sp/>there<sp/>to<sp/>be<sp/>able<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>memcpy<sp/>as<sp/>a<sp/>conversion<sp/>function<sp/>(which<sp/>will<sp/>often<sp/>be<sp/>the<sp/>case).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>the<sp/>signatures<sp/>only<sp/>differ<sp/>in<sp/>return<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>defines<sp/>functions<sp/>to<sp/>convert<sp/>Bools<sp/>to<sp/>bits<sp/>and<sp/>vice-versa.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>are<sp/>used<sp/>elsewhere<sp/>to<sp/>store<sp/>Bools<sp/>as<sp/>space<sp/>efficient<sp/>as<sp/>possible.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>these<sp/>functions<sp/>are<sp/>machine<sp/>independent<sp/>(they<sp/>work<sp/>on<sp/>little</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and<sp/>big<sp/>endian<sp/>machines).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>defines<sp/>a<sp/>private<sp/>version<sp/>of<sp/>memcpy<sp/>for<sp/>compilers<sp/>having<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>different<sp/>signature<sp/>for<sp/>memcpy<sp/>(e.g.<sp/>ObjectCenter<sp/>and<sp/>DEC-Alpha).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Static<sp/>functions<sp/>in<sp/>the<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=CanonicalConversion&gt;CanonicalConversion&lt;/linkto&gt;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=VAXConversion&gt;VAXConversion&lt;/linkto&gt;,<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=IBMConversion&gt;IBMConversion&lt;/linkto&gt;<sp/>convert<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>from/to<sp/>canonical,<sp/>VAX,<sp/>and<sp/>IBM/360<sp/>format,<sp/>resp..</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;Classes<sp/>derived<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=DataConversion&gt;DataConversion&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>provide<sp/>the<sp/>same<sp/>functionality<sp/>in<sp/>a<sp/>polymorphic<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>provides<sp/>a<sp/>common<sp/>place<sp/>for<sp/>definitions<sp/>used<sp/>elsewhere.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>provides<sp/>a<sp/>uniform<sp/>interface<sp/>to<sp/>memcpy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>&lt;todo<sp/>asof=&quot;$DATE$&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classcasacore_1_1Conversion" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1Conversion" kindref="compound">Conversion</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>signature<sp/>of<sp/>a<sp/>function<sp/>converting<sp/>&lt;src&gt;nvalues&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>from<sp/>internal<sp/>to<sp/>external<sp/>format<sp/>or<sp/>vice-versa.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>functions<sp/>are<sp/>used<sp/>in<sp/>the<sp/>&lt;linkto<sp/>class=TypeIO&gt;IO<sp/>framework</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/linkto&gt;,<sp/>but<sp/>are<sp/>also<sp/>used<sp/>in<sp/>the<sp/>table<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Examples<sp/>of<sp/>such<sp/>conversions<sp/>are:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;-<sp/>local<sp/>&lt;-&gt;<sp/>canonical<sp/><sp/><sp/><sp/>(when<sp/>storing<sp/>in<sp/>canonical<sp/>format)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;-<sp/>local<sp/>&lt;-&gt;<sp/>local<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(when<sp/>storing<sp/>in<sp/>local<sp/>format)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;-<sp/>binary<sp/>&lt;-&gt;<sp/>ASCII</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;It<sp/>returns<sp/>the<sp/>number<sp/>of<sp/>bytes<sp/>in<sp/>&lt;em&gt;external&lt;/em&gt;<sp/>format.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(For<sp/>example<sp/>the<sp/>ToLocal/FromLocal<sp/>functions<sp/>in<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=CanonicalConversion&gt;CanonicalConversion&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>number<sp/>of<sp/>bytes<sp/>in<sp/>canonical<sp/>format).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classcasacore_1_1Conversion_1a091c31bd7bfae6ff08789059ea364d12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1a091c31bd7bfae6ff08789059ea364d12" kindref="member">ValueFunction</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>signature<sp/>of<sp/>a<sp/>function<sp/>converting<sp/>from<sp/>one</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>format<sp/>to<sp/>another<sp/>providing<sp/>the<sp/>number<sp/>of<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>the<sp/>&lt;src&gt;to&lt;/src&gt;<sp/>pointer<sp/>(similar<sp/>to<sp/>memcpy).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(For<sp/>example<sp/>the<sp/>byteTo/FromLocalXXX<sp/>functions<sp/>in<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=CanonicalConversion&gt;CanonicalConversion&lt;/linkto&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classcasacore_1_1Conversion_1aa12d3b89ed6c2739441c831f582505de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classcasacore_1_1Conversion_1aa12d3b89ed6c2739441c831f582505de" kindref="member">ByteFunction</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nbytes);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>a<sp/>stream<sp/>of<sp/>Bools<sp/>to<sp/>output<sp/>format<sp/>(as<sp/>bits).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>variable<sp/>&lt;src&gt;startBit&lt;/src&gt;<sp/>(0-relative)<sp/>indicates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>where<sp/>to<sp/>start<sp/>in<sp/>the<sp/>&lt;src&gt;to&lt;/src&gt;<sp/>buffer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1a85b0067108f467715d5a54e331a92ef8" kindref="member">boolToBit</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1a85b0067108f467715d5a54e331a92ef8" kindref="member">boolToBit</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>startBit,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>a<sp/>stream<sp/>of<sp/>Bools<sp/>to<sp/>output<sp/>format<sp/>(as<sp/>bits).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>variable<sp/>&lt;src&gt;startBit&lt;/src&gt;<sp/>(0-relative)<sp/>indicates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>where<sp/>to<sp/>start<sp/>in<sp/>the<sp/>&lt;src&gt;from&lt;/src&gt;<sp/>buffer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1ae734d6ea9d9314a4cabc26734320e6f3" kindref="member">bitToBool</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1ae734d6ea9d9314a4cabc26734320e6f3" kindref="member">bitToBool</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>startBit,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>a<sp/>value<sp/>using<sp/>memcpy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>differs<sp/>from<sp/>memcpy<sp/>in<sp/>the<sp/>return<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;note&gt;<sp/>This<sp/>version<sp/>has<sp/>the<sp/>&lt;src&gt;ValueFunction&lt;/src&gt;<sp/>signature,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>it<sp/>expects<sp/>as<sp/>input<sp/>the<sp/>number<sp/>of<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1a7985cc8e422126e49f5f2064e0a66829" kindref="member">valueCopy</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nbytes);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>memcpy<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1aa12d3b89ed6c2739441c831f582505de" kindref="member">ByteFunction</ref>*<sp/><ref refid="classcasacore_1_1Conversion_1ae33088f8f267b637161fe7506cdf231e" kindref="member">getmemcpy</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>bits<sp/>to<sp/>Bool<sp/>in<sp/>an<sp/>unoptimized<sp/>way<sp/>needed<sp/>when<sp/>&apos;to&apos;<sp/>is<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>aligned<sp/>properly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitToBool_<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>from,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nvalues);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classcasacore_1_1Conversion_1ae33088f8f267b637161fe7506cdf231e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Conversion_1aa12d3b89ed6c2739441c831f582505de" kindref="member">Conversion::ByteFunction</ref>*<sp/><ref refid="classcasacore_1_1Conversion_1ae33088f8f267b637161fe7506cdf231e" kindref="member">Conversion::getmemcpy</ref>()</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>memcpy;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/OS/Conversion.h"/>
+  </compounddef>
+</doxygen>
