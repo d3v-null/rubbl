@@ -1,9 +1,7 @@
 use ndarray::Array2;
 use rubbl_casatables::{
-    Complex, GlueDataType, Table, TableCreateMode, TableDesc, TableDescCreateMode, TableOpenMode,
+    Complex, GlueDataType, Table, TableCreateMode, TableDesc, TableDescCreateMode,
 };
-use std::fs::File;
-use std::io::{Read, Write};
 use std::path::PathBuf;
 
 /// Example demonstrating syscall tracing for casatables operations

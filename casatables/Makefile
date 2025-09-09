@@ -26,7 +26,7 @@ CASA_IMPL_LIB := $(firstword $(wildcard $(DEBUG_LIB)) $(wildcard $(RELEASE_LIB))
 INCLUDES = -I../casatables_impl
 
 # Target executable
-TARGET = syscall_tracer_cpp
+TARGET = syscall_tracer
 
 # Source files
 SRCS = syscall_tracer.cpp
@@ -56,7 +56,7 @@ $(EXTRA_OBJS): %.o: %.cc
 
 # Clean target
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(EXTRA_OBJS)
 
 # Help target
 help:
