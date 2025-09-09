@@ -266,7 +266,10 @@ void BucketCache::extend (uInt nrBucket)
     }
 
     // Pre-allocate file space to avoid inefficient zero-writing during bucket initialization
-    if (its_file->isWritable() && its_CurNrOfBuckets < its_NewNrOfBuckets) {
+    // Can be toggled via env var CASACORE_DISABLE_PREALLOC=1
+    const char* disablePreallocEnv = ::getenv("CASACORE_DISABLE_PREALLOC");
+    bool preallocEnabled = !(disablePreallocEnv && disablePreallocEnv[0] == '1');
+    if (preallocEnabled && its_file->isWritable() && its_CurNrOfBuckets < its_NewNrOfBuckets) {
         Int64 currentFileSize = its_file->fileSize();
         Int64 requiredFileSize = its_StartOffset + Int64(its_NewNrOfBuckets) * its_BucketSize;
 
