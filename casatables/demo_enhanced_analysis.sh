@@ -92,6 +92,15 @@ if command -v brew >/dev/null 2>&1; then
     fi
 fi
 
+# Prepare default tables directory (pre-unpacked)
+DEFAULT_TABLES_DIR="$SCRIPT_DIR/benches/1119683928_picket_ch62-63.ms"
+if [ ! -d "$DEFAULT_TABLES_DIR" ]; then
+    echo -e "${RED}✗ DEFAULT_TABLES_DIR not found: $DEFAULT_TABLES_DIR${NC}"
+else
+    export DEFAULT_TABLES_DIR
+    echo -e "${BLUE}Using DEFAULT_TABLES_DIR: $DEFAULT_TABLES_DIR${NC}"
+fi
+
 # Function to run analysis
 run_analysis() {
     local title=$1

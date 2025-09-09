@@ -1,5 +1,7 @@
-use rubbl_casatables::{Complex, Table, TableOpenMode};
 use ndarray::Array2;
+use rubbl_casatables::{
+    Complex, GlueDataType, Table, TableCreateMode, TableDesc, TableDescCreateMode, TableOpenMode,
+};
 use std::path::PathBuf;
 
 /// Example demonstrating syscall tracing for casatables operations
@@ -16,8 +18,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!();
 
     // Configuration for the example
-    let n_rows = 100;  // Reasonable size for analysis
-    let data_shape = vec![32, 4];  // Smaller data for faster execution
+    let n_rows = 100; // Reasonable size for analysis
+    let data_shape = vec![32, 4]; // Smaller data for faster execution
 
     println!("📊 Configuration:");
     println!("  - Rows: {}", n_rows);
@@ -56,29 +58,35 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn create_test_table(
     table_path: &PathBuf,
     n_rows: usize,
-    _data_shape: &[u64],
+    data_shape: &[u64],
 ) -> Result<Table, Box<dyn std::error::Error>> {
-    // Use the same approach as the benchmarks - start with default tables
-    use flate2::read::GzDecoder;
-    use tar::Archive;
-    use std::fs::create_dir_all;
+    // Create a fresh table using the rubbl API that mirrors the C++ demo
+    // Build the same schema as the C++ example using existing rubbl APIs
+    let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH)?;
+    // Scalars
+    table_desc.add_scalar_column(GlueDataType::TpDouble, "TIME", None, false, false)?;
+    table_desc.add_scalar_column(GlueDataType::TpInt, "ANTENNA1", None, false, false)?;
+    table_desc.add_scalar_column(GlueDataType::TpInt, "ANTENNA2", None, false, false)?;
+    table_desc.add_scalar_column(GlueDataType::TpBool, "FLAG_ROW", None, false, false)?;
+    // Fixed-shape arrays
+    table_desc.add_array_column(
+        GlueDataType::TpComplex,
+        "DATA",
+        Some("Visibility data"),
+        Some(data_shape),
+        false,
+        false,
+    )?;
+    table_desc.add_array_column(
+        GlueDataType::TpBool,
+        "FLAG",
+        Some("Data flags"),
+        Some(data_shape),
+        false,
+        false,
+    )?;
 
-    // Include the default tables archive (same as in bench.rs)
-    static DEFAULT_TABLES_GZ: &[u8] = include_bytes!("../benches/data/default_tables.tar.gz");
-
-    // Unpack the default tables archive
-    let tar = GzDecoder::new(DEFAULT_TABLES_GZ);
-    let mut archive = Archive::new(tar);
-    if !(table_path.exists() && table_path.is_dir()) {
-        create_dir_all(table_path)?;
-    }
-    archive.unpack(table_path)?;
-
-    // Open the table
-    let mut table = Table::open(table_path, TableOpenMode::ReadWrite)?;
-
-    // Just add the rows we need - the default table already has the necessary columns
-    table.add_rows(n_rows)?;
+    let table = Table::new(table_path, table_desc, n_rows, TableCreateMode::New)?;
     Ok(table)
 }
 
@@ -103,7 +111,7 @@ fn create_test_flags(data_shape: &[u64]) -> ndarray::Array2<bool> {
 
     // Set some flags to create realistic patterns
     for ((i, j), elem) in flags.indexed_iter_mut() {
-        *elem = (i + j) % 17 == 0;  // Arbitrary pattern
+        *elem = (i + j) % 17 == 0; // Arbitrary pattern
     }
 
     flags
@@ -129,10 +137,7 @@ fn write_test_data(
     Ok(())
 }
 
-fn read_test_data(
-    table: &mut Table,
-    n_rows: usize,
-) -> Result<(), Box<dyn std::error::Error>> {
+fn read_test_data(table: &mut Table, n_rows: usize) -> Result<(), Box<dyn std::error::Error>> {
     // Read a subset of rows to simulate typical access patterns
     let read_rows = std::cmp::min(10, n_rows);
 
