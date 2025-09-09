@@ -15,6 +15,20 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <iostream>
+#include <cstdlib>
+
+// Instrumentation: Add debug logging for file allocation tracking
+static bool debug_enabled() {
+    static bool enabled = std::getenv("RUBBL_CASATABLES_DEBUG") != nullptr;
+    return enabled;
+}
+
+static void debug_log(const std::string& message) {
+    if (debug_enabled()) {
+        std::cerr << "[RUBBL_DEBUG] " << message << std::endl;
+    }
+}
 
 #define CASA_TYPES_ALREADY_DECLARED
 
@@ -980,6 +994,7 @@ extern "C" {
                 default: throw std::invalid_argument( "invalid TableCreateMode" );
             }
 
+            debug_log("table_create: Creating SetupNewTable");
             // create a an object containing some information about the table we're creating
             casacore::SetupNewTable newTable(
                 bridge_string(path),
@@ -998,6 +1013,7 @@ extern "C" {
             casacore::TSMOption tsmOption(opt_enum);
             return new GlueTable(newTable, type, n_rows, initialize, endian_format, tsmOption);
         } catch (...) {
+            debug_log("table_create: Exception occurred during table creation");
             handle_exception(exc);
             return NULL;
         }
@@ -1719,6 +1735,12 @@ extern "C" {
     {
         try {
             std::string col_name_str = bridge_string(col_name);
+
+            debug_log("table_put_cell: Column=" + col_name_str +
+                     ", Row=" + std::to_string(row_number) +
+                     ", Type=" + std::to_string(data_type) +
+                     ", Dims=" + std::to_string(n_dims));
+
             switch (data_type) {
 
 #define SCALAR_CASE(DTYPE, CPPTYPE) \
