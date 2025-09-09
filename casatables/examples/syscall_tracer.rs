@@ -40,7 +40,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let flags_template = create_test_flags(&data_shape);
 
     println!("✍️  Writing data...");
-    write_test_data(&mut table, &data_shape, &data_template, &flags_template)?;
+    // Select write mode via env: WRITE_MODE={put_cell|column_put}
+    let mode = std::env::var("WRITE_MODE").unwrap_or_else(|_| "column_put".to_string());
+    match mode.as_str() {
+        "put_cell" => {
+            // Note: TableRow writer path did not reduce syscalls in this environment; using put_cell.
+            write_test_data_table_put_cell(
+                &mut table,
+                &data_shape,
+                &data_template,
+                &flags_template,
+            )?;
+        }
+        "column_put" => {
+            write_test_data_column_put(&mut table, &data_shape, &data_template, &flags_template)?;
+        }
+        other => {
+            eprintln!("Unknown WRITE_MODE '{}', defaulting to column_put", other);
+            write_test_data_column_put(&mut table, &data_shape, &data_template, &flags_template)?;
+        }
+    }
 
     println!("✅ Syscall tracer example completed successfully!");
     println!();
@@ -113,7 +132,7 @@ fn create_test_flags(data_shape: &[u64]) -> ndarray::Array2<bool> {
     flags
 }
 
-fn write_test_data(
+fn write_test_data_table_put_cell(
     table: &mut Table,
     data_shape: &[u64],
     _data_template: &Array2<Complex<f32>>,
@@ -123,11 +142,13 @@ fn write_test_data(
     let n0 = data_shape[0] as usize;
     let n1 = data_shape[1] as usize;
     for row_u64 in 0..rows_to_write {
+        // Scalars
         table.put_cell("TIME", row_u64, &(row_u64 as f64))?;
         table.put_cell("ANTENNA1", row_u64, &((row_u64 as i32) % 128))?;
         table.put_cell("ANTENNA2", row_u64, &((row_u64 as i32 + 1) % 128))?;
         table.put_cell("FLAG_ROW", row_u64, &((row_u64 % 2) == 0))?;
 
+        // Arrays
         let mut data_matrix = Array2::<Complex<f32>>::default((n0, n1));
         let mut flag_matrix = ndarray::Array2::<bool>::from_elem((n0, n1), false);
         for i in 0..n0 {
@@ -140,6 +161,50 @@ fn write_test_data(
         table.put_cell("DATA", row_u64, &data_matrix)?;
         table.put_cell("FLAG", row_u64, &flag_matrix)?;
     }
+    Ok(())
+}
+
+fn write_test_data_column_put(
+    table: &mut Table,
+    data_shape: &[u64],
+    _data_template: &Array2<Complex<f32>>,
+    _flags_template: &ndarray::Array2<bool>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    use rubbl_casatables::GlueDataType::*;
+
+    let rows_to_write = 3u64;
+    let n0 = data_shape[0] as usize;
+    let n1 = data_shape[1] as usize;
+
+    // Open column handles once
+    let mut time_col = table.open_scalar_column("TIME", TpDouble)?;
+    let mut ant1_col = table.open_scalar_column("ANTENNA1", TpInt)?;
+    let mut ant2_col = table.open_scalar_column("ANTENNA2", TpInt)?;
+    let mut flagrow_col = table.open_scalar_column("FLAG_ROW", TpBool)?;
+    let mut data_col = table.open_array_column("DATA", TpArrayComplex)?;
+    let mut flag_col = table.open_array_column("FLAG", TpArrayBool)?;
+
+    for row_u64 in 0..rows_to_write {
+        // Scalars
+        time_col.put(row_u64, &(row_u64 as f64))?;
+        ant1_col.put(row_u64, &((row_u64 as i32) % 128))?;
+        ant2_col.put(row_u64, &((row_u64 as i32 + 1) % 128))?;
+        flagrow_col.put(row_u64, &((row_u64 % 2) == 0))?;
+
+        // Arrays
+        let mut data_matrix = Array2::<Complex<f32>>::default((n0, n1));
+        let mut flag_matrix = ndarray::Array2::<bool>::from_elem((n0, n1), false);
+        for i in 0..n0 {
+            for j in 0..n1 {
+                let idx = (i * n1 + j) as u32;
+                data_matrix[(i, j)] = Complex::new(idx as f32, 0.0);
+                flag_matrix[(i, j)] = (idx % 13) == 0;
+            }
+        }
+        data_col.put(row_u64, &data_matrix)?;
+        flag_col.put(row_u64, &flag_matrix)?;
+    }
+
     Ok(())
 }
 

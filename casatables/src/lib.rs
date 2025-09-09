@@ -16,7 +16,7 @@
 //! [MS]: https://casa.nrao.edu/Memos/229.html
 //!
 //! Because the on-disk representation of the CASA table format is quite complex
-//! and essentially undocumented, this crate’s implementation relies on wrapping
+//! and essentially undocumented, this crate's implementation relies on wrapping
 //! a substantial quantity of C++ code from the [casacore] project. The goal is
 //! to provide access to the data format in a way that is completely safe and as
 //! idiomatic as possible, given the limitations imposed by the architecture of
@@ -1959,6 +1959,8 @@ impl Table {
         row: u64,
         value: &T,
     ) -> Result<(), CasacoreError> {
+        // NOTE: Column::put fast path: callers who need fewer syscalls should prefer
+        // opening a column handle and using the minimal ColumnWriter below.
         let ccol_name = glue::StringBridge::from_rust(col_name);
         let mut shape = Vec::new();
 
@@ -2179,6 +2181,78 @@ impl Table {
     }
 }
 
+/// Barebones scalar column writer. Prefer this over Table::put_cell for fewer syscalls.
+pub struct ScalarColumnWriter {
+    handle: *mut std::ffi::c_void,
+    dtype: glue::GlueDataType,
+    exc_info: glue::ExcInfo,
+}
+
+impl ScalarColumnWriter {
+    /// Put a scalar value at the given row using a pre-opened scalar column handle.
+    pub fn put<T: CasaScalarData>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::scalar_column_put(
+                self.handle,
+                self.dtype,
+                row,
+                value.casatables_as_buf() as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+}
+
+impl Drop for ScalarColumnWriter {
+    fn drop(&mut self) {
+        unsafe {
+            glue::scalar_column_free(self.handle, self.dtype, &mut self.exc_info);
+        }
+    }
+}
+
+/// Barebones array column writer. Prefer this over Table::put_cell for fewer syscalls.
+pub struct ArrayColumnWriter {
+    handle: *mut std::ffi::c_void,
+    dtype: glue::GlueDataType,
+    exc_info: glue::ExcInfo,
+}
+
+impl ArrayColumnWriter {
+    /// Put an array value at the given row using a pre-opened array column handle.
+    pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
+        let mut shape = Vec::new();
+        value.casatables_put_shape(&mut shape);
+        let rv = unsafe {
+            glue::array_column_put(
+                self.handle,
+                self.dtype,
+                row,
+                shape.len() as u64,
+                shape.as_ptr(),
+                value.casatables_as_buf() as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+}
+
+impl Drop for ArrayColumnWriter {
+    fn drop(&mut self) {
+        unsafe {
+            glue::array_column_free(self.handle, self.dtype, &mut self.exc_info);
+        }
+    }
+}
+
 impl Debug for Table {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Table")
@@ -2193,6 +2267,46 @@ impl Drop for Table {
         // FIXME: not sure if this function can actually produce useful
         // exceptions anyway, but we can't do anything if it does!
         unsafe { glue::table_close_and_free(self.handle, &mut self.exc_info) }
+    }
+}
+
+impl Table {
+    /// Open a scalar column for direct writes using a barebones Column::put path.
+    pub fn open_scalar_column(
+        &mut self,
+        col_name: &str,
+        dtype: glue::GlueDataType,
+    ) -> Result<ScalarColumnWriter, CasacoreError> {
+        let mut exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let ccol = glue::StringBridge::from_rust(col_name);
+        let handle = unsafe { glue::table_open_scalar_column(self.handle, &ccol, dtype, &mut exc) };
+        if handle.is_null() {
+            return Err(CasacoreError("failed to open scalar column".into()));
+        }
+        Ok(ScalarColumnWriter {
+            handle,
+            dtype,
+            exc_info: exc,
+        })
+    }
+
+    /// Open an array column for direct writes using a barebones Column::put path.
+    pub fn open_array_column(
+        &mut self,
+        col_name: &str,
+        dtype: glue::GlueDataType,
+    ) -> Result<ArrayColumnWriter, CasacoreError> {
+        let mut exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let ccol = glue::StringBridge::from_rust(col_name);
+        let handle = unsafe { glue::table_open_array_column(self.handle, &ccol, dtype, &mut exc) };
+        if handle.is_null() {
+            return Err(CasacoreError("failed to open array column".into()));
+        }
+        Ok(ArrayColumnWriter {
+            handle,
+            dtype,
+            exc_info: exc,
+        })
     }
 }
 

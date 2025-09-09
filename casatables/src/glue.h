@@ -85,6 +85,7 @@ typedef enum GlueDataType
 
 typedef struct GlueTable GlueTable;
 typedef struct GlueTableRow GlueTableRow;
+typedef void GlueColumnHandle;
 typedef struct GlueTableDesc GlueTableDesc;
 typedef struct GlueTableRecord GlueTableRecord;
 
@@ -170,6 +171,25 @@ typedef enum TableDescCreateMode
 
 extern "C"
 {
+    // Minimal column handle API (barebones) to mirror C++ Column::put fast path
+    // Open a scalar column handle for the given data type
+    void *table_open_scalar_column(GlueTable &table, const StringBridge &col_name,
+                                   const GlueDataType data_type, ExcInfo &exc);
+    // Put a scalar value into a previously opened scalar column
+    int scalar_column_put(void *col_handle, const GlueDataType data_type,
+                          const unsigned long row_number, void *data, ExcInfo &exc);
+    // Free a scalar column handle
+    int scalar_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc);
+
+    // Open an array column handle for the given data type
+    void *table_open_array_column(GlueTable &table, const StringBridge &col_name,
+                                  const GlueDataType data_type, ExcInfo &exc);
+    // Put an array value into a previously opened array column
+    int array_column_put(void *col_handle, const GlueDataType data_type,
+                         const unsigned long row_number, const unsigned long n_dims,
+                         const unsigned long *dims, void *data, ExcInfo &exc);
+    // Free an array column handle
+    int array_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc);
     int data_type_get_element_size(const GlueDataType ty);
 
     // Table Records

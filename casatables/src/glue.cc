@@ -1664,6 +1664,150 @@ extern "C" {
         return 0;
     }
 
+    void *
+    table_open_scalar_column(GlueTable &table, const StringBridge &col_name,
+                             const GlueDataType data_type, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpDouble:
+                return new casacore::ScalarColumn<double>(table, bridge_string(col_name));
+            case casacore::TpInt:
+                return new casacore::ScalarColumn<casacore::Int>(table, bridge_string(col_name));
+            case casacore::TpBool:
+                return new casacore::ScalarColumn<casacore::Bool>(table, bridge_string(col_name));
+            default:
+                throw std::runtime_error("unsupported scalar dtype");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return nullptr;
+        }
+    }
+
+    int
+    scalar_column_put(void *col_handle, const GlueDataType data_type,
+                      const unsigned long row_number, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpDouble: {
+                auto *col = (casacore::ScalarColumn<double> *) col_handle;
+                col->put(row_number, *(double *) data);
+                break;
+            }
+            case casacore::TpInt: {
+                auto *col = (casacore::ScalarColumn<casacore::Int> *) col_handle;
+                col->put(row_number, *(casacore::Int *) data);
+                break;
+            }
+            case casacore::TpBool: {
+                auto *col = (casacore::ScalarColumn<casacore::Bool> *) col_handle;
+                col->put(row_number, *(casacore::Bool *) data);
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported scalar dtype");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
+    scalar_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpDouble:
+                delete (casacore::ScalarColumn<double> *) col_handle; break;
+            case casacore::TpInt:
+                delete (casacore::ScalarColumn<casacore::Int> *) col_handle; break;
+            case casacore::TpBool:
+                delete (casacore::ScalarColumn<casacore::Bool> *) col_handle; break;
+            default:
+                break;
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    void *
+    table_open_array_column(GlueTable &table, const StringBridge &col_name,
+                            const GlueDataType data_type, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex:
+                return new casacore::ArrayColumn<casacore::Complex>(table, bridge_string(col_name));
+            case casacore::TpArrayBool:
+                return new casacore::ArrayColumn<casacore::Bool>(table, bridge_string(col_name));
+            default:
+                throw std::runtime_error("unsupported array dtype");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return nullptr;
+        }
+    }
+
+    int
+    array_column_put(void *col_handle, const GlueDataType data_type,
+                     const unsigned long row_number, const unsigned long n_dims,
+                     const unsigned long *dims, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
+                casacore::IPosition shape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) shape[i] = dims[n_dims - 1 - i];
+                casacore::Array<casacore::Complex> array(shape, (casacore::Complex *) data, casacore::SHARE);
+                col->put(row_number, array);
+                break;
+            }
+            case casacore::TpArrayBool: {
+                auto *col = (casacore::ArrayColumn<casacore::Bool> *) col_handle;
+                casacore::IPosition shape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) shape[i] = dims[n_dims - 1 - i];
+                casacore::Array<casacore::Bool> array(shape, (casacore::Bool *) data, casacore::SHARE);
+                col->put(row_number, array);
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
+    array_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex:
+                delete (casacore::ArrayColumn<casacore::Complex> *) col_handle; break;
+            case casacore::TpArrayBool:
+                delete (casacore::ArrayColumn<casacore::Bool> *) col_handle; break;
+            default:
+                break;
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
     // Rows
 
     GlueTableRow *
