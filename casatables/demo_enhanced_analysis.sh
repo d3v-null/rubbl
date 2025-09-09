@@ -210,7 +210,7 @@ echo -e "${YELLOW}Rust Analysis:${NC}"
 if [ "$SKIP_RUST" = "true" ]; then
     echo -e "${RED}Skipping Rust analysis due to build failure${NC}"
 else
-    if run_with_strace "$OUTPUT_DIR/strace_rust.txt" "$RUST_BIN"; then
+    if run_with_strace "$OUTPUT_DIR/strace_rust.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" "$RUST_BIN"; then
         print_file_stats "$OUTPUT_DIR/strace_rust.txt"
         run_analysis "Rust - Casatables" "$OUTPUT_DIR/strace_rust.txt" "$OUTPUT_DIR/rust_analysis"
     else
@@ -232,7 +232,7 @@ fi
 # C++ analysis
 if [ "$SKIP_CPP" != "true" ]; then
     echo -e "${YELLOW}C++ Analysis:${NC}"
-    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" "$SCRIPT_DIR/syscall_tracer"; then
+    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" env WRITE_MODE="${WRITE_MODE:-column_put}" "$SCRIPT_DIR/syscall_tracer"; then
         print_file_stats "$OUTPUT_DIR/strace_cpp.txt"
         run_analysis "C++ - CasaCore" "$OUTPUT_DIR/strace_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
     else
@@ -459,27 +459,38 @@ if [ -x "$FLAMEGRAPH_DIR/flamegraph.pl" ] && [ -f "$STACK_COLLAPSER" ]; then
         mkdir -p "$outdir"
         local raw="$outdir/${name}_k.txt"
         # Capture with kernel-provided call stacks
-        if strace -q -f -k -s 256 -o "$raw" -- "${cmd[@]}" >/dev/null 2>&1; then
+        if strace -q -f -k -s 256 -o "$raw" -- "${cmd[@]}" >/dev/null 2>"$outdir/strace_err.txt"; then
             python3 "$STACK_COLLAPSER" "$raw" --out-dir "$outdir" --flamegraph "$FLAMEGRAPH_DIR/flamegraph.pl" >/dev/null 2>&1 || true
             local any_svg
             any_svg=$(ls -1 "$outdir"/*flamegraph.svg 2>/dev/null | head -1 || true)
             if [ -n "$any_svg" ]; then
                 echo -e "${GREEN}✓ $name: strace-k flamegraphs in $outdir${NC}"
             else
-                echo -e "${YELLOW}⚠ $name: no flamegraphs generated from strace -k${NC}"
+                echo -e "${YELLOW}⚠ $name: no flamegraphs generated from strace -k (see $outdir)${NC}"
             fi
         else
-            echo -e "${YELLOW}⚠ $name: strace -k capture failed${NC}"
+            echo -e "${YELLOW}⚠ $name: strace -k capture failed (cmd: ${cmd[*]})${NC}"
+            if [ -s "$outdir/strace_err.txt" ]; then
+                echo -e "${YELLOW}⚠ $name: strace stderr saved to $outdir/strace_err.txt${NC}"
+            fi
         fi
     }
 
     # Rust
-    if [ "$SKIP_RUST" != "true" ] && [ -n "$RUST_BIN" ]; then
-        gen_strace_k_flames rust "$RUST_BIN"
+    if [ "$SKIP_RUST" != "true" ]; then
+        if [ -n "$RUST_BIN" ] && [ -x "$RUST_BIN" ]; then
+            gen_strace_k_flames rust env WRITE_MODE="${WRITE_MODE:-column_put}" "$RUST_BIN"
+        else
+            echo -e "${YELLOW}⚠ rust: binary missing or not executable: '$RUST_BIN'${NC}"
+        fi
     fi
     # C++
     if [ "$SKIP_CPP" != "true" ]; then
-        gen_strace_k_flames cpp "$SCRIPT_DIR/syscall_tracer"
+        if [ -x "$SCRIPT_DIR/syscall_tracer" ]; then
+            gen_strace_k_flames cpp env WRITE_MODE="${WRITE_MODE:-column_put}" "$SCRIPT_DIR/syscall_tracer"
+        else
+            echo -e "${YELLOW}⚠ cpp: binary missing or not executable: '$SCRIPT_DIR/syscall_tracer'${NC}"
+        fi
     fi
 else
     echo -e "${YELLOW}⚠ FlameGraph or stackcollapser missing; skipping strace -k flamegraphs${NC}"

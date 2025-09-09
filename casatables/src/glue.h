@@ -188,6 +188,21 @@ extern "C"
     int array_column_put(void *col_handle, const GlueDataType data_type,
                          const unsigned long row_number, const unsigned long n_dims,
                          const unsigned long *dims, void *data, ExcInfo &exc);
+    // Put an array value for fixed-shape columns (bypasses shape validation)
+    int array_column_put_fixed_shape(void *col_handle, const GlueDataType data_type,
+                                     const unsigned long row_number, void *data, ExcInfo &exc);
+    // Put an entire column (all rows) in one call; dims describes a single cell shape
+    int array_column_put_column(void *col_handle, const GlueDataType data_type,
+                                const unsigned long n_rows, const unsigned long n_dims,
+                                const unsigned long *dims, void *data, ExcInfo &exc);
+    // Create a persistent Matrix object for reuse
+    void *array_column_create_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                               const unsigned long n_dims, const unsigned long *dims, ExcInfo &exc);
+    // Put data using a persistent Matrix object
+    int array_column_put_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                          const unsigned long row_number, void *matrix_handle, void *data, ExcInfo &exc);
+    // Free a persistent Matrix object
+    int array_column_free_persistent_matrix(void *matrix_handle, const GlueDataType data_type, ExcInfo &exc);
     // Free an array column handle
     int array_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc);
     int data_type_get_element_size(const GlueDataType ty);

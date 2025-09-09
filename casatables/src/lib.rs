@@ -2220,24 +2220,93 @@ pub struct ArrayColumnWriter {
     handle: *mut std::ffi::c_void,
     dtype: glue::GlueDataType,
     exc_info: glue::ExcInfo,
+    // Cache the shape for fixed-shape columns to avoid repeated extraction
+    cached_shape: Option<Vec<u64>>,
+    // Persistent Matrix object for reuse to avoid repeated shape validation
+    persistent_matrix: Option<*mut std::ffi::c_void>,
 }
 
 impl ArrayColumnWriter {
-    /// Put an array value at the given row using a pre-opened array column handle.
-    pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
-        let mut shape = Vec::new();
-        value.casatables_put_shape(&mut shape);
+    /// Put an entire column (all rows) at once using a flat buffer of size n_rows * prod(shape)
+    pub fn put_column<T: CasaDataType>(
+        &mut self,
+        n_rows: u64,
+        cell_shape: &[u64],
+        data_ptr: *const u8,
+    ) -> Result<(), CasacoreError> {
         let rv = unsafe {
-            glue::array_column_put(
+            glue::array_column_put_column(
                 self.handle,
                 self.dtype,
-                row,
-                shape.len() as u64,
-                shape.as_ptr(),
-                value.casatables_as_buf() as _,
+                n_rows,
+                cell_shape.len() as u64,
+                cell_shape.as_ptr(),
+                data_ptr as _,
                 &mut self.exc_info,
             )
         };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+    /// Put an array value at the given row using a pre-opened array column handle.
+    pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
+        // Use cached shape if available, otherwise extract it
+        let shape = if let Some(ref cached) = self.cached_shape {
+            cached
+        } else {
+            let mut new_shape = Vec::new();
+            value.casatables_put_shape(&mut new_shape);
+            // Cache the shape for subsequent calls
+            self.cached_shape = Some(new_shape);
+            self.cached_shape.as_ref().unwrap()
+        };
+
+        // For fixed-shape columns, use persistent Matrix objects to avoid repeated shape validation
+        let rv = if self.cached_shape.is_some() {
+            // Create persistent matrix if not already created
+            if self.persistent_matrix.is_none() {
+                let matrix_handle = unsafe {
+                    glue::array_column_create_persistent_matrix(
+                        self.handle,
+                        self.dtype,
+                        shape.len() as u64,
+                        shape.as_ptr(),
+                        &mut self.exc_info,
+                    )
+                };
+                if matrix_handle.is_null() {
+                    return self.exc_info.as_err();
+                }
+                self.persistent_matrix = Some(matrix_handle);
+            }
+
+            // Use the persistent matrix for the put operation
+            unsafe {
+                glue::array_column_put_persistent_matrix(
+                    self.handle,
+                    self.dtype,
+                    row,
+                    self.persistent_matrix.unwrap(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            }
+        } else {
+            unsafe {
+                glue::array_column_put(
+                    self.handle,
+                    self.dtype,
+                    row,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            }
+        };
+
         if rv != 0 {
             return self.exc_info.as_err();
         }
@@ -2248,6 +2317,15 @@ impl ArrayColumnWriter {
 impl Drop for ArrayColumnWriter {
     fn drop(&mut self) {
         unsafe {
+            // Free the persistent matrix if it exists
+            if let Some(matrix_handle) = self.persistent_matrix {
+                glue::array_column_free_persistent_matrix(
+                    matrix_handle,
+                    self.dtype,
+                    &mut self.exc_info,
+                );
+            }
+            // Free the column handle
             glue::array_column_free(self.handle, self.dtype, &mut self.exc_info);
         }
     }
@@ -2302,10 +2380,46 @@ impl Table {
         if handle.is_null() {
             return Err(CasacoreError("failed to open array column".into()));
         }
+
+        // Check if this is a fixed-shape column and cache its shape
+        let mut cached_shape = None;
+        let mut col_info_exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let mut n_rows = 0u64;
+        let mut data_type = glue::GlueDataType::TpBool;
+        let mut is_scalar = 0i32;
+        let mut is_fixed_shape = 0i32;
+        let mut n_dim = 0i32;
+        let mut dims = [0u64; 8];
+
+        let rv = unsafe {
+            glue::table_get_column_info(
+                self.handle,
+                &ccol,
+                &mut n_rows,
+                &mut data_type,
+                &mut is_scalar,
+                &mut is_fixed_shape,
+                &mut n_dim,
+                dims.as_mut_ptr(),
+                &mut col_info_exc,
+            )
+        };
+
+        if rv == 0 && is_fixed_shape != 0 && n_dim > 0 {
+            // This is a fixed-shape column, cache its shape
+            let mut shape = Vec::with_capacity(n_dim as usize);
+            for i in 0..n_dim as usize {
+                shape.push(dims[i]);
+            }
+            cached_shape = Some(shape);
+        }
+
         Ok(ArrayColumnWriter {
             handle,
             dtype,
             exc_info: exc,
+            cached_shape,
+            persistent_matrix: None,
         })
     }
 }

@@ -659,9 +659,55 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
+    pub fn array_column_put_fixed_shape(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_create_persistent_matrix(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn array_column_put_persistent_matrix(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        matrix_handle: *mut ::std::os::raw::c_void,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_free_persistent_matrix(
+        matrix_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
     pub fn array_column_free(
         col_handle: *mut ::std::os::raw::c_void,
         data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_put_column(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        n_rows: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
         exc: *mut ExcInfo,
     ) -> ::std::os::raw::c_int;
 }
