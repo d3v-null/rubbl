@@ -33,11 +33,11 @@ test_allocation_method() {
         echo "=== Analysis for $name ==="
 
         # Count different syscall types
-        zero_writes=$(grep -c 'write.*\\0' "${log_file}" 2>/dev/null || echo "0")
-        fallocate_calls=$(grep -c 'fallocate' "${log_file}" 2>/dev/null || echo "0")
-        ftruncate_calls=$(grep -c 'ftruncate' "${log_file}" 2>/dev/null || echo "0")
-        total_writes=$(grep -cE '\\b(write|pwrite64|pwrite|writev)\\(' "${log_file}" 2>/dev/null || echo "0")
-        total_seeks=$(grep -c 'lseek' "${log_file}" 2>/dev/null || echo "0")
+        zero_writes=$(grep -c 'write.*\\0' "${log_file}" 2>/dev/null || true); zero_writes=${zero_writes:-0}
+        fallocate_calls=$(grep -c 'fallocate' "${log_file}" 2>/dev/null || true); fallocate_calls=${fallocate_calls:-0}
+        ftruncate_calls=$(grep -c 'ftruncate' "${log_file}" 2>/dev/null || true); ftruncate_calls=${ftruncate_calls:-0}
+        total_writes=$(grep -cE '\\b(write|pwrite64|pwrite|writev)\\(' "${log_file}" 2>/dev/null || true); total_writes=${total_writes:-0}
+        total_seeks=$(grep -c 'lseek' "${log_file}" 2>/dev/null || true); total_seeks=${total_seeks:-0}
 
         echo "  Zero writes: $zero_writes"
         echo "  Total writes: $total_writes"
@@ -91,11 +91,11 @@ echo "--------------------|-----------|-----------|-----------|-----------|-----
 for test in rust cpp_zeros cpp_ftruncate cpp_fallocate; do
     log_file="${STRACE_LOG_DIR}/${test}_allocation.strace"
     if [ -f "$log_file" ]; then
-        zero_writes=$(grep -c 'write.*\\0' "$log_file" 2>/dev/null || echo "0")
-        total_writes=$(grep -cE '\\b(write|pwrite64|pwrite|writev)\\(' "$log_file" 2>/dev/null || echo "0")
-        total_seeks=$(grep -c 'lseek' "$log_file" 2>/dev/null || echo "0")
-        fallocate_calls=$(grep -c 'fallocate' "$log_file" 2>/dev/null || echo "0")
-        ftruncate_calls=$(grep -c 'ftruncate' "$log_file" 2>/dev/null || echo "0")
+        zero_writes=$(grep -c 'write.*\\0' "$log_file" 2>/dev/null || true); zero_writes=${zero_writes:-0}
+        total_writes=$(grep -cE '\\b(write|pwrite64|pwrite|writev)\\(' "$log_file" 2>/dev/null || true); total_writes=${total_writes:-0}
+        total_seeks=$(grep -c 'lseek' "$log_file" 2>/dev/null || true); total_seeks=${total_seeks:-0}
+        fallocate_calls=$(grep -c 'fallocate' "$log_file" 2>/dev/null || true); fallocate_calls=${fallocate_calls:-0}
+        ftruncate_calls=$(grep -c 'ftruncate' "$log_file" 2>/dev/null || true); ftruncate_calls=${ftruncate_calls:-0}
 
         printf "%-20s| %9s | %9s | %9s | %9s | %9s\n" \
                "$test" "$zero_writes" "$total_writes" "$total_seeks" "$fallocate_calls" "$ftruncate_calls"
