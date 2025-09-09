@@ -33,6 +33,8 @@
 #include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
+#include <casacore/casa/IO/MMapfdIO.h>
+#include <casacore/casa/IO/FilebufIO.h>
 
 // Instrumentation for file allocation tracking
 static bool casacore_debug_enabled() {
@@ -261,6 +263,33 @@ void BucketCache::extend (uInt nrBucket)
 	for (uInt i=oldSize; i<newSize; i++) {
 	    its_SlotNr[i] = -1;
 	}
+    }
+
+    // Pre-allocate file space to avoid inefficient zero-writing during bucket initialization
+    if (its_file->isWritable() && its_CurNrOfBuckets < its_NewNrOfBuckets) {
+        Int64 currentFileSize = its_file->fileSize();
+        Int64 requiredFileSize = its_StartOffset + Int64(its_NewNrOfBuckets) * its_BucketSize;
+
+        if (requiredFileSize > currentFileSize) {
+            CASACORE_DEBUG("BucketCache::extend: pre-allocating file from " << currentFileSize
+                          << " to " << requiredFileSize << " bytes using ftruncate");
+
+            // Get file descriptor from BucketFile
+            int fileDescriptor = its_file->fileDescriptor();
+            CASACORE_DEBUG("BucketCache::extend: got file descriptor " << fileDescriptor);
+
+            if (fileDescriptor >= 0) {
+                // Use ftruncate to pre-allocate the file space
+                // This avoids the need to write zero buffers for each bucket individually
+                if (ftruncate(fileDescriptor, requiredFileSize) == 0) {
+                    CASACORE_DEBUG("BucketCache::extend: ftruncate successful");
+                } else {
+                    CASACORE_DEBUG("BucketCache::extend: ftruncate failed, will fall back to individual bucket writes");
+                }
+            } else {
+                CASACORE_DEBUG("BucketCache::extend: could not get file descriptor, will fall back to individual bucket writes");
+            }
+        }
     }
 }
 

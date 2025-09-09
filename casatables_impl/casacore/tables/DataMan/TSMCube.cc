@@ -46,6 +46,7 @@
 #include <casacore/casa/string.h>                           // for memcpy
 #include <casacore/casa/iostream.h>
 #include <iostream>
+#include <cstdlib>
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -706,7 +707,17 @@ char* TSMCube::initCallBack (void* owner)
     CASACORE_DEBUG("TSMCube::initCallBack: allocating tile buffer size=" << size);
 
     char* buffer = new char[size];
-    memset(buffer, 0, size);
+
+    // Check if we should skip zero-initialization for performance optimization
+    // This can be enabled via environment variable to test the impact of avoiding unnecessary memset
+    static bool skip_zero_init = std::getenv("CASACORE_SKIP_ZERO_INIT") != nullptr;
+    if (!skip_zero_init) {
+        memset(buffer, 0, size);
+        CASACORE_DEBUG("TSMCube::initCallBack: initialized buffer with zeros");
+    } else {
+        CASACORE_DEBUG("TSMCube::initCallBack: skipping zero initialization (CASACORE_SKIP_ZERO_INIT set)");
+    }
+
     return buffer;
 }
 

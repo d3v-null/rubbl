@@ -80,7 +80,7 @@ class MultiFileBase;
 //       the access using the FilebufIO member.
 // </ul>
 // A MultiFileBase file can only be accessed in the unbuffered way.
-// </synopsis> 
+// </synopsis>
 
 // <motivation>
 // Encapsulate the file creation and access into a single class
@@ -142,6 +142,9 @@ public:
     FilebufIO* bufferedFile()
       { return bufferedFile_p; }
 
+    // Get the file descriptor if available (for direct FiledesIO access).
+    int fileDescriptor() const;
+
     // Open the file if not open yet.
     virtual void open();
 
@@ -160,7 +163,7 @@ public:
 
     // Get the file name.
     virtual const String& name() const;
-    
+
     // Has the file logically been indicated as writable?
     Bool isWritable() const;
 
@@ -203,7 +206,7 @@ private:
     FilebufIO* bufferedFile_p;
     // The possibly used MultiFileBase.
     MultiFileBase* mfile_p;
-	    
+
 
     // Forbid copy constructor.
     BucketFile (const BucketFile&);
