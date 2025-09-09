@@ -1,10 +1,10 @@
+use rubbl_casatables::{
+    ColumnDescription, GlueDataType, Table, TableCreateMode, TableDesc, TableDescCreateMode,
+    TableOpenMode,
+};
 use std::env;
 use std::path::Path;
 use tempfile::tempdir;
-use rubbl_casatables::{
-    ColumnDescription, GlueDataType, Table, TableCreateMode,
-    TableDesc, TableDescCreateMode, TableOpenMode
-};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
@@ -19,7 +19,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let write_mode = env::var("WRITE_MODE").unwrap_or_else(|_| "column_put_bulk".to_string());
 
-    println!("Creating table with {} rows and {} columns", num_rows, num_cols);
+    println!(
+        "Creating table with {} rows and {} columns",
+        num_rows, num_cols
+    );
 
     // Create table description
     let mut table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH)?;
@@ -66,11 +69,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let uvw_data = vec![
                     row_idx as f64 * 0.1,
                     row_idx as f64 * 0.2,
-                    row_idx as f64 * 0.3
+                    row_idx as f64 * 0.3,
                 ];
                 table.put_cell("UVW", row_idx as u64, &uvw_data)?;
             }
-        },
+        }
         "row_put_bulk" => {
             // Row-wise operations - write entire rows at once using TableRow
             for row_idx in 0..num_rows {
@@ -85,12 +88,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let uvw_data = vec![
                     row_idx as f64 * 0.1,
                     row_idx as f64 * 0.2,
-                    row_idx as f64 * 0.3
+                    row_idx as f64 * 0.3,
                 ];
                 row.put_cell("UVW", &uvw_data)?;
                 row.write(row_idx as u64)?;
             }
-        },
+        }
         _ => {
             println!("Unknown write mode: {}", write_mode);
             return Ok(());
