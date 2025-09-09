@@ -1,0 +1,12 @@
+Configuration,Total_Lseeks,SEEK_SET_Lseeks,COMPLEX_Phase_Lseeks,BOOL_Phase_Lseeks,Setup_Cleanup_Lseeks,Total_Syscalls
+Rust_Baseline_Bulk,238,230,64,64,110,677
+Rust_MMAP_Mode,238,230,64,64,110,677
+Rust_Scratch_Mode,238,230,64,64,110,677
+C++_Baseline,N/A,N/A,N/A,N/A,N/A,N/A
+
+Notes:
+- All Rust configurations show identical lseek patterns
+- C++ baseline unavailable due to missing casacore dev environment
+- COMPLEX and BOOL columns show identical seek counts despite different data types
+- 46.2% of lseeks occur outside column operations (setup/cleanup overhead)
+- SEEK_SET accounts for 96.6% of all lseek operations
