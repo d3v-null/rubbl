@@ -42,14 +42,14 @@ class SyscallAnalyzer:
         """Initialize syscall categorization patterns for I/O analysis"""
         return {
             'file_io': ['read', 'write', 'pread', 'pwrite', 'readv', 'writev'],
-            'file_management': ['open', 'close', 'creat', 'unlink', 'rename', 'mkdir', 'rmdir'],
-            'file_metadata': ['stat', 'fstat', 'lstat', 'access', 'chmod', 'chown'],
-            'directory_ops': ['getdents', 'chdir', 'fchdir', 'getcwd'],
+            'file_management': ['open', 'openat', 'close', 'creat', 'unlink', 'unlinkat', 'rename', 'renameat2', 'mkdir', 'rmdir'],
+            'file_metadata': ['stat', 'fstat', 'lstat', 'newfstatat', 'statx', 'access', 'chmod', 'chown', 'readlink', 'readlinkat'],
+            'directory_ops': ['getdents', 'getdents64', 'chdir', 'fchdir', 'getcwd'],
             'memory_management': ['mmap', 'munmap', 'mremap', 'brk', 'sbrk'],
             'process_management': ['fork', 'vfork', 'clone', 'execve', 'wait4', 'waitpid'],
-            'network_io': ['socket', 'connect', 'bind', 'listen', 'accept', 'send', 'recv'],
-            'signal_handling': ['signal', 'sigaction', 'kill', 'tkill'],
-            'synchronization': ['semop', 'semget', 'shmget', 'shmat', 'shmdt'],
+            'network_io': ['socket', 'connect', 'bind', 'listen', 'accept', 'send', 'recv', 'sendto', 'recvfrom'],
+            'signal_handling': ['signal', 'sigaction', 'rt_sigaction', 'rt_sigprocmask', 'kill', 'tkill'],
+            'synchronization': ['semop', 'semget', 'shmget', 'shmat', 'shmdt', 'futex'],
             'time_operations': ['gettimeofday', 'clock_gettime', 'nanosleep', 'alarm']
         }
 
@@ -66,6 +66,13 @@ class SyscallAnalyzer:
         if not line or line.startswith('---') or line.startswith('+++'):
             return None
 
+        # Strip common strace prefixes: optional PID and/or timestamp
+        # Examples:
+        #   "12:34:56.123456 openat(..." or "[pid 123] openat(..." or "1541893 12:34:56.123456 openat(..."
+        #   "[pid 123] 12:34:56.123456 openat(..."
+        line = re.sub(r'^\s*\[pid\s+\d+\]\s*', '', line)
+        line = re.sub(r'^\s*\d+\s+', '', line)  # numeric PID prefix
+        line = re.sub(r'^\s*\d{2}:\d{2}:\d{2}\.\d+\s+', '', line)
         # Extract syscall name
         syscall_match = re.match(r'^(\w+)\(', line)
         if not syscall_match:
