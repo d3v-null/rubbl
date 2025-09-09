@@ -9,6 +9,8 @@
 #include <stdexcept>
 #include <casacore/tables/Tables.h>
 #include <casacore/tables/DataMan/TSMOption.h>
+#include <casacore/casa/Arrays/Array.h>
+#include <casacore/casa/Arrays/Matrix.h>
 #include <casacore/casa/Containers/ValueHolder.h>
 
 #define CASA_TYPES_ALREADY_DECLARED
@@ -1796,6 +1798,131 @@ extern "C" {
     }
 
     int
+    array_column_put_fixed_shape(void *col_handle, const GlueDataType data_type,
+                                 const unsigned long row_number, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
+                // For fixed-shape columns, we can optimize by getting the shape once
+                // and creating the array with the known shape, avoiding repeated lookups
+                casacore::IPosition shape = col->shapeColumn(); // Get fixed shape once
+                casacore::Array<casacore::Complex> array(shape, (casacore::Complex *) data, casacore::SHARE);
+                col->put(row_number, array);
+                break;
+            }
+            case casacore::TpArrayBool: {
+                auto *col = (casacore::ArrayColumn<casacore::Bool> *) col_handle;
+                // For fixed-shape columns, we can optimize by getting the shape once
+                casacore::IPosition shape = col->shapeColumn(); // Get fixed shape once
+                casacore::Array<casacore::Bool> array(shape, (casacore::Bool *) data, casacore::SHARE);
+                col->put(row_number, array);
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype for fixed shape");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    void *
+    array_column_create_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                         const unsigned long n_dims, const unsigned long *dims, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                (void) col_handle; // unused
+                // Create a persistent Matrix object with the fixed shape
+                casacore::IPosition shape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) shape[i] = dims[n_dims - 1 - i];
+                casacore::Matrix<casacore::Complex> *matrix = new casacore::Matrix<casacore::Complex>(shape);
+                return (void *) matrix;
+            }
+            case casacore::TpArrayBool: {
+                (void) col_handle; // unused
+                // Create a persistent Matrix object with the fixed shape
+                casacore::IPosition shape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) shape[i] = dims[n_dims - 1 - i];
+                casacore::Matrix<casacore::Bool> *matrix = new casacore::Matrix<casacore::Bool>(shape);
+                return (void *) matrix;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype for persistent matrix");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return nullptr;
+        }
+    }
+
+    int
+    array_column_put_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                      const unsigned long row_number, void *matrix_handle, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
+                auto *matrix = (casacore::Matrix<casacore::Complex> *) matrix_handle;
+                // Copy data into the persistent matrix using getStorage/putStorage
+                casacore::Bool deleteIt = false;
+                casacore::Complex *dst = matrix->getStorage(deleteIt);
+                std::memcpy(dst, data, matrix->nelements() * sizeof(casacore::Complex));
+                matrix->putStorage(dst, deleteIt);
+                // Put the matrix
+                col->put(row_number, static_cast<const casacore::Array<casacore::Complex>&>(*matrix));
+                break;
+            }
+            case casacore::TpArrayBool: {
+                auto *col = (casacore::ArrayColumn<casacore::Bool> *) col_handle;
+                auto *matrix = (casacore::Matrix<casacore::Bool> *) matrix_handle;
+                // Copy data into the persistent matrix using getStorage/putStorage
+                casacore::Bool deleteIt = false;
+                casacore::Bool *dst = matrix->getStorage(deleteIt);
+                std::memcpy(dst, data, matrix->nelements() * sizeof(casacore::Bool));
+                matrix->putStorage(dst, deleteIt);
+                // Put the matrix
+                col->put(row_number, static_cast<const casacore::Array<casacore::Bool>&>(*matrix));
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype for persistent matrix put");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
+    array_column_free_persistent_matrix(void *matrix_handle, const GlueDataType data_type, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex:
+                delete (casacore::Matrix<casacore::Complex> *) matrix_handle;
+                break;
+            case casacore::TpArrayBool:
+                delete (casacore::Matrix<casacore::Bool> *) matrix_handle;
+                break;
+            default:
+                break;
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
     array_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc)
     {
         try {
@@ -1806,6 +1933,47 @@ extern "C" {
                 delete (casacore::ArrayColumn<casacore::Bool> *) col_handle; break;
             default:
                 break;
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    int
+    array_column_put_column(void *col_handle, const GlueDataType data_type,
+                            const unsigned long n_rows, const unsigned long n_dims,
+                            const unsigned long *dims, void *data, ExcInfo &exc)
+    {
+        try {
+            switch (data_type) {
+            case casacore::TpArrayComplex: {
+                auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
+                casacore::IPosition cellShape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) cellShape[i] = dims[n_dims - 1 - i];
+                casacore::IPosition arrShape(1 + n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) arrShape[i] = cellShape[i];
+                arrShape[n_dims] = n_rows;
+                casacore::Array<casacore::Complex> arr(arrShape, (casacore::Complex *) data, casacore::COPY);
+                // Put all rows at once
+                col->putColumn(arr);
+                break;
+            }
+            case casacore::TpArrayBool: {
+                auto *col = (casacore::ArrayColumn<casacore::Bool> *) col_handle;
+                casacore::IPosition cellShape(n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) cellShape[i] = dims[n_dims - 1 - i];
+                casacore::IPosition arrShape(1 + n_dims);
+                for (casacore::uInt i = 0; i < n_dims; i++) arrShape[i] = cellShape[i];
+                arrShape[n_dims] = n_rows;
+                casacore::Array<casacore::Bool> arr(arrShape, (casacore::Bool *) data, casacore::COPY);
+                // Put all rows at once
+                col->putColumn(arr);
+                break;
+            }
+            default:
+                throw std::runtime_error("unsupported array dtype for putColumn");
             }
         } catch (...) {
             handle_exception(exc);

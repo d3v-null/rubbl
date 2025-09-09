@@ -70,8 +70,8 @@ int main() {
 
         if (write_mode == "column_put_bulk") {
             // Bulk path: write arrays for first 3 rows in one call each, mirroring Rust bulk
-            const uInt rows_to_write = 3;
-            IPosition arrShape(3, rows_to_write, data_shape[0], data_shape[1]);
+            // Use Fortran ordering [i, j, row] to match putColumn expectation
+            IPosition arrShape(3, data_shape[0], data_shape[1], n_rows);
 
             Array<Complex> data_arr(arrShape);
             Array<Bool> flag_arr(arrShape);
@@ -79,7 +79,7 @@ int main() {
             // Fill arrays: layout is [row, i, j]
             {
                 Array<Complex>::iterator it = data_arr.begin();
-                for (uInt r = 0; r < rows_to_write; ++r) {
+                for (uInt r = 0; r < n_rows; ++r) {
                     for (uInt i = 0; i < data_shape[0]; ++i) {
                         for (uInt j = 0; j < data_shape[1]; ++j) {
                             uInt idx = i * data_shape[1] + j;
@@ -90,7 +90,7 @@ int main() {
             }
             {
                 Array<Bool>::iterator it = flag_arr.begin();
-                for (uInt r = 0; r < rows_to_write; ++r) {
+                for (uInt r = 0; r < n_rows; ++r) {
                     for (uInt i = 0; i < data_shape[0]; ++i) {
                         for (uInt j = 0; j < data_shape[1]; ++j) {
                             uInt idx = i * data_shape[1] + j;
@@ -105,9 +105,9 @@ int main() {
             flag_col.putColumn(flag_arr);
 
             // Note: to mirror Rust bulk, we skip scalar column writes here
-        } else {
+        } else if (write_mode == "column_put") {
             // Per-row path: write a few rows
-            for (uInt row_idx = 0; row_idx < 3; ++row_idx) {
+            for (uInt row_idx = 0; row_idx < n_rows; ++row_idx) {
                 // Create test data
                 Matrix<Complex> data_matrix(data_shape);
                 Matrix<Bool> flag_matrix(data_shape, false);
@@ -129,6 +129,9 @@ int main() {
                 data_col.put(row_idx, data_matrix);
                 flag_col.put(row_idx, flag_matrix);
             }
+        } else {
+            std::cerr << "Unknown WRITE_MODE: " << write_mode << std::endl;
+            return 1;
         }
 
         // Clean up
