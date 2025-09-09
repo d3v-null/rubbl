@@ -20,7 +20,12 @@ CASACORE_ROOT = ../casatables_impl/casacore
 RUBBL_ROOT := $(abspath ..)
 DEBUG_LIB := $(RUBBL_ROOT)/target/debug/build/rubbl_casatables_impl-*/out/libcasatables_impl.a
 RELEASE_LIB := $(RUBBL_ROOT)/target/release/build/rubbl_casatables_impl-*/out/libcasatables_impl.a
+# Try standard cargo OUT_DIR locations first; if not found, compute dynamically
+ifeq ($(wildcard $(DEBUG_LIB))$(wildcard $(RELEASE_LIB)),)
+CASA_IMPL_LIB := $(shell cd $(RUBBL_ROOT) && cargo build -p rubbl_casatables_impl >/dev/null && find target -type f -name libcasatables_impl.a | head -1)
+else
 CASA_IMPL_LIB := $(firstword $(wildcard $(DEBUG_LIB)) $(wildcard $(RELEASE_LIB)))
+endif
 
 # Include directories - need to include the parent directory so <casacore/casa/aips.h> works
 INCLUDES = -I../casatables_impl
@@ -44,7 +49,7 @@ $(TARGET): $(SRCS) $(EXTRA_OBJS)
 		echo "Building rubbl_casatables_impl to produce libcasatables_impl.a..."; \
 		(cd $(RUBBL_ROOT) && cargo build -p rubbl_casatables_impl >/dev/null); \
 	fi
-	@LIB_PATH=$(firstword $(wildcard $(DEBUG_LIB)) $(wildcard $(RELEASE_LIB))); \
+	@LIB_PATH=$(CASA_IMPL_LIB); \
 	if [ -z "$$LIB_PATH" ]; then \
 		echo "Error: libcasatables_impl.a not found in target. Aborting."; \
 		exit 1; \
@@ -60,7 +65,7 @@ $(CPP_BENCHMARK_TARGET): $(CPP_BENCHMARK_SRCS) $(EXTRA_OBJS)
 		echo "Building rubbl_casatables_impl to produce libcasatables_impl.a..."; \
 		(cd $(RUBBL_ROOT) && cargo build -p rubbl_casatables_impl >/dev/null); \
 	fi
-	@LIB_PATH=$(firstword $(wildcard $(DEBUG_LIB)) $(wildcard $(RELEASE_LIB))); \
+	@LIB_PATH=$(CASA_IMPL_LIB); \
 	if [ -z "$$LIB_PATH" ]; then \
 		echo "Error: libcasatables_impl.a not found in target. Aborting."; \
 		exit 1; \
