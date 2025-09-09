@@ -27,7 +27,14 @@ test_allocation_method() {
     rm -rf "${TABLE_NAME}"
 
     # Run with strace focusing on file operations
-    strace -f -e trace=file,desc -o "${log_file}" $cmd "${TABLE_NAME}" 2>&1 | tail -5
+    # Check if cmd already contains arguments (for C++ benchmarks that are wrappers)
+    if [[ $cmd == *" "* ]]; then
+        # Command already has arguments, use as-is
+        strace -f -e trace=file,desc -o "${log_file}" $cmd 2>&1 | tail -50
+    else
+        # Command needs arguments added
+        strace -f -e trace=file,desc -o "${log_file}" $cmd "${TABLE_NAME}" 2>&1 | tail -50
+    fi
 
     if [ -f "${log_file}" ]; then
         echo "=== Analysis for $name ==="
@@ -66,21 +73,21 @@ cd benchmark_workspace
 
 echo
 echo "=== Testing Rust Implementation ==="
-test_allocation_method "rust" "../../target/release/examples/benchmark --rows ${NUM_ROWS} --cols ${NUM_COLS}"
+test_allocation_method "rust" "../../target/release/examples/benchmark --rows ${NUM_ROWS} --cols ${NUM_COLS} ${TABLE_NAME}"
 
 echo "=== Testing C++ Allocation Methods ==="
 
 # Ensure C++ benchmark binary exists (rebuild if missing)
 if [ ! -x ./cpp_benchmark_instrumented ]; then
-    echo "Building cpp_benchmark_instrumented..."
-    g++ -O2 -static-libstdc++ -static-libgcc -o cpp_benchmark_instrumented cpp_benchmark_instrumented.cpp
+    echo "Building cpp_benchmark_instrumented (wrapper that calls Rust directly)..."
+    (cd .. && make cpp_benchmark_instrumented)
 fi
 
 # Test different C++ allocation strategies
 for method in "zeros" "ftruncate" "fallocate"; do
     echo "--- C++ with ${method} allocation ---"
     export CPP_ALLOC_METHOD="$method"
-    test_allocation_method "cpp_${method}" "./cpp_benchmark_instrumented"
+    test_allocation_method "cpp_${method}" "../cpp_benchmark_instrumented ${TABLE_NAME} ${NUM_ROWS} ${NUM_COLS}"
     unset CPP_ALLOC_METHOD
 done
 
