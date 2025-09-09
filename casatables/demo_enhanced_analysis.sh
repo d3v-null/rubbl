@@ -106,6 +106,26 @@ GDBEOF
 
     # LLDB disabled per user; GDB only
 
+# Linux syscall trace collection using strace (preferred on Linux)
+run_with_strace() {
+    local out_file=$1
+    shift
+    local cmd=("$@")
+
+    if ! command -v strace >/dev/null 2>&1; then
+        return 1
+    fi
+
+    # Use a single merged output file (-f to follow forks)
+    # Include timings (-ttT), decode fds (-yy), increase string sizes (-s 256)
+    if strace -q -f -ttT -yy -v -s 256 -o "$out_file" -- "${cmd[@]}" >/dev/null 2>&1; then
+        if [ -s "$out_file" ]; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
 # OS and Python detection
 OS_NAME="$(uname -s)"
 PYTHON_BIN="python3"
@@ -207,7 +227,7 @@ check_python_casacore() {
 }
 
 # 1. Setup dependencies
-echo -e "${BLUE}1. Setting up dependencies (Linux GDB only)${NC}"
+echo -e "${BLUE}1. Setting up dependencies (Linux strace preferred)${NC}"
 
 # Build C++ tracer
 if ! build_cpp_tracer; then
@@ -236,18 +256,24 @@ echo -e "${YELLOW}Rust Analysis:${NC}"
 if [ "$SKIP_RUST" = "true" ]; then
     echo -e "${RED}Skipping Rust analysis due to build failure${NC}"
 else
-    if run_with_gdb "$OUTPUT_DIR/gdb_rust.txt" "$RUST_BIN"; then
+    if run_with_strace "$OUTPUT_DIR/strace_rust.txt" "$RUST_BIN"; then
+        print_file_stats "$OUTPUT_DIR/strace_rust.txt"
+        run_analysis "Rust - Casatables" "$OUTPUT_DIR/strace_rust.txt" "$OUTPUT_DIR/rust_analysis"
+    elif run_with_gdb "$OUTPUT_DIR/gdb_rust.txt" "$RUST_BIN"; then
         print_file_stats "$OUTPUT_DIR/gdb_rust.txt"
         run_analysis "Rust - Casatables" "$OUTPUT_DIR/gdb_rust.txt" "$OUTPUT_DIR/rust_analysis"
     else
-        echo -e "${RED}✗ Failed to capture Rust trace (gdb unavailable). Skipping Rust analysis.${NC}"
+        echo -e "${RED}✗ Failed to capture Rust trace. Skipping Rust analysis.${NC}"
     fi
 fi
 
 # Python analysis
 if [ "$SKIP_PYTHON" != "true" ]; then
     echo -e "${YELLOW}Python Analysis:${NC}"
-    if run_with_gdb "$OUTPUT_DIR/gdb_python.txt" "$PYTHON_BIN" "$SCRIPT_DIR/syscall_tracer.py"; then
+    if run_with_strace "$OUTPUT_DIR/strace_python.txt" "$PYTHON_BIN" "$SCRIPT_DIR/syscall_tracer.py"; then
+        print_file_stats "$OUTPUT_DIR/strace_python.txt"
+        run_analysis "Python - Casacore" "$OUTPUT_DIR/strace_python.txt" "$OUTPUT_DIR/python_analysis"
+    elif run_with_gdb "$OUTPUT_DIR/gdb_python.txt" "$PYTHON_BIN" "$SCRIPT_DIR/syscall_tracer.py"; then
         print_file_stats "$OUTPUT_DIR/gdb_python.txt"
         run_analysis "Python - Casacore" "$OUTPUT_DIR/gdb_python.txt" "$OUTPUT_DIR/python_analysis"
     else
@@ -258,7 +284,10 @@ fi
 # C++ analysis
 if [ "$SKIP_CPP" != "true" ]; then
     echo -e "${YELLOW}C++ Analysis:${NC}"
-    if run_with_gdb "$OUTPUT_DIR/gdb_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
+    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
+        print_file_stats "$OUTPUT_DIR/strace_cpp.txt"
+        run_analysis "C++ - CasaCore" "$OUTPUT_DIR/strace_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
+    elif run_with_gdb "$OUTPUT_DIR/gdb_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
         print_file_stats "$OUTPUT_DIR/gdb_cpp.txt"
         run_analysis "C++ - CasaCore" "$OUTPUT_DIR/gdb_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
     else
@@ -442,7 +471,7 @@ cat > "$OUTPUT_DIR/comparison_dashboard.html" << 'EOF'
                                 </div>
                                 <div class="links">
                                     <a href="${analysis.dir}/syscall_analysis.html" target="_blank">View Analysis</a>
-                                    <a href="gdb_${analysis.dir.split('_')[0]}.txt" target="_blank">Raw Data</a>
+                                    <a href="strace_${analysis.dir.split('_')[0]}.txt" target="_blank">Raw Data</a>
                                 </div>
                             </div>
                         `;
