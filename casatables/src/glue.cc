@@ -23,6 +23,27 @@
 #include "glue.h"
 
 #include <string.h>
+#include <stdio.h>
+#include <atomic>
+
+// Simple on/off debug switch controlled by env RUBBL_CASATABLES_DEBUG
+static bool rubbl_debug_enabled()
+{
+    static std::atomic<int> cached{ -1 };
+    int v = cached.load(std::memory_order_relaxed);
+    if (v == -1) {
+        const char *e = getenv("RUBBL_CASATABLES_DEBUG");
+        v = (e && *e) ? 1 : 0;
+        cached.store(v, std::memory_order_relaxed);
+    }
+    return v == 1;
+}
+
+#define DBGPRINTF(fmt, ...) do { \
+    if (rubbl_debug_enabled()) { \
+        fprintf(stderr, "[rubbl_casatables] " fmt "\n", ##__VA_ARGS__); \
+    } \
+} while (0)
 
 
 static void
@@ -877,6 +898,8 @@ extern "C" {
         ExcInfo &exc
     )
     {
+        DBGPRINTF("table_create: path=%.*s n_rows=%lu",
+                  (int)path.n_bytes, (const char*)path.data, n_rows);
         // TOOD: expose this as an argument?
         // the enum is either either `Plain` or `Memory`
         GlueTable::TableType type = GlueTable::TableType::Plain;
@@ -915,6 +938,7 @@ extern "C" {
                 table_desc,
                 table_option
             );
+            DBGPRINTF("table_create: SetupNewTable created; initializing Table (mode=%d)", (int)mode);
             return new GlueTable(newTable, type, n_rows, initialize, endian_format, tsmOption);
         } catch (...) {
             handle_exception(exc);
@@ -1681,6 +1705,8 @@ extern "C" {
                              const GlueDataType data_type, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("open_scalar_column: name=%.*s dtype=%d",
+                      (int)col_name.n_bytes, (const char*)col_name.data, (int)data_type);
             switch (data_type) {
             case casacore::TpDouble:
                 return new casacore::ScalarColumn<double>(table, bridge_string(col_name));
@@ -1702,6 +1728,7 @@ extern "C" {
                       const unsigned long row_number, void *data, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("scalar_column_put: row=%lu dtype=%d", row_number, (int)data_type);
             switch (data_type) {
             case casacore::TpDouble: {
                 auto *col = (casacore::ScalarColumn<double> *) col_handle;
@@ -1754,6 +1781,8 @@ extern "C" {
                             const GlueDataType data_type, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("open_array_column: name=%.*s dtype=%d",
+                      (int)col_name.n_bytes, (const char*)col_name.data, (int)data_type);
             switch (data_type) {
             case casacore::TpArrayComplex:
                 return new casacore::ArrayColumn<casacore::Complex>(table, bridge_string(col_name));
@@ -1774,6 +1803,10 @@ extern "C" {
                      const unsigned long *dims, void *data, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("array_column_put: row=%lu dims=%lu x [%lu,%lu,...] dtype=%d",
+                      row_number, n_dims,
+                      (unsigned long)(n_dims>0?dims[0]:0),
+                      (unsigned long)(n_dims>1?dims[1]:0), (int)data_type);
             switch (data_type) {
             case casacore::TpArrayComplex: {
                 auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
@@ -1951,6 +1984,10 @@ extern "C" {
                             const unsigned long *dims, void *data, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("array_column_put_column: n_rows=%lu n_dims=%lu first_dims=[%lu,%lu,...] dtype=%d",
+                      n_rows, n_dims,
+                      (unsigned long)(n_dims>0?dims[0]:0),
+                      (unsigned long)(n_dims>1?dims[1]:0), (int)data_type);
             switch (data_type) {
             case casacore::TpArrayComplex: {
                 auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
@@ -1962,6 +1999,7 @@ extern "C" {
                 casacore::Array<casacore::Complex> arr(arrShape, (casacore::Complex *) data, casacore::COPY);
                 // Put all rows at once
                 col->putColumn(arr);
+                DBGPRINTF("array_column_put_column: COMPLEX putColumn done");
                 break;
             }
             case casacore::TpArrayBool: {
@@ -1974,6 +2012,7 @@ extern "C" {
                 casacore::Array<casacore::Bool> arr(arrShape, (casacore::Bool *) data, casacore::COPY);
                 // Put all rows at once
                 col->putColumn(arr);
+                DBGPRINTF("array_column_put_column: BOOL putColumn done");
                 break;
             }
             default:
@@ -1992,6 +2031,10 @@ extern "C" {
                                    const unsigned long *dims, void *data, ExcInfo &exc)
     {
         try {
+            DBGPRINTF("array_column_put_column_shared: n_rows=%lu n_dims=%lu first_dims=[%lu,%lu,...] dtype=%d",
+                      n_rows, n_dims,
+                      (unsigned long)(n_dims>0?dims[0]:0),
+                      (unsigned long)(n_dims>1?dims[1]:0), (int)data_type);
             switch (data_type) {
             case casacore::TpArrayComplex: {
                 auto *col = (casacore::ArrayColumn<casacore::Complex> *) col_handle;
@@ -2004,6 +2047,7 @@ extern "C" {
                 casacore::Array<casacore::Complex> arr(arrShape, (casacore::Complex *) data, casacore::SHARE);
                 // Put all rows at once
                 col->putColumn(arr);
+                DBGPRINTF("array_column_put_column_shared: COMPLEX putColumn done");
                 break;
             }
             case casacore::TpArrayBool: {
@@ -2017,6 +2061,7 @@ extern "C" {
                 casacore::Array<casacore::Bool> arr(arrShape, (casacore::Bool *) data, casacore::SHARE);
                 // Put all rows at once
                 col->putColumn(arr);
+                DBGPRINTF("array_column_put_column_shared: BOOL putColumn done");
                 break;
             }
             default:
