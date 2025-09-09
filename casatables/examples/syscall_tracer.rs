@@ -2,6 +2,8 @@ use ndarray::Array2;
 use rubbl_casatables::{
     Complex, GlueDataType, Table, TableCreateMode, TableDesc, TableDescCreateMode, TableOpenMode,
 };
+use std::fs::File;
+use std::io::{Read, Write};
 use std::path::PathBuf;
 
 /// Example demonstrating syscall tracing for casatables operations
@@ -18,8 +20,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!();
 
     // Configuration for the example
-    let n_rows = 100; // Reasonable size for analysis
-    let data_shape = vec![32, 4]; // Smaller data for faster execution
+    let n_rows = 100;
+    let data_shape = vec![32, 4];
 
     println!("📊 Configuration:");
     println!("  - Rows: {}", n_rows);
@@ -38,13 +40,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let flags_template = create_test_flags(&data_shape);
 
     println!("✍️  Writing data...");
-    write_test_data(&mut table, n_rows, &data_template, &flags_template)?;
-
-    println!("📖 Reading data...");
-    read_test_data(&mut table, n_rows)?;
-
-    println!("🔄 Performing mixed operations...");
-    perform_mixed_operations(&mut table, n_rows)?;
+    write_test_data(&mut table, &data_shape, &data_template, &flags_template)?;
 
     println!("✅ Syscall tracer example completed successfully!");
     println!();
@@ -119,67 +115,32 @@ fn create_test_flags(data_shape: &[u64]) -> ndarray::Array2<bool> {
 
 fn write_test_data(
     table: &mut Table,
-    n_rows: usize,
+    data_shape: &[u64],
     _data_template: &Array2<Complex<f32>>,
     _flags_template: &ndarray::Array2<bool>,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    // Write to scalar columns that exist in the default table
-    for row_idx in 0..n_rows {
-        let row_u64 = row_idx as u64;
+    let rows_to_write = 3u64;
+    let n0 = data_shape[0] as usize;
+    let n1 = data_shape[1] as usize;
+    for row_u64 in 0..rows_to_write {
+        table.put_cell("TIME", row_u64, &(row_u64 as f64))?;
+        table.put_cell("ANTENNA1", row_u64, &((row_u64 as i32) % 128))?;
+        table.put_cell("ANTENNA2", row_u64, &((row_u64 as i32 + 1) % 128))?;
+        table.put_cell("FLAG_ROW", row_u64, &((row_u64 % 2) == 0))?;
 
-        // Write scalar columns that exist in the default table
-        table.put_cell("TIME", row_u64, &(row_idx as f64 * 1.0))?;
-        table.put_cell("ANTENNA1", row_u64, &((row_idx % 128) as i32))?;
-        table.put_cell("ANTENNA2", row_u64, &(((row_idx + 1) % 128) as i32))?;
-        table.put_cell("FLAG_ROW", row_u64, &(row_idx % 2 == 0))?;
+        let mut data_matrix = Array2::<Complex<f32>>::default((n0, n1));
+        let mut flag_matrix = ndarray::Array2::<bool>::from_elem((n0, n1), false);
+        for i in 0..n0 {
+            for j in 0..n1 {
+                let idx = (i * n1 + j) as u32;
+                data_matrix[(i, j)] = Complex::new(idx as f32, 0.0);
+                flag_matrix[(i, j)] = (idx % 13) == 0;
+            }
+        }
+        table.put_cell("DATA", row_u64, &data_matrix)?;
+        table.put_cell("FLAG", row_u64, &flag_matrix)?;
     }
-
     Ok(())
 }
 
-fn read_test_data(table: &mut Table, n_rows: usize) -> Result<(), Box<dyn std::error::Error>> {
-    // Read a subset of rows to simulate typical access patterns
-    let read_rows = std::cmp::min(10, n_rows);
-
-    for row_idx in 0..read_rows {
-        let row_u64 = row_idx as u64;
-        // Read scalar columns that exist in the default table
-        let _: f64 = table.get_cell("TIME", row_u64)?;
-        let _: i32 = table.get_cell("ANTENNA1", row_u64)?;
-        let _: i32 = table.get_cell("ANTENNA2", row_u64)?;
-        let _: bool = table.get_cell("FLAG_ROW", row_u64)?;
-    }
-
-    Ok(())
-}
-
-fn perform_mixed_operations(
-    table: &mut Table,
-    n_rows: usize,
-) -> Result<(), Box<dyn std::error::Error>> {
-    // Simulate typical data processing operations
-
-    // Update some scalar values
-    for row_idx in (0..n_rows).step_by(10) {
-        let row_u64 = row_idx as u64;
-        let updated_time = (row_idx as f64 * 2.0) + 1000.0;
-        table.put_cell("TIME", row_u64, &updated_time)?;
-        table.put_cell("FLAG_ROW", row_u64, &((row_idx + 1) % 2 == 0))?;
-    }
-
-    // Read and process data
-    for row_idx in (0..n_rows).step_by(5) {
-        let row_u64 = row_idx as u64;
-        let time: f64 = table.get_cell("TIME", row_u64)?;
-        let ant1: i32 = table.get_cell("ANTENNA1", row_u64)?;
-        let ant2: i32 = table.get_cell("ANTENNA2", row_u64)?;
-        let flag_row: bool = table.get_cell("FLAG_ROW", row_u64)?;
-
-        // Simulate some processing (just to create more syscalls)
-        let _processed_time = time * 2.0;
-        let _baseline = ant1 + ant2;
-        let _flagged = !flag_row;
-    }
-
-    Ok(())
-}
+// No readback: benchmark only creates and writes the table
