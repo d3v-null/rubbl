@@ -712,6 +712,15 @@ extern "C" {
         data: *mut ::std::os::raw::c_void,
         exc: *mut ExcInfo,
     ) -> ::std::os::raw::c_int;
+    pub fn array_column_put_column_shared(
+        col_handle: *mut ::std::ffi::c_void,
+        data_type: GlueDataType,
+        n_rows: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
 }
 extern "C" {
     pub fn table_row_alloc(

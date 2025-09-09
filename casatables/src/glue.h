@@ -221,6 +221,10 @@ extern "C"
     int array_column_put_column(void *col_handle, const GlueDataType data_type,
                                 const unsigned long n_rows, const unsigned long n_dims,
                                 const unsigned long *dims, void *data, ExcInfo &exc);
+    // Put an entire column using shared storage (no copy from input buffer)
+    int array_column_put_column_shared(void *col_handle, const GlueDataType data_type,
+                                       const unsigned long n_rows, const unsigned long n_dims,
+                                       const unsigned long *dims, void *data, ExcInfo &exc);
     // Create a persistent Matrix object for reuse
     void *array_column_create_persistent_matrix(void *col_handle, const GlueDataType data_type,
                                                const unsigned long n_dims, const unsigned long *dims, ExcInfo &exc);

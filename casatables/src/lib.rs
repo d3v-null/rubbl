@@ -2286,6 +2286,31 @@ impl ArrayColumnWriter {
         }
         Ok(())
     }
+
+    /// Put an entire column (all rows) at once using shared storage (no data copying)
+    /// This is the most efficient path that mirrors the C++ fast path
+    pub fn put_column_shared<T: CasaDataType>(
+        &mut self,
+        n_rows: u64,
+        cell_shape: &[u64],
+        data_ptr: *const u8,
+    ) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::array_column_put_column_shared(
+                self.handle,
+                self.dtype,
+                n_rows,
+                cell_shape.len() as u64,
+                cell_shape.as_ptr(),
+                data_ptr as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
     /// Put an array value at the given row using a pre-opened array column handle.
     pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
         // Use cached shape if available, otherwise extract it
