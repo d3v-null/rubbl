@@ -70,6 +70,12 @@ test_allocation_method "rust" "../../target/release/examples/benchmark --rows ${
 
 echo "=== Testing C++ Allocation Methods ==="
 
+# Ensure C++ benchmark binary exists (rebuild if missing)
+if [ ! -x ./cpp_benchmark_instrumented ]; then
+    echo "Building cpp_benchmark_instrumented..."
+    g++ -O2 -static-libstdc++ -static-libgcc -o cpp_benchmark_instrumented cpp_benchmark_instrumented.cpp
+fi
+
 # Test different C++ allocation strategies
 for method in "zeros" "ftruncate" "fallocate"; do
     echo "--- C++ with ${method} allocation ---"
