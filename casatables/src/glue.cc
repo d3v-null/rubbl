@@ -1462,6 +1462,51 @@ extern "C" {
     }
 
     int
+    table_put_scalar_column_data(GlueTable &table, const StringBridge &col_name,
+                                 const GlueDataType data_type, void *data, ExcInfo &exc)
+    {
+        try {
+            casacore::IPosition shape(1, table.nrow());
+
+            switch (data_type) {
+
+#define CASE(DTYPE, CPPTYPE) \
+            case casacore::DTYPE: { \
+                casacore::ScalarColumn<CPPTYPE> col(table, bridge_string(col_name)); \
+                casacore::Vector<CPPTYPE> vec(shape, (CPPTYPE *) data, casacore::SHARE); \
+                col.putColumn(vec); \
+                break; \
+            }
+
+            CASE(TpBool, casacore::Bool)
+            CASE(TpChar, casacore::Char)
+            CASE(TpUChar, casacore::uChar)
+            CASE(TpShort, casacore::Short)
+            CASE(TpUShort, casacore::uShort)
+            CASE(TpInt, casacore::Int)
+            CASE(TpUInt, casacore::uInt)
+            CASE(TpFloat, float)
+            CASE(TpDouble, double)
+            CASE(TpComplex, casacore::Complex)
+            CASE(TpDComplex, casacore::DComplex)
+
+#undef CASE
+
+            case casacore::TpString:
+                throw std::runtime_error("use table_put_scalar_column_data_string for TpString columns");
+
+            default:
+                throw std::runtime_error("unhandled scalar column data type");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+
+        return 0;
+    }
+
+    int
     table_get_cell_info(const GlueTable &table, const StringBridge &col_name,
                         unsigned long row_number, GlueDataType *data_type,
                         int *n_dim, unsigned long dims[8], ExcInfo &exc)

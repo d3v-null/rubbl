@@ -92,19 +92,20 @@ fn main() {
 
             match write_mode.as_str() {
                 "column_put_bulk" => {
-                    // Bulk column operations - write entire columns at once
+                    // True bulk column operations - write entire columns at once
                     for col_idx in 0..num_cols {
                         let col_name = format!("COL_{}", col_idx);
-                        for row_idx in 0..num_rows {
-                            let value = (col_idx as f64) * 1000.0 + (row_idx as f64);
-                            ctry!(
-                                table.put_cell_cached(&col_name, row_idx as u64, &value);
-                                "failed to put cell value for column {} row {}", col_name, row_idx
-                            );
-                        }
+                        let column_data: Vec<f64> = (0..num_rows)
+                            .map(|row_idx| (col_idx as f64) * 1000.0 + (row_idx as f64))
+                            .collect();
+                        
+                        ctry!(
+                            table.put_scalar_column_bulk(&col_name, &column_data);
+                            "failed to put column data for column {}", col_name
+                        );
                     }
 
-                    // Write UVW data with caching
+                    // Write UVW data (still individual puts for array columns)
                     for row_idx in 0..num_rows {
                         let uvw_data = vec![
                             row_idx as f64 * 0.1,
@@ -115,6 +116,33 @@ fn main() {
                             table.put_cell_cached("UVW", row_idx as u64, &uvw_data);
                             "failed to put UVW cell for row {}", row_idx
                         );
+                    }
+                }
+                "scalar_only_bulk" => {
+                    // Only write scalar columns using bulk operations - no UVW
+                    for col_idx in 0..num_cols {
+                        let col_name = format!("COL_{}", col_idx);
+                        let column_data: Vec<f64> = (0..num_rows)
+                            .map(|row_idx| (col_idx as f64) * 1000.0 + (row_idx as f64))
+                            .collect();
+                        
+                        ctry!(
+                            table.put_scalar_column_bulk(&col_name, &column_data);
+                            "failed to put column data for column {}", col_name
+                        );
+                    }
+                }
+                "scalar_only_individual" => {
+                    // Only write scalar columns using individual puts - no UVW
+                    for col_idx in 0..num_cols {
+                        let col_name = format!("COL_{}", col_idx);
+                        for row_idx in 0..num_rows {
+                            let value = (col_idx as f64) * 1000.0 + (row_idx as f64);
+                            ctry!(
+                                table.put_cell_cached(&col_name, row_idx as u64, &value);
+                                "failed to put cell value for column {} row {}", col_name, row_idx
+                            );
+                        }
                     }
                 }
                 "row_put_bulk" => {

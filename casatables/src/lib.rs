@@ -2088,6 +2088,53 @@ impl Table {
         Ok(())
     }
 
+    /// Put an entire column of scalar data efficiently - much faster than individual puts
+    pub fn put_scalar_column_bulk<T: CasaScalarData>(
+        &mut self,
+        col_name: &str,
+        values: &[T],
+    ) -> Result<(), TableError> 
+    where
+        T: Clone,
+    {
+        if values.len() != self.n_rows() as usize {
+            return Err(TableError::UserMessage(format!(
+                "Column data length {} does not match table rows {}", 
+                values.len(), 
+                self.n_rows()
+            )));
+        }
+
+        let ccol_name = glue::StringBridge::from_rust(col_name);
+
+        // Add external declaration for the new function
+        extern "C" {
+            fn table_put_scalar_column_data(
+                table: *mut glue::GlueTable,
+                col_name: *const glue::StringBridge,
+                data_type: glue::GlueDataType,
+                data: *const std::os::raw::c_void,
+                exc_info: *mut glue::ExcInfo,
+            ) -> std::os::raw::c_int;
+        }
+
+        let rv = unsafe {
+            table_put_scalar_column_data(
+                self.handle,
+                &ccol_name,
+                T::DATA_TYPE,
+                values.as_ptr() as *const std::os::raw::c_void,
+                &mut self.exc_info,
+            )
+        };
+
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+
+        Ok(())
+    }
+
     /// Put a value for one cell of the table.
     pub fn put_cell<T: CasaDataType>(
         &mut self,

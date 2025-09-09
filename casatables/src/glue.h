@@ -406,6 +406,8 @@ extern "C"
                                      const unsigned long *dims, bool direct, bool undefined, ExcInfo &exc);
     int table_get_scalar_column_data(const GlueTable &table, const StringBridge &col_name,
                                      void *data, ExcInfo &exc);
+    int table_put_scalar_column_data(GlueTable &table, const StringBridge &col_name,
+                                     const GlueDataType data_type, void *data, ExcInfo &exc);
     int table_get_scalar_column_data_string(const GlueTable &table, const StringBridge &col_name,
                                             StringBridgeCallback callback, void *ctxt,
                                             ExcInfo &exc);
