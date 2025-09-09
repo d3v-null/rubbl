@@ -232,7 +232,7 @@ fi
 # C++ analysis
 if [ "$SKIP_CPP" != "true" ]; then
     echo -e "${YELLOW}C++ Analysis:${NC}"
-    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" "$SCRIPT_DIR/syscall_tracer_cpp"; then
+    if run_with_strace "$OUTPUT_DIR/strace_cpp.txt" "$SCRIPT_DIR/syscall_tracer"; then
         print_file_stats "$OUTPUT_DIR/strace_cpp.txt"
         run_analysis "C++ - CasaCore" "$OUTPUT_DIR/strace_cpp.txt" "$OUTPUT_DIR/cpp_analysis"
     else
@@ -479,7 +479,7 @@ if [ -x "$FLAMEGRAPH_DIR/flamegraph.pl" ] && [ -f "$STACK_COLLAPSER" ]; then
     fi
     # C++
     if [ "$SKIP_CPP" != "true" ]; then
-        gen_strace_k_flames cpp "$SCRIPT_DIR/syscall_tracer_cpp"
+        gen_strace_k_flames cpp "$SCRIPT_DIR/syscall_tracer"
     fi
 else
     echo -e "${YELLOW}⚠ FlameGraph or stackcollapser missing; skipping strace -k flamegraphs${NC}"
