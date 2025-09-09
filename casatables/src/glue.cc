@@ -36,6 +36,9 @@ static bool rubbl_debug_enabled()
         const char *e = getenv("RUBBL_CASATABLES_DEBUG");
         v = (e && *e) ? 1 : 0;
         cached.store(v, std::memory_order_relaxed);
+        if (v == 1) {
+            fprintf(stderr, "[rubbl_casatables] DEBUG ENABLED\n");
+        }
     }
     return v == 1;
 }
