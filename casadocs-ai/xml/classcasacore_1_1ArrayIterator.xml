@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1ArrayIterator" kind="class" language="C++" prot="public">
+    <compoundname>casacore::ArrayIterator</compoundname>
+    <basecompoundref refid="classcasacore_1_1ArrayPositionIterator" prot="public" virt="non-virtual">casacore::ArrayPositionIterator</basecompoundref>
+    <derivedcompoundref refid="classcasacore_1_1MatrixIterator" prot="public" virt="non-virtual">casacore::MatrixIterator&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1VectorIterator" prot="public" virt="non-virtual">casacore::VectorIterator&lt; T &gt;</derivedcompoundref>
+    <includes refid="ArrayIter_8h" local="no">ArrayIter.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1ArrayIterator_1a3cbe4a63fa75e1162b458d5964b5b96a" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;Array&lt;T&gt; &gt; casacore::ArrayIterator&lt; T &gt;::ap_p</definition>
+        <argsstring></argsstring>
+        <name>ap_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="120" column="21" bodyfile="casa/Arrays/ArrayIter.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1ArrayIterator_1a442378340ea5115eabe5b9747d092eac" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        <definition>Array&lt;T&gt; casacore::ArrayIterator&lt; T &gt;::pOriginalArray_p</definition>
+        <argsstring></argsstring>
+        <name>pOriginalArray_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="129" column="11" bodyfile="casa/Arrays/ArrayIter.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1ArrayIterator_1ac6e9ae165d159b367ca8a0727d489de5" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::ArrayIterator&lt; T &gt;::offset_p</definition>
+        <argsstring></argsstring>
+        <name>offset_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="130" column="15" bodyfile="casa/Arrays/ArrayIter.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1ArrayIterator_1a36ab243802985186c3d03a221fe3de07" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* casacore::ArrayIterator&lt; T &gt;::dataPtr_p</definition>
+        <argsstring></argsstring>
+        <name>dataPtr_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="131" column="7" bodyfile="casa/Arrays/ArrayIter.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a8ad7f9db9a33cadb53f1b5ba94b03d1c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::ArrayIterator&lt; T &gt;::ArrayIterator</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;arr, size_t byDim=1)</argsstring>
+        <name>ArrayIterator</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>byDim</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="74" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1ac90395f0f67e51fbb768a6448df10777" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::ArrayIterator&lt; T &gt;::ArrayIterator</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;arr, const IPosition &amp;axes, bool axesAreCursor=true)</argsstring>
+        <name>ArrayIterator</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>axes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>axesAreCursor</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="89" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1ab11c8f5d4099555d1660267dcf01d1b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::ArrayIterator&lt; T &gt;::next</definition>
+        <argsstring>() override</argsstring>
+        <name>next</name>
+        <reimplements refid="classcasacore_1_1ArrayPositionIterator_1a86a5731aeb93673be549f1216e380518">next</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="93" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a129f55e6b1759430f97628a39c583a1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::ArrayIterator&lt; T &gt;::set</definition>
+        <argsstring>(const IPosition &amp;cursorPos) override</argsstring>
+        <name>set</name>
+        <reimplements refid="classcasacore_1_1ArrayPositionIterator_1a92e723147d70805a5e82e84462a91c8c">set</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>cursorPos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="103" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a46a6d213b40f63ba1ce6f27d3643fc47" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::ArrayIterator&lt; T &gt;::reset</definition>
+        <argsstring>() override</argsstring>
+        <name>reset</name>
+        <reimplements refid="classcasacore_1_1ArrayPositionIterator_1aeb1500037dd9c3d35807679208e78ae3">reset</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="107" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a4c13dd36fad00bff4fc3b0ee27615b6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        <definition>Array&lt;T&gt;&amp; casacore::ArrayIterator&lt; T &gt;::array</definition>
+        <argsstring>()</argsstring>
+        <name>array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="113" column="11" bodyfile="casa/Arrays/ArrayIter.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1af709a54a1d9d08543754dea393eb8259" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+        <definition>virtual ArrayBase&amp; casacore::ArrayIterator&lt; T &gt;::getArray</definition>
+        <argsstring>() override</argsstring>
+        <name>getArray</name>
+        <reimplements refid="classcasacore_1_1ArrayPositionIterator_1add437cbd77f42ccdb43e27d8f2760cf3">getArray</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="114" column="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a750204755cdb425481f7e2649d4f1e71" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::ArrayIterator&lt; T &gt;::init</definition>
+        <argsstring>(const Array&lt; T &gt; &amp;)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="124" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1ad5e824568b0ff768f157f7899bbc8351" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::ArrayIterator&lt; T &gt;::apSetPointer</definition>
+        <argsstring>(int stepDim)</argsstring>
+        <name>apSetPointer</name>
+        <param>
+          <type>int</type>
+          <declname>stepDim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="127" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1adba384e0ce00e008fdacb44e412c5f2b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::ArrayIterator&lt; T &gt;::ArrayIterator</definition>
+        <argsstring>(const ArrayIterator&lt; T &gt; &amp;)</argsstring>
+        <name>ArrayIterator</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayIterator" kindref="compound">ArrayIterator</ref>&lt; T &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="134" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ArrayIterator_1a969b971804eb783a0751808a845454c6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1ArrayIterator" kindref="compound">ArrayIterator</ref>&lt; T &gt; &amp;</type>
+        <definition>ArrayIterator&lt;T&gt;&amp; casacore::ArrayIterator&lt; T &gt;::operator=</definition>
+        <argsstring>(const ArrayIterator&lt; T &gt; &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayIterator" kindref="compound">ArrayIterator</ref>&lt; T &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Arrays/ArrayIter.h" line="135" column="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>casacore::MatrixIterator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1MatrixIterator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::ArrayIterator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1ArrayIterator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::ArrayPositionIterator</label>
+        <link refid="classcasacore_1_1ArrayPositionIterator"/>
+      </node>
+      <node id="4">
+        <label>casacore::VectorIterator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1VectorIterator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::unique_ptr&lt; casacore::Array&lt; T &gt; &gt;</label>
+      </node>
+      <node id="1">
+        <label>casacore::ArrayIterator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1ArrayIterator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ap_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::ArrayPositionIterator</label>
+        <link refid="classcasacore_1_1ArrayPositionIterator"/>
+      </node>
+    </collaborationgraph>
+    <location file="casa/Arrays/ArrayIter.h" line="69" column="11" bodyfile="casa/Arrays/ArrayIter.h" bodystart="70" bodyend="136"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1ArrayIterator_1a3cbe4a63fa75e1162b458d5964b5b96a" prot="protected" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ap_p</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1ad5e824568b0ff768f157f7899bbc8351" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>apSetPointer</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a4c13dd36fad00bff4fc3b0ee27615b6a" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>array</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a8ad7f9db9a33cadb53f1b5ba94b03d1c" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayIterator</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1ac90395f0f67e51fbb768a6448df10777" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayIterator</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1adba384e0ce00e008fdacb44e412c5f2b" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayIterator</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a834d1c773818c0d051096e4f6dce48e2" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayPositionIterator</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a812d9f1c378eabdb32dbca79a031acb7" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayPositionIterator</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a4e0bc40e74a2139d4358acd6bea9c7dc" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ArrayPositionIterator</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1ac94bf6814a817a93f5431cd6d73dbd50" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>atStart</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a6a61016dfc038b9b089bde5b1cf30140" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>cursorAxes</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a36ab243802985186c3d03a221fe3de07" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>dataPtr_p</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a191f3ce2458aeadb39c91d0fd2ba8309" prot="protected" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>dimIter</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a5b1462d6604d1275859bae2e0eb4c8f0" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>endPos</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1af709a54a1d9d08543754dea393eb8259" prot="public" virt="virtual"><scope>casacore::ArrayIterator</scope><name>getArray</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a750204755cdb425481f7e2649d4f1e71" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>init</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a48f6a094e3ac7b2d74ec502eb89b75ca" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>iterAxes</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1ac4d504df3e051a6c2f4749169fe42918" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>ndim</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1ab11c8f5d4099555d1660267dcf01d1b7" prot="public" virt="virtual"><scope>casacore::ArrayIterator</scope><name>next</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1ac1dc61726d3b44846335c4ad0ae8d4a2" prot="protected" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>nextStep</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1ac6e9ae165d159b367ca8a0727d489de5" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>offset_p</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a969b971804eb783a0751808a845454c6" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1acf27b43ffd147c634c179c3be0dd5f6c" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>origin</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1ae7e24d929f0011403626538ea7ab7d2c" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>pastEnd</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a442378340ea5115eabe5b9747d092eac" prot="private" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>pOriginalArray_p</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1a42d0bb66dd34e5b0c1e39eb6eda6b09d" prot="public" virt="non-virtual"><scope>casacore::ArrayIterator</scope><name>pos</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a46a6d213b40f63ba1ce6f27d3643fc47" prot="public" virt="virtual"><scope>casacore::ArrayIterator</scope><name>reset</name></member>
+      <member refid="classcasacore_1_1ArrayIterator_1a129f55e6b1759430f97628a39c583a1f" prot="public" virt="virtual"><scope>casacore::ArrayIterator</scope><name>set</name></member>
+      <member refid="classcasacore_1_1ArrayPositionIterator_1ad18bf3240834a2c9539bb6e4280d623a" prot="public" virt="virtual"><scope>casacore::ArrayIterator</scope><name>~ArrayPositionIterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

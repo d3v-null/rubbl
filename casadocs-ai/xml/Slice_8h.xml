@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Slice_8h" kind="file" language="C++">
+    <compoundname>Slice.h</compoundname>
+    <includes local="no">cassert</includes>
+    <includes local="no">unistd.h</includes>
+    <includes refid="ArrayFwd_8h" local="yes">ArrayFwd.h</includes>
+    <includedby refid="Slice_8cc" local="yes">casa/Arrays/Slice.cc</includedby>
+    <includedby refid="Slicer_8cc" local="yes">casa/Arrays/Slicer.cc</includedby>
+    <includedby refid="Arrays_8h" local="no">casa/Arrays.h</includedby>
+    <includedby refid="RecordRep_8cc" local="no">casa/Containers/RecordRep.cc</includedby>
+    <includedby refid="Input_8cc" local="no">casa/Inputs/Input.cc</includedby>
+    <includedby refid="Directory_8cc" local="no">casa/OS/Directory.cc</includedby>
+    <includedby refid="RefTable_8cc" local="no">tables/Tables/RefTable.cc</includedby>
+    <includedby refid="Table_8cc" local="no">tables/Tables/Table.cc</includedby>
+    <includedby refid="TableDesc_8cc" local="no">tables/Tables/TableDesc.cc</includedby>
+    <includedby refid="TableProxy_8cc" local="no">tables/Tables/TableProxy.cc</includedby>
+    <includedby refid="Tables_8h" local="no">tables/Tables.h</includedby>
+    <includedby refid="ExprRange_8cc" local="no">tables/TaQL/ExprRange.cc</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>casa/Arrays/Slice.h</label>
+        <link refid="Slice_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cassert</label>
+      </node>
+      <node id="3">
+        <label>unistd.h</label>
+      </node>
+      <node id="4">
+        <label>ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="4">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/Slice.h</label>
+        <link refid="Slice_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casa/Containers/RecordRep.cc</label>
+        <link refid="RecordRep_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/Slice.cc</label>
+        <link refid="Slice_8cc"/>
+      </node>
+      <node id="13">
+        <label>tables/TaQL/ExprRange.cc</label>
+        <link refid="ExprRange_8cc"/>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/Slicer.cc</label>
+        <link refid="Slicer_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/Tables/TableDesc.cc</label>
+        <link refid="TableDesc_8cc"/>
+      </node>
+      <node id="7">
+        <label>casa/OS/Directory.cc</label>
+        <link refid="Directory_8cc"/>
+      </node>
+      <node id="6">
+        <label>casa/Inputs/Input.cc</label>
+        <link refid="Input_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/Tables/Table.cc</label>
+        <link refid="Table_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/Tables/RefTable.cc</label>
+        <link refid="RefTable_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1Slice" prot="public">casacore::Slice</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>Slice.h:<sp/>Define<sp/>a<sp/>(start,length,increment)<sp/>along<sp/>an<sp/>axis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1997</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_SLICE_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_SLICE_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>for<sp/>ssize_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ArrayFwd_8h" kindref="compound">ArrayFwd.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declarations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Slicer;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">IPosition;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;<sp/>define<sp/>a<sp/>(start,length,increment)<sp/>along<sp/>an<sp/>axis<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;UNKNOWN&quot;<sp/>date=&quot;before2004/08/25&quot;<sp/>tests=&quot;&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>&quot;slice&quot;<sp/>(aka<sp/>Section)<sp/>is<sp/>a<sp/>a<sp/>regular<sp/>sub-Array<sp/>(and<sp/>ultimately<sp/>sub-Image)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>that<sp/>is<sp/>defined<sp/>by<sp/>defining<sp/>a<sp/>(start,length,increment)<sp/>for<sp/>each<sp/>axis<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>array.<sp/>That<sp/>is,<sp/>the<sp/>output<sp/>array&apos;s<sp/>axis<sp/>is<sp/>of<sp/>size<sp/>&quot;length&quot;,<sp/>and<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>elements<sp/>are<sp/>sampled<sp/>by<sp/>stepping<sp/>along<sp/>the<sp/>input<sp/>array<sp/>in<sp/>strides<sp/>of<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;increment&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=warning&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>&quot;length&quot;<sp/>is<sp/>the<sp/>length<sp/>of<sp/>the<sp/>OUTPUT<sp/>array,<sp/>the<sp/>output<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>NOT<sp/>divided<sp/>by<sp/>the<sp/>increment/stride.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>increment<sp/>is<sp/>not<sp/>defined,<sp/>then<sp/>it<sp/>defaults<sp/>to<sp/>one.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(Increment,<sp/>if<sp/>defined,<sp/>must<sp/>be<sp/>&gt;=<sp/>1).<sp/>If<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>not<sp/>defined,<sp/>then<sp/>it<sp/>defaults<sp/>to<sp/>a<sp/>length<sp/>of<sp/>one<sp/>also<sp/>(i.e.<sp/>just<sp/>the<sp/>pixel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;start&quot;).<sp/>If<sp/>start<sp/>is<sp/>also<sp/>undefined,<sp/>then<sp/>all<sp/>pixels<sp/>along<sp/>this<sp/>axis<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>chosen.<sp/>This<sp/>class<sp/>deprecates<sp/>the<sp/>&quot;_&quot;<sp/>(IndexRange)<sp/>class,<sp/>which<sp/>had<sp/>a<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>syntax<sp/>and<sp/>used<sp/>(start,end,increment)<sp/>which<sp/>is<sp/>generally<sp/>less<sp/>convenient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Some<sp/>simple<sp/>examples<sp/>follow:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector&lt;int&gt;<sp/>vi(100);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Vector<sp/>of<sp/>length<sp/>100;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Copy<sp/>odd<sp/>values<sp/>onto<sp/>even<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>vi(Slice(0,50,2))<sp/>=<sp/>vi(Slice(1,50,2));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Matrix&lt;float&gt;<sp/>mf(100,50),<sp/>smallMf;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>smallMf.reference(mf(Slice(0,10,10),<sp/>Slice(0,5,10)));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>smallMF<sp/>is<sp/>now<sp/>a<sp/>&quot;dezoomed&quot;<sp/>(every<sp/>10th<sp/>pix)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>refference<sp/>to<sp/>mf.<sp/>Of<sp/>course<sp/>we<sp/>could<sp/>also</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>make<sp/>it<sp/>a<sp/>copy<sp/>by<sp/>using<sp/>assignment;<sp/>e.g:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>smallMf.resize(0,0);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Make<sp/>it<sp/>so<sp/>it<sp/>will<sp/>&quot;size<sp/>to<sp/>fit&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>smallMf<sp/>=<sp/>mf(Slice(0,10,10),<sp/>Slice(0,5,10));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>As<sp/>shown<sp/>above,<sp/>normally<sp/>Slices<sp/>will<sp/>normally<sp/>be<sp/>used<sp/>as<sp/>temporaries,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>they<sp/>may<sp/>also<sp/>be<sp/>put<sp/>into<sp/>variables<sp/>if<sp/>desired<sp/>(the<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>copy<sp/>constructors<sp/>and<sp/>assignment<sp/>operators<sp/>suffice<sp/>for<sp/>this<sp/>class).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>While<sp/>it<sp/>will<sp/>be<sp/>unusual<sp/>for<sp/>a<sp/>user<sp/>to<sp/>want<sp/>this,<sp/>a<sp/>zero-length<sp/>slice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>allowable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Another<sp/>way<sp/>to<sp/>produce<sp/>a<sp/>slice<sp/>from<sp/>any<sp/>of<sp/>the<sp/>Array<sp/>classes<sp/>is<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SomeArray(blc,trc,inc)<sp/>where<sp/>blc,trc,inc<sp/>are<sp/>IPositions.<sp/>This<sp/>is<sp/>described</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>documentation<sp/>for<sp/>Array&lt;T&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classcasacore_1_1Slice" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1Slice" kindref="compound">Slice</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>entire<sp/>range<sp/>of<sp/>indices<sp/>on<sp/>the<sp/>axis<sp/>is<sp/>desired.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Slice<sp/>with<sp/>a<sp/>given<sp/>start,<sp/>length,<sp/>and<sp/>increment.<sp/>The<sp/>latter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>two<sp/>default<sp/>to<sp/>one<sp/>if<sp/>not<sp/>given.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Length=1,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Inc=1);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Slice<sp/>with<sp/>a<sp/>given<sp/>start,<sp/>end<sp/>or<sp/>length,<sp/>and<sp/>increment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>&lt;src&gt;endIsLength=false&lt;/src&gt;,<sp/>end<sp/>is<sp/>interpreted<sp/>as<sp/>length.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>End,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Inc,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>endIsLength);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Was<sp/>the<sp/>entire<sp/>range<sp/>of<sp/>indices<sp/>on<sp/>this<sp/>axis<sp/>selected?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1ab050a684c40c8a7d56be4a8cdc84acc9" kindref="member">all</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>selected<sp/>starting<sp/>position.<sp/>If<sp/>all()<sp/>is<sp/>true,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start=len=inc=0<sp/>is<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a9abe5fc2b51c0553611d4287524ec280" kindref="member">start</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>defined<sp/>length.<sp/>If<sp/>all()<sp/>is<sp/>true,<sp/>start=len=inc=0<sp/>is<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1af49697b22831ab4f00565d689518974f" kindref="member">length</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>defined<sp/>increment.<sp/>If<sp/>all()<sp/>is<sp/>true,<sp/>start=len=inc=0<sp/>is<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a1e1503a35ec9d6cad5767d3d8e994de5" kindref="member">inc</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Attempt<sp/>to<sp/>report<sp/>the<sp/>last<sp/>element<sp/>of<sp/>the<sp/>slice.<sp/>If<sp/>all()<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true,<sp/>end()<sp/>returns<sp/>-1<sp/>(which<sp/>is<sp/>less<sp/>than<sp/>start(),<sp/>which<sp/>returns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>zero<sp/><sp/>in<sp/>that<sp/>case).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a7e9619e0b10526bddee69f973229db62" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>a<sp/>vector<sp/>of<sp/>slices.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>a<sp/>vector<sp/>of<sp/>an<sp/>axis<sp/>is<sp/>empty<sp/>or<sp/>missing,<sp/>it<sp/>is<sp/>replaced<sp/>by<sp/>a<sp/>Slice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>representing<sp/>the<sp/>entire<sp/>axis.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>checks<sp/>if<sp/>the<sp/>Slices<sp/>do<sp/>not<sp/>exceed<sp/>the<sp/>array<sp/>shape.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>combined<sp/>slices<sp/>and<sp/>fills<sp/>the<sp/>Slicer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>first<sp/>array<sp/>part<sp/>defined<sp/>by<sp/>the<sp/>slices.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/><ref refid="classcasacore_1_1Slice_1abdda49f6effc0990de2dbaa03e09b313" kindref="member">checkSlices</ref><sp/>(<ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt;<ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;Slice&gt;</ref><sp/>&gt;&amp;<sp/>slices,<sp/><ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref>&amp;<sp/>first,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Inc<sp/>of<sp/>&lt;0<sp/>is<sp/>used<sp/>as<sp/>a<sp/>private<sp/>flag<sp/>to<sp/>mean<sp/>that<sp/>the<sp/>whole<sp/>axis<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>selected.<sp/>Users<sp/>are<sp/>given<sp/>a<sp/>size_t<sp/>in<sp/>their<sp/>interface,<sp/>so<sp/>they<sp/>cannot</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>set<sp/>it<sp/>to<sp/>this.<sp/>Chose<sp/>Inc<sp/>rather<sp/>than<sp/>length<sp/>since<sp/>it&apos;s<sp/>more<sp/>likely</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>that<sp/>we&apos;d<sp/>need<sp/>all<sp/>bits<sp/>of<sp/>length<sp/>than<sp/>of<sp/>inc.<sp/>The<sp/>&quot;p&quot;<sp/>in<sp/>the<sp/>names</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>stands<sp/>for<sp/>private<sp/>to<sp/>avoid<sp/>it<sp/>colliding<sp/>with<sp/>the<sp/>accessor<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>incp<sp/>&lt;<sp/>0<sp/>is<sp/>chosen<sp/>as<sp/>the<sp/>flag<sp/>since<sp/>the<sp/>user<sp/>can<sp/>set<sp/>inc<sp/>to<sp/>be<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>although<sp/>that<sp/>is<sp/>an<sp/>error<sp/>that<sp/>can<sp/>be<sp/>caught<sp/>if<sp/>AIPS_DEBUG<sp/>is<sp/>defined).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/>startp;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>ssize_t<sp/>incp;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/>lengthp;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice::Slice</ref>()<sp/>:<sp/>startp(0),<sp/>incp(-1),<sp/>lengthp(0)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classcasacore_1_1Slice_1a354430dc5d49c6d891c1c0373134ce6a" refkind="member"><highlight class="normal"><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice::Slice</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Length,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Inc)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>:<sp/>startp(Start),<sp/>incp(Inc),<sp/>lengthp(Length)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(AIPS_DEBUG)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="malloc_8cc_1af576bf8ffa22a44e53018c67095ffbf0" kindref="member">assert</ref>(incp<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classcasacore_1_1Slice_1adfcd4db2e56bf46054439c54e41f9da8" refkind="member"><highlight class="normal"><ref refid="classcasacore_1_1Slice_1abd6d1945af4b15d876b505287dfa13f9" kindref="member">Slice::Slice</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>End,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Inc,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>endIsLength)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>:<sp/>startp(Start),<sp/>incp(Inc),<sp/>lengthp(endIsLength<sp/>?<sp/>End<sp/>:<sp/>1+(End-Start)/Inc)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(AIPS_DEBUG)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<sp/>endIsLength)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="malloc_8cc_1af576bf8ffa22a44e53018c67095ffbf0" kindref="member">assert</ref>(End<sp/>&gt;=<sp/>Start);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="malloc_8cc_1af576bf8ffa22a44e53018c67095ffbf0" kindref="member">assert</ref>(incp<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="classcasacore_1_1Slice_1ab050a684c40c8a7d56be4a8cdc84acc9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1ab050a684c40c8a7d56be4a8cdc84acc9" kindref="member">Slice::all</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="162"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>incp&lt;0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classcasacore_1_1Slice_1a9abe5fc2b51c0553611d4287524ec280" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a9abe5fc2b51c0553611d4287524ec280" kindref="member">Slice::start</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="167"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>startp;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classcasacore_1_1Slice_1af49697b22831ab4f00565d689518974f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1af49697b22831ab4f00565d689518974f" kindref="member">Slice::length</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="172"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lengthp;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classcasacore_1_1Slice_1a1e1503a35ec9d6cad5767d3d8e994de5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a1e1503a35ec9d6cad5767d3d8e994de5" kindref="member">Slice::inc</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="177"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classcasacore_1_1Slice_1ab050a684c40c8a7d56be4a8cdc84acc9" kindref="member">all</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>incp;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classcasacore_1_1Slice_1a7e9619e0b10526bddee69f973229db62" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice_1a7e9619e0b10526bddee69f973229db62" kindref="member">Slice::end</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="186"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>-1<sp/>if<sp/>all()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>startp<sp/>+<sp/>(lengthp-1)*incp;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/Slice.h"/>
+  </compounddef>
+</doxygen>

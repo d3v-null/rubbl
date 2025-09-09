@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="RetypedArrayEngine_8tcc" kind="file" language="C++">
+    <compoundname>RetypedArrayEngine.tcc</compoundname>
+    <includedby refid="RetypedArrayEngine_8h" local="no">tables/DataMan/RetypedArrayEngine.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>tables/DataMan/RetypedArrayEngine.tcc</label>
+        <link refid="RetypedArrayEngine_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="3">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tables/DataMan/RetypedArrayEngine.h</label>
+        <link refid="RetypedArrayEngine_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>RetypedArrayEngine.cc:<sp/>Virtual<sp/>column<sp/>engine<sp/>to<sp/>retype<sp/>and<sp/>reshape<sp/>arrays</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,1999,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_RETYPEDARRAYENGINE_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_RETYPEDARRAYENGINE_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/RetypedArrayEngine.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/Table.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ArrayColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ColumnDesc.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/DataManError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Vector.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Array.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/ArrayIter.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Slicer.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Containers/Record.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicSL/String.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/ValTypeId.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/Copy.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RetypedArrayEngine&lt;S,T&gt;::RetypedArrayEngine<sp/>(const<sp/>String&amp;<sp/>virtualColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>storedColumnName)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseMappedArrayEngine&lt;S,T&gt;<sp/>(virtualColumnName,<sp/>storedColumnName),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>shape_p<sp/><sp/><sp/><sp/>(S::shape()),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isVirtualFixedShape_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>copyInfo_p<sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RetypedArrayEngine&lt;S,T&gt;::RetypedArrayEngine<sp/>(const<sp/>String&amp;<sp/>virtualColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>storedColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>virtualShape,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TableRecord&amp;<sp/>extraInformation)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseMappedArrayEngine&lt;S,T&gt;<sp/>(virtualColumnName,<sp/>storedColumnName),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>shape_p<sp/><sp/><sp/><sp/>(virtualShape),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isVirtualFixedShape_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>record_p<sp/><sp/><sp/>(extraInformation),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>copyInfo_p<sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RetypedArrayEngine&lt;S,T&gt;::RetypedArrayEngine<sp/>(const<sp/>Record&amp;<sp/>spec)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseMappedArrayEngine&lt;S,T&gt;<sp/>(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isVirtualFixedShape_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>copyInfo_p<sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(spec.isDefined(&quot;SOURCENAME&quot;)<sp/><sp/>&amp;&amp;<sp/><sp/>spec.isDefined(&quot;TARGETNAME&quot;))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setNames<sp/>(spec.asString(&quot;SOURCENAME&quot;),<sp/>spec.asString(&quot;TARGETNAME&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(spec.isDefined(&quot;SHAPE&quot;))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;Int64&gt;<sp/>shp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>spec.get<sp/>(&quot;SHAPE&quot;,<sp/>shp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>shape_p.fill<sp/>(shp.size(),<sp/>shp.begin());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(spec.isDefined(&quot;RECORD&quot;))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>record_p<sp/>=<sp/>spec.asRecord<sp/>(&quot;RECORD&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RetypedArrayEngine&lt;S,T&gt;::RetypedArrayEngine</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>RetypedArrayEngine&lt;S,T&gt;&amp;<sp/>that)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseMappedArrayEngine&lt;S,T&gt;<sp/>(that),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>shape_p<sp/><sp/><sp/><sp/>(that.shape_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isVirtualFixedShape_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>record_p<sp/><sp/><sp/>(that.record_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>copyInfo_p<sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RetypedArrayEngine&lt;S,T&gt;::~RetypedArrayEngine()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>S::deleteCopyInfo<sp/>(copyInfo_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Clone<sp/>the<sp/>engine<sp/>object.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">DataManager*<sp/>RetypedArrayEngine&lt;S,T&gt;::clone()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager*<sp/>dmPtr<sp/>=<sp/>new<sp/>RetypedArrayEngine&lt;S,T&gt;<sp/>(*this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>dmPtr;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Return<sp/>the<sp/>type<sp/>name<sp/>of<sp/>the<sp/>engine<sp/>(i.e.<sp/>its<sp/>class<sp/>name).</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>RetypedArrayEngine&lt;S,T&gt;::dataManagerType()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>className();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Return<sp/>the<sp/>class<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Get<sp/>the<sp/>data<sp/>type<sp/>names<sp/>using<sp/>class<sp/>ValType.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>RetypedArrayEngine&lt;S,T&gt;::className()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>&quot;RetypedArrayEngine&lt;&quot;<sp/>+<sp/>valDataTypeId(static_cast&lt;S*&gt;(0))<sp/>+<sp/>&quot;,&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>valDataTypeId(static_cast&lt;T*&gt;(0))<sp/>+<sp/>&quot;&gt;&quot;;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>RetypedArrayEngine&lt;S,T&gt;::dataManagerName()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>virtualName();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Record<sp/>RetypedArrayEngine&lt;S,T&gt;::dataManagerSpec()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Record<sp/>spec;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spec.define<sp/>(&quot;SOURCENAME&quot;,<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spec.define<sp/>(&quot;TARGETNAME&quot;,<sp/>storedName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spec.define<sp/>(&quot;SHAPE&quot;,<sp/>shape_p.asVector());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(record_p.nfields()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spec.defineRecord<sp/>(&quot;RECORD&quot;,<sp/>record_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>spec;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">DataManager*<sp/>RetypedArrayEngine&lt;S,T&gt;::makeObject<sp/>(const<sp/>String&amp;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Record&amp;<sp/>spec)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager*<sp/>dmPtr<sp/>=<sp/>new<sp/>RetypedArrayEngine&lt;S,T&gt;(spec);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>dmPtr;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::registerClass()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DataManager::registerCtor<sp/>(className(),<sp/>makeObject);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::prepare()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>various<sp/>parameters<sp/>from<sp/>keywords<sp/>in<sp/>this<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(table(),<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;Int64&gt;<sp/>vec<sp/>(thisCol.keywordSet().toArrayInt64(&quot;_RetypedArrayEngine_Shape&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>shape_p.fill<sp/>(vec.size(),<sp/>vec.begin());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>record_p<sp/>=<sp/>thisCol.keywordSet().subRecord<sp/>(&quot;_RetypedArrayEngine_Record&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>column<sp/>shape<sp/>in<sp/>the<sp/>base<sp/>class<sp/>(when<sp/>needed).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>has<sp/>to<sp/>be<sp/>dome<sp/>before<sp/>prepare<sp/>in<sp/>the<sp/>base<sp/>class<sp/>is<sp/>called.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(isVirtualFixedShape_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BaseMappedArrayEngine&lt;S,T&gt;::setShapeColumn</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(shape_p.concatenate<sp/>(virtualFixedShape_p));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseMappedArrayEngine&lt;S,T&gt;::prepare();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Allocate<sp/>and<sp/>initialize<sp/>a<sp/>CopyInfo<sp/>object<sp/>for<sp/>the<sp/>virtual.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>copyInfo_p<sp/>=<sp/>S::newCopyInfo<sp/>(record_p,<sp/>shape_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::create64<sp/>(rownr_t<sp/>initialNrrow)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseMappedArrayEngine&lt;S,T&gt;::create64<sp/>(initialNrrow);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Store<sp/>the<sp/>various<sp/>parameters<sp/>as<sp/>keywords<sp/>in<sp/>this<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(this-&gt;makeTableColumn<sp/>(virtualName()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>thisCol.rwKeywordSet().define<sp/>(&quot;_RetypedArrayEngine_Shape&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shape_p.asVector());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>thisCol.rwKeywordSet().defineRecord<sp/>(&quot;_RetypedArrayEngine_Record&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>record_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>function<sp/>is<sp/>called<sp/>in<sp/>case<sp/>the<sp/>virtual<sp/>column<sp/>has<sp/>FixedShape<sp/>arrays.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Because<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>VirtualType<sp/>is<sp/>not<sp/>known<sp/>yet<sp/>(it<sp/>is<sp/>read</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>in<sp/>prepare),<sp/>the<sp/>base<sp/>class<sp/>setShapeColumn<sp/>is<sp/>done<sp/>in<sp/>prepare().</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::setShapeColumn<sp/>(const<sp/>IPosition&amp;<sp/>shape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>virtualFixedShape_p<sp/>=<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>isVirtualFixedShape_p<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::setShape<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>IPosition&amp;<sp/>shape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Do<sp/>not<sp/>define<sp/>the<sp/>shape<sp/>in<sp/>the<sp/>stored<sp/>column<sp/>when<sp/>it<sp/>has</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>already<sp/>been<sp/>defined<sp/>and<sp/>matches<sp/>the<sp/>virtual<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(column().isDefined<sp/>(rownr))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>storedShape<sp/>=<sp/>column().shape<sp/>(rownr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>virtualShape<sp/>=<sp/>storedShape.getLast<sp/>(shape.nelements());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(shape.isEqual<sp/>(virtualShape))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Set<sp/>the<sp/>stored<sp/>shape<sp/>to<sp/>the<sp/>default<sp/>element<sp/>shape<sp/>plus<sp/>virtual<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().setShape<sp/>(rownr,<sp/>shape_p.concatenate<sp/>(shape));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">uInt<sp/>RetypedArrayEngine&lt;S,T&gt;::ndim<sp/>(rownr_t<sp/>rownr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>column().ndim<sp/>(rownr)<sp/>-<sp/>shape_p.nelements();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">IPosition<sp/>RetypedArrayEngine&lt;S,T&gt;::shape<sp/>(rownr_t<sp/>rownr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>virtual<sp/>shape<sp/>is<sp/>the<sp/>stored<sp/>shape<sp/>minus<sp/>the<sp/>first<sp/>dimensions.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>storedShape<sp/>=<sp/>column().shape<sp/>(rownr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>storedShape.getLast<sp/>(storedShape.nelements()<sp/>-<sp/>shape_p.nelements());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">IPosition<sp/>RetypedArrayEngine&lt;S,T&gt;::getStoredShape</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t<sp/>rownr,<sp/>const<sp/>IPosition&amp;<sp/>virtualShape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Determine<sp/>the<sp/>element<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>If<sp/>the<sp/>stored<sp/>is<sp/>defined,<sp/>take<sp/>it<sp/>from<sp/>there.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>elemShape(shape_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(rownr<sp/>&lt;<sp/>table().nrow()<sp/><sp/>&amp;&amp;<sp/><sp/>column().isDefined<sp/>(rownr))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>elemShape<sp/>=<sp/>(column().shape(rownr)).getFirst<sp/>(elemShape.nelements());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>The<sp/>stored<sp/>shape<sp/>is<sp/>element<sp/>shape<sp/>plus<sp/>virtual<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>elemShape.concatenate<sp/>(virtualShape);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Slicer<sp/>RetypedArrayEngine&lt;S,T&gt;::getStoredSlicer</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Slicer&amp;<sp/>virtualSlicer)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Determine<sp/>the<sp/>element<sp/>dimensionality.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Make<sp/>the<sp/>Slicer<sp/>such<sp/>that<sp/>all<sp/>values<sp/>of<sp/>the<sp/>element<sp/>are<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/>ndim<sp/>=<sp/>shape_p.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>Slicer<sp/>(IPosition(ndim,0).concatenate<sp/>(virtualSlicer.start()),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IPosition(ndim,Slicer::MimicSource).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>concatenate<sp/>(virtualSlicer.end()),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IPosition(ndim,1).concatenate<sp/>(virtualSlicer.stride()),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Slicer::endIsLast);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">IPosition<sp/>RetypedArrayEngine&lt;S,T&gt;::checkShape<sp/>(const<sp/>Array&lt;S&gt;&amp;<sp/>source,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;&amp;<sp/>target)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>tShape<sp/>=<sp/>target.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>sShape<sp/>=<sp/>source.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Check<sp/>if<sp/>the<sp/>dimensionalities<sp/>match.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Source<sp/>+<sp/>element<sp/>shape<sp/>must<sp/>match<sp/>stored<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(tShape.nelements()<sp/>!=<sp/>shape_p.nelements()<sp/>+<sp/>sShape.nelements())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(DataManInvOper<sp/>(&quot;RetypedArrayEngine:<sp/>stored/virtual&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>dimensionalities<sp/>are<sp/>not<sp/>appropriate&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Determine<sp/>and<sp/>check<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>virtual<sp/>elements<sp/>in<sp/>the<sp/>target</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>which<sp/>are<sp/>formed<sp/>by<sp/>the<sp/>first<sp/>axes<sp/>in<sp/>the<sp/>stored.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Their<sp/>shape<sp/>cannot<sp/>be<sp/>greater<sp/>than<sp/>the<sp/>real<sp/>virtual<sp/>element<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>elemShape<sp/>(shape_p.nelements());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/>i;<sp/><sp/><sp/>//used<sp/>later</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(i=0;<sp/>i&lt;shape_p.nelements();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(tShape(i)<sp/>&gt;<sp/>shape_p(i))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(DataManInvOper</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;RetypedArrayEngine:<sp/>stored<sp/>shape<sp/>&gt;<sp/>virtual&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>elemShape(i)<sp/>=<sp/>tShape(i);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Check<sp/>if<sp/>remaining<sp/>sizes<sp/>in<sp/>stored<sp/>shape<sp/>match<sp/>virtual<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(uInt<sp/>j=0;<sp/>j&lt;sShape.nelements();<sp/>j++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(sShape(j)<sp/>!=<sp/>tShape(i++))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(DataManInvOper<sp/>(&quot;RetypedArrayEngine:<sp/>stored/virtual<sp/>shape&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>mismatch&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>elemShape;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Copy<sp/>an<sp/>array<sp/>for<sp/>get.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::mapOnGet<sp/>(Array&lt;S&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;&amp;<sp/>target)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>elemShape<sp/>=<sp/>checkShape<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>S::set<sp/>(copyInfo_p,<sp/>&amp;array,<sp/>target,<sp/>elemShape);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Copy<sp/>an<sp/>array<sp/>for<sp/>put.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>S,<sp/>class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RetypedArrayEngine&lt;S,T&gt;::mapOnPut<sp/>(const<sp/>Array&lt;S&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;T&gt;&amp;<sp/>target)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>elemShape<sp/>=<sp/>checkShape<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>S::get<sp/>(copyInfo_p,<sp/>target,<sp/>&amp;array,<sp/>elemShape);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/RetypedArrayEngine.tcc"/>
+  </compounddef>
+</doxygen>

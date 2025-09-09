@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="stochasticencoder_8cc" kind="file" language="C++">
+    <compoundname>stochasticencoder.cc</compoundname>
+    <includes refid="stochasticencoder_8h" local="yes">stochasticencoder.h</includes>
+    <includes local="no">gsl/gsl_cdf.h</includes>
+    <includes local="no">gsl/gsl_sf_erf.h</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">limits</includes>
+    <incdepgraph>
+      <node id="13">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>iterator</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="3">
+        <label>uvector.h</label>
+        <link refid="uvector_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>stdexcept</label>
+      </node>
+      <node id="11">
+        <label>gsl/gsl_cdf.h</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+      <node id="12">
+        <label>gsl/gsl_sf_erf.h</label>
+      </node>
+      <node id="1">
+        <label>tables/Dysco/stochasticencoder.cc</label>
+        <link refid="stochasticencoder_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stochasticencoder.h</label>
+        <link refid="stochasticencoder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>algorithm</label>
+      </node>
+      <node id="5">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacedyscostman">dyscostman</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="stochasticencoder_8cc_1aa7a1ee4f2407d3ad120ea0f8c4591e48" prot="public" static="no">
+        <name>M_SQRT2l</name>
+        <initializer>1.4142135623730950488016887242096981L</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.cc" line="10" column="9" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stochasticencoder_8h" kindref="compound">stochasticencoder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_cdf.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_sf_erf.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>M_SQRT2l</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>M_SQRT2l<sp/>1.4142135623730950488016887242096981L</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacedyscostman" kindref="compound">dyscostman</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueType&gt;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>StochasticEncoder&lt;ValueType&gt;::num_t</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">StochasticEncoder&lt;ValueType&gt;::cumulative(num_t<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>num_t(0.5)<sp/>+<sp/>num_t(0.5)<sp/>*<sp/>gsl_sf_erf(x<sp/>/<sp/>num_t(<ref refid="stochasticencoder_8cc_1aa7a1ee4f2407d3ad120ea0f8c4591e48" kindref="member">M_SQRT2l</ref>));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueType&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>StochasticEncoder&lt;ValueType&gt;::num_t</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">StochasticEncoder&lt;ValueType&gt;::invCumulative(num_t<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>,<sp/>num_t<sp/>err)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref><sp/>&lt;<sp/>0.5)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(-invCumulative(1.0<sp/>-<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>,<sp/>err));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref><sp/>==<sp/>0.5)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref><sp/>==<sp/>1.0)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::numeric_limits&lt;num_t&gt;::infinity();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref><sp/>&gt;<sp/>1.0)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::numeric_limits&lt;num_t&gt;::quiet_NaN();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>num_t<sp/>x<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>num_t<sp/>fx<sp/>=<sp/>cumulative(x);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>num_t<sp/>xLow,<sp/>xHi;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fx<sp/>&lt;<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>*=<sp/>2.0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fx<sp/>=<sp/>cumulative(x);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(fx<sp/>&lt;<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>xLow<sp/>=<sp/>x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>xHi<sp/>=<sp/>x;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>xLow<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>xHi<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>num_t<sp/>error<sp/>=<sp/>xHi;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>notConverging<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>(xLow<sp/>+<sp/>xHi)<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>fx<sp/>=<sp/>cumulative(x);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fx<sp/>&gt;<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xHi<sp/>=<sp/>x;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>xLow<sp/>=<sp/>x;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>num_t<sp/>currErr<sp/>=<sp/><ref refid="namespacecasacore_1a4861fb104ff2017605fb4cfd8cb2313c" kindref="member">std::fabs</ref>(fx<sp/>-<sp/><ref refid="namespacecasacore_1_1C_1a2aff9552bacab8d7213d5c70f7f23dc9" kindref="member">c</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currErr<sp/>&gt;=<sp/>error)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++notConverging;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>converging<sp/>anymore;<sp/>stop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(notConverging<sp/>&gt;<sp/>10)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>notConverging<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>error<sp/>=<sp/>currErr;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(error<sp/>&gt;<sp/>err);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueType&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><ref refid="classdyscostman_1_1StochasticEncoder_1a8e17dc6291bafe59c35b394c039fc8e2" kindref="member">StochasticEncoder&lt;ValueType&gt;::StochasticEncoder</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>quantCount,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueType<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gaussianMapping)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>_encDictionary(quantCount<sp/>-<sp/>1),<sp/>_decDictionary(quantCount<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>minimum<sp/>squared<sp/>error<sp/>is<sp/>reached<sp/>when<sp/>each<sp/>quantity<sp/>gets<sp/>an<sp/>equal<sp/>share</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>error<sp/>The<sp/>error<sp/>of<sp/>a<sp/>single<sp/>quantity<sp/>is<sp/>\int<sp/>_-dist<sp/>^dist<sp/>P(x)<sp/>x^2<sp/>dx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>integral<sp/>of<sp/>x^2<sp/>yields<sp/>a<sp/>third<sp/>order<sp/>term<sp/>in<sp/>the<sp/>solutions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>consequence<sp/>is<sp/>that<sp/>it<sp/>is<sp/>optimal<sp/>to<sp/>quantize<sp/>to<sp/>value<sp/>as<sp/>given<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>uniformly<sp/>gridding<sp/>the<sp/>inverse<sp/>cumulative<sp/>normal<sp/>distribution<sp/>with<sp/>a<sp/>sigma</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>sqrt(3).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>=<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>*<sp/><ref refid="namespacecasacore_1a7007a6f0ac4c37df2376110ec50f65d1" kindref="member">std::sqrt</ref>(3);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>_decDictionary.reserve(quantCount);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>encItem<sp/>=<sp/>_encDictionary.begin();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>decItem<sp/>=<sp/>_decDictionary.begin();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gaussianMapping)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>quantCount<sp/>-<sp/>1;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_t<sp/>rightBoundary<sp/>=<sp/>((num_t)i)<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*encItem<sp/>=<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>*<sp/>invCumulative(rightBoundary);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++encItem;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num_t<sp/>val<sp/>=<sp/>((num_t)i<sp/>+<sp/>num_t(0.5))<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*decItem<sp/>=<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>*<sp/>invCumulative(val);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++decItem;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>quantCount<sp/>-<sp/>1;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_t<sp/>rightBoundary<sp/>=<sp/>-1.0<sp/>+<sp/>2.0<sp/>*<sp/>((num_t)i)<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*encItem<sp/>=<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>*<sp/>rightBoundary;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++encItem;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num_t<sp/>val<sp/>=</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1.0<sp/>+<sp/>2.0<sp/>*<sp/>((num_t)i<sp/>+<sp/>num_t(0.5))<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*decItem<sp/>=<sp/><ref refid="namespacecasacore_1abad84c655c6d6ed132da25c735092bd4" kindref="member">stddev</ref><sp/>*<sp/>val;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>item.symbol<sp/>=<sp/>i;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++decItem;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Bounding<sp/>element<sp/>so<sp/>that<sp/>lower_bound<sp/>always<sp/>returns<sp/>a<sp/>valid<sp/>symbol</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>if<sp/>the<sp/>input<sp/>is<sp/>max,<sp/>it<sp/>will<sp/>be<sp/>encoded<sp/>as<sp/>an<sp/>inf.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>*encItem<sp/>=<sp/><ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">std::numeric_limits&lt;ValueType&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>last<sp/>encoding<sp/>quantity<sp/>will<sp/>be<sp/>used<sp/>for<sp/>representing<sp/>non-finite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>values.<sp/>This<sp/>value<sp/>is<sp/>reserved,<sp/>but<sp/>outside<sp/>of<sp/>the<sp/>size<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>vector<sp/>--<sp/>somewhat<sp/>dirty<sp/>but<sp/>OK<sp/>since<sp/>a<sp/>uvector<sp/>is<sp/>used,<sp/>for<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>know<sp/>it<sp/>behaves<sp/>OK<sp/>in<sp/>this<sp/>case.<sp/>This<sp/>will<sp/>make<sp/>sure<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>lower_bound()<sp/>never<sp/>sees<sp/>the<sp/>NaN.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>*decItem<sp/>=<sp/>std::numeric_limits&lt;ValueType&gt;::quiet_NaN();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueType&gt;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StochasticEncoder&lt;ValueType&gt;::initializeStudentT(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>nu,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>quantCount<sp/>=<sp/>_encDictionary.size()<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>_decDictionary.reserve(quantCount);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>encItem<sp/>=<sp/>_encDictionary.begin();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>decItem<sp/>=<sp/>_decDictionary.begin();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>quantCount<sp/>-<sp/>1;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>num_t<sp/>rightBoundary<sp/>=<sp/>((num_t)i)<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*encItem<sp/>=<sp/>gsl_cdf_tdist_Pinv(rightBoundary,<sp/>nu)<sp/>*<sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++encItem;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>num_t<sp/>val<sp/>=<sp/>((num_t)i<sp/>+<sp/>num_t(0.5))<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>*decItem<sp/>=<sp/>gsl_cdf_tdist_Pinv(val,<sp/>nu)<sp/>*<sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>++decItem;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>*encItem<sp/>=<sp/><ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">std::numeric_limits&lt;ValueType&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>*decItem<sp/>=<sp/>std::numeric_limits&lt;ValueType&gt;::quiet_NaN();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueType&gt;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StochasticEncoder&lt;ValueType&gt;::initializeTruncatedGaussian(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>truncationValue,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>quantCount<sp/>=<sp/>_encDictionary.size()<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>_decDictionary.reserve(quantCount);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>encItem<sp/>=<sp/>_encDictionary.begin();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Dictionary::iterator<sp/>decItem<sp/>=<sp/>_decDictionary.begin();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cdfValueAtTrunc<sp/>=<sp/>gsl_cdf_gaussian_P(-truncationValue,<sp/>1.0);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>factor<sp/>=<sp/>1.0<sp/>-<sp/>2.0<sp/>*<sp/>cdfValueAtTrunc;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>quantCount<sp/>-<sp/>1;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rightBoundary<sp/>=<sp/>((num_t)i)<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cdfVal<sp/>=<sp/>rightBoundary<sp/>*<sp/>factor<sp/>+<sp/>cdfValueAtTrunc;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*encItem<sp/>=<sp/>gsl_cdf_gaussian_Pinv(cdfVal,<sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++encItem;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val<sp/>=<sp/>((num_t)i<sp/>+<sp/>num_t(0.5))<sp/>/<sp/>(num_t)(quantCount<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cdfVal<sp/>=<sp/>val<sp/>*<sp/>factor<sp/>+<sp/>cdfValueAtTrunc;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>*decItem<sp/>=<sp/>gsl_cdf_gaussian_Pinv(cdfVal,<sp/><ref refid="namespacecasacore_1a8da3f53b6419752b499f98dc2a59f0d3" kindref="member">rms</ref>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>++decItem;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>*encItem<sp/>=<sp/><ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">std::numeric_limits&lt;ValueType&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>*decItem<sp/>=<sp/>std::numeric_limits&lt;ValueType&gt;::quiet_NaN();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">StochasticEncoder&lt;float&gt;;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>dyscostman</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="tables/Dysco/stochasticencoder.cc"/>
+  </compounddef>
+</doxygen>

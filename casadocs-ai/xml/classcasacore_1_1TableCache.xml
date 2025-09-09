@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TableCache" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TableCache</compoundname>
+    <includes refid="TableCache_8h" local="no">TableCache.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1TableCache_1a8b43071dbefa97688495dafdfd5854ab" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref>, void * &gt;</type>
+        <definition>std::map&lt;String,void*&gt; casacore::TableCache::tableMap_p</definition>
+        <argsstring></argsstring>
+        <name>tableMap_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="160" column="14" bodyfile="tables/Tables/TableCache.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableCache_1ad3b3cf7dca71fb4477c01a9d66c4bab3" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex casacore::TableCache::itsMutex</definition>
+        <argsstring></argsstring>
+        <name>itsMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="162" column="24" bodyfile="tables/Tables/TableCache.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a8a348060f3a64c2d67bc1a9ceca1638a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TableCache::TableCache</definition>
+        <argsstring>()</argsstring>
+        <name>TableCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="97" column="5" bodyfile="tables/Tables/TableCache.cc" bodystart="36" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a4dd920b1c46703737a95254769860429" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TableCache::~TableCache</definition>
+        <argsstring>()</argsstring>
+        <name>~TableCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="99" column="5" bodyfile="tables/Tables/TableCache.cc" bodystart="39" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1ae20f0d0c4a40e73efa3418b8391484fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TableCache::TableCache</definition>
+        <argsstring>(const TableCache &amp;)=delete</argsstring>
+        <name>TableCache</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableCache" kindref="compound">TableCache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="102" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1ad7a9ec9f94361f71b0efe711abd833bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableCache" kindref="compound">TableCache</ref> &amp;</type>
+        <definition>TableCache&amp; casacore::TableCache::operator=</definition>
+        <argsstring>(const TableCache &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableCache" kindref="compound">TableCache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="105" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a21108ab3097f4eadf5396ecb20534d52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PlainTable" kindref="compound">PlainTable</ref> *</type>
+        <definition>PlainTable * casacore::TableCache::operator()</definition>
+        <argsstring>(const String &amp;tableName) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="110" column="16" bodyfile="tables/Tables/TableCache.cc" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1af071f97d543d647339f15a3358c3823d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCache::define</definition>
+        <argsstring>(const String &amp;tableName, PlainTable *)</argsstring>
+        <name>define</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1PlainTable" kindref="compound">PlainTable</ref> *</type>
+          <defname>tab</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="113" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="57" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1afef371fde71cb790635a8830e11e19d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCache::remove</definition>
+        <argsstring>(const String &amp;tableName)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="116" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="63" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1abae4c69462d52c6c29939edddefebe74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCache::rename</definition>
+        <argsstring>(const String &amp;newName, const String &amp;oldName)</argsstring>
+        <name>rename</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="120" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="84" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a8dc47d8f7eb3e2f53add050025aeb526" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::TableCache::nAutoLocks</definition>
+        <argsstring>()</argsstring>
+        <name>nAutoLocks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="124" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="94" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a2461f584fbd297346ac9afe7179d3e36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCache::relinquishAutoLocks</definition>
+        <argsstring>(Bool all)</argsstring>
+        <name>relinquishAutoLocks</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>all</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="130" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="110" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a893e19fbcbf1ed3789a3078684b616c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;</type>
+        <definition>Vector&lt; String &gt; casacore::TableCache::getTableNames</definition>
+        <argsstring>() const</argsstring>
+        <name>getTableNames</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="133" column="12" bodyfile="tables/Tables/TableCache.cc" bodystart="128" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a7a48c0a3ab17861c2dab0ede3661d504" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;</type>
+        <definition>Vector&lt; String &gt; casacore::TableCache::getLockedTables</definition>
+        <argsstring>(FileLocker::LockType, int lockOption)</argsstring>
+        <name>getLockedTables</name>
+        <param>
+          <type><ref refid="classcasacore_1_1FileLocker_1a88e00f7a9d5ca67f0aa9c55d0da57601" kindref="member">FileLocker::LockType</ref></type>
+          <defname>lockType</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lockOption</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="140" column="12" bodyfile="tables/Tables/TableCache.cc" bodystart="141" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1af398c8137cd98e70e3852c207ed517f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableCache::flushTable</definition>
+        <argsstring>(const String &amp;tableName, Bool fsync, Bool recursive)</argsstring>
+        <name>flushTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>fsync</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>recursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="144" column="10" bodyfile="tables/Tables/TableCache.cc" bodystart="157" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1abd247b34faa35331d71b861e6ef156cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PlainTable" kindref="compound">PlainTable</ref> *</type>
+        <definition>PlainTable * casacore::TableCache::lookCache</definition>
+        <argsstring>(const String &amp;name, int tableOption, const TableLock &amp;tableInfo)</argsstring>
+        <name>lookCache</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableLock" kindref="compound">TableLock</ref> &amp;</type>
+          <declname>tableInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="150" column="16" bodyfile="tables/Tables/TableCache.cc" bodystart="167" bodyend="196"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1TableCache_1a749626da22d3d7c9ff4edcecbd31e30f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PlainTable" kindref="compound">PlainTable</ref> *</type>
+        <definition>PlainTable * casacore::TableCache::getTable</definition>
+        <argsstring>(const String &amp;tableName) const</argsstring>
+        <name>getTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableCache.h" line="155" column="16" bodyfile="tables/Tables/TableCache.cc" bodystart="48" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/Tables/TableCache.h" line="92" column="1" bodyfile="tables/Tables/TableCache.h" bodystart="93" bodyend="163"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TableCache_1af071f97d543d647339f15a3358c3823d" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>define</name></member>
+      <member refid="classcasacore_1_1TableCache_1af398c8137cd98e70e3852c207ed517f8" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>flushTable</name></member>
+      <member refid="classcasacore_1_1TableCache_1a7a48c0a3ab17861c2dab0ede3661d504" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>getLockedTables</name></member>
+      <member refid="classcasacore_1_1TableCache_1a749626da22d3d7c9ff4edcecbd31e30f" prot="private" virt="non-virtual"><scope>casacore::TableCache</scope><name>getTable</name></member>
+      <member refid="classcasacore_1_1TableCache_1a893e19fbcbf1ed3789a3078684b616c3" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>getTableNames</name></member>
+      <member refid="classcasacore_1_1TableCache_1ad3b3cf7dca71fb4477c01a9d66c4bab3" prot="private" virt="non-virtual"><scope>casacore::TableCache</scope><name>itsMutex</name></member>
+      <member refid="classcasacore_1_1TableCache_1abd247b34faa35331d71b861e6ef156cb" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>lookCache</name></member>
+      <member refid="classcasacore_1_1TableCache_1a8dc47d8f7eb3e2f53add050025aeb526" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>nAutoLocks</name></member>
+      <member refid="classcasacore_1_1TableCache_1a21108ab3097f4eadf5396ecb20534d52" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>operator()</name></member>
+      <member refid="classcasacore_1_1TableCache_1ad7a9ec9f94361f71b0efe711abd833bf" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1TableCache_1a2461f584fbd297346ac9afe7179d3e36" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>relinquishAutoLocks</name></member>
+      <member refid="classcasacore_1_1TableCache_1afef371fde71cb790635a8830e11e19d6" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>remove</name></member>
+      <member refid="classcasacore_1_1TableCache_1abae4c69462d52c6c29939edddefebe74" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>rename</name></member>
+      <member refid="classcasacore_1_1TableCache_1a8a348060f3a64c2d67bc1a9ceca1638a" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>TableCache</name></member>
+      <member refid="classcasacore_1_1TableCache_1ae20f0d0c4a40e73efa3418b8391484fe" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>TableCache</name></member>
+      <member refid="classcasacore_1_1TableCache_1a8b43071dbefa97688495dafdfd5854ab" prot="private" virt="non-virtual"><scope>casacore::TableCache</scope><name>tableMap_p</name></member>
+      <member refid="classcasacore_1_1TableCache_1a4dd920b1c46703737a95254769860429" prot="public" virt="non-virtual"><scope>casacore::TableCache</scope><name>~TableCache</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

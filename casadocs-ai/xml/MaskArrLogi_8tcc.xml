@@ -1,0 +1,1513 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="MaskArrLogi_8tcc" kind="file" language="C++">
+    <compoundname>MaskArrLogi.tcc</compoundname>
+    <includedby refid="MaskArrLogi_8h" local="yes">casa/Arrays/MaskArrLogi.h</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/MaskArrLogi.tcc</label>
+        <link refid="MaskArrLogi_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/MaskArrLogi.h</label>
+        <link refid="MaskArrLogi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>MaskArrLogi.cc:<sp/>Element<sp/>by<sp/>element<sp/>logical<sp/>operations<sp/>on<sp/>arrays.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1996,1999,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_MASKARRLOGI_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_MASKARRLOGI_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;MaskArrLogi.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayLogical.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ALLFUNC_MA(ALLFUNC,OP,STRALLFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ALLFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>(*leftarrS<sp/>OP<sp/>*rightS)<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ALLFUNC_AM(ALLFUNC,OP,STRALLFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ALLFUNC<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftStorage<sp/>=<sp/>left.getStorage(leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftS<sp/>=<sp/>leftStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>(*leftS<sp/>OP<sp/>*rightarrS)<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeStorage(leftStorage,<sp/>leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ALLFUNC_MM(ALLFUNC,OP,STRALLFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ALLFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS<sp/>&amp;&amp;<sp/>*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>(*leftarrS<sp/>OP<sp/>*rightarrS)<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>AND<sp/>of<sp/>MaskedArray<sp/>masks<sp/>must<sp/>have<sp/>at<sp/>least<sp/>1<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allLE,<sp/><sp/>&lt;=,<sp/>&quot;allLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;allLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allGE,<sp/><sp/>&gt;=,<sp/>&quot;allGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;allGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allEQ,<sp/><sp/>==,<sp/>&quot;allEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allNE,<sp/><sp/>!=,<sp/>&quot;allNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allAND,<sp/>&amp;&amp;,<sp/>&quot;allAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MA<sp/>(<sp/>allOR,<sp/><sp/>||,<sp/>&quot;allOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allLE,<sp/><sp/>&lt;=,<sp/>&quot;allLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;allLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allGE,<sp/><sp/>&gt;=,<sp/>&quot;allGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;allGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allEQ,<sp/><sp/>==,<sp/>&quot;allEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allNE,<sp/><sp/>!=,<sp/>&quot;allNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allAND,<sp/>&amp;&amp;,<sp/>&quot;allAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_AM<sp/>(<sp/>allOR,<sp/><sp/>||,<sp/>&quot;allOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allLE,<sp/><sp/>&lt;=,<sp/>&quot;allLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;allLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allGE,<sp/><sp/>&gt;=,<sp/>&quot;allGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;allGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allEQ,<sp/><sp/>==,<sp/>&quot;allEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allNE,<sp/><sp/>!=,<sp/>&quot;allNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allAND,<sp/>&amp;&amp;,<sp/>&quot;allAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MM<sp/>(<sp/>allOR,<sp/><sp/>||,<sp/>&quot;allOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ANYFUNC_MA(ANYFUNC,OP,STRANYFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ANYFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftarrS<sp/>OP<sp/>*rightS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ANYFUNC_AM(ANYFUNC,OP,STRANYFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ANYFUNC<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftStorage<sp/>=<sp/>left.getStorage(leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftS<sp/>=<sp/>leftStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftS<sp/>OP<sp/>*rightarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeStorage(leftStorage,<sp/>leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ANYFUNC_MM(ANYFUNC,OP,STRANYFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ANYFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS<sp/>&amp;&amp;<sp/>*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftarrS<sp/>OP<sp/>*rightarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>AND<sp/>of<sp/>MaskedArray<sp/>masks<sp/>must<sp/>have<sp/>at<sp/>least<sp/>1<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyLE,<sp/><sp/>&lt;=,<sp/>&quot;anyLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;anyLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyGE,<sp/><sp/>&gt;=,<sp/>&quot;anyGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;anyGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyEQ,<sp/><sp/>==,<sp/>&quot;anyEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyNE,<sp/><sp/>!=,<sp/>&quot;anyNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyAND,<sp/>&amp;&amp;,<sp/>&quot;anyAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MA<sp/>(<sp/>anyOR,<sp/><sp/>||,<sp/>&quot;anyOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyLE,<sp/><sp/>&lt;=,<sp/>&quot;anyLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;anyLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyGE,<sp/><sp/>&gt;=,<sp/>&quot;anyGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;anyGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyEQ,<sp/><sp/>==,<sp/>&quot;anyEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyNE,<sp/><sp/>!=,<sp/>&quot;anyNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyAND,<sp/>&amp;&amp;,<sp/>&quot;anyAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_AM<sp/>(<sp/>anyOR,<sp/><sp/>||,<sp/>&quot;anyOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyLE,<sp/><sp/>&lt;=,<sp/>&quot;anyLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;anyLT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyGE,<sp/><sp/>&gt;=,<sp/>&quot;anyGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;anyGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyEQ,<sp/><sp/>==,<sp/>&quot;anyEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyNE,<sp/><sp/>!=,<sp/>&quot;anyNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyAND,<sp/>&amp;&amp;,<sp/>&quot;anyAND&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MM<sp/>(<sp/>anyOR,<sp/><sp/>||,<sp/>&quot;anyOR&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_MLA_OP_MA(OP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;MaskedLogicalArray<sp/>::&quot;<sp/>STROP<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(left.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>left.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(LogicalArrayElem)<sp/>(*leftarrS<sp/>OP<sp/>*rightS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_MLA_OP_AM(OP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>OP<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;MaskLogicalArray<sp/>::&quot;<sp/>STROP<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(left.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftStorage<sp/>=<sp/>left.getStorage(leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftS<sp/>=<sp/>leftStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(LogicalArrayElem)<sp/>(*leftS<sp/>OP<sp/>*rightarrS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeStorage(leftStorage,<sp/>leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_MLA_OP_MM(OP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;MaskLogicalArray<sp/>::&quot;<sp/>STROP<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(left.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(left.getMask()<sp/>&amp;&amp;<sp/>right.getMask()));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(LogicalArrayElem)<sp/>(*leftarrS<sp/>OP<sp/>*rightarrS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>&lt;=,<sp/>&quot;&lt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>&lt;,<sp/>&quot;&lt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>&gt;=,<sp/>&quot;&gt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>&gt;,<sp/>&quot;&gt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>==,<sp/>&quot;==&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>!=,<sp/>&quot;!=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>&amp;&amp;,<sp/>&quot;&amp;&amp;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MA<sp/>(<sp/>||,<sp/>&quot;||&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>&lt;=,<sp/>&quot;&lt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>&lt;,<sp/>&quot;&lt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>&gt;=,<sp/>&quot;&gt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>&gt;,<sp/>&quot;&gt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>==,<sp/>&quot;==&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>!=,<sp/>&quot;!=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>&amp;&amp;,<sp/>&quot;&amp;&amp;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_AM<sp/>(<sp/>||,<sp/>&quot;||&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>&lt;=,<sp/>&quot;&lt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>&lt;,<sp/>&quot;&lt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>&gt;=,<sp/>&quot;&gt;=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>&gt;,<sp/>&quot;&gt;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>==,<sp/>&quot;==&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>!=,<sp/>&quot;!=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>&amp;&amp;,<sp/>&quot;&amp;&amp;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MM<sp/>(<sp/>||,<sp/>&quot;||&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>!<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(marray.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>((*marrayarrS)<sp/>?<sp/>false<sp/>:<sp/>true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ALLFUNC_MS(ALLFUNC,OP,STRALLFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ALLFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>(*leftarrS<sp/>OP<sp/>right)<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ALLFUNC_SM(ALLFUNC,OP,STRALLFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ALLFUNC<sp/>(const<sp/>T<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>right.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>(left<sp/>OP<sp/>*rightarrS)<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRALLFUNC<sp/>&quot;(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allLE,<sp/><sp/>&lt;=,<sp/>&quot;allLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allLE,<sp/><sp/>&lt;=,<sp/>&quot;allLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;allLT&quot;<sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;allLT&quot;<sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allGE,<sp/><sp/>&gt;=,<sp/>&quot;allGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allGE,<sp/><sp/>&gt;=,<sp/>&quot;allGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;allGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;allGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allEQ,<sp/><sp/>==,<sp/>&quot;allEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allEQ,<sp/><sp/>==,<sp/>&quot;allEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_MS<sp/>(<sp/>allNE,<sp/><sp/>!=,<sp/>&quot;allNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ALLFUNC_SM<sp/>(<sp/>allNE,<sp/><sp/>!=,<sp/>&quot;allNE&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>allAND<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,<sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::allAND(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>allAND<sp/>(const<sp/>T<sp/>&amp;val,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::allAND(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>allOR<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,<sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::allOR(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>allOR<sp/>(const<sp/>T<sp/>&amp;val,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!<sp/>*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::allOR(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ANYFUNC_MS(ANYFUNC,OP,STRANYFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ANYFUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftarrS<sp/>OP<sp/>right)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_B_ANYFUNC_SM(ANYFUNC,OP,STRANYFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>ANYFUNC<sp/>(const<sp/>T<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>right.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(left<sp/>OP<sp/>*rightarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::&quot;<sp/>STRANYFUNC<sp/>&quot;(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>retval;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyLE,<sp/><sp/>&lt;=,<sp/>&quot;anyLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyLE,<sp/><sp/>&lt;=,<sp/>&quot;anyLE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;anyLT&quot;<sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyLT,<sp/><sp/>&lt;,<sp/><sp/>&quot;anyLT&quot;<sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyGE,<sp/><sp/>&gt;=,<sp/>&quot;anyGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyGE,<sp/><sp/>&gt;=,<sp/>&quot;anyGE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;anyGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyGT,<sp/><sp/>&gt;,<sp/><sp/>&quot;anyGT&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyEQ,<sp/><sp/>==,<sp/>&quot;anyEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyEQ,<sp/><sp/>==,<sp/>&quot;anyEQ&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_MS<sp/>(<sp/>anyNE,<sp/><sp/>!=,<sp/>&quot;anyNE&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_B_ANYFUNC_SM<sp/>(<sp/>anyNE,<sp/><sp/>!=,<sp/>&quot;anyNE&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>anyAND<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,<sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::anyAND(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>anyAND<sp/>(const<sp/>T<sp/>&amp;val,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::anyAND(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>anyOR<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,<sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::anyOR(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>T)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>anyOR<sp/>(const<sp/>T<sp/>&amp;val,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>retval<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;bool<sp/>::anyOR(const<sp/>T,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_MLA_OP_MS(OP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(left.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>left.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(LogicalArrayElem)<sp/>(*leftarrS<sp/>OP<sp/>right);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRLOGI_MLA_OP_SM(OP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>OP<sp/>(const<sp/>T<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(right.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(LogicalArrayElem)<sp/>(left<sp/>OP<sp/>*rightarrS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>&lt;=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>&lt;=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>&lt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>&lt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>&gt;=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>&gt;=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>&gt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>&gt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>==<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>==<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_MS<sp/>(<sp/>!=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRLOGI_MLA_OP_SM<sp/>(<sp/>!=<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>&amp;&amp;<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(marray.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>marray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>((*marrayarrS)<sp/>?<sp/>true<sp/>:<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>&amp;&amp;<sp/>(const<sp/>T<sp/>&amp;val,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(marray.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>marray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>((*marrayarrS)<sp/>?<sp/>true<sp/>:<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>||<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(marray.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>marray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>((*marrayarrS)<sp/>?<sp/>true<sp/>:<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedLogicalArray<sp/>operator<sp/>||<sp/>(const<sp/>T<sp/>&amp;val,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LogicalArray<sp/>resultarr<sp/>(marray.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarr<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedLogicalArray<sp/>result<sp/>(resultarr,<sp/>marray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogicalArrayElem<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>((*marrayarrS)<sp/>?<sp/>true<sp/>:<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/MaskArrLogi.tcc"/>
+  </compounddef>
+</doxygen>

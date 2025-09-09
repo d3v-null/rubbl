@@ -1,0 +1,643 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1ByteIO" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::ByteIO</compoundname>
+    <derivedcompoundref refid="classcasacore_1_1FilebufIO" prot="public" virt="non-virtual">casacore::FilebufIO</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1FiledesIO" prot="public" virt="non-virtual">casacore::FiledesIO</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1MFFileIO" prot="public" virt="non-virtual">casacore::MFFileIO</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1MemoryIO" prot="public" virt="non-virtual">casacore::MemoryIO</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1StreamIO" prot="public" virt="non-virtual">casacore::StreamIO</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1TapeIO" prot="public" virt="non-virtual">casacore::TapeIO</derivedcompoundref>
+    <includes refid="ByteIO_8h" local="no">ByteIO.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OpenOption</name>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa2fc353edf79546f6c0ceef30e6436a67" prot="public">
+          <name>Old</name>
+          <initializer>=1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfaf5fc2e843733cfb4a057e60e3def5b01" prot="public">
+          <name>Update</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfaa076f2dcee6934faaffeb1a06ba7890e" prot="public">
+          <name>Append</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfad2b1a82788af17beb44cfb9551107294" prot="public">
+          <name>New</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfacca18e75616b25600f194d7cc122568e" prot="public">
+          <name>NewNoReplace</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa275b6e03feee16c676423d347bcb3a26" prot="public">
+          <name>Scratch</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa7350330e58c6e3723cda47496d84375f" prot="public">
+          <name>Delete</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="63" column="5" bodyfile="casa/IO/ByteIO.h" bodystart="63" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="enum" id="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffa" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SeekOption</name>
+        <enumvalue id="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaab3d05459e156fcce167ab5594a91360a" prot="public">
+          <name>Begin</name>
+          <initializer>=1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaabea5e49c69fee3e0c597692a76b40e6c" prot="public">
+          <name>Current</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaaf1079070d6447c74f4bcf0b1e6088f28" prot="public">
+          <name>End</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="80" column="5" bodyfile="casa/IO/ByteIO.h" bodystart="80" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ad4987f18dd5253cf50eae9a27da6c2f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::ByteIO::ByteIO</definition>
+        <argsstring>()</argsstring>
+        <name>ByteIO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="91" column="5" bodyfile="casa/IO/ByteIO.h" bodystart="174" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a020da739b98350dfdf39b733e4801299" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::ByteIO::~ByteIO</definition>
+        <argsstring>()</argsstring>
+        <name>~ByteIO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="93" column="13" bodyfile="casa/IO/ByteIO.cc" bodystart="32" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a92e74a56a180231eeeb73fa0400abb14" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::ByteIO::write</definition>
+        <argsstring>(Int64 size, const void *buf)=0</argsstring>
+        <name>write</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a9e9cd8aa4cb7716852ca7ba411069ed6">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1adc335d35f7a046a90439be44dce92eca">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1a84344d8f059f3b04abe3a8e867f1fd6b">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MMapfdIO_1a9de33c54bffcc362e584b715a0c99459">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a7d0eb588bf530aa21d7f599b7ee357e1">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a23f21dfe1b8fbc2f4414815279baac91">write</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a093c074bbebec1982ac7d5ebfcfd2588">write</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="96" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ac1211b4114ea4000b2beae31c4aea035" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::pwrite</definition>
+        <argsstring>(Int64 size, Int64 offset, const void *buf)</argsstring>
+        <name>pwrite</name>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1a3429d9d5476c28724fec84cb3a75da54">pwrite</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="100" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="43" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a69800e69fab2e8ee431780b6fb74ef1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>virtual Int64 casacore::ByteIO::read</definition>
+        <argsstring>(Int64 size, void *buf, Bool throwException=True)=0</argsstring>
+        <name>read</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1ac3b3afce41eb5abdeccaf0f4d0b6295c">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1ade986b29e328b6186944570b8ff3338a">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1aa38c2c400fa9ca426fdd08837a50fd3b">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MMapfdIO_1ac1913456c5ea4ea18ad21f3e29d0ba50">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1adbaf6350f1a7c85473ae46e4fe6d0916">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a3c015bffc52d54bfd027fc96e0359884">read</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a23bd793c664dd45dc6c9568078e868f3">read</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>throwException</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="106" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1acea81dca47c84ee0ec7084cbebd07aa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::ByteIO::pread</definition>
+        <argsstring>(Int64 size, Int64 offset, void *buf, Bool throwException=True)</argsstring>
+        <name>pread</name>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1ad485fb4621eb030393b66de5a4be206f">pread</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>throwException</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="110" column="19" bodyfile="casa/IO/ByteIO.cc" bodystart="57" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a63e114f580229a733fd4ebd6926dccc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::reopenRW</definition>
+        <argsstring>()</argsstring>
+        <name>reopenRW</name>
+        <reimplementedby refid="classcasacore_1_1RegularFileIO_1a8562521b10145a2038aa47fa3f169cab">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FileUnbufferedIO_1a6539defd0bacb6de0097e475182a3bdc">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1af906fd4c5bf9f1b00c944a02438f103d">reopenRW</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="118" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a8842e031ebd92874de3e988e407118a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::ByteIO::seek</definition>
+        <argsstring>(Int offset, ByteIO::SeekOption=ByteIO::Begin)</argsstring>
+        <name>seek</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffa" kindref="member">ByteIO::SeekOption</ref></type>
+          <defname>option</defname>
+          <defval><ref refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaab3d05459e156fcce167ab5594a91360a" kindref="member">ByteIO::Begin</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="124" column="11" bodyfile="casa/IO/ByteIO.h" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ab3e435ffe747d6b27954dae0dfff4e5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::ByteIO::seek</definition>
+        <argsstring>(Int64 offset, ByteIO::SeekOption=ByteIO::Begin)</argsstring>
+        <name>seek</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffa" kindref="member">ByteIO::SeekOption</ref></type>
+          <defname>option</defname>
+          <defval><ref refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaab3d05459e156fcce167ab5594a91360a" kindref="member">ByteIO::Begin</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="125" column="11" bodyfile="casa/IO/ByteIO.h" bodystart="185" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ada7d88c4b3c5049b156ec89b27e183c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::flush</definition>
+        <argsstring>()</argsstring>
+        <name>flush</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a2ce09db499834e000f5629ac4052da2e">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MMapfdIO_1abc917fb7ea321fc70752c4ff244a2f45">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a3a82e4ae992d1bc0b57354d5396b59c2">flush</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="130" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="74" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a73ebd3c6c49c126586ed27966012e4b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::fsync</definition>
+        <argsstring>()</argsstring>
+        <name>fsync</name>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1a8393a314bac6ce360a6af0078131ec83">fsync</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a5f4cb38294fd472b4354cb5dca45ac53">fsync</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="134" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="77" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ac89e6c0380a5682463817dd596cc0bfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::resync</definition>
+        <argsstring>()</argsstring>
+        <name>resync</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a2c0469059ff9d06f9d636c495ae228af">resync</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="138" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="80" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ad69e08cdf75f681e97199457f9aff8af" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::ByteIO::truncate</definition>
+        <argsstring>(Int64 size)</argsstring>
+        <name>truncate</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a0e87fa7ff715d9663a2281e003baf908">truncate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1ad19a64da6e50ad24b4a76f393aa42045">truncate</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a52105b2da743a657b04cb8e0aa656ba2">truncate</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="142" column="18" bodyfile="casa/IO/ByteIO.cc" bodystart="83" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1ae57c7d63a262370761f54a9a2a8fba44" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::ByteIO::fileName</definition>
+        <argsstring>() const</argsstring>
+        <name>fileName</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a78a0f329b3c4b73960f5bc6acefb9d3e">fileName</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1aa601a591d4250b1dac3ad600b1a33115">fileName</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RegularFileIO_1a12c84e74befe96d340f727fb2c220caf">fileName</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a022419d5ab3e8bbd4ea69159425102d0">fileName</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a5c77805b345f89128327082b4be9ab31">fileName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="146" column="20" bodyfile="casa/IO/ByteIO.cc" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a0ff2e00388dde083770fbc127c979e13" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>virtual Int64 casacore::ByteIO::length</definition>
+        <argsstring>()=0</argsstring>
+        <name>length</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1afe13ea8093fab9855429ac8cb54e1dd4">length</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1a5120d1a18f888337ff51b963b1efb21b">length</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1a8b77b0e2399736123517ce07ad94b6c5">length</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a47c417bd48fb152a183097d1188d47d2">length</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a9471ad6c89a757f667db446d451cdca3">length</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a9f400ca7f712ddee5783fc154ffa0a45">length</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="149" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a1e484388310260830425a67a031a895c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::ByteIO::isReadable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isReadable</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a28199cbba8a15368f43ef0ec47981c32">isReadable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1a3e3ceb16dbc4ef67c8b57a526e7ce254">isReadable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1abf68dd17fd24ff39ad55209e88ad689c">isReadable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a090725fe47136fd30b8e1c9e11ca94c9">isReadable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a2ea9f77a640023e6b5b745f55bbe5f29">isReadable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1add841e6a3a889227aff33d4980c84cce">isReadable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="152" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a18279cc84763d07c4f9af44b6de6e50c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::ByteIO::isWritable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isWritable</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a7c23d622833e79ebce13d694d35ca3e5">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1ad5eaa550c1991e96b66622994708b958">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1a054aca793f454aa18afa45bbe2d5adad">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a9a58c5ecf635c77d34bad3157339d761">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a8f242efa99b290c6451ca89e6d864947">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a8b779d1ddbd7f048192f0c8f03a1e474">isWritable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="155" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1acaa80d0dc2abfafdf5276a7eeb7eb8f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::ByteIO::isSeekable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isSeekable</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1a2101524b26d252fe84d0a97a18566510">isSeekable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1aac55a866b502614ad3f880c50956797e">isSeekable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1ab06996a3f38d91648246276e501ea8ac">isSeekable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a1e4eeb4da732f0f9e05bf9d8d39a2bb6">isSeekable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1a7b36f175a3178de41555478a9aad7d8c">isSeekable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a4b45b08be3e571603f28e08708d3d1fb">isSeekable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="158" column="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a13ddc8e50ca8bddea298600598dce33f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::ByteIO::ByteIO</definition>
+        <argsstring>(const ByteIO &amp;byteIO)</argsstring>
+        <name>ByteIO</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ByteIO" kindref="compound">ByteIO</ref> &amp;</type>
+          <declname>byteIO</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="165" column="5" bodyfile="casa/IO/ByteIO.h" bodystart="177" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a39386f27a0bea56e1348b4a249ff12d0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1ByteIO" kindref="compound">ByteIO</ref> &amp;</type>
+        <definition>ByteIO &amp; casacore::ByteIO::operator=</definition>
+        <argsstring>(const ByteIO &amp;byteIO)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ByteIO" kindref="compound">ByteIO</ref> &amp;</type>
+          <declname>byteIO</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="166" column="12" bodyfile="casa/IO/ByteIO.h" bodystart="180" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1ByteIO_1a08f78abf68e3357abdd313df1bc12884" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>virtual Int64 casacore::ByteIO::doSeek</definition>
+        <argsstring>(Int64 offset, ByteIO::SeekOption)=0</argsstring>
+        <name>doSeek</name>
+        <reimplementedby refid="classcasacore_1_1FilebufIO_1abcb592126193bf310c6b06dad94e082a">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1FiledesIO_1a584502978559a648f8c33faf7dfbaa70">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryIO_1a6d43d86977b5f938d154e0ab85ac9831">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MMapfdIO_1a7caf9d9c28277b8c6ff148180fa28f09">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1StreamIO_1a5d3953d89ee232e579a6ead3a4a17849">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1TapeIO_1ae217b5e39415771a2624b55bf7039f47">doSeek</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MFFileIO_1a0dec0cfbffdbed7e25cf6ffdc31aae6d">doSeek</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffa" kindref="member">ByteIO::SeekOption</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/ByteIO.h" line="169" column="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11">
+        <label>casacore::TapeIO</label>
+        <link refid="classcasacore_1_1TapeIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore::MFFileIO</label>
+        <link refid="classcasacore_1_1MFFileIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::ByteIO</label>
+        <link refid="classcasacore_1_1ByteIO"/>
+      </node>
+      <node id="2">
+        <label>casacore::FilebufIO</label>
+        <link refid="classcasacore_1_1FilebufIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore::MMapfdIO</label>
+        <link refid="classcasacore_1_1MMapfdIO"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>casacore::StreamIO</label>
+        <link refid="classcasacore_1_1StreamIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::FileUnbufferedIO</label>
+        <link refid="classcasacore_1_1FileUnbufferedIO"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::RegularFileIO</label>
+        <link refid="classcasacore_1_1RegularFileIO"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore::MemoryIO</label>
+        <link refid="classcasacore_1_1MemoryIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore::MMapIO</label>
+        <link refid="classcasacore_1_1MMapIO"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::FiledesIO</label>
+        <link refid="classcasacore_1_1FiledesIO"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="casa/IO/ByteIO.h" line="59" column="1" bodyfile="casa/IO/ByteIO.h" bodystart="60" bodyend="170"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfaa076f2dcee6934faaffeb1a06ba7890e" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Append</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaab3d05459e156fcce167ab5594a91360a" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Begin</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ad4987f18dd5253cf50eae9a27da6c2f0" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>ByteIO</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a13ddc8e50ca8bddea298600598dce33f" prot="protected" virt="non-virtual"><scope>casacore::ByteIO</scope><name>ByteIO</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaabea5e49c69fee3e0c597692a76b40e6c" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Current</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa7350330e58c6e3723cda47496d84375f" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Delete</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a08f78abf68e3357abdd313df1bc12884" prot="protected" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>doSeek</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffaaf1079070d6447c74f4bcf0b1e6088f28" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>End</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ae57c7d63a262370761f54a9a2a8fba44" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>fileName</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ada7d88c4b3c5049b156ec89b27e183c6" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>flush</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a73ebd3c6c49c126586ed27966012e4b8" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>fsync</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a1e484388310260830425a67a031a895c" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>isReadable</name></member>
+      <member refid="classcasacore_1_1ByteIO_1acaa80d0dc2abfafdf5276a7eeb7eb8f9" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>isSeekable</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a18279cc84763d07c4f9af44b6de6e50c" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>isWritable</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a0ff2e00388dde083770fbc127c979e13" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>length</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfad2b1a82788af17beb44cfb9551107294" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>New</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfacca18e75616b25600f194d7cc122568e" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>NewNoReplace</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa2fc353edf79546f6c0ceef30e6436a67" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Old</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>OpenOption</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a39386f27a0bea56e1348b4a249ff12d0" prot="protected" virt="non-virtual"><scope>casacore::ByteIO</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1ByteIO_1acea81dca47c84ee0ec7084cbebd07aa1" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>pread</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ac1211b4114ea4000b2beae31c4aea035" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>pwrite</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a69800e69fab2e8ee431780b6fb74ef1c" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>read</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a63e114f580229a733fd4ebd6926dccc4" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>reopenRW</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ac89e6c0380a5682463817dd596cc0bfe" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>resync</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfa275b6e03feee16c676423d347bcb3a26" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Scratch</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a8842e031ebd92874de3e988e407118a6" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>seek</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ab3e435ffe747d6b27954dae0dfff4e5f" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>seek</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a1b0f70e9195ac3623d34403eded6dffa" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>SeekOption</name></member>
+      <member refid="classcasacore_1_1ByteIO_1ad69e08cdf75f681e97199457f9aff8af" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>truncate</name></member>
+      <member refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158dfaf5fc2e843733cfb4a057e60e3def5b01" prot="public" virt="non-virtual"><scope>casacore::ByteIO</scope><name>Update</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a92e74a56a180231eeeb73fa0400abb14" prot="public" virt="pure-virtual"><scope>casacore::ByteIO</scope><name>write</name></member>
+      <member refid="classcasacore_1_1ByteIO_1a020da739b98350dfdf39b733e4801299" prot="public" virt="virtual"><scope>casacore::ByteIO</scope><name>~ByteIO</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="BaseMappedArrayEngine_8tcc" kind="file" language="C++">
+    <compoundname>BaseMappedArrayEngine.tcc</compoundname>
+    <includedby refid="BaseMappedArrayEngine_8h" local="no">tables/DataMan/BaseMappedArrayEngine.h</includedby>
+    <invincdepgraph>
+      <node id="11">
+        <label>tables/DataMan/CompressFloat.cc</label>
+        <link refid="CompressFloat_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/CompressComplex.cc</label>
+        <link refid="CompressComplex_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/BitFlagsEngine.cc</label>
+        <link refid="BitFlagsEngine_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/CompressComplex.h</label>
+        <link refid="CompressComplex_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tables/DataMan/BaseMappedArrayEngine.h</label>
+        <link refid="BaseMappedArrayEngine_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>tables/DataMan/ScaledComplexData.h</label>
+        <link refid="ScaledComplexData_8h"/>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/CompressFloat.h</label>
+        <link refid="CompressFloat_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>tables/DataMan/ScaledArrayEngine.h</label>
+        <link refid="ScaledArrayEngine_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tables/DataMan/BitFlagsEngine.h</label>
+        <link refid="BitFlagsEngine_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/BaseMappedArrayEngine.tcc</label>
+        <link refid="BaseMappedArrayEngine_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tables/DataMan/DataManager.cc</label>
+        <link refid="DataManager_8cc"/>
+      </node>
+      <node id="12">
+        <label>tables/DataMan/MappedArrayEngine.h</label>
+        <link refid="MappedArrayEngine_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tables/DataMan/RetypedArrayEngine.h</label>
+        <link refid="RetypedArrayEngine_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>BaseMappedArrayEngine.cc:<sp/>Abstract<sp/>virtual<sp/>column<sp/>engine<sp/>for<sp/>virtual-&gt;stored<sp/>mapping</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,2001,2002</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universitie<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_BASEMAPPEDARRAYENGINE_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_BASEMAPPEDARRAYENGINE_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/BaseMappedArrayEngine.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/Table.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ArrayColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ColumnDesc.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/DataManError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableRecord.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicSL/String.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::BaseMappedArrayEngine<sp/>()</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>virtualName_p<sp/><sp/>(&quot;&quot;),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>storedName_p<sp/><sp/><sp/>(&quot;&quot;),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isWritable_p<sp/><sp/><sp/>(True),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tempWritable_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>initialNrrow_p<sp/>(0),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrayIsFixed_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>column_p<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::BaseMappedArrayEngine</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>String&amp;<sp/>virtualColumnName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>storedColumnName)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>virtualName_p<sp/><sp/>(virtualColumnName),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>storedName_p<sp/><sp/><sp/>(storedColumnName),<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isWritable_p<sp/><sp/><sp/>(True),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tempWritable_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>initialNrrow_p<sp/>(0),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrayIsFixed_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>column_p<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::BaseMappedArrayEngine</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;&amp;<sp/>that)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>VirtualColumnEngine(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VirtualArrayColumn&lt;VirtualType&gt;(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>virtualName_p<sp/><sp/>(that.virtualName_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>storedName_p<sp/><sp/><sp/>(that.storedName_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isWritable_p<sp/><sp/><sp/>(that.isWritable_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tempWritable_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>initialNrrow_p<sp/>(0),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arrayIsFixed_p<sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>column_p<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::~BaseMappedArrayEngine()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delete<sp/>column_p;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>function<sp/>prepare<sp/>is<sp/>called<sp/>upon<sp/>initialization<sp/>of<sp/>the<sp/>virtual<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>initialization<sp/>order<sp/>of<sp/>the<sp/>columns<sp/>is<sp/>undetermined,<sp/>which<sp/>means</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>that<sp/>this<sp/>function<sp/>isWritable<sp/>can<sp/>be<sp/>called<sp/>before<sp/>the<sp/>column<sp/>has<sp/>been</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>initialized.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>For<sp/>example,<sp/>suppose<sp/>column<sp/>A<sp/>uses<sp/>column<sp/>B<sp/>and<sp/>A<sp/>gets<sp/>initialized</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>before<sp/>B.<sp/>Then<sp/>A<sp/>will<sp/>call<sp/>B&apos;s<sp/>isWritable(),<sp/>while<sp/>B<sp/>has<sp/>not<sp/>been</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>initialized<sp/>yet.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>all<sp/>means<sp/>that<sp/>isWritable<sp/>must<sp/>take<sp/>care<sp/>of<sp/>the<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>where<sp/>the<sp/>writable_p<sp/>flag<sp/>is<sp/>not<sp/>set<sp/>yet.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::isWritable()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(tempWritable_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>isWritable_p<sp/><sp/>&amp;&amp;<sp/><sp/>table().isColumnWritable<sp/>(storedName_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Create<sp/>the<sp/>column<sp/>object<sp/>for<sp/>the<sp/>array<sp/>column<sp/>in<sp/>this<sp/>engine.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>merely<sp/>checks<sp/>if<sp/>the<sp/>virtual<sp/>column<sp/>name<sp/>matches.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">DataManagerColumn*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::makeIndArrColumn</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>String&amp;<sp/>columnName,<sp/>int,<sp/>const<sp/>String&amp;)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Check<sp/>if<sp/>the<sp/>column<sp/>name<sp/>matches<sp/>the<sp/>virtual<sp/>column<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>The<sp/>virtual<sp/>name<sp/>is<sp/>only<sp/>filled<sp/>in<sp/>case<sp/>of<sp/>creating<sp/>a<sp/>new<sp/>table.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>In<sp/>case<sp/>the<sp/>table<sp/>is<sp/>read<sp/>back,<sp/>makeIndArrColumn<sp/>is<sp/>called</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>before<sp/>prepare,<sp/>thus<sp/>before<sp/>the<sp/>virtual<sp/>name<sp/>can<sp/>be<sp/>read<sp/>back.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(virtualName_p.empty())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>virtualName_p<sp/>=<sp/>columnName;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(columnName<sp/>!=<sp/>virtualName_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(DataManInvOper</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;BaseMappedArrayEngine<sp/>with<sp/>virtual<sp/>column<sp/>&quot;<sp/>+<sp/>virtualName_p<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;<sp/>bound<sp/>to<sp/>column<sp/>&quot;<sp/>+<sp/>columnName<sp/>+<sp/>&quot;;<sp/>should<sp/>be<sp/>the<sp/>same&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>this;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">TableColumn<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::makeTableColumn</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>String&amp;<sp/>columnName)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tempWritable_p<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(table(),<sp/>columnName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tempWritable_p<sp/>=<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>thisCol;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::create64<sp/>(rownr_t<sp/>initialNrrow)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Define<sp/>the<sp/>stored<sp/>name<sp/>as<sp/>a<sp/>column<sp/>keyword<sp/>in<sp/>the<sp/>virtual.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>makeTableColumn<sp/>(virtualName_p).rwKeywordSet().define</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;_BaseMappedArrayEngine_Name&quot;,<sp/>storedName_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>initialNrrow_p<sp/>=<sp/>initialNrrow;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::prepare()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>prepare1();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>prepare2();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::prepare1()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Get<sp/>the<sp/>name<sp/>of<sp/>the<sp/>stored<sp/>column<sp/>from<sp/>the<sp/>keywords<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>virtual<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tempWritable_p<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TableColumn<sp/>thisCol<sp/>(table(),<sp/>virtualName_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>storedName_p<sp/>=<sp/>thisCol.keywordSet().asString</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;_BaseMappedArrayEngine_Name&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Determine<sp/>if<sp/>the<sp/>stored<sp/>column<sp/>is<sp/>writable.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Allocate<sp/>an<sp/>object<sp/>to<sp/>get<sp/>from<sp/>the<sp/>stored<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Allocate<sp/>one<sp/>to<sp/>put<sp/>if<sp/>the<sp/>column<sp/>is<sp/>writable.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column_p<sp/>=<sp/>new<sp/>ArrayColumn&lt;StoredType&gt;<sp/>(table(),<sp/>storedName_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tempWritable_p<sp/>=<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>It<sp/>is<sp/>not<sp/>permitted<sp/>to<sp/>have<sp/>a<sp/>FixedShape<sp/>stored<sp/>and<sp/>non-FixedShape</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>virtual<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((!<sp/>arrayIsFixed_p)<sp/><sp/>&amp;&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((column_p-&gt;columnDesc().options()<sp/>&amp;<sp/>ColumnDesc::FixedShape)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>==<sp/>ColumnDesc::FixedShape))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(DataManInvOper<sp/>(&quot;BaseMappedArrayEngine:<sp/>virtual<sp/>column<sp/>&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>virtualName_p<sp/>+<sp/>&quot;<sp/>is<sp/>FixedShape,<sp/>but<sp/>stored<sp/>&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>storedName_p<sp/>+<sp/>&quot;<sp/>is<sp/>not&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::prepare2()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Add<sp/>the<sp/>initial<sp/>number<sp/>of<sp/>rows<sp/>(thus<sp/>only<sp/>done<sp/>after<sp/>create).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>This<sp/>will<sp/>set<sp/>the<sp/>shape<sp/>of<sp/>the<sp/>stored<sp/>arrays<sp/>when<sp/>needed.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(initialNrrow_p<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>addRowInit<sp/>(0,<sp/>initialNrrow_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Add<sp/>nrrow<sp/>rows<sp/>to<sp/>the<sp/>end<sp/>of<sp/>the<sp/>table.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Set<sp/>the<sp/>shape<sp/>if<sp/>virtual<sp/>is<sp/>FixedShape<sp/>and<sp/>stored<sp/>is<sp/>non-FixedShape.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::addRow64<sp/>(rownr_t<sp/>nrrow)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>addRowInit<sp/>(table().nrow(),<sp/>nrrow);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::addRowInit<sp/>(rownr_t<sp/>startRow,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rownr_t<sp/>nrrow)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(arrayIsFixed_p<sp/><sp/>&amp;&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((column_p-&gt;columnDesc().options()<sp/>&amp;<sp/>ColumnDesc::FixedShape)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!=<sp/>ColumnDesc::FixedShape))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;nrrow;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>column_p-&gt;setShape<sp/>(startRow++,<sp/>shapeFixed_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>function<sp/>is<sp/>called<sp/>in<sp/>case<sp/>the<sp/>virtual<sp/>column<sp/>has<sp/>FixedShape<sp/>arrays.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>If<sp/>the<sp/>stored<sp/>has<sp/>non-FixedShape<sp/>arrays<sp/>this<sp/>shape<sp/>will<sp/>be<sp/>set<sp/>for<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>array<sp/>in<sp/>each<sp/>row<sp/>of<sp/>the<sp/>stored<sp/>(by<sp/>function<sp/>addRow).</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::setShapeColumn</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(const<sp/>IPosition&amp;<sp/>shape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>shapeFixed_p<sp/><sp/><sp/>=<sp/>shape;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrayIsFixed_p<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::setShape</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>IPosition&amp;<sp/>shape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column_p-&gt;setShape<sp/>(rownr,<sp/>shape);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::isShapeDefined<sp/>(rownr_t<sp/>rownr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>column_p-&gt;isDefined<sp/>(rownr);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">uInt<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::ndim<sp/>(rownr_t<sp/>rownr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>column_p-&gt;ndim<sp/>(rownr);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">IPosition<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::shape<sp/>(rownr_t<sp/>rownr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>column_p-&gt;shape<sp/>(rownr);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::canChangeShape()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(column_p<sp/>==<sp/>0<sp/><sp/>?<sp/><sp/>False<sp/>:<sp/>column_p-&gt;canChangeShape());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getArray</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t<sp/>rownr,<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().baseGet<sp/>(rownr,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putArray</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t<sp/>rownr,<sp/>const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().basePut<sp/>(rownr,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getSlice</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t<sp/>rownr,<sp/>const<sp/>Slicer&amp;<sp/>slicer,<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(rownr,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getSlice<sp/>(rownr,<sp/>getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putSlice</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t<sp/>rownr,<sp/>const<sp/>Slicer&amp;<sp/>slicer,<sp/>const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(rownr,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putSlice<sp/>(rownr,<sp/>getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getArrayColumn</highlight></codeline>
+<codeline><highlight class="normal">(Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumn<sp/>(target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putArrayColumn</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumn<sp/>(target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getArrayColumnCells</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>RefRows&amp;<sp/>rownrs,<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumnCells<sp/>(rownrs,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putArrayColumnCells</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>RefRows&amp;<sp/>rownrs,<sp/>const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumnCells<sp/>(rownrs,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getColumnSlice</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Slicer&amp;<sp/>slicer,<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumn<sp/>(getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putColumnSlice</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Slicer&amp;<sp/>slicer,<sp/>const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumn<sp/>(getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getColumnSliceCells</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>RefRows&amp;<sp/>rownrs,<sp/>const<sp/>Slicer&amp;<sp/>slicer,<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().getColumnCells<sp/>(rownrs,<sp/>getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnGet<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::putColumnSliceCells</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>RefRows&amp;<sp/>rownrs,<sp/>const<sp/>Slicer&amp;<sp/>slicer,<sp/>const<sp/>Array&lt;VirtualType&gt;&amp;<sp/>array)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;StoredType&gt;<sp/>target(getStoredShape(0,<sp/>array.shape()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mapOnPut<sp/>(array,<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>column().putColumnCells<sp/>(rownrs,<sp/>getStoredSlicer(slicer),<sp/>target);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">IPosition<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getStoredShape</highlight></codeline>
+<codeline><highlight class="normal">(rownr_t,<sp/>const<sp/>IPosition&amp;<sp/>virtualShape)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>virtualShape;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">Slicer<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::getStoredSlicer</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Slicer&amp;<sp/>virtualSlicer)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>virtualSlicer;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::mapOnGet</highlight></codeline>
+<codeline><highlight class="normal">(Array&lt;VirtualType&gt;&amp;,<sp/>const<sp/>Array&lt;StoredType&gt;&amp;)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>DataManInvOper(&quot;BaseMappedArrayEngine::mapOnGet<sp/>not<sp/>implemented<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;for<sp/>column<sp/>&quot;<sp/>+<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>VirtualType,<sp/>class<sp/>StoredType&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BaseMappedArrayEngine&lt;VirtualType,<sp/>StoredType&gt;::mapOnPut</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>Array&lt;VirtualType&gt;&amp;,<sp/>Array&lt;StoredType&gt;&amp;)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>DataManInvOper(&quot;BaseMappedArrayEngine::mapOnPut<sp/>not<sp/>implemented<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;for<sp/>column<sp/>&quot;<sp/>+<sp/>virtualName());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/BaseMappedArrayEngine.tcc"/>
+  </compounddef>
+</doxygen>

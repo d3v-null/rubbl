@@ -1,0 +1,617 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classAFTimeBlockEncoder" kind="class" language="C++" prot="public">
+    <compoundname>AFTimeBlockEncoder</compoundname>
+    <basecompoundref refid="classTimeBlockEncoder" prot="public" virt="non-virtual">TimeBlockEncoder</basecompoundref>
+    <includes refid="aftimeblockencoder_8h" local="no">aftimeblockencoder.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1a89d8fc0a6f96759d884c87411575e2bd" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t AFTimeBlockEncoder::_nPol</definition>
+        <argsstring></argsstring>
+        <name>_nPol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="83" column="10" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1af8b3c885658065dde6f3001d156dd012" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t AFTimeBlockEncoder::_nChannels</definition>
+        <argsstring></argsstring>
+        <name>_nChannels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="83" column="16" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1aecf2bebf63d36c6e1c68f6994e19b9ad" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool AFTimeBlockEncoder::_fitToMaximum</definition>
+        <argsstring></argsstring>
+        <name>_fitToMaximum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="84" column="8" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1a23ebdb632539b4d8801bd9e64f5f2dae" prot="private" static="no" mutable="no">
+        <type><ref refid="classao_1_1uvector" kindref="compound">ao::uvector</ref>&lt; double &gt;</type>
+        <definition>ao::uvector&lt;double&gt; AFTimeBlockEncoder::_rmsPerChannel</definition>
+        <argsstring></argsstring>
+        <name>_rmsPerChannel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="86" column="15" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1aa886d2f3ef5b17a4e5e4a3bbcc27e0e5" prot="private" static="no" mutable="no">
+        <type><ref refid="classao_1_1uvector" kindref="compound">ao::uvector</ref>&lt; double &gt;</type>
+        <definition>ao::uvector&lt;double&gt; AFTimeBlockEncoder::_rmsPerAntenna</definition>
+        <argsstring></argsstring>
+        <name>_rmsPerAntenna</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="86" column="30" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classAFTimeBlockEncoder_1a051efea96ea396f637d2d768b025a16d" prot="private" static="no" mutable="no">
+        <type>std::uniform_int_distribution&lt; unsigned &gt;</type>
+        <definition>std::uniform_int_distribution&lt;unsigned&gt; AFTimeBlockEncoder::_ditherDist</definition>
+        <argsstring></argsstring>
+        <name>_ditherDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="87" column="33" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a1d00cd5288bc23fc4a288bf381dd5be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AFTimeBlockEncoder::AFTimeBlockEncoder</definition>
+        <argsstring>(size_t nPol, size_t nChannels, bool fitToMaximum)</argsstring>
+        <name>AFTimeBlockEncoder</name>
+        <param>
+          <type>size_t</type>
+          <declname>nPol</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nChannels</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fitToMaximum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="16" column="3" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="14" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a4092ce0e9c30c4535fedb1a5eb08bec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>AFTimeBlockEncoder::~AFTimeBlockEncoder</definition>
+        <argsstring>() override</argsstring>
+        <name>~AFTimeBlockEncoder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="18" column="11" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a34827f87bb522fafe5cd3eca142e50bc" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void AFTimeBlockEncoder::EncodeWithDithering</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, FBuffer &amp;buffer, float *metaBuffer, symbol_t *symbolBuffer, size_t antennaCount, std::mt19937 &amp;rnd) final override</argsstring>
+        <name>EncodeWithDithering</name>
+        <reimplements refid="classTimeBlockEncoder_1a8c156c1927a2dce42f11e9c3e3e2b5bb">EncodeWithDithering</reimplements>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a65b6e6f2e004bd7c294ea1df9755451e" kindref="member">FBuffer</ref> &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref> *</type>
+          <declname>symbolBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <param>
+          <type>std::mt19937 &amp;</type>
+          <declname>rnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="20" column="16" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="20" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1afdaa7b62862f39feb096a972a70ae586" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void AFTimeBlockEncoder::EncodeWithoutDithering</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, FBuffer &amp;buffer, float *metaBuffer, symbol_t *symbolBuffer, size_t antennaCount) final override</argsstring>
+        <name>EncodeWithoutDithering</name>
+        <reimplements refid="classTimeBlockEncoder_1af7ac67f263046f80a202e9fab4c99b3f">EncodeWithoutDithering</reimplements>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a65b6e6f2e004bd7c294ea1df9755451e" kindref="member">FBuffer</ref> &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref> *</type>
+          <declname>symbolBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="28" column="16" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1af4406509603a330d4a6816abe6ba165a" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::InitializeDecode</definition>
+        <argsstring>(const float *metaBuffer, size_t nRow, size_t nAntennae) final override</argsstring>
+        <name>InitializeDecode</name>
+        <reimplements refid="classTimeBlockEncoder_1ac0e2f978f1952323f0361dbda6fee0b0">InitializeDecode</reimplements>
+        <param>
+          <type>const float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nRow</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nAntennae</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="36" column="16" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="401" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a941bb4c800d747ce889d689314d0f1bc" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::Decode</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, FBuffer &amp;buffer, const symbol_t *symbolBuffer, size_t blockRow, size_t antenna1, size_t antenna2) final override</argsstring>
+        <name>Decode</name>
+        <reimplements refid="classTimeBlockEncoder_1ae1b81dadfc14fd2937729d1472241eda">Decode</reimplements>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a65b6e6f2e004bd7c294ea1df9755451e" kindref="member">FBuffer</ref> &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref> *</type>
+          <declname>symbolBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>blockRow</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antenna1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antenna2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="39" column="16" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="414" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a6547e9764a22ba3e1608953aae5f963a" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t AFTimeBlockEncoder::SymbolCount</definition>
+        <argsstring>(size_t nRow, size_t nPol, size_t nChannels) const final override</argsstring>
+        <name>SymbolCount</name>
+        <reimplements refid="classTimeBlockEncoder_1a0877744994da0be7b5dd3991848ed76c">SymbolCount</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>nRow</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nPol</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nChannels</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="44" column="18" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1ab0aca818ced3df7b408af705de931363" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t AFTimeBlockEncoder::SymbolCount</definition>
+        <argsstring>(size_t nRow) const final override</argsstring>
+        <name>SymbolCount</name>
+        <reimplements refid="classTimeBlockEncoder_1a161e6029a0040e5c4ba98e53d6ae9ee9">SymbolCount</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>nRow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="49" column="18" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a8f7667c63f35bce50ab9e89b7825bdcf" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t AFTimeBlockEncoder::SymbolsPerRow</definition>
+        <argsstring>() const final override</argsstring>
+        <name>SymbolsPerRow</name>
+        <reimplements refid="classTimeBlockEncoder_1ab9d29ed80b31739a32e9c72a22451302">SymbolsPerRow</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="53" column="18" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1aa74cc68489cbc8ad141ac5c1b58580a1" prot="public" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t AFTimeBlockEncoder::MetaDataCount</definition>
+        <argsstring>(size_t, size_t nPol, size_t nChannels, size_t nAntennae) const final override</argsstring>
+        <name>MetaDataCount</name>
+        <reimplements refid="classTimeBlockEncoder_1a8258ef1ca265855e3aaabc50b15bf2df">MetaDataCount</reimplements>
+        <param>
+          <type>size_t</type>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nPol</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nChannels</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nAntennae</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="57" column="18" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1acc44093f4e2d21fc8a46278c36d596dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::Normalize</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, TimeBlockBuffer&lt; std::complex&lt; float &gt;&gt; &amp;buffer, size_t antennaCount)</argsstring>
+        <name>Normalize</name>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockBuffer" kindref="compound">TimeBlockBuffer</ref>&lt; std::complex&lt; float &gt;&gt; &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="62" column="8" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="25" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a0deae86aaf00aba1abe4c71ceb0b28d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>UseDithering</declname>
+            <defname>UseDithering</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>template void AFTimeBlockEncoder::encode&lt; false &gt;</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, const TimeBlockBuffer&lt; std::complex&lt; float &gt;&gt; &amp;buffer, float *metaBuffer, symbol_t *symbolBuffer, size_t antennaCount, std::mt19937 *rnd)</argsstring>
+        <name>encode</name>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTimeBlockBuffer" kindref="compound">TimeBlockBuffer</ref>&lt; std::complex&lt; float &gt;&gt; &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref> *</type>
+          <declname>symbolBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <param>
+          <type>std::mt19937 *</type>
+          <declname>rnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.cc" line="266" column="6" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="266" bodyend="330"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1ad4a145d39615135db5779173d8eae2c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::calculateAntennaeRMS</definition>
+        <argsstring>(const std::vector&lt; DBufferRow &gt; &amp;data, size_t polIndex, size_t antennaCount)</argsstring>
+        <name>calculateAntennaeRMS</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" kindref="member">DBufferRow</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>polIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="67" column="8" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="341" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1a6ad265255edd8e815b50ce17c97c2969" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>UseDithering</declname>
+            <defname>UseDithering</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::encode</definition>
+        <argsstring>(const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, const FBuffer &amp;buffer, float *metaBuffer, symbol_t *symbolBuffer, size_t antennaCount, std::mt19937 *rnd)</argsstring>
+        <name>encode</name>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classTimeBlockEncoder_1a65b6e6f2e004bd7c294ea1df9755451e" kindref="member">FBuffer</ref> &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type><ref refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" kindref="member">symbol_t</ref> *</type>
+          <declname>symbolBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <param>
+          <type>std::mt19937 *</type>
+          <declname>rnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="71" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1aca67c4e9004be8486f43b4890cff0e9f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::changeAntennaFactor</definition>
+        <argsstring>(std::vector&lt; DBufferRow &gt; &amp;data, float *metaBuffer, size_t antennaIndex, size_t antennaCount, size_t polIndex, double factor)</argsstring>
+        <name>changeAntennaFactor</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" kindref="member">DBufferRow</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaIndex</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>polIndex</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>factor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="75" column="8" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="81" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classAFTimeBlockEncoder_1ab2665e746aab8a5a1463fb2073fd37cd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AFTimeBlockEncoder::fitToMaximum</definition>
+        <argsstring>(std::vector&lt; DBufferRow &gt; &amp;data, float *metaBuffer, const dyscostman::StochasticEncoder&lt; float &gt; &amp;gausEncoder, size_t antennaCount)</argsstring>
+        <name>fitToMaximum</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" kindref="member">DBufferRow</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>metaBuffer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">dyscostman::StochasticEncoder</ref>&lt; float &gt; &amp;</type>
+          <declname>gausEncoder</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>antennaCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/aftimeblockencoder.h" line="79" column="8" bodyfile="tables/Dysco/aftimeblockencoder.cc" bodystart="123" bodyend="263"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>AFTimeBlockEncoder</label>
+        <link refid="classAFTimeBlockEncoder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TimeBlockEncoder</label>
+        <link refid="classTimeBlockEncoder"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>AFTimeBlockEncoder</label>
+        <link refid="classAFTimeBlockEncoder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TimeBlockEncoder</label>
+        <link refid="classTimeBlockEncoder"/>
+      </node>
+    </collaborationgraph>
+    <location file="tables/Dysco/aftimeblockencoder.h" line="14" column="1" bodyfile="tables/Dysco/aftimeblockencoder.h" bodystart="14" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classAFTimeBlockEncoder_1a051efea96ea396f637d2d768b025a16d" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_ditherDist</name></member>
+      <member refid="classAFTimeBlockEncoder_1aecf2bebf63d36c6e1c68f6994e19b9ad" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_fitToMaximum</name></member>
+      <member refid="classAFTimeBlockEncoder_1af8b3c885658065dde6f3001d156dd012" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_nChannels</name></member>
+      <member refid="classAFTimeBlockEncoder_1a89d8fc0a6f96759d884c87411575e2bd" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_nPol</name></member>
+      <member refid="classAFTimeBlockEncoder_1aa886d2f3ef5b17a4e5e4a3bbcc27e0e5" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_rmsPerAntenna</name></member>
+      <member refid="classAFTimeBlockEncoder_1a23ebdb632539b4d8801bd9e64f5f2dae" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>_rmsPerChannel</name></member>
+      <member refid="classAFTimeBlockEncoder_1a1d00cd5288bc23fc4a288bf381dd5be1" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>AFTimeBlockEncoder</name></member>
+      <member refid="classAFTimeBlockEncoder_1ad4a145d39615135db5779173d8eae2c9" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>calculateAntennaeRMS</name></member>
+      <member refid="classAFTimeBlockEncoder_1aca67c4e9004be8486f43b4890cff0e9f" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>changeAntennaFactor</name></member>
+      <member refid="classTimeBlockEncoder_1a9b527ebf50fde24e2b30cbe35d1e7ed0" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>DBuffer</name></member>
+      <member refid="classTimeBlockEncoder_1afe20ce05d18219f7597247b050d7805b" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>DBufferRow</name></member>
+      <member refid="classAFTimeBlockEncoder_1a941bb4c800d747ce889d689314d0f1bc" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>Decode</name></member>
+      <member refid="classAFTimeBlockEncoder_1a6ad265255edd8e815b50ce17c97c2969" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>encode</name></member>
+      <member refid="classAFTimeBlockEncoder_1a0deae86aaf00aba1abe4c71ceb0b28d7" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>encode</name></member>
+      <member refid="classAFTimeBlockEncoder_1a34827f87bb522fafe5cd3eca142e50bc" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>EncodeWithDithering</name></member>
+      <member refid="classAFTimeBlockEncoder_1afdaa7b62862f39feb096a972a70ae586" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>EncodeWithoutDithering</name></member>
+      <member refid="classTimeBlockEncoder_1a65b6e6f2e004bd7c294ea1df9755451e" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>FBuffer</name></member>
+      <member refid="classTimeBlockEncoder_1a9128a7125086ffacb872aca4a3bcc742" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>FBufferRow</name></member>
+      <member refid="classAFTimeBlockEncoder_1ab2665e746aab8a5a1463fb2073fd37cd" prot="private" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>fitToMaximum</name></member>
+      <member refid="classAFTimeBlockEncoder_1af4406509603a330d4a6816abe6ba165a" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>InitializeDecode</name></member>
+      <member refid="classAFTimeBlockEncoder_1aa74cc68489cbc8ad141ac5c1b58580a1" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>MetaDataCount</name></member>
+      <member refid="classAFTimeBlockEncoder_1acc44093f4e2d21fc8a46278c36d596dd" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>Normalize</name></member>
+      <member refid="classTimeBlockEncoder_1a862b6db652dffb0f26de18040cd17003" prot="public" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>symbol_t</name></member>
+      <member refid="classAFTimeBlockEncoder_1a6547e9764a22ba3e1608953aae5f963a" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>SymbolCount</name></member>
+      <member refid="classAFTimeBlockEncoder_1ab0aca818ced3df7b408af705de931363" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>SymbolCount</name></member>
+      <member refid="classAFTimeBlockEncoder_1a8f7667c63f35bce50ab9e89b7825bdcf" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>SymbolsPerRow</name></member>
+      <member refid="classTimeBlockEncoder_1ac7625f48da81d7889414fa11ebb60ab6" prot="protected" virt="non-virtual"><scope>AFTimeBlockEncoder</scope><name>TimeBlockEncoder</name></member>
+      <member refid="classAFTimeBlockEncoder_1a4092ce0e9c30c4535fedb1a5eb08bec9" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>~AFTimeBlockEncoder</name></member>
+      <member refid="classTimeBlockEncoder_1a72a5b261c762374251384ae3f31f6f89" prot="public" virt="virtual"><scope>AFTimeBlockEncoder</scope><name>~TimeBlockEncoder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

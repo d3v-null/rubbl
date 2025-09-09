@@ -1,0 +1,1178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TaQLNodeHandler" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TaQLNodeHandler</compoundname>
+    <basecompoundref refid="classcasacore_1_1TaQLNodeVisitor" prot="public" virt="non-virtual">casacore::TaQLNodeVisitor</basecompoundref>
+    <includes refid="TaQLNodeHandler_8h" local="no">TaQLNodeHandler.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1TaQLNodeHandler_1a90238820b18985ae61648db165aea988" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classcasacore_1_1TableParseQuery" kindref="compound">TableParseQuery</ref> * &gt;</type>
+        <definition>std::vector&lt;TableParseQuery*&gt; casacore::TaQLNodeHandler::itsStack</definition>
+        <argsstring></argsstring>
+        <name>itsStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="207" column="15" bodyfile="tables/TaQL/TaQLNodeHandler.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TaQLNodeHandler_1a9f7e6ecb94cba576b950661de39e8f10" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> * &gt;</type>
+        <definition>std::vector&lt;const Table*&gt; casacore::TaQLNodeHandler::itsTempTables</definition>
+        <argsstring></argsstring>
+        <name>itsTempTables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="209" column="15" bodyfile="tables/TaQL/TaQLNodeHandler.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a2d19c88067acc5c9759103995fcebc8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::TaQLNodeHandler::~TaQLNodeHandler</definition>
+        <argsstring>()</argsstring>
+        <name>~TaQLNodeHandler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="96" column="11" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a618876d322862d652b9a9a70611c33f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::handleTree</definition>
+        <argsstring>(const TaQLNode &amp;tree, const std::vector&lt; const Table * &gt; &amp;)</argsstring>
+        <name>handleTree</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <declname>tree</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> * &gt; &amp;</type>
+          <defname>tempTables</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="100" column="18" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="47" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1aa250441827c44fffe39e32811a0b6ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitConstNode</definition>
+        <argsstring>(const TaQLConstNodeRep &amp;node)</argsstring>
+        <name>visitConstNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a475e9d2d38932f686e5dc2b4fe039f4f">visitConstNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLConstNodeRep" kindref="compound">TaQLConstNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="105" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="82" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a6734155da3f70118d1e6233925ccb865" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitRegexNode</definition>
+        <argsstring>(const TaQLRegexNodeRep &amp;node)</argsstring>
+        <name>visitRegexNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ac5526e9111394f5a05344613f4e9af8f">visitRegexNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLRegexNodeRep" kindref="compound">TaQLRegexNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="106" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="111" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a8c739f60c333fbd988f24a26c11743c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitUnaryNode</definition>
+        <argsstring>(const TaQLUnaryNodeRep &amp;node)</argsstring>
+        <name>visitUnaryNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a036d1a15c7f3e4354937752c04ba1e8b">visitUnaryNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLUnaryNodeRep" kindref="compound">TaQLUnaryNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="107" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="133" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1aa94ef33318fe303b77195301162fbfd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitBinaryNode</definition>
+        <argsstring>(const TaQLBinaryNodeRep &amp;node)</argsstring>
+        <name>visitBinaryNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a8008c365f627f8ba53453540103c167e">visitBinaryNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLBinaryNodeRep" kindref="compound">TaQLBinaryNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="108" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="157" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a59d48900d4bc1a764c3d84a0c30394b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitMultiNode</definition>
+        <argsstring>(const TaQLMultiNodeRep &amp;node)</argsstring>
+        <name>visitMultiNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a7e075d8ecd4ee66c3a05e7cf46c43328">visitMultiNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNodeRep" kindref="compound">TaQLMultiNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="109" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="217" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a497e39b7d5ee3948b0b637fd0d2f61fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitFuncNode</definition>
+        <argsstring>(const TaQLFuncNodeRep &amp;node)</argsstring>
+        <name>visitFuncNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ad6f430eb09a0a32cd133f33f9ddef6d8">visitFuncNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLFuncNodeRep" kindref="compound">TaQLFuncNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="110" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="243" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a9bcfded7c88ee5c1315db1b67b5083f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitRangeNode</definition>
+        <argsstring>(const TaQLRangeNodeRep &amp;node)</argsstring>
+        <name>visitRangeNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a6782b7db6f55306f9518052eca2bc462">visitRangeNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLRangeNodeRep" kindref="compound">TaQLRangeNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="111" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="308" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a83a72b3028fd47b79b185e94af5e524b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitIndexNode</definition>
+        <argsstring>(const TaQLIndexNodeRep &amp;node)</argsstring>
+        <name>visitIndexNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a0ca695e9148c24adbe1f79be59e7a32e">visitIndexNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLIndexNodeRep" kindref="compound">TaQLIndexNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="112" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="339" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a894edf1ce0cda3e5f667db32fdb4448d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitKeyColNode</definition>
+        <argsstring>(const TaQLKeyColNodeRep &amp;node)</argsstring>
+        <name>visitKeyColNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a3c89a60f1c0c28d27cdb8846a79e09bd">visitKeyColNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLKeyColNodeRep" kindref="compound">TaQLKeyColNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="113" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="361" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ad1d122f12483d8a13af28816c8a404b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitTableNode</definition>
+        <argsstring>(const TaQLTableNodeRep &amp;node)</argsstring>
+        <name>visitTableNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1abe4486e86594b546c58e3d0dcc34d579">visitTableNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLTableNodeRep" kindref="compound">TaQLTableNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="114" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="369" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ab7fb6d9906fe03fd534ba060c78915a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitColNode</definition>
+        <argsstring>(const TaQLColNodeRep &amp;node)</argsstring>
+        <name>visitColNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a5726e2d407d9f173097083d9006ee336">visitColNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLColNodeRep" kindref="compound">TaQLColNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="115" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="383" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1aa12d34ee3e70c777f11269979f1e18c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitColumnsNode</definition>
+        <argsstring>(const TaQLColumnsNodeRep &amp;node)</argsstring>
+        <name>visitColumnsNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1abf00eccbcff1f3f9470bd3952c79a0fe">visitColumnsNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLColumnsNodeRep" kindref="compound">TaQLColumnsNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="116" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="414" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a665a32cfc39d8cdfabb7e03ffbb6c4f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitJoinNode</definition>
+        <argsstring>(const TaQLJoinNodeRep &amp;node)</argsstring>
+        <name>visitJoinNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1afb471fe2f371e6b8d9882f05e159037b">visitJoinNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLJoinNodeRep" kindref="compound">TaQLJoinNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="117" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="432" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a37cc966d9f16c080bfb1202434c3edfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitGroupNode</definition>
+        <argsstring>(const TaQLGroupNodeRep &amp;node)</argsstring>
+        <name>visitGroupNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a9ff62445efb8ea8bde05cbf42865a492">visitGroupNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLGroupNodeRep" kindref="compound">TaQLGroupNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="118" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="450" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a08c6d0e4d4caedbb0e048faa46b92074" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitSortKeyNode</definition>
+        <argsstring>(const TaQLSortKeyNodeRep &amp;node)</argsstring>
+        <name>visitSortKeyNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a8f34e43d8907852b45f8c1dab0c06203">visitSortKeyNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLSortKeyNodeRep" kindref="compound">TaQLSortKeyNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="119" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="464" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ad6b5576c6b20f621d3cb18578a48a970" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitSortNode</definition>
+        <argsstring>(const TaQLSortNodeRep &amp;node)</argsstring>
+        <name>visitSortNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a00634c18948c5e6b78eb53c62a7183dc">visitSortNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLSortNodeRep" kindref="compound">TaQLSortNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="120" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="471" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ab46d2afaea29af39796225bd714d45eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitLimitOffNode</definition>
+        <argsstring>(const TaQLLimitOffNodeRep &amp;node)</argsstring>
+        <name>visitLimitOffNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1aa9cd4dbbea29636de94ee40573e1d35c">visitLimitOffNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLLimitOffNodeRep" kindref="compound">TaQLLimitOffNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="121" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="499" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a12658c0d7f04ecbfb2caec507e71df48" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitGivingNode</definition>
+        <argsstring>(const TaQLGivingNodeRep &amp;node)</argsstring>
+        <name>visitGivingNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1adb8d98e7fcf68e68416b2e920964d20e">visitGivingNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLGivingNodeRep" kindref="compound">TaQLGivingNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="122" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="520" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1acedb64623d3c0e3c8f8d126ff025a773" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitUpdExprNode</definition>
+        <argsstring>(const TaQLUpdExprNodeRep &amp;node)</argsstring>
+        <name>visitUpdExprNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a420a0ec42d1169e897fbe0bbc99cefd5">visitUpdExprNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLUpdExprNodeRep" kindref="compound">TaQLUpdExprNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="123" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="535" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1af87088bfe7173c7fe7025a991ad87d45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitSelectNode</definition>
+        <argsstring>(const TaQLSelectNodeRep &amp;node)</argsstring>
+        <name>visitSelectNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1aee693c272532d4e587fc234871b9d25b">visitSelectNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLSelectNodeRep" kindref="compound">TaQLSelectNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="124" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="567" bodyend="616"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a46e0c71f390ffe779aaa837cafaeeda5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitUpdateNode</definition>
+        <argsstring>(const TaQLUpdateNodeRep &amp;node)</argsstring>
+        <name>visitUpdateNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1acb29fe9734e763877636f5342ca7a04c">visitUpdateNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLUpdateNodeRep" kindref="compound">TaQLUpdateNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="125" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="618" bodyend="640"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a1af7b54e7dd1e1b04a2fcabf95dbf17a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitInsertNode</definition>
+        <argsstring>(const TaQLInsertNodeRep &amp;node)</argsstring>
+        <name>visitInsertNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a6a2f24746a0a5c50b86026215de32da0">visitInsertNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLInsertNodeRep" kindref="compound">TaQLInsertNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="126" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="642" bodyend="676"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a5bcebdf699800e3d364eb3f960e380bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitDeleteNode</definition>
+        <argsstring>(const TaQLDeleteNodeRep &amp;node)</argsstring>
+        <name>visitDeleteNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a7a6d1dd79430e0d88cdc92938ff56c26">visitDeleteNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLDeleteNodeRep" kindref="compound">TaQLDeleteNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="127" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="678" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a8c47a83ece3f6e6b9f881ec6d63da1b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitCountNode</definition>
+        <argsstring>(const TaQLCountNodeRep &amp;node)</argsstring>
+        <name>visitCountNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a026cf12e1852bee77fb4f0db11ac8299">visitCountNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLCountNodeRep" kindref="compound">TaQLCountNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="128" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="695" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a4c45fdc33cd86cc8bf621606687f4edf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitCalcNode</definition>
+        <argsstring>(const TaQLCalcNodeRep &amp;node)</argsstring>
+        <name>visitCalcNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a714c83f6d64904fa952fded12b0e0d90">visitCalcNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLCalcNodeRep" kindref="compound">TaQLCalcNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="129" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="721" bodyend="744"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ab1ce747381bf06d896f23217763d7180" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitCreTabNode</definition>
+        <argsstring>(const TaQLCreTabNodeRep &amp;node)</argsstring>
+        <name>visitCreTabNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a6f3b8af329f791d78680c3960cbc6fd6">visitCreTabNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLCreTabNodeRep" kindref="compound">TaQLCreTabNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="130" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="746" bodyend="768"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1afdc9b1f5537062fa29c84d62b71df9a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitColSpecNode</definition>
+        <argsstring>(const TaQLColSpecNodeRep &amp;node)</argsstring>
+        <name>visitColSpecNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a58f24246a7673ab735247102b0e7dd24">visitColSpecNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLColSpecNodeRep" kindref="compound">TaQLColSpecNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="131" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="770" bodyend="776"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ae2e2399b6b6f849faef7d5093a7c452b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitRecFldNode</definition>
+        <argsstring>(const TaQLRecFldNodeRep &amp;node)</argsstring>
+        <name>visitRecFldNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ad5a58fe89e1dc0a6d99b4acad5721f39">visitRecFldNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLRecFldNodeRep" kindref="compound">TaQLRecFldNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="132" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="778" bodyend="849"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ad87f71a912c6636d66c4996a93a81bf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitUnitNode</definition>
+        <argsstring>(const TaQLUnitNodeRep &amp;node)</argsstring>
+        <name>visitUnitNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ac535f6865b0f333e72602a7da515ee73">visitUnitNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLUnitNodeRep" kindref="compound">TaQLUnitNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="133" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="876" bodyend="881"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ab326db3cb1952ef67e8471918b25e0a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitAltTabNode</definition>
+        <argsstring>(const TaQLAltTabNodeRep &amp;node)</argsstring>
+        <name>visitAltTabNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a11d2f549477546fa05408573d06d7e3a">visitAltTabNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLAltTabNodeRep" kindref="compound">TaQLAltTabNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="134" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="883" bodyend="903"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a9f49463d18a6738444ee8e1d96cb5f8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitAddColNode</definition>
+        <argsstring>(const TaQLAddColNodeRep &amp;node)</argsstring>
+        <name>visitAddColNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ad9086df2d69ff0f65e65d2f06fa3d7dc">visitAddColNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLAddColNodeRep" kindref="compound">TaQLAddColNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="135" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="905" bodyend="912"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a9cf395a656cde15c48b982cc63261e9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitSetKeyNode</definition>
+        <argsstring>(const TaQLSetKeyNodeRep &amp;node)</argsstring>
+        <name>visitSetKeyNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a6b2506c1cc9fdb46cc4f0ab825a02d4d">visitSetKeyNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLSetKeyNodeRep" kindref="compound">TaQLSetKeyNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="136" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="914" bodyend="926"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ad8e37e6a1a047f5fad10df1fd93d948d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitRenDropNode</definition>
+        <argsstring>(const TaQLRenDropNodeRep &amp;node)</argsstring>
+        <name>visitRenDropNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1ab26f8be3e5383c42625624ec6ff1a9e6">visitRenDropNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLRenDropNodeRep" kindref="compound">TaQLRenDropNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="137" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="928" bodyend="965"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a6db2e36a70c2b085ce2e5a3508d2b7ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitAddRowNode</definition>
+        <argsstring>(const TaQLAddRowNodeRep &amp;node)</argsstring>
+        <name>visitAddRowNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a6ee16ebf57d59983747f40d6246cec11">visitAddRowNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLAddRowNodeRep" kindref="compound">TaQLAddRowNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="138" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="967" bodyend="973"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ae86f2675931e6f064312f1671393f590" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitConcTabNode</definition>
+        <argsstring>(const TaQLConcTabNodeRep &amp;node)</argsstring>
+        <name>visitConcTabNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a588c55f3eb96742e6c80e39c25e2587b">visitConcTabNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLConcTabNodeRep" kindref="compound">TaQLConcTabNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="139" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1016" bodyend="1065"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1af05fef40c992e9aaf2aa53ade8ef3487" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitShowNode</definition>
+        <argsstring>(const TaQLShowNodeRep &amp;node)</argsstring>
+        <name>visitShowNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a9fd1e724aa592322c5da663718e2036a">visitShowNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLShowNodeRep" kindref="compound">TaQLShowNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="140" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1068" bodyend="1111"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1acc5e43a313d8d189c983aafa56887341" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitCopyColNode</definition>
+        <argsstring>(const TaQLCopyColNodeRep &amp;node)</argsstring>
+        <name>visitCopyColNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a24cde4a09ce5888e86125ef54d2d6518">visitCopyColNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLCopyColNodeRep" kindref="compound">TaQLCopyColNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="141" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1114" bodyend="1141"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ac9a0964a5f585922d63bee9b84807889" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::visitDropTabNode</definition>
+        <argsstring>(const TaQLDropTabNodeRep &amp;node)</argsstring>
+        <name>visitDropTabNode</name>
+        <reimplements refid="classcasacore_1_1TaQLNodeVisitor_1a03ea80780acb4ef8a6ba65cf4c9fdaa6">visitDropTabNode</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLDropTabNodeRep" kindref="compound">TaQLDropTabNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="142" column="26" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1144" bodyend="1151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1aea78efe4d8e7d538d21141a8ea091752" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1TaQLNodeHRValue" kindref="compound">TaQLNodeHRValue</ref> &amp;</type>
+        <definition>const TaQLNodeHRValue &amp; casacore::TaQLNodeHandler::getHR</definition>
+        <argsstring>(const TaQLNodeResult &amp;)</argsstring>
+        <name>getHR</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref> &amp;</type>
+          <defname>res</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="146" column="32" bodyfile="tables/TaQL/TaQLNodeHandler.h" bodystart="327" bodyend="330"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a2bbb226d7216541e378aff05bc2cdc55" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableParseQuery" kindref="compound">TableParseQuery</ref> *</type>
+        <definition>TableParseQuery * casacore::TaQLNodeHandler::pushStack</definition>
+        <argsstring>(TableParseQuery::CommandType)</argsstring>
+        <name>pushStack</name>
+        <param>
+          <type><ref refid="classcasacore_1_1TableParseQuery_1a3906a52e77114692d0542dbeeff8ed49" kindref="member">TableParseQuery::CommandType</ref></type>
+          <defname>type</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="150" column="19" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a4e1ed2d41f3b4a08c79ff14807388712" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableParseQuery" kindref="compound">TableParseQuery</ref> *</type>
+        <definition>TableParseQuery * casacore::TaQLNodeHandler::topStack</definition>
+        <argsstring>() const</argsstring>
+        <name>topStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="153" column="19" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="63" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ac84162d877d3a439d1022bee88f5a6b1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::popStack</definition>
+        <argsstring>()</argsstring>
+        <name>popStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="156" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="68" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a5f8769a4db15d74c2db611e8f0120356" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::clearStack</definition>
+        <argsstring>()</argsstring>
+        <name>clearStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="159" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1af2ec27d51c657e69e3f59f9aef4c55a2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref></type>
+        <definition>TaQLNodeResult casacore::TaQLNodeHandler::handleSelect</definition>
+        <argsstring>(const TaQLSelectNodeRep &amp;node, Bool doExec)</argsstring>
+        <name>handleSelect</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLSelectNodeRep" kindref="compound">TaQLSelectNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>doExec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="163" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a5cb34ae06ac5774e006ee051e106a0fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleTableName</definition>
+        <argsstring>(TaQLNodeHRValue *hrval, const TaQLNode &amp;node)</argsstring>
+        <name>handleTableName</name>
+        <param>
+          <type><ref refid="classcasacore_1_1TaQLNodeHRValue" kindref="compound">TaQLNodeHRValue</ref> *</type>
+          <declname>hrval</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="167" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="975" bodyend="987"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ab3f24c130d76f8457c47ab7745152286" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleTables</definition>
+        <argsstring>(const TaQLMultiNode &amp;, Bool addToFromList=True)</argsstring>
+        <name>handleTables</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToFromList</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="170" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="989" bodyend="1002"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1acbbc46619d3cae98192572bdde513a0c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleJoins</definition>
+        <argsstring>(const TaQLMultiNode &amp;node)</argsstring>
+        <name>handleJoins</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="173" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1004" bodyend="1013"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a7ca2e1ae0d201974b5d932dc00e7dde4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref></type>
+        <definition>Table casacore::TaQLNodeHandler::makeConcatTable</definition>
+        <argsstring>(const TaQLMultiNodeRep &amp;node)</argsstring>
+        <name>makeConcatTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNodeRep" kindref="compound">TaQLMultiNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="176" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1afa534c6b4a32ab550ae7b4b7978772e6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleWhere</definition>
+        <argsstring>(const TaQLNode &amp;)</argsstring>
+        <name>handleWhere</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="179" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1153" bodyend="1160"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a531029f4ef0b8a2f952c111bace08754" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleHaving</definition>
+        <argsstring>(const TaQLNode &amp;)</argsstring>
+        <name>handleHaving</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="182" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1162" bodyend="1169"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a5c36601ef260f57e5e19e89027a25ed3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleUpdate</definition>
+        <argsstring>(const TaQLMultiNode &amp;)</argsstring>
+        <name>handleUpdate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="185" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1171" bodyend="1180"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a352f0a08168e792c823d9422b0649a9c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleInsCol</definition>
+        <argsstring>(const TaQLMultiNode &amp;)</argsstring>
+        <name>handleInsCol</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="188" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1182" bodyend="1196"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1adb0f0b78809e0d44de00687d74dec635" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleInsVal</definition>
+        <argsstring>(const TaQLNode &amp;)</argsstring>
+        <name>handleInsVal</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="191" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1198" bodyend="1232"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a796ab8f1d155bf44a79a436819e606ae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleLikeDrop</definition>
+        <argsstring>(const TaQLMultiNode &amp;node)</argsstring>
+        <name>handleLikeDrop</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="194" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1234" bodyend="1270"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a3a481fd44ff0ebce4deca7b55382c500" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TaQLNodeHandler::handleColSpecs</definition>
+        <argsstring>(const TaQLMultiNode &amp;)</argsstring>
+        <name>handleColSpecs</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="197" column="8" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="1272" bodyend="1284"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1a1cc4132ebcb127e2a080716571c5ec9f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref></type>
+        <definition>Record casacore::TaQLNodeHandler::handleMultiRecFld</definition>
+        <argsstring>(const TaQLNode &amp;node)</argsstring>
+        <name>handleMultiRecFld</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="200" column="10" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="851" bodyend="874"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TaQLNodeHandler_1ad6d7a9ee4b7df6b51171ab9dc1a21dd4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableExprNode" kindref="compound">TableExprNode</ref></type>
+        <definition>TableExprNode casacore::TaQLNodeHandler::handleIdFunc</definition>
+        <argsstring>(const TaQLFuncNodeRep &amp;node)</argsstring>
+        <name>handleIdFunc</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLFuncNodeRep" kindref="compound">TaQLFuncNodeRep</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/TaQLNodeHandler.h" line="203" column="17" bodyfile="tables/TaQL/TaQLNodeHandler.cc" bodystart="266" bodyend="306"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>casacore::TaQLNodeHandler</label>
+        <link refid="classcasacore_1_1TaQLNodeHandler"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::TaQLNodeVisitor</label>
+        <link refid="classcasacore_1_1TaQLNodeVisitor"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>casacore::TaQLNodeHandler</label>
+        <link refid="classcasacore_1_1TaQLNodeHandler"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::TaQLNodeVisitor</label>
+        <link refid="classcasacore_1_1TaQLNodeVisitor"/>
+      </node>
+    </collaborationgraph>
+    <location file="tables/TaQL/TaQLNodeHandler.h" line="93" column="1" bodyfile="tables/TaQL/TaQLNodeHandler.h" bodystart="94" bodyend="210"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a5f8769a4db15d74c2db611e8f0120356" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>clearStack</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1aea78efe4d8e7d538d21141a8ea091752" prot="public" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>getHR</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a3a481fd44ff0ebce4deca7b55382c500" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleColSpecs</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a531029f4ef0b8a2f952c111bace08754" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleHaving</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ad6d7a9ee4b7df6b51171ab9dc1a21dd4" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleIdFunc</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a352f0a08168e792c823d9422b0649a9c" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleInsCol</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1adb0f0b78809e0d44de00687d74dec635" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleInsVal</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1acbbc46619d3cae98192572bdde513a0c" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleJoins</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a796ab8f1d155bf44a79a436819e606ae" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleLikeDrop</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a1cc4132ebcb127e2a080716571c5ec9f" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleMultiRecFld</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1af2ec27d51c657e69e3f59f9aef4c55a2" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleSelect</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a5cb34ae06ac5774e006ee051e106a0fb" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleTableName</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ab3f24c130d76f8457c47ab7745152286" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleTables</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a618876d322862d652b9a9a70611c33f6" prot="public" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleTree</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a5c36601ef260f57e5e19e89027a25ed3" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleUpdate</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1afa534c6b4a32ab550ae7b4b7978772e6" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>handleWhere</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a90238820b18985ae61648db165aea988" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>itsStack</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a9f7e6ecb94cba576b950661de39e8f10" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>itsTempTables</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a7ca2e1ae0d201974b5d932dc00e7dde4" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>makeConcatTable</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ac84162d877d3a439d1022bee88f5a6b1" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>popStack</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a2bbb226d7216541e378aff05bc2cdc55" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>pushStack</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a4e1ed2d41f3b4a08c79ff14807388712" prot="private" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>topStack</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a9f49463d18a6738444ee8e1d96cb5f8b" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitAddColNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a6db2e36a70c2b085ce2e5a3508d2b7ce" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitAddRowNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ab326db3cb1952ef67e8471918b25e0a0" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitAltTabNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1aa94ef33318fe303b77195301162fbfd9" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitBinaryNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a4c45fdc33cd86cc8bf621606687f4edf" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitCalcNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ab7fb6d9906fe03fd534ba060c78915a5" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitColNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1afdc9b1f5537062fa29c84d62b71df9a2" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitColSpecNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1aa12d34ee3e70c777f11269979f1e18c5" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitColumnsNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ae86f2675931e6f064312f1671393f590" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitConcTabNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1aa250441827c44fffe39e32811a0b6ec2" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitConstNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1acc5e43a313d8d189c983aafa56887341" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitCopyColNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a8c47a83ece3f6e6b9f881ec6d63da1b3" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitCountNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ab1ce747381bf06d896f23217763d7180" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitCreTabNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a5bcebdf699800e3d364eb3f960e380bb" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitDeleteNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ac9a0964a5f585922d63bee9b84807889" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitDropTabNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a497e39b7d5ee3948b0b637fd0d2f61fd" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitFuncNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a12658c0d7f04ecbfb2caec507e71df48" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitGivingNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a37cc966d9f16c080bfb1202434c3edfb" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitGroupNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a83a72b3028fd47b79b185e94af5e524b" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitIndexNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a1af7b54e7dd1e1b04a2fcabf95dbf17a" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitInsertNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a665a32cfc39d8cdfabb7e03ffbb6c4f8" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitJoinNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a894edf1ce0cda3e5f667db32fdb4448d" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitKeyColNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ab46d2afaea29af39796225bd714d45eb" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitLimitOffNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a59d48900d4bc1a764c3d84a0c30394b9" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitMultiNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeVisitor_1a37365cadb2ea30d40d1251f82c137ee0" prot="protected" virt="non-virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a9bcfded7c88ee5c1315db1b67b5083f3" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitRangeNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ae2e2399b6b6f849faef7d5093a7c452b" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitRecFldNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a6734155da3f70118d1e6233925ccb865" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitRegexNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ad8e37e6a1a047f5fad10df1fd93d948d" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitRenDropNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1af87088bfe7173c7fe7025a991ad87d45" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitSelectNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a9cf395a656cde15c48b982cc63261e9a" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitSetKeyNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1af05fef40c992e9aaf2aa53ade8ef3487" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitShowNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a08c6d0e4d4caedbb0e048faa46b92074" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitSortKeyNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ad6b5576c6b20f621d3cb18578a48a970" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitSortNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ad1d122f12483d8a13af28816c8a404b3" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitTableNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a8c739f60c333fbd988f24a26c11743c4" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitUnaryNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1ad87f71a912c6636d66c4996a93a81bf2" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitUnitNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a46e0c71f390ffe779aaa837cafaeeda5" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitUpdateNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1acedb64623d3c0e3c8f8d126ff025a773" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>visitUpdExprNode</name></member>
+      <member refid="classcasacore_1_1TaQLNodeHandler_1a2d19c88067acc5c9759103995fcebc8c" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>~TaQLNodeHandler</name></member>
+      <member refid="classcasacore_1_1TaQLNodeVisitor_1a56995eed82bc12f2a3235cb36609a85c" prot="public" virt="virtual"><scope>casacore::TaQLNodeHandler</scope><name>~TaQLNodeVisitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

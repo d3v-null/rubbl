@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1COWPtr" kind="class" language="C++" prot="public">
+    <compoundname>casacore::COWPtr</compoundname>
+    <includes refid="COWPtr_8h" local="no">COWPtr.h</includes>
+    <innerclass refid="classcasacore_1_1COWPtr_1_1Deleter" prot="private">casacore::COWPtr::Deleter</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1COWPtr_1a406876218b3195da0b41e8d29cc9b519" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>std::shared_ptr&lt;T&gt; casacore::COWPtr&lt; T &gt;::obj_p</definition>
+        <argsstring></argsstring>
+        <name>obj_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="269" column="19" bodyfile="casa/Utilities/COWPtr.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1COWPtr_1a2941e6f7132be6e3ada0f913f10ce18e" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::COWPtr&lt; T &gt;::const_p</definition>
+        <argsstring></argsstring>
+        <name>const_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="270" column="8" bodyfile="casa/Utilities/COWPtr.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a14fd93b1b77ebf61df63b130436ac469" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::COWPtr&lt; T &gt;::COWPtr</definition>
+        <argsstring>()</argsstring>
+        <name>COWPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="201" column="10" bodyfile="casa/Utilities/COWPtr.h" bodystart="276" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a5fab28930351c4ae0a140ace70d27066" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::COWPtr&lt; T &gt;::COWPtr</definition>
+        <argsstring>(T *obj, Bool deleteIt=True, Bool readOnly=False)</argsstring>
+        <name>COWPtr</name>
+        <param>
+          <type>T *</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>deleteIt</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>readOnly</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="214" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1aa1a6156942b7da2834d18c4727b4c1a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::COWPtr&lt; T &gt;::COWPtr</definition>
+        <argsstring>(const COWPtr&lt; T &gt; &amp;other)</argsstring>
+        <name>COWPtr</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1COWPtr" kindref="compound">COWPtr</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="217" column="10" bodyfile="casa/Utilities/COWPtr.h" bodystart="284" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a53aad343f42c1770e39eeeb0d8861534" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1COWPtr" kindref="compound">COWPtr</ref> &amp;</type>
+        <definition>COWPtr&lt; T &gt; &amp; casacore::COWPtr&lt; T &gt;::operator=</definition>
+        <argsstring>(const COWPtr&lt; T &gt; &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1COWPtr" kindref="compound">COWPtr</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="220" column="17" bodyfile="casa/Utilities/COWPtr.h" bodystart="293" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a040aefeac3bfa521b412f3dfd11b4814" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T * casacore::COWPtr&lt; T &gt;::operator-&gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator-&gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="223" column="18" bodyfile="casa/Utilities/COWPtr.h" bodystart="302" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1ab328d12f5e70eb7bc0d53fa7feed88a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; casacore::COWPtr&lt; T &gt;::operator*</definition>
+        <argsstring>() const</argsstring>
+        <name>operator*</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="226" column="18" bodyfile="casa/Utilities/COWPtr.h" bodystart="307" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1ab3b8cbd306d4f93e8dda7be1aef6955a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::COWPtr&lt; T &gt;::set</definition>
+        <argsstring>(T *obj, Bool deleteIt=True, Bool readOnly=False)</argsstring>
+        <name>set</name>
+        <param>
+          <type>T *</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>deleteIt</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>readOnly</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="241" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1ac61dad45173d550f100a38f2e5a08891" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; casacore::COWPtr&lt; T &gt;::ref</definition>
+        <argsstring>() const</argsstring>
+        <name>ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="244" column="18" bodyfile="casa/Utilities/COWPtr.h" bodystart="312" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1ab900751b14d729ff78a880dd086b8016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; casacore::COWPtr&lt; T &gt;::rwRef</definition>
+        <argsstring>()</argsstring>
+        <name>rwRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="250" column="12" bodyfile="casa/Utilities/COWPtr.h" bodystart="317" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a0af7c6bb6fb62fb21a7d3ef98119f410" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::COWPtr&lt; T &gt;::isNull</definition>
+        <argsstring>() const</argsstring>
+        <name>isNull</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="253" column="15" bodyfile="casa/Utilities/COWPtr.h" bodystart="323" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a04a6a185405dd6225c55da3351f13d5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::COWPtr&lt; T &gt;::isReadOnly</definition>
+        <argsstring>() const</argsstring>
+        <name>isReadOnly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="256" column="15" bodyfile="casa/Utilities/COWPtr.h" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a34919cf23f9e62de16834ce6821aa18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::COWPtr&lt; T &gt;::isUnique</definition>
+        <argsstring>() const</argsstring>
+        <name>isUnique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="259" column="15" bodyfile="casa/Utilities/COWPtr.h" bodystart="333" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1COWPtr_1a182418b4b5acc31b5b80463f41616ad8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::COWPtr&lt; T &gt;::makeUnique</definition>
+        <argsstring>()</argsstring>
+        <name>makeUnique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Utilities/COWPtr.h" line="266" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="casa/Utilities/COWPtr.h" line="182" column="12" bodyfile="casa/Utilities/COWPtr.h" bodystart="183" bodyend="271"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1COWPtr_1a2941e6f7132be6e3ada0f913f10ce18e" prot="protected" virt="non-virtual"><scope>casacore::COWPtr</scope><name>const_p</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a14fd93b1b77ebf61df63b130436ac469" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>COWPtr</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a5fab28930351c4ae0a140ace70d27066" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>COWPtr</name></member>
+      <member refid="classcasacore_1_1COWPtr_1aa1a6156942b7da2834d18c4727b4c1a6" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>COWPtr</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a0af7c6bb6fb62fb21a7d3ef98119f410" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>isNull</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a04a6a185405dd6225c55da3351f13d5b" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>isReadOnly</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a34919cf23f9e62de16834ce6821aa18e" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>isUnique</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a182418b4b5acc31b5b80463f41616ad8" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>makeUnique</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a406876218b3195da0b41e8d29cc9b519" prot="protected" virt="non-virtual"><scope>casacore::COWPtr</scope><name>obj_p</name></member>
+      <member refid="classcasacore_1_1COWPtr_1ab328d12f5e70eb7bc0d53fa7feed88a2" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>operator*</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a040aefeac3bfa521b412f3dfd11b4814" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>operator-&gt;</name></member>
+      <member refid="classcasacore_1_1COWPtr_1a53aad343f42c1770e39eeeb0d8861534" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1COWPtr_1ac61dad45173d550f100a38f2e5a08891" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>ref</name></member>
+      <member refid="classcasacore_1_1COWPtr_1ab900751b14d729ff78a880dd086b8016" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>rwRef</name></member>
+      <member refid="classcasacore_1_1COWPtr_1ab3b8cbd306d4f93e8dda7be1aef6955a" prot="public" virt="non-virtual"><scope>casacore::COWPtr</scope><name>set</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,897 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1LogSink" kind="class" language="C++" prot="public">
+    <compoundname>casacore::LogSink</compoundname>
+    <basecompoundref refid="classcasacore_1_1LogSinkInterface" prot="public" virt="non-virtual">casacore::LogSinkInterface</basecompoundref>
+    <includes refid="LogSink_8h" local="no">LogSink.h</includes>
+    <innerclass refid="classcasacore_1_1LogSink_1_1LsiIntermediate" prot="private">casacore::LogSink::LsiIntermediate</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1LogSink_1a42259e75a70dfb247d93769db5f761ae" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;LogSinkInterface&gt; casacore::LogSink::local_sink_p</definition>
+        <argsstring></argsstring>
+        <name>local_sink_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="303" column="19" bodyfile="casa/Logging/LogSink.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1LogSink_1a70957b001decd39f852c4f095eda67dd" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; LsiIntermediate &gt;</type>
+        <definition>std::shared_ptr&lt;LsiIntermediate&gt; casacore::LogSink::local_ref_to_global_p</definition>
+        <argsstring></argsstring>
+        <name>local_ref_to_global_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="311" column="19" bodyfile="casa/Logging/LogSink.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1LogSink_1aa52219cfa35f12e757311b807c0d4bd9" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::LogSink::useGlobalSink_p</definition>
+        <argsstring></argsstring>
+        <name>useGlobalSink_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="312" column="8" bodyfile="casa/Logging/LogSink.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1LogSink_1af8eaafbd185ed21c67054bd192677ee9" prot="private" static="yes" mutable="no">
+        <type>std::shared_ptr&lt; LsiIntermediate &gt;</type>
+        <definition>std::shared_ptr&lt; LogSink::LsiIntermediate &gt; casacore::LogSink::global_sink_p</definition>
+        <argsstring></argsstring>
+        <name>global_sink_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="304" column="26" bodyfile="casa/Logging/LogSink.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1LogSink_1aef3b5eb4758f7feb044c4a453db53b51" prot="private" static="yes" mutable="no">
+        <type>std::once_flag</type>
+        <definition>std::once_flag casacore::LogSink::theirCallOnceFlag</definition>
+        <argsstring></argsstring>
+        <name>theirCallOnceFlag</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="305" column="25" bodyfile="casa/Logging/LogSink.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(LogMessage::Priority filter=LogMessage::NORMAL, Bool nullSink=True)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref></type>
+          <declname>filter</declname>
+          <defval><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4af75d8b953bfc0ee6a71100cd656816b4" kindref="member">LogMessage::NORMAL</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>nullSink</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="145" column="12" bodyfile="casa/Logging/LogSink.cc" bodystart="53" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a837fc5210a9e13baa74605721f8eb93d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogFilterInterface &amp;filter, Bool nullSink=True)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>nullSink</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="147" column="12" bodyfile="casa/Logging/LogSink.cc" bodystart="68" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a5c6c7c5492c4c62add74d4e117505651" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(LogMessage::Priority filter, ostream *os, Bool useGlobalSink=True)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref></type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>ostream *</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>useGlobalSink</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="154" column="3" bodyfile="casa/Logging/LogSink.cc" bodystart="83" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a0b0fdef0095cefcd3a06a808206ea789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogFilterInterface &amp;filter, ostream *os, Bool useGlobalSink=True)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>ostream *</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>useGlobalSink</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="156" column="3" bodyfile="casa/Logging/LogSink.cc" bodystart="95" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1ad4b34e3e1b0b00a34bf25dc9ef9f35b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogFilterInterface &amp;filter, const std::shared_ptr&lt; LogSinkInterface &gt; &amp;)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &gt; &amp;</type>
+          <defname>sink</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="163" column="3" bodyfile="casa/Logging/LogSink.cc" bodystart="107" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a7e444a11b70ede9789e5b137c75f964e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogSink &amp;other)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="170" column="3" bodyfile="casa/Logging/LogSink.cc" bodystart="117" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a454c5180d467707bc9a64d72e4338472" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref> &amp;</type>
+        <definition>LogSink &amp; casacore::LogSink::operator=</definition>
+        <argsstring>(const LogSink &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="171" column="11" bodyfile="casa/Logging/LogSink.cc" bodystart="125" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a1d9631b97c55d526115e5d478318fb8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogFilterInterface &amp;filter, const String &amp;fileName, Int n=0)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>n</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="179" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a3739d2877429c0c443ac4c83351b835c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(const LogFilterInterface &amp;filter, const Char *fileName, Int n=0)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1aee8247dad3ca180405bdb6835513a5ad" kindref="member">Char</ref> *</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>n</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="180" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a9266730eb3d4ca34e513cab21356150d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(LogMessage::Priority, const String &amp;fileName, Int n=0)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref></type>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>n</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="181" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a203d6fcc6126671882ef2fceddcf98aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::LogSink</definition>
+        <argsstring>(LogMessage::Priority, const Char *fileName, Int n=0)</argsstring>
+        <name>LogSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref></type>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1aee8247dad3ca180405bdb6835513a5ad" kindref="member">Char</ref> *</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>n</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="182" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1aea8d6b3b904fe714ff7f3b02284e8a54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::LogSink::~LogSink</definition>
+        <argsstring>()</argsstring>
+        <name>~LogSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="184" column="3" bodyfile="casa/Logging/LogSink.cc" bodystart="137" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1ac8c78681c431da028cdd79a997b7ef81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::LogSink::post</definition>
+        <argsstring>(const LogMessage &amp;message)</argsstring>
+        <name>post</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="188" column="8" bodyfile="casa/Logging/LogSink.cc" bodystart="142" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a3f7ab3b8c748ac768bd6cee2cac14d9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::LogSink::postLocally</definition>
+        <argsstring>(const LogMessage &amp;message)</argsstring>
+        <name>postLocally</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a768580be30c61b01d735b46ae5bb8cfe">postLocally</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="195" column="16" bodyfile="casa/Logging/LogSink.cc" bodystart="269" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a823ffc9fc4bb8270bd8721b67f4e94cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EXC</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void casacore::LogSink::postThenThrow</definition>
+        <argsstring>(const LogMessage &amp;message, const EXC &amp;exc)</argsstring>
+        <name>postThenThrow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>const EXC &amp;</type>
+          <declname>exc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="202" column="19" bodyfile="casa/Logging/LogSink.h" bodystart="202" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a03e3deec9d05870747ce0b7570778c9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::LogSink::nelements</definition>
+        <argsstring>() const</argsstring>
+        <name>nelements</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1ad07b3e7dfe168c80e0cd46a2b0048c2c">nelements</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="209" column="16" bodyfile="casa/Logging/LogSink.cc" bodystart="196" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1aa17cb47509a772484c99c6a7cae3a639" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref></type>
+        <definition>Double casacore::LogSink::getTime</definition>
+        <argsstring>(uInt i) const</argsstring>
+        <name>getTime</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a8525f928ba8d225428bb401aee0fcdfe">getTime</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="213" column="18" bodyfile="casa/Logging/LogSink.cc" bodystart="201" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1ab6a24abc9106ca5ecdbc049d3d4ffc4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::getPriority</definition>
+        <argsstring>(uInt i) const</argsstring>
+        <name>getPriority</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a7370fec30e3deea172d47645ee885a7d">getPriority</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="214" column="18" bodyfile="casa/Logging/LogSink.cc" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a898889d9371766cf9883f89c6593c6b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::getMessage</definition>
+        <argsstring>(uInt i) const</argsstring>
+        <name>getMessage</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1aa2ebe72e907b21315025a43699353cc6">getMessage</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="215" column="18" bodyfile="casa/Logging/LogSink.cc" bodystart="209" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a35d2a819fa91c7ddb9f55376682e7512" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::getLocation</definition>
+        <argsstring>(uInt i) const</argsstring>
+        <name>getLocation</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a7dc632624a49359af5e78a75d3dbf16a">getLocation</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="216" column="18" bodyfile="casa/Logging/LogSink.cc" bodystart="213" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a94f6451a13eb38abe72d9bebf22036e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::getObjectID</definition>
+        <argsstring>(uInt i) const</argsstring>
+        <name>getObjectID</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1ae3b952b27f0a8ba94f2ec105dd06444b">getObjectID</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="217" column="18" bodyfile="casa/Logging/LogSink.cc" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a4576f1de35f27f293853510561e00003" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::writeLocally</definition>
+        <argsstring>(Double time, const String &amp;message, const String &amp;priority, const String &amp;location, const String &amp;objectID)</argsstring>
+        <name>writeLocally</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a9de626cc6eb86f86c8320f1d3a36fe40">writeLocally</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref></type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>objectID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="222" column="16" bodyfile="casa/Logging/LogSink.cc" bodystart="278" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a7aeeb3bd7280898f99eea5c74f758f50" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::clearLocally</definition>
+        <argsstring>()</argsstring>
+        <name>clearLocally</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a6978bfa27aace5ac1f0d1235cbbe042c">clearLocally</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="227" column="16" bodyfile="casa/Logging/LogSink.cc" bodystart="285" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+        <definition>const LogFilterInterface &amp; casacore::LogSink::filter</definition>
+        <argsstring>() const</argsstring>
+        <name>filter</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a6388feb8467e30c3a02f7621ef52ff55">filter</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="232" column="36" bodyfile="casa/Logging/LogSink.cc" bodystart="222" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a57ba3abe8c8a1edc583c8bcfdfb66554" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &amp;</type>
+        <definition>LogSinkInterface &amp; casacore::LogSink::filter</definition>
+        <argsstring>(const LogFilterInterface &amp;filter)</argsstring>
+        <name>filter</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1ab4791a286951ee81ebc61a39688ef7b7">filter</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="233" column="28" bodyfile="casa/Logging/LogSink.cc" bodystart="227" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a8a67f372be3748a962976aee52a28c96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &amp;</type>
+        <definition>const LogSinkInterface &amp; casacore::LogSink::localSink</definition>
+        <argsstring>() const</argsstring>
+        <name>localSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="238" column="26" bodyfile="casa/Logging/LogSink.cc" bodystart="232" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1ab11e98ea16292a0eeedabe30f78fed53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &amp;</type>
+        <definition>LogSinkInterface &amp; casacore::LogSink::localSink</definition>
+        <argsstring>()</argsstring>
+        <name>localSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="239" column="20" bodyfile="casa/Logging/LogSink.cc" bodystart="237" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a0c9352d84a66bbf9f77d7d381603d7a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref> &amp;</type>
+        <definition>LogSink &amp; casacore::LogSink::localSink</definition>
+        <argsstring>(LogSinkInterface *&amp;fromNew)</argsstring>
+        <name>localSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> *&amp;</type>
+          <declname>fromNew</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="240" column="11" bodyfile="casa/Logging/LogSink.cc" bodystart="242" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a03a042a7bea788ee62b8dfd299d872bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::flush</definition>
+        <argsstring>(Bool global=True)</argsstring>
+        <name>flush</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a231199e9ce8f5a95b52a3836107f4f76">flush</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>global</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="254" column="16" bodyfile="casa/Logging/LogSink.cc" bodystart="290" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a0897883013ff88064423bd060f3b95b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <reimplements refid="classcasacore_1_1LogSinkInterface_1a8c652a5d8e992e090692b246515d3ffc">id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="259" column="10" bodyfile="casa/Logging/LogSink.cc" bodystart="49" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1ad8c0fed1ce8bb5261ce5ccea2c6a62e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::LogSink::postGlobally</definition>
+        <argsstring>(const LogMessage &amp;message)</argsstring>
+        <name>postGlobally</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="192" column="15" bodyfile="casa/Logging/LogSink.cc" bodystart="152" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a452c61b00a00703f34ec533297ba1b4b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::postGloballyThenThrow</definition>
+        <argsstring>(const LogMessage &amp;message)</argsstring>
+        <name>postGloballyThenThrow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="205" column="15" bodyfile="casa/Logging/LogSink.cc" bodystart="179" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a5f53fc4796bf9753769d8ed75b8b3fd0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> &amp;</type>
+        <definition>LogSinkInterface &amp; casacore::LogSink::globalSink</definition>
+        <argsstring>()</argsstring>
+        <name>globalSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="248" column="27" bodyfile="casa/Logging/LogSink.cc" bodystart="255" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a07e07850eff07f02da4008f7b010e269" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::globalSink</definition>
+        <argsstring>(LogSinkInterface *&amp;fromNew)</argsstring>
+        <name>globalSink</name>
+        <param>
+          <type><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref> *&amp;</type>
+          <declname>fromNew</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="249" column="15" bodyfile="casa/Logging/LogSink.cc" bodystart="261" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a91151ff6448973015f668a64b399b0f0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::LogSink::nullGlobalSink</definition>
+        <argsstring>()</argsstring>
+        <name>nullGlobalSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="250" column="15" bodyfile="casa/Logging/LogSink.cc" bodystart="250" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a6b884db298f29dfd43a99cdfc1f16438" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::LogSink::localId</definition>
+        <argsstring>()</argsstring>
+        <name>localId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="257" column="17" bodyfile="casa/Logging/LogSink.cc" bodystart="45" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1af9fe9cec9918f5c830ea01f372af51a4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::preparePostThenThrow</definition>
+        <argsstring>(const LogMessage &amp;message, const AipsError &amp;x)</argsstring>
+        <name>preparePostThenThrow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1AipsError" kindref="compound">AipsError</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="297" column="8" bodyfile="casa/Logging/LogSink.cc" bodystart="162" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcasacore_1_1LogSink_1a3852362775d7ede8029fe9c4b74d3e84" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::LogSink::createGlobalSink</definition>
+        <argsstring>()</argsstring>
+        <name>createGlobalSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Logging/LogSink.h" line="300" column="15" bodyfile="casa/Logging/LogSink.cc" bodystart="300" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>casacore::LogSinkInterface</label>
+        <link refid="classcasacore_1_1LogSinkInterface"/>
+      </node>
+      <node id="1">
+        <label>casacore::LogSink</label>
+        <link refid="classcasacore_1_1LogSink"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>casacore::LogSinkInterface</label>
+        <link refid="classcasacore_1_1LogSinkInterface"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>taskName</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="1">
+        <label>casacore::LogSink</label>
+        <link refid="classcasacore_1_1LogSink"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::string</label>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="casa/Logging/LogSink.h" line="137" column="1" bodyfile="casa/Logging/LogSink.h" bodystart="138" bodyend="313"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1LogSinkInterface_1ac7c92ae7f5cfe7b67508f466ed6b7994" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>cerrToo</name></member>
+      <member refid="classcasacore_1_1LogSink_1a7aeeb3bd7280898f99eea5c74f758f50" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>clearLocally</name></member>
+      <member refid="classcasacore_1_1LogSink_1a3852362775d7ede8029fe9c4b74d3e84" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>createGlobalSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>filter</name></member>
+      <member refid="classcasacore_1_1LogSink_1a57ba3abe8c8a1edc583c8bcfdfb66554" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>filter</name></member>
+      <member refid="classcasacore_1_1LogSink_1a03a042a7bea788ee62b8dfd299d872bb" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>flush</name></member>
+      <member refid="classcasacore_1_1LogSink_1a35d2a819fa91c7ddb9f55376682e7512" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>getLocation</name></member>
+      <member refid="classcasacore_1_1LogSink_1a898889d9371766cf9883f89c6593c6b7" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>getMessage</name></member>
+      <member refid="classcasacore_1_1LogSink_1a94f6451a13eb38abe72d9bebf22036e7" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>getObjectID</name></member>
+      <member refid="classcasacore_1_1LogSink_1ab6a24abc9106ca5ecdbc049d3d4ffc4e" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>getPriority</name></member>
+      <member refid="classcasacore_1_1LogSink_1aa17cb47509a772484c99c6a7cae3a639" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>getTime</name></member>
+      <member refid="classcasacore_1_1LogSink_1af8eaafbd185ed21c67054bd192677ee9" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>global_sink_p</name></member>
+      <member refid="classcasacore_1_1LogSink_1a5f53fc4796bf9753769d8ed75b8b3fd0" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>globalSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a07e07850eff07f02da4008f7b010e269" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>globalSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a0897883013ff88064423bd060f3b95b4" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>id</name></member>
+      <member refid="classcasacore_1_1LogSink_1a70957b001decd39f852c4f095eda67dd" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>local_ref_to_global_p</name></member>
+      <member refid="classcasacore_1_1LogSink_1a42259e75a70dfb247d93769db5f761ae" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>local_sink_p</name></member>
+      <member refid="classcasacore_1_1LogSink_1a6b884db298f29dfd43a99cdfc1f16438" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>localId</name></member>
+      <member refid="classcasacore_1_1LogSink_1a8a67f372be3748a962976aee52a28c96" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>localSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1ab11e98ea16292a0eeedabe30f78fed53" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>localSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a0c9352d84a66bbf9f77d7d381603d7a2" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>localSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a837fc5210a9e13baa74605721f8eb93d" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a5c6c7c5492c4c62add74d4e117505651" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a0b0fdef0095cefcd3a06a808206ea789" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1ad4b34e3e1b0b00a34bf25dc9ef9f35b5" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a7e444a11b70ede9789e5b137c75f964e" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a1d9631b97c55d526115e5d478318fb8e" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a3739d2877429c0c443ac4c83351b835c" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a9266730eb3d4ca34e513cab21356150d" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a203d6fcc6126671882ef2fceddcf98aa" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSink</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSinkInterface</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1a7f4bd6258710276277490a217a18e91e" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSinkInterface</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1a0b1531235cd04d99f80204981f5eb7c6" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>LogSinkInterface</name></member>
+      <member refid="classcasacore_1_1LogSink_1a03e3deec9d05870747ce0b7570778c9a" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>nelements</name></member>
+      <member refid="classcasacore_1_1LogSink_1a91151ff6448973015f668a64b399b0f0" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>nullGlobalSink</name></member>
+      <member refid="classcasacore_1_1LogSink_1a454c5180d467707bc9a64d72e4338472" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1a306ddf3119aa4ad8205649cc99f2133f" prot="public" virt="non-virtual" ambiguityscope="casacore::LogSinkInterface::"><scope>casacore::LogSink</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1LogSink_1ac8c78681c431da028cdd79a997b7ef81" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>post</name></member>
+      <member refid="classcasacore_1_1LogSink_1ad8c0fed1ce8bb5261ce5ccea2c6a62e9" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>postGlobally</name></member>
+      <member refid="classcasacore_1_1LogSink_1a452c61b00a00703f34ec533297ba1b4b" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>postGloballyThenThrow</name></member>
+      <member refid="classcasacore_1_1LogSink_1a3f7ab3b8c748ac768bd6cee2cac14d9d" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>postLocally</name></member>
+      <member refid="classcasacore_1_1LogSink_1a823ffc9fc4bb8270bd8721b67f4e94cb" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>postThenThrow</name></member>
+      <member refid="classcasacore_1_1LogSink_1af9fe9cec9918f5c830ea01f372af51a4" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>preparePostThenThrow</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1ad969a924eec4ea82c4689a5be5ad22a1" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>setTaskName</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1aed688faaf3b1c303443d622440d5a194" prot="protected" virt="non-virtual"><scope>casacore::LogSink</scope><name>taskName</name></member>
+      <member refid="classcasacore_1_1LogSink_1aef3b5eb4758f7feb044c4a453db53b51" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>theirCallOnceFlag</name></member>
+      <member refid="classcasacore_1_1LogSink_1aa52219cfa35f12e757311b807c0d4bd9" prot="private" virt="non-virtual"><scope>casacore::LogSink</scope><name>useGlobalSink_p</name></member>
+      <member refid="classcasacore_1_1LogSink_1a4576f1de35f27f293853510561e00003" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>writeLocally</name></member>
+      <member refid="classcasacore_1_1LogSink_1aea8d6b3b904fe714ff7f3b02284e8a54" prot="public" virt="non-virtual"><scope>casacore::LogSink</scope><name>~LogSink</name></member>
+      <member refid="classcasacore_1_1LogSinkInterface_1ab847388e12c00204cef9e2956a51ad54" prot="public" virt="virtual"><scope>casacore::LogSink</scope><name>~LogSinkInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

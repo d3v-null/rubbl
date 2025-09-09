@@ -1,0 +1,693 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TiledDataStMan" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TiledDataStMan</compoundname>
+    <basecompoundref refid="classcasacore_1_1TiledStMan" prot="public" virt="non-virtual">casacore::TiledStMan</basecompoundref>
+    <includes refid="TiledDataStMan_8h" local="no">TiledDataStMan.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcasacore_1_1TiledDataStMan_1a14305d6dc39eb97919608502909f4165" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class TiledDataStManAccessor</definition>
+        <argsstring></argsstring>
+        <name>TiledDataStManAccessor</name>
+        <param>
+          <type><ref refid="classcasacore_1_1TiledDataStManAccessor" kindref="compound">TiledDataStManAccessor</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="348" column="1" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1TiledDataStMan_1a97ab262a21d276f9dd6ee3863a91bfaf" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt;</type>
+        <definition>std::vector&lt;rownr_t&gt; casacore::TiledDataStMan::rowMap_p</definition>
+        <argsstring></argsstring>
+        <name>rowMap_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="447" column="17" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TiledDataStMan_1a320a20700ba82e713843b9749d8b430f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt;</type>
+        <definition>std::vector&lt;uInt&gt; casacore::TiledDataStMan::cubeMap_p</definition>
+        <argsstring></argsstring>
+        <name>cubeMap_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="448" column="17" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TiledDataStMan_1aa93c5d5993e5359935935ca05b1e0152" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt;</type>
+        <definition>std::vector&lt;uInt&gt; casacore::TiledDataStMan::posMap_p</definition>
+        <argsstring></argsstring>
+        <name>posMap_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="449" column="17" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="449" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TiledDataStMan_1af689d434f2a335ba6ed2f8ab7957e39b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+        <definition>rownr_t casacore::TiledDataStMan::nrrowLast_p</definition>
+        <argsstring></argsstring>
+        <name>nrrowLast_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="451" column="13" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="451" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a44fa6d4b9065414e04df1686f640aec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TiledDataStMan::TiledDataStMan</definition>
+        <argsstring>(const String &amp;hypercolumnName, uInt64 maximumCacheSize=0)</argsstring>
+        <name>TiledDataStMan</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>hypercolumnName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1afbaa0f0eab7b3a56a4c320715f577d4f" kindref="member">uInt64</ref></type>
+          <declname>maximumCacheSize</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="362" column="5" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1ad925a1b4e5d7644348765cddc00c18d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TiledDataStMan::TiledDataStMan</definition>
+        <argsstring>(const String &amp;hypercolumnName, const Record &amp;spec)</argsstring>
+        <name>TiledDataStMan</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>hypercolumnName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="364" column="5" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="52" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a21cced552049379aea192c6f1acbb240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TiledDataStMan::~TiledDataStMan</definition>
+        <argsstring>()</argsstring>
+        <name>~TiledDataStMan</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="368" column="5" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="62" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1aca44e11e2090efb790a1f1063ec75132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TiledDataStMan::TiledDataStMan</definition>
+        <argsstring>(const TiledDataStMan &amp;)=delete</argsstring>
+        <name>TiledDataStMan</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TiledDataStMan" kindref="compound">TiledDataStMan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="371" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a30f549c1e8e548192a820227677c6309" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TiledDataStMan" kindref="compound">TiledDataStMan</ref> &amp;</type>
+        <definition>TiledDataStMan&amp; casacore::TiledDataStMan::operator=</definition>
+        <argsstring>(const TiledDataStMan &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TiledDataStMan" kindref="compound">TiledDataStMan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="374" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a5c90d0e104a2e9a9cd905083b96fe6e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref> *</type>
+        <definition>DataManager * casacore::TiledDataStMan::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <reimplements refid="classcasacore_1_1DataManager_1ab8d98544ba7a3fdfb204fc69da324fda">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="378" column="17" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="65" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1ab80afc18c110e2e68ead5e917aa7d724" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::TiledDataStMan::dataManagerType</definition>
+        <argsstring>() const</argsstring>
+        <name>dataManagerType</name>
+        <reimplements refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552">dataManagerType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="381" column="12" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="79" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a1fb5692a609b81358346da03fd828494" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref> *</type>
+        <definition>DataManager * casacore::TiledDataStMan::makeObject</definition>
+        <argsstring>(const String &amp;dataManagerType, const Record &amp;spec)</argsstring>
+        <name>makeObject</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataManagerType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="385" column="24" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="72" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a4ab6851b0417a309052373926d86190c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TiledDataStMan::TiledDataStMan</definition>
+        <argsstring>()</argsstring>
+        <name>TiledDataStMan</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="392" column="5" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1adaeeb8cfc249af9d4a7c7370980129bf" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::addRow64</definition>
+        <argsstring>(rownr_t nrrow)</argsstring>
+        <name>addRow64</name>
+        <reimplements refid="classcasacore_1_1DataManager_1a3aec8eedb27d247dfb8ea2a6a90ad320">addRow64</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="398" column="10" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="144" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1ab6b6dcfff524929c6b68349cf3fb3ef7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::addHypercube</definition>
+        <argsstring>(const IPosition &amp;cubeShape, const IPosition &amp;tileShape, const Record &amp;values)</argsstring>
+        <name>addHypercube</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>cubeShape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>tileShape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="408" column="10" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="162" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1adaf8c6873df07289f50bfdf432c7b1fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::extendHypercube</definition>
+        <argsstring>(uInt64 incrInLastDim, const Record &amp;values)</argsstring>
+        <name>extendHypercube</name>
+        <param>
+          <type><ref refid="namespacecasacore_1afbaa0f0eab7b3a56a4c320715f577d4f" kindref="member">uInt64</ref></type>
+          <declname>incrInLastDim</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="416" column="10" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="178" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a752138893694128c1fda59f9afb0073f" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TSMCube" kindref="compound">TSMCube</ref> *</type>
+        <definition>TSMCube * casacore::TiledDataStMan::getHypercube</definition>
+        <argsstring>(rownr_t rownr)</argsstring>
+        <name>getHypercube</name>
+        <reimplements refid="classcasacore_1_1TiledStMan_1a0b063e88f9089d74f12caa29de2e4b5c">getHypercube</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="419" column="21" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="216" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1aa38f68ab65f2703630481d118c064d6d" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TSMCube" kindref="compound">TSMCube</ref> *</type>
+        <definition>TSMCube * casacore::TiledDataStMan::getHypercube</definition>
+        <argsstring>(rownr_t rownr, IPosition &amp;position)</argsstring>
+        <name>getHypercube</name>
+        <reimplements refid="classcasacore_1_1TiledStMan_1a33610ca20666ee6b4db6cf2cb17fed2f">getHypercube</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="423" column="21" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="221" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1ab0fc3693ccad31fbff81f6315675e2a2" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::TiledDataStMan::flush</definition>
+        <argsstring>(AipsIO &amp;, Bool fsync)</argsstring>
+        <name>flush</name>
+        <reimplements refid="classcasacore_1_1DataManager_1ae6f97af4692207bb5a294de3ad42e208">flush</reimplements>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>fsync</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="427" column="18" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="92" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a774ff9f47393a9d78311e8ad63cc490e" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::create64</definition>
+        <argsstring>(rownr_t nrrow)</argsstring>
+        <name>create64</name>
+        <reimplements refid="classcasacore_1_1DataManager_1a4abc527b6aa4129f2cfd0bc33f044c85">create64</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="431" column="18" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="83" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a1199b8170ab4ce359fd0bd207effb738" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::readHeader</definition>
+        <argsstring>(rownr_t nrrow, Bool firstTime)</argsstring>
+        <name>readHeader</name>
+        <reimplements refid="classcasacore_1_1TiledStMan_1a8509b07c1e90b9c861d6779655a3725e">readHeader</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>firstTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="434" column="18" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="112" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1ac65795caa7d9d9a34601b35cbb6eed3f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::updateRowMap</definition>
+        <argsstring>(uInt cubeNr, uInt64 incrInLastDim)</argsstring>
+        <name>updateRowMap</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>cubeNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1afbaa0f0eab7b3a56a4c320715f577d4f" kindref="member">uInt64</ref></type>
+          <declname>incrInLastDim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="437" column="10" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="200" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TiledDataStMan_1a52da34260e8f1507c0e4a9a10e3522d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TiledDataStMan::checkNrrow</definition>
+        <argsstring>(const IPosition &amp;cubeShape, uInt64 incrInLastDim) const</argsstring>
+        <name>checkNrrow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>cubeShape</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1afbaa0f0eab7b3a56a4c320715f577d4f" kindref="member">uInt64</ref></type>
+          <declname>incrInLastDim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TiledDataStMan.h" line="441" column="10" bodyfile="tables/DataMan/TiledDataStMan.cc" bodystart="151" bodyend="159"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>casacore::TiledStMan</label>
+        <link refid="classcasacore_1_1TiledStMan"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::TiledDataStMan</label>
+        <link refid="classcasacore_1_1TiledDataStMan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::DataManager</label>
+        <link refid="classcasacore_1_1DataManager"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>casacore::PtrBlock&lt; casacore::TSMColumn * &gt;</label>
+        <link refid="classcasacore_1_1PtrBlock"/>
+      </node>
+      <node id="4">
+        <label>casacore::PtrBlock&lt; casacore::TSMFile * &gt;</label>
+        <link refid="classcasacore_1_1PtrBlock"/>
+      </node>
+      <node id="8">
+        <label>casacore::PtrBlock&lt; casacore::TSMCube * &gt;</label>
+        <link refid="classcasacore_1_1PtrBlock"/>
+      </node>
+      <node id="5">
+        <label>casacore::IPosition</label>
+        <link refid="classcasacore_1_1IPosition"/>
+      </node>
+      <node id="11">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>casacore::TiledStMan</label>
+        <link refid="classcasacore_1_1TiledStMan"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>fileSet_p</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>fixedCellShape_p</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>dataCols_p</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>colSet_p</edgelabel>
+          <edgelabel>coordColSet_p</edgelabel>
+          <edgelabel>dataColSet_p</edgelabel>
+          <edgelabel>idColSet_p</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>cubeSet_p</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>hypercolumnName_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::TiledDataStMan</label>
+        <link refid="classcasacore_1_1TiledDataStMan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::DataManager</label>
+        <link refid="classcasacore_1_1DataManager"/>
+      </node>
+      <node id="6">
+        <label>casacore::PtrBlock&lt; casacore::TSMDataColumn * &gt;</label>
+        <link refid="classcasacore_1_1PtrBlock"/>
+      </node>
+      <node id="10">
+        <label>std::string</label>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="tables/DataMan/TiledDataStMan.h" line="346" column="1" bodyfile="tables/DataMan/TiledDataStMan.h" bodystart="347" bodyend="452"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TiledStMan_1aea4509cc439665c498ce779d40ed41ba" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>addedNrrow</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1ab6b6dcfff524929c6b68349cf3fb3ef7" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>addHypercube</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1adaeeb8cfc249af9d4a7c7370980129bf" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>addRow64</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ac8ebf616a1281f5b892e759b354ceb21" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>arrayDataType</name></member>
+      <member refid="classcasacore_1_1DataManager_1a9e06aef0c8d5cd51243a873ce7b766a0" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>asBigEndian</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a233e81d2d14fe3d3366a962505e22e2e" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>bucketSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a95bf979d7448f5458c3f6a9023f68523" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>cacheSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a205673c9a3249e5d20b82827fa505380" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>calcCacheSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6745d6d7d7cf6761c2c8d9f471300755" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canAccessColumn</name></member>
+      <member refid="classcasacore_1_1DataManager_1a0221d4ddf25a1a249582231ab8a340c0" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canAddColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1acdc34c97da706cf5f231e605c48f68fd" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canAddRow</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a8dc8c574b7cf21b8024e4c9169312749" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canChangeShape</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a97c44088338818667eed4717a1ec26f8" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canReallocateColumns</name></member>
+      <member refid="classcasacore_1_1DataManager_1aa85917e22ed77ce70cadae9cb63a1778" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canRemoveColumn</name></member>
+      <member refid="classcasacore_1_1DataManager_1a08d22f152525aa1402e3c8a3553f96f1" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canRemoveRow</name></member>
+      <member refid="classcasacore_1_1DataManager_1a72f5eac2a1fa5b7d718218d2e200c601" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>canRenameColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1adf4d408e88862a647b4abb2e67d0316b" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkAddHypercube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1af3729d3582042f19a443d74029704404" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkCoordinates</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6c42474d7875279e89b5eb8c76a5c589" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkCoordinatesShapes</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aee4bf4e6a4c693caaa278162643e4b74" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkCubeShape</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a52da34260e8f1507c0e4a9a10e3522d3" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkNrrow</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6cf9350ce7c4598a5321eff4f56bc422" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkShapeColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a4e2a79b1333f10d64e742ba887e51935" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>checkValues</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a5c90d0e104a2e9a9cd905083b96fe6e2" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>clone</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6d70829aebdc02399669cbefc9afdec3" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>colSet_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a3d1af795076dfb902ac7bd43dab27a74" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>coordColSet_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a042aec97cb4901ac2c21d0bfae4f7353" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>coordinateDataType</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a774ff9f47393a9d78311e8ad63cc490e" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>create64</name></member>
+      <member refid="classcasacore_1_1DataManager_1a962c565e1b972ae901037be23c914eae" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>createDirArrColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a7f57dcc3dfd974f3cc65b3fdc0e2e8b1" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>createFile</name></member>
+      <member refid="classcasacore_1_1DataManager_1a641ba58204dbd4207052994b05f7ff3c" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>createIndArrColumn</name></member>
+      <member refid="classcasacore_1_1DataManager_1a8922b46bfa76c62f93a9107c3459ad51" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>createScalarColumn</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a320a20700ba82e713843b9749d8b430f" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>cubeMap_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a8045607951494e28ec85f06b75f3c2fb" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>cubeSet_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6fd46ba9824a95d103dd1636b2169711" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>dataChanged_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a9a20242bf3807a7c0b753932cb7ebebd" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>dataCols_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ae59b3c888adb7d24422d1fa17c51383b" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>dataColSet_p</name></member>
+      <member refid="classcasacore_1_1DataManager_1a7d6511049dabf21d1db07b3019f5de52" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>DataManager</name></member>
+      <member refid="classcasacore_1_1DataManager_1aff0d7b5f19dadd2748556df5db515b31" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>DataManager</name></member>
+      <member refid="classcasacore_1_1DataManager_1a209117d7fc47706def575a2fe22960e3" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>dataManagerInfo</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1af282da663bc67f38e8d14c26265ebbca" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>dataManagerName</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a1c9db0788e9dcc1dc562b6d29e4b956b" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>dataManagerSpec</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1ab80afc18c110e2e68ead5e917aa7d724" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>dataManagerType</name></member>
+      <member refid="classcasacore_1_1DataManager_1a4c32d0e690566949850a11b26566e5aa" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>decrementNcolumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1af0a91853454ba6211f1dc7b2661a5de8" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>defaultTileShape</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1afb1a583e1226859f14f7193c27479c3b" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>deleteManager</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a5ade01bff667c1a92027ff95503f951b" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>emptyCaches</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1adaf8c6873df07289f50bfdf432c7b1fb" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>extendHypercube</name></member>
+      <member refid="classcasacore_1_1DataManager_1af977d8cb8c9969e2a9d3bb4a4301208b" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>fileName</name></member>
+      <member refid="classcasacore_1_1DataManager_1a151e32eb6b4e30144069a5ea1ee92e8d" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>fileOption</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1af1e62e8716e74eb1b43356f6b0eb43b9" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>fileSet_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a08fb815c4faa9b1232d58522c3f04004" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>fixedCellShape_p</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1ab0fc3693ccad31fbff81f6315675e2a2" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>flush</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a65a27d0bc5af2169972db3112bf291ed" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>flushCaches</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a130d8ade72c5fa84a9eaed065db431bd" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getBindings</name></member>
+      <member refid="classcasacore_1_1DataManager_1a853a481aea8b3c6dae22ffceab926c4d" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getClone</name></member>
+      <member refid="classcasacore_1_1DataManager_1a277810fa1f83b4d6a9dadf9ed263bf33" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getCtor</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a375240c424c49a44e2f2e6b6039ebfc7" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getCubeIndex</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a33c8e2a1750628dcf78d86cbfb7d4c38" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getDataColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a9da097faaea47063ab7e62439b0277b1" prot="protected" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>getDesc</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a82c496523e0ebf10372bcef382e3b88a" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getFile</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a752138893694128c1fda59f9afb0073f" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>getHypercube</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1aa38f68ab65f2703630481d118c064d6d" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>getHypercube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ac2d24138e59951fe769aec2d795872fc" prot="public" virt="non-virtual" ambiguityscope="casacore::TiledStMan::"><scope>casacore::TiledDataStMan</scope><name>getHypercube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a470a3eccdd36dba4d87049925941280f" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getLengthOffset</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a092396eac08b4b6ba7e4be3c13cf8875" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>getProperties</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a9860bcb70626fc0e4fcc9f8d8315835d" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getTSMCube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a69e174d8c5a16052e6b1b551b728cc92" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>getTSMCube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a006f953e140f19025b5e912c61bc2fb4" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>hasMultiFileSupport</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a1f1b3cc382bed4239504f2004e9e9556" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>headerFileClose</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1add00033d72fc6970a5ea0ea572d763c7" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>headerFileCreate</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a0853d6f4549f96fb799e3d7ed720fea9" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>headerFileGet</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a36833ceebb309a3e8bdb47a055740f30" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>headerFileOpen</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ad19867148a95e29b8c0744c058f65372" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>headerFilePut</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a410671f13af9658c6ee4306e15ad96cf" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>hypercolumnName_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aeb93996032912cd93a5694763982db77" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>hypercubeShape</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aa9502688921d314417b129ce668968c3" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>idColSet_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1afa2c34905dbcff93ef52e5b33b641a48" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>initCoordinates</name></member>
+      <member refid="classcasacore_1_1DataManager_1a87ff60d722861b7a0c43f13fb32659d5" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>isRegistered</name></member>
+      <member refid="classcasacore_1_1DataManager_1a2d8208d826c6baddc848db0aafcd67c5" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>isRegular</name></member>
+      <member refid="classcasacore_1_1DataManager_1af2d198310351e0a876f908dfd537b7d0" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>isStorageManager</name></member>
+      <member refid="classcasacore_1_1DataManager_1a6ed719b6c59e333cf3d3d001d092c82f" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>keywordName</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ae5c98a16b83117cefe6934f2b0c01896" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>makeDirArrColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ab11fc6b7d3a4afc2f5cfd02ff1d056c0" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>makeHypercube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a5a6f33984bf36f1dba48109d69df22da" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>makeIndArrColumn</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a1fb5692a609b81358346da03fd828494" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>makeObject</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ab1e71f0183f0dbef41578220a17f7159" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>makeScalarColumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a2d2c005687146031d48b9d2db80e7fb5" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>makeTileShape</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a3809e1947968c96957da6e83f107a4f1" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>makeTileShape</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a2134a88e6ece32cae119c2f9e1a9932d" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>makeTSMCube</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a68ceb230c679e0c0514133934371e1b4" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>maxCacheSize_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ad60470f04041320e1b7041eb6ba2559d" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>maximumCacheSize</name></member>
+      <member refid="classcasacore_1_1DataManager_1af8e69129a6b42ff06aec5c43066c5b01" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>MAXROWNR32</name></member>
+      <member refid="classcasacore_1_1DataManager_1a231c1719c0aa6b72e2a4e126afd99977" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>multiFile</name></member>
+      <member refid="classcasacore_1_1DataManager_1a688716d94313790fdaa3028dc6353ecd" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>ncolumn</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a05837479ff3f36548bc4f8a9f9f5aff9" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nhypercubes</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a2783df349087b6fc53d864052450fa9f" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrCoordVector</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ac8acdad7e90d385ef849a7c9221a3db1" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrCoordVector_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a56f745a1e9fdfa1001bbc807cefc83b0" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrdim_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a9b3150efbfa286a043f1a99aa6826086" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrow</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a558782d287e7023a584f1a1b211878d3" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrrow_p</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1af689d434f2a335ba6ed2f8ab7957e39b" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>nrrowLast_p</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aab88ebbfb6d521518573ec09dc7f82af" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>open64</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a30f549c1e8e548192a820227677c6309" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ac2efccf089148d514d8fd2a23323655c" prot="public" virt="non-virtual" ambiguityscope="casacore::TiledStMan::"><scope>casacore::TiledDataStMan</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1DataManager_1ac7258476d89fefd3a899b73a84dc24a4" prot="public" virt="non-virtual" ambiguityscope="casacore::DataManager::"><scope>casacore::TiledDataStMan</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a5a0045ad9d2a16415d21ed836446bca5" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>persMaxCacheSize_p</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1aa93c5d5993e5359935935ca05b1e0152" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>posMap_p</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a1199b8170ab4ce359fd0bd207effb738" prot="private" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>readHeader</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a2d1ef7d99e7e4d800eefd4d95e990626" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>readTile</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aa946df1e10374a5997c967a883edf2aa" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>reallocateColumn</name></member>
+      <member refid="classcasacore_1_1DataManager_1ad483f4eeff332c91d71b151eef7be10f" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>registerCtor</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a844d5fe517fd42b1e1206f0518e87f8e" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>reopenRW</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1ac1b2f595d526b60cc8c3932ec05c740b" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>resync64</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a97ab262a21d276f9dd6ee3863a91bfaf" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>rowMap_p</name></member>
+      <member refid="classcasacore_1_1DataManager_1af17e5c428a9eea0605447af480893bdc" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>sequenceNr</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a6e2e3f2c1f4ad3cbe0f27e4affdbe0e8" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setCacheSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a19052fe75f0eb91e36eabefdcd6880b1" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setCacheSize</name></member>
+      <member refid="classcasacore_1_1DataManager_1a945d12b4499a1402a786f9da74b59636" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setClone</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1abf28be35fe590f80ddd7cac6feec915c" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setDataChanged</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a7814779a50943d68f1cbfbf371aa9859" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setDataManagerName</name></member>
+      <member refid="classcasacore_1_1DataManager_1a24fbb90ac53537e80eabe9297b5cbb5e" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setEndian</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a37bdf90c0bee93b1c2b11c8f7f0f0cfb" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setHypercubeCacheSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aa04315415cf33e74c3709719d9265b5e" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>setMaximumCacheSize</name></member>
+      <member refid="classcasacore_1_1DataManager_1a200030aeec61463beaa2dc65b0182c46" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setMultiFile</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a0df893c72056688c7f0db2404c84d9c5" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setPersMaxCacheSize</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aade6a8331e8d69b2aebcd679c7b77b1f" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>setProperties</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a596fce8cac1983f8d72fdddf617b3327" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1DataManager_1af75fa312b6f7e9133115e280caaebe6c" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setTsmOption</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a5604574ecb310cc94fca60c0b7f374b7" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>setup</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a065be27e1a26835cf563b85cadbaa77a" prot="protected" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>setupCheck</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a78c4028b7bad15e6de385a1e15d0aaf8" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>showCacheStatistics</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aa2954dbbe7362e3713beb81aaf41fe18" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>singleHypercube</name></member>
+      <member refid="classcasacore_1_1DataManager_1a4fcbd405700e9deb09386c8855294adb" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>table</name></member>
+      <member refid="classcasacore_1_1DataManager_1a11d99c84457b69a3634c84cb98992f6c" prot="protected" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>throwDataTypeOther</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a44fa6d4b9065414e04df1686f640aec9" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledDataStMan</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1ad925a1b4e5d7644348765cddc00c18d5" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledDataStMan</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1aca44e11e2090efb790a1f1063ec75132" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledDataStMan</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a4ab6851b0417a309052373926d86190c" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledDataStMan</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a14305d6dc39eb97919608502909f4165" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledDataStManAccessor</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a2d4d7bfb087481756f60698687caa939" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledStMan</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a7dba79c65e84191211cde981acac6963" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledStMan</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1aaac370d362534b5b050e5ace0402e876" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>TiledStMan</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a4205c0746518d5413abb94ba1c0a0ef7" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>tileShape</name></member>
+      <member refid="classcasacore_1_1DataManager_1acb2143f7d1af317f0a4710a23f986456" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>tsmOption</name></member>
+      <member refid="classcasacore_1_1DataManager_1a4c61c04749fd55bd625b82a4579b7360" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>unknownDataManager</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1ac65795caa7d9d9a34601b35cbb6eed3f" prot="private" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>updateRowMap</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a39834994481e94ba53b46cbf892c1b82" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>userSetCache</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a796feab8c5f4434e6386a774509f9ceb" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>writeTile</name></member>
+      <member refid="classcasacore_1_1DataManager_1aa4fb277eb343c585b89bb27cbf0b0942" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>~DataManager</name></member>
+      <member refid="classcasacore_1_1TiledDataStMan_1a21cced552049379aea192c6f1acbb240" prot="public" virt="non-virtual"><scope>casacore::TiledDataStMan</scope><name>~TiledDataStMan</name></member>
+      <member refid="classcasacore_1_1TiledStMan_1a8dbff44573ea3852e7f5a7b8c95a5e00" prot="public" virt="virtual"><scope>casacore::TiledDataStMan</scope><name>~TiledStMan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,855 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1UDFBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::UDFBase</compoundname>
+    <includes refid="UDFBase_8h" local="no">UDFBase.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcasacore_1_1UDFBase_1a8e6622536d87feee2f02c7d3a77e1a49" prot="public" static="no">
+        <type><ref refid="classcasacore_1_1UDFBase" kindref="compound">UDFBase</ref> *</type>
+        <definition>typedef UDFBase* casacore::UDFBase::MakeUDFObject(const String &amp;functionName)</definition>
+        <argsstring>(const String &amp;functionName)</argsstring>
+        <name>MakeUDFObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="238" column="21" bodyfile="tables/TaQL/UDFBase.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1aa85ea0643c1b49324a9a91673821a34c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1aa815a14d0f8f37331312c9db29bf31d9" kindref="member">TENShPtr</ref> &gt;</type>
+        <definition>std::vector&lt;TENShPtr&gt; casacore::UDFBase::itsOperands</definition>
+        <argsstring></argsstring>
+        <name>itsOperands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="368" column="26" bodyfile="tables/TaQL/UDFBase.h" bodystart="368" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a27338ed6077908615809a1d286280b8f" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1TableExprNodeRep_1a686c5215607365afcf83accd38a9e60a" kindref="member">TableExprNodeRep::NodeDataType</ref></type>
+        <definition>TableExprNodeRep::NodeDataType casacore::UDFBase::itsDataType</definition>
+        <argsstring></argsstring>
+        <name>itsDataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="369" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1aaceb53c7b50bfe874d4499aa021dc484" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::UDFBase::itsNDim</definition>
+        <argsstring></argsstring>
+        <name>itsNDim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="370" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a270b72e907ba77ad12ea5f4e9856a83c" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::UDFBase::itsShape</definition>
+        <argsstring></argsstring>
+        <name>itsShape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="371" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a72d18de9093689b85c8ed1a43c977211" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::UDFBase::itsUnit</definition>
+        <argsstring></argsstring>
+        <name>itsUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="372" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1add4cfba8d32a9fa5ce419588032bd94b" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref></type>
+        <definition>Record casacore::UDFBase::itsAttributes</definition>
+        <argsstring></argsstring>
+        <name>itsAttributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="373" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a7c759bbc18f34fc09247d7bf3e5cab7b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::itsIsConstant</definition>
+        <argsstring></argsstring>
+        <name>itsIsConstant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="374" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="374" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a200fb2f8d2f246c58086b4f78bb49117" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::itsIsAggregate</definition>
+        <argsstring></argsstring>
+        <name>itsIsAggregate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="375" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a6e552c3952e48b5ad618c3b0a8a2f72b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::itsApplySelection</definition>
+        <argsstring></argsstring>
+        <name>itsApplySelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="376" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1a0485f6e8b5834f2334713ebc2358fb5d" prot="private" static="yes" mutable="no">
+        <type>map&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref>, <ref refid="classcasacore_1_1UDFBase_1a8e6622536d87feee2f02c7d3a77e1a49" kindref="member">MakeUDFObject</ref> * &gt;</type>
+        <definition>map&lt; String, UDFBase::MakeUDFObject * &gt; casacore::UDFBase::theirRegistry</definition>
+        <argsstring></argsstring>
+        <name>theirRegistry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="382" column="16" bodyfile="tables/TaQL/UDFBase.h" bodystart="382" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1UDFBase_1ad6d33b366cea947a0ff78877d7f521a2" prot="private" static="yes" mutable="no">
+        <type>std::recursive_mutex</type>
+        <definition>std::recursive_mutex casacore::UDFBase::theirMutex</definition>
+        <argsstring></argsstring>
+        <name>theirMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="383" column="33" bodyfile="tables/TaQL/UDFBase.h" bodystart="383" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1aada908b7285176a568e0647ff2587b10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::UDFBase::UDFBase</definition>
+        <argsstring>()</argsstring>
+        <name>UDFBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="241" column="5" bodyfile="tables/TaQL/UDFBase.cc" bodystart="40" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a7f9aa8b80069375696a511859c7089ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::UDFBase::~UDFBase</definition>
+        <argsstring>()</argsstring>
+        <name>~UDFBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="244" column="13" bodyfile="tables/TaQL/UDFBase.cc" bodystart="48" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a99e472b55c8359721ef46ef6619feaf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::getBool</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getBool</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="249" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="118" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a04bc2e773a467a78f11f1d2c2c0756f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::UDFBase::getInt</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getInt</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="250" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="120" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a648d2d13d5b9155026f506bcbeaf6c96" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref></type>
+        <definition>Double casacore::UDFBase::getDouble</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getDouble</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="251" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="122" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ab484e4920a645d8ec056377ed07e5460" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref></type>
+        <definition>DComplex casacore::UDFBase::getDComplex</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getDComplex</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="252" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="124" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a3977fb3d3199d2b3be0768f6c1454581" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::UDFBase::getString</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getString</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="253" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="126" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a652edf7ab0162fb3ba4d8d261e8e47c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1TaqlRegex" kindref="compound">TaqlRegex</ref></type>
+        <definition>TaqlRegex casacore::UDFBase::getRegex</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getRegex</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="254" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="128" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a36d905a6ce3cde392d653f90f26de434" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MVTime" kindref="compound">MVTime</ref></type>
+        <definition>MVTime casacore::UDFBase::getDate</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getDate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="255" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="130" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ac184800a847cbf05579f9a8ae7e2b19d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> &gt;</type>
+        <definition>MArray&lt; Bool &gt; casacore::UDFBase::getArrayBool</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayBool</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="256" column="24" bodyfile="tables/TaQL/UDFBase.cc" bodystart="132" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a1736a4b093106141ee20d24495a79fdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt;</type>
+        <definition>MArray&lt; Int64 &gt; casacore::UDFBase::getArrayInt</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayInt</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="257" column="23" bodyfile="tables/TaQL/UDFBase.cc" bodystart="134" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ad2354c2196d1973c047c0ab2fffe7c69" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref> &gt;</type>
+        <definition>MArray&lt; Double &gt; casacore::UDFBase::getArrayDouble</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayDouble</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="258" column="22" bodyfile="tables/TaQL/UDFBase.cc" bodystart="136" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ab4f5bdef117c9387cae26ca79736e6bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> &gt;</type>
+        <definition>MArray&lt; DComplex &gt; casacore::UDFBase::getArrayDComplex</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayDComplex</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="259" column="20" bodyfile="tables/TaQL/UDFBase.cc" bodystart="138" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1afb9b4b2cdd10b5bdbd2d8df11f855244" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;</type>
+        <definition>MArray&lt; String &gt; casacore::UDFBase::getArrayString</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayString</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="260" column="22" bodyfile="tables/TaQL/UDFBase.cc" bodystart="140" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ad565215f244e0277ccd7d016a95bed45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1MArray" kindref="compound">MArray</ref>&lt; <ref refid="classcasacore_1_1MVTime" kindref="compound">MVTime</ref> &gt;</type>
+        <definition>MArray&lt; MVTime &gt; casacore::UDFBase::getArrayDate</definition>
+        <argsstring>(const TableExprId &amp;id)</argsstring>
+        <name>getArrayDate</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprId" kindref="compound">TableExprId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="261" column="22" bodyfile="tables/TaQL/UDFBase.cc" bodystart="142" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1afbac6ed7c9f0584819ea5c420f58ab79" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+        <definition>const String&amp; casacore::UDFBase::getUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="265" column="18" bodyfile="tables/TaQL/UDFBase.h" bodystart="265" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a0d2a1deeb06b246ace3453dec8de283a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+        <definition>const Record&amp; casacore::UDFBase::getAttributes</definition>
+        <argsstring>() const</argsstring>
+        <name>getAttributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="269" column="18" bodyfile="tables/TaQL/UDFBase.h" bodystart="269" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a79ace3fdaf9d42f13e4c47a7c29f583d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::flattenTree</definition>
+        <argsstring>(std::vector&lt; TableExprNodeRep * &gt; &amp;)</argsstring>
+        <name>flattenTree</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classcasacore_1_1TableExprNodeRep" kindref="compound">TableExprNodeRep</ref> * &gt; &amp;</type>
+          <defname>nodes</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="273" column="18" bodyfile="tables/TaQL/UDFBase.cc" bodystart="68" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a41820b9d93fb32b8b2aaaf814c29f8b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::init</definition>
+        <argsstring>(const std::vector&lt; TENShPtr &gt; &amp;arg, const TableExprInfo &amp;tableInfo, const TaQLStyle &amp;)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespacecasacore_1aa815a14d0f8f37331312c9db29bf31d9" kindref="member">TENShPtr</ref> &gt; &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprInfo" kindref="compound">TableExprInfo</ref> &amp;</type>
+          <declname>tableInfo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLStyle" kindref="compound">TaQLStyle</ref> &amp;</type>
+          <defname>style</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="329" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="51" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a601f40c7ff83494d7105c725d3b26c00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableExprNodeRep_1a686c5215607365afcf83accd38a9e60a" kindref="member">TableExprNodeRep::NodeDataType</ref></type>
+        <definition>TableExprNodeRep::NodeDataType casacore::UDFBase::dataType</definition>
+        <argsstring>() const</argsstring>
+        <name>dataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="333" column="36" bodyfile="tables/TaQL/UDFBase.h" bodystart="333" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a866e3de5cfab348d9a3ec28c25e03341" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::UDFBase::ndim</definition>
+        <argsstring>() const</argsstring>
+        <name>ndim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="338" column="9" bodyfile="tables/TaQL/UDFBase.h" bodystart="338" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a4527c445891ebde28ba62a1a0c6c02ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+        <definition>const IPosition&amp; casacore::UDFBase::shape</definition>
+        <argsstring>() const</argsstring>
+        <name>shape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="342" column="21" bodyfile="tables/TaQL/UDFBase.h" bodystart="342" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1adfde80688f1370deb98aea250683708c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::isConstant</definition>
+        <argsstring>() const</argsstring>
+        <name>isConstant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="346" column="10" bodyfile="tables/TaQL/UDFBase.h" bodystart="346" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a8cd4c9f2d01157cbdbffbb3d5e9d464f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::UDFBase::isAggregate</definition>
+        <argsstring>() const</argsstring>
+        <name>isAggregate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="350" column="10" bodyfile="tables/TaQL/UDFBase.h" bodystart="350" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ae3859a8d0d9285094953033a90b2bb66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::disableApplySelection</definition>
+        <argsstring>()</argsstring>
+        <name>disableApplySelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="354" column="10" bodyfile="tables/TaQL/UDFBase.h" bodystart="354" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a733cb58ffe0186206c10e3142cdf43fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::applySelection</definition>
+        <argsstring>(const Vector&lt; rownr_t &gt; &amp;rownrs)</argsstring>
+        <name>applySelection</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="359" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="148" bodyend="155"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1affb4e1916cea1229874f1692ec967681" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::UDFBase::setup</definition>
+        <argsstring>(const Table &amp;table, const TaQLStyle &amp;)=0</argsstring>
+        <name>setup</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Table" kindref="compound">Table</ref> &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLStyle" kindref="compound">TaQLStyle</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="277" column="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a20f8d6132566d574f0cc5ad3d3948415" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1aa815a14d0f8f37331312c9db29bf31d9" kindref="member">TENShPtr</ref> &gt; &amp;</type>
+        <definition>std::vector&lt;TENShPtr&gt;&amp; casacore::UDFBase::operands</definition>
+        <argsstring>()</argsstring>
+        <name>operands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="282" column="17" bodyfile="tables/TaQL/UDFBase.h" bodystart="282" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a5c06a08f200d03c72d77794df5743afb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setDataType</definition>
+        <argsstring>(TableExprNodeRep::NodeDataType)</argsstring>
+        <name>setDataType</name>
+        <param>
+          <type><ref refid="classcasacore_1_1TableExprNodeRep_1a686c5215607365afcf83accd38a9e60a" kindref="member">TableExprNodeRep::NodeDataType</ref></type>
+          <defname>dataType</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="287" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ad0f9cc1ac8a39b7913587a8e3c7fdc8d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setNDim</definition>
+        <argsstring>(Int ndim)</argsstring>
+        <name>setNDim</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ndim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="294" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="80" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1ae7ed73d5921d7ed44b7622abc9f44b8e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setShape</definition>
+        <argsstring>(const IPosition &amp;shape)</argsstring>
+        <name>setShape</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="297" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="89" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1aa386b24066f0835031cb1622c9a2a194" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setUnit</definition>
+        <argsstring>(const String &amp;unit)</argsstring>
+        <name>setUnit</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="302" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a2d899a71ed30cb94044d80d0b1ac5627" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setAttributes</definition>
+        <argsstring>(const Record &amp;attributes)</argsstring>
+        <name>setAttributes</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="307" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1abd1bb232bf3d8df923ec52a28b8738f0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setConstant</definition>
+        <argsstring>(Bool isConstant)</argsstring>
+        <name>setConstant</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>isConstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="312" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a8aec4c74a3156bd17090736bc4d58b83" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::setAggregate</definition>
+        <argsstring>(Bool isAggregate)</argsstring>
+        <name>setAggregate</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>isAggregate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="315" column="10" bodyfile="tables/TaQL/UDFBase.cc" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a890bf4372953b95b5936fda6ab9eb6a7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::recreateColumnObjects</definition>
+        <argsstring>(const Vector&lt; rownr_t &gt; &amp;rownrs)</argsstring>
+        <name>recreateColumnObjects</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="320" column="18" bodyfile="tables/TaQL/UDFBase.cc" bodystart="145" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a945ae0b4d55f1bcd4ed27f5196587858" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::UDFBase::registerUDF</definition>
+        <argsstring>(const String &amp;name, MakeUDFObject *func)</argsstring>
+        <name>registerUDF</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1UDFBase_1a8e6622536d87feee2f02c7d3a77e1a49" kindref="member">MakeUDFObject</ref> *</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="326" column="17" bodyfile="tables/TaQL/UDFBase.cc" bodystart="157" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1UDFBase_1a3eb26f6ddddb73109f4f7963b1a0f7ac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1UDFBase" kindref="compound">UDFBase</ref> *</type>
+        <definition>UDFBase * casacore::UDFBase::createUDF</definition>
+        <argsstring>(const String &amp;name, const TaQLStyle &amp;style)</argsstring>
+        <name>createUDF</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TaQLStyle" kindref="compound">TaQLStyle</ref> &amp;</type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/TaQL/UDFBase.h" line="364" column="20" bodyfile="tables/TaQL/UDFBase.cc" bodystart="189" bodyend="247"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/TaQL/UDFBase.h" line="233" column="3" bodyfile="tables/TaQL/UDFBase.h" bodystart="234" bodyend="384"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1UDFBase_1a733cb58ffe0186206c10e3142cdf43fb" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>applySelection</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a3eb26f6ddddb73109f4f7963b1a0f7ac" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>createUDF</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a601f40c7ff83494d7105c725d3b26c00" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>dataType</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ae3859a8d0d9285094953033a90b2bb66" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>disableApplySelection</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a79ace3fdaf9d42f13e4c47a7c29f583d" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>flattenTree</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ac184800a847cbf05579f9a8ae7e2b19d" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayBool</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ad565215f244e0277ccd7d016a95bed45" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayDate</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ab4f5bdef117c9387cae26ca79736e6bb" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayDComplex</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ad2354c2196d1973c047c0ab2fffe7c69" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayDouble</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a1736a4b093106141ee20d24495a79fdf" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayInt</name></member>
+      <member refid="classcasacore_1_1UDFBase_1afb9b4b2cdd10b5bdbd2d8df11f855244" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getArrayString</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a0d2a1deeb06b246ace3453dec8de283a" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>getAttributes</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a99e472b55c8359721ef46ef6619feaf6" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getBool</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a36d905a6ce3cde392d653f90f26de434" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getDate</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ab484e4920a645d8ec056377ed07e5460" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getDComplex</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a648d2d13d5b9155026f506bcbeaf6c96" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getDouble</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a04bc2e773a467a78f11f1d2c2c0756f3" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getInt</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a652edf7ab0162fb3ba4d8d261e8e47c6" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getRegex</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a3977fb3d3199d2b3be0768f6c1454581" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>getString</name></member>
+      <member refid="classcasacore_1_1UDFBase_1afbac6ed7c9f0584819ea5c420f58ab79" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>getUnit</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a41820b9d93fb32b8b2aaaf814c29f8b0" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>init</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a8cd4c9f2d01157cbdbffbb3d5e9d464f" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>isAggregate</name></member>
+      <member refid="classcasacore_1_1UDFBase_1adfde80688f1370deb98aea250683708c" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>isConstant</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a6e552c3952e48b5ad618c3b0a8a2f72b" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsApplySelection</name></member>
+      <member refid="classcasacore_1_1UDFBase_1add4cfba8d32a9fa5ce419588032bd94b" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsAttributes</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a27338ed6077908615809a1d286280b8f" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsDataType</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a200fb2f8d2f246c58086b4f78bb49117" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsIsAggregate</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a7c759bbc18f34fc09247d7bf3e5cab7b" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsIsConstant</name></member>
+      <member refid="classcasacore_1_1UDFBase_1aaceb53c7b50bfe874d4499aa021dc484" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsNDim</name></member>
+      <member refid="classcasacore_1_1UDFBase_1aa85ea0643c1b49324a9a91673821a34c" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsOperands</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a270b72e907ba77ad12ea5f4e9856a83c" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsShape</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a72d18de9093689b85c8ed1a43c977211" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>itsUnit</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a8e6622536d87feee2f02c7d3a77e1a49" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>MakeUDFObject</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a866e3de5cfab348d9a3ec28c25e03341" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>ndim</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a20f8d6132566d574f0cc5ad3d3948415" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>operands</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a890bf4372953b95b5936fda6ab9eb6a7" prot="protected" virt="virtual"><scope>casacore::UDFBase</scope><name>recreateColumnObjects</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a945ae0b4d55f1bcd4ed27f5196587858" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>registerUDF</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a8aec4c74a3156bd17090736bc4d58b83" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setAggregate</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a2d899a71ed30cb94044d80d0b1ac5627" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setAttributes</name></member>
+      <member refid="classcasacore_1_1UDFBase_1abd1bb232bf3d8df923ec52a28b8738f0" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setConstant</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a5c06a08f200d03c72d77794df5743afb" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setDataType</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ad0f9cc1ac8a39b7913587a8e3c7fdc8d" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setNDim</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ae7ed73d5921d7ed44b7622abc9f44b8e" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1UDFBase_1aa386b24066f0835031cb1622c9a2a194" prot="protected" virt="non-virtual"><scope>casacore::UDFBase</scope><name>setUnit</name></member>
+      <member refid="classcasacore_1_1UDFBase_1affb4e1916cea1229874f1692ec967681" prot="private" virt="pure-virtual"><scope>casacore::UDFBase</scope><name>setup</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a4527c445891ebde28ba62a1a0c6c02ce" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>shape</name></member>
+      <member refid="classcasacore_1_1UDFBase_1ad6d33b366cea947a0ff78877d7f521a2" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>theirMutex</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a0485f6e8b5834f2334713ebc2358fb5d" prot="private" virt="non-virtual"><scope>casacore::UDFBase</scope><name>theirRegistry</name></member>
+      <member refid="classcasacore_1_1UDFBase_1aada908b7285176a568e0647ff2587b10" prot="public" virt="non-virtual"><scope>casacore::UDFBase</scope><name>UDFBase</name></member>
+      <member refid="classcasacore_1_1UDFBase_1a7f9aa8b80069375696a511859c7089ee" prot="public" virt="virtual"><scope>casacore::UDFBase</scope><name>~UDFBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
