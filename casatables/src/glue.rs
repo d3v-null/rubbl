@@ -618,6 +618,56 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
+    pub fn table_open_scalar_column(
+        table: *mut GlueTable,
+        col_name: *const StringBridge,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn scalar_column_put(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn scalar_column_free(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn table_open_array_column(
+        table: *mut GlueTable,
+        col_name: *const StringBridge,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn array_column_put(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_free(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
     pub fn table_row_alloc(
         table: *const GlueTable,
         is_read_only: ::std::os::raw::c_uchar,
