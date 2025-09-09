@@ -163,5 +163,13 @@ echo "2. Add instrumentation to casacore to track allocation methods"
 echo "3. Modify FFI layer to use efficient allocation if needed"
 echo "4. Test with different table sizes and configurations"
 
+cat <<EOF
+From the detailed traces, allocation follows: open table.lock → small header write → open/create table.f0 → repeated ftruncate growth → lseek to offsets → write 3328 bytes of zeros → repeat. This shows preallocation is happening incrementally (multiple ftruncate) but casacore still zero-fills buckets/tiles.
+C++: ftruncate is present regardless (prealloc active). Zero-writes remain, confirming the storage manager still writes zeroed buffers after growing the file.
+Rust: with prealloc enabled (our current default), you see the same ftruncate pattern plus the same zero-writes; with prealloc disabled, ftruncate disappears but zero-writes persist. So prealloc is functioning, but it does not eliminate the zero-writing pattern.
+The lock file activity (pwrite on table.lock) is expected and unrelated to data allocation.
+Bottom line: prealloc is verified; the remaining overhead is zero-initialization and bucket/tile writes. Further gains require eliminating or deferring zero writes (e.g., avoid memset in tile init and rely on preallocated sparse space, or write-on-first-touch).
+EOF
+
 echo
 echo "Investigation complete!"
