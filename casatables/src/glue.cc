@@ -978,9 +978,6 @@ extern "C" {
         ExcInfo &exc
     )
     {
-        // the enum is either either `Plain` or `Memory`
-        GlueTable::TableType type = GlueTable::TableType::Plain;
-
         // always use the local endianness
         casacore::Table::EndianFormat endian_format = casacore::Table::EndianFormat::LocalEndian;
 
@@ -1011,7 +1008,12 @@ extern "C" {
                 default:          opt_enum = casacore::TSMOption::Aipsrc;  break;
             }
             casacore::TSMOption tsmOption(opt_enum);
-            return new GlueTable(newTable, type, n_rows, initialize, endian_format, tsmOption);
+            
+            // Create the casacore table first
+            casacore::Table newCasacoreTable(newTable, casacore::Table::Plain, n_rows, initialize, endian_format, tsmOption);
+            
+            // Wrap it in our caching structure
+            return new GlueTable(newCasacoreTable);
         } catch (...) {
             debug_log("table_create: Exception occurred during table creation");
             handle_exception(exc);

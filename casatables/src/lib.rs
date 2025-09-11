@@ -2060,10 +2060,9 @@ impl Table {
         row: u64,
         value: &T,
     ) -> Result<(), TableError> {
-        // Get cached column info to avoid repeated filesystem access
-        let _col_info = self.get_column_info_cached(col_name)?;
-
-        // Use the standard put_cell but with pre-validated column info
+        // Skip Rust-side column info caching since C++ layer already handles column caching
+        // This avoids the overhead of table_get_column_info calls while still benefiting
+        // from the C++ column object cache in the TableWithColumnCache structure
         self.put_cell(col_name, row, value)
             .map_err(TableError::Casacore)
     }
