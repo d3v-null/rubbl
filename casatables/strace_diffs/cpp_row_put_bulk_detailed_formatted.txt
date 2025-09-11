@@ -1,0 +1,122 @@
+# Formatted strace output from strace_logs/cpp_row_put_bulk_detailed.strace
+# Total syscalls: 104
+
+## FILE_OPS (23 calls)
+   6: openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = FD
+   7: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=92572, ...}, AT_EMPTY_PATH) = FD
+   9: close(3)                        = FD
+  10: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcasa_tables.so.6", O_RDONLY|O_CLOEXEC) = FD
+  12: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=6986360, ...}, AT_EMPTY_PATH) = FD
+  19: close(3)                        = FD
+  20: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcasa_casa.so.6", O_RDONLY|O_CLOEXEC) = FD
+  22: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=3847864, ...}, AT_EMPTY_PATH) = FD
+  28: close(3)                        = FD
+  29: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = FD
+  31: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=2260296, ...}, AT_EMPTY_PATH) = FD
+  38: close(3)                        = FD
+  39: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = FD
+  41: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=125488, ...}, AT_EMPTY_PATH) = FD
+  46: close(3)                        = FD
+  47: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = FD
+  52: newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = FD
+  60: close(3)                        = FD
+  61: openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = FD
+  63: newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=940560, ...}, AT_EMPTY_PATH) = FD
+  68: close(3)                        = FD
+  90: openat(AT_FDCWD, "/proc/cpuinfo", O_RDONLY) = FD
+  92: close(3)                        = FD
+
+## MEMORY (47 calls)
+   2: brk(NULL)                       = FDxADDR
+   4: mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = FDxADDR
+   8: mmap(NULL, 92572, PROT_READ, MAP_PRIVATE, 3, 0) = FDxADDR
+  13: mmap(NULL, 6995704, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  14: mprotect(0xADDR, 5046272, PROT_NONE) = FD
+  15: mmap(0xADDR, 3690496, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  16: mmap(0xADDR, 1351680, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  17: mmap(0xADDR, 233472, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  18: mmap(0xADDR, 3832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  23: mmap(NULL, 3869896, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  24: mmap(0xADDR, 2007040, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  25: mmap(0xADDR, 905216, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  26: mmap(0xADDR, 53248, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  27: mmap(0xADDR, 19656, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  32: mmap(NULL, 2275520, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  33: mprotect(0xADDR, 1576960, PROT_NONE) = FD
+  34: mmap(0xADDR, 1118208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  35: mmap(0xADDR, 454656, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  36: mmap(0xADDR, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  37: mmap(0xADDR, 10432, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  42: mmap(NULL, 127720, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  43: mmap(0xADDR, 94208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  44: mmap(0xADDR, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  45: mmap(0xADDR, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  54: mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  55: mprotect(0xADDR, 2023424, PROT_NONE) = FD
+  56: mmap(0xADDR, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  57: mmap(0xADDR, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  58: mmap(0xADDR, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  59: mmap(0xADDR, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  64: mmap(NULL, 942344, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = FDxADDR
+  65: mmap(0xADDR, 507904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  66: mmap(0xADDR, 372736, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  67: mmap(0xADDR, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xADDR) = FDxADDR
+  69: mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  70: mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = FDxADDR
+  75: mprotect(0xADDR, 16384, PROT_READ) = FD
+  76: mprotect(0xADDR, 4096, PROT_READ) = FD
+  77: mprotect(0xADDR, 4096, PROT_READ) = FD
+  78: mprotect(0xADDR, 45056, PROT_READ) = FD
+  79: mprotect(0xADDR, 49152, PROT_READ) = FD
+  80: mprotect(0xADDR, 212992, PROT_READ) = FD
+  81: mprotect(0xADDR, 4096, PROT_READ) = FD
+  82: mprotect(0xADDR, 8192, PROT_READ) = FD
+  86: brk(NULL)                       = FDxADDR
+  87: brk(0xADDR)             = FDxADDR
+  89: brk(0xADDR)             = FDxADDR
+
+## WRITE_OPS (6 calls)
+# Zero writes: 0
+# Data writes: 6
+# Small writes: 0
+# Large writes: 0
+
+  95: write(2, "terminate called after throwing "..., 48) = FD
+  96: write(2, "std::invalid_argument", 21) = FD
+  97: write(2, "'\n", 2)              = FD
+  98: write(2, "  what():  ", 11)     = FD
+  99: write(2, "stoi", 4)             = FD
+ 100: write(2, "\n", 1)               = FD
+
+## READ_OPS (11 calls)
+  11: read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = FD
+  21: read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = FD
+  30: read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = FD
+  40: read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = FD
+  48: read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = FD
+  49: pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = FD
+  50: pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = FD
+  51: pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\325\31p\226\367\t\200\30)\261\30\257\33|\366c"..., 68, 896) = FD
+  53: pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = FD
+  62: read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = FD
+  91: read(3, "processor\t: 0\nvendor_id\t: Authen"..., 8191) = FD
+
+## OTHER (17 calls)
+   1: execve("./cpp_benchmark", ["./cpp_benchmark", "TABLE.ms", "--rows", "1000", "--cols", "10"], 0xADDR /* 60 vars */) = FD
+   3: arch_prctl(0xADDR /* ARCH_??? */, 0xADDR) = -1 EINVAL (Invalid argument)
+   5: access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+  71: arch_prctl(ARCH_SET_FS, 0xADDR) = FD
+  72: set_tid_address(0xADDR) = FD
+  73: set_robust_list(0xADDR, 24) = FD
+  74: rseq(0xADDR, 0xADDR, 0, 0xADDR) = FD
+  83: prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = FD
+  84: munmap(0xADDR, 92572)   = FD
+  85: getrandom("\x0b\xde\xf6\xb8\x78\xde\x2d\x37", 8, GRND_NONBLOCK) = FD
+  88: futex(0xADDR, FUTEX_WAKE_PRIVATE, 2147483647) = FD
+  93: times({tms_utime=0, tms_stime=0, tms_cutime=0, tms_cstime=0}) = FD
+  94: futex(0xADDR, FUTEX_WAKE_PRIVATE, 2147483647) = FD
+ 101: rt_sigprocmask(SIG_UNBLOCK, [ABRT], NULL, 8) = FD
+ 102: gettid()                        = FD
+ 103: getpid()                        = FD
+ 104: tgkill(1908137, 1908137, SIGABRT) = FD
+

@@ -1,0 +1,20 @@
+# Rust vs C++ Syscall Comparison
+
+## Summary Statistics
+Rust total syscalls: 1716
+C++ total syscalls:  104
+Difference: 1612 (+1550.0%)
+
+## Category Breakdown
+file_ops    : Rust  58, C++  23, Diff +35 (+152.2%)
+memory      : Rust  37, C++  47, Diff -10 (-21.3%)
+write_ops   : Rust 396, C++   6, Diff +390 (+6500.0%)
+read_ops    : Rust 397, C++  11, Diff +386 (+3509.1%)
+seek_ops    : Rust 779, C++   0, Diff +779
+other       : Rust  49, C++  17, Diff +32 (+188.2%)
+
+## Write Pattern Analysis
+Rust zero writes: 353
+C++ zero writes:  0
+Rust data writes: 43
+C++ data writes:  6
