@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1AbstractAllocator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::AbstractAllocator</compoundname>
+    <derivedcompoundref refid="classcasacore_1_1BaseAllocator" prot="public" virt="non-virtual">casacore::BaseAllocator&lt; T, NewDelAllocator&lt; T &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1BaseAllocator" prot="public" virt="non-virtual">casacore::BaseAllocator&lt; T, AlignedAllocator&lt; T, CASA_DEFAULT_ALIGNMENT &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1BaseAllocator" prot="public" virt="non-virtual">casacore::BaseAllocator&lt; T, Sub &gt;</derivedcompoundref>
+    <includes refid="Allocator_8h" local="no">Allocator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcasacore_1_1AbstractAllocator_1a7fa472852bf9886a3ddf8b91e9834ddf" prot="public" static="no">
+        <type>T</type>
+        <definition>typedef T casacore::AbstractAllocator&lt; T &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="332" column="13" bodyfile="casa/Containers/Allocator.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcasacore_1_1AbstractAllocator_1a1584e975b2e217614a86ddbfbdee793c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Array&lt; T &gt;</definition>
+        <argsstring></argsstring>
+        <name>Array&lt; T &gt;</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; T &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="335" column="3" bodyfile="casa/Containers/Allocator.h" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classcasacore_1_1AbstractAllocator_1a3776902d1f66c822d745977032356e12" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Block&lt; T &gt;</definition>
+        <argsstring></argsstring>
+        <name>Block&lt; T &gt;</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; T &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="335" column="3" bodyfile="casa/Containers/Allocator.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1AbstractAllocator_1ac4c487f933820f52c17a773aff583df0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual casacore::AbstractAllocator&lt; T &gt;::~AbstractAllocator</definition>
+        <argsstring>()</argsstring>
+        <name>~AbstractAllocator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="333" column="11" bodyfile="casa/Containers/Allocator.h" bodystart="333" bodyend="333"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1AbstractAllocator_1a7a9840e3bde1b3cf1f61bf40f3e8e2fa" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::AbstractAllocator&lt; T &gt;::AbstractAllocator</definition>
+        <argsstring>()</argsstring>
+        <name>AbstractAllocator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="335" column="3" bodyfile="casa/Containers/Allocator.h" bodystart="335" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1AbstractAllocator_1abfd0c1760c1592aa07d726b658352df3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Allocator_private::BulkAllocator&lt; T &gt; *</type>
+        <definition>virtual Allocator_private::BulkAllocator&lt;T&gt;* casacore::AbstractAllocator&lt; T &gt;::getAllocator</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getAllocator</name>
+        <reimplementedby refid="classcasacore_1_1BaseAllocator_1a2faa726ae68e8bfb77cd1e9c80f84a29">getAllocator</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1BaseAllocator_1a2faa726ae68e8bfb77cd1e9c80f84a29">getAllocator</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1BaseAllocator_1a2faa726ae68e8bfb77cd1e9c80f84a29">getAllocator</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/Containers/Allocator.h" line="339" column="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>casacore::BaseAllocator&lt; T, NewDelAllocator&lt; T &gt; &gt;</label>
+        <link refid="classcasacore_1_1BaseAllocator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::BaseAllocator&lt; T, AlignedAllocator&lt; T, CASA_DEFAULT_ALIGNMENT &gt; &gt;</label>
+        <link refid="classcasacore_1_1BaseAllocator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::AbstractAllocator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1AbstractAllocator"/>
+      </node>
+      <node id="3">
+        <label>casacore::NewDelAllocator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1NewDelAllocator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::AlignedAllocator&lt; T, ALIGNMENT &gt;</label>
+        <link refid="classcasacore_1_1AlignedAllocator"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore::BaseAllocator&lt; T, Sub &gt;</label>
+        <link refid="classcasacore_1_1BaseAllocator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore::DefaultAllocator&lt; T &gt;</label>
+        <link refid="classcasacore_1_1DefaultAllocator"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="casa/Containers/Allocator.h" line="330" column="1" bodyfile="casa/Containers/Allocator.h" bodystart="330" bodyend="340"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1AbstractAllocator_1a7a9840e3bde1b3cf1f61bf40f3e8e2fa" prot="protected" virt="non-virtual"><scope>casacore::AbstractAllocator</scope><name>AbstractAllocator</name></member>
+      <member refid="classcasacore_1_1AbstractAllocator_1a1584e975b2e217614a86ddbfbdee793c" prot="protected" virt="non-virtual"><scope>casacore::AbstractAllocator</scope><name>Array&lt; T &gt;</name></member>
+      <member refid="classcasacore_1_1AbstractAllocator_1a3776902d1f66c822d745977032356e12" prot="protected" virt="non-virtual"><scope>casacore::AbstractAllocator</scope><name>Block&lt; T &gt;</name></member>
+      <member refid="classcasacore_1_1AbstractAllocator_1abfd0c1760c1592aa07d726b658352df3" prot="protected" virt="pure-virtual"><scope>casacore::AbstractAllocator</scope><name>getAllocator</name></member>
+      <member refid="classcasacore_1_1AbstractAllocator_1a7fa472852bf9886a3ddf8b91e9834ddf" prot="public" virt="non-virtual"><scope>casacore::AbstractAllocator</scope><name>value_type</name></member>
+      <member refid="classcasacore_1_1AbstractAllocator_1ac4c487f933820f52c17a773aff583df0" prot="public" virt="virtual"><scope>casacore::AbstractAllocator</scope><name>~AbstractAllocator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

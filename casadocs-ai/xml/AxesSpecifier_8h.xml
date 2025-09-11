@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="AxesSpecifier_8h" kind="file" language="C++">
+    <compoundname>AxesSpecifier.h</compoundname>
+    <includes refid="IPosition_8h" local="yes">IPosition.h</includes>
+    <includes refid="AxesMapping_8h" local="yes">AxesMapping.h</includes>
+    <includedby refid="AxesSpecifier_8cc" local="yes">casa/Arrays/AxesSpecifier.cc</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>AxesMapping.h</label>
+        <link refid="AxesMapping_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>sys/types.h</label>
+      </node>
+      <node id="2">
+        <label>IPosition.h</label>
+        <link refid="IPosition_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/AxesSpecifier.h</label>
+        <link refid="AxesSpecifier_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>initializer_list</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>casa/Arrays/AxesSpecifier.cc</label>
+        <link refid="AxesSpecifier_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/AxesSpecifier.h</label>
+        <link refid="AxesSpecifier_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1AxesSpecifier" prot="public">casacore::AxesSpecifier</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>AxesSpecifier.h:<sp/>Specification<sp/>of<sp/>axes<sp/>to<sp/>keep<sp/>or<sp/>remove</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>2000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_AXESSPECIFIER_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_AXESSPECIFIER_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="IPosition_8h" kindref="compound">IPosition.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="AxesMapping_8h" kindref="compound">AxesMapping.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Specification<sp/>of<sp/>axes<sp/>to<sp/>keep<sp/>or<sp/>remove</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;yyyy/mm/dd&quot;<sp/>tests=&quot;tAxesSpecifier.cc&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=&quot;IPosition&quot;&gt;IPosition&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesSpecifier<sp/>makes<sp/>it<sp/>possible<sp/>to<sp/>specify<sp/>which<sp/>axes<sp/>should</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>be<sp/>used<sp/>in<sp/>a<sp/>shape.<sp/>Degenerate<sp/>axes<sp/>(i.e.<sp/>axes<sp/>with<sp/>length<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>thrown<sp/>away<sp/>which<sp/>makes<sp/>it<sp/>possible<sp/>to<sp/>reduce<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>dimensionality<sp/>of<sp/>an<sp/>array.<sp/>All<sp/>degenerate<sp/>axes<sp/>can<sp/>be<sp/>thrown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>away,<sp/>but<sp/>one<sp/>can<sp/>also<sp/>specify<sp/>which<sp/>ones<sp/>should<sp/>be<sp/>kept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;p&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Another<sp/>option<sp/>of<sp/>this<sp/>class<sp/>is<sp/>to<sp/>reorder<sp/>the<sp/>axes,<sp/>thus<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>make<sp/>the<sp/>axes<sp/>of<sp/>a<sp/>lattice<sp/>appear<sp/>in<sp/>a<sp/>different<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>can<sp/>be<sp/>useful<sp/>when<sp/>two<sp/>images<sp/>with<sp/>diferent<sp/>axes<sp/>orders</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>have<sp/>to<sp/>be<sp/>combined.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;p&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>When<sp/>an<sp/>AxesSpecifier<sp/>has<sp/>to<sp/>be<sp/>used<sp/>for<sp/>a<sp/>lattice,<sp/>the<sp/>lattice&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>shape<sp/>has<sp/>to<sp/>be<sp/>applied<sp/>to<sp/>the<sp/>AxesSpecifier.<sp/>The<sp/>result<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>&lt;linkto<sp/>class=AxesMapping&gt;AxesMapping&lt;/linkto&gt;<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>object<sp/>is<sp/>(for<sp/>example)<sp/>used<sp/>internally<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>casacore<sp/>SubLattice<sp/>class<sp/>to<sp/>know<sp/>how</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>map<sp/>the<sp/>axes<sp/>form<sp/>the<sp/>original<sp/>lattice<sp/>to<sp/>the<sp/>sublattice.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=caution&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Reordering<sp/>axes<sp/>is<sp/>not<sp/>supported<sp/>(yet)<sp/>by<sp/>the<sp/>other<sp/>Casacore<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>like<sp/>Lattices<sp/>and<sp/>Images.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>example<sp/>tells<sp/>that<sp/>all<sp/>degenerate<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>kept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>axes<sp/>are<sp/>reordered<sp/>to<sp/>1,0,2.<sp/>Thus<sp/>the<sp/>first<sp/>and<sp/>second<sp/>axes<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>swapped.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesSpecifier<sp/>spec(true,<sp/>IPosition(3,1,0,2));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesMapping<sp/>map<sp/>=<sp/>spec.apply<sp/>(IPosition(3,4,1,5));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AlwaysAssertExit<sp/>(map.posToNew<sp/>(IPosition(3,2,0,3))<sp/>==<sp/>IPosition(3,0,2,3));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AlwaysAssertExit<sp/>(map.posToOld<sp/>(IPosition(3,0,2,3))<sp/>==<sp/>IPosition(3,2,0,3));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>specification<sp/>would<sp/>have<sp/>the<sp/>same<sp/>effect,<sp/>because<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>unspecified<sp/>axes<sp/>are<sp/>kept<sp/>in<sp/>their<sp/>natural<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesSpecifier<sp/>spec(true,<sp/>IPosition(1,1));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>same<sp/>example<sp/>as<sp/>above,<sp/>but<sp/>now<sp/>degenerated<sp/>axes<sp/>are<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>because<sp/>the<sp/>second<sp/>axis<sp/>is<sp/>removed,<sp/>the<sp/>third<sp/>axis<sp/>now</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>second<sp/>axis,<sp/>thus<sp/>gets<sp/>swapped<sp/>with<sp/>the<sp/>first<sp/>axis.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;Also<sp/>note<sp/>the<sp/>difference<sp/>between<sp/>the<sp/>functions<sp/>&lt;src&gt;posToOld&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and<sp/>&lt;src&gt;shapeToOld&lt;/src&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesSpecifier<sp/>spec(false,<sp/>IPosition(1,1));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AxesMapping<sp/>map<sp/>=<sp/>spec.apply<sp/>(IPosition(3,4,1,5));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AlwaysAssertExit<sp/>(map.posToNew<sp/>(IPosition(3,2,0,3))<sp/>==<sp/>IPosition(2,3,2));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AlwaysAssertExit<sp/>(map.posToOld<sp/>(IPosition(3,3,2))<sp/>==<sp/>IPosition(3,2,0,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AlwaysAssertExit<sp/>(map.shapeToOld<sp/>(IPosition(3,3,2))<sp/>==<sp/>IPosition(3,2,1,3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>&lt;todo<sp/>asof=&quot;yyyy/mm/dd&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classcasacore_1_1AxesSpecifier" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1AxesSpecifier" kindref="compound">AxesSpecifier</ref></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>constructor<sp/>keeps<sp/>all<sp/>axes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a3123fe9fec17578042787c8d89805d17" kindref="member">AxesSpecifier</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>if<sp/>no<sp/>or<sp/>all<sp/>degenerate<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a3123fe9fec17578042787c8d89805d17" kindref="member">AxesSpecifier</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>keepDegenerate);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>if<sp/>no<sp/>or<sp/>all<sp/>degenerate<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>argument<sp/>&lt;src&gt;axisPath&lt;/src&gt;<sp/>makes<sp/>it<sp/>possible<sp/>to<sp/>specify<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>order<sp/>the<sp/>KEPT<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>used.<sp/>Unspecified<sp/>axes<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>appended<sp/>to<sp/>the<sp/>end.<sp/>It<sp/>gives<sp/>a<sp/>means<sp/>to<sp/>reorder<sp/>the<sp/>axes<sp/>of<sp/>a<sp/>lattice.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;E.g.<sp/>for<sp/>a<sp/>4-dim<sp/>lattice<sp/>axisPath<sp/>[2,0]<sp/>means<sp/>axis<sp/>order<sp/>[2,0,1,3].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a3123fe9fec17578042787c8d89805d17" kindref="member">AxesSpecifier</ref><sp/>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>keepDegenerate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>axisPath);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>which<sp/>(degenerate)<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>kept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-degenerate<sp/>axes<sp/>will<sp/>always<sp/>be<sp/>kept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a3123fe9fec17578042787c8d89805d17" kindref="member">AxesSpecifier</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>keepAxes);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>argument<sp/>&lt;src&gt;keepAxes&lt;/src&gt;<sp/>tells<sp/>which<sp/>degenerate<sp/>axes<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>be<sp/>kept.<sp/>Non-degenerate<sp/>axes<sp/>will<sp/>always<sp/>be<sp/>kept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>argument<sp/>&lt;src&gt;axisPath&lt;/src&gt;<sp/>makes<sp/>it<sp/>possible<sp/>to<sp/>specify<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>order<sp/>the<sp/>KEPT<sp/>axes<sp/>have<sp/>to<sp/>be<sp/>used.<sp/>Unspecified<sp/>axes<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>appended<sp/>to<sp/>the<sp/>end.<sp/>It<sp/>gives<sp/>a<sp/>means<sp/>to<sp/>reorder<sp/>the<sp/>axes<sp/>of<sp/>a<sp/>lattice.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;E.g.<sp/>for<sp/>a<sp/>4-dim<sp/>lattice<sp/>axisPath<sp/>[2,0]<sp/>means<sp/>axis<sp/>order<sp/>[2,0,1,3].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a3123fe9fec17578042787c8d89805d17" kindref="member">AxesSpecifier</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>keepAxes,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>axisPath);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>the<sp/>specification<sp/>to<sp/>a<sp/>shape.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>an<sp/>&lt;linkto<sp/>class=AxesMapping&gt;AxesMapping&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>object<sp/>which<sp/>takes<sp/>care<sp/>of<sp/>mapping<sp/>old<sp/>to<sp/>new<sp/>axes<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1AxesMapping" kindref="compound">AxesMapping</ref><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a2cf0aec6d9074e695b063b1bf80af7f0" kindref="member">apply</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Are<sp/>we<sp/>keeping<sp/>all<sp/>degenerate<sp/>axes<sp/>?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classcasacore_1_1AxesSpecifier_1a4ceb7abdca7b39f4b3cd5e29d5fbe841" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1AxesSpecifier_1a4ceb7abdca7b39f4b3cd5e29d5fbe841" kindref="member">keep</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itsKeep;};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>itsAxes;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>itsPath;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>itsKeep;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/AxesSpecifier.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,771 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TableTrace" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TableTrace</compoundname>
+    <includes refid="TableTrace_8h" local="no">TableTrace.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ColType</name>
+        <enumvalue id="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0a44aae37955931f7f7796d3a3f2a0873e" prot="public">
+          <name>SCALAR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0ac190f29b64be1d2ce3e9b0b029e6288a" prot="public">
+          <name>ARRAY</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0ac15f6bbceea113d8f47f278612460162" prot="public">
+          <name>RECORD</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="93" column="3" bodyfile="tables/Tables/TableTrace.h" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="enum" id="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Oper</name>
+        <enumvalue id="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983a84e486a8ea5969d16204c749f6b81a0a" prot="public">
+          <name>READ</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983a1f9a5aaaba1f5855599dbcecda17cd08" prot="public">
+          <name>WRITE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="98" column="3" bodyfile="tables/Tables/TableTrace.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1a67e26d4ffd42632059741dd423a83990" prot="private" static="yes" mutable="no">
+        <type>std::once_flag</type>
+        <definition>std::once_flag casacore::TableTrace::theirCallOnceFlag</definition>
+        <argsstring></argsstring>
+        <name>theirCallOnceFlag</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="176" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1a156903e63a5658b179c3c9ee2174f32d" prot="private" static="yes" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex casacore::TableTrace::theirMutex</definition>
+        <argsstring></argsstring>
+        <name>theirMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="177" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1ad72753664d5cb72643ea5200d228eafd" prot="private" static="yes" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream casacore::TableTrace::theirTraceFile</definition>
+        <argsstring></argsstring>
+        <name>theirTraceFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="178" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1abd11e56c607f9fac129a6c27a08f93f4" prot="private" static="yes" mutable="no">
+        <type>std::ostream *</type>
+        <definition>std::ostream * casacore::TableTrace::theirStream</definition>
+        <argsstring></argsstring>
+        <name>theirStream</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="179" column="29" bodyfile="tables/Tables/TableTrace.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1adb141ef487aced445cb9188a7ca91528" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int casacore::TableTrace::theirDoTrace</definition>
+        <argsstring></argsstring>
+        <name>theirDoTrace</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="180" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1afaf0c017b3589126d213d24a918ac32d" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int casacore::TableTrace::theirOper</definition>
+        <argsstring></argsstring>
+        <name>theirOper</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="181" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1ad66e18882b0ac7aec208083ce769b5bb" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int casacore::TableTrace::theirColType</definition>
+        <argsstring></argsstring>
+        <name>theirColType</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="182" column="30" bodyfile="tables/Tables/TableTrace.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1a36ea5dc6838b917d620132c7d6ff15f7" prot="private" static="yes" mutable="no">
+        <type>std::vector&lt; <ref refid="classcasacore_1_1Regex" kindref="compound">Regex</ref> &gt;</type>
+        <definition>std::vector&lt; Regex &gt; casacore::TableTrace::theirColumns</definition>
+        <argsstring></argsstring>
+        <name>theirColumns</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="183" column="23" bodyfile="tables/Tables/TableTrace.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TableTrace_1aee5e8f559dfa0d3529764953ea3e1110" prot="private" static="yes" mutable="no">
+        <type>std::vector&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt;</type>
+        <definition>std::vector&lt; String &gt; casacore::TableTrace::theirTables</definition>
+        <argsstring></argsstring>
+        <name>theirTables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="184" column="22" bodyfile="tables/Tables/TableTrace.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1af9347ed1533591190b62a5b663bb7c1e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::TableTrace::traceColumn</definition>
+        <argsstring>(const ColumnDesc &amp;)</argsstring>
+        <name>traceColumn</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+          <defname>cd</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="105" column="14" bodyfile="tables/Tables/TableTrace.cc" bodystart="114" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1ae8a058d194112e4934f7955f23cf5eb1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::TableTrace::traceTable</definition>
+        <argsstring>(const String &amp;tableName, char oper)</argsstring>
+        <name>traceTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="109" column="14" bodyfile="tables/Tables/TableTrace.cc" bodystart="49" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a505e687d65ab056d7e9e4c1f16c93aeb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::traceClose</definition>
+        <argsstring>(const String &amp;tableName)</argsstring>
+        <name>traceClose</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="113" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="78" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a6ba53c4eae704eefa1420f1a1c38ae7b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::traceFile</definition>
+        <argsstring>(int tabid, const String &amp;oper)</argsstring>
+        <name>traceFile</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="116" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="95" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1abcb9f3aada19a0024e39c09f37e5e82b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::traceRefTable</definition>
+        <argsstring>(const String &amp;parentName, char oper)</argsstring>
+        <name>traceRefTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>parentName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="119" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="104" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a20e9d4d861575125f48e9a0c5afd16f7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="123" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1af15d81c3477292724f48b1483f75f2c3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, Int64 row)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="125" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="189" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a48c079b97e486df8dd04b82bed1a200b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, const RefRows &amp;rownrs)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="128" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="195" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a56df91991c340b5bc3f86e60c3e97b30" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, const IPosition &amp;shape)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="131" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="203" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a0525e5970082a3d17a1350ed87938fdd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, Int64 row, const IPosition &amp;shape)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="134" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="211" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a3299371566cadd18ba37fe8a76c55832" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, const RefRows &amp;rownrs, const IPosition &amp;shape)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="137" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="219" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1af65f160bad71cb59892f38fb3a4c41d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, const IPosition &amp;shape, const IPosition &amp;blc, const IPosition &amp;trc, const IPosition &amp;inc)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>blc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>trc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="140" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="229" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a7fe760a9b9004d1476050ea0a0d06019" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, Int64 row, const IPosition &amp;shape, const IPosition &amp;blc, const IPosition &amp;trc, const IPosition &amp;inc)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>blc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>trc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="145" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="240" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a7e5582e70ffe3765f0bb4d3e833cb525" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::trace</definition>
+        <argsstring>(int tabid, const String &amp;columnName, char oper, const RefRows &amp;rownrs, const IPosition &amp;shape, const IPosition &amp;blc, const IPosition &amp;trc, const IPosition &amp;inc)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>blc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>trc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="150" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="251" bodyend="262"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a89af67b0e8fc6e849e4d90247c279ecf" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::initTracing</definition>
+        <argsstring>()</argsstring>
+        <name>initTracing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="157" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="264" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1ad71b14cb1605b8c78bb95cb808c0dc59" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::initOper</definition>
+        <argsstring>()</argsstring>
+        <name>initOper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="158" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="293" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a3915d98e81f8ec61225b7e3654cadd4d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::initColumn</definition>
+        <argsstring>()</argsstring>
+        <name>initColumn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="159" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="312" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a47ea168179656f1f0e77056351164400" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::TableTrace::findTable</definition>
+        <argsstring>(const String &amp;name)</argsstring>
+        <name>findTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="162" column="14" bodyfile="tables/Tables/TableTrace.cc" bodystart="137" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a20907d8121e80a923d9f779dd4b5bea9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::writeTraceFirst</definition>
+        <argsstring>(int tabid, const String &amp;name, char oper)</argsstring>
+        <name>writeTraceFirst</name>
+        <param>
+          <type>int</type>
+          <declname>tabid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>oper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="165" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="147" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1ad013b81728eb3462e1bdb9a5e9cbdf0a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::writeRefRows</definition>
+        <argsstring>(const RefRows &amp;rownrs)</argsstring>
+        <name>writeRefRows</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="168" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="155" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TableTrace_1a1c981bd3aefb28399bfb8ddcec3612d7" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TableTrace::writeSlice</definition>
+        <argsstring>(const IPosition &amp;blc, const IPosition &amp;trc, const IPosition &amp;inc)</argsstring>
+        <name>writeSlice</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>blc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>trc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/TableTrace.h" line="171" column="15" bodyfile="tables/Tables/TableTrace.cc" bodystart="173" bodyend="182"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/Tables/TableTrace.h" line="90" column="1" bodyfile="tables/Tables/TableTrace.h" bodystart="91" bodyend="185"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0ac190f29b64be1d2ce3e9b0b029e6288a" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>ARRAY</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>ColType</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a47ea168179656f1f0e77056351164400" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>findTable</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a3915d98e81f8ec61225b7e3654cadd4d" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>initColumn</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ad71b14cb1605b8c78bb95cb808c0dc59" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>initOper</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a89af67b0e8fc6e849e4d90247c279ecf" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>initTracing</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>Oper</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983a84e486a8ea5969d16204c749f6b81a0a" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>READ</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0ac15f6bbceea113d8f47f278612460162" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>RECORD</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a037c61eef1e3111de988356b97616bd0a44aae37955931f7f7796d3a3f2a0873e" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>SCALAR</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a67e26d4ffd42632059741dd423a83990" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirCallOnceFlag</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ad66e18882b0ac7aec208083ce769b5bb" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirColType</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a36ea5dc6838b917d620132c7d6ff15f7" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirColumns</name></member>
+      <member refid="classcasacore_1_1TableTrace_1adb141ef487aced445cb9188a7ca91528" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirDoTrace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a156903e63a5658b179c3c9ee2174f32d" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirMutex</name></member>
+      <member refid="classcasacore_1_1TableTrace_1afaf0c017b3589126d213d24a918ac32d" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirOper</name></member>
+      <member refid="classcasacore_1_1TableTrace_1abd11e56c607f9fac129a6c27a08f93f4" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirStream</name></member>
+      <member refid="classcasacore_1_1TableTrace_1aee5e8f559dfa0d3529764953ea3e1110" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirTables</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ad72753664d5cb72643ea5200d228eafd" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>theirTraceFile</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a20e9d4d861575125f48e9a0c5afd16f7" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1af15d81c3477292724f48b1483f75f2c3" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a48c079b97e486df8dd04b82bed1a200b" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a56df91991c340b5bc3f86e60c3e97b30" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a0525e5970082a3d17a1350ed87938fdd" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a3299371566cadd18ba37fe8a76c55832" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1af65f160bad71cb59892f38fb3a4c41d8" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a7fe760a9b9004d1476050ea0a0d06019" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a7e5582e70ffe3765f0bb4d3e833cb525" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>trace</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a505e687d65ab056d7e9e4c1f16c93aeb" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>traceClose</name></member>
+      <member refid="classcasacore_1_1TableTrace_1af9347ed1533591190b62a5b663bb7c1e" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>traceColumn</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a6ba53c4eae704eefa1420f1a1c38ae7b" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>traceFile</name></member>
+      <member refid="classcasacore_1_1TableTrace_1abcb9f3aada19a0024e39c09f37e5e82b" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>traceRefTable</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ae8a058d194112e4934f7955f23cf5eb1" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>traceTable</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ab6bc911d265eca5d56b8bb9272ba4983a1f9a5aaaba1f5855599dbcecda17cd08" prot="public" virt="non-virtual"><scope>casacore::TableTrace</scope><name>WRITE</name></member>
+      <member refid="classcasacore_1_1TableTrace_1ad013b81728eb3462e1bdb9a5e9cbdf0a" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>writeRefRows</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a1c981bd3aefb28399bfb8ddcec3612d7" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>writeSlice</name></member>
+      <member refid="classcasacore_1_1TableTrace_1a20907d8121e80a923d9f779dd4b5bea9" prot="private" virt="non-virtual"><scope>casacore::TableTrace</scope><name>writeTraceFirst</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

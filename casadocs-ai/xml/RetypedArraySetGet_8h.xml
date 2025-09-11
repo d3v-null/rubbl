@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="RetypedArraySetGet_8h" kind="file" language="C++">
+    <compoundname>RetypedArraySetGet.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="ArrayFwd_8h" local="no">casacore/casa/Arrays/ArrayFwd.h</includes>
+    <includes refid="RetypedArraySetGet_8tcc" local="no">casacore/tables/DataMan/RetypedArraySetGet.tcc</includes>
+    <includedby refid="DataMan_8h" local="no">tables/DataMan.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/RetypedArraySetGet.h</label>
+        <link refid="RetypedArraySetGet_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore/casa/Arrays/ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="9">
+        <label>casacore/tables/DataMan/RetypedArraySetGet.tcc</label>
+        <link refid="RetypedArraySetGet_8tcc"/>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>tables/DataMan/RetypedArraySetGet.h</label>
+        <link refid="RetypedArraySetGet_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="2">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>RetypedArraySetGet.h:<sp/>Helper<sp/>functions<sp/>for<sp/>users<sp/>of<sp/>RetypedArrayEngine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1999</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TABLES_RETYPEDARRAYSETGET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TABLES_RETYPEDARRAYSETGET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="ArrayFwd_8h" kindref="compound">casacore/casa/Arrays/ArrayFwd.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">IPosition;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>functions<sp/>for<sp/>users<sp/>of<sp/>RetypedArrayEngine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;UNKNOWN&quot;<sp/>date=&quot;before2004/08/25&quot;<sp/>tests=&quot;dRetypedArrayEngine.cc&quot;<sp/>demos=dRetypedArrayEngine.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Classes<sp/>you<sp/>should<sp/>understand<sp/>before<sp/>using<sp/>this<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=RetypedArrayEngine&gt;RetypedArrayEngine&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>functions<sp/>in<sp/>here<sp/>can<sp/>be<sp/>used<sp/>in<sp/>the<sp/>implementation<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CopyInfo<sp/>class<sp/>inside<sp/>a<sp/>SourceType<sp/>class<sp/>used<sp/>by<sp/>a<sp/>RetypedArrayEngine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>example<sp/>in<sp/>RetypedArrayEngine<sp/>shows<sp/>how<sp/>these<sp/>functions<sp/>can<sp/>be<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>functions<sp/>make<sp/>the<sp/>implementation<sp/>of<sp/>the<sp/>set<sp/>and<sp/>get</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>functions<sp/>in<sp/>the<sp/>SourceType<sp/>objects<sp/>of<sp/>the<sp/>RetypedArrayEngine<sp/>easier.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>They<sp/>are<sp/>not<sp/>part<sp/>of<sp/>the<sp/>RetypedArrayEngine.h<sp/>file<sp/>to<sp/>avoid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>inclusion<sp/>of<sp/>that<sp/>(heavy)<sp/>file<sp/>in<sp/>a<sp/>SourceType.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;group<sp/>name=RetypedArrayEngineSetGet&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>entire<sp/>target<sp/>array<sp/>to<sp/>the<sp/>source<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>will<sp/>check<sp/>if<sp/>the<sp/>shapes<sp/>and<sp/>sizes<sp/>match.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>very<sp/>efficient<sp/>copy<sp/>function<sp/>can<sp/>only<sp/>be<sp/>called<sp/>by<sp/>the<sp/>static<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>function<sp/>in<sp/>the<sp/>SourceType<sp/>when<sp/>the<sp/>TargetType<sp/>array<sp/>can<sp/>directly<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>copied<sp/>to<sp/>the<sp/>SourceType<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;See</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=RetypedArrayEngine&gt;RetypedArrayEngine&lt;/linkto&gt;<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>information.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>SourceType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TargetType&gt;</highlight></codeline>
+<codeline lineno="81" refid="namespacecasacore_1a2f8c0988e398d4002819df5a66734854" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a2f8c0988e398d4002819df5a66734854" kindref="member">retypedArrayEngineSet</ref><sp/>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;SourceType&gt;</ref>&amp;<sp/>out,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;TargetType&gt;</ref>&amp;<sp/>in);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>entire<sp/>source<sp/>array<sp/>to<sp/>the<sp/>target<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>will<sp/>check<sp/>if<sp/>the<sp/>shapes<sp/>and<sp/>sizes<sp/>match.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>very<sp/>efficient<sp/>copy<sp/>function<sp/>can<sp/>only<sp/>be<sp/>called<sp/>by<sp/>the<sp/>static<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>function<sp/>in<sp/>the<sp/>SourceType<sp/>when<sp/>the<sp/>TargetType<sp/>array<sp/>can<sp/>directly<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>copied<sp/>to<sp/>the<sp/>SourceType<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;See</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=RetypedArrayEngine&gt;RetypedArrayEngine&lt;/linkto&gt;<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>information.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>SourceType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TargetType&gt;</highlight></codeline>
+<codeline lineno="94" refid="namespacecasacore_1ae28cc802e332951c3885e3db20cf8576" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1ae28cc802e332951c3885e3db20cf8576" kindref="member">retypedArrayEngineGet</ref><sp/>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;TargetType&gt;</ref>&amp;<sp/>out,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;SourceType&gt;</ref>&amp;<sp/>in);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fill<sp/>an<sp/>array<sp/>with<sp/>SourceType<sp/>objects<sp/>from<sp/>the<sp/>target<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>called<sp/>when<sp/>the<sp/>target<sp/>is<sp/>incomplete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>shape<sp/>and<sp/>extra<sp/>argument<sp/>can<sp/>help<sp/>to<sp/>set<sp/>the<sp/>correct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>elements<sp/>in<sp/>the<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>loops<sp/>through<sp/>all<sp/>elements<sp/>in<sp/>the<sp/>SourceType<sp/>array<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calls<sp/>the<sp/>SourceType<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>calls<sp/>the<sp/>SourceType<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>void<sp/>setElem<sp/>(const<sp/>TargetType*<sp/>data,<sp/>const<sp/>IPosition&amp;<sp/>shape,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>void*<sp/>extraArgument);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>each<sp/>element.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=tip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>retypedArrayEngineSet<sp/>function<sp/>is<sp/>only<sp/>a<sp/>convenience<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>optimal<sp/>performance<sp/>it<sp/>may<sp/>be<sp/>needed<sp/>to<sp/>handcode<sp/>the<sp/>loop<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>using<sp/>this<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;See</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=RetypedArrayEngine&gt;RetypedArrayEngine&lt;/linkto&gt;<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>information.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>SourceType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TargetType&gt;</highlight></codeline>
+<codeline lineno="119" refid="namespacecasacore_1a533d6c13e86b344bb79c4db24c81349c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a2f8c0988e398d4002819df5a66734854" kindref="member">retypedArrayEngineSet</ref><sp/>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;SourceType&gt;</ref>&amp;<sp/>out,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;TargetType&gt;</ref>&amp;<sp/>in,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>extraArgument);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fill<sp/>an<sp/>array<sp/>with<sp/>TargetType<sp/>objects<sp/>from<sp/>the<sp/>source<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>called<sp/>when<sp/>the<sp/>target<sp/>is<sp/>incomplete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>shape<sp/>and<sp/>extra<sp/>argument<sp/>can<sp/>help<sp/>to<sp/>get<sp/>the<sp/>correct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>elements<sp/>from<sp/>the<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>loops<sp/>through<sp/>all<sp/>elements<sp/>in<sp/>the<sp/>SourceType<sp/>array<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calls<sp/>the<sp/>SourceType<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>void<sp/>getElem<sp/>(TargetType*<sp/>data,<sp/>const<sp/>IPosition&amp;<sp/>shape,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>void*<sp/>extraArgument);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>each<sp/>element.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=tip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>retypedArrayEngineGet<sp/>function<sp/>is<sp/>only<sp/>a<sp/>convenience<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>optimal<sp/>performance<sp/>it<sp/>may<sp/>be<sp/>needed<sp/>to<sp/>handcode<sp/>the<sp/>loop<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>using<sp/>this<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;See</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=RetypedArrayEngine&gt;RetypedArrayEngine&lt;/linkto&gt;<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>information.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>SourceType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TargetType&gt;</highlight></codeline>
+<codeline lineno="145" refid="namespacecasacore_1ada32e105fa9a6220ee8ce374ef06049b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1ae28cc802e332951c3885e3db20cf8576" kindref="member">retypedArrayEngineGet</ref><sp/>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;TargetType&gt;</ref>&amp;<sp/>out,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;SourceType&gt;</ref>&amp;<sp/>in,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>extraArgument);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="RetypedArraySetGet_8tcc" kindref="compound">casacore/tables/DataMan/RetypedArraySetGet.tcc</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//#<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/RetypedArraySetGet.h"/>
+  </compounddef>
+</doxygen>

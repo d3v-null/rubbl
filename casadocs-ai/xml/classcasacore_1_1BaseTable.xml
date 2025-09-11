@@ -1,0 +1,2464 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1BaseTable" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::BaseTable</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; BaseTable &gt;</basecompoundref>
+    <derivedcompoundref refid="classcasacore_1_1ConcatTable" prot="public" virt="non-virtual">casacore::ConcatTable</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1MemoryTable" prot="public" virt="non-virtual">casacore::MemoryTable</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1NullTable" prot="public" virt="non-virtual">casacore::NullTable</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1PlainTable" prot="public" virt="non-virtual">casacore::PlainTable</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1RefTable" prot="public" virt="non-virtual">casacore::RefTable</derivedcompoundref>
+    <includes refid="BaseTable_8h" local="no">BaseTable.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1acef747fb795533e7b20354a8d6c4db35" prot="protected" static="no" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::weak_ptr&lt;BaseTable&gt; casacore::BaseTable::thisPtr_p</definition>
+        <argsstring></argsstring>
+        <name>thisPtr_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="496" column="19" bodyfile="tables/Tables/BaseTable.h" bodystart="496" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1ae80cdce40014f97e2cf6129a4f2d4d6e" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+        <definition>rownr_t casacore::BaseTable::nrrow_p</definition>
+        <argsstring></argsstring>
+        <name>nrrow_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="497" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a9c077d8c336e278499bccf203b8f9418" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+        <definition>rownr_t casacore::BaseTable::nrrowToAdd_p</definition>
+        <argsstring></argsstring>
+        <name>nrrowToAdd_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="498" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a9395bb9a00cd445f9e74cb6534024005" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;TableDesc&gt; casacore::BaseTable::tdescPtr_p</definition>
+        <argsstring></argsstring>
+        <name>tdescPtr_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="499" column="21" bodyfile="tables/Tables/BaseTable.h" bodystart="499" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1aa1c5dfeef33e27684962efa364a101c8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::BaseTable::name_p</definition>
+        <argsstring></argsstring>
+        <name>name_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="500" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="500" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1add503427127d9125643211e791e9c188" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int casacore::BaseTable::option_p</definition>
+        <argsstring></argsstring>
+        <name>option_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="501" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a4518039d7eddbeb682cb2a861b6f12c1" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::noWrite_p</definition>
+        <argsstring></argsstring>
+        <name>noWrite_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="502" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="502" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a80e2047cfd98b393f650a9361b2ab8d7" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::delete_p</definition>
+        <argsstring></argsstring>
+        <name>delete_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="503" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="503" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a6252071a9f7c07cef1b86cce6e541ade" prot="protected" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1TableInfo" kindref="compound">TableInfo</ref></type>
+        <definition>TableInfo casacore::BaseTable::info_p</definition>
+        <argsstring></argsstring>
+        <name>info_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="504" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="504" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a646ba9a27966b3a3694bf9a011bd28b5" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::madeDir_p</definition>
+        <argsstring></argsstring>
+        <name>madeDir_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="505" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1BaseTable_1a3ef1d315fbdbbb8a4d53492c2b83baaa" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int casacore::BaseTable::itsTraceId</definition>
+        <argsstring></argsstring>
+        <name>itsTraceId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="506" column="20" bodyfile="tables/Tables/BaseTable.h" bodystart="506" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a48a7cc6700c3381ac26b95b015af6000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::BaseTable::BaseTable</definition>
+        <argsstring>(const String &amp;tableName, int tableOption, rownr_t nrrow)</argsstring>
+        <name>BaseTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="106" column="5" bodyfile="tables/Tables/BaseTable.cc" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a07a718e48cc9913de04a37a78a44822b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::BaseTableCommon</definition>
+        <argsstring>(const String &amp;tableName, int tableOption, rownr_t nrrow)</argsstring>
+        <name>BaseTableCommon</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="114" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="77" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aaba59dc7168d54882db623e2b8c18b8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::BaseTable::~BaseTable</definition>
+        <argsstring>()</argsstring>
+        <name>~BaseTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="117" column="13" bodyfile="tables/Tables/BaseTable.cc" bodystart="104" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a5b1eb3d0112ef1b2d993e0bf416db2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::BaseTable::BaseTable</definition>
+        <argsstring>(const BaseTable &amp;)=delete</argsstring>
+        <name>BaseTable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="121" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a5594ed10718c0fb2db43c27363ccd9c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &amp;</type>
+        <definition>BaseTable&amp; casacore::BaseTable::operator=</definition>
+        <argsstring>(const BaseTable &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="125" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a7e8f6c7201f3d84ea52b7bec524bd5b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isNull</definition>
+        <argsstring>() const</argsstring>
+        <name>isNull</name>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a4931599ce7b0cef4ca081df987f16af0">isNull</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="129" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a194a3ae8b48ab9cf72a3bedd8fba8371" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::reopenRW</definition>
+        <argsstring>()=0</argsstring>
+        <name>reopenRW</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a792fb9ed5c0b8f545e0e07e3bf13c958">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a4cc971fec82c2938f69154ad69774cc2">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ab5facfc7b39a9dac5863b1e7bfbbff76">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1af3411ecd69c456cd8719ef7a5b4eb1c5">reopenRW</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a93d25ac2b45c7e2ee81c729c60cc00e0">reopenRW</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="132" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a344577fee82899291e9f130686cf4f93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::asBigEndian</definition>
+        <argsstring>() const =0</argsstring>
+        <name>asBigEndian</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a8ecbe2c740b5bdfcfdeaa319268c0f93">asBigEndian</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ac22c34ab3a552ae5ecc0cf34f82b741d">asBigEndian</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ad7b53436b3f68c2754351b99e1c9e56b">asBigEndian</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a827bea148765a2cd78b02a15cccbd4ac">asBigEndian</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a90e6f9b5a47618e9a9434ad0f29580d6">asBigEndian</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="135" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae32b823ea6e443a6fcceb942f7b90d35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classcasacore_1_1StorageOption" kindref="compound">StorageOption</ref> &amp;</type>
+        <definition>virtual const StorageOption&amp; casacore::BaseTable::storageOption</definition>
+        <argsstring>() const =0</argsstring>
+        <name>storageOption</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1aaf21e8f12bbb846db1f6c7fd3be7a465">storageOption</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a6030e181ddc903cb609a223c2324137a">storageOption</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1af6c7133c38bb9f0e6c27a71fb2a54a6b">storageOption</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ab719c6120ad0c211c5c5b306a52f93fe">storageOption</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a5f644a4734b6cf3c6fa281c502059883">storageOption</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="138" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a6ae3d3dae0f0fb3cf3d8e30313f2dd48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::isMultiUsed</definition>
+        <argsstring>(Bool checkSubTables) const =0</argsstring>
+        <name>isMultiUsed</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a31a16de93aca108f9de0b38d834842f0">isMultiUsed</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ac7e4a278e2a6b9fe073f6050ad0c79f2">isMultiUsed</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a686259dbca6d298dac9cc6014708e507">isMultiUsed</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a6b2b8d65da8d2e1089a1786b6a7168be">isMultiUsed</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a6b33c5dfc03bb227999134c9e346eed5">isMultiUsed</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>checkSubTables</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="143" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a11223e123a335760643c2e1aa8fc886d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classcasacore_1_1TableLock" kindref="compound">TableLock</ref> &amp;</type>
+        <definition>virtual const TableLock&amp; casacore::BaseTable::lockOptions</definition>
+        <argsstring>() const =0</argsstring>
+        <name>lockOptions</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1aafe43f54961a3c66411a59e2fd0f6b0d">lockOptions</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ad03aa488dd9f7f93fbeff98e542b1b4d">lockOptions</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ac94303b24dc1de25065c8ceb5af537db">lockOptions</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a04ccac4c66d6f2f8fd8ee8b517e52f83">lockOptions</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a351ef50a8851d89d2530a85643a37b01">lockOptions</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="146" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1abced099ccbdba6ac1f0ccead9ecb1375" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::mergeLock</definition>
+        <argsstring>(const TableLock &amp;lockOptions)=0</argsstring>
+        <name>mergeLock</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a97fbee2f5707cf8a90a98037c9ba9b15">mergeLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a1b67c562f9a0d274d164924510806033">mergeLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a700e16a3ce8ab48b0458da1c18018e17">mergeLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a1fb4a133791589fd6a313d3ad94aedee">mergeLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a4226208823319e60e68be1d1ca91e305">mergeLock</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableLock" kindref="compound">TableLock</ref> &amp;</type>
+          <declname>lockOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="149" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ad685c3cfbb097ce89deb3a0b05a3f5dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::hasLock</definition>
+        <argsstring>(FileLocker::LockType) const =0</argsstring>
+        <name>hasLock</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a6c285f329d505e457b113daec7ff7cce">hasLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1aa5e635431e396747650396b5c3e26383">hasLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a152d5405ef3bea5e67ec71ec8897129e">hasLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a872b4a9f9b362d4d476d161c155d69b9">hasLock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a471d33f6969d5f75b532b23cfb2df040">hasLock</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1FileLocker_1a88e00f7a9d5ca67f0aa9c55d0da57601" kindref="member">FileLocker::LockType</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="153" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a35c767b4f9a83f8d5bcdf40ddbf13a3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::lock</definition>
+        <argsstring>(FileLocker::LockType, uInt nattempts)=0</argsstring>
+        <name>lock</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a8a71ebadd263b321249ba988294c213d">lock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ac31448c7a284754950a4d9f3441e6ebd">lock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ab081aa5b6d1dfa90944c1625649090e4">lock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1abae3ff8c59328472432c73e950db651f">lock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a5ccb4c9b51249af429e22ae0ee392e22">lock</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1FileLocker_1a88e00f7a9d5ca67f0aa9c55d0da57601" kindref="member">FileLocker::LockType</ref></type>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>nattempts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="156" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aaaae4b5579db962052157465b95441a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::unlock</definition>
+        <argsstring>()=0</argsstring>
+        <name>unlock</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a72b619275c4973b0a6a9b18bad6b3f2d">unlock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a42daa3754bff25766adae7ac29cc598a">unlock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1abefda40703d5bd20e6e500f094617cd1">unlock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a2d7cce12811f920bc646d6808395f737">unlock</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1afbebe6d023effc33fd28ab0577da8195">unlock</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="160" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ada49fa28e3dce7500fe38c5241e534f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::flush</definition>
+        <argsstring>(Bool fsync, Bool recursive)=0</argsstring>
+        <name>flush</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a0783a214d9ffc6530b8aa36c6f7248db">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1af7b8eb82c0c8b0c1a50626bcbbfeb4df">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a047bbf9c4ecaf52fb36e98fc6f8d5c27">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a84bba3a279cb3670c3b3da6198eaffee">flush</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a978b17c5b4a6cde28c318455d56bafb6">flush</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>fsync</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>recursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="163" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a92afc528c64764286d84d83b07135790" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::resync</definition>
+        <argsstring>()=0</argsstring>
+        <name>resync</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a92c20ca68907fd0c3018441c634cde77">resync</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a65ac36a4d598f805963bf582dcc74cf7">resync</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a3317b169ffc26aaa5e47afd52602bc48">resync</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a356f1c2744f3430844c15abfbaa66bf4">resync</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a2132e93392245b15c760d2c3500c71ec">resync</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="166" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aa67f5b4e3a3a25a879efde20a4bc7c09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>virtual uInt casacore::BaseTable::getModifyCounter</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getModifyCounter</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1aa1eb6947a4354af28f4f039a5c5bcd5f">getModifyCounter</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1adc649229d25e8a766d4686b3d3c4a823">getModifyCounter</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1abfb5ec996bc36841e85db59fbe7ec02e">getModifyCounter</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ad369dccac7f0944ff805d0085c6f4573">getModifyCounter</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1aba39606ca14232ea25cfc94b4e2e8930">getModifyCounter</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="169" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1abc5c5ea9d47b7ccf8fff0cfbae8115f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::setTableChanged</definition>
+        <argsstring>()</argsstring>
+        <name>setTableChanged</name>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a85465efc6018d3aa4fe946da7a2dd203">setTableChanged</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="172" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="360" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a7c43f9de93f8e734ec18702232256487" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::doNotWrite</definition>
+        <argsstring>()</argsstring>
+        <name>doNotWrite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="175" column="10" bodyfile="tables/Tables/BaseTable.h" bodystart="175" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a8cd97809ecedae7d36ed2a81427d0d61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::isWritable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isWritable</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1ac327f7b06eca1520443ab1e52c023bbf">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a35e33cdccc5ff87aa8155f64e9ea9ac3">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ac91376fe67e29d7f0bafcde05bd54eca">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ae059406857552b50ada8337c81e31767">isWritable</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ab19e946a78a1c7139a55b012dd77c2ba">isWritable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="180" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3efcbf626bfe538a6e17dd71fc27be25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isColumnWritable</definition>
+        <argsstring>(const String &amp;columnName) const</argsstring>
+        <name>isColumnWritable</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="184" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="558" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aea198b16d21d41f483126884ea3a5c47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isColumnWritable</definition>
+        <argsstring>(uInt columnIndex) const</argsstring>
+        <name>isColumnWritable</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>columnIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="185" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="566" bodyend="573"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a851ef255c6f26d6e02b8a1d1ebe6172e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isColumnStored</definition>
+        <argsstring>(const String &amp;columnName) const</argsstring>
+        <name>isColumnStored</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="190" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="575" bodyend="579"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a1ad993b768ddc1b6b5b13a3cc7ad666a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isColumnStored</definition>
+        <argsstring>(uInt columnIndex) const</argsstring>
+        <name>isColumnStored</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>columnIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="191" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="580" bodyend="584"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a83b23fae54b9a372cd8d83189707784e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+        <definition>const String&amp; casacore::BaseTable::tableName</definition>
+        <argsstring>() const</argsstring>
+        <name>tableName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="195" column="18" bodyfile="tables/Tables/BaseTable.h" bodystart="195" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1af380596a189b87166859244d4b36c930" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::getPartNames</definition>
+        <argsstring>(Block&lt; String &gt; &amp;names, Bool recursive) const</argsstring>
+        <name>getPartNames</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1ab102e312bd84684c7e3ce53d39870bb4">getPartNames</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1af060a7aa0b4b63a1777cf7cd063d9ee0">getPartNames</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>names</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>recursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="200" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="281" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a4ca254bfeb0d3db37fe9ba1052655e45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::rename</definition>
+        <argsstring>(const String &amp;newName, int tableOption)</argsstring>
+        <name>rename</name>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a36a54888d8626b8d160db97e8b738287">rename</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="223" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="434" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a4ae2384530f9cc8f9ec1e8611b327ee4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::copy</definition>
+        <argsstring>(const String &amp;newName, int tableOption) const</argsstring>
+        <name>copy</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a101118f5c79002cb4fc8f7a26405f148">copy</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a52b1047e1f925bbcfe994fdc2e20b0c7">copy</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a45cca1c18f2ae83cf8cadfe449a451b5">copy</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="238" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="530" bodyend="554"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9214bc40cb2f2b216c1603a5dedb7f12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::deepCopy</definition>
+        <argsstring>(const String &amp;newName, const Record &amp;dataManagerInfo, const StorageOption &amp;, int tableOption, Bool valueCopy, int endianFormat, Bool noRows) const</argsstring>
+        <name>deepCopy</name>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ae5f9200fabb795ac87a0f8360c368248">deepCopy</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a4f50550e8e7299902d181095d5d1e554">deepCopy</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a986d8361522547bfd00c85a33d7220bc">deepCopy</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a3bb1bdad34da991faef4cd2c2cfd1d93">deepCopy</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>dataManagerInfo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1StorageOption" kindref="compound">StorageOption</ref> &amp;</type>
+          <defname>stopt</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>valueCopy</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endianFormat</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="239" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="478" bodyend="492"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3df77e703e62364e2ae50f888feb4308" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int casacore::BaseTable::tableType</definition>
+        <argsstring>() const</argsstring>
+        <name>tableType</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a7a605f8dd53a67dc3093407fb1c0a790">tableType</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a43e9a0b7026a86df31c907a54b453d59">tableType</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1afba51e4d847baf3f7061a6ec380b9183">tableType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="250" column="17" bodyfile="tables/Tables/BaseTable.cc" bodystart="276" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aaa07fd28864adcd7dfb0e5360cc07761" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::BaseTable::tableOption</definition>
+        <argsstring>() const</argsstring>
+        <name>tableOption</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="253" column="9" bodyfile="tables/Tables/BaseTable.h" bodystart="253" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ab2316e4416a652808058ef5d4a7933ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::markForDelete</definition>
+        <argsstring>(Bool callback, const String &amp;oldName)</argsstring>
+        <name>markForDelete</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="260" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="364" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a136a1c8b9b38b03c332b871aaca12f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::unmarkForDelete</definition>
+        <argsstring>(Bool callback, const String &amp;oldName)</argsstring>
+        <name>unmarkForDelete</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="265" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="379" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a2cb595f3a9247eb5ad78ebdcecb42ab6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::isMarkedForDelete</definition>
+        <argsstring>() const</argsstring>
+        <name>isMarkedForDelete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="268" column="10" bodyfile="tables/Tables/BaseTable.h" bodystart="268" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3459f904d91eea216f229176dc54873e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &amp;</type>
+        <definition>const TableDesc&amp; casacore::BaseTable::tableDesc</definition>
+        <argsstring>() const</argsstring>
+        <name>tableDesc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="272" column="21" bodyfile="tables/Tables/BaseTable.h" bodystart="272" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1abbb835018f52da290fdecdebc6db2958" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref></type>
+        <definition>virtual TableDesc casacore::BaseTable::actualTableDesc</definition>
+        <argsstring>() const =0</argsstring>
+        <name>actualTableDesc</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a74e1df3a4c5ed3eb9e7136d20afbc920">actualTableDesc</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a7e8d0fe74f0e624f6645c2227779d8d8">actualTableDesc</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a144b2e29b06891e5c7d65c4e90cd10d7">actualTableDesc</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a939d15cb57dd214f33533dae3c3c17ef">actualTableDesc</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1af7bf3946c6fea5579f11b70f1661d477">actualTableDesc</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="276" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ac64ce581964e7500ee12af09fafa4b77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref></type>
+        <definition>virtual Record casacore::BaseTable::dataManagerInfo</definition>
+        <argsstring>() const =0</argsstring>
+        <name>dataManagerInfo</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a3c6c804b6eae65d21efacc2037d9b627">dataManagerInfo</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a215c0ff70a5a99c183d667cd8909efaa">dataManagerInfo</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a067849c86a02854dc8fca359f20ececd">dataManagerInfo</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ac3c59ada28727ab9c8b951b66f9aef4c">dataManagerInfo</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a660c087aee8a1bea6edde073a1d2786d">dataManagerInfo</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="279" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1af53fe2c24ac80f22e0ddc8ebe5ee16ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::showStructure</definition>
+        <argsstring>(std::ostream &amp;, Bool showDataMan, Bool showColumns, Bool showSubTables, Bool sortColumns, Bool cOrder)</argsstring>
+        <name>showStructure</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <defname>os</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>showDataMan</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>showColumns</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>showSubTables</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>sortColumns</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>cOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="282" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="1055" bodyend="1169"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a5c0a3409f70fa6a2ecba8e372a50daef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+        <definition>virtual TableRecord&amp; casacore::BaseTable::keywordSet</definition>
+        <argsstring>()=0</argsstring>
+        <name>keywordSet</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a3205f29360b8633b9e3718f6d450d160">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a246bf0f70309a8b5b03789cda6d873cd">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a5b892e88a8abc18464437699bd7e1eff">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a7d52328aad2de67c785a01038ded2f94">keywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a7168612730761a5f5026ff4ed7c3278c">keywordSet</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="290" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1adf7b3c4bd3ee857084940c0a0e59fe3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1TableRecord" kindref="compound">TableRecord</ref> &amp;</type>
+        <definition>virtual TableRecord&amp; casacore::BaseTable::rwKeywordSet</definition>
+        <argsstring>()=0</argsstring>
+        <name>rwKeywordSet</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a2843d89f9283990fa862c6ef5de32911">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a1c3207188ae04c2381216ef208a4b96c">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ae35ed80825467e9860989882e9b26d7d">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a3a1de3009d075447ed049e3e653c94f3">rwKeywordSet</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a252c9ddbdda7ba4466c5682e8c08cbf5">rwKeywordSet</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="295" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3560d980e3948bd39a22af8c2f3c4c45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableInfo" kindref="compound">TableInfo</ref> &amp;</type>
+        <definition>TableInfo&amp; casacore::BaseTable::tableInfo</definition>
+        <argsstring>()</argsstring>
+        <name>tableInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="298" column="15" bodyfile="tables/Tables/BaseTable.h" bodystart="298" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a213c312a15fd4818d2209f157505858e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::flushTableInfo</definition>
+        <argsstring>()</argsstring>
+        <name>flushTableInfo</name>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1aaee7e8df426a1308456281c0708b80fc">flushTableInfo</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="306" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="297" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9881630eda2d66a8124716043856066c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+        <definition>rownr_t casacore::BaseTable::nrow</definition>
+        <argsstring>() const</argsstring>
+        <name>nrow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="309" column="13" bodyfile="tables/Tables/BaseTable.h" bodystart="309" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a540614b134e031271c452571e24a52f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1BaseColumn" kindref="compound">BaseColumn</ref> *</type>
+        <definition>virtual BaseColumn* casacore::BaseTable::getColumn</definition>
+        <argsstring>(uInt columnIndex) const =0</argsstring>
+        <name>getColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a365b60d6ce8975475f24f8fc3a3eba5a">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a11be8858c08ca33a02f285f976fe975c">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a1cf0b464deacacd39cc90adbcf965c9c">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ae1e4a4e50198f6ffecfbbe85f811cb66">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ac06069817c62b1fe7169104866177476">getColumn</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>columnIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="313" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a085aeadaceb998d98e354226dac09aa6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1BaseColumn" kindref="compound">BaseColumn</ref> *</type>
+        <definition>virtual BaseColumn* casacore::BaseTable::getColumn</definition>
+        <argsstring>(const String &amp;columnName) const =0</argsstring>
+        <name>getColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1af8ba8473202a534d854c1ecafd4c297c">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a233e0a9916f66177afd250cf004e11fe">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a469060a33d8e513220a02e58ca31a2cb">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a6480bd4aecc84f73038f8eda9b360ec3">getColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ab5458249d42d67a8f8f0aaa08cad9c50">getColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="316" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aab01aea6a792d473831f6835a7e12129" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::canAddRow</definition>
+        <argsstring>() const</argsstring>
+        <name>canAddRow</name>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ad69ace0a3377db1cff3e345dd41b932b">canAddRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a05664ade3065912298c227919428be61">canAddRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a6e68445c816d6388f1d27529c1cb1798">canAddRow</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="319" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="587" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1abaf0d12831456f8db99a3de68822649c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addRow</definition>
+        <argsstring>(rownr_t nrrow=1, Bool initialize=True)</argsstring>
+        <name>addRow</name>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a08743f2c2ab9689dcd1a7c00e3ed2346">addRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a2f2ab5a12d6b870def21c2daaa9cf8e1">addRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a0f4dfaca39c21873329d8b8cc5edd27f">addRow</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>initialize</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="323" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="592" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9284e5d8a8ac0c00a61778b049c377a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::canRemoveRow</definition>
+        <argsstring>() const</argsstring>
+        <name>canRemoveRow</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1afd26cd85cf2df91a2aca7e466df4d148">canRemoveRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1aca618da90f7b3bbbf092bada438a0095">canRemoveRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1aea90fb35442e0cd8cdacc6ce4e3d66bc">canRemoveRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ac7cdb3afdbe0c017ae79520b35ac441e">canRemoveRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a87bb0627c4af530deb6fcc0328c37d40">canRemoveRow</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="326" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="589" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ad6a8b5c0b6f1fa90522f775e076c1813" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::removeRow</definition>
+        <argsstring>(rownr_t rownr)</argsstring>
+        <name>removeRow</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a5d961253695f665fcdef5e6abac88be2">removeRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ab6c2f94d43c11f3bfb62b4f31e8ebc8a">removeRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a2827dbeb0369d88e1ffdbecba8298494">removeRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1aa03de7ed6e78e0493da5c18e65f45870">removeRow</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a7d1e3de8b996d2b7d5f05eccfda19b78">removeRow</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="345" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="595" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a41c693ec40d545d0ea83203a5f8f4f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::removeRow</definition>
+        <argsstring>(const Vector&lt; rownr_t &gt; &amp;rownrs)</argsstring>
+        <name>removeRow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="346" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="598" bodyend="609"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a104bd779dd83c3143b9004201e8643ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::removeRow</definition>
+        <argsstring>(const Vector&lt; uInt &gt; &amp;rownrs)</argsstring>
+        <name>removeRow</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="347" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1adc80883d4d17c7f3ff3104f37a155793" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref> *</type>
+        <definition>virtual DataManager* casacore::BaseTable::findDataManager</definition>
+        <argsstring>(const String &amp;name, Bool byColumn) const =0</argsstring>
+        <name>findDataManager</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a3955aee1d0955c0d950810df914d62ee">findDataManager</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a333ca7565257a314429448cf00e09f88">findDataManager</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ace5e4cdb06a0b6960c75dd87bce07dc3">findDataManager</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ab1f76415c9d91eaa1e00f58692a35a35">findDataManager</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ab1cacaf1c486399d4dff0f199437ae1a">findDataManager</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>byColumn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="351" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1acb87c8dcad19b30553a9622891df26e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::select</definition>
+        <argsstring>(const TableExprNode &amp;, rownr_t maxRow, rownr_t offset)</argsstring>
+        <name>select</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableExprNode" kindref="compound">TableExprNode</ref> &amp;</type>
+          <defname>node</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>maxRow</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="357" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="766" bodyend="828"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a1a099ebaecef61b55a77c6d181471fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::select</definition>
+        <argsstring>(rownr_t maxRow, rownr_t offset)</argsstring>
+        <name>select</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>maxRow</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="361" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="749" bodyend="763"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9d31176d92a3bea7e5fbf53e5f671e46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::select</definition>
+        <argsstring>(const Vector&lt; rownr_t &gt; &amp;rownrs)</argsstring>
+        <name>select</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="364" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="830" bodyend="834"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a0a3162aad0394cf39e732c154afc35f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::select</definition>
+        <argsstring>(const Block&lt; Bool &gt; &amp;mask)</argsstring>
+        <name>select</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> &gt; &amp;</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="369" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="836" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a841e2cd202a6a382d4e9fe357e104697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::project</definition>
+        <argsstring>(const Block&lt; String &gt; &amp;columnNames)</argsstring>
+        <name>project</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="372" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="842" bodyend="846"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1adc42aba437fd255f8892659a59e1fa5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::tabAnd</definition>
+        <argsstring>(BaseTable *)</argsstring>
+        <name>tabAnd</name>
+        <param>
+          <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+          <defname>that</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="377" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="850" bodyend="872"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a6dc6ce2b1f9a2909566aebe8a2fbb873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::tabOr</definition>
+        <argsstring>(BaseTable *)</argsstring>
+        <name>tabOr</name>
+        <param>
+          <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+          <defname>that</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="379" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="875" bodyend="895"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a7a5cf104b4fb3588e2c346b8eebc9f6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::tabSub</definition>
+        <argsstring>(BaseTable *)</argsstring>
+        <name>tabSub</name>
+        <param>
+          <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+          <defname>that</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="381" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="898" bodyend="921"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a71f7ed50d2f3998d5e4187ceb0fd5a5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::tabXor</definition>
+        <argsstring>(BaseTable *)</argsstring>
+        <name>tabXor</name>
+        <param>
+          <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+          <defname>that</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="383" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="924" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a6c9c11290cfdf842b26ff38228a70436" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::tabNot</definition>
+        <argsstring>()</argsstring>
+        <name>tabNot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="385" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="949" bodyend="965"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a076993cb86ef141b7d63f65447cc085a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::sort</definition>
+        <argsstring>(const Block&lt; String &gt; &amp;columnNames, const Block&lt; std::shared_ptr&lt; BaseCompare &gt;&gt; &amp;compareObjects, const Block&lt; Int &gt; &amp;sortOrder, int sortOption, std::shared_ptr&lt; Vector&lt; rownr_t &gt;&gt; sortIterBoundaries=nullptr, std::shared_ptr&lt; Vector&lt; size_t &gt;&gt; sortIterKeyIdxChange=nullptr)</argsstring>
+        <name>sort</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt;&gt; &amp;</type>
+          <declname>compareObjects</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt; &amp;</type>
+          <declname>sortOrder</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sortOption</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt;&gt;</type>
+          <declname>sortIterBoundaries</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; size_t &gt;&gt;</type>
+          <declname>sortIterKeyIdxChange</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="389" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="673" bodyend="701"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a8315a408753870ccea5dafa4d0a73a61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1BaseTableIterator" kindref="compound">BaseTableIterator</ref> *</type>
+        <definition>BaseTableIterator * casacore::BaseTable::makeIterator</definition>
+        <argsstring>(const Block&lt; String &gt; &amp;columnNames, const Block&lt; std::shared_ptr&lt; BaseCompare &gt;&gt; &amp;, const Block&lt; Int &gt; &amp;orders, int option, bool cacheIterationBoundaries=false)</argsstring>
+        <name>makeIterator</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt;&gt; &amp;</type>
+          <defname>cmpObj</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt; &amp;</type>
+          <declname>orders</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>option</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>cacheIterationBoundaries</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="397" column="23" bodyfile="tables/Tables/BaseTable.cc" bodystart="994" bodyend="1008"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a639b511f13b4b1ac4d4a7cadc2a3d9f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addColumn</definition>
+        <argsstring>(const ColumnDesc &amp;columnDesc, Bool addToParent)</argsstring>
+        <name>addColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a68221bc0ff51a24b038c9a3ac3081b98">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a481bc79e9cd8d390af1380c010ba15b9">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a5c26041a8bf38292f8747a63234b35e9">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a5444cdf9bc3a952bb198ce2579c24f36">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ae682794b03a2185526463f5a4d82b245">addColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+          <declname>columnDesc</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToParent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="405" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="611" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a40226a830a9889e4b5891772ff1d8875" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addColumn</definition>
+        <argsstring>(const ColumnDesc &amp;columnDesc, const String &amp;dataManager, Bool byName, Bool addToParent)</argsstring>
+        <name>addColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a14b8953c9cf2d66ca48e72dbfdcdb6f2">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a568a983bc036d4fb552b70c6023af000">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1afabde75fb0f45641857574b7222f91f6">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a96547ed5d5c888008027bda76a31cf03">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a305f19eeb5ce657f347c1371a0ceee08">addColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+          <declname>columnDesc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>dataManager</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>byName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToParent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="406" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="613" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a16adda9bda92d77e3f224fb6fbcffd9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addColumn</definition>
+        <argsstring>(const ColumnDesc &amp;columnDesc, const DataManager &amp;dataManager, Bool addToParent)</argsstring>
+        <name>addColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a97e73a3f14dc233dc8261ae0627ab18b">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1afda0238416feda2d14406a2fc978d057">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a9226c3f27085628906359d988ed0ab3c">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1aae2c30c4e76b8798a21882542c9177f6">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1af282526c1e034705a7340f2b549be958">addColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ColumnDesc" kindref="compound">ColumnDesc</ref> &amp;</type>
+          <declname>columnDesc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref> &amp;</type>
+          <declname>dataManager</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToParent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="409" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="615" bodyend="616"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a04e84f95a23a38ff45dc53b953840425" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addColumn</definition>
+        <argsstring>(const TableDesc &amp;tableDesc, const DataManager &amp;dataManager, Bool addToParent)</argsstring>
+        <name>addColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1ae9fdb6e3277f31b6897d5e1276f96357">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1af0bee4e638546fc1b40ee60835c38a52">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a074c6c3144a1677138e334eb2287f927">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ac214495ee477d0aef3eb6a96b9a50356">addColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a6692c169a363ae29879afa4d6db69497">addColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &amp;</type>
+          <declname>tableDesc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref> &amp;</type>
+          <declname>dataManager</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToParent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="411" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="617" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ada34e9aca8e3cc63b007a0a52f75d9d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::addColumns</definition>
+        <argsstring>(const TableDesc &amp;tableDesc, const Record &amp;dmInfo, Bool addToParent)</argsstring>
+        <name>addColumns</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &amp;</type>
+          <declname>tableDesc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>dmInfo</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>addToParent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="417" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="620" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3fec8d6f4a0042697bfb45ca33b38fc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::canRemoveColumn</definition>
+        <argsstring>(const Vector&lt; String &gt; &amp;columnNames) const =0</argsstring>
+        <name>canRemoveColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a641f46ee6974b9a25dacb259fa2a770d">canRemoveColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1ad11e1355a5cf7d88ae320901e9776c0e">canRemoveColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a8c2a4f1846fe4dde5c31284aa4688523">canRemoveColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ab38acb8b2a6b0ed8a034d647e521d74b">canRemoveColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a3aca92e542d04c17ee936b887e84b7a2">canRemoveColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="421" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a52475c11d5f3684733a3408ee11387d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::removeColumn</definition>
+        <argsstring>(const Vector&lt; String &gt; &amp;columnNames)=0</argsstring>
+        <name>removeColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a2dcdf8e2c2ed8002534d0d635c4910c5">removeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a8c00b504613235afe43166b4383d363e">removeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ad97c9e2b02310bb4890a0e0d96f4a57c">removeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a66e65bf310cadf7d4c8a68d2c03dd849">removeColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a750a9a60730a5949dc46d727fce3ba6e">removeColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="424" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1add5e36215f1fdf1c88f4baf94d68bad2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::checkRemoveColumn</definition>
+        <argsstring>(const Vector&lt; String &gt; &amp;columnNames, Bool throwException) const</argsstring>
+        <name>checkRemoveColumn</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>throwException</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="430" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="1020" bodyend="1045"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a848c6a6c37491defd6160a46cf1b4d7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>virtual Bool casacore::BaseTable::canRenameColumn</definition>
+        <argsstring>(const String &amp;columnName) const =0</argsstring>
+        <name>canRenameColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1ab5de1d52df197678b17a6510590b7920">canRenameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a9b4fd9297f55fcd3d1bc35fc79cc49d9">canRenameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1acc93556ec41fc7ced0ec6ebcb80a1bf7">canRenameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1af2d7e8e59c3c688d34d45c9a9412b44c">canRenameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a1e3148ea52b8f3df407edff42a992c6a">canRenameColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>columnName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="434" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a24874d14c036594021dfb8948f1f3b25" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::renameColumn</definition>
+        <argsstring>(const String &amp;newName, const String &amp;oldName)=0</argsstring>
+        <name>renameColumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a0f6dcd8c4bcd39f617ca61d666c52f04">renameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1aa8f3d915f20eb2798a31f9a887e0ba62">renameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1ad44d08b2a8ba917b534ccfcf241f3294">renameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a240731f200e176c19ac41be45a03dd3b">renameColumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a2fff32f041682dae12a30b3b5c3e93d4">renameColumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="437" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a0dbc3d774bf517c2b4f314abd5f789ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::BaseTable::renameHypercolumn</definition>
+        <argsstring>(const String &amp;newName, const String &amp;oldName)=0</argsstring>
+        <name>renameHypercolumn</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a3dddba34d4473d2a0a4074690fcce23b">renameHypercolumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1MemoryTable_1a68c9ef1b53ed80d061a21ef80d562e5e">renameHypercolumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a77d457c05490787cbf5b2d6d265f3102">renameHypercolumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a46648a90a56c4724d83a74bc1bde9873">renameHypercolumn</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a2dc60d4305dfa14cfe11fd16bcd50e33">renameHypercolumn</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="441" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a216c60f014b109677d52d43a202641bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt;</type>
+        <definition>Vector&lt; rownr_t &gt; casacore::BaseTable::rowNumbers</definition>
+        <argsstring>() const</argsstring>
+        <name>rowNumbers</name>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a3aca3d28f2c078b8e2c39c27528a010e">rowNumbers</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a73250bc3f83af8ed1d0abc92ad092f86">rowNumbers</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="447" column="20" bodyfile="tables/Tables/BaseTable.cc" bodystart="647" bodyend="653"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a98fb001a02e0df7eade2212b6523a3b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+        <definition>BaseTable * casacore::BaseTable::root</definition>
+        <argsstring>()</argsstring>
+        <name>root</name>
+        <reimplementedby refid="classcasacore_1_1RefTable_1ae11092365bd65b56f01b432b03002d52">root</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ab8c28f10b1e8ed19b389c178f22592bd">root</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="453" column="23" bodyfile="tables/Tables/BaseTable.cc" bodystart="656" bodyend="657"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae5744a3d750397e0026e7df1d87a7c0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::rowOrder</definition>
+        <argsstring>() const</argsstring>
+        <name>rowOrder</name>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a31ccb71d6693f9c4e8a34f88c20b14b8">rowOrder</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1aa1acf9e3d59a679af3e5ee9f1503ad5c">rowOrder</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="459" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="660" bodyend="661"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ace7bbfa5afb0f53b9905d9564345a290" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+        <definition>Vector&lt; rownr_t &gt; &amp; casacore::BaseTable::rowStorage</definition>
+        <argsstring>()</argsstring>
+        <name>rowStorage</name>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a96d9556b804fd9312a5c727e8f93fc4e">rowStorage</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1afa829301460b91bec3b53fa9c2f55fc6">rowStorage</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="463" column="20" bodyfile="tables/Tables/BaseTable.cc" bodystart="664" bodyend="668"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a476a13d606767c491d2367ce4bc369d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::adjustRownrs</definition>
+        <argsstring>(rownr_t nrrow, Vector&lt; rownr_t &gt; &amp;rownrs, Bool determineOrder) const</argsstring>
+        <name>adjustRownrs</name>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a0866490865b39fc9a50387dade7087bf">adjustRownrs</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1ad954bb95171f9d2f02a4e2a76f6bb151">adjustRownrs</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>nrrow</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt; &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>determineOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="468" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="746" bodyend="747"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ab983d6c652c76dedbc2cc6612637ef21" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; BaseTable &gt; casacore::BaseTable::doSort</definition>
+        <argsstring>(PtrBlock&lt; BaseColumn * &gt; &amp;, const Block&lt; std::shared_ptr&lt; BaseCompare &gt;&gt; &amp;, const Block&lt; Int &gt; &amp;sortOrder, int sortOption, std::shared_ptr&lt; Vector&lt; rownr_t &gt;&gt; sortIterBoundaries, std::shared_ptr&lt; Vector&lt; size_t &gt;&gt; sortIterKeyIdxChange)</argsstring>
+        <name>doSort</name>
+        <reimplementedby refid="classcasacore_1_1NullTable_1a736d1a0be07bd31a9976c105df1a98ac">doSort</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1PtrBlock" kindref="compound">PtrBlock</ref>&lt; <ref refid="classcasacore_1_1BaseColumn" kindref="compound">BaseColumn</ref> * &gt; &amp;</type>
+          <defname>sortCol</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; std::shared_ptr&lt; <ref refid="classcasacore_1_1BaseCompare" kindref="compound">BaseCompare</ref> &gt;&gt; &amp;</type>
+          <defname>cmpObj</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Block" kindref="compound">Block</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt; &amp;</type>
+          <declname>sortOrder</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sortOption</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt;&gt;</type>
+          <declname>sortIterBoundaries</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; size_t &gt;&gt;</type>
+          <declname>sortIterKeyIdxChange</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="474" column="29" bodyfile="tables/Tables/BaseTable.cc" bodystart="705" bodyend="737"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae33c0e3e1572129a07bf1e98ec3dd449" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1RefTable" kindref="compound">RefTable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; RefTable &gt; casacore::BaseTable::makeRefTable</definition>
+        <argsstring>(Bool rowOrder, rownr_t initialNrrow)</argsstring>
+        <name>makeRefTable</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>rowOrder</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>initialNrrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="483" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="739" bodyend="743"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1adc472fc6dd8864d45c6b5b573fe4b3da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::checkRowNumber</definition>
+        <argsstring>(rownr_t rownr) const</argsstring>
+        <name>checkRowNumber</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="488" column="10" bodyfile="tables/Tables/BaseTable.h" bodystart="488" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1aacca6b2dca927794b9d086e55b20aac3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::BaseTable::traceId</definition>
+        <argsstring>() const</argsstring>
+        <name>traceId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="492" column="9" bodyfile="tables/Tables/BaseTable.h" bodystart="492" bodyend="493"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a0227d7b0de4a2a577730b435ec872e22" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TableInfo" kindref="compound">TableInfo</ref></type>
+        <definition>TableInfo casacore::BaseTable::tableInfo</definition>
+        <argsstring>(const String &amp;tableName)</argsstring>
+        <name>tableInfo</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="303" column="22" bodyfile="tables/Tables/BaseTable.cc" bodystart="288" bodyend="291"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ac0f29fb81e24fe17664e9bc4e64a0cc0" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::scratchCallback</definition>
+        <argsstring>(Bool isScratch, const String &amp;oldName) const</argsstring>
+        <name>scratchCallback</name>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>isScratch</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="510" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="127" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a34ebdf153df6045ca6580df825a2d6cc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::makeTableDir</definition>
+        <argsstring>()</argsstring>
+        <name>makeTableDir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="515" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="203" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9049ea202faa727738d79c94f1ac2422" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::trueDeepCopy</definition>
+        <argsstring>(const String &amp;newName, const Record &amp;dataManagerInfo, const StorageOption &amp;, int tableOption, int endianFormat, Bool noRows) const</argsstring>
+        <name>trueDeepCopy</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Record" kindref="compound">Record</ref> &amp;</type>
+          <declname>dataManagerInfo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1StorageOption" kindref="compound">StorageOption</ref> &amp;</type>
+          <defname>stopt</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endianFormat</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>noRows</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="519" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="494" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a7f8f6c36b6c274c2d6281d8787460fb4" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::prepareCopyRename</definition>
+        <argsstring>(const String &amp;newName, int tableOption) const</argsstring>
+        <name>prepareCopyRename</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tableOption</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="529" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="392" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a678dc6ca3e7f4d4154f8a544ee8f0b48" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::renameSubTables</definition>
+        <argsstring>(const String &amp;newName, const String &amp;oldName)</argsstring>
+        <name>renameSubTables</name>
+        <reimplementedby refid="classcasacore_1_1PlainTable_1a7771baf296a5f14a38de3c84c56d5fbc">renameSubTables</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1NullTable_1aea9a2167d220c909064f68565469aa53">renameSubTables</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="532" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="475" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a2a8192e65699d8083b491ae8762450fd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::throwIfTableExists</definition>
+        <argsstring>()</argsstring>
+        <name>throwIfTableExists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="537" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a0c6d92cb1326b5a513ed6850f1e6f350" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::openedForWrite</definition>
+        <argsstring>() const</argsstring>
+        <name>openedForWrite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="540" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="264" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a3f576f3b55d912947f1262fd531abd9c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::writeStart</definition>
+        <argsstring>(AipsIO &amp;, Bool bigEndian)</argsstring>
+        <name>writeStart</name>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+          <defname>ios</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>bigEndian</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="544" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="309" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a53394df0dabc5fdb7558dfd71740bb70" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::writeEnd</definition>
+        <argsstring>(AipsIO &amp;)</argsstring>
+        <name>writeEnd</name>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+          <defname>ios</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="547" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="348" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1af10dd4bc20b0a91762a02df75dd1287f" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::BaseTable::shouldNotWrite</definition>
+        <argsstring>() const</argsstring>
+        <name>shouldNotWrite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="551" column="10" bodyfile="tables/Tables/BaseTable.h" bodystart="551" bodyend="552"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae6f7ba25d447869abc18f2607d8375c5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::getTableInfo</definition>
+        <argsstring>()</argsstring>
+        <name>getTableInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="555" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="292" bodyend="296"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a9dc5155874fba49ca1d2b2347ee2a979" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::showStructureExtra</definition>
+        <argsstring>(std::ostream &amp;) const</argsstring>
+        <name>showStructureExtra</name>
+        <reimplementedby refid="classcasacore_1_1ConcatTable_1a75504917c66a49d8194391d613ff8e82">showStructureExtra</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1RefTable_1a3d23f1743c2d5b03e83589ff1d1fa824">showStructureExtra</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="560" column="18" bodyfile="tables/Tables/BaseTable.cc" bodystart="1171" bodyend="1172"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a2990ce0644c633b2989e5633fb610391" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::showColumnInfo</definition>
+        <argsstring>(ostream &amp;os, const TableDesc &amp;, uInt maxNameLength, const Array&lt; String &gt; &amp;columnNames, Bool sort, Bool cOrder) const</argsstring>
+        <name>showColumnInfo</name>
+        <param>
+          <type>ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &amp;</type>
+          <defname>tdesc</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>maxNameLength</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt; <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &gt; &amp;</type>
+          <declname>columnNames</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>sort</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>cOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="564" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="1174" bodyend="1232"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1a61e79fbde385e9db0bf4a93cbdf41375" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::checkRowNumberThrow</definition>
+        <argsstring>(rownr_t rownr) const</argsstring>
+        <name>checkRowNumberThrow</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="569" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="1047" bodyend="1053"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1af3cfbe7e59faf7f3cb862e4ef9e7377a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::BaseTable::logicCheck</definition>
+        <argsstring>(BaseTable *that)</argsstring>
+        <name>logicCheck</name>
+        <param>
+          <type><ref refid="classcasacore_1_1BaseTable" kindref="compound">BaseTable</ref> *</type>
+          <declname>that</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="573" column="10" bodyfile="tables/Tables/BaseTable.cc" bodystart="968" bodyend="973"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae4152d54834c8a39998a8e6e55ad4503" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref> &gt;</type>
+        <definition>Vector&lt; rownr_t &gt; casacore::BaseTable::logicRows</definition>
+        <argsstring>()</argsstring>
+        <name>logicRows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="577" column="12" bodyfile="tables/Tables/BaseTable.cc" bodystart="978" bodyend="990"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ace676f1ee7a8f93b782f2d82b7ced8b2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classcasacore_1_1TableDesc" kindref="compound">TableDesc</ref> &amp;</type>
+        <definition>const TableDesc &amp; casacore::BaseTable::makeEmptyTableDesc</definition>
+        <argsstring>() const</argsstring>
+        <name>makeEmptyTableDesc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="583" column="21" bodyfile="tables/Tables/BaseTable.cc" bodystart="1011" bodyend="1017"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1BaseTable_1ae5e9150ce885a2cc81a4fab8821254e1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::BaseTable::makeAbsoluteName</definition>
+        <argsstring>(const String &amp;name) const</argsstring>
+        <name>makeAbsoluteName</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Tables/BaseTable.h" line="587" column="12" bodyfile="tables/Tables/BaseTable.cc" bodystart="1234" bodyend="1249"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7">
+        <label>casacore::RefTable</label>
+        <link refid="classcasacore_1_1RefTable"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; BaseTable &gt;</label>
+      </node>
+      <node id="5">
+        <label>casacore::NullTable</label>
+        <link refid="classcasacore_1_1NullTable"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::BaseTable</label>
+        <link refid="classcasacore_1_1BaseTable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::MemoryTable</label>
+        <link refid="classcasacore_1_1MemoryTable"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::ConcatTable</label>
+        <link refid="classcasacore_1_1ConcatTable"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore::PlainTable</label>
+        <link refid="classcasacore_1_1PlainTable"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::shared_ptr&lt; casacore::TableDesc &gt;</label>
+      </node>
+      <node id="4">
+        <label>casacore::TableInfo</label>
+        <link refid="classcasacore_1_1TableInfo"/>
+      </node>
+      <node id="5">
+        <label>std::weak_ptr&lt; casacore::BaseTable &gt;</label>
+      </node>
+      <node id="8">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="6">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; BaseTable &gt;</label>
+      </node>
+      <node id="1">
+        <label>casacore::BaseTable</label>
+        <link refid="classcasacore_1_1BaseTable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tdescPtr_p</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>info_p</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>thisPtr_p</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>name_p</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::string</label>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="tables/Tables/BaseTable.h" line="101" column="1" bodyfile="tables/Tables/BaseTable.h" bodystart="102" bodyend="596"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1BaseTable_1abbb835018f52da290fdecdebc6db2958" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>actualTableDesc</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a639b511f13b4b1ac4d4a7cadc2a3d9f4" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>addColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a40226a830a9889e4b5891772ff1d8875" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>addColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a16adda9bda92d77e3f224fb6fbcffd9e" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>addColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a04e84f95a23a38ff45dc53b953840425" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>addColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ada34e9aca8e3cc63b007a0a52f75d9d0" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>addColumns</name></member>
+      <member refid="classcasacore_1_1BaseTable_1abaf0d12831456f8db99a3de68822649c" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>addRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a476a13d606767c491d2367ce4bc369d3" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>adjustRownrs</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a344577fee82899291e9f130686cf4f93" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>asBigEndian</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a48a7cc6700c3381ac26b95b015af6000" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>BaseTable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a5b1eb3d0112ef1b2d993e0bf416db2a8" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>BaseTable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a07a718e48cc9913de04a37a78a44822b" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>BaseTableCommon</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aab01aea6a792d473831f6835a7e12129" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>canAddRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3fec8d6f4a0042697bfb45ca33b38fc7" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>canRemoveColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9284e5d8a8ac0c00a61778b049c377a1" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>canRemoveRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a848c6a6c37491defd6160a46cf1b4d7d" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>canRenameColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1add5e36215f1fdf1c88f4baf94d68bad2" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>checkRemoveColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1adc472fc6dd8864d45c6b5b573fe4b3da" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>checkRowNumber</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a61e79fbde385e9db0bf4a93cbdf41375" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>checkRowNumberThrow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a4ae2384530f9cc8f9ec1e8611b327ee4" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>copy</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ac64ce581964e7500ee12af09fafa4b77" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>dataManagerInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9214bc40cb2f2b216c1603a5dedb7f12" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>deepCopy</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a80e2047cfd98b393f650a9361b2ab8d7" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>delete_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a7c43f9de93f8e734ec18702232256487" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>doNotWrite</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ab983d6c652c76dedbc2cc6612637ef21" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>doSort</name></member>
+      <member refid="classcasacore_1_1BaseTable_1adc80883d4d17c7f3ff3104f37a155793" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>findDataManager</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ada49fa28e3dce7500fe38c5241e534f2" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>flush</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a213c312a15fd4818d2209f157505858e" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>flushTableInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a540614b134e031271c452571e24a52f6" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>getColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a085aeadaceb998d98e354226dac09aa6" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>getColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aa67f5b4e3a3a25a879efde20a4bc7c09" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>getModifyCounter</name></member>
+      <member refid="classcasacore_1_1BaseTable_1af380596a189b87166859244d4b36c930" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>getPartNames</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae6f7ba25d447869abc18f2607d8375c5" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>getTableInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ad685c3cfbb097ce89deb3a0b05a3f5dd" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>hasLock</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a6252071a9f7c07cef1b86cce6e541ade" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>info_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a851ef255c6f26d6e02b8a1d1ebe6172e" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>isColumnStored</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a1ad993b768ddc1b6b5b13a3cc7ad666a" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>isColumnStored</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3efcbf626bfe538a6e17dd71fc27be25" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>isColumnWritable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aea198b16d21d41f483126884ea3a5c47" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>isColumnWritable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a2cb595f3a9247eb5ad78ebdcecb42ab6" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>isMarkedForDelete</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a6ae3d3dae0f0fb3cf3d8e30313f2dd48" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>isMultiUsed</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a7e8f6c7201f3d84ea52b7bec524bd5b0" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>isNull</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a8cd97809ecedae7d36ed2a81427d0d61" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>isWritable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3ef1d315fbdbbb8a4d53492c2b83baaa" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>itsTraceId</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a5c0a3409f70fa6a2ecba8e372a50daef" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>keywordSet</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a35c767b4f9a83f8d5bcdf40ddbf13a3b" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>lock</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a11223e123a335760643c2e1aa8fc886d" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>lockOptions</name></member>
+      <member refid="classcasacore_1_1BaseTable_1af3cfbe7e59faf7f3cb862e4ef9e7377a" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>logicCheck</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae4152d54834c8a39998a8e6e55ad4503" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>logicRows</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a646ba9a27966b3a3694bf9a011bd28b5" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>madeDir_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae5e9150ce885a2cc81a4fab8821254e1" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>makeAbsoluteName</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ace676f1ee7a8f93b782f2d82b7ced8b2" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>makeEmptyTableDesc</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a8315a408753870ccea5dafa4d0a73a61" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>makeIterator</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae33c0e3e1572129a07bf1e98ec3dd449" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>makeRefTable</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a34ebdf153df6045ca6580df825a2d6cc" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>makeTableDir</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ab2316e4416a652808058ef5d4a7933ed" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>markForDelete</name></member>
+      <member refid="classcasacore_1_1BaseTable_1abced099ccbdba6ac1f0ccead9ecb1375" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>mergeLock</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aa1c5dfeef33e27684962efa364a101c8" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>name_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a4518039d7eddbeb682cb2a861b6f12c1" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>noWrite_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9881630eda2d66a8124716043856066c" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>nrow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae80cdce40014f97e2cf6129a4f2d4d6e" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>nrrow_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9c077d8c336e278499bccf203b8f9418" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>nrrowToAdd_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a0c6d92cb1326b5a513ed6850f1e6f350" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>openedForWrite</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a5594ed10718c0fb2db43c27363ccd9c7" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1BaseTable_1add503427127d9125643211e791e9c188" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>option_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a7f8f6c36b6c274c2d6281d8787460fb4" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>prepareCopyRename</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a841e2cd202a6a382d4e9fe357e104697" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>project</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a52475c11d5f3684733a3408ee11387d9" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>removeColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ad6a8b5c0b6f1fa90522f775e076c1813" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>removeRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a41c693ec40d545d0ea83203a5f8f4f19" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>removeRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a104bd779dd83c3143b9004201e8643ef" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>removeRow</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a4ca254bfeb0d3db37fe9ba1052655e45" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>rename</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a24874d14c036594021dfb8948f1f3b25" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>renameColumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a0dbc3d774bf517c2b4f314abd5f789ee" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>renameHypercolumn</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a678dc6ca3e7f4d4154f8a544ee8f0b48" prot="protected" virt="virtual"><scope>casacore::BaseTable</scope><name>renameSubTables</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a194a3ae8b48ab9cf72a3bedd8fba8371" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>reopenRW</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a92afc528c64764286d84d83b07135790" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>resync</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a98fb001a02e0df7eade2212b6523a3b2" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>root</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a216c60f014b109677d52d43a202641bf" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>rowNumbers</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae5744a3d750397e0026e7df1d87a7c0f" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>rowOrder</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ace7bbfa5afb0f53b9905d9564345a290" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>rowStorage</name></member>
+      <member refid="classcasacore_1_1BaseTable_1adf7b3c4bd3ee857084940c0a0e59fe3e" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>rwKeywordSet</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ac0f29fb81e24fe17664e9bc4e64a0cc0" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>scratchCallback</name></member>
+      <member refid="classcasacore_1_1BaseTable_1acb87c8dcad19b30553a9622891df26e7" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>select</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a1a099ebaecef61b55a77c6d181471fd7" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>select</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9d31176d92a3bea7e5fbf53e5f671e46" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>select</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a0a3162aad0394cf39e732c154afc35f2" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>select</name></member>
+      <member refid="classcasacore_1_1BaseTable_1abc5c5ea9d47b7ccf8fff0cfbae8115f2" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>setTableChanged</name></member>
+      <member refid="classcasacore_1_1BaseTable_1af10dd4bc20b0a91762a02df75dd1287f" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>shouldNotWrite</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a2990ce0644c633b2989e5633fb610391" prot="private" virt="non-virtual"><scope>casacore::BaseTable</scope><name>showColumnInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1af53fe2c24ac80f22e0ddc8ebe5ee16ab" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>showStructure</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9dc5155874fba49ca1d2b2347ee2a979" prot="private" virt="virtual"><scope>casacore::BaseTable</scope><name>showStructureExtra</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a076993cb86ef141b7d63f65447cc085a" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>sort</name></member>
+      <member refid="classcasacore_1_1BaseTable_1ae32b823ea6e443a6fcceb942f7b90d35" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>storageOption</name></member>
+      <member refid="classcasacore_1_1BaseTable_1adc42aba437fd255f8892659a59e1fa5e" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tabAnd</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3459f904d91eea216f229176dc54873e" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tableDesc</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3560d980e3948bd39a22af8c2f3c4c45" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tableInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a0227d7b0de4a2a577730b435ec872e22" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tableInfo</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a83b23fae54b9a372cd8d83189707784e" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tableName</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aaa07fd28864adcd7dfb0e5360cc07761" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tableOption</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3df77e703e62364e2ae50f888feb4308" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>tableType</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a6c9c11290cfdf842b26ff38228a70436" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tabNot</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a6dc6ce2b1f9a2909566aebe8a2fbb873" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tabOr</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a7a5cf104b4fb3588e2c346b8eebc9f6d" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tabSub</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a71f7ed50d2f3998d5e4187ceb0fd5a5f" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tabXor</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9395bb9a00cd445f9e74cb6534024005" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>tdescPtr_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1acef747fb795533e7b20354a8d6c4db35" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>thisPtr_p</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a2a8192e65699d8083b491ae8762450fd" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>throwIfTableExists</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aacca6b2dca927794b9d086e55b20aac3" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>traceId</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a9049ea202faa727738d79c94f1ac2422" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>trueDeepCopy</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aaaae4b5579db962052157465b95441a4" prot="public" virt="pure-virtual"><scope>casacore::BaseTable</scope><name>unlock</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a136a1c8b9b38b03c332b871aaca12f55" prot="public" virt="non-virtual"><scope>casacore::BaseTable</scope><name>unmarkForDelete</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a53394df0dabc5fdb7558dfd71740bb70" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>writeEnd</name></member>
+      <member refid="classcasacore_1_1BaseTable_1a3f576f3b55d912947f1262fd531abd9c" prot="protected" virt="non-virtual"><scope>casacore::BaseTable</scope><name>writeStart</name></member>
+      <member refid="classcasacore_1_1BaseTable_1aaba59dc7168d54882db623e2b8c18b8f" prot="public" virt="virtual"><scope>casacore::BaseTable</scope><name>~BaseTable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

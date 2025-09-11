@@ -1,0 +1,747 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="LogSink_8h" kind="file" language="C++">
+    <compoundname>LogSink.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="LogSinkInterface_8h" local="no">casacore/casa/Logging/LogSinkInterface.h</includes>
+    <includes refid="Error_8h" local="no">casacore/casa/Exceptions/Error.h</includes>
+    <includes refid="iosfwd_8h" local="no">casacore/casa/iosfwd.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includedby refid="LogIO_8cc" local="no">casa/Logging/LogIO.cc</includedby>
+    <includedby refid="LogIO_8h" local="no">casa/Logging/LogIO.h</includedby>
+    <includedby refid="LogSink_8cc" local="no">casa/Logging/LogSink.cc</includedby>
+    <includedby refid="Logging_8h" local="no">casa/Logging.h</includedby>
+    <includedby refid="NewFile_8cc" local="no">tables/LogTables/NewFile.cc</includedby>
+    <includedby refid="TableLogSink_8h" local="no">tables/LogTables/TableLogSink.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="22">
+        <label>casacore/casa/Exceptions/Error.h</label>
+        <link refid="Error_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>casacore/casa/iostream.h</label>
+        <link refid="iostream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore/casa/Logging/LogFilterInterface.h</label>
+        <link refid="LogFilterInterface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>casacore/casa/iosfwd.h</label>
+        <link refid="iosfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="13">
+        <label>casacore/casa/iosstrfwd.h</label>
+        <link refid="iosstrfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>casacore/casa/OS/Time.h</label>
+        <link refid="Time_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>exception</label>
+      </node>
+      <node id="24">
+        <label>sys/types.h</label>
+      </node>
+      <node id="20">
+        <label>casacore/casa/System/ObjectID.h</label>
+        <link refid="ObjectID_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>sstream</label>
+      </node>
+      <node id="10">
+        <label>casacore/casa/Logging/LogOrigin.h</label>
+        <link refid="LogOrigin_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>iosfwd</label>
+      </node>
+      <node id="18">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>mutex</label>
+      </node>
+      <node id="16">
+        <label>casacore/casa/sstream.h</label>
+        <link refid="sstream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/Logging/LogSink.h</label>
+        <link refid="LogSink_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>casacore/casa/Exceptions/Error.tcc</label>
+        <link refid="Error_8tcc"/>
+      </node>
+      <node id="7">
+        <label>casacore/casa/Logging/LogSinkInterface.h</label>
+        <link refid="LogSinkInterface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore/casa/Logging/LogMessage.h</label>
+        <link refid="LogMessage_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="11">
+        <label>casacore/casa/BasicSL/String.h</label>
+        <link refid="String_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>casa/Logging/LogIO.h</label>
+        <link refid="LogIO_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>tables/Tables/TableLockData.cc</label>
+        <link refid="TableLockData_8cc"/>
+      </node>
+      <node id="25">
+        <label>tables/LogTables/LoggerHolder.h</label>
+        <link refid="LoggerHolder_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tables/Tables/TableTrace.cc</label>
+        <link refid="TableTrace_8cc"/>
+      </node>
+      <node id="16">
+        <label>casa/HDF5/HDF5Record.cc</label>
+        <link refid="HDF5Record_8cc"/>
+      </node>
+      <node id="20">
+        <label>casa/OS/File.cc</label>
+        <link refid="File_8cc"/>
+      </node>
+      <node id="17">
+        <label>casa/IO/BucketFile.cc</label>
+        <link refid="BucketFile_8cc"/>
+      </node>
+      <node id="23">
+        <label>casa/System/AppInfo.cc</label>
+        <link refid="AppInfo_8cc"/>
+      </node>
+      <node id="14">
+        <label>tables/TaQL/ExprNodeSetOpt.cc</label>
+        <link refid="ExprNodeSetOpt_8cc"/>
+      </node>
+      <node id="33">
+        <label>tables/LogTables/TableLogSink.cc</label>
+        <link refid="TableLogSink_8cc"/>
+      </node>
+      <node id="18">
+        <label>casa/Logging.h</label>
+        <link refid="Logging_8h"/>
+      </node>
+      <node id="9">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="15">
+        <label>tables/TaQL/TaQLJoin.cc</label>
+        <link refid="TaQLJoin_8cc"/>
+      </node>
+      <node id="4">
+        <label>casa/BasicSL/STLIO.h</label>
+        <link refid="STLIO_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>tables/LogTables/TableLogSink.h</label>
+        <link refid="TableLogSink_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="22">
+        <label>casa/Quanta/QBase.cc</label>
+        <link refid="QBase_8cc"/>
+      </node>
+      <node id="30">
+        <label>casa/Logging/LogSink.cc</label>
+        <link refid="LogSink_8cc"/>
+      </node>
+      <node id="27">
+        <label>tables/Tables/ReadAsciiTable.cc</label>
+        <link refid="ReadAsciiTable_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/TiledDataStMan.cc</label>
+        <link refid="TiledDataStMan_8cc"/>
+      </node>
+      <node id="5">
+        <label>casa/BasicSL.h</label>
+        <link refid="BasicSL_8h"/>
+      </node>
+      <node id="24">
+        <label>casa/System/PGPlotterInterface.cc</label>
+        <link refid="PGPlotterInterface_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/apps/lsmf.cc</label>
+        <link refid="lsmf_8cc"/>
+      </node>
+      <node id="19">
+        <label>casa/OS/DynLib.cc</label>
+        <link refid="DynLib_8cc"/>
+      </node>
+      <node id="6">
+        <label>casa/IO/MultiFile.cc</label>
+        <link refid="MultiFile_8cc"/>
+      </node>
+      <node id="21">
+        <label>casa/Quanta/MVAngle.cc</label>
+        <link refid="MVAngle_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Logging/LogIO.cc</label>
+        <link refid="LogIO_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/Tables/BaseTable.cc</label>
+        <link refid="BaseTable_8cc"/>
+      </node>
+      <node id="26">
+        <label>tables/LogTables/LoggerHolder.cc</label>
+        <link refid="LoggerHolder_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Logging/LogSink.h</label>
+        <link refid="LogSink_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casa/IO/MultiFileBase.cc</label>
+        <link refid="MultiFileBase_8cc"/>
+      </node>
+      <node id="31">
+        <label>tables/LogTables/NewFile.cc</label>
+        <link refid="NewFile_8cc"/>
+      </node>
+      <node id="12">
+        <label>tables/Tables/RefTable.cc</label>
+        <link refid="RefTable_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1LogSink" prot="public">casacore::LogSink</innerclass>
+    <innerclass refid="classcasacore_1_1LogSink_1_1LsiIntermediate" prot="private">casacore::LogSink::LsiIntermediate</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>LogSink.h:<sp/>Distribute<sp/>LogMessages<sp/>to<sp/>their<sp/>destination(s)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1996,2000,2001,2003,2016</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_LOGSINK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_LOGSINK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="LogSinkInterface_8h" kindref="compound">casacore/casa/Logging/LogSinkInterface.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Error_8h" kindref="compound">casacore/casa/Exceptions/Error.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="iosfwd_8h" kindref="compound">casacore/casa/iosfwd.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distribute<sp/>LogMessages<sp/>to<sp/>their<sp/>destination(s)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;wbrouw&quot;<sp/>date=&quot;1996/08/21&quot;<sp/>tests=&quot;tLogging.cc&quot;<sp/>demos=&quot;dLogging.cc&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=&quot;LogMessage&quot;&gt;LogMessage&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=&quot;LogSinkInterface&quot;&gt;LogSinkInterface&lt;/linkto&gt;,<sp/>if<sp/>you<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>interested<sp/>in<sp/>extending<sp/>the<sp/>set<sp/>of<sp/>destinations<sp/>a<sp/>&lt;src&gt;LogMessage&lt;/src&gt;<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>be<sp/>sent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;etymology&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Log<sp/>as<sp/>in<sp/>&quot;Log<sp/>Book.&quot;<sp/>Sink<sp/>from<sp/>its<sp/>common<sp/>usage<sp/>(&quot;source/sink&quot;)<sp/>as<sp/>a<sp/>thing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>can<sp/>accept<sp/>some<sp/>substance<sp/>or<sp/>energy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/etymology&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>LogSink<sp/>class<sp/>supplies<sp/>the<sp/>destination<sp/>for<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=&quot;LogMessage&quot;&gt;LogMessage&lt;/linkto&gt;s.<sp/>There<sp/>are<sp/>two<sp/>destinations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>available<sp/>through<sp/>the<sp/>&lt;src&gt;LogSink&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ol&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>A<sp/>&lt;i&gt;global&lt;/i&gt;<sp/>destination,<sp/>which<sp/>is<sp/>shared<sp/>by<sp/>all<sp/>LogSinks.<sp/>The<sp/>global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>destination<sp/>will<sp/>typically<sp/>be<sp/>a<sp/>GUI<sp/>window<sp/>or<sp/>standard<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>A<sp/>&lt;i&gt;local&lt;/i&gt;<sp/>destination<sp/>which<sp/>is<sp/>intended<sp/>to<sp/>log<sp/>changes<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>particular<sp/>dataset(s).<sp/>The<sp/>local<sp/>destination<sp/>will<sp/>typically<sp/>be<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>Casacore<sp/>&lt;linkto<sp/>class=&quot;Table&quot;&gt;Table&lt;/linkto&gt;,<sp/>but<sp/>there<sp/>is<sp/>also</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>local<sp/>sink<sp/>for<sp/>temporary<sp/>storage<sp/>in<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ol&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Normally<sp/>the<sp/>&lt;src&gt;post()&lt;/src&gt;<sp/>member<sp/>function<sp/>will<sp/>be<sp/>called<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>sends<sp/>the<sp/>message<sp/>to<sp/>both<sp/>the<sp/>global<sp/>and<sp/>local<sp/>destinations,<sp/>however<sp/>one<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>other<sp/>may<sp/>be<sp/>chosen<sp/>via<sp/>&lt;src&gt;LogSink::postGlobally()&lt;/src&gt;<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;postLocally()&lt;/src&gt;<sp/>member<sp/>functions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>global<sp/>sink<sp/>will<sp/>normally<sp/>be<sp/>set<sp/>by<sp/>system<sp/>library<sp/>code<sp/>(it<sp/>defaults<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>using<sp/>&lt;src&gt;cerr&lt;/src&gt;.<sp/>The<sp/>type<sp/>of<sp/>local<sp/>sink<sp/>is<sp/>defined<sp/>at<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>construction<sp/>time.<sp/>Presently<sp/>you<sp/>can<sp/>choose<sp/>one<sp/>of:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ol&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>a<sp/>&lt;linkto<sp/>class=&quot;NullLogSink&quot;&gt;NullLogSink&lt;/linkto&gt;<sp/>which<sp/>merely</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>discards<sp/>the<sp/>logging<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>a<sp/>&lt;linkto<sp/>class=&quot;StreamLogSink&quot;&gt;StreamLogSink&lt;/linkto&gt;<sp/>which<sp/>sends</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>log<sp/>messages<sp/>to<sp/>an<sp/>&lt;src&gt;ostream&lt;/src&gt;<sp/>(typically<sp/>&lt;src&gt;cerr&lt;/src&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>a<sp/>&lt;linkto<sp/>class=&quot;TableLogSink&quot;&gt;TableLogSink&lt;/linkto&gt;<sp/>which<sp/>sends</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>messages<sp/>to<sp/>a<sp/>Casacore<sp/>&lt;linkto<sp/>class=Table&gt;Table&lt;/linkto&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ol&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Every<sp/>&lt;src&gt;LogSink&lt;/src&gt;<sp/>has<sp/>an<sp/>attached<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=LogFilterInterface&gt;LogFilterInterface&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>is<sp/>used<sp/>to<sp/>reject<sp/>or<sp/>pass<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>local<sp/>and<sp/>global<sp/>sinks<sp/>have<sp/>their<sp/>own<sp/>filters,<sp/>so<sp/>they<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pass<sp/>different<sp/>message<sp/>priorities<sp/>(e.g.,<sp/>global<sp/>&lt;src&gt;DEBUGGING&lt;/src&gt;<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>local<sp/>&lt;src&gt;NORMAL&lt;/src&gt;).<sp/>Generally<sp/>applications<sp/>code<sp/>shouldn&apos;t<sp/>change<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>global<sp/>filter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LogMessage<sp/>logMessage(...);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LogSink<sp/>logger(LogMessage::NORMAL,<sp/>&quot;logtable&quot;);<sp/><sp/><sp/>//<sp/>log<sp/>locally<sp/>to<sp/>a<sp/>&apos;logtable&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>logMessage.message(&quot;this<sp/>is<sp/>a<sp/>message&quot;).line(__LINE__);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>logger.post(logMessage);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>local<sp/>and<sp/>global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/>More<sp/>complete<sp/>examples<sp/>are<sp/>in<sp/>&lt;linkto<sp/>file=Logging.h&gt;Logging.h&lt;/linkto&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;h3&gt;Advanced<sp/>topics&lt;/h3&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>All<sp/>possible<sp/>sinks<sp/>are<sp/>derived<sp/>from<sp/>an<sp/>abstract<sp/>base<sp/>class:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=LogSinkInterface&gt;LogSinkInterface&lt;/linkto&gt;.<sp/>If<sp/>you<sp/>want<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/>allow<sp/>for<sp/>logging<sp/>to<sp/>a<sp/>different<sp/>type<sp/>of<sp/>sink<sp/>(i.e.<sp/>different<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>stream<sp/>or<sp/>Table)<sp/>,<sp/>you<sp/>first<sp/>need<sp/>to<sp/>derive<sp/>a<sp/>new<sp/>class<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;LogSinkInterface&lt;/src&gt;,<sp/>and<sp/>then<sp/>add<sp/>a<sp/>new<sp/>constructor<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;LogSink&lt;/src&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;LogSink&lt;/src&gt;<sp/>itself<sp/>contains<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>actual<sp/>object<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>disposes<sp/>of<sp/>the<sp/>messages.<sp/>Several<sp/>&lt;src&gt;LogSink&lt;/src&gt;&apos;s<sp/>can<sp/>share<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//<sp/>actual<sp/>sink<sp/>via<sp/>the<sp/>copy<sp/>constructor<sp/>or<sp/>assignment<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LogSink<sp/>logger1(LogMessage::NORMAL,<sp/>&quot;logtable&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LogSink<sp/>logger2(logger1);<sp/><sp/>//<sp/>logger2<sp/>references<sp/>logger1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/>logger2.post(message);<sp/><sp/><sp/><sp/><sp/>//<sp/>ends<sp/>up<sp/>in<sp/>&quot;logtable&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>can<sp/>even<sp/>have<sp/>different<sp/>&lt;src&gt;LogFilterInterface&lt;/src&gt;&apos;s<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>attached<sp/>to<sp/>the<sp/>different<sp/>&lt;src&gt;LogSink&lt;/src&gt;s.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Logging<sp/>changes<sp/>to<sp/>data<sp/>and<sp/>informing<sp/>users<sp/>what<sp/>the<sp/>software<sp/>is<sp/>doing<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>detail.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;todo<sp/>asof=&quot;1996/07/24&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>More<sp/>sink<sp/>types<sp/>-<sp/>in<sp/>particular<sp/>to<sp/>Glish.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>A<sp/>&quot;tee&quot;<sp/>Sink<sp/>type<sp/>might<sp/>be<sp/>useful.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classcasacore_1_1LogSink" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//#If<sp/>you<sp/>add<sp/>more<sp/>sink<sp/>types,<sp/>modify<sp/>the<sp/>&lt;ol&gt;<sp/>in<sp/>the<sp/>synopsis<sp/>as<sp/>well.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>null<sp/>local<sp/>sink<sp/>that<sp/>throws<sp/>all<sp/>messages<sp/>away<sp/>or<sp/>create</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>memory<sp/>local<sp/>sink<sp/>that<sp/>holds<sp/>the<sp/>messages<sp/>in<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>a<sp/>filter<sp/>isn&apos;t<sp/>defined,<sp/>default<sp/>to<sp/>&lt;src&gt;NORMAL&lt;/src&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(<ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref><sp/><ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref><sp/>=<sp/><ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4af75d8b953bfc0ee6a71100cd656816b4" kindref="member">LogMessage::NORMAL</ref>,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>nullSink<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>nullSink<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>to<sp/>an<sp/>ostream.<sp/>It<sp/>is<sp/>the<sp/>responsiblity<sp/>of<sp/>the<sp/>caller<sp/>to<sp/>ensure<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;os&lt;/src&gt;<sp/>will<sp/>last<sp/>as<sp/>long<sp/>as<sp/>the<sp/>&lt;src&gt;LogSink&lt;/src&gt;s<sp/>that<sp/>use<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Normally<sp/>you<sp/>would<sp/>use<sp/>&lt;src&gt;&amp;cerr&lt;/src&gt;<sp/>as<sp/>the<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(<ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref><sp/><ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,<sp/>ostream<sp/>*os,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>useGlobalSink<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,<sp/>ostream<sp/>*os,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>useGlobalSink<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>to<sp/>the<sp/>given<sp/>sink.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>primarily<sp/>intended<sp/>to<sp/>log<sp/>to<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TableLogSink&gt;TableLogSink&lt;/linkto&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;LogSinkInterface&gt;&amp;);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>a<sp/>referencing<sp/>copy<sp/>of<sp/>&lt;src&gt;other&lt;/src&gt;.<sp/>That<sp/>is,<sp/>if<sp/>you<sp/>post<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>message<sp/>to<sp/>the<sp/>new<sp/>object,<sp/>it<sp/>behaves<sp/>as<sp/>if<sp/>you<sp/>had<sp/>posted<sp/>it<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>old<sp/>one<sp/>(so<sp/>long<sp/>as<sp/>their<sp/>filters<sp/>are<sp/>the<sp/>same).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink_1abb1a57bae28057e692ae5d057dfa333c" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a454c5180d467707bc9a64d72e4338472" kindref="member">operator= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Temporary<sp/>to<sp/>avoid<sp/>problem<sp/>that<sp/>the<sp/>bool<sp/>constructor<sp/>is<sp/>taken</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>a<sp/>char*<sp/>is<sp/>passed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>They<sp/>are<sp/>not<sp/>implemented,<sp/>so<sp/>compiler<sp/>should<sp/>give<sp/>warning.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>3rd<sp/>argument<sp/>is<sp/>added<sp/>to<sp/>make<sp/>it<sp/>different<sp/>from<sp/>current</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>version<sp/>which<sp/>is<sp/>still<sp/>in<sp/>the<sp/>system<sp/>library.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="classcasacore_1_1LogSink_1a1d9631b97c55d526115e5d478318fb8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSink_1a1d9631b97c55d526115e5d478318fb8e" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;fileName,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>n=0);</highlight></codeline>
+<codeline lineno="180" refid="classcasacore_1_1LogSink_1a3739d2877429c0c443ac4c83351b835c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSink_1a3739d2877429c0c443ac4c83351b835c" kindref="member">LogSink</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1aee8247dad3ca180405bdb6835513a5ad" kindref="member">Char</ref>*<sp/>fileName,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>n=0);</highlight></codeline>
+<codeline lineno="181" refid="classcasacore_1_1LogSink_1a9266730eb3d4ca34e513cab21356150d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSink_1a9266730eb3d4ca34e513cab21356150d" kindref="member">LogSink</ref><sp/>(<ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;fileName,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>n=0);</highlight></codeline>
+<codeline lineno="182" refid="classcasacore_1_1LogSink_1a203d6fcc6126671882ef2fceddcf98aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSink_1a203d6fcc6126671882ef2fceddcf98aa" kindref="member">LogSink</ref><sp/>(<ref refid="classcasacore_1_1LogMessage_1a9390a9080539b47c70f284640dd401f4" kindref="member">LogMessage::Priority</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1aee8247dad3ca180405bdb6835513a5ad" kindref="member">Char</ref>*<sp/>fileName,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>n=0);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink_1aea8d6b3b904fe714ff7f3b02284e8a54" kindref="member">~LogSink</ref>();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>&lt;src&gt;message&lt;/src&gt;<sp/>to<sp/>both<sp/>the<sp/>local<sp/>and<sp/>global<sp/>sink.<sp/>Return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;True&lt;/src&gt;<sp/>if<sp/>it<sp/>passes<sp/>either<sp/>of<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1LogSink_1ac8c78681c431da028cdd79a997b7ef81" kindref="member">post</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref><sp/>&amp;message);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>&lt;src&gt;message&lt;/src&gt;<sp/>to<sp/>the<sp/>global<sp/>sink<sp/>only.<sp/>Returns<sp/>&lt;src&gt;True&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>it<sp/>passes<sp/>the<sp/>filter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1LogSink_1ad8c0fed1ce8bb5261ce5ccea2c6a62e9" kindref="member">postGlobally</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref><sp/>&amp;message);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>&lt;src&gt;message&lt;/src&gt;<sp/>to<sp/>the<sp/>local<sp/>sink<sp/>only.<sp/>Returns<sp/>&lt;src&gt;True&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>it<sp/>passes<sp/>the<sp/>filter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1LogSink_1a3f7ab3b8c748ac768bd6cee2cac14d9d" kindref="member">postLocally</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref><sp/>&amp;message);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Post<sp/>&lt;src&gt;message&lt;/src&gt;<sp/>and<sp/>then<sp/>throw<sp/>an<sp/>&lt;src&gt;AipsError&lt;/src&gt;<sp/>exception</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>containing<sp/>&lt;src&gt;message.toString()&lt;/src&gt;.<sp/>It<sp/>is<sp/>always<sp/>posted<sp/>as<sp/>a<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;SEVERE&lt;/src&gt;<sp/>priority<sp/>message,<sp/>no<sp/>matter<sp/>what<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;message.priority()&lt;/src&gt;<sp/>says.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classcasacore_1_1LogSink_1a823ffc9fc4bb8270bd8721b67f4e94cb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>EXC&gt;<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a823ffc9fc4bb8270bd8721b67f4e94cb" kindref="member">postThenThrow</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref><sp/>&amp;message,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>EXC&amp;<sp/>exc)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>preparePostThenThrow(message,<sp/>exc);<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>exc;<sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a452c61b00a00703f34ec533297ba1b4b" kindref="member">postGloballyThenThrow</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogMessage" kindref="compound">LogMessage</ref><sp/>&amp;message);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>number<sp/>of<sp/>messages<sp/>in<sp/>local<sp/>sink.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/><ref refid="classcasacore_1_1LogSink_1a03e3deec9d05870747ce0b7570778c9a" kindref="member">nelements</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>given<sp/>part<sp/>of<sp/>the<sp/>i-th<sp/>message<sp/>from<sp/>the<sp/>local<sp/>sink.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref><sp/><ref refid="classcasacore_1_1LogSink_1aa17cb47509a772484c99c6a7cae3a639" kindref="member">getTime</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1ab6a24abc9106ca5ecdbc049d3d4ffc4e" kindref="member">getPriority</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1a898889d9371766cf9883f89c6593c6b7" kindref="member">getMessage</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1a35d2a819fa91c7ddb9f55376682e7512" kindref="member">getLocation</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1a94f6451a13eb38abe72d9bebf22036e7" kindref="member">getObjectID</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>a<sp/>message<sp/>(usually<sp/>from<sp/>another<sp/>logsink)<sp/>into<sp/>the<sp/>local<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>does<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a4576f1de35f27f293853510561e00003" kindref="member">writeLocally</ref><sp/>(<ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref><sp/><ref refid="namespacecasacore_1a46ef7060e7e3008633c2867c9b9b6c99" kindref="member">time</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>message,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>priority,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>location,</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>objectID);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>the<sp/>local<sp/>sink<sp/>(i.e.<sp/>remove<sp/>all<sp/>messages<sp/>from<sp/>it).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a7aeeb3bd7280898f99eea5c74f758f50" kindref="member">clearLocally</ref>();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//#<sp/>Bring<sp/>out<sp/>of<sp/>LogSinkInterface<sp/>only<sp/>for<sp/>documentation<sp/>purposes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>or<sp/>set<sp/>the<sp/>filter<sp/>of<sp/>this<sp/>particular<sp/>&lt;src&gt;LogSink&lt;/src&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogFilterInterface" kindref="compound">LogFilterInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a1c35cd208e8bf348107743e007ebf04a" kindref="member">filter</ref>);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Change<sp/>the<sp/>sink<sp/>that<sp/>this<sp/>&lt;src&gt;LogSink&lt;/src&gt;<sp/>actually<sp/>uses.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a8a67f372be3748a962976aee52a28c96" kindref="member">localSink</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a8a67f372be3748a962976aee52a28c96" kindref="member">localSink</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1LogSink" kindref="compound">LogSink</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a8a67f372be3748a962976aee52a28c96" kindref="member">localSink</ref><sp/>(<ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>*&amp;fromNew);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get/set<sp/>the<sp/>global<sp/>sink<sp/>or<sp/>check<sp/>if<sp/>the<sp/>global<sp/>sink<sp/>is<sp/>null.<sp/>The<sp/>global</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>sink<sp/>defaults<sp/>to<sp/>using<sp/>&lt;src&gt;cerr&lt;/src&gt;.<sp/>Generally<sp/>applications<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>shouldn&apos;t<sp/>change<sp/>the<sp/>global<sp/>sink.<sp/>More<sp/>so,<sp/>calling<sp/>globalSink(fromNew)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>while<sp/>using<sp/>the<sp/>global<sp/>sink<sp/>is<sp/>not<sp/>thread-safe.<sp/>And<sp/>fromNew<sp/>is<sp/>set<sp/>to<sp/>0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>&amp;<ref refid="classcasacore_1_1LogSink_1a5f53fc4796bf9753769d8ed75b8b3fd0" kindref="member">globalSink</ref>();</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a5f53fc4796bf9753769d8ed75b8b3fd0" kindref="member">globalSink</ref><sp/>(<ref refid="classcasacore_1_1LogSinkInterface" kindref="compound">LogSinkInterface</ref><sp/>*&amp;fromNew);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1LogSink_1a91151ff6448973015f668a64b399b0f0" kindref="member">nullGlobalSink</ref>();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>any<sp/>pending<sp/>output<sp/>(by<sp/>default<sp/>also<sp/>the<sp/>global<sp/>sink).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1LogSink_1a03a042a7bea788ee62b8dfd299d872bb" kindref="member">flush</ref><sp/>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>global=<ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>id<sp/>for<sp/>this<sp/>class...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1a6b884db298f29dfd43a99cdfc1f16438" kindref="member">localId</ref>(<sp/>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>id<sp/>of<sp/>the<sp/>LogSink<sp/>in<sp/>use...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1LogSink_1a0897883013ff88064423bd060f3b95b4" kindref="member">id</ref>(<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LsiIntermediate<sp/>is<sp/>a<sp/>helper<sp/>class<sp/>to<sp/>allow<sp/>LogSinkInterface<sp/>to<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>semantics<sp/>that<sp/>allow<sp/>causing<sp/>all<sp/>classes<sp/>accessing<sp/>the<sp/>log<sp/>sink<sp/>to<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>aimed<sp/>at<sp/>a<sp/>different<sp/>sink<sp/>object.<sp/><sp/>This<sp/>used<sp/>to<sp/>be<sp/>done<sp/>by<sp/>using<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>odd<sp/>&quot;replace&quot;<sp/>method<sp/>in<sp/>std::shared_ptr;<sp/>however,<sp/>this<sp/>is<sp/>functionality<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>being<sp/>removed<sp/>to<sp/>std::shared_ptr<sp/>as<sp/>it<sp/>is<sp/>modernized<sp/>so<sp/>this<sp/>class<sp/>was</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>created<sp/>to<sp/>serve<sp/>this<sp/>narrow<sp/>purpose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">LsiIntermediate<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LsiIntermediate<sp/>()<sp/>:<sp/>logSinkInterface_p<sp/>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LsiIntermediate<sp/>(<ref refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" kindref="member">LogSinkInterface</ref><sp/>*<sp/>lsi)<sp/>:<sp/>logSinkInterface_p<sp/>(lsi)<sp/>{}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>~LsiIntermediate<sp/>()<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>logSinkInterface_p;}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" kindref="member">LogSinkInterface</ref><sp/>&amp;<sp/><ref refid="namespacecasacore_1ae1a129565dcdea85049e92a9a81917f6" kindref="member">operator* </ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<sp/>logSinkInterface_p;}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" kindref="member">LogSinkInterface</ref><sp/>*<sp/>operator-&gt;<sp/>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>logSinkInterface_p;}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="namespacecasacore_1aac115c00e8833aef2731a4a4b1dffd56" kindref="member">operator! </ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<sp/>logSinkInterface_p;}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a785aa8b0e3186a9be719433b8a8e7d24" kindref="member">replace</ref><sp/>(<ref refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" kindref="member">LogSinkInterface</ref><sp/>*<sp/>newLsi)<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>logSinkInterface_p;<sp/>logSinkInterface_p<sp/>=<sp/>newLsi;}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>ctor<sp/>and<sp/>op=<sp/>are<sp/>private<sp/>and<sp/>not<sp/>defined<sp/>to<sp/>prevent<sp/>double-delete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LsiIntermediate<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LsiIntermediate<sp/>&amp;);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LsiIntermediate<sp/>&amp;<sp/><ref refid="classcasacore_1_1LogSink_1a454c5180d467707bc9a64d72e4338472" kindref="member">operator= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LsiIntermediate<sp/>&amp;);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1LogSinkInterface_1a5108798ae546eca94dfb6f9eca73f676" kindref="member">LogSinkInterface</ref><sp/>*<sp/>logSinkInterface_p;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prepare<sp/>for<sp/>postThenThrow<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>preparePostThenThrow(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LogMessage<sp/>&amp;message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>AipsError&amp;<sp/>x)<sp/>;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>global<sp/>sink<sp/>(attached<sp/>to<sp/>cerr).<sp/>Always<sp/>called<sp/>using<sp/>theirCallOnce.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>createGlobalSink();</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//#<sp/>Data<sp/>members.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;LogSinkInterface&gt;<sp/>local_sink_p;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;LsiIntermediate&gt;<sp/>global_sink_p;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::once_flag<sp/>theirCallOnceFlag;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>is<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>global<sp/>sink.<sp/>It<sp/>is<sp/>created<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>that<sp/>the<sp/>global<sp/>sink<sp/>is<sp/>not<sp/>destroyed<sp/>before<sp/>the<sp/>last</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>reference<sp/>to<sp/>it<sp/>is<sp/>destroyed.<sp/>This<sp/>can<sp/>happen<sp/>if<sp/>you<sp/>have<sp/>a<sp/>static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LogSink<sp/>(or<sp/>LogIO).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;LsiIntermediate&gt;<sp/>local_ref_to_global_p;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>useGlobalSink_p;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Logging/LogSink.h"/>
+  </compounddef>
+</doxygen>

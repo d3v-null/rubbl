@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="BinarySearch_8tcc" kind="file" language="C++">
+    <compoundname>BinarySearch.tcc</compoundname>
+    <includedby refid="BinarySearch_8h" local="no">casa/Utilities/BinarySearch.h</includedby>
+    <invincdepgraph>
+      <node id="12">
+        <label>tables/Tables/ConcatRows.cc</label>
+        <link refid="ConcatRows_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/TiledCellStMan.cc</label>
+        <link refid="TiledCellStMan_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/DataMan/TiledStMan.cc</label>
+        <link refid="TiledStMan_8cc"/>
+      </node>
+      <node id="3">
+        <label>casa/Utilities.h</label>
+        <link refid="Utilities_8h"/>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/TiledShapeStMan.cc</label>
+        <link refid="TiledShapeStMan_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Utilities/BinarySearch.h</label>
+        <link refid="BinarySearch_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Utilities/BinarySearch.tcc</label>
+        <link refid="BinarySearch_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tables/DataMan/TiledDataStMan.cc</label>
+        <link refid="TiledDataStMan_8cc"/>
+      </node>
+      <node id="5">
+        <label>tables/DataMan/ISMIndex.cc</label>
+        <link refid="ISMIndex_8cc"/>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/ISMBucket.cc</label>
+        <link refid="ISMBucket_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/TiledColumnStMan.cc</label>
+        <link refid="TiledColumnStMan_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>BinarySearch.cc:<sp/>Binary<sp/>search<sp/>through<sp/>linear,<sp/>sorted,<sp/>data<sp/>structures</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_BINARYSEARCH_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_BINARYSEARCH_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/BinarySearch.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Exceptions/Error.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#!!!!!<sp/>If<sp/>you<sp/>change<sp/>either<sp/>of<sp/>the<sp/>following,<sp/>make<sp/>sure<sp/>you<sp/>change<sp/>the<sp/>other</highlight></codeline>
+<codeline><highlight class="normal">//#!!!!!<sp/>similarly.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>Container,<sp/>class<sp/>ElType&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>Int<sp/>binarySearch(Bool<sp/>&amp;found,<sp/>const<sp/>Container<sp/>&amp;container,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ElType<sp/>&amp;value,<sp/>uInt<sp/>n,<sp/>Int<sp/>originalLower)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>found<sp/>=<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(n<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>lower<sp/>=<sp/>originalLower;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>upper<sp/>=<sp/>lower<sp/>+<sp/>n<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>middle<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bool<sp/>ascending<sp/>=<sp/>(!<sp/>(container(upper)<sp/>&lt;<sp/>container(lower)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bool<sp/>toLeft,<sp/>toRight;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ElType<sp/>midval;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(lower<sp/>&lt;=<sp/>upper)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>middle<sp/>=<sp/>(upper<sp/>+<sp/>lower)<sp/>/<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>midval<sp/>=<sp/>container(middle);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(ascending)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toLeft<sp/>=<sp/>(value<sp/>&lt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toLeft<sp/>=<sp/>(value<sp/>&gt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(toLeft)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>upper<sp/>=<sp/>middle<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(ascending)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>toRight<sp/>=<sp/>(value<sp/>&gt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>toRight<sp/>=<sp/>(value<sp/>&lt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(toRight)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>middle++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>lower<sp/>=<sp/>middle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>exact<sp/>match,<sp/>but<sp/>still<sp/>we<sp/>want<sp/>to<sp/>get<sp/>to<sp/>the<sp/>beginning<sp/>of</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>sequence</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>upper<sp/>=<sp/>middle<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>found<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>middle;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>Container,<sp/>class<sp/>ElType&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>Int<sp/>binarySearchBrackets(Bool<sp/>&amp;found,<sp/>const<sp/>Container<sp/>&amp;container,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ElType<sp/>&amp;value,<sp/>uInt<sp/>n,<sp/>Int<sp/>originalLower)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>found<sp/>=<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(n<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>lower<sp/>=<sp/>originalLower;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>upper<sp/>=<sp/>lower<sp/>+<sp/>n<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>middle<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bool<sp/>ascending<sp/>=<sp/>(!<sp/>(container[upper]<sp/>&lt;<sp/>container[lower]));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bool<sp/>toLeft,<sp/>toRight;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ElType<sp/>midval;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(lower<sp/>&lt;=<sp/>upper)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>middle<sp/>=<sp/>(upper<sp/>+<sp/>lower)<sp/>/<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>midval<sp/>=<sp/>container[middle];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(ascending)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toLeft<sp/>=<sp/>(value<sp/>&lt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toLeft<sp/>=<sp/>(value<sp/>&gt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(toLeft)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>upper<sp/>=<sp/>middle<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(ascending)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>toRight<sp/>=<sp/>(value<sp/>&gt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>toRight<sp/>=<sp/>(value<sp/>&lt;<sp/>midval);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(toRight)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>middle++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>lower<sp/>=<sp/>middle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>exact<sp/>match,<sp/>but<sp/>still<sp/>we<sp/>want<sp/>to<sp/>get<sp/>to<sp/>the<sp/>beginning<sp/>of</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>sequence</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>upper<sp/>=<sp/>middle<sp/>-<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>found<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>middle;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Utilities/BinarySearch.tcc"/>
+  </compounddef>
+</doxygen>

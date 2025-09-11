@@ -202,6 +202,21 @@ pub enum TableDescCreateMode {
     #[doc = " Create a table description without an associated file on disk."]
     TDM_SCRATCH = 2,
 }
+#[repr(u32)]
+#[doc = "Table Storage Manager options for controlling I/O behavior."]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum TSMOption {
+    #[doc = " Use caching storage manager."]
+    TSM_CACHE = 0,
+    #[doc = " Use buffering storage manager."]
+    TSM_BUFFER = 1,
+    #[doc = " Use memory-mapped I/O (can reduce syscalls)."]
+    TSM_MMAP = 2,
+    #[doc = " Use default storage manager."]
+    TSM_DEFAULT = 3,
+    #[doc = " Use AIPSRC configuration."]
+    TSM_AIPSRC = 4,
+}
 #[doc = "Different modes for creating a CASA table description."]
 pub use self::TableDescCreateMode as TableDescOption;
 extern "C" {
@@ -382,6 +397,7 @@ extern "C" {
         table_desc: *mut GlueTableDesc,
         n_rows: ::std::os::raw::c_ulong,
         mode: TableCreateMode,
+        tsm_option: TSMOption,
         exc: *mut ExcInfo,
     ) -> *mut GlueTable;
 }
@@ -612,6 +628,111 @@ extern "C" {
     pub fn table_add_rows(
         table: *mut GlueTable,
         n_rows: ::std::os::raw::c_ulong,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn table_open_scalar_column(
+        table: *mut GlueTable,
+        col_name: *const StringBridge,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn scalar_column_put(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn scalar_column_free(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn table_open_array_column(
+        table: *mut GlueTable,
+        col_name: *const StringBridge,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn array_column_put(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_put_fixed_shape(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_create_persistent_matrix(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        exc: *mut ExcInfo,
+    ) -> *mut ::std::os::raw::c_void;
+}
+extern "C" {
+    pub fn array_column_put_persistent_matrix(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        row_number: ::std::os::raw::c_ulong,
+        matrix_handle: *mut ::std::os::raw::c_void,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_free_persistent_matrix(
+        matrix_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_free(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn array_column_put_column(
+        col_handle: *mut ::std::os::raw::c_void,
+        data_type: GlueDataType,
+        n_rows: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+    pub fn array_column_put_column_shared(
+        col_handle: *mut ::std::ffi::c_void,
+        data_type: GlueDataType,
+        n_rows: ::std::os::raw::c_ulong,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        data: *mut ::std::os::raw::c_void,
         exc: *mut ExcInfo,
     ) -> ::std::os::raw::c_int;
 }

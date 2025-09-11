@@ -1,0 +1,1078 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1MultiFile" kind="class" language="C++" prot="public">
+    <compoundname>casacore::MultiFile</compoundname>
+    <basecompoundref refid="classcasacore_1_1MultiFileBase" prot="public" virt="non-virtual">casacore::MultiFileBase</basecompoundref>
+    <includes refid="MultiFile_8h" local="no">MultiFile.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1aca7006c7ca84ca3db01825c004762ab9" prot="protected" static="no" mutable="no">
+        <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref></type>
+        <definition>MultiFileInfo casacore::MultiFile::itsHdrCont[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>itsHdrCont</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="266" column="19" bodyfile="casa/IO/MultiFile.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1a1684a8ea0e9f6bb5191665fbee261427" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::MultiFile::itsNrContUsed[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>itsNrContUsed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="267" column="11" bodyfile="casa/IO/MultiFile.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1a3c2c8b97e6fa965a79a5efc527ea495a" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::MultiFile::itsHdrContInx</definition>
+        <argsstring></argsstring>
+        <name>itsHdrContInx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="268" column="11" bodyfile="casa/IO/MultiFile.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1a2848def2dc5e10da259b91932b7ba92f" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::MultiFile::itsUseCRC</definition>
+        <argsstring></argsstring>
+        <name>itsUseCRC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="269" column="11" bodyfile="casa/IO/MultiFile.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1a5c73e8ed393cea4b02d609eb9464b90d" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt;</type>
+        <definition>std::vector&lt;uInt&gt; casacore::MultiFile::itsCRC</definition>
+        <argsstring></argsstring>
+        <name>itsCRC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="270" column="17" bodyfile="casa/IO/MultiFile.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1MultiFile_1a568612530abd417870b6ca5a1a955799" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classcasacore_1_1ByteIO" kindref="compound">ByteIO</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ByteIO&gt; casacore::MultiFile::itsIO</definition>
+        <argsstring></argsstring>
+        <name>itsIO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="271" column="21" bodyfile="casa/IO/MultiFile.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a0fc5cb8675a54a7befb9b0b7e2b19919" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::MultiFile::MultiFile</definition>
+        <argsstring>(const String &amp;name, ByteIO::OpenOption, Int blockSize=0, Bool useODirect=False, Bool useCRC=False)</argsstring>
+        <name>MultiFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" kindref="member">ByteIO::OpenOption</ref></type>
+          <defname>option</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>blockSize</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>useODirect</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>useCRC</declname>
+          <defval><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="157" column="14" bodyfile="casa/IO/MultiFile.cc" bodystart="99" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a10a7f4ca0c8a5f1979758f9b9cd0e6d4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::MultiFile::MultiFile</definition>
+        <argsstring>(const String &amp;name, const std::shared_ptr&lt; MultiFileBase &gt; &amp;parent, ByteIO::OpenOption, Int blockSize=0)</argsstring>
+        <name>MultiFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt; &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" kindref="member">ByteIO::OpenOption</ref></type>
+          <defname>option</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>blockSize</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="164" column="14" bodyfile="casa/IO/MultiFile.cc" bodystart="110" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a526b4964318002355da744986fbc2fdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::MultiFile::~MultiFile</definition>
+        <argsstring>() override</argsstring>
+        <name>~MultiFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="169" column="5" bodyfile="casa/IO/MultiFile.cc" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a837911c98b840b7014160a125626f814" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::MultiFile::MultiFile</definition>
+        <argsstring>(const MultiFile &amp;)=delete</argsstring>
+        <name>MultiFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1MultiFile" kindref="compound">MultiFile</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="172" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a1ede8a2eb9e3df3fe89b687ded4abd7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1MultiFile" kindref="compound">MultiFile</ref> &amp;</type>
+        <definition>MultiFile&amp; casacore::MultiFile::operator=</definition>
+        <argsstring>(const MultiFile &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1MultiFile" kindref="compound">MultiFile</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="173" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a2e23868e7584209eaaac8e88d5e0caef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; MultiFileBase &gt; casacore::MultiFile::makeNested</definition>
+        <argsstring>(const std::shared_ptr&lt; MultiFileBase &gt; &amp;parent, const String &amp;name, ByteIO::OpenOption, Int blockSize) const override</argsstring>
+        <name>makeNested</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a5eb8b8f14715e98ceae556d3374dae04">makeNested</reimplements>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt; &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" kindref="member">ByteIO::OpenOption</ref></type>
+          <defname>option</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>blockSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="176" column="21" bodyfile="casa/IO/MultiFile.cc" bodystart="125" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a514468147b6976165d812d8656eb9827" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::reopenRW</definition>
+        <argsstring>() override</argsstring>
+        <name>reopenRW</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1ab154e2b65059a2570eb7e0873b4b4759">reopenRW</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="184" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="163" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a0712101317e37a365da94c97e4224a52" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::fsync</definition>
+        <argsstring>() override</argsstring>
+        <name>fsync</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a4ae5452b5b530624026d78bf0b6ed6e5">fsync</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="187" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a544e5534cad6337dfdf2f975a3003a3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::show</definition>
+        <argsstring>(std::ostream &amp;) const</argsstring>
+        <name>show</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <defname>os</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="190" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="723" bodyend="732"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a2bab34537534ec950f6c796a7adfee35" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt;</type>
+        <definition>std::vector&lt; Int64 &gt; casacore::MultiFile::packIndex</definition>
+        <argsstring>(const std::vector&lt; Int64 &gt; &amp;blockNrs)</argsstring>
+        <name>packIndex</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt; &amp;</type>
+          <declname>blockNrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="193" column="24" bodyfile="casa/IO/MultiFile.cc" bodystart="734" bodyend="764"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a53c3d5405fbd402d2ed96563cd640eff" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt;</type>
+        <definition>std::vector&lt; Int64 &gt; casacore::MultiFile::unpackIndex</definition>
+        <argsstring>(const std::vector&lt; Int64 &gt; &amp;blockNrs)</argsstring>
+        <name>unpackIndex</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt; &amp;</type>
+          <declname>blockNrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="196" column="24" bodyfile="casa/IO/MultiFile.cc" bodystart="766" bodyend="784"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a201d5284635634ceeb41453fe3104d6f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::init</definition>
+        <argsstring>(ByteIO::OpenOption option)</argsstring>
+        <name>init</name>
+        <param>
+          <type><ref refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" kindref="member">ByteIO::OpenOption</ref></type>
+          <declname>option</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="200" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="131" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a92a277e9b121c0ed7c0c59d297e35de7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::getInfoVersion2</definition>
+        <argsstring>(Int64 contBlockNr, CanonicalIO &amp;aio)</argsstring>
+        <name>getInfoVersion2</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>contBlockNr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <declname>aio</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="202" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="523" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a0e64c1c326388181e7af18fd85a85108" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeVector</definition>
+        <argsstring>(CanonicalIO &amp;cio, const std::vector&lt; Int64 &gt; &amp;index)</argsstring>
+        <name>writeVector</name>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <declname>cio</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="204" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="320" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ac0e1ab3b6270579bcb31ca7ceddebe8b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeVector</definition>
+        <argsstring>(CanonicalIO &amp;cio, const std::vector&lt; uInt &gt; &amp;index)</argsstring>
+        <name>writeVector</name>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <declname>cio</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="205" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="330" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a19e577da0f8514c38bde190e47a3ae2a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readVector</definition>
+        <argsstring>(CanonicalIO &amp;cio, std::vector&lt; Int64 &gt; &amp;index)</argsstring>
+        <name>readVector</name>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <declname>cio</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="207" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="340" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ae4733ac757af799b57938a223ed63000" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readVector</definition>
+        <argsstring>(CanonicalIO &amp;cio, std::vector&lt; uInt &gt; &amp;index)</argsstring>
+        <name>readVector</name>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <declname>cio</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="208" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="352" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a69f3b31fe752abb506b85a756b1f6c0c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeRemainder</definition>
+        <argsstring>(MemoryIO &amp;mio, CanonicalIO &amp;, MultiFileBuffer &amp;mfbuf)</argsstring>
+        <name>writeRemainder</name>
+        <param>
+          <type><ref refid="classcasacore_1_1MemoryIO" kindref="compound">MemoryIO</ref> &amp;</type>
+          <declname>mio</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1CanonicalIO" kindref="compound">CanonicalIO</ref> &amp;</type>
+          <defname>cio</defname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1MultiFileBuffer" kindref="compound">MultiFileBuffer</ref> &amp;</type>
+          <declname>mfbuf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="211" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="259" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a032d8500328fa75b716fd906d24b2824" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readRemainder</definition>
+        <argsstring>(Int64 headerSize, Int64 blockNr, std::vector&lt; char &gt; &amp;buf)</argsstring>
+        <name>readRemainder</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>headerSize</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>blockNr</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; char &gt; &amp;</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="213" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="548" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ae6fb5384b168cc549d57a8c668923d5f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::truncateIfNeeded</definition>
+        <argsstring>()</argsstring>
+        <name>truncateIfNeeded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="215" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="606" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ae73b853d95069b12700df0084647fef1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeHeaderShow</definition>
+        <argsstring>(Int64 ncont, Int64 todo) const</argsstring>
+        <name>writeHeaderShow</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>ncont</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>todo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="217" column="18" bodyfile="casa/IO/MultiFile.cc" bodystart="653" bodyend="654"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a1885b173b37057f7444ead708fd396b2" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeHeaderTest</definition>
+        <argsstring>()</argsstring>
+        <name>writeHeaderTest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="218" column="18" bodyfile="casa/IO/MultiFile.cc" bodystart="655" bodyend="656"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ac2dc46f733bbedab7ed8e371acafc979" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doOpenFile</definition>
+        <argsstring>(MultiFileInfo &amp;) override</argsstring>
+        <name>doOpenFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a95b4a11627a2e10021a1d80ceaa77046">doOpenFile</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="222" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="570" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ad7bf6ee334688331735f89302ac08047" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doCloseFile</definition>
+        <argsstring>(MultiFileInfo &amp;) override</argsstring>
+        <name>doCloseFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a0f50c6af29cc8fca17efe33fef2d3d35">doCloseFile</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="224" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="573" bodyend="574"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1aeb71471a004a4a54ff947f0187088fb1" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doAddFile</definition>
+        <argsstring>(MultiFileInfo &amp;) override</argsstring>
+        <name>doAddFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1ad0070a6bb71a322bcaaae566b6d133c5">doAddFile</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="226" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="576" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1afb580aca0f4244399dc370a68d8d58b2" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doDeleteFile</definition>
+        <argsstring>(MultiFileInfo &amp;) override</argsstring>
+        <name>doDeleteFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1aac97deb7a9f1eda38035748939c6f42f">doDeleteFile</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <defname>info</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="228" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="579" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1acf99832a249752ef9a56e71e5a9da42a" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doTruncateFile</definition>
+        <argsstring>(MultiFileInfo &amp;info, uInt64 nrblk) override</argsstring>
+        <name>doTruncateFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a7ecfb0cda9e853aa7750d5eba2be1cc7">doTruncateFile</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1afbaa0f0eab7b3a56a4c320715f577d4f" kindref="member">uInt64</ref></type>
+          <declname>nrblk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="230" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="585" bodyend="604"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ae45a2332caeb8e905ce9edf310788460" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::doFlushFile</definition>
+        <argsstring>() override</argsstring>
+        <name>doFlushFile</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a2acfacc6af34114683f3ab150b42f84f">doFlushFile</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="232" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1aa5bfcb0967c282f2b3eb48a3f1abbc62" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::close</definition>
+        <argsstring>() override</argsstring>
+        <name>close</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1ac8ee8d5ea6bc9873830304b6204089a8">close</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="234" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="153" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a7b7ce01caf36f74978b403387d80c370" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeHeader</definition>
+        <argsstring>() override</argsstring>
+        <name>writeHeader</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a2ee1b63d6993bf94609fd38db1962f82">writeHeader</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="236" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="177" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ab7c07426496aab7dbfa079fec94a6c2d" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readHeader</definition>
+        <argsstring>(Bool always=True) override</argsstring>
+        <name>readHeader</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a561eabec5242a5d79c97a432a057193b">readHeader</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>always</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="239" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="364" bodyend="436"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a182113eb0a625132a130bc54ae869a15" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::extend</definition>
+        <argsstring>(MultiFileInfo &amp;info, Int64 lastblk) override</argsstring>
+        <name>extend</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1a22f7fc6e8032b63eedd48564f4b46e11">extend</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>lastblk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="241" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="629" bodyend="632"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a67ed0d7d6db7ea13e01ab599ab3d7f1c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::storeCRC</definition>
+        <argsstring>(const void *buffer, Int64 blknr)</argsstring>
+        <name>storeCRC</name>
+        <param>
+          <type>const void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>blknr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="245" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="676" bodyend="682"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a492d8894419e0cc6f85ae27524393ef0" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::checkCRC</definition>
+        <argsstring>(const void *buffer, Int64 blknr) const</argsstring>
+        <name>checkCRC</name>
+        <param>
+          <type>const void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>blknr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="247" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="684" bodyend="692"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1ae375ed2348723ca0d35e66484075b78d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::MultiFile::calcCRC</definition>
+        <argsstring>(const void *buffer, Int64 size) const</argsstring>
+        <name>calcCRC</name>
+        <param>
+          <type>const void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="249" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="694" bodyend="721"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1abcdee58c2d5058ed7f2706e301caa5e0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::extendVF</definition>
+        <argsstring>(MultiFileInfo &amp;info, Int64 lastblk, Bool useFreeBlocks)</argsstring>
+        <name>extendVF</name>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>lastblk</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>useFreeBlocks</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="252" column="18" bodyfile="casa/IO/MultiFile.cc" bodystart="634" bodyend="651"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a16230d72dc01767d3343482a83bd1be7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::writeBlock</definition>
+        <argsstring>(MultiFileInfo &amp;info, Int64 blknr, const void *buffer) override</argsstring>
+        <name>writeBlock</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1ab0107a61c31c8b6ede38ec06edb5d8f4">writeBlock</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>blknr</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="254" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="667" bodyend="674"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a4730f7a974832a57a46e5f3139cc9820" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readBlock</definition>
+        <argsstring>(MultiFileInfo &amp;info, Int64 blknr, void *buffer) override</argsstring>
+        <name>readBlock</name>
+        <reimplements refid="classcasacore_1_1MultiFileBase_1abe6fe850347227e46b7bf1492913b201">readBlock</reimplements>
+        <param>
+          <type><ref refid="structcasacore_1_1MultiFileInfo" kindref="compound">MultiFileInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>blknr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="257" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="658" bodyend="665"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a959157b9135db880ecbc6341159cad20" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readHeaderVersion1</definition>
+        <argsstring>(Int64 headerSize, std::vector&lt; char &gt; &amp;buf)</argsstring>
+        <name>readHeaderVersion1</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>headerSize</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; char &gt; &amp;</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="260" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="438" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1MultiFile_1a998d1e7938c193e50c02d301bb9acbc1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::MultiFile::readHeaderVersion2</definition>
+        <argsstring>(std::vector&lt; char &gt; &amp;buf)</argsstring>
+        <name>readHeaderVersion2</name>
+        <param>
+          <type>std::vector&lt; char &gt; &amp;</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/IO/MultiFile.h" line="262" column="10" bodyfile="casa/IO/MultiFile.cc" bodystart="466" bodyend="521"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>casacore::MultiFile</label>
+        <link refid="classcasacore_1_1MultiFile"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::MultiFileBase</label>
+        <link refid="classcasacore_1_1MultiFileBase"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>casacore::MultiFile</label>
+        <link refid="classcasacore_1_1MultiFile"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>itsIO</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>itsCRC</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>itsHdrCont</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::vector&lt; casacore::MultiFileInfo &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::MultiFileBase</label>
+        <link refid="classcasacore_1_1MultiFileBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>itsBuffer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>itsFreeBlocks</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>itsInfo</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>itsName</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; Int64 &gt;</label>
+      </node>
+      <node id="11">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="8">
+        <label>std::shared_ptr&lt; casacore::HDF5Group &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::shared_ptr&lt; casacore::MultiFileBuffer &gt;</label>
+      </node>
+      <node id="6">
+        <label>casacore::MultiFileInfo</label>
+        <link refid="structcasacore_1_1MultiFileInfo"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>buffer</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>dataSet</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>blockNrs</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>group</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>name</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>std::vector&lt; uInt &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::shared_ptr&lt; casacore::HDF5DataSet &gt;</label>
+      </node>
+      <node id="12">
+        <label>std::unique_ptr&lt; casacore::ByteIO &gt;</label>
+      </node>
+      <node id="10">
+        <label>std::string</label>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="casa/IO/MultiFile.h" line="146" column="3" bodyfile="casa/IO/MultiFile.h" bodystart="147" bodyend="272"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1MultiFileBase_1a17fcd5abdd2decdf4286f81aa47270d1" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>blockSize</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ae375ed2348723ca0d35e66484075b78d" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>calcCRC</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a492d8894419e0cc6f85ae27524393ef0" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>checkCRC</name></member>
+      <member refid="classcasacore_1_1MultiFile_1aa5bfcb0967c282f2b3eb48a3f1abbc62" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>close</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1af680aeee6b8fa55f719927c0bb77201e" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>closeFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a6a2b7c840b7047d86a3ea8a56cf11bcc" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>createFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a8d6b407fa39ae6bf86a967f03052fd03" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>deleteFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1aeb71471a004a4a54ff947f0187088fb1" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doAddFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ad7bf6ee334688331735f89302ac08047" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doCloseFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1afb580aca0f4244399dc370a68d8d58b2" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doDeleteFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ae45a2332caeb8e905ce9edf310788460" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doFlushFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ac2dc46f733bbedab7ed8e371acafc979" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doOpenFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1acf99832a249752ef9a56e71e5a9da42a" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>doTruncateFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a182113eb0a625132a130bc54ae869a15" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>extend</name></member>
+      <member refid="classcasacore_1_1MultiFile_1abcdee58c2d5058ed7f2706e301caa5e0" prot="protected" virt="virtual"><scope>casacore::MultiFile</scope><name>extendVF</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a7a647a4affd0844e0cf94bda5b18db3b" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>fileId</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a9bf6510b582c7ce0ce6b58a7b93ba27a" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>fileName</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a89710df880a394a45019752f5addde0b" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>fileSize</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1ad0343a739f47db0c2dbb09ef28738983" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>flush</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a0b6ff30edcccf57b39a5724eb642080d" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>flushFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1ad29ca545011a2ce0d380ec8fc21c0451" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>freeBlocks</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a0712101317e37a365da94c97e4224a52" prot="public" virt="virtual"><scope>casacore::MultiFile</scope><name>fsync</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a92a277e9b121c0ed7c0c59d297e35de7" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>getInfoVersion2</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a95813902ea2ec421abd1dad97e5c1c71" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>info</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a201d5284635634ceeb41453fe3104d6f" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>init</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1aa6a7b5bbd9c880efe9b47c768a9b361d" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>isWritable</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a4b137ebd8d7c161f3621d253a2f1a66a" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsBlockSize</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1afd41d46fbcdd9980ea1e5b12a2a364d7" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsBuffer</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1ab888d3767c7e6cae685d156d11b6eb5d" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsChanged</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a5c73e8ed393cea4b02d609eb9464b90d" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsCRC</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a2f2b7faf3b9c95234bbcb4ad0b7a0057" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsFreeBlocks</name></member>
+      <member refid="classcasacore_1_1MultiFile_1aca7006c7ca84ca3db01825c004762ab9" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsHdrCont</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a3c2c8b97e6fa965a79a5efc527ea495a" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsHdrContInx</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a4224aca5171999ccb11d391ddabb3b82" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsHdrCounter</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1abb11f9e92383324d805de95680800d3f" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsInfo</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a568612530abd417870b6ca5a1a955799" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsIO</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a0088ae2f2c84cc1901e95486bf3c1c24" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsName</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a903f549aa941451624e91e7781ffe4bb" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsNrBlock</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a1684a8ea0e9f6bb5191665fbee261427" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsNrContUsed</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a2848def2dc5e10da259b91932b7ba92f" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsUseCRC</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a9b589d6b0dfd03f6bb6279a54c0a420c" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsUseODirect</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a3ce31c35501d72b62610d5e66d15a0ef" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>itsWritable</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a2e23868e7584209eaaac8e88d5e0caef" prot="public" virt="virtual"><scope>casacore::MultiFile</scope><name>makeNested</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a0fc5cb8675a54a7befb9b0b7e2b19919" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>MultiFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a10a7f4ca0c8a5f1979758f9b9cd0e6d4" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>MultiFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a837911c98b840b7014160a125626f814" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>MultiFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a36e2a9434ed5ac9d2304dc0a6c790c91" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>MultiFileBase</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a3917ea2ed4067d71f05c06d5c75c5ef1" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>MultiFileBase</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a1179c7c6f96256d058efbe93ff21a27d" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>nblock</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1ae268486bc0bd232e07f05ab0f6f004b4" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>nfile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a73aeb5a612b43a7a30bbf89887743993" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>openFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a2c1f25d4365b02ca751fd0e654525ada" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>openMF</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a1ede8a2eb9e3df3fe89b687ded4abd7a" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a73c20559b8dce5e369bc3adf5cf2c12f" prot="public" virt="non-virtual" ambiguityscope="casacore::MultiFileBase::"><scope>casacore::MultiFile</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a2bab34537534ec950f6c796a7adfee35" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>packIndex</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a9b239c97cf26fad6aa5df648d07bd3d3" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>read</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a4730f7a974832a57a46e5f3139cc9820" prot="protected" virt="virtual"><scope>casacore::MultiFile</scope><name>readBlock</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ab7c07426496aab7dbfa079fec94a6c2d" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>readHeader</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a959157b9135db880ecbc6341159cad20" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>readHeaderVersion1</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a998d1e7938c193e50c02d301bb9acbc1" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>readHeaderVersion2</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a032d8500328fa75b716fd906d24b2824" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>readRemainder</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a19e577da0f8514c38bde190e47a3ae2a" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>readVector</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ae4733ac757af799b57938a223ed63000" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>readVector</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a514468147b6976165d812d8656eb9827" prot="public" virt="virtual"><scope>casacore::MultiFile</scope><name>reopenRW</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a61d121a558ce7cb5f7970d7b7f50d56f" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>resync</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1ac9621228e89dd8d17f0e8e607180adf4" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>setNewFile</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a544e5534cad6337dfdf2f975a3003a3b" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>show</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a67ed0d7d6db7ea13e01ab599ab3d7f1c" prot="protected" virt="non-virtual"><scope>casacore::MultiFile</scope><name>storeCRC</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1aa297c5bfc4ce983d0cd102ac50dade0c" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>truncate</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ae6fb5384b168cc549d57a8c668923d5f" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>truncateIfNeeded</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a53c3d5405fbd402d2ed96563cd640eff" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>unpackIndex</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a9c6b319b52ddb589cf314b5294642e14" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>useODirect</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a600b463c2122ab6e3034349da29ecebd" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>write</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a16230d72dc01767d3343482a83bd1be7" prot="protected" virt="virtual"><scope>casacore::MultiFile</scope><name>writeBlock</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a7b7ce01caf36f74978b403387d80c370" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>writeHeader</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ae73b853d95069b12700df0084647fef1" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>writeHeaderShow</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a1885b173b37057f7444ead708fd396b2" prot="private" virt="virtual"><scope>casacore::MultiFile</scope><name>writeHeaderTest</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a69f3b31fe752abb506b85a756b1f6c0c" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>writeRemainder</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a0e64c1c326388181e7af18fd85a85108" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>writeVector</name></member>
+      <member refid="classcasacore_1_1MultiFile_1ac0e1ab3b6270579bcb31ca7ceddebe8b" prot="private" virt="non-virtual"><scope>casacore::MultiFile</scope><name>writeVector</name></member>
+      <member refid="classcasacore_1_1MultiFile_1a526b4964318002355da744986fbc2fdd" prot="public" virt="non-virtual"><scope>casacore::MultiFile</scope><name>~MultiFile</name></member>
+      <member refid="classcasacore_1_1MultiFileBase_1a514679114f6da8992e958bb8bcaa5c86" prot="public" virt="virtual"><scope>casacore::MultiFile</scope><name>~MultiFileBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

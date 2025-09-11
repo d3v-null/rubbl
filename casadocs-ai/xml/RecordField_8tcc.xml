@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="RecordField_8tcc" kind="file" language="C++">
+    <compoundname>RecordField.tcc</compoundname>
+    <includedby refid="RecordField_8h" local="no">casa/Containers/RecordField.h</includedby>
+    <invincdepgraph>
+      <node id="14">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/TSMCubeMMap.cc</label>
+        <link refid="TSMCubeMMap_8cc"/>
+      </node>
+      <node id="5">
+        <label>casa/Containers.h</label>
+        <link refid="Containers_8h"/>
+      </node>
+      <node id="6">
+        <label>casa/Utilities/CASATask.h</label>
+        <link refid="CASATask_8h"/>
+      </node>
+      <node id="13">
+        <label>tables/Tables/TableRow.cc</label>
+        <link refid="TableRow_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/TSMCube.cc</label>
+        <link refid="TSMCube_8cc"/>
+      </node>
+      <node id="3">
+        <label>casa/Containers/RecordFieldWriter.h</label>
+        <link refid="RecordFieldWriter_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tables/DataMan/TSMCubeBuff.cc</label>
+        <link refid="TSMCubeBuff_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Containers/RecordField.h</label>
+        <link refid="RecordField_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tables/Tables/ColumnsIndexArray.cc</label>
+        <link refid="ColumnsIndexArray_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/Tables/ColumnsIndex.cc</label>
+        <link refid="ColumnsIndex_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Containers/RecordField.tcc</label>
+        <link refid="RecordField_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casa/Containers/RecordField2Writer.cc</label>
+        <link refid="RecordField2Writer_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/TSMCoordColumn.cc</label>
+        <link refid="TSMCoordColumn_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>RecordField.cc:<sp/>Access<sp/>to<sp/>an<sp/>individual<sp/>field<sp/>from<sp/>a<sp/>record</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,1997,1999</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_RECORDFIELD_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_RECORDFIELD_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Containers/RecordField.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/Assert.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RecordFieldPtr&lt;T&gt;::RecordFieldPtr()</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>parent_p<sp/><sp/><sp/><sp/><sp/>(nullptr),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>fieldNumber_p(-1)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Nothing</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RecordFieldPtr&lt;T&gt;::RecordFieldPtr<sp/>(RecordInterface&amp;<sp/>record,<sp/>Int<sp/>whichField)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>attachToRecord<sp/>(record,<sp/>whichField);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">RecordFieldPtr&lt;T&gt;::RecordFieldPtr<sp/>(RecordInterface&amp;<sp/>record,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>RecordFieldId&amp;<sp/>id)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>attachToRecord<sp/>(record,<sp/>record.idToNumber<sp/>(id));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RecordFieldPtr&lt;T&gt;::attachToRecord<sp/>(RecordInterface&amp;<sp/>record,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>RecordFieldId&amp;<sp/>id)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>attachToRecord<sp/>(record,<sp/>record.idToNumber<sp/>(id));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RecordFieldPtr&lt;T&gt;::attachToRecord<sp/>(RecordInterface&amp;<sp/>record,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>whichField)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;record;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fieldNumber_p<sp/>=<sp/>whichField;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get();<sp/>//<sp/>check<sp/>type</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RecordFieldPtr&lt;T&gt;::detach()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>nullptr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fieldNumber_p<sp/>=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T&amp;<sp/>RecordFieldPtr&lt;T&gt;::operator*()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p-&gt;makeUnique();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>const_cast&lt;T&amp;&gt;(get());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>const<sp/>Table*<sp/>RecordFieldPtr&lt;Table&gt;::get_typed_ptr(RecordInterface*<sp/>record,<sp/>Int<sp/>fieldNumber)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>static_cast&lt;const<sp/>Table*&gt;(record-&gt;get_pointer(fieldNumber,<sp/>TpOther));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>const<sp/>Record*<sp/>RecordFieldPtr&lt;Record&gt;::get_typed_ptr(RecordInterface*<sp/>record,<sp/>Int<sp/>fieldNumber)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>static_cast&lt;const<sp/>Record*&gt;(record-&gt;get_pointer(fieldNumber,<sp/>TpRecord,<sp/>&quot;Record&quot;));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>const<sp/>TableRecord*<sp/>RecordFieldPtr&lt;TableRecord&gt;::get_typed_ptr(RecordInterface*<sp/>record,<sp/>Int<sp/>fieldNumber)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>static_cast&lt;const<sp/>TableRecord*&gt;(record-&gt;get_pointer(fieldNumber,<sp/>TpRecord,<sp/>&quot;TableRecord&quot;));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>const<sp/>T*<sp/>RecordFieldPtr&lt;T&gt;::get_typed_ptr(RecordInterface*<sp/>record,<sp/>Int<sp/>fieldNumber)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>static_cast&lt;const<sp/>T*&gt;(record-&gt;get_pointer(fieldNumber,<sp/>whatType&lt;T&gt;()));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>void<sp/>RecordFieldPtr&lt;T&gt;::define<sp/>(const<sp/>T&amp;<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p-&gt;defineDataField<sp/>(fieldNumber_p,<sp/>whatType&lt;T&gt;(),<sp/>&amp;value);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">inline<sp/>void<sp/>RecordFieldPtr&lt;TableRecord&gt;::define<sp/>(const<sp/>TableRecord&amp;<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p-&gt;defineDataField<sp/>(fieldNumber_p,<sp/>TpRecord,<sp/>&amp;value);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>String&amp;<sp/>RecordFieldPtr&lt;T&gt;::comment()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>parent_p-&gt;comment<sp/>(fieldNumber_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RecordFieldPtr&lt;T&gt;::setComment<sp/>(const<sp/>String&amp;<sp/>comment)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parent_p-&gt;setComment<sp/>(fieldNumber_p,<sp/>comment);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Containers/RecordField.tcc"/>
+  </compounddef>
+</doxygen>

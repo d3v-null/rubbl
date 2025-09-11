@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="HostInfoIrix_8h" kind="file" language="C++">
+    <compoundname>HostInfoIrix.h</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>HostInfo_irix.h:<sp/>SGI<sp/>Irix<sp/>specific<sp/>memory,<sp/>swap,<sp/>and<sp/>CPU<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>**<sp/><sp/>This<sp/>is<sp/>a<sp/>greatly<sp/>MODIFIED<sp/>version<sp/>of<sp/>a<sp/>&quot;top&quot;<sp/>machine<sp/>dependent<sp/>file.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**<sp/><sp/>The<sp/>only<sp/>resemblance<sp/>it<sp/>bears<sp/>to<sp/>the<sp/>original<sp/>is<sp/>with<sp/>respect<sp/>to<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>**<sp/><sp/>mechanics<sp/>of<sp/>finding<sp/>various<sp/>system<sp/>details.<sp/>The<sp/>copyright<sp/>details</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>**<sp/><sp/>follow.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>**</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>**<sp/><sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---<sp/>---</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>**</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>**<sp/><sp/>Top<sp/>users/processes<sp/>display<sp/>for<sp/>Unix</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>**<sp/><sp/>Version<sp/>3</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>**</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>**<sp/><sp/>This<sp/>program<sp/>may<sp/>be<sp/>freely<sp/>redistributed,</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>**<sp/><sp/>but<sp/>this<sp/>entire<sp/>comment<sp/>MUST<sp/>remain<sp/>intact.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>**</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>**<sp/><sp/>Copyright<sp/>(c)<sp/>1984,<sp/>1989,<sp/>William<sp/>LeFebvre,<sp/>Rice<sp/>University</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>**<sp/><sp/>Copyright<sp/>(c)<sp/>1989<sp/>-<sp/>1994,<sp/>William<sp/>LeFebvre,<sp/>Northwestern<sp/>University</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>**<sp/><sp/>Copyright<sp/>(c)<sp/>1994,<sp/>1995,<sp/>William<sp/>LeFebvre,<sp/>Argonne<sp/>National<sp/>Laboratory</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>**<sp/><sp/>Copyright<sp/>(c)<sp/>1996,<sp/>William<sp/>LeFebvre,<sp/>Group<sp/>sys<sp/>Consulting</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>**<sp/><sp/>Copyright<sp/>(c)<sp/>2002,<sp/>Associated<sp/>Universities<sp/>Inc.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_HOSTINFOIRIX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_HOSTINFOIRIX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>if<sp/>defined(HOSTINFO_DO_IMPLEMENT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AUTHOR:<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Darrell<sp/>Schiebel<sp/><sp/>&lt;drs@nrao.edu&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>ORIGINAL<sp/>AUTHORS:<sp/><sp/><sp/><sp/><sp/><sp/>Sandeep<sp/>Cariapa<sp/><sp/><sp/>&lt;cariapa@sgi.com&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Larry<sp/>McVoy<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;lm@sgi.com&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>John<sp/>Schimmel<sp/><sp/><sp/><sp/><sp/>&lt;jes@sgi.com&gt;</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ariel<sp/>Faigon<sp/><sp/><sp/><sp/><sp/><sp/>&lt;ariel@sgi.com&gt;</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdio_8h" kindref="compound">stdio.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdlib_8h" kindref="compound">stdlib.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/swap.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/sysmp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/sysinfo.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HostInfo<sp/>for<sp/>IRIX<sp/>machines.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;UNKNOWN&quot;<sp/>date=&quot;before2004/08/25&quot;<sp/>tests=&quot;&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=HostInfo&gt;HostInfo&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>provides<sp/>the<sp/>IRIX<sp/>specific<sp/>functions<sp/>for<sp/>HostInfo.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>selectively<sp/>included<sp/>by<sp/>HostInfo.cc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;group<sp/>name=&quot;HostInfo&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>pagetok(pages)<sp/>((((uint64_t)<sp/>pages)<sp/>*<sp/>pagesize)<sp/>&gt;&gt;<sp/>10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">HostMachineInfo<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">HostInfo;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>HostMachineInfo(<sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>update_info(<sp/>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>valid;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cpus;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>swap_total;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>swap_used;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>swap_free;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>memory_total;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>memory_used;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>memory_free;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>ptrdiff_t<sp/>pagesize;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">HostMachineInfo::HostMachineInfo(<sp/>)<sp/><sp/>:<sp/>valid(1)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>pagesize<sp/>=<sp/>getpagesize();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((cpus<sp/>=<sp/>sysmp(MP_NPROCS))<sp/>==<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>perror(</highlight><highlight class="stringliteral">&quot;sysmp(MP_NPROCS)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>valid<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">rminfo<sp/>realmem;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sysmp(MP_SAGET,<sp/>MPSA_RMINFO,<sp/>&amp;realmem,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(realmem))<sp/>==<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>perror(</highlight><highlight class="stringliteral">&quot;sysmp(MP_SAGET,MPSA_RMINFO,<sp/>...)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>valid<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>memory_total<sp/>=<sp/>pagetok(realmem.physmem);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HostMachineInfo::update_info(<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>i;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">rminfo<sp/>realmem;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sysinfo<sp/><sp/>sysinfo;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>off_t<sp/><sp/><sp/>fswap;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>current<sp/>free<sp/>swap<sp/>in<sp/>blocks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>off_t<sp/><sp/><sp/>tswap;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>total<sp/>swap<sp/>in<sp/>blocks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>swapctl(SC_GETFREESWAP,<sp/>&amp;fswap);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>swapctl(SC_GETSWAPTOT,<sp/>&amp;tswap);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sysmp(MP_SAGET,<sp/>MPSA_RMINFO,<sp/>&amp;realmem,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(realmem))<sp/>==<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>perror(</highlight><highlight class="stringliteral">&quot;sysmp(MP_SAGET,MPSA_RMINFO,<sp/>...)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>valid<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>memory_free<sp/>=<sp/>pagetok(realmem.freemem);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>memory_used<sp/>=<sp/><sp/>memory_total<sp/>-<sp/>memory_free;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>swap_total<sp/>=<sp/>tswap<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>swap_free<sp/>=<sp/>fswap<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>swap_used<sp/>=<sp/>swap_total<sp/>-<sp/>swap_free;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/OS/HostInfoIrix.h"/>
+  </compounddef>
+</doxygen>

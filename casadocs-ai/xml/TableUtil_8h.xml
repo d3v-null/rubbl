@@ -1,0 +1,1056 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="TableUtil_8h" kind="file" language="C++">
+    <compoundname>TableUtil.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="Table_8h" local="no">casacore/tables/Tables/Table.h</includes>
+    <includes refid="TableLock_8h" local="no">casacore/tables/Tables/TableLock.h</includes>
+    <includes refid="TSMOption_8h" local="no">casacore/tables/DataMan/TSMOption.h</includes>
+    <includes refid="Record_8h" local="no">casacore/casa/Containers/Record.h</includes>
+    <includes refid="DataType_8h" local="no">casacore/casa/Utilities/DataType.h</includes>
+    <includedby refid="NewFile_8cc" local="no">tables/LogTables/NewFile.cc</includedby>
+    <includedby refid="ConcatTable_8cc" local="no">tables/Tables/ConcatTable.cc</includedby>
+    <includedby refid="RefTable_8cc" local="no">tables/Tables/RefTable.cc</includedby>
+    <includedby refid="Table_8cc" local="no">tables/Tables/Table.cc</includedby>
+    <includedby refid="TableProxy_8cc" local="no">tables/Tables/TableProxy.cc</includedby>
+    <includedby refid="TableUtil_8cc" local="no">tables/Tables/TableUtil.cc</includedby>
+    <includedby refid="Tables_8h" local="no">tables/Tables.h</includedby>
+    <includedby refid="TableParseQuery_8cc" local="no">tables/TaQL/TableParseQuery.cc</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="55">
+        <label>casacore/tables/Tables/StorageOption.h</label>
+        <link refid="StorageOption_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>casacore/casa/config.h</label>
+      </node>
+      <node id="9">
+        <label>casacore/tables/Tables/TableInfo.h</label>
+        <link refid="TableInfo_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>casacore/casa/Utilities/COWPtr.tcc</label>
+        <link refid="COWPtr_8tcc"/>
+      </node>
+      <node id="26">
+        <label>casacore/casa/BasicSL/Complex.h</label>
+        <link refid="Complex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>casacore/casa/Containers/Block.h</label>
+        <link refid="Block_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>casacore/casa/Utilities/Compare.tcc</label>
+        <link refid="Compare_8tcc"/>
+      </node>
+      <node id="19">
+        <label>casacore/tables/Tables/TableDesc.h</label>
+        <link refid="TableDesc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>casacore/casa/Exceptions/Error.h</label>
+        <link refid="Error_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>iterator</label>
+      </node>
+      <node id="75">
+        <label>ArrayStr.tcc</label>
+        <link refid="ArrayStr_8tcc"/>
+      </node>
+      <node id="21">
+        <label>casacore/tables/Tables/ColumnDesc.h</label>
+        <link refid="ColumnDesc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>casacore/casa/Containers/RecordDescRep.h</label>
+        <link refid="RecordDescRep_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>casacore/tables/Tables/ColDescSet.h</label>
+        <link refid="ColDescSet_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>casacore/casa/iostream.h</label>
+        <link refid="iostream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>casacore/casa/Containers/RecordInterface.h</label>
+        <link refid="RecordInterface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>Array.h</label>
+        <link refid="Array_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>casacore/casa/iosfwd.h</label>
+        <link refid="iosfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>casacore/casa/Utilities/Compare.h</label>
+        <link refid="Compare_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="60">
+        <label>casacore/casa/IO/LockFile.h</label>
+        <link refid="LockFile_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>casacore/casa/iosstrfwd.h</label>
+        <link refid="iosstrfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>casacore/casa/Containers/Allocator.h</label>
+        <link refid="Allocator_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>casacore/casa/OS/Time.h</label>
+        <link refid="Time_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="22">
+        <label>casacore/tables/Tables/BaseColDesc.h</label>
+        <link refid="BaseColDesc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>map</label>
+      </node>
+      <node id="72">
+        <label>ArrayStr.h</label>
+        <link refid="ArrayStr_8h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>casacore/casa/IO/ByteIO.h</label>
+        <link refid="ByteIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>ArrayError.h</label>
+        <link refid="ArrayError_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>casacore/casa/complex.h</label>
+        <link refid="complex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>casacore/casa/Arrays/Vector.h</label>
+        <link refid="Vector_8h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>casacore/casa/Utilities/ValType.h</label>
+        <link refid="ValType_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>casacore/tables/DataMan/TSMOption.h</label>
+        <link refid="TSMOption_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>exception</label>
+      </node>
+      <node id="58">
+        <label>casacore/casa/IO/FileLocker.h</label>
+        <link refid="FileLocker_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>ostream</label>
+      </node>
+      <node id="43">
+        <label>casacore/casa/Utilities/Copy.h</label>
+        <link refid="Copy_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>casacore/casa/vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>casacore/casa/BasicSL/Complexfwd.h</label>
+        <link refid="Complexfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>casacore/casa/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>Vector2.tcc</label>
+        <link refid="Vector2_8tcc"/>
+      </node>
+      <node id="34">
+        <label>sys/types.h</label>
+      </node>
+      <node id="50">
+        <label>typeinfo</label>
+      </node>
+      <node id="83">
+        <label>casacore/casa/Containers/RecordRep.h</label>
+        <link refid="RecordRep_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>casacore/casa/Arrays/IPosition.h</label>
+        <link refid="IPosition_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>Array.tcc</label>
+        <link refid="Array_8tcc"/>
+      </node>
+      <node id="31">
+        <label>vector</label>
+      </node>
+      <node id="86">
+        <label>casacore/casa/Utilities/COWPtr.h</label>
+        <link refid="COWPtr_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>new</label>
+      </node>
+      <node id="42">
+        <label>casacore/casa/Utilities/Assert.tcc</label>
+        <link refid="Assert_8tcc"/>
+      </node>
+      <node id="18">
+        <label>sstream</label>
+      </node>
+      <node id="23">
+        <label>casacore/casa/Utilities/DataType.h</label>
+        <link refid="DataType_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>iosfwd</label>
+      </node>
+      <node id="48">
+        <label>cstdlib</label>
+      </node>
+      <node id="8">
+        <label>casacore/tables/Tables/BaseTable.h</label>
+        <link refid="BaseTable_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>casacore/casa/OS/Conversion.h</label>
+        <link refid="Conversion_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>casacore/casa/Containers/RecordDesc.h</label>
+        <link refid="RecordDesc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>casacore/casa/Utilities/Sort.h</label>
+        <link refid="Sort_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>cstddef</label>
+      </node>
+      <node id="45">
+        <label>casacore/casa/Utilities/Copy.tcc</label>
+        <link refid="Copy_8tcc"/>
+      </node>
+      <node id="77">
+        <label>Vector.tcc</label>
+        <link refid="Vector_8tcc"/>
+      </node>
+      <node id="36">
+        <label>mutex</label>
+      </node>
+      <node id="62">
+        <label>casacore/tables/Tables/RowNumbers.h</label>
+        <link refid="RowNumbers_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>casacore/casa/IO/AipsIO.h</label>
+        <link refid="AipsIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>casacore/casa/Containers/Record.h</label>
+        <link refid="Record_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>casacore/casa/sstream.h</label>
+        <link refid="sstream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tables/Tables/TableUtil.h</label>
+        <link refid="TableUtil_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>type_traits</label>
+      </node>
+      <node id="41">
+        <label>casacore/casa/Exceptions/Error.tcc</label>
+        <link refid="Error_8tcc"/>
+      </node>
+      <node id="28">
+        <label>complex</label>
+      </node>
+      <node id="44">
+        <label>algorithm</label>
+      </node>
+      <node id="82">
+        <label>casacore/casa/Containers/RecordFieldId.h</label>
+        <link refid="RecordFieldId_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>casacore/tables/Tables/TableLock.h</label>
+        <link refid="TableLock_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>casacore/casa/Arrays/ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>ArrayBase.h</label>
+        <link refid="ArrayBase_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="70">
+        <label>cstring</label>
+      </node>
+      <node id="10">
+        <label>casacore/casa/BasicSL/String.h</label>
+        <link refid="String_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore/tables/Tables/Table.h</label>
+        <link refid="Table_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>memory</label>
+      </node>
+      <node id="73">
+        <label>istream</label>
+      </node>
+      <node id="33">
+        <label>initializer_list</label>
+      </node>
+      <node id="38">
+        <label>casacore/casa/Utilities/Assert.h</label>
+        <link refid="Assert_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>MaskLogiArrFwd.h</label>
+        <link refid="MaskLogiArrFwd_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="6">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/TaQL/TableParseQuery.cc</label>
+        <link refid="TableParseQuery_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/Tables/TableUtil.cc</label>
+        <link refid="TableUtil_8cc"/>
+      </node>
+      <node id="1">
+        <label>tables/Tables/TableUtil.h</label>
+        <link refid="TableUtil_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tables/LogTables/NewFile.cc</label>
+        <link refid="NewFile_8cc"/>
+      </node>
+      <node id="3">
+        <label>tables/Tables/ConcatTable.cc</label>
+        <link refid="ConcatTable_8cc"/>
+      </node>
+      <node id="5">
+        <label>tables/Tables/Table.cc</label>
+        <link refid="Table_8cc"/>
+      </node>
+      <node id="4">
+        <label>tables/Tables/RefTable.cc</label>
+        <link refid="RefTable_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <innernamespace refid="namespacecasacore_1_1TableUtil">casacore::TableUtil</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>TableUtil.h:<sp/>Utility<sp/>functions<sp/>for<sp/>tables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>2022</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>receied<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TABLES_TABLEUTIL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TABLES_TABLEUTIL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Table_8h" kindref="compound">casacore/tables/Tables/Table.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TableLock_8h" kindref="compound">casacore/tables/Tables/TableLock.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TSMOption_8h" kindref="compound">casacore/tables/DataMan/TSMOption.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Record_8h" kindref="compound">casacore/casa/Containers/Record.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="DataType_8h" kindref="compound">casacore/casa/Utilities/DataType.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>TableUtil<sp/>namespace<sp/>contains<sp/>several<sp/>convenience<sp/>functions<sp/>operating</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>Table<sp/>objects.<sp/>They<sp/>make<sp/>it<sp/>very<sp/>convenient<sp/>to<sp/>open,<sp/>close<sp/>or<sp/>delete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>main<sp/>tables<sp/>and<sp/>subtables.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;p&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>function<sp/>&lt;src&gt;openTable&lt;/src&gt;<sp/>makes<sp/>it<sp/>possible<sp/>to<sp/>open<sp/>a<sp/>subtable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>a<sp/>table<sp/>in<sp/>a<sp/>convenient<sp/>way,<sp/>even<sp/>if<sp/>the<sp/>table<sp/>is<sp/>only<sp/>a<sp/>reference</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>another<sp/>table<sp/>(e.g.,<sp/>a<sp/>selection).<sp/>The<sp/>name<sp/>can<sp/>be<sp/>given<sp/>with<sp/>colons<sp/>as</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&apos;maintab::subtab1::subtab2&apos;<sp/>meaning<sp/>that<sp/>subtab2<sp/>is<sp/>opened<sp/>and<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Of<sp/>course,<sp/>it<sp/>can<sp/>also<sp/>be<sp/>used<sp/>to<sp/>open<sp/>a<sp/>main<sp/>table<sp/>such<sp/>as<sp/>&apos;my.tab&apos;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Similar<sp/>to<sp/>&lt;src&gt;openTable&lt;/src&gt;,<sp/>the<sp/>function<sp/>&lt;src&gt;createTable&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>used<sp/>to<sp/>create<sp/>a<sp/>(sub)table,<sp/>possibly<sp/>using<sp/>the<sp/>::<sp/>notation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;&lt;src&gt;deleteTable&lt;/src&gt;<sp/>is<sp/>similar<sp/>to<sp/>delete<sp/>a<sp/>(sub)table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">TableUtil<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>to<sp/>open<sp/>a<sp/>table.<sp/>The<sp/>name<sp/>of<sp/>the<sp/>table<sp/>can<sp/>contain<sp/>subtable<sp/>names</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>using<sp/>::<sp/>as<sp/>separator.<sp/>In<sp/>this<sp/>way<sp/>it<sp/>is<sp/>possible<sp/>to<sp/>directly<sp/>open<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>subtable<sp/>of<sp/>a<sp/>RefTable<sp/>or<sp/>ConcatTable,<sp/>which<sp/>is<sp/>not<sp/>possible<sp/>if<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>name<sp/>is<sp/>specified<sp/>with<sp/>slashes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>open<sp/>process<sp/>is<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>It<sp/>is<sp/>tried<sp/>to<sp/>open<sp/>the<sp/>table<sp/>with<sp/>the<sp/>given<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>If<sp/>unsuccessful,<sp/>the<sp/>name<sp/>is<sp/>split<sp/>into<sp/>its<sp/>parts<sp/>using<sp/>::</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>first<sp/>part<sp/>is<sp/>the<sp/>main<sp/>table<sp/>which<sp/>will<sp/>be<sp/>opened<sp/>temporarily.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>other<sp/>parts<sp/>are<sp/>the<sp/>successive<sp/>subtable<sp/>names<sp/>(usually<sp/>one).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Each<sp/>subtable<sp/>is<sp/>opened<sp/>by<sp/>looking<sp/>it<sp/>up<sp/>in<sp/>the<sp/>keywords<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>table<sp/>above.<sp/>The<sp/>final<sp/>subtable<sp/>is<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;An<sp/>exception<sp/>is<sp/>thrown<sp/>if<sp/>the<sp/>table<sp/>cannot<sp/>be<sp/>opened.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Open<sp/>the<sp/>ANTENNA<sp/>subtable<sp/>of<sp/>an<sp/>MS<sp/>which<sp/>might<sp/>be<sp/>a<sp/>selection<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>real<sp/>MS.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Table<sp/>tab(Table::openTable<sp/>(&quot;sel.ms::ANTENNA&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>Table<sp/><ref refid="namespacecasacore_1_1TableUtil_1a99917278b248a18b44bb0d96786a37eb" kindref="member">openTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref><sp/>=<sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0acbeb81bbd3ea941d6b6b743b419cd37a" kindref="member">Table::Old</ref>,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMOption&amp;<sp/>=<sp/>TSMOption());</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>Table<sp/><ref refid="namespacecasacore_1_1TableUtil_1a99917278b248a18b44bb0d96786a37eb" kindref="member">openTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableLock&amp;<sp/>lockOptions,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref><sp/>=<sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0acbeb81bbd3ea941d6b6b743b419cd37a" kindref="member">Table::Old</ref>,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMOption&amp;<sp/>=<sp/>TSMOption());</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>table<sp/>with<sp/>the<sp/>given<sp/>name<sp/>and<sp/>description.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Datamanager<sp/>information<sp/>can<sp/>be<sp/>given<sp/>in<sp/>the<sp/>Record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>table<sp/>name<sp/>can<sp/>be<sp/>given<sp/>with<sp/>the<sp/>::<sp/>notation<sp/>meaning<sp/>that<sp/>a<sp/>subtable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>the<sp/>previous<sp/>part<sp/>is<sp/>created.<sp/>Depending<sp/>on<sp/>the<sp/>TableOption,<sp/>that<sp/>subtable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>or<sp/>cannot<sp/>exist<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>defines<sp/>the<sp/>subtable<sp/>keyword<sp/>in<sp/>the<sp/>parent<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;An<sp/>exception<sp/>is<sp/>thrown<sp/>if<sp/>one<sp/>of<sp/>the<sp/>parts<sp/>cannot<sp/>be<sp/>opened.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>ANT<sp/>subtable<sp/>of<sp/>an<sp/>MS<sp/>with<sp/>some<sp/>description<sp/>and<sp/>create<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>keyword<sp/>ANT<sp/>in<sp/>sel.ms<sp/>referring<sp/>to<sp/>the<sp/>subtable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>replaced<sp/>if<sp/>already<sp/>existing<sp/>(not<sp/>if<sp/>TableOption::NewNoReplace<sp/>is<sp/>given).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Table<sp/>tab(Table::createTable<sp/>(&quot;sel.ms::ANT&quot;,<sp/>someDesc,<sp/>TableOption::New));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>Table<sp/><ref refid="namespacecasacore_1_1TableUtil_1a3ee3a116c52d8d2361585f7cf5cd3c52" kindref="member">createTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableDesc&amp;,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref>,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1ac8328c6b0f8cfbe9f75ffdd76c618203" kindref="member">Table::TableType</ref><sp/>=<sp/><ref refid="classcasacore_1_1Table_1ac8328c6b0f8cfbe9f75ffdd76c618203a817ef209f63d53e8b2abbb9c90f18364" kindref="member">Table::Plain</ref>,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>StorageOption&amp;<sp/>=<sp/>StorageOption(),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Record&amp;<sp/>dmInfo<sp/>=<sp/>Record(),</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableLock&amp;<sp/>lockOptions<sp/>=<sp/>TableLock(),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>initialize<sp/>=<sp/><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a65e02b6f560c596cb5dde2d07dcb0cb3" kindref="member">Table::EndianFormat</ref><sp/>=<sp/><ref refid="classcasacore_1_1Table_1a65e02b6f560c596cb5dde2d07dcb0cb3a3d8605726d51394a46c03ea00d6ef0d1" kindref="member">Table::AipsrcEndian</ref>,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMOption&amp;<sp/>=<sp/>TSMOption());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>Table<sp/><ref refid="namespacecasacore_1_1TableUtil_1a15be2749a6e392adb0bb310159f9ebca" kindref="member">createSubTable</ref><sp/>(Table&amp;<sp/>parent,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>subtableName,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableDesc&amp;<sp/>desc,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref>,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>StorageOption&amp;<sp/>=<sp/>StorageOption(),</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Record&amp;<sp/>dmInfo<sp/>=<sp/>Record(),</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableLock&amp;<sp/>lockOptions<sp/>=<sp/>TableLock(),</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>initialize<sp/>=<sp/><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a65e02b6f560c596cb5dde2d07dcb0cb3" kindref="member">Table::EndianFormat</ref><sp/>=<sp/><ref refid="classcasacore_1_1Table_1a65e02b6f560c596cb5dde2d07dcb0cb3a3d8605726d51394a46c03ea00d6ef0d1" kindref="member">Table::AipsrcEndian</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMOption&amp;<sp/>=<sp/>TSMOption());</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Can<sp/>the<sp/>table<sp/>be<sp/>deleted?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>true,<sp/>function<sp/>deleteTable<sp/>can<sp/>safely<sp/>be<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>not,<sp/>message<sp/>contains<sp/>the<sp/>reason<sp/>why<sp/>(e.g.<sp/>&apos;table<sp/>is<sp/>not<sp/>writable&apos;).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>checks<sp/>if<sp/>the<sp/>table<sp/>is<sp/>writable,<sp/>is<sp/>not<sp/>open<sp/>in<sp/>this<sp/>process</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>is<sp/>not<sp/>open<sp/>in<sp/>another<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>&lt;src&gt;splitColons=True&lt;/src&gt;<sp/>the<sp/>table<sp/>name<sp/>can<sp/>contain<sp/>::<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>denote<sp/>subtables.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;If<sp/>&lt;src&gt;checkSubTables&lt;/src&gt;<sp/>is<sp/>set,<sp/>it<sp/>also<sp/>checks<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>subtable<sp/>is<sp/>not<sp/>open<sp/>in<sp/>another<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;<sp/>&lt;src&gt;canDeleteSubTable&lt;/src&gt;<sp/>can<sp/>be<sp/>used<sp/>to<sp/>check<sp/>a<sp/>subtable<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>given<sp/>parent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="namespacecasacore_1_1TableUtil_1aa9ed77ba8957a683adcb83bb8978381a" kindref="member">canDeleteTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>checkSubTables=<ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="namespacecasacore_1_1TableUtil_1aa9ed77ba8957a683adcb83bb8978381a" kindref="member">canDeleteTable</ref><sp/>(String&amp;<sp/>message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>checkSubTables=<ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>splitColons=<ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="namespacecasacore_1_1TableUtil_1a7bc66666d3dc439b825ae87b5974c228" kindref="member">canDeleteSubTable</ref><sp/>(String&amp;<sp/>message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Table&amp;<sp/>parent,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>subtableName,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>checkSubTables=<ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>the<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>exception<sp/>is<sp/>thrown<sp/>if<sp/>the<sp/>table<sp/>cannot<sp/>be<sp/>deleted<sp/>because</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>its<sp/>is<sp/>not<sp/>writable<sp/>or<sp/>because<sp/>it<sp/>is<sp/>still<sp/>open<sp/>in<sp/>this<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>another<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;If<sp/>&lt;src&gt;checkSubTables&lt;/src&gt;<sp/>is<sp/>set,<sp/>it<sp/>is<sp/>also<sp/>checked<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>subtable<sp/>is<sp/>used<sp/>in<sp/>another<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;<sp/>&lt;src&gt;deleteSubTable&lt;/src&gt;<sp/>can<sp/>be<sp/>used<sp/>to<sp/>delete<sp/>a<sp/>subtable<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>given<sp/>parent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1_1TableUtil_1a4925e0488edc23484488773a3588434a" kindref="member">deleteTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>checkSubTables=<ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1_1TableUtil_1ab0eb175e2201b91ee28a2f0e89b19d27" kindref="member">deleteSubTable</ref><sp/>(Table&amp;<sp/>parent,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>subtableName,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>checkSubTables<sp/>=<sp/><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>layout<sp/>of<sp/>a<sp/>table<sp/>(i.e.<sp/>description<sp/>and<sp/>#rows).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>has<sp/>the<sp/>advantage<sp/>that<sp/>only<sp/>the<sp/>minimal<sp/>amount<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>information<sp/>required<sp/>is<sp/>read<sp/>from<sp/>the<sp/>table,<sp/>thus<sp/>it<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>faster<sp/>than<sp/>a<sp/>normal<sp/>table<sp/>open.<sp/>The<sp/>table<sp/>name<sp/>can<sp/>be<sp/>a<sp/>subtable<sp/>using<sp/>::.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;<sp/>The<sp/>number<sp/>of<sp/>rows<sp/>is<sp/>returned.<sp/>The<sp/>description<sp/>of<sp/>the<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>stored<sp/>in<sp/>desc<sp/>(its<sp/>contents<sp/>will<sp/>be<sp/>overwritten).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;<sp/>An<sp/>exception<sp/>is<sp/>thrown<sp/>if<sp/>the<sp/>table<sp/>does<sp/>not<sp/>exist.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/><ref refid="namespacecasacore_1_1TableUtil_1a7086cfaa2801ed0dba53f44677d209c6" kindref="member">getLayout</ref><sp/>(TableDesc&amp;<sp/>desc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>table<sp/>info<sp/>of<sp/>the<sp/>table<sp/>with<sp/>the<sp/>given<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>empty<sp/>object<sp/>is<sp/>returned<sp/>if<sp/>the<sp/>table<sp/>is<sp/>unknown.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>table<sp/>name<sp/>can<sp/>be<sp/>a<sp/>subtable<sp/>using<sp/>::.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>TableInfo<sp/><ref refid="namespacecasacore_1_1TableUtil_1a8a27e536d024d13f715c6760a71db998" kindref="member">tableInfo</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>full<sp/>name<sp/>(absolute<sp/>path)<sp/>of<sp/>the<sp/>given<sp/>table<sp/>name,<sp/>which<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>be<sp/>a<sp/>subtable<sp/>specification<sp/>using<sp/>::.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="namespacecasacore_1_1TableUtil_1ac83f87379d862eda860c344e533ed8be" kindref="member">getFullName</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>tableName);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>parent<sp/>table<sp/>of<sp/>the<sp/>last<sp/>subtable<sp/>in<sp/>a<sp/>table<sp/>name<sp/>containing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>::<sp/>to<sp/>indicate<sp/>subtables.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>the<sp/>Table<sp/>object<sp/>of<sp/>that<sp/>parent<sp/>table<sp/>and<sp/>the<sp/>name<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>last<sp/>subtable.<sp/>An<sp/>empty<sp/>Table<sp/>is<sp/>returned<sp/>if<sp/>the<sp/>table<sp/>name<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>contain<sp/>subtable<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>case<sp/>of<sp/>an<sp/>error,<sp/>an<sp/>exception<sp/>is<sp/>thrown.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;Table,String&gt;<sp/><ref refid="namespacecasacore_1_1TableUtil_1ab4fe4172331fd6c61d2c91bccb6eb50d" kindref="member">findParentTable</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>fullName,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TableLock&amp;<sp/>lockOptions=TableLock(),</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0" kindref="member">Table::TableOption</ref><sp/>option=<ref refid="classcasacore_1_1Table_1a6c62d60a9691364e3aaaf137ea73cde0acbeb81bbd3ea941d6b6b743b419cd37a" kindref="member">Table::Old</ref>,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMOption&amp;<sp/>tsmOption=TSMOption());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>TableUtil<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="tables/Tables/TableUtil.h"/>
+  </compounddef>
+</doxygen>

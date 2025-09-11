@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="QLogical_8tcc" kind="file" language="C++">
+    <compoundname>QLogical.tcc</compoundname>
+    <includedby refid="QLogical_8h" local="no">casa/Quanta/QLogical.h</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>casa/Quanta/MVBaseline.cc</label>
+        <link refid="MVBaseline_8cc"/>
+      </node>
+      <node id="8">
+        <label>casa/Quanta.h</label>
+        <link refid="Quanta_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Quanta/QLogical.tcc</label>
+        <link refid="QLogical_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casa/Quanta/MVEarthMagnetic.cc</label>
+        <link refid="MVEarthMagnetic_8cc"/>
+      </node>
+      <node id="6">
+        <label>casa/Quanta/MVuvw.cc</label>
+        <link refid="MVuvw_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Quanta/QLogical.h</label>
+        <link refid="QLogical_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casa/Quanta/QLogical2.cc</label>
+        <link refid="QLogical2_8cc"/>
+      </node>
+      <node id="5">
+        <label>casa/Quanta/MVPosition.cc</label>
+        <link refid="MVPosition_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>QLogical.cc:<sp/>class<sp/>to<sp/>manipulate<sp/>physical,<sp/>dimensioned<sp/>quantities</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1997,1998,1999</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_QLOGICAL_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_QLOGICAL_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Quanta/QLogical.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicMath/Math.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicSL/Complex.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/ArrayLogical.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Exceptions/Error.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator==(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>other.getFullUnit().getValue()<sp/>){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Qtype<sp/>tmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>tmp<sp/>=<sp/>other.get(left.getFullUnit()).getValue();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>QMakeBool((left.getValue())<sp/>==<sp/>(tmp));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator==(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(left<sp/>==<sp/>loc);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator==(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(loc<sp/>==<sp/>other);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator!=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>==<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator!=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>==<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator!=(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>==<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(left.getValue(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>UnitVal<sp/>kind,<sp/>knew;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(left.getValue(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue(),tol));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(left,<sp/>loc));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other,<sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(left,<sp/>loc,<sp/>tol));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(loc,<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>near(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other,<sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(near(loc,<sp/>other,<sp/>tol));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(nearAbs(left.getValue(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>QMakeBool(nearAbs(left.getValue(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue(),tol));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;&amp;<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>==<sp/>tol.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>nearAbs(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left.get(tol.getUnit()),<sp/>other.get(tol.getUnit()),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tol.getValue()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(nearAbs(left,<sp/>loc));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other,<sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(nearAbs(left,<sp/>loc,<sp/>tol));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(nearAbs(loc,<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>nearAbs(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other,<sp/>Double<sp/>tol)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(nearAbs(loc,<sp/>other,<sp/>tol));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::operator&lt;<sp/>unequal<sp/>units<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;,<sp/>&apos;&quot;<sp/>+<sp/>other.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(QMakeBool(left.getValue()<sp/>&lt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(left<sp/>&lt;<sp/>loc);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(loc<sp/>&lt;<sp/>other);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>other.getFullUnit().getValue())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::operator&lt;<sp/>unequal<sp/>units<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;,<sp/>&apos;&quot;<sp/>+<sp/>other.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>QMakeBool(left.getValue()<sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.get(left.getFullUnit()).getValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>False;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(left<sp/>&gt;<sp/>loc);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(loc<sp/>&gt;<sp/>other);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&gt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&gt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&lt;=(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&gt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&lt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;=(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&lt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>operator&gt;=(const<sp/>Qtype<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>QMakeBool(!(left<sp/>&lt;<sp/>other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Quanta/QLogical.tcc"/>
+  </compounddef>
+</doxygen>

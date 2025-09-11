@@ -4,7 +4,7 @@
 //! this shows how the rubbl MIRIAD API is used.
 
 use clap::{Arg, Command};
-use std::ffi::OsString;
+use std::path::PathBuf;
 
 fn main() {
     let matches = Command::new("dsls")
@@ -14,11 +14,12 @@ fn main() {
             Arg::new("PATH")
                 .help("The path to the dataset directory")
                 .required(true)
+                .value_parser(clap::value_parser!(PathBuf))
                 .index(1),
         )
         .get_matches();
 
-    let path = matches.get_one::<OsString>("PATH").unwrap().as_os_str();
+    let path = matches.get_one::<PathBuf>("PATH").unwrap().as_os_str();
 
     let mut ds = match rubbl_miriad::DataSet::open(path) {
         Ok(ds) => ds,

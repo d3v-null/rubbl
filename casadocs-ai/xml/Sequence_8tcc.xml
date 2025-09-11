@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Sequence_8tcc" kind="file" language="C++">
+    <compoundname>Sequence.tcc</compoundname>
+    <includedby refid="Sequence_8h" local="no">casa/Utilities/Sequence.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>casa/Utilities/Sequence.tcc</label>
+        <link refid="Sequence_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casa/Utilities.h</label>
+        <link refid="Utilities_8h"/>
+      </node>
+      <node id="3">
+        <label>casa/Utilities/Sequence2.cc</label>
+        <link refid="Sequence2_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Utilities/Sequence.h</label>
+        <link refid="Sequence_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>Sequence.cc:<sp/>provides<sp/>sequences</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_SEQUENCE_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_SEQUENCE_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/Sequence.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>//<sp/>Inlined<sp/>this<sp/>in<sp/>Sequence.h<sp/>so<sp/>this<sp/>is<sp/>now</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>//<sp/>just<sp/>a<sp/>dummy<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>Sequence&lt;T&gt;::~Sequence()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Nothing</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Utilities/Sequence.tcc"/>
+  </compounddef>
+</doxygen>

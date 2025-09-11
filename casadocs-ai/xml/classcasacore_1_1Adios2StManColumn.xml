@@ -1,0 +1,1768 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1Adios2StManColumn" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>casacore::Adios2StManColumn</compoundname>
+    <basecompoundref refid="classcasacore_1_1StManColumnBase" prot="public" virt="non-virtual">casacore::StManColumnBase</basecompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Adios2StManColumnT" prot="public" virt="non-virtual">casacore::Adios2StManColumnT&lt; std::string &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classcasacore_1_1Adios2StManColumnT" prot="public" virt="non-virtual">casacore::Adios2StManColumnT&lt; T &gt;</derivedcompoundref>
+    <includes refid="Adios2StManColumn_8h" local="no">Adios2StManColumn.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1acaa7db968315161c3f93c1223bc7ad0d" prot="protected" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1Adios2StMan_1_1impl" kindref="compound">Adios2StMan::impl</ref> *</type>
+        <definition>Adios2StMan::impl* casacore::Adios2StManColumn::itsStManPtr</definition>
+        <argsstring></argsstring>
+        <name>itsStManPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="132" column="23" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1aa53bb8fbaa74909f9678585199a7cd86" prot="protected" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::Adios2StManColumn::itsColumnName</definition>
+        <argsstring></argsstring>
+        <name>itsColumnName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="134" column="12" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1a556c76bd905742ebae3eabe41ec187db" prot="protected" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::Adios2StManColumn::itsCasaShape</definition>
+        <argsstring></argsstring>
+        <name>itsCasaShape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="135" column="15" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1aa59d898d4b8ce752e99a8aca3b545420" prot="protected" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref>, <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &gt;</type>
+        <definition>std::unordered_map&lt;rownr_t, IPosition&gt; casacore::Adios2StManColumn::itsCasaShapes</definition>
+        <argsstring></argsstring>
+        <name>itsCasaShapes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="136" column="24" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1aedc3b736f7e59446ae532fb8faf0e85e" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::Adios2StManColumn::isShapeFixed</definition>
+        <argsstring></argsstring>
+        <name>isShapeFixed</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="137" column="10" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1abd22cf9428d48a54dd9da35a5100cc8b" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; adios2::IO &gt;</type>
+        <definition>std::shared_ptr&lt;adios2::IO&gt; casacore::Adios2StManColumn::itsAdiosIO</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosIO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="139" column="21" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1a4d5791b915b14516008698543065c1ff" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; adios2::Engine &gt;</type>
+        <definition>std::shared_ptr&lt;adios2::Engine&gt; casacore::Adios2StManColumn::itsAdiosEngine</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="140" column="21" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1a827412c1082d18cf153930031e1a0c33" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string casacore::Adios2StManColumn::itsAdiosDataType</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosDataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="141" column="17" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1a057b65ee69f263120be5e33d28e3c596" prot="protected" static="no" mutable="no">
+        <type>adios2::Dims</type>
+        <definition>adios2::Dims casacore::Adios2StManColumn::itsAdiosShape</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosShape</name>
+        <initializer>= {std::numeric_limits&lt;<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref>&gt;::<ref refid="namespacecasacore_1a56d085b8518c627a9bf447eaa23588f0" kindref="member">max</ref>()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="142" column="18" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1ab6b638735a177371085d51c58312479a" prot="protected" static="no" mutable="no">
+        <type>adios2::Dims</type>
+        <definition>adios2::Dims casacore::Adios2StManColumn::itsAdiosStart</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosStart</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="143" column="18" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Adios2StManColumn_1a2c2b2be522425910a81265fdcafc0281" prot="protected" static="no" mutable="no">
+        <type>adios2::Dims</type>
+        <definition>adios2::Dims casacore::Adios2StManColumn::itsAdiosCount</definition>
+        <argsstring></argsstring>
+        <name>itsAdiosCount</name>
+        <initializer>= {1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="144" column="18" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a886f459d0fd1fd66d99fef0e317838ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Adios2StManColumn::Adios2StManColumn</definition>
+        <argsstring>(Adios2StMan::impl *aParent, int aDataType, String aColName, std::shared_ptr&lt; adios2::IO &gt; aAdiosIO)</argsstring>
+        <name>Adios2StManColumn</name>
+        <param>
+          <type><ref refid="classcasacore_1_1Adios2StMan_1_1impl" kindref="compound">Adios2StMan::impl</ref> *</type>
+          <declname>aParent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>aDataType</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+          <declname>aColName</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; adios2::IO &gt;</type>
+          <declname>aAdiosIO</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="43" column="5" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="31" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a3426838b71b0e1c9a6851a375a2c087d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::create</definition>
+        <argsstring>(std::shared_ptr&lt; adios2::Engine &gt; aAdiosEngine, char aOpenMode)=0</argsstring>
+        <name>create</name>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a7e38af2d6943f00c8170d262ee35f8dc">create</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a7e38af2d6943f00c8170d262ee35f8dc">create</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a2c7da81b2f2b37e6e6286283ac54b705">create</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a2c7da81b2f2b37e6e6286283ac54b705">create</reimplementedby>
+        <param>
+          <type>std::shared_ptr&lt; adios2::Engine &gt;</type>
+          <declname>aAdiosEngine</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>aOpenMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="45" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aa8b82c24854f52c60883f2db728f56c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::setShapeColumn</definition>
+        <argsstring>(const IPosition &amp;aShape) override</argsstring>
+        <name>setShapeColumn</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a5d739c3bacf79adc0d06aaca19a1b31d">setShapeColumn</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>aShape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="47" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="48" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ae0b691204a392b2ec62d205f4ef13812" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref></type>
+        <definition>IPosition casacore::Adios2StManColumn::shape</definition>
+        <argsstring>(rownr_t aRowNr) override</argsstring>
+        <name>shape</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a5ced3c23b1a05041a3df39e091fc5dd2">shape</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="48" column="23" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="63" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a268458edbdeb10b32392fffa8c15f2a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::Adios2StManColumn::canChangeShape</definition>
+        <argsstring>() const override</argsstring>
+        <name>canChangeShape</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a5b1cd2bbb7197bd3b4d0c7d12907cd09">canChangeShape</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="49" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ab8285e2a355c7068a9a2a8ab4e3f3784" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::setShape</definition>
+        <argsstring>(rownr_t aRowNr, const IPosition &amp;aShape) override</argsstring>
+        <name>setShape</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a9af8089c07083e75bb43f94cc63dcfb7">setShape</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref> &amp;</type>
+          <declname>aShape</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="50" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ad4d8294e00524ab8534cbdca40e71869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::Adios2StManColumn::getDataTypeSize</definition>
+        <argsstring>()</argsstring>
+        <name>getDataTypeSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="52" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1accea8fc2b8e71cc53cb4e9894a2c0fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::Adios2StManColumn::getDataType</definition>
+        <argsstring>()</argsstring>
+        <name>getDataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="53" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1af2bb3c86bdde356c701c1eb7b62101e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::Adios2StManColumn::getColumnName</definition>
+        <argsstring>()</argsstring>
+        <name>getColumnName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="54" column="12" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="43" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a6c1836904bc31151348e047e10718500" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getBool</definition>
+        <argsstring>(rownr_t aRowNr, Bool *aDataPtr) override</argsstring>
+        <name>getBool</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1af1fec31cd437177d5578c79b3c8e6b62">getBool</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="59" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a9eb1d97505929a3c81dccc218d29bc8e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getuChar</definition>
+        <argsstring>(rownr_t aRowNr, uChar *aDataPtr) override</argsstring>
+        <name>getuChar</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a686864367d3d1b31162290d4aded865c">getuChar</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a016442aacbe9faceef443b62ab555eb9" kindref="member">uChar</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="60" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a8934cb9e2894dbf21233ccfc280d9d12" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getShort</definition>
+        <argsstring>(rownr_t aRowNr, Short *aDataPtr) override</argsstring>
+        <name>getShort</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1aa2bf11cb70c32870a57038b9eca87825">getShort</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a53f2a3afd42e85d94a0a009052a442a6" kindref="member">Short</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="61" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a6ac86a6bf43908fd7e1af8b73f2122fb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getuShort</definition>
+        <argsstring>(rownr_t aRowNr, uShort *aDataPtr) override</argsstring>
+        <name>getuShort</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a6e223c14a1a6ca2ab4a097aeeb3f6a3b">getuShort</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a659a7f6002b9b5c7984b02aef64b77ad" kindref="member">uShort</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="62" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aeb8f6ff50a73d69544017bf636e87d20" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getInt</definition>
+        <argsstring>(rownr_t aRowNr, Int *aDataPtr) override</argsstring>
+        <name>getInt</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab73ea146f72175a037880441d3602cf7">getInt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="63" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a310be752c697135fbdd5055e0e193e3e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getuInt</definition>
+        <argsstring>(rownr_t aRowNr, uInt *aDataPtr) override</argsstring>
+        <name>getuInt</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1acc1f45e8f11fcc57e81280594777d5b1">getuInt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="64" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a7125b98722da0599ff0820160247c6a2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getInt64</definition>
+        <argsstring>(rownr_t aRowNr, Int64 *aDataPtr) override</argsstring>
+        <name>getInt64</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a1e33c4572c664a15d198578bdffdbb25">getInt64</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="65" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aecbcdfed38d09b4ade6bc7176d352403" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getfloat</definition>
+        <argsstring>(rownr_t aRowNr, Float *aDataPtr) override</argsstring>
+        <name>getfloat</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab9967870cb5b690e5556b4b8f4481cb8">getfloat</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="66" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1af6ab6794dded165257250cefd9af0ff7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getdouble</definition>
+        <argsstring>(rownr_t aRowNr, Double *aDataPtr) override</argsstring>
+        <name>getdouble</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a4b6b285f97685cc16b2a5b55225a3822">getdouble</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="67" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1af2e9287efce7466147cf5a876e77cdbc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getComplex</definition>
+        <argsstring>(rownr_t aRowNr, Complex *aDataPtr) override</argsstring>
+        <name>getComplex</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a729b36a592084d01c258481e070f6c86">getComplex</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="68" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a1f9a965a85a2cbf04ae07e0de88d9b8f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::getDComplex</definition>
+        <argsstring>(rownr_t aRowNr, DComplex *aDataPtr) override</argsstring>
+        <name>getDComplex</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a3497237ab2a3394fe4827930f21eb71d">getDComplex</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="69" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a315b53b889cd7037e12eda07bef0b9c7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getString</definition>
+        <argsstring>(rownr_t aRowNr, String *aDataPtr) override</argsstring>
+        <name>getString</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a6013be63ce30180da4eec8be74dc4276">getString</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="70" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="391" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1adb0c53081f1134d2f681b5ee7f2bf3ee" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putBool</definition>
+        <argsstring>(rownr_t aRowNr, const Bool *aDataPtr) override</argsstring>
+        <name>putBool</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ad90aca6b251ae200a5cd81e7f2e47c97">putBool</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="72" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a65b910518ad074b0bcfd49ea7a736ab6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putuChar</definition>
+        <argsstring>(rownr_t aRowNr, const uChar *aDataPtr) override</argsstring>
+        <name>putuChar</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a15d273ac628707320d6a7a143312307e">putuChar</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a016442aacbe9faceef443b62ab555eb9" kindref="member">uChar</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="73" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a5d94cfe0f786134bde84c70d53601df7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putShort</definition>
+        <argsstring>(rownr_t aRowNr, const Short *aDataPtr) override</argsstring>
+        <name>putShort</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1aede92a3f3124c5cac2715c33a8135444">putShort</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a53f2a3afd42e85d94a0a009052a442a6" kindref="member">Short</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="74" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a9656cc124674955c5a718fb7e90c5de4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putuShort</definition>
+        <argsstring>(rownr_t aRowNr, const uShort *aDataPtr) override</argsstring>
+        <name>putuShort</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1aabe45170be6237d5584ce0a891edf0cd">putuShort</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a659a7f6002b9b5c7984b02aef64b77ad" kindref="member">uShort</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="75" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aac49923097944cb0405972da3c166047" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putInt</definition>
+        <argsstring>(rownr_t aRowNr, const Int *aDataPtr) override</argsstring>
+        <name>putInt</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a9e342de619df1a46f6ae562a93a13d8e">putInt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="76" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a58a4617923dc0bc9fdeb0885b6d7026d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putuInt</definition>
+        <argsstring>(rownr_t aRowNr, const uInt *aDataPtr) override</argsstring>
+        <name>putuInt</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a16b19cd6e0cbf9902af33844db48d73c">putuInt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="77" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1afa4eb3f23b4d31218b054d1703445e98" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putInt64</definition>
+        <argsstring>(rownr_t aRowNr, const Int64 *aDataPtr) override</argsstring>
+        <name>putInt64</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ae467123630dbdf05f723b3d7cad09936">putInt64</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="78" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1afc55007247ed1caebf2f2362e57cf31a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putfloat</definition>
+        <argsstring>(rownr_t aRowNr, const Float *aDataPtr) override</argsstring>
+        <name>putfloat</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1abf7f34f545d80f20f58188a1f1ea94e3">putfloat</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="79" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a065fd4e4e1aeae393b69b0d14ef8d7d9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putdouble</definition>
+        <argsstring>(rownr_t aRowNr, const Double *aDataPtr) override</argsstring>
+        <name>putdouble</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a0da9b0b766ccf48e885676e47805e2a8">putdouble</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1ada1f75eb2b38067e3eb1af7f5d69ebb2" kindref="member">Double</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="80" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a9dcf849688073f3b94f3f5fa6f11f92a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putComplex</definition>
+        <argsstring>(rownr_t aRowNr, const Complex *aDataPtr) override</argsstring>
+        <name>putComplex</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a9efaebbd56f35fcf45670c9c25399f7a">putComplex</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="81" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a5031a3c10719ec35882e63ccdae95177" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::putDComplex</definition>
+        <argsstring>(rownr_t aRowNr, const DComplex *aDataPtr) override</argsstring>
+        <name>putDComplex</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1aa5c90bc8ae4fe5a2ba1873cdc3be9f3a">putDComplex</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="82" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1abd6bfb598161c4cf5c6ad2f371231d35" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putString</definition>
+        <argsstring>(rownr_t aRowNr, const String *aDataPtr) override</argsstring>
+        <name>putString</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1afffe30b2298920900e5681231128e6fd">putString</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>aRowNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> *</type>
+          <declname>aDataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="83" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="380" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ad77fd5e2d76082ee471b279aa067d892" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getScalarColumnV</definition>
+        <argsstring>(ArrayBase &amp;dataPtr) override</argsstring>
+        <name>getScalarColumnV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a26d610812ed63d16ee57f4a4599e8de1">getScalarColumnV</reimplements>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="86" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="233" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a77c258625b9e679c720176bc834159da" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putScalarColumnV</definition>
+        <argsstring>(const ArrayBase &amp;dataPtr) override</argsstring>
+        <name>putScalarColumnV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1afaa475320df238ade52a741f4ced6c46">putScalarColumnV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="87" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="227" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a5c80f8a8321373857ddd5b702a6d5540" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getScalarColumnCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, ArrayBase &amp;dataPtr) override</argsstring>
+        <name>getScalarColumnCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ac317dab45d06c286b1dafedd5fb388eb">getScalarColumnCellsV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="88" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="239" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a52c22a3a2752efd44d05b816fedac582" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putScalarColumnCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, const ArrayBase &amp;dataPtr) override</argsstring>
+        <name>putScalarColumnCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab71c3a16c01aada35a3bb7c72f8cfad4">putScalarColumnCellsV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="90" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="245" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ac93ceb2ab9834363fe0b36fe33c38160" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getArrayV</definition>
+        <argsstring>(rownr_t rownr, ArrayBase &amp;dataPtr) override</argsstring>
+        <name>getArrayV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a647005e52df222336325b0b97ef9ca81">getArrayV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1a9d595d8314e54978ad66e9437d354c14">getArrayV</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="92" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="209" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ad2f20959d099380dfd93a24e8b55bc8a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putArrayV</definition>
+        <argsstring>(rownr_t rownr, const ArrayBase &amp;data) override</argsstring>
+        <name>putArrayV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a84f1ff5b464d55704a84391539faebcc">putArrayV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1afb48fd0587628428e90cc26e14365359">putArrayV</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="93" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="203" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a5c2b932732f20d408dcad38ace4f3325" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getArrayColumnV</definition>
+        <argsstring>(ArrayBase &amp;data) override</argsstring>
+        <name>getArrayColumnV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a5555ef76a93226d3bf6264dae754db2c">getArrayColumnV</reimplements>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="94" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="307" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a29f0d24e589ec3af03282cc2b05c66ad" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putArrayColumnV</definition>
+        <argsstring>(const ArrayBase &amp;data) override</argsstring>
+        <name>putArrayColumnV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a2fd81a3e6233c10baca2e5b45a3625ed">putArrayColumnV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="95" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="313" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aac3d9d801f6d0ea861e968bd2ce4805f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getArrayColumnCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, ArrayBase &amp;data) override</argsstring>
+        <name>getArrayColumnCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a8a757f8282241d8b865cc6a05540e389">getArrayColumnCellsV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="96" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="273" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a2f11fd2ab7506a78f280cffde0b3551b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putArrayColumnCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, const ArrayBase &amp;data) override</argsstring>
+        <name>putArrayColumnCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab39f60299a7bb9746a1feb219aa46cd9">putArrayColumnCellsV</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="98" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="251" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a80af2c48bd63b296cfa7ad2d52310e77" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getSliceV</definition>
+        <argsstring>(rownr_t rownr, const Slicer &amp;slicer, ArrayBase &amp;data) override</argsstring>
+        <name>getSliceV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a33849a5e627401d31f571ec469075779">getSliceV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1adbeaf5dc0f113783be51980636b9d8b9">getSliceV</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="100" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="295" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a90eae03c7e499172b01f174f47d9a576" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putSliceV</definition>
+        <argsstring>(rownr_t rownr, const Slicer &amp;slicer, const ArrayBase &amp;data) override</argsstring>
+        <name>putSliceV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab47d8291aa53383b906faa7da7411859">putSliceV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1af4dbfb9ddb3e25f09b6959a5d92c7b77">putSliceV</reimplementedby>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="101" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="301" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a656f62a41201b7ad453d925657b8453f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getColumnSliceV</definition>
+        <argsstring>(const Slicer &amp;slicer, ArrayBase &amp;data) override</argsstring>
+        <name>getColumnSliceV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a3f363a9f2b23d40e3312d77183480432">getColumnSliceV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1a2ce1f0e855338d46566d504db7188796">getColumnSliceV</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="103" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="325" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ace36756738115e9a2fdcf77e5e904958" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putColumnSliceV</definition>
+        <argsstring>(const Slicer &amp;slicer, const ArrayBase &amp;data) override</argsstring>
+        <name>putColumnSliceV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1a4b3e3efa09ad1a1febe38e071ce2ccab">putColumnSliceV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1a2a2e774c69755761d5f7f644fbee9a5e">putColumnSliceV</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="104" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="319" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1add22f7f92610b91a37a18dadcdc8c80c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getColumnSliceCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, const Slicer &amp;slicer, ArrayBase &amp;data) override</argsstring>
+        <name>getColumnSliceCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1aff1ffdd4fc3c7211a9a25f3108fb22e3">getColumnSliceCellsV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1a7eef5cdf9064e51617906327f4bdd13e">getColumnSliceCellsV</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="105" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="331" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a4ec362417d7bb77ce09d43eecf1e0b5e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putColumnSliceCellsV</definition>
+        <argsstring>(const RefRows &amp;rownrs, const Slicer &amp;slicer, const ArrayBase &amp;data) override</argsstring>
+        <name>putColumnSliceCellsV</name>
+        <reimplements refid="classcasacore_1_1DataManagerColumn_1ab048602da5d57653296a7ec2b49b8a65">putColumnSliceCellsV</reimplements>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnString_1a15c92f69254ca968aafcf84d01523d59">putColumnSliceCellsV</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>slicer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="107" column="18" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="338" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1abc35bec50913c2467f07ff22481bdd41" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::scalarToSelection</definition>
+        <argsstring>(rownr_t rownr)</argsstring>
+        <name>scalarToSelection</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="122" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a451683e8fc84409521265022dedbd90e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::scalarColumnVToSelection</definition>
+        <argsstring>()</argsstring>
+        <name>scalarColumnVToSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="123" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="99" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ac365542920d8213b1eb9b341462207d7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::scalarColumnCellsVToSelection</definition>
+        <argsstring>(const RefRows &amp;rownrs)</argsstring>
+        <name>scalarColumnCellsVToSelection</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rownrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="124" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="152" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1af8a8670ac6333dfeaa1d11acb1fc64d5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::arrayVToSelection</definition>
+        <argsstring>(rownr_t rownr)</argsstring>
+        <name>arrayVToSelection</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="125" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="105" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a598d70f32027cd431383aaaff61b7bb6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::arrayColumnVToSelection</definition>
+        <argsstring>()</argsstring>
+        <name>arrayColumnVToSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="126" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="141" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a3f6984671003307e2fe5bc795a70d084" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::sliceVToSelection</definition>
+        <argsstring>(rownr_t rownr, const Slicer &amp;ns)</argsstring>
+        <name>sliceVToSelection</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="127" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a2031d84877f290668ed23210339934de" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::columnSliceVToSelection</definition>
+        <argsstring>(const Slicer &amp;ns)</argsstring>
+        <name>columnSliceVToSelection</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="128" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="175" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a390bea63e16df943916343cf38b03135" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::columnSliceCellsVToSelection</definition>
+        <argsstring>(const RefRows &amp;rows, const Slicer &amp;ns)</argsstring>
+        <name>columnSliceCellsVToSelection</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1RefRows" kindref="compound">RefRows</ref> &amp;</type>
+          <declname>rows</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="129" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="180" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a9c4c8cd3eab3069031f6968d5c3d14c6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::columnSliceCellsVToSelection</definition>
+        <argsstring>(rownr_t row_start, rownr_t row_end, const Slicer &amp;ns)</argsstring>
+        <name>columnSliceCellsVToSelection</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>row_start</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>row_end</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref> &amp;</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="130" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="192" bodyend="201"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a967724cce0a911355db61610596e56ad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::putScalar</definition>
+        <argsstring>(rownr_t rownr, const void *dataPtr)</argsstring>
+        <name>putScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="113" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="215" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1aa7ee19f39ee35f42355848695db6c586" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Adios2StManColumn::getScalar</definition>
+        <argsstring>(rownr_t rownr, void *dataPtr)</argsstring>
+        <name>getScalar</name>
+        <param>
+          <type><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref></type>
+          <declname>rownr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="114" column="10" bodyfile="tables/DataMan/Adios2StManColumn.cc" bodystart="221" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1afcfb6817d39b039cc90f1d4cb3c15a4d" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::toAdios</definition>
+        <argsstring>(const ArrayBase *arrayPtr)=0</argsstring>
+        <name>toAdios</name>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a49c37bff5b602ebc20aa7900751e1dee">toAdios</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1a49c37bff5b602ebc20aa7900751e1dee">toAdios</reimplementedby>
+        <param>
+          <type>const <ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> *</type>
+          <declname>arrayPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="115" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1a9788da92df831458aa08d34ad0e6d30c" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::fromAdios</definition>
+        <argsstring>(ArrayBase *arrayPtr)=0</argsstring>
+        <name>fromAdios</name>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1ad5483c06a384f228bb1c9eb36c2c058e">fromAdios</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1ad5483c06a384f228bb1c9eb36c2c058e">fromAdios</reimplementedby>
+        <param>
+          <type><ref refid="classcasacore_1_1ArrayBase" kindref="compound">ArrayBase</ref> *</type>
+          <declname>arrayPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="116" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1ae7b649090da5614e1679730024e35c14" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::toAdios</definition>
+        <argsstring>(const void *dataPtr, std::size_t offset=0)=0</argsstring>
+        <name>toAdios</name>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1aad85b5699c1893064903ee7ef87c2dcb">toAdios</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1aad85b5699c1893064903ee7ef87c2dcb">toAdios</reimplementedby>
+        <param>
+          <type>const void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="117" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Adios2StManColumn_1abf617c4d654f60845b6ed6d78ddc6987" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void casacore::Adios2StManColumn::fromAdios</definition>
+        <argsstring>(void *dataPtr, std::size_t offset=0)=0</argsstring>
+        <name>fromAdios</name>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1aa8bc3fac65c42d3bd3c085c21ef953b7">fromAdios</reimplementedby>
+        <reimplementedby refid="classcasacore_1_1Adios2StManColumnT_1aa8bc3fac65c42d3bd3c085c21ef953b7">fromAdios</reimplementedby>
+        <param>
+          <type>void *</type>
+          <declname>dataPtr</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/Adios2StManColumn.h" line="118" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>casacore::Adios2StManColumnT&lt; T &gt;</label>
+        <link refid="classcasacore_1_1Adios2StManColumnT"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::StManColumnBase</label>
+        <link refid="classcasacore_1_1StManColumnBase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::Adios2StManColumnString</label>
+        <link refid="classcasacore_1_1Adios2StManColumnString"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore::Adios2StManColumnT&lt; std::string &gt;</label>
+        <link refid="classcasacore_1_1Adios2StManColumnT"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore::DataManagerColumn</label>
+        <link refid="classcasacore_1_1DataManagerColumn"/>
+      </node>
+      <node id="1">
+        <label>casacore::Adios2StManColumn</label>
+        <link refid="classcasacore_1_1Adios2StManColumn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8">
+        <label>casacore::Adios2StMan::impl</label>
+        <link refid="classcasacore_1_1Adios2StMan_1_1impl"/>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; rownr_t, casacore::IPosition &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore::IPosition</label>
+        <link refid="classcasacore_1_1IPosition"/>
+      </node>
+      <node id="2">
+        <label>casacore::StManColumnBase</label>
+        <link refid="classcasacore_1_1StManColumnBase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>casacore::DataManagerColumn</label>
+        <link refid="classcasacore_1_1DataManagerColumn"/>
+      </node>
+      <node id="11">
+        <label>casacore::String</label>
+        <link refid="classcasacore_1_1String"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casacore::Adios2StManColumn</label>
+        <link refid="classcasacore_1_1Adios2StManColumn"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>itsCasaShapes</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>itsCasaShape</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>itsAdiosEngine</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>itsAdiosIO</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>itsStManPtr</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>itsAdiosDataType</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>itsColumnName</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::shared_ptr&lt; adios2::Engine &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::shared_ptr&lt; adios2::IO &gt;</label>
+      </node>
+      <node id="9">
+        <label>std::string</label>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="tables/DataMan/Adios2StManColumn.h" line="40" column="1" bodyfile="tables/DataMan/Adios2StManColumn.h" bodystart="41" bodyend="145"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a886f459d0fd1fd66d99fef0e317838ca" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>Adios2StManColumn</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a598d70f32027cd431383aaaff61b7bb6" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>arrayColumnVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1af8a8670ac6333dfeaa1d11acb1fc64d5" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>arrayVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a268458edbdeb10b32392fffa8c15f2a0" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>canChangeShape</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aea0d77495b04f1547e5cc8ac6b304e6c" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnCache</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a61c1b8c81282d69774e0d8c98ad13de5" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnCachePtr</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a67d5168021d32e0ddc06f5d7fa24866b" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnName</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a390bea63e16df943916343cf38b03135" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnSliceCellsVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a9c4c8cd3eab3069031f6968d5c3d14c6" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnSliceCellsVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a2031d84877f290668ed23210339934de" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>columnSliceVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a3426838b71b0e1c9a6851a375a2c087d" prot="public" virt="pure-virtual"><scope>casacore::Adios2StManColumn</scope><name>create</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1adc883463238a8eb0e67e2cc29a2ae2a5" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>DataManagerColumn</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a5c3cfaa92da547a8816fcb03156bbdd1" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>DataManagerColumn</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a2e2531f5b5d145931d78ae2b0956f2f2" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>dataType</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3eec55560a8b5026fc7ca1c2e39fdfa2" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>dataTypeId</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a749454a6dda09b9d73300e7cc3848ad9" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>dtype</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ad0e2bdb7fa92cf9a8c95cef6345faf78" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>elemSize</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a9788da92df831458aa08d34ad0e6d30c" prot="private" virt="pure-virtual"><scope>casacore::Adios2StManColumn</scope><name>fromAdios</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1abf617c4d654f60845b6ed6d78ddc6987" prot="private" virt="pure-virtual"><scope>casacore::Adios2StManColumn</scope><name>fromAdios</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3478f69f8817c92a2474ea18d7c47ae7" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad0df6be85de67bcdd52937abbbb19fed" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a45a97180a559d17bb177a8f9745b7c96" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a06bd7631c7e06a55c66b9a6ba7e29080" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab31c526cefee4e90f7c73fb9252d462b" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a56e05a4408239eea23fde52942edbd43" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a38afb9bb8e6edc0ac3688fc019e8f956" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a7899f67ec707aadb532b63d60744a5b8" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ae6393e56da98e8149a35bf8d0053627c" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1af40cfe61cec232996b16f1ed3b7c5aac" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3fc86e66cb96bce55136ce279f4405a3" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9416b8662b0d5ee7390c27e30a2db736" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a42e1cf8bcaa08d6c8156f05558e70791" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>get</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aad49c8d24af95c4b1ff9f790a9bc99e7" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getArrayColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a641fcd00eecbcd74ebbece29e860d2e3" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getArrayColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aac3d9d801f6d0ea861e968bd2ce4805f" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getArrayColumnCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a5c2b932732f20d408dcad38ace4f3325" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getArrayColumnV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ac93ceb2ab9834363fe0b36fe33c38160" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getArrayV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a6c1836904bc31151348e047e10718500" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getBool</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1af2bb3c86bdde356c701c1eb7b62101e8" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getColumnName</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a964e162c59f1399bd3eca53378725de4" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getColumnSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac58073607856ada4de0ba3430a3a57f8" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getColumnSliceCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1add22f7f92610b91a37a18dadcdc8c80c" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getColumnSliceCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a656f62a41201b7ad453d925657b8453f" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getColumnSliceV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1af2e9287efce7466147cf5a876e77cdbc" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getComplex</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1accea8fc2b8e71cc53cb4e9894a2c0fba" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getDataType</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ad4d8294e00524ab8534cbdca40e71869" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getDataTypeSize</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a1f9a965a85a2cbf04ae07e0de88d9b8f" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getDComplex</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1af6ab6794dded165257250cefd9af0ff7" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getdouble</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aecbcdfed38d09b4ade6bc7176d352403" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getfloat</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aeb8f6ff50a73d69544017bf636e87d20" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getInt</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a7125b98722da0599ff0820160247c6a2" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getInt64</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a29bb79103626576c24678a47ca64d56f" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getOther</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aa7ee19f39ee35f42355848695db6c586" prot="private" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getScalar</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aafd921de6e3eea20e231fac9223bd283" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getScalarColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad843f323f7df55ed5044720cd27b87c9" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getScalarColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a5c80f8a8321373857ddd5b702a6d5540" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getScalarColumnCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ad77fd5e2d76082ee471b279aa067d892" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getScalarColumnV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a8934cb9e2894dbf21233ccfc280d9d12" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getShort</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a70cf9939496be79701f35c1ccc77b31c" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>getSliceBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a80af2c48bd63b296cfa7ad2d52310e77" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getSliceV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a315b53b889cd7037e12eda07bef0b9c7" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getString</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a9eb1d97505929a3c81dccc218d29bc8e" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getuChar</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a310be752c697135fbdd5055e0e193e3e" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getuInt</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a6ac86a6bf43908fd7e1af8b73f2122fb" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>getuShort</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac6e85e7a3d8e1934bf6992f26c5f2715" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>isFixedShape</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a58370b5996dadefc8454aeb64f34a904" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>isNativeDataType</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abf187f834eaead1d31530446aa65ddf2" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>isShapeDefined</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aedc3b736f7e59446ae532fb8faf0e85e" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>isShapeFixed</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3f3b88b6a3dd470de3ed510c148f4508" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>isWritable</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a2c2b2be522425910a81265fdcafc0281" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosCount</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a827412c1082d18cf153930031e1a0c33" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosDataType</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a4d5791b915b14516008698543065c1ff" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosEngine</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1abd22cf9428d48a54dd9da35a5100cc8b" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosIO</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a057b65ee69f263120be5e33d28e3c596" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosShape</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ab6b638735a177371085d51c58312479a" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsAdiosStart</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a556c76bd905742ebae3eabe41ec187db" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsCasaShape</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aa59d898d4b8ce752e99a8aca3b545420" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsCasaShapes</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aa53bb8fbaa74909f9678585199a7cd86" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsColumnName</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1acaa7db968315161c3f93c1223bc7ad0d" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>itsStManPtr</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4584529a26f85dadc083a14929ecdfbe" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>ndim</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ad15fe5e80300758768f4a1e7e22394c6" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a05522ac176f05d032a2d362c3e8e6550" prot="public" virt="non-virtual" ambiguityscope="casacore::DataManagerColumn::"><scope>casacore::Adios2StManColumn</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a8baadc37f03980b1fdf53c7bd087d70a" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aa65a627278d68b8d9024d8ef854d78b2" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1afa54289bb0c430d20bc4b3209d5cb77c" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a8cd68b2f96c4cc8c8080c9cd14498ebe" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2a7e60453359ae9063cd4cde9a99a929" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aacec4772b87707cfd1c3067d6ca4ee5b" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4636e5a027b7df2a6c95efcbb33c63eb" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a0d3195eeefab996eaae9b6f13f2eb16d" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ac094fa120f7e7e769598b88346e82e4e" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a96cafee908a73b4e889b900d854f4b63" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab9c0339fa45487a455ea081a9a500472" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a28cabb9458c61207dcc94335e9bf9e75" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3f462e962eabc69a1d21696a078bf902" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>put</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a3ff15d8eaaa3e385918e877d8e991503" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putArrayColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a443d905b852eb0a10b8a684ffac2c6ac" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putArrayColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a2f11fd2ab7506a78f280cffde0b3551b" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putArrayColumnCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a29f0d24e589ec3af03282cc2b05c66ad" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putArrayColumnV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ad2f20959d099380dfd93a24e8b55bc8a" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putArrayV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1adb0c53081f1134d2f681b5ee7f2bf3ee" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putBool</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a973af841796290587d138ee4e57c0011" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putColumnSliceBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a17080871b1dd117e828a369c048b8f72" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putColumnSliceCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a4ec362417d7bb77ce09d43eecf1e0b5e" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putColumnSliceCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ace36756738115e9a2fdcf77e5e904958" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putColumnSliceV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a9dcf849688073f3b94f3f5fa6f11f92a" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putComplex</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a5031a3c10719ec35882e63ccdae95177" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putDComplex</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a065fd4e4e1aeae393b69b0d14ef8d7d9" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putdouble</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1afc55007247ed1caebf2f2362e57cf31a" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putfloat</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aac49923097944cb0405972da3c166047" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putInt</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1afa4eb3f23b4d31218b054d1703445e98" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putInt64</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2dfabb57cad6817a4f2f4b2c1d40f028" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putOther</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a967724cce0a911355db61610596e56ad" prot="private" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putScalar</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a56e3ce854a4c13c09adf93817d2e77df" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putScalarColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ab4a844516dd6cf344c3cc814d5050b9f" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putScalarColumnCellsBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a52c22a3a2752efd44d05b816fedac582" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putScalarColumnCellsV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a77c258625b9e679c720176bc834159da" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putScalarColumnV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a5d94cfe0f786134bde84c70d53601df7" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putShort</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a4718e1685266ea1467d711590740f631" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>putSliceBase</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a90eae03c7e499172b01f174f47d9a576" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putSliceV</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1abd6bfb598161c4cf5c6ad2f371231d35" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putString</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a65b910518ad074b0bcfd49ea7a736ab6" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putuChar</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a58a4617923dc0bc9fdeb0885b6d7026d" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putuInt</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a9656cc124674955c5a718fb7e90c5de4" prot="protected" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>putuShort</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ac365542920d8213b1eb9b341462207d7" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>scalarColumnCellsVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a451683e8fc84409521265022dedbd90e" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>scalarColumnVToSelection</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1abc35bec50913c2467f07ff22481bdd41" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>scalarToSelection</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abb6e47508ed0791274ffc936ab0f0583" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>setColumnName</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a565ab0bbdb4367f0deccd65252b4d58d" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>setFixedShapeColumn</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1ad6cc0187ac2f6b949e38646d8fd8c289" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>setIsFixedShape</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a2fb35b4e8347e9565b1819209e3fa8eb" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>setMaxLength</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ab8285e2a355c7068a9a2a8ab4e3f3784" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>setShape</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1aa8b82c24854f52c60883f2db728f56c0" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>setShapeColumn</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1aaec2242b42bf0de885ef66077a8cb964" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>setShapeTiled</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ae0b691204a392b2ec62d205f4ef13812" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>shape</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1a3f6984671003307e2fe5bc795a70d084" prot="protected" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>sliceVToSelection</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a19360c50e73f812688da59e40df0ca69" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>StManColumnBase</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1a0763369356c29737c5fc2daa2523e3c4" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>StManColumnBase</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a09ed06bd3ef47015de4c5fa83e46620e" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>throwGet</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a98482de618e227e244fec2556968a2ec" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>throwPut</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1a9af9510c329904b99af837c56331de06" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>tileShape</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1afcfb6817d39b039cc90f1d4cb3c15a4d" prot="private" virt="pure-virtual"><scope>casacore::Adios2StManColumn</scope><name>toAdios</name></member>
+      <member refid="classcasacore_1_1Adios2StManColumn_1ae7b649090da5614e1679730024e35c14" prot="private" virt="pure-virtual"><scope>casacore::Adios2StManColumn</scope><name>toAdios</name></member>
+      <member refid="classcasacore_1_1DataManagerColumn_1abd119fc54a89ce776259313c76e1ff33" prot="public" virt="virtual"><scope>casacore::Adios2StManColumn</scope><name>~DataManagerColumn</name></member>
+      <member refid="classcasacore_1_1StManColumnBase_1ae7d231535d6c218808cc5991ea0e7430" prot="public" virt="non-virtual"><scope>casacore::Adios2StManColumn</scope><name>~StManColumnBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

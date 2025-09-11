@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="QuantumHolder_8h" kind="file" language="C++">
+    <compoundname>QuantumHolder.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="ArrayFwd_8h" local="no">casacore/casa/Arrays/ArrayFwd.h</includes>
+    <includes refid="RecordTransformable_8h" local="no">casacore/casa/Utilities/RecordTransformable.h</includes>
+    <includes refid="Complexfwd_8h" local="no">casacore/casa/BasicSL/Complexfwd.h</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="QuantumHolder_8cc" local="no">casa/Quanta/QuantumHolder.cc</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Quanta/QuantumHolder.h</label>
+        <link refid="QuantumHolder_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore/casa/Utilities/RecordTransformable.h</label>
+        <link refid="RecordTransformable_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>casacore/casa/BasicSL/Complexfwd.h</label>
+        <link refid="Complexfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>complex</label>
+      </node>
+      <node id="7">
+        <label>casacore/casa/Arrays/ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>casa/Quanta/QuantumHolder.h</label>
+        <link refid="QuantumHolder_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casa/Quanta/QuantumHolder.cc</label>
+        <link refid="QuantumHolder_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1QuantumHolder" prot="public">casacore::QuantumHolder</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>QuantumHolder.h:<sp/>A<sp/>holder<sp/>for<sp/>Quantities<sp/>to<sp/>enable<sp/>record<sp/>conversions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1998,1999,2000,2003</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_QUANTUMHOLDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_QUANTUMHOLDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="ArrayFwd_8h" kindref="compound">casacore/casa/Arrays/ArrayFwd.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="RecordTransformable_8h" kindref="compound">casacore/casa/Utilities/RecordTransformable.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Complexfwd_8h" kindref="compound">casacore/casa/BasicSL/Complexfwd.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">QBase;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">String;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">RecordInterface;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Record;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Qtype&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Quantum;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;<sp/>A<sp/>holder<sp/>for<sp/>Quantums<sp/>to<sp/>enable<sp/>record<sp/>conversions<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;UNKNOWN&quot;<sp/>date=&quot;before2004/08/25&quot;<sp/>tests=&quot;tQuantumHolder&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=RecordInterface&gt;RecordInterface&lt;/linkto&gt;<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>class=Quantum&gt;Quantity&lt;/linkto&gt;<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;etymology&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>Holder<sp/>of<sp/>general<sp/>Quantums</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/etymology&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>class<sp/>can<sp/>be<sp/>used<sp/>to<sp/>handle<sp/>a<sp/>heterogeneous<sp/>list<sp/>of<sp/>Quantums,<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>can<sp/>handle<sp/>toRecord()<sp/>and<sp/>fromRecord()<sp/>conversions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>QuantumHolder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>created<sp/>empty,<sp/>from<sp/>a<sp/>Quantum<sp/>(e.g.<sp/>a<sp/>&lt;src&gt;Quantum&lt;Double&gt;&lt;/src&gt;)<sp/>or<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;Quantum&lt;Vector&lt;Float&gt;&gt;&lt;/src&gt;).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>accepted<sp/>range<sp/>of<sp/>Quantums<sp/>is:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Int&gt;,<sp/>Quantum&lt;Float&gt;,<sp/>Quantum&lt;Double&gt;<sp/>==<sp/>Quantity&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Complex&gt;,<sp/>Quantum&lt;DComplex&gt;&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Vector&lt;Int&gt;&gt;,<sp/>Quantum&lt;Vector&lt;Float&gt;&gt;&lt;/src&gt;,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;src&gt;Quantum&lt;Vector&lt;Double&gt;&gt;&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Vector&lt;Complex&gt;&gt;,<sp/>Quantum&lt;Vector&lt;DComplex&gt;&gt;&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Array&lt;Int&gt;&gt;,<sp/>Quantum&lt;Array&lt;Float&gt;&gt;&lt;/src&gt;,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;src&gt;Quantum&lt;Array&lt;Double&gt;&gt;&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>&lt;src&gt;Quantum&lt;Array&lt;Complex&gt;&gt;,<sp/>Quantum&lt;Array&lt;DComplex&gt;&gt;&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Scalars<sp/>in<sp/>the<sp/>same<sp/>group<sp/>can<sp/>be<sp/>converted<sp/>to<sp/>any<sp/>in<sp/>the<sp/>same<sp/>group<sp/>(e.g.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Int<sp/>to<sp/>Double);<sp/>Vectors<sp/>of<sp/>length<sp/>1<sp/>can<sp/>be<sp/>converted<sp/>to<sp/>scalars<sp/>in<sp/>the<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>corresponding<sp/>group;<sp/>Scalars<sp/>can<sp/>always<sp/>be<sp/>converted<sp/>to<sp/>Vectors<sp/>in<sp/>the<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>corresponding<sp/>group.<sp/>Real<sp/>scalar<sp/>values<sp/>can<sp/>be<sp/>converted<sp/>to<sp/>Complex<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vectors<sp/>cannot<sp/>be<sp/>converted<sp/>to<sp/>other<sp/>type<sp/>vectors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Checks<sp/>on<sp/>the<sp/>contents<sp/>can<sp/>be<sp/>made<sp/>with<sp/>functions<sp/>like</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;isQuantity&lt;/src&gt;<sp/>and<sp/>the<sp/>contents<sp/>can<sp/>be<sp/>obtained<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>functions<sp/>like<sp/>&lt;src&gt;asQuantity&lt;/src&gt;.<sp/>It<sp/>is<sp/>an<sp/>error<sp/>to<sp/>try<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>retrieve<sp/>a<sp/>Quantum<sp/>of<sp/>the<sp/>wrong<sp/>type<sp/>and<sp/>doing<sp/>so<sp/>will<sp/>generate<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>exception<sp/>(AipsError).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>TableRecord<sp/>rec;<sp/><sp/><sp/><sp/>//<sp/>an<sp/>empty<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Quantity<sp/>x(12.5,<sp/>&quot;km/s&quot;);<sp/>//<sp/>a<sp/>Quantity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>String<sp/>error;<sp/><sp/><sp/><sp/><sp/>//<sp/>an<sp/>error<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>if<sp/>(!QuantumHolder(x).toRecord(error,<sp/>rec))<sp/>{<sp/><sp/>//<sp/>make<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>error<sp/>&lt;&lt;<sp/>endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Record<sp/>grec;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>a<sp/>Record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>if<sp/>(!QuantumHolder(x).toRecord(error,<sp/>grec))<sp/>{<sp/><sp/>//<sp/>make<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>error<sp/>&lt;&lt;<sp/>endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//<sp/>Note<sp/>that<sp/>for<sp/>GlishRecords<sp/>use<sp/>can<sp/>be<sp/>made<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//<sp/>GlishRecord::to/fromrecord()<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/>To<sp/>make<sp/>general<sp/>conversions<sp/>between<sp/>Quantums<sp/>and<sp/>records,<sp/>without<sp/>knowing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>actual<sp/>Quantum<sp/>being<sp/>converted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classcasacore_1_1QuantumHolder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1QuantumHolder" kindref="compound">QuantumHolder</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1RecordTransformable" kindref="compound">RecordTransformable</ref><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Friends</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Enumerations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Constructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Creates<sp/>an<sp/>empty<sp/>holder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1QuantumHolder_1a47029d2ff942567dc98f85387f00e234" kindref="member">QuantumHolder</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>from<sp/>a<sp/>Quantum<sp/>(copy<sp/>semantics)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1QuantumHolder_1a47029d2ff942567dc98f85387f00e234" kindref="member">QuantumHolder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1QBase" kindref="compound">QBase</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>a<sp/>holder<sp/>(copy<sp/>semantics)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1QuantumHolder_1a47029d2ff942567dc98f85387f00e234" kindref="member">QuantumHolder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1QuantumHolder" kindref="compound">QuantumHolder</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Destructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1QuantumHolder_1af929852f401879289bb048c094e13fa3" kindref="member">~QuantumHolder</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Operators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>(copy<sp/>semantics)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1QuantumHolder" kindref="compound">QuantumHolder</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a47f43ea57c8226a617a247743ed1bc44" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1QuantumHolder" kindref="compound">QuantumHolder</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Member<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>it<sp/>holds<sp/>a<sp/>Quantity.<sp/>Note<sp/>that<sp/>a<sp/>Vector<sp/>of<sp/>length<sp/>1<sp/>will<sp/>give</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>to<sp/>scalar<sp/>questions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a2058bfea778fdfbc6c40200a6fbe8b3f" kindref="member">isEmpty</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a73e5dccafc068c1afb3080fc2493b0ba" kindref="member">isQuantum</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1ad86222b458de9c55dc0f562685102a76" kindref="member">isScalar</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a7d8e9c08ec87cb12af35f3ea9b604597" kindref="member">isVector</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1aaa63e07c52660ae064324ff32312aa3d" kindref="member">isArray</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1ab327514f111be04b455ec0e619ad144d" kindref="member">isReal</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a1b359e1181a67a2a1fc7ebdac5bbb8db" kindref="member">isComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a3dd4509f0602a079213634d42cd63870" kindref="member">isQuantity</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a11164e8301a4826cb9e538734920f371" kindref="member">isQuantumDouble</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a9bf580ca6202d31e0574da332b73c841" kindref="member">isQuantumFloat</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1aba66f8a79ea11440f0a5486ba5747619" kindref="member">isQuantumInt</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a285c100f62bfcbf862db75db28106a52" kindref="member">isQuantumComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a181dfff8eb158cb5965cdb0153cd66ac" kindref="member">isQuantumDComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a258efd86302685c313d49bbfad3fa34f" kindref="member">isQuantumVectorDouble</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1ac9d89b6147f4b98daeb335861e0a1e45" kindref="member">isQuantumVectorFloat</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1aacd97286d9c0648b257a0cc955d1525f" kindref="member">isQuantumVectorInt</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a1e63cca76fee7d3c88f3c8dc982b83db" kindref="member">isQuantumVectorComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a5b1a586b29a298d82209537d6ce1da03" kindref="member">isQuantumVectorDComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1ab32d402e8685858550edc1c4a962bf2a" kindref="member">isQuantumArrayDouble</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a1f1a9b0eb903323800256cef96e29460" kindref="member">isQuantumArrayFloat</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a3132140188d07cb1d8aaeb15890df08b" kindref="member">isQuantumArrayInt</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1af9d0f83b4fbab410063e83356d59ce37" kindref="member">isQuantumArrayComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a1efcc00d806106e1713dff51c61c91a8" kindref="member">isQuantumArrayDComplex</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>number<sp/>of<sp/>numeric<sp/>elements<sp/>(1<sp/>if<sp/>scalar,<sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>vector<sp/>length)<sp/>or<sp/>dimensions<sp/>(0<sp/>if<sp/>scalar)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>AipsError<sp/>if<sp/>holder<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a29718fb14c731add95f15f00437b3917" kindref="member">nelements</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a80d47ea5532984ba76efe6461f85b727" kindref="member">ndim</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>a<sp/>Quantum<sp/>from<sp/>the<sp/>holder<sp/>(with<sp/>lifetime<sp/>as<sp/>long<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>as<sp/>holder<sp/>exists).<sp/>Conversions<sp/>done<sp/>if<sp/>necessary<sp/>and<sp/>as<sp/>described<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>introduction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;li&gt;<sp/>AipsError<sp/>if<sp/>holder<sp/>empty<sp/>or<sp/>no<sp/>conversion<sp/>possible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1QBase" kindref="compound">QBase</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a1cfd8ec23aecfac1156527de49d28d0e" kindref="member">asQuantum</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Double&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a1110102931194ce38b1fb21a534a74c9" kindref="member">asQuantity</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Double&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a4622c6a4eb864ca36c6524d80af6bacf" kindref="member">asQuantumDouble</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Float&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a8d3e4c2bd9c4aa20f4f6c355457ba19a" kindref="member">asQuantumFloat</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Int&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1aa9ffae4789d53ba2598685e67873afd1" kindref="member">asQuantumInt</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Complex&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1acf607353b1b566d6670ad8eb192bb25d" kindref="member">asQuantumComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;DComplex&gt;</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a6e2aa4a54b668858776665df6e54ee3b" kindref="member">asQuantumDComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Vector&lt;Double&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a75861c2082580907696f7625f0f3a6b4" kindref="member">asQuantumVectorDouble</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Vector&lt;Float&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1af112245bf8f81c3dbeaf80fded4c4949" kindref="member">asQuantumVectorFloat</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Vector&lt;Int&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1af16af0125a4bc7a1acc1142d250982d1" kindref="member">asQuantumVectorInt</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Vector&lt;Complex&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a946fcfb940d1458949bac251b2692c22" kindref="member">asQuantumVectorComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Vector&lt;DComplex&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1acba7486bec86f45558c9a7be612af06e" kindref="member">asQuantumVectorDComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Array&lt;Double&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a23c0ac726d7bcb890bac3baec164e9b4" kindref="member">asQuantumArrayDouble</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Array&lt;Float&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a235a63be33ae05cfd803880e6b383f92" kindref="member">asQuantumArrayFloat</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Array&lt;Int&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1ad817728cd6af85375792654b157c3262" kindref="member">asQuantumArrayInt</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Array&lt;Complex&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a93114c3af8965124e25fab7b909d83bc" kindref="member">asQuantumArrayComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Quantum" kindref="compound">Quantum&lt;Array&lt;DComplex&gt;</ref>&gt;<sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a3a7c84e1a6ababe910a50c92de738b4f" kindref="member">asQuantumArrayDComplex</ref>()<sp/>;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Quantum<sp/>from<sp/>a<sp/>record<sp/>or<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>valid<sp/>record<sp/>will<sp/>contain<sp/>the<sp/>following<sp/>fields:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>value:<sp/>contains<sp/>a<sp/>numeric<sp/>value<sp/>of<sp/>Int,<sp/>Float,<sp/>Double,<sp/>Complex,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>DComplex<sp/>or<sp/>a<sp/>vector<sp/>thereof</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>unit:<sp/>a<sp/>string<sp/>with<sp/>a<sp/>valid<sp/>unit<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>valid<sp/>string<sp/>will<sp/>be<sp/>one<sp/>of<sp/>the<sp/>special<sp/>time/angle<sp/>formats<sp/>or<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>value<sp/>with<sp/>a<sp/>valid<sp/>unit<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Illegal<sp/>values<sp/>or<sp/>units<sp/>will<sp/>return<sp/>False<sp/>and<sp/>write<sp/>an<sp/>error<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1afe1db1c32ed4477ae53160fab121c98d" kindref="member">fromRecord</ref>(<ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1RecordInterface" kindref="compound">RecordInterface</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a2856cd8a3cbb3da30df069707d19f83a" kindref="member">fromString</ref>(<ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>record<sp/>from<sp/>a<sp/>Quantum.<sp/>A<sp/>False<sp/>return<sp/>and<sp/>an<sp/>error<sp/>message<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>generated<sp/>if<sp/>there<sp/>is<sp/>no<sp/>valid<sp/>Quantum<sp/>in<sp/>the<sp/>holder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a116e0ed6a925dd1c67a81cbc40403b6b" kindref="member">toRecord</ref>(<ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;error,<sp/><ref refid="classcasacore_1_1RecordInterface" kindref="compound">RecordInterface</ref><sp/>&amp;out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>version<sp/>throws<sp/>an<sp/>exception<sp/>rather<sp/>than<sp/>returning<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1QuantumHolder_1a116e0ed6a925dd1c67a81cbc40403b6b" kindref="member">toRecord</ref>(<ref refid="classcasacore_1_1RecordInterface" kindref="compound">RecordInterface</ref><sp/>&amp;out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>version<sp/>throws<sp/>an<sp/>exception<sp/>or<sp/>returns<sp/>the<sp/>result<sp/>Record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref><sp/><ref refid="classcasacore_1_1QuantumHolder_1a116e0ed6a925dd1c67a81cbc40403b6b" kindref="member">toRecord</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>identification</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/>&amp;<ref refid="classcasacore_1_1QuantumHolder_1a45900c5d4ae75dd33d073af4815b6bc8" kindref="member">ident</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Data<sp/>Members</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>a<sp/>Quantity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>std::unique_ptr&lt;QBase&gt;<sp/>hold_p;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>General<sp/>member<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>a<sp/>different<sp/>real<sp/>scalar<sp/>quantum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toReal(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>&amp;tp);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>a<sp/>different<sp/>complex<sp/>scalar<sp/>quantum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toComplex(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>&amp;tp);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>scalar<sp/>to<sp/>Vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toVector();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>scalar<sp/>to<sp/>Array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toArray();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Quanta/QuantumHolder.h"/>
+  </compounddef>
+</doxygen>

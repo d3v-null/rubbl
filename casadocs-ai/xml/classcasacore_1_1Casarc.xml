@@ -1,0 +1,679 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1Casarc" kind="class" language="C++" prot="public">
+    <compoundname>casacore::Casarc</compoundname>
+    <includes refid="Casarc_8h" local="no">Casarc.h</includes>
+    <innerclass refid="classcasacore_1_1Casarc_1_1meta__entry__" prot="private">casacore::Casarc::meta_entry_</innerclass>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29af" prot="private" static="no" strong="no">
+        <type></type>
+        <name>lock_mode</name>
+        <enumvalue id="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afa964dff565a3eacb9ba1d820051b13c33" prot="private">
+          <name>READ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afafdddae68056aa5e196a90cf99ff6157c" prot="private">
+          <name>READ_WRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afa3811baeb2c3e756d3310ca11c9b1b194" prot="private">
+          <name>WRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afab0b2115b4396646563ae72baf0e2d1f7" prot="private">
+          <name>APPEND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="112" column="5" bodyfile="casa/System/Casarc.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcasacore_1_1Casarc_1a466c8934a99b15c938d3ff43800f7728" prot="public" static="no">
+        <type>std::map&lt; std::string, std::string &gt;::const_iterator</type>
+        <definition>typedef std::map&lt;std::string,std::string&gt;::const_iterator casacore::Casarc::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="44" column="39" bodyfile="casa/System/Casarc.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcasacore_1_1Casarc_1a9f426cb586362cd30e730aa4dd735791" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class CasarcCleanup</definition>
+        <argsstring></argsstring>
+        <name>CasarcCleanup</name>
+        <param>
+          <type>CasarcCleanup</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="40" column="1" bodyfile="casa/System/Casarc.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1ac8104572264aa53e63a2bf566f713cdd" prot="private" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* casacore::Casarc::mapped_file</definition>
+        <argsstring></argsstring>
+        <name>mapped_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="104" column="10" bodyfile="casa/System/Casarc.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a22d17f7bbc8c247395082d962bbfea6e" prot="private" static="no" mutable="no">
+        <type>off_t</type>
+        <definition>off_t casacore::Casarc::mapped_file_size</definition>
+        <argsstring></argsstring>
+        <name>mapped_file_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="105" column="11" bodyfile="casa/System/Casarc.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a64c615b48c753041b202239cbb466ecc" prot="private" static="no" mutable="no">
+        <type>std::list&lt; int &gt;</type>
+        <definition>std::list&lt;int&gt; casacore::Casarc::stale_fds</definition>
+        <argsstring></argsstring>
+        <name>stale_fds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="107" column="15" bodyfile="casa/System/Casarc.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1ae8ed3e0f4e897a389577c7e41735d504" prot="private" static="no" mutable="no">
+        <type>std::list&lt; pid_t &gt;</type>
+        <definition>std::list&lt;pid_t&gt; casacore::Casarc::have_lock</definition>
+        <argsstring></argsstring>
+        <name>have_lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="110" column="15" bodyfile="casa/System/Casarc.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1ac156ab7b1dc05c8109c4e99e6914811d" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string casacore::Casarc::filename</definition>
+        <argsstring></argsstring>
+        <name>filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="120" column="17" bodyfile="casa/System/Casarc.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1af1fea0d825d82119d08601418ed94807" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double casacore::Casarc::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="121" column="12" bodyfile="casa/System/Casarc.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a8e144a0cdec846bcada8ef60cc2e7325" prot="private" static="no" mutable="no">
+        <type>std::map&lt; std::string, std::string &gt;</type>
+        <definition>std::map&lt;std::string,std::string&gt; casacore::Casarc::rcmap</definition>
+        <argsstring></argsstring>
+        <name>rcmap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="123" column="14" bodyfile="casa/System/Casarc.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a31b9485850801267931d32ff7882dcb0" prot="private" static="no" mutable="no">
+        <type>std::map&lt; std::string, meta_entry_ &gt;</type>
+        <definition>std::map&lt;std::string,meta_entry_&gt; casacore::Casarc::rcmetamap</definition>
+        <argsstring></argsstring>
+        <name>rcmetamap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="126" column="14" bodyfile="casa/System/Casarc.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1ad23d04467bb8e23257de9081f80c39ce" prot="private" static="no" mutable="no">
+        <type>ino_t</type>
+        <definition>ino_t casacore::Casarc::inode</definition>
+        <argsstring></argsstring>
+        <name>inode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="130" column="11" bodyfile="casa/System/Casarc.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a959dd1dc16596dcb31fb99cf5b8e3feb" prot="private" static="yes" mutable="no">
+        <type>std::map&lt; ino_t, <ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> * &gt; *</type>
+        <definition>map&lt; ino_t, Casarc * &gt; * casacore::Casarc::rcfiles</definition>
+        <argsstring></argsstring>
+        <name>rcfiles</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="133" column="21" bodyfile="casa/System/Casarc.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a688bfafa465065968a2200472ef41583" prot="private" static="yes" mutable="no">
+        <type>std::map&lt; std::string, <ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> * &gt; *</type>
+        <definition>map&lt; string, Casarc * &gt; * casacore::Casarc::filenames</definition>
+        <argsstring></argsstring>
+        <name>filenames</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="134" column="21" bodyfile="casa/System/Casarc.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a01b5c1c2d18e8fb1a1427a2e1d2640f4" prot="private" static="yes" mutable="no">
+        <type>std::list&lt; <ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> * &gt; *</type>
+        <definition>std::list&lt; Casarc * &gt; * casacore::Casarc::rclist</definition>
+        <argsstring></argsstring>
+        <name>rclist</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="135" column="22" bodyfile="casa/System/Casarc.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1a40e7631e8c3b67e09da3127f8ec53bf9" prot="private" static="yes" mutable="no">
+        <type>std::string *</type>
+        <definition>std::string * casacore::Casarc::default_path</definition>
+        <argsstring></argsstring>
+        <name>default_path</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="136" column="24" bodyfile="casa/System/Casarc.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1Casarc_1ac6316fff517fb8d961b6f60cca964abb" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool casacore::Casarc::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="139" column="17" bodyfile="casa/System/Casarc.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a9820dba0de6414ba5389ee2a9253a935" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> &amp;</type>
+        <definition>Casarc &amp; casacore::Casarc::instance</definition>
+        <argsstring>()</argsstring>
+        <name>instance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="47" column="19" bodyfile="casa/System/Casarc.cc" bodystart="87" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a96d3ab06a0d23237deb1810a17eb4b67" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::setDefaultPath</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>setDefaultPath</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="50" column="17" bodyfile="casa/System/Casarc.cc" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a465cd74f6b1719df4ebe4b5e09bf94c6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::clearDefaultPath</definition>
+        <argsstring>()</argsstring>
+        <name>clearDefaultPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="51" column="17" bodyfile="casa/System/Casarc.cc" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1acbaf8d50ddf5b7cba2d177732c516586" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> &amp;</type>
+        <definition>Casarc &amp; casacore::Casarc::instance</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>instance</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="54" column="19" bodyfile="casa/System/Casarc.cc" bodystart="108" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1aff650ef8ea117f5a5dc16599175bea2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::list&lt; <ref refid="classcasacore_1_1Casarc" kindref="compound">Casarc</ref> * &gt; &amp;</type>
+        <definition>const std::list&lt; Casarc * &gt; &amp; casacore::Casarc::list</definition>
+        <argsstring>()</argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="57" column="37" bodyfile="casa/System/Casarc.cc" bodystart="243" bodyend="248"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a3388a81f88fc8c7d819984f422349a11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::put</definition>
+        <argsstring>(const std::string &amp;keyword, const std::string &amp;value)</argsstring>
+        <name>put</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>keyword</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="60" column="10" bodyfile="casa/System/Casarc.cc" bodystart="137" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a6e71eee0e915ffe1c13e1dfa328c541c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string casacore::Casarc::get</definition>
+        <argsstring>(const std::string &amp;keyword)</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>keyword</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="63" column="17" bodyfile="casa/System/Casarc.cc" bodystart="259" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a1806e7d25ec10f1692d7573fe803efce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool casacore::Casarc::get</definition>
+        <argsstring>(const std::string &amp;keyword, std::string &amp;value)</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>keyword</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="67" column="10" bodyfile="casa/System/Casarc.cc" bodystart="250" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a44178ab998dc11cb666d48e2c926ae48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t casacore::Casarc::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="69" column="12" bodyfile="casa/System/Casarc.cc" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a406732b0962068c0f92de699dc89daf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; casacore::Casarc::path</definition>
+        <argsstring>() const</argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="72" column="23" bodyfile="casa/System/Casarc.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a8d89a2630b22102a505b792c6086da78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Casarc_1a466c8934a99b15c938d3ff43800f7728" kindref="member">iterator</ref></type>
+        <definition>Casarc::iterator casacore::Casarc::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="74" column="14" bodyfile="casa/System/Casarc.cc" bodystart="380" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a207730e1b4d402940bfc00cb7b83d001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1Casarc_1a466c8934a99b15c938d3ff43800f7728" kindref="member">iterator</ref></type>
+        <definition>Casarc::iterator casacore::Casarc::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="75" column="14" bodyfile="casa/System/Casarc.cc" bodystart="384" bodyend="387"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1afd3c1987bf723b5cab531403322b8a52" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::close</definition>
+        <argsstring>(int)</argsstring>
+        <name>close</name>
+        <param>
+          <type>int</type>
+          <defname>fd</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="108" column="10" bodyfile="casa/System/Casarc.cc" bodystart="292" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a63be85a2d8ca82c721753d870ef3b059" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int casacore::Casarc::lock</definition>
+        <argsstring>(lock_mode mode)</argsstring>
+        <name>lock</name>
+        <param>
+          <type>lock_mode</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>F_RDLCK, F_WRLCK, F_UNLCK <linebreak/>
+</para>
+<para>byte offset, relative to l_whence</para>
+<para>SEEK_SET, SEEK_CUR, SEEK_END <linebreak/>
+</para>
+<para>bytes (0 means to EOF) <linebreak/>
+</para>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="114" column="9" bodyfile="casa/System/Casarc.cc" bodystart="308" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a9e1c6267c8a95a4c50ad6233538ae166" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::unlock</definition>
+        <argsstring>(int fd)</argsstring>
+        <name>unlock</name>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>F_RDLCK, F_WRLCK, F_UNLCK <linebreak/>
+</para>
+<para>byte offset, relative to l_whence</para>
+<para>SEEK_SET, SEEK_CUR, SEEK_END <linebreak/>
+</para>
+<para>bytes (0 means to EOF) <linebreak/>
+</para>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="115" column="10" bodyfile="casa/System/Casarc.cc" bodystart="353" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1ae0d615d4b08b83a8fd41ff62cdccde6f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::sync</definition>
+        <argsstring>()</argsstring>
+        <name>sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="117" column="10" bodyfile="casa/System/Casarc.cc" bodystart="271" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1ae475f1dd57dc24083224a29d13bb50cb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double casacore::Casarc::current_modification_time</definition>
+        <argsstring>(struct stat &amp;buf)</argsstring>
+        <name>current_modification_time</name>
+        <param>
+          <type>struct stat &amp;</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="118" column="12" bodyfile="casa/System/Casarc.cc" bodystart="428" bodyend="441"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a5f43e5963a38366b9b0fa963e76a41e7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::read_file</definition>
+        <argsstring>()</argsstring>
+        <name>read_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="128" column="10" bodyfile="casa/System/Casarc.cc" bodystart="460" bodyend="587"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a139151bbcbc230cab3a7e3fa11066ef4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Casarc::Casarc</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>Casarc</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="138" column="5" bodyfile="casa/System/Casarc.cc" bodystart="389" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a154ac899ededb6ba2c7893dc4bc7c4dd" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>casacore::Casarc::~Casarc</definition>
+        <argsstring>()</argsstring>
+        <name>~Casarc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="142" column="5" bodyfile="casa/System/Casarc.h" bodystart="142" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1a0ff571a46cee1e8ac2485ddc529a95a4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::startup</definition>
+        <argsstring>()</argsstring>
+        <name>startup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="140" column="17" bodyfile="casa/System/Casarc.cc" bodystart="589" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1Casarc_1aac06a4db4742838dddfe352d0da20067" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::Casarc::shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>shutdown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/Casarc.h" line="141" column="17" bodyfile="casa/System/Casarc.cc" bodystart="598" bodyend="621"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="casa/System/Casarc.h" line="38" column="5" bodyfile="casa/System/Casarc.h" bodystart="38" bodyend="143"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afab0b2115b4396646563ae72baf0e2d1f7" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>APPEND</name></member>
+      <member refid="classcasacore_1_1Casarc_1a8d89a2630b22102a505b792c6086da78" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>begin</name></member>
+      <member refid="classcasacore_1_1Casarc_1a139151bbcbc230cab3a7e3fa11066ef4" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>Casarc</name></member>
+      <member refid="classcasacore_1_1Casarc_1a9f426cb586362cd30e730aa4dd735791" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>CasarcCleanup</name></member>
+      <member refid="classcasacore_1_1Casarc_1a465cd74f6b1719df4ebe4b5e09bf94c6" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>clearDefaultPath</name></member>
+      <member refid="classcasacore_1_1Casarc_1afd3c1987bf723b5cab531403322b8a52" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>close</name></member>
+      <member refid="classcasacore_1_1Casarc_1ae475f1dd57dc24083224a29d13bb50cb" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>current_modification_time</name></member>
+      <member refid="classcasacore_1_1Casarc_1a40e7631e8c3b67e09da3127f8ec53bf9" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>default_path</name></member>
+      <member refid="classcasacore_1_1Casarc_1a207730e1b4d402940bfc00cb7b83d001" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>end</name></member>
+      <member refid="classcasacore_1_1Casarc_1ac156ab7b1dc05c8109c4e99e6914811d" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>filename</name></member>
+      <member refid="classcasacore_1_1Casarc_1a688bfafa465065968a2200472ef41583" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>filenames</name></member>
+      <member refid="classcasacore_1_1Casarc_1a6e71eee0e915ffe1c13e1dfa328c541c" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>get</name></member>
+      <member refid="classcasacore_1_1Casarc_1a1806e7d25ec10f1692d7573fe803efce" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>get</name></member>
+      <member refid="classcasacore_1_1Casarc_1ae8ed3e0f4e897a389577c7e41735d504" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>have_lock</name></member>
+      <member refid="classcasacore_1_1Casarc_1ac6316fff517fb8d961b6f60cca964abb" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>initialized</name></member>
+      <member refid="classcasacore_1_1Casarc_1ad23d04467bb8e23257de9081f80c39ce" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>inode</name></member>
+      <member refid="classcasacore_1_1Casarc_1a9820dba0de6414ba5389ee2a9253a935" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>instance</name></member>
+      <member refid="classcasacore_1_1Casarc_1acbaf8d50ddf5b7cba2d177732c516586" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>instance</name></member>
+      <member refid="classcasacore_1_1Casarc_1a466c8934a99b15c938d3ff43800f7728" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>iterator</name></member>
+      <member refid="classcasacore_1_1Casarc_1aff650ef8ea117f5a5dc16599175bea2c" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>list</name></member>
+      <member refid="classcasacore_1_1Casarc_1a63be85a2d8ca82c721753d870ef3b059" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>lock</name></member>
+      <member refid="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29af" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>lock_mode</name></member>
+      <member refid="classcasacore_1_1Casarc_1ac8104572264aa53e63a2bf566f713cdd" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>mapped_file</name></member>
+      <member refid="classcasacore_1_1Casarc_1a22d17f7bbc8c247395082d962bbfea6e" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>mapped_file_size</name></member>
+      <member refid="classcasacore_1_1Casarc_1a406732b0962068c0f92de699dc89daf4" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>path</name></member>
+      <member refid="classcasacore_1_1Casarc_1a3388a81f88fc8c7d819984f422349a11" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>put</name></member>
+      <member refid="classcasacore_1_1Casarc_1a959dd1dc16596dcb31fb99cf5b8e3feb" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>rcfiles</name></member>
+      <member refid="classcasacore_1_1Casarc_1a01b5c1c2d18e8fb1a1427a2e1d2640f4" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>rclist</name></member>
+      <member refid="classcasacore_1_1Casarc_1a8e144a0cdec846bcada8ef60cc2e7325" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>rcmap</name></member>
+      <member refid="classcasacore_1_1Casarc_1a31b9485850801267931d32ff7882dcb0" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>rcmetamap</name></member>
+      <member refid="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afa964dff565a3eacb9ba1d820051b13c33" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>READ</name></member>
+      <member refid="classcasacore_1_1Casarc_1a5f43e5963a38366b9b0fa963e76a41e7" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>read_file</name></member>
+      <member refid="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afafdddae68056aa5e196a90cf99ff6157c" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>READ_WRITE</name></member>
+      <member refid="classcasacore_1_1Casarc_1a96d3ab06a0d23237deb1810a17eb4b67" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>setDefaultPath</name></member>
+      <member refid="classcasacore_1_1Casarc_1aac06a4db4742838dddfe352d0da20067" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>shutdown</name></member>
+      <member refid="classcasacore_1_1Casarc_1a44178ab998dc11cb666d48e2c926ae48" prot="public" virt="non-virtual"><scope>casacore::Casarc</scope><name>size</name></member>
+      <member refid="classcasacore_1_1Casarc_1a64c615b48c753041b202239cbb466ecc" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>stale_fds</name></member>
+      <member refid="classcasacore_1_1Casarc_1a0ff571a46cee1e8ac2485ddc529a95a4" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>startup</name></member>
+      <member refid="classcasacore_1_1Casarc_1ae0d615d4b08b83a8fd41ff62cdccde6f" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>sync</name></member>
+      <member refid="classcasacore_1_1Casarc_1af1fea0d825d82119d08601418ed94807" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>timestamp</name></member>
+      <member refid="classcasacore_1_1Casarc_1a9e1c6267c8a95a4c50ad6233538ae166" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>unlock</name></member>
+      <member refid="classcasacore_1_1Casarc_1abf7b4ab4fbd697103902584bd2cf29afa3811baeb2c3e756d3310ca11c9b1b194" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>WRITE</name></member>
+      <member refid="classcasacore_1_1Casarc_1a154ac899ededb6ba2c7893dc4bc7c4dd" prot="private" virt="non-virtual"><scope>casacore::Casarc</scope><name>~Casarc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

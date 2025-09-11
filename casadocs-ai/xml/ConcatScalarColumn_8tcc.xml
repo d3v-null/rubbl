@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ConcatScalarColumn_8tcc" kind="file" language="C++">
+    <compoundname>ConcatScalarColumn.tcc</compoundname>
+    <includedby refid="ConcatScalarColumn_8h" local="no">tables/Tables/ConcatScalarColumn.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>tables/Tables/ConcatScalarColumn.tcc</label>
+        <link refid="ConcatScalarColumn_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tables/Tables/ConcatScalarColumn.h</label>
+        <link refid="ConcatScalarColumn_8h"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>ConcatScalarColumn.cc:<sp/>A<sp/>typed<sp/>scalar<sp/>column<sp/>in<sp/>a<sp/>concatenated<sp/>table</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>2008</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_CONCATSCALARCOLUMN_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_CONCATSCALARCOLUMN_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ConcatScalarColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ConcatTable.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScalarColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Vector.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/GenSort.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ConcatScalarColumn&lt;T&gt;::ConcatScalarColumn<sp/>(const<sp/>BaseColumnDesc*<sp/>bcdp,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ConcatTable*<sp/>reftab)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>ConcatColumn<sp/>(bcdp,<sp/>reftab)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ConcatScalarColumn&lt;T&gt;::~ConcatScalarColumn()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::getScalarColumn<sp/>(ArrayBase&amp;<sp/>arr)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;Vector&lt;T&gt;&amp;&gt;(arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>st<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(uInt<sp/>i=0;<sp/>i&lt;refColPtr_p.nelements();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>refColPtr_p[i]-&gt;nrow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;T&gt;<sp/>part<sp/>=<sp/>vec(Slice(st,<sp/>nr));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>refColPtr_p[i]-&gt;getScalarColumn<sp/>(part);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>st<sp/>+=<sp/>nr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>column<sp/>cache<sp/>to<sp/>the<sp/>first<sp/>table.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///setColumnCache<sp/>(0,<sp/>refColPtr_p[0]-&gt;columnCache());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::getScalarColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ArrayBase&amp;<sp/>arr)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;Vector&lt;T&gt;&amp;&gt;(arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>rownrs<sp/>as<sp/>a<sp/>vector<sp/>and<sp/>sort<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>In<sp/>this<sp/>way<sp/>the<sp/>data<sp/>will<sp/>be<sp/>read<sp/>in<sp/>sequential<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;rownr_t&gt;<sp/>rows<sp/>=<sp/>rownrs.convert();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;rownr_t&gt;<sp/>inx;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GenSortIndirect&lt;rownr_t,rownr_t&gt;::sort<sp/>(inx,<sp/>rows);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>ConcatRows&amp;<sp/>ccRows<sp/>=<sp/>refTabPtr_p-&gt;rows();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>tabRownr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/><sp/><sp/><sp/>tableNr=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Map<sp/>each<sp/>row<sp/>to<sp/>rownr<sp/>and<sp/>tablenr.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Note<sp/>this<sp/>is<sp/>pretty<sp/>fast<sp/>because<sp/>it<sp/>is<sp/>done<sp/>in<sp/>row<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;inx.nelements();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr_t<sp/>row<sp/>=<sp/>inx[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ccRows.mapRownr<sp/>(tableNr,<sp/>tabRownr,<sp/>rows[row]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>refColPtr_p[tableNr]-&gt;get<sp/>(tabRownr,<sp/>&amp;(vec[row]));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>column<sp/>cache<sp/>to<sp/>the<sp/>last<sp/>table<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///setColumnCache<sp/>(tableNr,<sp/>refColPtr_p[tableNr]-&gt;columnCache());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::putScalarColumn<sp/>(const<sp/>ArrayBase&amp;<sp/>arr)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;<sp/>vec<sp/>(static_cast&lt;const<sp/>Vector&lt;T&gt;&amp;&gt;(arr));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>st<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(uInt<sp/>i=0;<sp/>i&lt;refColPtr_p.nelements();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>refColPtr_p[i]-&gt;nrow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;T&gt;<sp/>part<sp/>=<sp/>vec(Slice(st,<sp/>nr));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>refColPtr_p[i]-&gt;putScalarColumn<sp/>(part);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>st<sp/>+=<sp/>nr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>column<sp/>cache<sp/>to<sp/>the<sp/>first<sp/>table.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///setColumnCache<sp/>(0,<sp/>refColPtr_p[0]-&gt;columnCache());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::putScalarColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ArrayBase&amp;<sp/>arr)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;const<sp/>Vector&lt;T&gt;&amp;&gt;(arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>rownrs<sp/>as<sp/>a<sp/>vector<sp/>and<sp/>sort<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>In<sp/>this<sp/>way<sp/>the<sp/>data<sp/>will<sp/>be<sp/>read<sp/>in<sp/>sequential<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;rownr_t&gt;<sp/>rows<sp/>=<sp/>rownrs.convert();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;rownr_t&gt;<sp/>inx;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GenSortIndirect&lt;rownr_t,rownr_t&gt;::sort<sp/>(inx,<sp/>rows);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>ConcatRows&amp;<sp/>ccRows<sp/>=<sp/>refTabPtr_p-&gt;rows();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>tabRownr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/><sp/><sp/><sp/>tableNr=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Map<sp/>each<sp/>row<sp/>to<sp/>rownr<sp/>and<sp/>tablenr.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Note<sp/>this<sp/>is<sp/>pretty<sp/>fast<sp/>because<sp/>it<sp/>is<sp/>done<sp/>in<sp/>row<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(rownr_t<sp/>i=0;<sp/>i&lt;inx.nelements();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr_t<sp/>row<sp/>=<sp/>inx[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ccRows.mapRownr<sp/>(tableNr,<sp/>tabRownr,<sp/>rows[row]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>refColPtr_p[tableNr]-&gt;put<sp/>(tabRownr,<sp/>&amp;(vec[row]));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>column<sp/>cache<sp/>to<sp/>the<sp/>last<sp/>table<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///setColumnCache<sp/>(tableNr,<sp/>refColPtr_p[tableNr]-&gt;columnCache());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::makeSortKey<sp/>(Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ArrayBase&gt;&amp;<sp/>dataSave)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Get<sp/>the<sp/>data<sp/>as<sp/>a<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;*<sp/>vecPtr<sp/>=<sp/>new<sp/>Vector&lt;T&gt;(nrow());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataSave.reset<sp/>(vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>getScalarColumn<sp/>(*vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fillSortKey<sp/>(vecPtr,<sp/>sortobj,<sp/>cmpObj,<sp/>order);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::makeRefSortKey<sp/>(Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Vector&lt;rownr_t&gt;&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ArrayBase&gt;&amp;<sp/>dataSave)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Get<sp/>the<sp/>data<sp/>as<sp/>a<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;*<sp/>vecPtr<sp/>=<sp/>new<sp/>Vector&lt;T&gt;(rownrs.size());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataSave.reset<sp/>(vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>getScalarColumnCells<sp/>(rownrs,<sp/>*vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fillSortKey<sp/>(vecPtr,<sp/>sortobj,<sp/>cmpObj,<sp/>order);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>ConcatScalarColumn&lt;T&gt;::fillSortKey<sp/>(const<sp/>Vector&lt;T&gt;*<sp/>vecPtr,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Pass<sp/>the<sp/>real<sp/>vector<sp/>storage<sp/>as<sp/>the<sp/>sort<sp/>data.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Use<sp/>the<sp/>compare<sp/>object<sp/>if<sp/>given,<sp/>otherwise<sp/>pass<sp/>data<sp/>type.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Throw<sp/>an<sp/>exception<sp/>if<sp/>no<sp/>compare<sp/>function<sp/>is<sp/>given<sp/>for</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>an<sp/>unknown<sp/>data<sp/>type.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bool<sp/>deleteIt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T*<sp/>datap<sp/>=<sp/>vecPtr-&gt;getStorage<sp/>(deleteIt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!cmpObj)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cmpObj<sp/>=<sp/>std::make_shared&lt;ObjCompare&lt;T&gt;&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sortobj.sortKey<sp/>(datap,<sp/>cmpObj,<sp/>sizeof(T),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>order<sp/>==<sp/>Sort::Descending<sp/><sp/>?<sp/><sp/>Sort::Descending</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Sort::Ascending);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vecPtr-&gt;freeStorage<sp/>(datap,<sp/>deleteIt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/Tables/ConcatScalarColumn.tcc"/>
+  </compounddef>
+</doxygen>
