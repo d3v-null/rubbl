@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ScaColDesc_8tcc" kind="file" language="C++">
+    <compoundname>ScaColDesc.tcc</compoundname>
+    <includedby refid="ScaColDesc_8h" local="no">tables/Tables/ScaColDesc.h</includedby>
+    <invincdepgraph>
+      <node id="9">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="4">
+        <label>tables/LogTables/TableLogSink.cc</label>
+        <link refid="TableLogSink_8cc"/>
+      </node>
+      <node id="5">
+        <label>tables/Tables/ColumnDesc.cc</label>
+        <link refid="ColumnDesc_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/Tables/ScaColDesc_tmpl.cc</label>
+        <link refid="ScaColDesc__tmpl_8cc"/>
+      </node>
+      <node id="2">
+        <label>tables/Tables/ScaColDesc.h</label>
+        <link refid="ScaColDesc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tables/TaQL/TableParseQuery.cc</label>
+        <link refid="TableParseQuery_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/Tables/ReadAsciiTable.cc</label>
+        <link refid="ReadAsciiTable_8cc"/>
+      </node>
+      <node id="1">
+        <label>tables/Tables/ScaColDesc.tcc</label>
+        <link refid="ScaColDesc_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tables/Dysco/tests/testdyscostman.cc</label>
+        <link refid="testdyscostman_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/TaQL/TableParseProject.cc</label>
+        <link refid="TableParseProject_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>ScaColDesc.cc:<sp/>Templated<sp/>class<sp/>for<sp/>description<sp/>of<sp/>table<sp/>scalar<sp/>columns</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1997,1998,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_SCACOLDESC_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_SCACOLDESC_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScaColDesc.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScaColData.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ConcatScalarColumn.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/ValTypeId.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/IO/AipsIO.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/iostream.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::ScalarColumnDesc<sp/>(const<sp/>String&amp;<sp/>name,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>opt)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseColumnDesc<sp/>(name,<sp/>&quot;&quot;,<sp/>&quot;&quot;,<sp/>&quot;&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ValType::getType(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valDataTypeId(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>opt,<sp/>0,<sp/>IPosition(),<sp/>True,<sp/>False,<sp/>False)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>defaultVal_p<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::ScalarColumnDesc<sp/>(const<sp/>String&amp;<sp/>name,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>comment,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>opt)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseColumnDesc<sp/>(name,<sp/>comment,<sp/>&quot;&quot;,<sp/>&quot;&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ValType::getType(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valDataTypeId(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>opt,<sp/>0,<sp/>IPosition(),<sp/>True,<sp/>False,<sp/>False)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>defaultVal_p<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::ScalarColumnDesc<sp/>(const<sp/>String&amp;<sp/>name,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>comment,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>dataManName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>dataManGroup,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>opt)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseColumnDesc<sp/>(name,<sp/>comment,<sp/>dataManName,<sp/>dataManGroup,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ValType::getType(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valDataTypeId(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>opt,<sp/>0,<sp/>IPosition(),<sp/>True,<sp/>False,<sp/>False)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>defaultVal_p<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::ScalarColumnDesc<sp/>(const<sp/>String&amp;<sp/>name,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>comment,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>dataManName,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>String&amp;<sp/>dataManGroup,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T&amp;<sp/>defaultVal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>opt)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseColumnDesc<sp/>(name,<sp/>comment,<sp/>dataManName,<sp/>dataManGroup,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ValType::getType(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valDataTypeId(&amp;defaultVal_p),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>opt,<sp/>0,<sp/>IPosition(),<sp/>True,<sp/>False,<sp/>False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>defaultVal_p<sp/><sp/><sp/>(defaultVal)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::ScalarColumnDesc<sp/>(const<sp/>ScalarColumnDesc&lt;T&gt;&amp;<sp/>that)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>BaseColumnDesc<sp/>(that),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>defaultVal_p<sp/><sp/><sp/>(that.defaultVal_p)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Make<sp/>a<sp/>new<sp/>object.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseColumnDesc*<sp/>ScalarColumnDesc&lt;T&gt;::makeDesc<sp/>(const<sp/>String&amp;)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>new<sp/>ScalarColumnDesc&lt;T&gt;(String());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;::~ScalarColumnDesc()</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnDesc&lt;T&gt;&amp;<sp/>ScalarColumnDesc&lt;T&gt;::operator=<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ScalarColumnDesc&lt;T&gt;&amp;<sp/>that)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseColumnDesc::operator=<sp/>(that);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>defaultVal_p<sp/>=<sp/>that.defaultVal_p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Clone<sp/>this<sp/>column<sp/>description<sp/>to<sp/>another.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">BaseColumnDesc*<sp/>ScalarColumnDesc&lt;T&gt;::clone()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseColumnDesc*<sp/>ptr<sp/>=<sp/>new<sp/>ScalarColumnDesc&lt;T&gt;(*this);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>ptr;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Return<sp/>the<sp/>class<sp/>name.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>ScalarColumnDesc&lt;T&gt;::className()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>return<sp/>&quot;ScalarColumnDesc&lt;&quot;<sp/>+<sp/>dataTypeId();<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Register<sp/>the<sp/>makeDesc<sp/>function.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnDesc&lt;T&gt;::registerClass()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ColumnDesc::registerCtor<sp/>(className(),<sp/>makeDesc);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Put<sp/>the<sp/>object.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>data<sp/>is<sp/>read<sp/>by<sp/>the<sp/>ctor<sp/>taking<sp/>AipsIO.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>It<sp/>was<sp/>felt<sp/>that<sp/>putstart<sp/>takes<sp/>too<sp/>much<sp/>space,<sp/>so<sp/>therefore</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>the<sp/>version<sp/>is<sp/>put<sp/>&quot;manually&quot;.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnDesc&lt;T&gt;::putDesc<sp/>(AipsIO&amp;<sp/>ios)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&lt;&lt;<sp/>(uInt)1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>class<sp/>version<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ValType::put<sp/>(ios,<sp/>&amp;defaultVal_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnDesc&lt;T&gt;::getDesc<sp/>(AipsIO&amp;<sp/>ios)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/>version;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&gt;&gt;<sp/>version;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ValType::get<sp/>(ios,<sp/>&amp;defaultVal_p);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Show<sp/>the<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnDesc&lt;T&gt;::show<sp/>(ostream&amp;<sp/>os)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>Name=&quot;<sp/>&lt;&lt;<sp/>name();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>DataType=&quot;<sp/>&lt;&lt;<sp/>dataType();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(dataType()<sp/>==<sp/>TpOther)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>dataTypeId();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(maxLength()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>MaxLength=&quot;<sp/>&lt;&lt;<sp/>maxLength();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>DataManager=&quot;<sp/>&lt;&lt;<sp/>dataManagerType();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;/&quot;<sp/>&lt;&lt;<sp/>dataManagerGroup();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>Default=&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ValType::put<sp/>(os,<sp/>&amp;defaultVal_p);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/><sp/>Comment<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>comment()<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Create<sp/>a<sp/>column<sp/>object<sp/>from<sp/>the<sp/>description.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">PlainColumn*<sp/>ScalarColumnDesc&lt;T&gt;::makeColumn<sp/>(ColumnSet*<sp/>csp)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PlainColumn*<sp/>bcp<sp/>=<sp/>new<sp/>ScalarColumnData&lt;T&gt;<sp/>(this,<sp/>csp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>bcp;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ConcatColumn*<sp/>ScalarColumnDesc&lt;T&gt;::makeConcatColumn<sp/>(ConcatTable*<sp/>ct)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>new<sp/>ConcatScalarColumn&lt;T&gt;<sp/>(this,<sp/>ct);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/Tables/ScaColDesc.tcc"/>
+  </compounddef>
+</doxygen>

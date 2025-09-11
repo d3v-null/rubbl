@@ -35,6 +35,7 @@
 #include <casacore/casa/IO/AipsIO.h>
 #include <casacore/casa/BasicSL/String.h>
 #include <casacore/casa/stdio.h>		// for sprintf
+#include <iostream>
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 TSMFile::TSMFile (const TiledStMan* stman, uInt fileSequenceNr,
@@ -47,6 +48,7 @@ TSMFile::TSMFile (const TiledStMan* stman, uInt fileSequenceNr,
     char strc[8];
     sprintf (strc, "_TSM%i", fileSeqnr_p);
     String fileName = stman->fileName() + strc;
+    CASACORE_DEBUG("TSMFile::TSMFile: creating " << fileName.chars() << " seq=" << fileSequenceNr);
     Bool mapOpt = tsmOpt.option() == TSMOption::MMap;
     uInt bufSize = 0;
     if (tsmOpt.option() == TSMOption::Buffer) {
@@ -76,7 +78,7 @@ TSMFile::TSMFile (const TiledStMan* stman, AipsIO& ios, uInt seqnr,
 {
     getObject (ios);
     if (seqnr != fileSeqnr_p) {
-      throw DataManInternalError ("TSMFile::TSMFile " + 
+      throw DataManInternalError ("TSMFile::TSMFile " +
                                   stman->dataManagerName());
     }
     char strc[8];

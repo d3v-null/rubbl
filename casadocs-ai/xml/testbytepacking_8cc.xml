@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="testbytepacking_8cc" kind="file" language="C++">
+    <compoundname>testbytepacking.cc</compoundname>
+    <includes refid="bytepacker_8h" local="yes">../bytepacker.h</includes>
+    <includes refid="uvector_8h" local="yes">../uvector.h</includes>
+    <includes local="no">boost/test/unit_test.hpp</includes>
+    <includes local="no">sstream</includes>
+    <incdepgraph>
+      <node id="8">
+        <label>iterator</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="11">
+        <label>boost/test/unit_test.hpp</label>
+      </node>
+      <node id="5">
+        <label>../uvector.h</label>
+        <link refid="uvector_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="1">
+        <label>tables/Dysco/tests/testbytepacking.cc</label>
+        <link refid="testbytepacking_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>../bytepacker.h</label>
+        <link refid="bytepacker_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+      <node id="12">
+        <label>sstream</label>
+      </node>
+      <node id="6">
+        <label>algorithm</label>
+      </node>
+      <node id="7">
+        <label>cstring</label>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="testbytepacking_8cc_1ae655455c930672529507fa052fd2bf7d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int bitrates[]</definition>
+        <argsstring>[]</argsstring>
+        <name>bitrates</name>
+        <initializer>= {2, 3, 4, 6, 8, 10, 12, 16}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="114" column="11" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="testbytepacking_8cc_1aff2e4cf2e724c42b25229882caf0b3a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void assertEqualArray</definition>
+        <argsstring>(const T *expected, const T *actual, size_t size, const std::string &amp;msg)</argsstring>
+        <name>assertEqualArray</name>
+        <param>
+          <type>const T *</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const T *</type>
+          <declname>actual</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="13" column="6" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="13" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="testbytepacking_8cc_1a6922f7d737c31a52e035d1994215aa4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BOOST_AUTO_TEST_CASE</definition>
+        <argsstring>(under_and_overflow)</argsstring>
+        <name>BOOST_AUTO_TEST_CASE</name>
+        <param>
+          <type>under_and_overflow</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="30" column="1" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="30" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testSingle</definition>
+        <argsstring>(const ao::uvector&lt; unsigned int &gt; &amp;data, int bitCount)</argsstring>
+        <name>testSingle</name>
+        <param>
+          <type>const <ref refid="classao_1_1uvector" kindref="compound">ao::uvector</ref>&lt; unsigned int &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bitCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="70" column="6" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="70" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="testbytepacking_8cc_1aada6b5c5c92f56ecc8c8c13ec47b1c7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testCombinations</definition>
+        <argsstring>(const ao::uvector&lt; unsigned int &gt; &amp;data, int bitCount)</argsstring>
+        <name>testCombinations</name>
+        <param>
+          <type>const <ref refid="classao_1_1uvector" kindref="compound">ao::uvector</ref>&lt; unsigned int &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bitCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="96" column="6" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="96" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="testbytepacking_8cc_1ae64e3452a605eb3418b49196504449d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BOOST_AUTO_TEST_CASE</definition>
+        <argsstring>(pack_unpack)</argsstring>
+        <name>BOOST_AUTO_TEST_CASE</name>
+        <param>
+          <type>pack_unpack</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/tests/testbytepacking.cc" line="116" column="1" bodyfile="tables/Dysco/tests/testbytepacking.cc" bodystart="116" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;../bytepacker.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../uvector.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/test/unit_test.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacedyscostman" kindref="compound">dyscostman</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">BOOST_AUTO_TEST_SUITE(bytepacking)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="testbytepacking_8cc_1aff2e4cf2e724c42b25229882caf0b3a8" kindref="member">assertEqualArray</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T*<sp/>expected,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T*<sp/>actual,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>msg)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>size;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(expected[i]<sp/>!=<sp/>actual[i])<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>str;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>assertEqualArray()<sp/>for<sp/>test<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>Expected:<sp/>{&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(int)expected[0];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>1;<sp/>j<sp/>!=<sp/>size;<sp/>++j)<sp/>str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)expected[j];</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;}<sp/>Actual:<sp/>{&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(int)actual[0];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>1;<sp/>j<sp/>!=<sp/>size;<sp/>++j)<sp/>str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)actual[j];</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_REQUIRE_MESSAGE(expected[i]<sp/>==<sp/>actual[i],<sp/>str.str());</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>BOOST_CHECK(expected[0]<sp/>==<sp/>actual[0]);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><ref refid="testbytepacking_8cc_1a6922f7d737c31a52e035d1994215aa4f" kindref="member">BOOST_AUTO_TEST_CASE</ref>(under_and_overflow)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>NBITSIZES<sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bitSizes[NBITSIZES]<sp/>=<sp/>{2,<sp/>3,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12,<sp/>16};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>NBITSIZES;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;<sp/>s<sp/>!=<sp/>12;<sp/>++s)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>arr[12]<sp/>=<sp/>{1,<sp/>2,<sp/>3,<sp/>5,<sp/>7,<sp/>11,<sp/>13,<sp/>17,<sp/>19,<sp/>23,<sp/>29,<sp/>31};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>expected[13]<sp/>=<sp/>{37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>!=<sp/>12;<sp/>++x)<sp/>arr[x]<sp/>&amp;=<sp/>(1<sp/>&lt;&lt;<sp/>bitSizes[i])<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>result[13]<sp/>=<sp/>{37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37,<sp/>37};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>packed[24],<sp/>packedOr[24];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memset(packed,<sp/>39,<sp/>24);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>memset(packedOr,<sp/>39,<sp/>24);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1adf82ac82f5239523bfc13d880b4b8013" kindref="member">BytePacker::pack</ref>(bitSizes[i],<sp/>packed,<sp/>arr,<sp/>s);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1a94d6deb4b5db5795bb6ce99f6d4131a8" kindref="member">BytePacker::unpack</ref>(bitSizes[i],<sp/>result,<sp/>packed,<sp/>s);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>!=<sp/>s;<sp/>++x)<sp/>expected[x]<sp/>=<sp/>arr[x];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::stringstream<sp/>msg;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;result<sp/>of<sp/>pack+unpack<sp/>(l=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>s<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,bits=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>bitSizes[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;)&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aff2e4cf2e724c42b25229882caf0b3a8" kindref="member">assertEqualArray</ref>(expected,<sp/>result,<sp/>13,<sp/>msg.str());</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>packedSize<sp/>=<sp/><ref refid="classdyscostman_1_1BytePacker_1a2e779e768cd7ccbf1de037c033e270aa" kindref="member">BytePacker::bufferSize</ref>(s,<sp/>bitSizes[i]);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aff2e4cf2e724c42b25229882caf0b3a8" kindref="member">assertEqualArray</ref>(packedOr,<sp/>&amp;packed[packedSize],<sp/>24<sp/>-<sp/>packedSize,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;packed<sp/>not<sp/>overwritten<sp/>past<sp/>length&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>arr2[15];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>!=<sp/>15;<sp/>++x)<sp/>arr2[x]<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>bitSizes[i])<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>packed[30];</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(packed,<sp/>0,<sp/>30);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>result[15];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(result,<sp/>0,<sp/>15<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1adf82ac82f5239523bfc13d880b4b8013" kindref="member">BytePacker::pack</ref>(bitSizes[i],<sp/>packed,<sp/>arr2,<sp/>15);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1a94d6deb4b5db5795bb6ce99f6d4131a8" kindref="member">BytePacker::unpack</ref>(bitSizes[i],<sp/>result,<sp/>packed,<sp/>15);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>msg;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;all<sp/>bits<sp/>set<sp/>(bits=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>bitSizes[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;)&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aff2e4cf2e724c42b25229882caf0b3a8" kindref="member">assertEqualArray</ref>(arr2,<sp/>result,<sp/>15,<sp/>msg.str());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" kindref="member">testSingle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref>&amp;<sp/>data,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bitCount)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>limit<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>bitCount);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref><sp/>trimmedData(data.<ref refid="classao_1_1uvector_1a3ce3e9629d364cbcb7d0e878c127801f" kindref="member">size</ref>()),<sp/>restoredData(data.<ref refid="classao_1_1uvector_1a3ce3e9629d364cbcb7d0e878c127801f" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>data.<ref refid="classao_1_1uvector_1a3ce3e9629d364cbcb7d0e878c127801f" kindref="member">size</ref>();<sp/>++i)<sp/>trimmedData[i]<sp/>=<sp/>data[i]<sp/>%<sp/>limit;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned char&gt;</ref><sp/>buffer(</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1a2e779e768cd7ccbf1de037c033e270aa" kindref="member">BytePacker::bufferSize</ref>(trimmedData.size(),<sp/>bitCount),<sp/>0);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Tested<sp/>array:<sp/>[&quot;<sp/>&lt;&lt;<sp/>trimmedData[0];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>for(size_t<sp/>i=1;<sp/>i!=std::min&lt;size_t&gt;(trimmedData.size(),<sp/>32);<sp/>++i)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>trimmedData[i];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>if(trimmedData.size()<sp/>&gt;<sp/>32)<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;,<sp/>...&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;]\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1adf82ac82f5239523bfc13d880b4b8013" kindref="member">BytePacker::pack</ref>(bitCount,<sp/>buffer.data(),<sp/>trimmedData.data(),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trimmedData.size());</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="classdyscostman_1_1BytePacker_1a94d6deb4b5db5795bb6ce99f6d4131a8" kindref="member">BytePacker::unpack</ref>(bitCount,<sp/>restoredData.data(),<sp/>buffer.data(),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>restoredData.size());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>trimmedData.size();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_REQUIRE_MESSAGE(restoredData[i]<sp/>==<sp/>trimmedData[i],</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;data[&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>was<sp/>incorrectly<sp/>unpacked:<sp/>was<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>restoredData[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>should<sp/>be<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>trimmedData[i]);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="testbytepacking_8cc_1aada6b5c5c92f56ecc8c8c13ec47b1c7a" kindref="member">testCombinations</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref>&amp;<sp/>data,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bitCount)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dataSize<sp/>=<sp/>1;<sp/>dataSize<sp/>!=<sp/>std::min&lt;size_t&gt;(32u,<sp/>data.<ref refid="classao_1_1uvector_1a3ce3e9629d364cbcb7d0e878c127801f" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++dataSize)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref><sp/>resizedData(data.<ref refid="classao_1_1uvector_1a7475fb5e6696984a7bf85bb5818b2aaf" kindref="member">begin</ref>(),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.<ref refid="classao_1_1uvector_1a7475fb5e6696984a7bf85bb5818b2aaf" kindref="member">begin</ref>()<sp/>+<sp/>dataSize);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" kindref="member">testSingle</ref>(resizedData,<sp/>bitCount);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" kindref="member">testSingle</ref>(data,<sp/>bitCount);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dataSize<sp/>=<sp/>1;<sp/>dataSize<sp/>!=<sp/>std::min&lt;size_t&gt;(32u,<sp/>data.<ref refid="classao_1_1uvector_1a3ce3e9629d364cbcb7d0e878c127801f" kindref="member">size</ref>()<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++dataSize)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref><sp/>resizedData(data.<ref refid="classao_1_1uvector_1a7475fb5e6696984a7bf85bb5818b2aaf" kindref="member">begin</ref>()<sp/>+<sp/>1,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.<ref refid="classao_1_1uvector_1a7475fb5e6696984a7bf85bb5818b2aaf" kindref="member">begin</ref>()<sp/>+<sp/>dataSize<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" kindref="member">testSingle</ref>(resizedData,<sp/>bitCount);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref><sp/>resizedData(data.<ref refid="classao_1_1uvector_1a7475fb5e6696984a7bf85bb5818b2aaf" kindref="member">begin</ref>()<sp/>+<sp/>1,<sp/>data.<ref refid="classao_1_1uvector_1a92761da8791e8e10b65281d9ef6c39cf" kindref="member">end</ref>());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="testbytepacking_8cc_1aa1c4aa204b699bd8a025829b0d3b147c" kindref="member">testSingle</ref>(resizedData,<sp/>bitCount);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="testbytepacking_8cc_1ae655455c930672529507fa052fd2bf7d" kindref="member">bitrates</ref>[]<sp/>=<sp/>{2,<sp/>3,<sp/>4,<sp/>6,<sp/>8,<sp/>10,<sp/>12,<sp/>16};</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><ref refid="testbytepacking_8cc_1a6922f7d737c31a52e035d1994215aa4f" kindref="member">BOOST_AUTO_TEST_CASE</ref>(pack_unpack)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sample<sp/>:<sp/><ref refid="testbytepacking_8cc_1ae655455c930672529507fa052fd2bf7d" kindref="member">bitrates</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classao_1_1uvector" kindref="compound">ao::uvector&lt;unsigned int&gt;</ref><sp/>testArray{1337,<sp/>2,<sp/>100,<sp/>0};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>!=<sp/>1000;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>testArray.<ref refid="classao_1_1uvector_1adcf96370233197b0a9161ccbe6fd12cd" kindref="member">push_back</ref>(i);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>testArray.push_back(i<sp/>*<sp/>37);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>testArray.push_back(i<sp/>*<sp/>20000);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testbytepacking_8cc_1aada6b5c5c92f56ecc8c8c13ec47b1c7a" kindref="member">testCombinations</ref>(testArray,<sp/>sample);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">BOOST_AUTO_TEST_SUITE_END()</highlight></codeline>
+    </programlisting>
+    <location file="tables/Dysco/tests/testbytepacking.cc"/>
+  </compounddef>
+</doxygen>

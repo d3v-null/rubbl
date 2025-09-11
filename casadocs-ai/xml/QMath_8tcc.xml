@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="QMath_8tcc" kind="file" language="C++">
+    <compoundname>QMath.tcc</compoundname>
+    <includedby refid="QMath_8h" local="no">casa/Quanta/QMath.h</includedby>
+    <invincdepgraph>
+      <node id="5">
+        <label>casa/Quanta/MVBaseline.cc</label>
+        <link refid="MVBaseline_8cc"/>
+      </node>
+      <node id="6">
+        <label>casa/Quanta/MVDirection.cc</label>
+        <link refid="MVDirection_8cc"/>
+      </node>
+      <node id="11">
+        <label>casa/Quanta.h</label>
+        <link refid="Quanta_8h"/>
+      </node>
+      <node id="7">
+        <label>casa/Quanta/MVEarthMagnetic.cc</label>
+        <link refid="MVEarthMagnetic_8cc"/>
+      </node>
+      <node id="12">
+        <label>tables/TaQL/ExprFuncNode.cc</label>
+        <link refid="ExprFuncNode_8cc"/>
+      </node>
+      <node id="9">
+        <label>casa/Quanta/MVuvw.cc</label>
+        <link refid="MVuvw_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Quanta/QMath.h</label>
+        <link refid="QMath_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>casa/Quanta/QMath2.cc</label>
+        <link refid="QMath2_8cc"/>
+      </node>
+      <node id="4">
+        <label>casa/Quanta/MVAngle.cc</label>
+        <link refid="MVAngle_8cc"/>
+      </node>
+      <node id="3">
+        <label>casa/Quanta/Euler.cc</label>
+        <link refid="Euler_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Quanta/QMath.tcc</label>
+        <link refid="QMath_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casa/Quanta/MVPosition.cc</label>
+        <link refid="MVPosition_8cc"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>QMath.cc:<sp/>class<sp/>to<sp/>manipulate<sp/>physical,<sp/>dimensioned<sp/>quantities</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1997,1998,1999,2000,2001,2003</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_QMATH_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_QMATH_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Exceptions/Error.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Quanta/QMath.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Quanta/QLogical.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/BasicMath/Math.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/ArrayMath.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/sstream.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator+(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>+=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator+(const<sp/>Qtype<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>+=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator-(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>-=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator-(const<sp/>Qtype<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>-=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator*(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>*=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator*(const<sp/>Qtype<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>*=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator/(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>/=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>operator/(const<sp/>Qtype<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>loc;<sp/>loc<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>loc<sp/>/=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>loc;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>pow.<sp/>Implemented<sp/>as<sp/>a<sp/>repeated<sp/>multiplication/division:</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>-<sp/>to<sp/>cater<sp/>for<sp/>all<sp/>data<sp/>types</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>-<sp/>only<sp/>Int<sp/>powers<sp/>allowed</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>-<sp/>limited<sp/>values<sp/>of<sp/>exponentials<sp/>foreseen</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>pow(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>Int<sp/>p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(::abs(p)<sp/>&gt;=<sp/>100)<sp/>throw<sp/>(AipsError(&quot;Quantum::pow<sp/>exponent<sp/>too<sp/>large&quot;));<sp/></highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Make<sp/>sure<sp/>1<sp/>in<sp/>current<sp/>data<sp/>type<sp/>available</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>tmp;<sp/>tmp<sp/>=<sp/>left.getValue()<sp/>*<sp/>0.<sp/>+<sp/>1.;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>i;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(p&gt;=0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(i=0;<sp/>i&lt;p;<sp/>i++)<sp/>tmp<sp/>*=<sp/>left.getValue();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(i=0;<sp/>i&gt;p;<sp/>i--)<sp/>tmp<sp/>/=<sp/>left.getValue();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(tmp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(p<sp/>==<sp/>0<sp/>||<sp/>left.getUnit().empty())<sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>sloc<sp/>=<sp/>&quot;(&quot;<sp/>+<sp/>left.getUnit()<sp/>+<sp/>&quot;)&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(p<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sloc<sp/>+=<sp/>&quot;-&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>p<sp/>=<sp/>-p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(p/10<sp/>!=<sp/>0)<sp/>sloc<sp/>+=<sp/>Char(Int(p)/10<sp/>+<sp/>&apos;0&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sloc<sp/>+=<sp/>Char(Int(p)%10<sp/>+<sp/>&apos;0&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res.setUnit(sloc);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>root(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>Int<sp/>p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(p<sp/>==<sp/>0)<sp/>throw<sp/>(AipsError(&quot;Quantum::root<sp/>exponent<sp/>zero&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res.setValue(casacore::pow(left.getValue(),<sp/>1.0/Double(p)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>UnitVal<sp/>vres(left.getFullUnit().getValue().root(p));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ostringstream<sp/>oss;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>oss<sp/>&lt;&lt;<sp/>vres.getDim();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res.setUnit(String(oss));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>res.setValue(res.getValue()<sp/>*<sp/>vres.getFac());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>sqrt(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>root(left,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>abs(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>tmp<sp/>=<sp/>left.getValue();<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>abs((tmp));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(Quantum&lt;Qtype&gt;(ret,left));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>ceil(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>tmp<sp/>=<sp/>left.getValue();<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ceil((tmp));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(Quantum&lt;Qtype&gt;(ret,left));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>floor(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>tmp<sp/>=<sp/>left.getValue();<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>floor((tmp));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(Quantum&lt;Qtype&gt;(ret,left));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>sin(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::ANGLE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::sin<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(sin((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>cos(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::ANGLE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::cos<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(cos((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>tan(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::ANGLE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::tan<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(tan((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>asin(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::asin<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(asin((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;rad&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>acos(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::acos<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(acos((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;rad&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>atan(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::atan<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(atan((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;rad&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>atan2(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(other.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::atan2<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Qtype<sp/>tmp;<sp/>tmp<sp/>=<sp/>other.getBaseValue();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(atan2((res.getValue()),(tmp)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;rad&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>atan2(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Qtype<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;<sp/>res<sp/>=<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(atan2(left,res));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>atan2(const<sp/>Qtype<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;<sp/>res<sp/>=<sp/>left;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(atan2(res,other));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>log(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::log<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(log((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>log10(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::log10<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(log10((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>exp(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.getFullUnit().getValue()<sp/>!=<sp/>UnitVal::NODIM)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(AipsError(&quot;Quantum::exp<sp/>illegal<sp/>unit<sp/>type<sp/>&apos;&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getUnit()<sp/>+<sp/>&quot;&apos;&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Quantum&lt;Qtype&gt;<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(left.getBaseValue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setValue(exp((res.getValue())));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.setUnit(&quot;&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(res);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>min(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>left<sp/>&lt;<sp/>other<sp/>?<sp/>left<sp/>:<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;class<sp/>Qtype&gt;</highlight></codeline>
+<codeline><highlight class="normal">Quantum&lt;Qtype&gt;<sp/>max(const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;left,<sp/>const<sp/>Quantum&lt;Qtype&gt;<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>left<sp/>&gt;<sp/>other<sp/>?<sp/>left<sp/>:<sp/>other;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Quanta/QMath.tcc"/>
+  </compounddef>
+</doxygen>

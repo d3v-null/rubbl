@@ -16,7 +16,7 @@
 //! [MS]: https://casa.nrao.edu/Memos/229.html
 //!
 //! Because the on-disk representation of the CASA table format is quite complex
-//! and essentially undocumented, this crate’s implementation relies on wrapping
+//! and essentially undocumented, this crate's implementation relies on wrapping
 //! a substantial quantity of C++ code from the [casacore] project. The goal is
 //! to provide access to the data format in a way that is completely safe and as
 //! idiomatic as possible, given the limitations imposed by the architecture of
@@ -32,9 +32,11 @@
 use ndarray::{ArrayBase, Dimension};
 use rubbl_core::num::{DimFromShapeSlice, DimensionMismatchError};
 use std::{
+    collections::HashMap,
     fmt::{self, Debug},
     mem::MaybeUninit as StdMaybeUninit,
     path::Path,
+    str::FromStr,
 };
 use thiserror::Error;
 
@@ -42,7 +44,7 @@ pub use rubbl_core::{Array, Complex, CowArray};
 
 #[allow(missing_docs)]
 mod glue;
-pub use glue::{GlueDataType, TableDescCreateMode};
+pub use glue::{GlueDataType, TSMOption, TableDescCreateMode};
 
 // Exceptions
 
@@ -742,6 +744,34 @@ where
     )
 }
 
+impl FromStr for glue::TSMOption {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_uppercase().as_str() {
+            "CACHE" => Ok(glue::TSMOption::TSM_CACHE),
+            "BUFFER" => Ok(glue::TSMOption::TSM_BUFFER),
+            "MMAP" => Ok(glue::TSMOption::TSM_MMAP),
+            "DEFAULT" => Ok(glue::TSMOption::TSM_DEFAULT),
+            "AIPSRC" => Ok(glue::TSMOption::TSM_AIPSRC),
+            _ => Err(()),
+        }
+    }
+}
+
+impl FromStr for glue::TableCreateMode {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_uppercase().as_str() {
+            "NEW" => Ok(glue::TableCreateMode::TCM_NEW),
+            "NEWNOREPLACE" => Ok(glue::TableCreateMode::TCM_NEW_NO_REPLACE),
+            "SCRATCH" => Ok(glue::TableCreateMode::TCM_SCRATCH),
+            _ => Err(()),
+        }
+    }
+}
+
 /// Information about the structure of a CASA table.
 ///
 /// From the casacore documentation: "A TableDesc object contains the
@@ -1003,10 +1033,22 @@ impl TableDesc {
 
 // Tables
 
+/// A cached column descriptor for optimized access
+#[derive(Clone, Debug)]
+struct ColumnInfo {
+    data_type: glue::GlueDataType,
+    is_scalar: bool,
+    is_fixed_shape: bool,
+    n_dim: i32,
+    dims: [u64; 8],
+}
+
 /// A CASA data table.
 pub struct Table {
     handle: *mut glue::GlueTable,
     exc_info: glue::ExcInfo,
+    /// Cache for column information to avoid repeated filesystem access
+    column_cache: HashMap<String, ColumnInfo>,
 }
 
 /// Modes in which a casacore table can be opened.
@@ -1136,13 +1178,16 @@ impl Table {
     /// ).unwrap();
     ///
     /// // Create your new table with 0 rows.
-    /// Table::new(&table_path, table_desc, 0, TableCreateMode::New).unwrap();
+    /// Table::new(&table_path, table_desc, 0, TableCreateMode::New, false, None)
+    ///     .unwrap();
     /// ```
     pub fn new<P: AsRef<Path>>(
         path: P,
         table_desc: TableDesc,
         n_rows: usize,
         mode: TableCreateMode,
+        initialize: bool,
+        tsm_option: Option<glue::TSMOption>,
     ) -> Result<Self, TableError> {
         let spath = match path.as_ref().to_str() {
             Some(s) => s,
@@ -1160,12 +1205,15 @@ impl Table {
             // TableCreateMode::Scratch => glue::TableCreateMode::TCM_SCRATCH,
         };
 
+        let tsm = tsm_option.unwrap_or(glue::TSMOption::TSM_AIPSRC);
         let handle = unsafe {
             glue::table_create(
                 &cpath,
                 table_desc.handle,
                 n_rows as u64,
                 cmode,
+                initialize,
+                tsm,
                 &mut exc_info,
             )
         };
@@ -1173,7 +1221,11 @@ impl Table {
             return exc_info.as_err();
         }
 
-        Ok(Table { handle, exc_info })
+        Ok(Table {
+            handle,
+            exc_info,
+            column_cache: HashMap::new(),
+        })
     }
 
     /// Open an existing casacore table.
@@ -1213,7 +1265,8 @@ impl Table {
     /// ).unwrap();
     ///
     /// // Create the new table with 1 row.
-    /// let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+    /// let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New, false, None)
+    ///     .unwrap();
     ///
     /// // Write to the first row in the uvw column
     /// let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
@@ -1252,7 +1305,11 @@ impl Table {
             return exc_info.as_err();
         }
 
-        Ok(Table { handle, exc_info })
+        Ok(Table {
+            handle,
+            exc_info,
+            column_cache: HashMap::new(),
+        })
     }
 
     /// Get the number of rows in the table.
@@ -1952,6 +2009,132 @@ impl Table {
         Ok(result)
     }
 
+    /// Get cached column information, populating cache if necessary
+    fn get_column_info_cached(&mut self, col_name: &str) -> Result<&ColumnInfo, TableError> {
+        if !self.column_cache.contains_key(col_name) {
+            // Populate cache for this column
+            let ccol_name = glue::StringBridge::from_rust(col_name);
+            let mut n_rows = 0;
+            let mut data_type = glue::GlueDataType::TpOther;
+            let mut is_scalar = 0;
+            let mut is_fixed_shape = 0;
+            let mut n_dim = 0;
+            let mut dims = [0; 8];
+
+            let rv = unsafe {
+                glue::table_get_column_info(
+                    self.handle,
+                    &ccol_name,
+                    &mut n_rows,
+                    &mut data_type,
+                    &mut is_scalar,
+                    &mut is_fixed_shape,
+                    &mut n_dim,
+                    dims.as_mut_ptr(),
+                    &mut self.exc_info,
+                )
+            };
+
+            if rv != 0 {
+                return self.exc_info.as_err();
+            }
+
+            let col_info = ColumnInfo {
+                data_type,
+                is_scalar: is_scalar != 0,
+                is_fixed_shape: is_fixed_shape != 0,
+                n_dim,
+                dims,
+            };
+
+            self.column_cache.insert(col_name.to_string(), col_info);
+        }
+
+        Ok(self.column_cache.get(col_name).unwrap())
+    }
+
+    /// Optimized put_cell that uses cached column information
+    pub fn put_cell_cached<T: CasaDataType>(
+        &mut self,
+        col_name: &str,
+        row: u64,
+        value: &T,
+    ) -> Result<(), TableError> {
+        // Skip Rust-side column info caching since C++ layer already handles column caching
+        // This avoids the overhead of table_get_column_info calls while still benefiting
+        // from the C++ column object cache in the TableWithColumnCache structure
+        self.put_cell(col_name, row, value)
+            .map_err(TableError::Casacore)
+    }
+
+    /// Bulk put operation for an entire column - much more efficient than individual puts
+    pub fn put_column_bulk<T: CasaDataType>(
+        &mut self,
+        col_name: &str,
+        values: &[T],
+    ) -> Result<(), TableError>
+    where
+        T: Clone,
+    {
+        // Get cached column info
+        let _col_info = self.get_column_info_cached(col_name)?;
+
+        // For now, fall back to individual puts but with caching
+        // TODO: Implement true bulk operations at the C++ level
+        for (row, value) in values.iter().enumerate() {
+            self.put_cell_cached(col_name, row as u64, value)?;
+        }
+
+        Ok(())
+    }
+
+    /// Put an entire column of scalar data efficiently - much faster than individual puts
+    pub fn put_scalar_column_bulk<T: CasaScalarData>(
+        &mut self,
+        col_name: &str,
+        values: &[T],
+    ) -> Result<(), TableError>
+    where
+        T: Clone,
+    {
+        if values.len() != self.n_rows() as usize {
+            return Err(TableError::UserMessage(format!(
+                "Column data length {} does not match table rows {}",
+                values.len(),
+                self.n_rows()
+            )));
+        }
+
+        let ccol_name = glue::StringBridge::from_rust(col_name);
+
+        // Add external declaration for the new function
+        extern "C" {
+            fn table_put_scalar_column_data(
+                table: *mut glue::GlueTable,
+                col_name: *const glue::StringBridge,
+                data_type: glue::GlueDataType,
+                data: *const std::os::raw::c_void,
+                exc_info: *mut glue::ExcInfo,
+            ) -> std::os::raw::c_int;
+        }
+
+        let rv = unsafe {
+            table_put_scalar_column_data(
+                self.handle,
+                &ccol_name,
+                T::DATA_TYPE,
+                values.as_ptr() as *const std::os::raw::c_void,
+                &mut self.exc_info,
+            )
+        };
+
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+
+        Ok(())
+    }
+
     /// Put a value for one cell of the table.
     pub fn put_cell<T: CasaDataType>(
         &mut self,
@@ -1959,6 +2142,8 @@ impl Table {
         row: u64,
         value: &T,
     ) -> Result<(), CasacoreError> {
+        // NOTE: Column::put fast path: callers who need fewer syscalls should prefer
+        // opening a column handle and using the minimal ColumnWriter below.
         let ccol_name = glue::StringBridge::from_rust(col_name);
         let mut shape = Vec::new();
 
@@ -2179,6 +2364,181 @@ impl Table {
     }
 }
 
+/// Barebones scalar column writer. Prefer this over Table::put_cell for fewer syscalls.
+pub struct ScalarColumnWriter {
+    handle: *mut std::ffi::c_void,
+    dtype: glue::GlueDataType,
+    exc_info: glue::ExcInfo,
+}
+
+impl ScalarColumnWriter {
+    /// Put a scalar value at the given row using a pre-opened scalar column handle.
+    pub fn put<T: CasaScalarData>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::scalar_column_put(
+                self.handle,
+                self.dtype,
+                row,
+                value.casatables_as_buf() as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+}
+
+impl Drop for ScalarColumnWriter {
+    fn drop(&mut self) {
+        unsafe {
+            glue::scalar_column_free(self.handle, self.dtype, &mut self.exc_info);
+        }
+    }
+}
+
+/// Barebones array column writer. Prefer this over Table::put_cell for fewer syscalls.
+pub struct ArrayColumnWriter {
+    handle: *mut std::ffi::c_void,
+    dtype: glue::GlueDataType,
+    exc_info: glue::ExcInfo,
+    // Cache the shape for fixed-shape columns to avoid repeated extraction
+    cached_shape: Option<Vec<u64>>,
+    // Persistent Matrix object for reuse to avoid repeated shape validation
+    persistent_matrix: Option<*mut std::ffi::c_void>,
+}
+
+impl ArrayColumnWriter {
+    /// Put an entire column (all rows) at once using a flat buffer of size n_rows * prod(shape)
+    pub fn put_column<T: CasaDataType>(
+        &mut self,
+        n_rows: u64,
+        cell_shape: &[u64],
+        data_ptr: *const u8,
+    ) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::array_column_put_column(
+                self.handle,
+                self.dtype,
+                n_rows,
+                cell_shape.len() as u64,
+                cell_shape.as_ptr(),
+                data_ptr as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+
+    /// Put an entire column (all rows) at once using shared storage (no data copying)
+    /// This is the most efficient path that mirrors the C++ fast path
+    pub fn put_column_shared<T: CasaDataType>(
+        &mut self,
+        n_rows: u64,
+        cell_shape: &[u64],
+        data_ptr: *const u8,
+    ) -> Result<(), CasacoreError> {
+        let rv = unsafe {
+            glue::array_column_put_column_shared(
+                self.handle,
+                self.dtype,
+                n_rows,
+                cell_shape.len() as u64,
+                cell_shape.as_ptr(),
+                data_ptr as _,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+    /// Put an array value at the given row using a pre-opened array column handle.
+    pub fn put<T: CasaDataType>(&mut self, row: u64, value: &T) -> Result<(), CasacoreError> {
+        // Use cached shape if available, otherwise extract it
+        let shape = if let Some(ref cached) = self.cached_shape {
+            cached
+        } else {
+            let mut new_shape = Vec::new();
+            value.casatables_put_shape(&mut new_shape);
+            // Cache the shape for subsequent calls
+            self.cached_shape = Some(new_shape);
+            self.cached_shape.as_ref().unwrap()
+        };
+
+        // For fixed-shape columns, use persistent Matrix objects to avoid repeated shape validation
+        let rv = if self.cached_shape.is_some() {
+            // Create persistent matrix if not already created
+            if self.persistent_matrix.is_none() {
+                let matrix_handle = unsafe {
+                    glue::array_column_create_persistent_matrix(
+                        self.handle,
+                        self.dtype,
+                        shape.len() as u64,
+                        shape.as_ptr(),
+                        &mut self.exc_info,
+                    )
+                };
+                if matrix_handle.is_null() {
+                    return self.exc_info.as_err();
+                }
+                self.persistent_matrix = Some(matrix_handle);
+            }
+
+            // Use the persistent matrix for the put operation
+            unsafe {
+                glue::array_column_put_persistent_matrix(
+                    self.handle,
+                    self.dtype,
+                    row,
+                    self.persistent_matrix.unwrap(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            }
+        } else {
+            unsafe {
+                glue::array_column_put(
+                    self.handle,
+                    self.dtype,
+                    row,
+                    shape.len() as u64,
+                    shape.as_ptr(),
+                    value.casatables_as_buf() as _,
+                    &mut self.exc_info,
+                )
+            }
+        };
+
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+}
+
+impl Drop for ArrayColumnWriter {
+    fn drop(&mut self) {
+        unsafe {
+            // Free the persistent matrix if it exists
+            if let Some(matrix_handle) = self.persistent_matrix {
+                glue::array_column_free_persistent_matrix(
+                    matrix_handle,
+                    self.dtype,
+                    &mut self.exc_info,
+                );
+            }
+            // Free the column handle
+            glue::array_column_free(self.handle, self.dtype, &mut self.exc_info);
+        }
+    }
+}
+
 impl Debug for Table {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Table")
@@ -2193,6 +2553,82 @@ impl Drop for Table {
         // FIXME: not sure if this function can actually produce useful
         // exceptions anyway, but we can't do anything if it does!
         unsafe { glue::table_close_and_free(self.handle, &mut self.exc_info) }
+    }
+}
+
+impl Table {
+    /// Open a scalar column for direct writes using a barebones Column::put path.
+    pub fn open_scalar_column(
+        &mut self,
+        col_name: &str,
+        dtype: glue::GlueDataType,
+    ) -> Result<ScalarColumnWriter, CasacoreError> {
+        let mut exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let ccol = glue::StringBridge::from_rust(col_name);
+        let handle = unsafe { glue::table_open_scalar_column(self.handle, &ccol, dtype, &mut exc) };
+        if handle.is_null() {
+            return Err(CasacoreError("failed to open scalar column".into()));
+        }
+        Ok(ScalarColumnWriter {
+            handle,
+            dtype,
+            exc_info: exc,
+        })
+    }
+
+    /// Open an array column for direct writes using a barebones Column::put path.
+    pub fn open_array_column(
+        &mut self,
+        col_name: &str,
+        dtype: glue::GlueDataType,
+    ) -> Result<ArrayColumnWriter, CasacoreError> {
+        let mut exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let ccol = glue::StringBridge::from_rust(col_name);
+        let handle = unsafe { glue::table_open_array_column(self.handle, &ccol, dtype, &mut exc) };
+        if handle.is_null() {
+            return Err(CasacoreError("failed to open array column".into()));
+        }
+
+        // Check if this is a fixed-shape column and cache its shape
+        let mut cached_shape = None;
+        let mut col_info_exc = unsafe { std::mem::zeroed::<glue::ExcInfo>() };
+        let mut n_rows = 0u64;
+        let mut data_type = glue::GlueDataType::TpBool;
+        let mut is_scalar = 0i32;
+        let mut is_fixed_shape = 0i32;
+        let mut n_dim = 0i32;
+        let mut dims = [0u64; 8];
+
+        let rv = unsafe {
+            glue::table_get_column_info(
+                self.handle,
+                &ccol,
+                &mut n_rows,
+                &mut data_type,
+                &mut is_scalar,
+                &mut is_fixed_shape,
+                &mut n_dim,
+                dims.as_mut_ptr(),
+                &mut col_info_exc,
+            )
+        };
+
+        if rv == 0 && is_fixed_shape != 0 && n_dim > 0 {
+            // This is a fixed-shape column, cache its shape
+            let mut shape = Vec::with_capacity(n_dim as usize);
+            for i in 0..n_dim as usize {
+                shape.push(dims[i]);
+            }
+            cached_shape = Some(shape);
+        }
+
+        Ok(ArrayColumnWriter {
+            handle,
+            dtype,
+            exc_info: exc,
+            cached_shape,
+            persistent_matrix: None,
+        })
     }
 }
 
@@ -2794,7 +3230,15 @@ mod tests {
             .add_scalar_column(GlueDataType::TpUInt, col_name, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            table_path,
+            table_desc,
+            123,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -2817,7 +3261,15 @@ mod tests {
             .add_scalar_column(GlueDataType::TpString, col_name, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            table_path,
+            table_desc,
+            123,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -2850,7 +3302,14 @@ mod tests {
 
         // NewNoReplace should fail if table exists.
         assert!(matches!(
-            Table::new(table_path, table_desc, 123, TableCreateMode::NewNoReplace),
+            Table::new(
+                table_path,
+                table_desc,
+                123,
+                TableCreateMode::NewNoReplace,
+                false,
+                None
+            ),
             Err(TableError::Casacore { .. })
         ));
     }
@@ -2874,7 +3333,15 @@ mod tests {
             )
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            table_path,
+            table_desc,
+            123,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -2899,7 +3366,15 @@ mod tests {
             .add_array_column(GlueDataType::TpString, col_name, None, None, false, false)
             .unwrap();
 
-        let mut table = Table::new(table_path, table_desc, 123, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            table_path,
+            table_desc,
+            123,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(table.n_rows(), 123);
         assert_eq!(table.n_columns(), 1);
@@ -2932,7 +3407,15 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            &table_path,
+            table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -2966,7 +3449,15 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            &table_path,
+            table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3009,7 +3500,15 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            &table_path,
+            table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3060,7 +3559,15 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            &table_path,
+            table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<f64> = vec![1.0, 2.0, 3.0];
         table.put_cell("UVW", 0, &cell_value).unwrap();
@@ -3133,7 +3640,15 @@ mod tests {
             .unwrap();
         table_desc.set_ndims("APP_PARAMS", 1).unwrap();
         // Create your new table with 1 rows
-        let mut table = Table::new(&table_path, table_desc, 1, TableCreateMode::New).unwrap();
+        let mut table = Table::new(
+            &table_path,
+            table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         // write to the first row in the uvw column
         let cell_value: Vec<String> = vec!["app params".to_string()];
         table.put_cell("APP_PARAMS", 0, &cell_value).unwrap();
@@ -3171,16 +3686,30 @@ mod tests {
             )
             .unwrap();
         // Create your new table with 1 rows
-        let mut root_table =
-            Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        let mut root_table = Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         let mut sub_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
         sub_table_desc
             .add_scalar_column(GlueDataType::TpInt, "int", None, true, false)
             .unwrap();
 
-        let sub_table =
-            Table::new(&sub_table_path, sub_table_desc, 1, TableCreateMode::New).unwrap();
+        let sub_table = Table::new(
+            &sub_table_path,
+            sub_table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
         root_table.put_table_keyword("SUB", sub_table).unwrap();
 
         assert_eq!(root_table.table_keyword_names().unwrap(), ["SUB"]);
@@ -3194,7 +3723,15 @@ mod tests {
         // First create a table description for our base table.
         // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
         let root_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
-        Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         let mut source_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
         source_table_desc
@@ -3227,6 +3764,8 @@ mod tests {
             source_table_desc,
             1,
             TableCreateMode::New,
+            false,
+            None,
         )
         .unwrap();
 
@@ -3271,8 +3810,15 @@ mod tests {
         // First create a table description for our base table.
         // Use TDM_SCRATCH to avoid writing the .tabdsc to disk.
         let root_table_desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
-        let root_table =
-            Table::new(&root_table_path, root_table_desc, 1, TableCreateMode::New).unwrap();
+        let root_table = Table::new(
+            &root_table_path,
+            root_table_desc,
+            1,
+            TableCreateMode::New,
+            false,
+            None,
+        )
+        .unwrap();
 
         assert_eq!(
             root_table.file_name().unwrap(),

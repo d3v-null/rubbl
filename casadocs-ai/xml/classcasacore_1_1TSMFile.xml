@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1TSMFile" kind="class" language="C++" prot="public">
+    <compoundname>casacore::TSMFile</compoundname>
+    <includes refid="TSMFile_8h" local="no">TSMFile.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1TSMFile_1aba4b0088d906bc9d1f6b04f4be35c36e" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::TSMFile::fileSeqnr_p</definition>
+        <argsstring></argsstring>
+        <name>fileSeqnr_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="133" column="10" bodyfile="tables/DataMan/TSMFile.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TSMFile_1ab93c405d2f078c592a4777acbe2c7553" prot="private" static="no" mutable="no">
+        <type><ref refid="classcasacore_1_1BucketFile" kindref="compound">BucketFile</ref> *</type>
+        <definition>BucketFile* casacore::TSMFile::file_p</definition>
+        <argsstring></argsstring>
+        <name>file_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="135" column="16" bodyfile="tables/DataMan/TSMFile.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcasacore_1_1TSMFile_1a8cbb91020430af7186c01c19f4591bee" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::TSMFile::length_p</definition>
+        <argsstring></argsstring>
+        <name>length_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="137" column="11" bodyfile="tables/DataMan/TSMFile.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1adcc62980cbdb9e59092cb604ecb458ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TSMFile::TSMFile</definition>
+        <argsstring>(const TiledStMan *stMan, uInt fileSequenceNr, const TSMOption &amp;, const std::shared_ptr&lt; MultiFileBase &gt; &amp;=std::shared_ptr&lt; MultiFileBase &gt;())</argsstring>
+        <name>TSMFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TiledStMan" kindref="compound">TiledStMan</ref> *</type>
+          <declname>stMan</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>fileSequenceNr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref> &amp;</type>
+          <defname>tsmOpt</defname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt; &amp;</type>
+          <defname>mfile</defname>
+          <defval>std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="84" column="5" bodyfile="tables/DataMan/TSMFile.cc" bodystart="38" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a0cda49f85f64f3022be19f96e279720d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TSMFile::TSMFile</definition>
+        <argsstring>(const String &amp;fileName, Bool writable, const TSMOption &amp;, const std::shared_ptr&lt; MultiFileBase &gt; &amp;=std::shared_ptr&lt; MultiFileBase &gt;())</argsstring>
+        <name>TSMFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>writable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref> &amp;</type>
+          <defname>tsmOpt</defname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt; &amp;</type>
+          <defname>mfile</defname>
+          <defval>std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="89" column="5" bodyfile="tables/DataMan/TSMFile.cc" bodystart="57" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a552d48ce4aa6e07357346cf632087da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TSMFile::TSMFile</definition>
+        <argsstring>(const TiledStMan *stMan, AipsIO &amp;ios, uInt seqnr, const TSMOption &amp;, const std::shared_ptr&lt; MultiFileBase &gt; &amp;=std::shared_ptr&lt; MultiFileBase &gt;())</argsstring>
+        <name>TSMFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TiledStMan" kindref="compound">TiledStMan</ref> *</type>
+          <declname>stMan</declname>
+        </param>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+          <declname>ios</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>seqnr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref> &amp;</type>
+          <defname>tsmOpt</defname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt; &amp;</type>
+          <defname>mfile</defname>
+          <defval>std::shared_ptr&lt; <ref refid="classcasacore_1_1MultiFileBase" kindref="compound">MultiFileBase</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="96" column="5" bodyfile="tables/DataMan/TSMFile.cc" bodystart="73" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a40cbd418ed2882b073d3bc799cfe9a3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TSMFile::~TSMFile</definition>
+        <argsstring>()</argsstring>
+        <name>~TSMFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="101" column="5" bodyfile="tables/DataMan/TSMFile.cc" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1af01ebc2947cc36775e8695d548fa0a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::TSMFile::TSMFile</definition>
+        <argsstring>(const TSMFile &amp;)=delete</argsstring>
+        <name>TSMFile</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TSMFile" kindref="compound">TSMFile</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="104" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1aad75c8dcb0846cbad4d1d36703645e3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1TSMFile" kindref="compound">TSMFile</ref> &amp;</type>
+        <definition>TSMFile&amp; casacore::TSMFile::operator=</definition>
+        <argsstring>(const TSMFile &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1TSMFile" kindref="compound">TSMFile</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="107" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a98e9bf54c9a6d20e355d03d11b3d5296" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TSMFile::putObject</definition>
+        <argsstring>(AipsIO &amp;ios) const</argsstring>
+        <name>putObject</name>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+          <declname>ios</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="110" column="10" bodyfile="tables/DataMan/TSMFile.cc" bodystart="100" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a7dac8bb5075708166313fad7372c9b11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TSMFile::getObject</definition>
+        <argsstring>(AipsIO &amp;ios)</argsstring>
+        <name>getObject</name>
+        <param>
+          <type><ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref> &amp;</type>
+          <declname>ios</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="113" column="10" bodyfile="tables/DataMan/TSMFile.cc" bodystart="114" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1ab3805fe07a96d9cf35a8e49d6ce20e01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TSMFile::open</definition>
+        <argsstring>()</argsstring>
+        <name>open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="116" column="10" bodyfile="tables/DataMan/TSMFile.h" bodystart="153" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a89c8af286ea7738e349c845d65918afe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1BucketFile" kindref="compound">BucketFile</ref> *</type>
+        <definition>BucketFile * casacore::TSMFile::bucketFile</definition>
+        <argsstring>()</argsstring>
+        <name>bucketFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="119" column="16" bodyfile="tables/DataMan/TSMFile.h" bodystart="150" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a9c70589e0480164625a96cf28312abfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+        <definition>Int64 casacore::TSMFile::length</definition>
+        <argsstring>() const</argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="122" column="11" bodyfile="tables/DataMan/TSMFile.h" bodystart="141" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1a8d2d83087a2aeddd54e5f6b135ef9849" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+        <definition>uInt casacore::TSMFile::sequenceNumber</definition>
+        <argsstring>() const</argsstring>
+        <name>sequenceNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="125" column="10" bodyfile="tables/DataMan/TSMFile.h" bodystart="144" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1TSMFile_1ac23bd0a97d03a15d5c6cb20055de7aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::TSMFile::extend</definition>
+        <argsstring>(Int64 increment)</argsstring>
+        <name>extend</name>
+        <param>
+          <type><ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref></type>
+          <declname>increment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMFile.h" line="128" column="10" bodyfile="tables/DataMan/TSMFile.h" bodystart="147" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/DataMan/TSMFile.h" line="79" column="1" bodyfile="tables/DataMan/TSMFile.h" bodystart="80" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1TSMFile_1a89c8af286ea7738e349c845d65918afe" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>bucketFile</name></member>
+      <member refid="classcasacore_1_1TSMFile_1ac23bd0a97d03a15d5c6cb20055de7aee" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>extend</name></member>
+      <member refid="classcasacore_1_1TSMFile_1ab93c405d2f078c592a4777acbe2c7553" prot="private" virt="non-virtual"><scope>casacore::TSMFile</scope><name>file_p</name></member>
+      <member refid="classcasacore_1_1TSMFile_1aba4b0088d906bc9d1f6b04f4be35c36e" prot="private" virt="non-virtual"><scope>casacore::TSMFile</scope><name>fileSeqnr_p</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a7dac8bb5075708166313fad7372c9b11" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>getObject</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a9c70589e0480164625a96cf28312abfd" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>length</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a8cbb91020430af7186c01c19f4591bee" prot="private" virt="non-virtual"><scope>casacore::TSMFile</scope><name>length_p</name></member>
+      <member refid="classcasacore_1_1TSMFile_1ab3805fe07a96d9cf35a8e49d6ce20e01" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>open</name></member>
+      <member refid="classcasacore_1_1TSMFile_1aad75c8dcb0846cbad4d1d36703645e3b" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a98e9bf54c9a6d20e355d03d11b3d5296" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>putObject</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a8d2d83087a2aeddd54e5f6b135ef9849" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>sequenceNumber</name></member>
+      <member refid="classcasacore_1_1TSMFile_1adcc62980cbdb9e59092cb604ecb458ed" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>TSMFile</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a0cda49f85f64f3022be19f96e279720d" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>TSMFile</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a552d48ce4aa6e07357346cf632087da7" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>TSMFile</name></member>
+      <member refid="classcasacore_1_1TSMFile_1af01ebc2947cc36775e8695d548fa0a4d" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>TSMFile</name></member>
+      <member refid="classcasacore_1_1TSMFile_1a40cbd418ed2882b073d3bc799cfe9a3f" prot="public" virt="non-virtual"><scope>casacore::TSMFile</scope><name>~TSMFile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

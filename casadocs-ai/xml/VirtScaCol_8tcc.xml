@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="VirtScaCol_8tcc" kind="file" language="C++">
+    <compoundname>VirtScaCol.tcc</compoundname>
+    <includedby refid="VirtScaCol_8h" local="no">tables/DataMan/VirtScaCol.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>tables/DataMan/VirtScaCol.tcc</label>
+        <link refid="VirtScaCol_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tables/DataMan/VirtScaCol.cc</label>
+        <link refid="VirtScaCol_8cc"/>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/VSCEngine.h</label>
+        <link refid="VSCEngine_8h"/>
+      </node>
+      <node id="2">
+        <label>tables/DataMan/VirtScaCol.h</label>
+        <link refid="VirtScaCol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>VirtScaCol.tcc:<sp/>Base<sp/>virtual<sp/>column<sp/>data<sp/>manager<sp/>class</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1999</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_VIRTSCACOL_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_VIRTSCACOL_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Includes</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/VirtScaCol.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/RefRows.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Vector.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/ValTypeId.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">VirtualScalarColumn&lt;T&gt;::~VirtualScalarColumn()</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>VirtualScalarColumn&lt;T&gt;::dataType()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>return<sp/>ValType::getType<sp/>(static_cast&lt;T*&gt;(0));<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>VirtualScalarColumn&lt;T&gt;::dataTypeId()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>valDataTypeId<sp/>(static_cast&lt;T*&gt;(0));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Implement<sp/>the<sp/>get/put<sp/>functions<sp/>via<sp/>a<sp/>macro.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>In<sp/>principle<sp/>they<sp/>are<sp/>not<sp/>possible.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>The<sp/>implementation<sp/>is<sp/>done<sp/>using<sp/>global<sp/>functions<sp/>defined<sp/>in<sp/>the<sp/>.h<sp/>fie.</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>VIRTUALSCALARCOLUMN_GETPUT(TP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::aips_name2(get,TP)<sp/>(rownr_t<sp/>rownr,<sp/>TP*<sp/>dataPtr)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>getVirtualScalar<sp/>(this,<sp/>rownr,<sp/>dataPtr);<sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::aips_name2(put,TP)<sp/>(rownr_t<sp/>rownr,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>TP*<sp/>dataPtr)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>putVirtualScalar<sp/>(this,<sp/>rownr,<sp/>dataPtr);<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(Bool)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(uChar)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(Short)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(uShort)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(Int)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(uInt)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(Int64)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(float)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(double)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(Complex)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(DComplex)</highlight></codeline>
+<codeline><highlight class="normal">VIRTUALSCALARCOLUMN_GETPUT(String)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::getOther<sp/>(rownr_t<sp/>rownr,<sp/>void*<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>get<sp/>(rownr,<sp/>*static_cast&lt;T*&gt;(dataPtr));<sp/>}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::putOther<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>void*<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>put<sp/>(rownr,<sp/>*static_cast&lt;const<sp/>T*&gt;(dataPtr));<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Now<sp/>implement<sp/>the<sp/>default<sp/>implementations<sp/>of<sp/>the<sp/>column<sp/>access<sp/>functions.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::getScalarColumnV<sp/>(ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;Vector&lt;T&gt;&amp;&gt;(dataPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>vec.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(rownr_t<sp/>rownr=0;<sp/>rownr&lt;nr;<sp/>++rownr)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get<sp/>(rownr,<sp/>vec[rownr]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::putScalarColumnV<sp/>(const<sp/>ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;const<sp/>Vector&lt;T&gt;&amp;&gt;(dataPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rownr_t<sp/>nr<sp/>=<sp/>vec.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(rownr_t<sp/>rownr=0;<sp/>rownr&lt;nr;<sp/>++rownr)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>put<sp/>(rownr,<sp/>vec[rownr]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::getScalarColumnCellsV<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;Vector&lt;T&gt;&amp;&gt;(dataPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>RefRowsSliceIter<sp/>iter(rownrs);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rownr_t<sp/>i=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!<sp/>iter.pastEnd())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>rownr<sp/>=<sp/>iter.sliceStart();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>end<sp/><sp/><sp/>=<sp/>iter.sliceEnd();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>incr<sp/><sp/>=<sp/>iter.sliceIncr();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(rownr<sp/>&lt;=<sp/>end)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>get<sp/>(rownr,<sp/>vec[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr<sp/>+=<sp/>incr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>iter++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::putScalarColumnCellsV<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>Vector&lt;T&gt;&amp;<sp/>vec<sp/>=<sp/>static_cast&lt;const<sp/>Vector&lt;T&gt;&amp;&gt;(dataPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>RefRowsSliceIter<sp/>iter(rownrs);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rownr_t<sp/>i=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!<sp/>iter.pastEnd())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>rownr<sp/>=<sp/>iter.sliceStart();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>end<sp/><sp/><sp/>=<sp/>iter.sliceEnd();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rownr_t<sp/>incr<sp/><sp/>=<sp/>iter.sliceIncr();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(rownr<sp/>&lt;=<sp/>end)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>put<sp/>(rownr,<sp/>vec[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rownr<sp/>+=<sp/>incr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>iter++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>The<sp/>default<sp/>implementation<sp/>of<sp/>put<sp/>throws<sp/>an<sp/>exception.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>VirtualScalarColumn&lt;T&gt;::put<sp/>(rownr_t,<sp/>const<sp/>T&amp;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>throwPut();<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/VirtScaCol.tcc"/>
+  </compounddef>
+</doxygen>

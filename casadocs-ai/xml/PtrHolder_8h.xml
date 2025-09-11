@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="PtrHolder_8h" kind="file" language="C++">
+    <compoundname>PtrHolder.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="PtrHolder_8tcc" local="no">casacore/casa/Utilities/PtrHolder.tcc</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Utilities/PtrHolder.h</label>
+        <link refid="PtrHolder_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="7">
+        <label>casacore/casa/Utilities/PtrHolder.tcc</label>
+        <link refid="PtrHolder_8tcc"/>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classcasacore_1_1PtrHolder" prot="public">casacore::PtrHolder</innerclass>
+    <innerclass refid="classcasacore_1_1SPtrHolder" prot="public">casacore::SPtrHolder</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>PtrHolder.h:<sp/>Hold<sp/>and<sp/>delete<sp/>pointers<sp/>not<sp/>deleted<sp/>by<sp/>object<sp/>destructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1999,2000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_PTRHOLDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_PTRHOLDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#warning<sp/>PtrHolder.h<sp/>is<sp/>deprecated;<sp/>std::unique_ptr<sp/>should<sp/>be<sp/>used<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Hold<sp/>and<sp/>delete<sp/>pointers<sp/>not<sp/>deleted<sp/>by<sp/>object<sp/>destructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;troberts&quot;<sp/>date=&quot;1995/07/29&quot;<sp/>tests=&quot;tPtrHolder&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>module<sp/>&lt;linkto<sp/>module=Exceptions&gt;Exceptions&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;PtrHolder&lt;/src&gt;s<sp/>hold<sp/>allocated<sp/>pointers<sp/>which<sp/>should<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>deleted<sp/>when<sp/>an<sp/>exception<sp/>is<sp/>thrown.<sp/>Exceptions<sp/>only<sp/>call<sp/>destructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>objects.<sp/>Thus,<sp/>for<sp/>example,<sp/>storage<sp/>allocated<sp/>in<sp/>a<sp/>global<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(outside<sp/>of<sp/>an<sp/>object)is<sp/>not<sp/>deleted.<sp/>A<sp/>&lt;src&gt;PtrHolder&lt;/src&gt;<sp/>solves</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>this<sp/>problem:<sp/>it<sp/>merely<sp/>holds<sp/>the<sp/>pointer<sp/>and<sp/>deletes<sp/>it<sp/>when<sp/>it<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>destroyed<sp/>itself,<sp/>e.g.<sp/>when<sp/>an<sp/>exception<sp/>is<sp/>thrown<sp/>or<sp/>when<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>function<sp/>exits<sp/>normally.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>void<sp/>func(Int<sp/>*ptr);<sp/>//<sp/>some<sp/>other<sp/>function<sp/>that<sp/>takes<sp/>a<sp/>pointer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>True<sp/>below<sp/>means<sp/>it&apos;s<sp/>an<sp/>array,<sp/>False<sp/>(the<sp/>default)<sp/>would<sp/>mean</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>a<sp/>singleton<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>PtrHolder&lt;Int&gt;<sp/>iholder(new<sp/>Int[10000],<sp/>True);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>func(iholder);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>converts<sp/>automatically<sp/>to<sp/>ptr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(iholder.ptr()<sp/>+<sp/>5)<sp/>=<sp/>11;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>use<sp/>pointer<sp/>explicitly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>some_function_that_throws_exception();<sp/><sp/><sp/>//<sp/>pointer<sp/>is<sp/>deleted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Avoid<sp/>leaks<sp/>when<sp/>throwing/catching<sp/>exceptions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;todo<sp/>asof=&quot;2000/04/11&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>Use<sp/>the<sp/>autoptr<sp/>class<sp/>from<sp/>the<sp/>Standard<sp/>Library</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classcasacore_1_1PtrHolder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1PtrHolder" kindref="compound">PtrHolder</ref></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>constructor<sp/>uses<sp/>a<sp/>null<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classcasacore_1_1PtrHolder_1a59056dc307939b395ab5ab5d34af8f55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1PtrHolder_1a59056dc307939b395ab5ab5d34af8f55" kindref="member">PtrHolder</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>a<sp/>&lt;src&gt;PtrHolder&lt;/src&gt;<sp/>from<sp/>a<sp/>pointer<sp/>which<sp/>MUST<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>been<sp/>allocated<sp/>from<sp/>&lt;src&gt;new&lt;/src&gt;,<sp/>since<sp/>the<sp/>destructor<sp/>will</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>&lt;src&gt;delete&lt;/src&gt;<sp/>on<sp/>it.<sp/>If<sp/>the<sp/>pointer<sp/>is<sp/>to<sp/>an<sp/>array,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>i.e.<sp/>allocated<sp/>with<sp/>operator<sp/>&lt;src&gt;new[]&lt;/src&gt;,<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;isCarray&lt;/src&gt;<sp/>should<sp/>be<sp/>set<sp/>to<sp/>True.<sp/>(This<sp/>parameter<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>required<sp/>because<sp/>C-arrays<sp/>need<sp/>to<sp/>be<sp/>deleted<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;delete[]&lt;/src&gt;.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>After<sp/>the<sp/>pointer<sp/>is<sp/>placed<sp/>into<sp/>the<sp/>holder,<sp/>the<sp/>user<sp/>should</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>manually<sp/>delete<sp/>the<sp/>pointer;<sp/>the<sp/>&lt;src&gt;PtrHolder&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object<sp/>will<sp/>do<sp/>that,<sp/>unless<sp/>&lt;src&gt;set()&lt;/src&gt;<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;clear()&lt;/src&gt;<sp/>is<sp/>called<sp/>with<sp/>&lt;src&gt;deleteCurrentPtr&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>to<sp/>False.<sp/>The<sp/>pointer<sp/>must<sp/>also<sp/>only<sp/>be<sp/>put<sp/>into</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;em&gt;one&lt;/em&gt;<sp/>holder<sp/>to<sp/>avoid<sp/>double<sp/>deletion.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classcasacore_1_1PtrHolder_1a753a19bf6dbfd475e9376d1b2791e25d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1PtrHolder_1a753a19bf6dbfd475e9376d1b2791e25d" kindref="member">PtrHolder</ref>(T<sp/>*pointer,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1PtrHolder_1a54d6de28c50a51e23f1feb673ff9a980" kindref="member">isCArray</ref><sp/>=<sp/><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classcasacore_1_1PtrHolder_1a07ed5a2b1a7f1440fb1553853951fa8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1PtrHolder_1a07ed5a2b1a7f1440fb1553853951fa8e" kindref="member">~PtrHolder</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>pointer<sp/>to<sp/>a<sp/>new<sp/>value.<sp/>If<sp/>&lt;src&gt;deleteCurrentPtr<sp/>&lt;/src&gt;is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>(the<sp/>default),<sp/>then<sp/>delete<sp/>the<sp/>existing<sp/>pointer<sp/>first.<sp/>If</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;src&gt;isCarray&lt;/src&gt;<sp/>is<sp/>True,<sp/>then<sp/>the<sp/>new<sp/>pointer<sp/>is<sp/>assumed<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>have<sp/>been<sp/>allocated<sp/>with<sp/>&lt;src&gt;new[]&lt;/src&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classcasacore_1_1PtrHolder_1ad2fbd8557528129b91ccc3aeddc4bd12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1PtrHolder_1ad2fbd8557528129b91ccc3aeddc4bd12" kindref="member">set</ref>(T<sp/>*pointer,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>isCarray<sp/>=<sp/><ref refid="namespacecasacore_1a11ef6530f2dc946f54d220fe416bfd41" kindref="member">False</ref>,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>deleteCurrentPtr<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>current<sp/>pointer<sp/>to<sp/>null;<sp/>if<sp/>&lt;src&gt;deletePtr&lt;/src&gt;<sp/>is<sp/>True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(the<sp/>default),<sp/>then<sp/>the<sp/>current<sp/>pointer<sp/>is<sp/>deleted<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classcasacore_1_1PtrHolder_1ade153841b9f960a10c923788a6e7eda3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1PtrHolder_1ade153841b9f960a10c923788a6e7eda3" kindref="member">clear</ref>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>deleteCurrentPtr<sp/>=<sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Release<sp/>the<sp/>pointer<sp/>for<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classcasacore_1_1PtrHolder_1a8bc094d1c253a81bce26b35b4647ab7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*<ref refid="classcasacore_1_1PtrHolder_1a8bc094d1c253a81bce26b35b4647ab7d" kindref="member">ptr</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_p;<sp/>}</highlight></codeline>
+<codeline lineno="118" refid="classcasacore_1_1PtrHolder_1a350fc35f484f45d42bf9a1a34118bcd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>*<ref refid="classcasacore_1_1PtrHolder_1a350fc35f484f45d42bf9a1a34118bcd1" kindref="member">ptr</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_p;<sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Attempt<sp/>to<sp/>automatically<sp/>release<sp/>a<sp/>pointer<sp/>when<sp/>required.<sp/>If<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compiler<sp/>can&apos;t<sp/>figure<sp/>it<sp/>out,<sp/>you<sp/>can<sp/>use<sp/>the<sp/>&lt;src&gt;ptr()&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>member<sp/>function<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classcasacore_1_1PtrHolder_1aa39b004f5d4cf11c77de0047e0857fb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>T<sp/>*()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_p;<sp/>}</highlight></codeline>
+<codeline lineno="125" refid="classcasacore_1_1PtrHolder_1ad77ed97fc1bb49c3e5f2e73392706c94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>T<sp/>*()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_p;<sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>it<sp/>possible<sp/>to<sp/>use<sp/>-&gt;<sp/>on<sp/>the<sp/>pointer<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classcasacore_1_1PtrHolder_1ae9d691b514438b26bc596e224aaca060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/><ref refid="classcasacore_1_1PtrHolder_1ae9d691b514438b26bc596e224aaca060" kindref="member">operator-&gt;</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="130"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_p;<sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>See<sp/>if<sp/>the<sp/>pointer<sp/>points<sp/>to<sp/>a<sp/>C-array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classcasacore_1_1PtrHolder_1a54d6de28c50a51e23f1feb673ff9a980" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1PtrHolder_1a54d6de28c50a51e23f1feb673ff9a980" kindref="member">isCArray</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>isCarray_p;}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Undefined<sp/>and<sp/>inaccessible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1PtrHolder_1a59056dc307939b395ab5ab5d34af8f55" kindref="member">PtrHolder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1PtrHolder" kindref="compound">PtrHolder&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1PtrHolder" kindref="compound">PtrHolder&lt;T&gt;</ref><sp/>&amp;operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1PtrHolder" kindref="compound">PtrHolder&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>We&apos;d<sp/>also<sp/>like<sp/>the<sp/>following<sp/>to<sp/>be<sp/>undefined<sp/>and<sp/>inaccessible,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>unfortunately<sp/>CFront<sp/>doesn&apos;t<sp/>seem<sp/>to<sp/>let<sp/>you<sp/>do<sp/>that.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>void<sp/>*operator<sp/>new(size_t<sp/>s);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Put<sp/>functionality<sp/>in<sp/>one<sp/>place</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>delete_pointer_if_necessary();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*ptr_p;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>If<sp/>space<sp/>were<sp/>critical,<sp/>we<sp/>could<sp/>make<sp/>isCarray_p<sp/>a<sp/>char</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>isCarray_p;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Hold<sp/>and<sp/>delete<sp/>pointers<sp/>not<sp/>deleted<sp/>by<sp/>object<sp/>destructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=export&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tPtrHolder&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>module<sp/>&lt;linkto<sp/>module=Exceptions&gt;Exceptions&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;SPtrHolder&lt;/src&gt;s<sp/>hold<sp/>allocated<sp/>pointers<sp/>to<sp/>non-array<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>should<sp/>be<sp/>deleted<sp/>when<sp/>an<sp/>exception<sp/>is<sp/>thrown.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPtrHolder<sp/>is<sp/>similar<sp/>to<sp/>PtrHolder,<sp/>but<sp/>easier<sp/>to<sp/>use<sp/>and<sp/>only<sp/>valid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>pointer<sp/>to<sp/>a<sp/>single<sp/>object,<sp/>thus<sp/>not<sp/>to<sp/>a<sp/>C-array<sp/>of<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>void<sp/>func(Table<sp/>*ptr);<sp/>//<sp/>some<sp/>other<sp/>function<sp/>that<sp/>takes<sp/>a<sp/>pointer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>True<sp/>below<sp/>means<sp/>it&apos;s<sp/>an<sp/>array,<sp/>False<sp/>(the<sp/>default)<sp/>would<sp/>mean</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>a<sp/>singleton<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>SPtrHolder&lt;Int&gt;<sp/>iholder(new<sp/>Table(...));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>func(iholder);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>converts<sp/>automatically<sp/>to<sp/>ptr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>Table*<sp/>tab<sp/>=<sp/>iholder.transfer();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>transfer<sp/>ownership</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>an<sp/>exception<sp/>is<sp/>thrown<sp/>in<sp/>function<sp/>&lt;src&gt;func&lt;/src&gt;,<sp/>the<sp/>Table<sp/>will<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/>deleted<sp/>automatically.<sp/>After<sp/>the<sp/>function<sp/>call,<sp/>the<sp/>ownership<sp/>is<sp/>tranfered</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//<sp/>back<sp/>to<sp/>the<sp/>&apos;user&apos;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;std::auto_ptr&lt;/src&gt;<sp/>is<sp/>harder<sp/>to<sp/>use<sp/>and<sp/>its<sp/>future<sp/>is<sp/>unclear.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;PtrHolder&lt;/src&gt;<sp/>is<sp/>not<sp/>fully<sp/>inlined<sp/>and<sp/>has<sp/>C-array<sp/>overhead.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Furthermore<sp/>the<sp/>automatic<sp/>conversion<sp/>to<sp/>a<sp/>T*<sp/>is<sp/>dangerous,<sp/>because<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/>programmer<sp/>may<sp/>not<sp/>be<sp/>aware<sp/>that<sp/>the<sp/>pointer<sp/>is<sp/>maybe<sp/>taken<sp/>over.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classcasacore_1_1SPtrHolder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1SPtrHolder" kindref="compound">SPtrHolder</ref></highlight></codeline>
+<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>an<sp/>&lt;src&gt;SPtrHolder&lt;/src&gt;<sp/>from<sp/>a<sp/>pointer<sp/>which<sp/>MUST<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>been<sp/>allocated<sp/>from<sp/>&lt;src&gt;new&lt;/src&gt;,<sp/>since<sp/>the<sp/>destructor<sp/>will</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>After<sp/>the<sp/>pointer<sp/>is<sp/>placed<sp/>into<sp/>the<sp/>holder,<sp/>the<sp/>user<sp/>should</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>manually<sp/>delete<sp/>the<sp/>pointer<sp/>unless<sp/>the<sp/>transfer<sp/>function<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>pointer<sp/>must<sp/>also<sp/>only<sp/>be<sp/>put<sp/>into</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;em&gt;one&lt;/em&gt;<sp/>holder<sp/>to<sp/>avoid<sp/>double<sp/>deletion.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classcasacore_1_1SPtrHolder_1ad44c18f1f994bde127fd4a457750271c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder_1ad44c18f1f994bde127fd4a457750271c" kindref="member">SPtrHolder</ref><sp/>(T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref><sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>itsPtr(<ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classcasacore_1_1SPtrHolder_1a579f32d25835788d95b74580deec9a6f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1SPtrHolder_1a579f32d25835788d95b74580deec9a6f" kindref="member">~SPtrHolder</ref>()</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>the<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classcasacore_1_1SPtrHolder_1a0669045dd4bb6d54cd63173b41341762" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder_1a0669045dd4bb6d54cd63173b41341762" kindref="member">reset</ref><sp/>(T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref>)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref><sp/>!=<sp/>itsPtr)<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>itsPtr;<sp/>itsPtr<sp/>=<sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref>;<sp/>}}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Transfer<sp/>ownership<sp/>of<sp/>the<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>I.e.<sp/>return<sp/>the<sp/>pointer<sp/>and<sp/>set<sp/>it<sp/>to<sp/>0<sp/>in<sp/>the<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classcasacore_1_1SPtrHolder_1a52643a06037fc38994208c73cff71c81" refkind="member"><highlight class="normal"><sp/><sp/>T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a52643a06037fc38994208c73cff71c81" kindref="member">transfer</ref>()</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref><sp/>=<sp/>itsPtr;<sp/>itsPtr<sp/>=<sp/>0;<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Release<sp/>the<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classcasacore_1_1SPtrHolder_1aee0b67d24b4fabb32ecbe1a722e5451a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder_1aee0b67d24b4fabb32ecbe1a722e5451a" kindref="member">release</ref>()</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>itsPtr<sp/>=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>it<sp/>possible<sp/>to<sp/>dereference<sp/>the<sp/>pointer<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="classcasacore_1_1SPtrHolder_1a1e9a3c960bd42ed5dbc0a679a169259f" refkind="member"><highlight class="normal"><sp/><sp/>T&amp;<sp/><ref refid="classcasacore_1_1SPtrHolder_1a1e9a3c960bd42ed5dbc0a679a169259f" kindref="member">operator*</ref>()</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="229" refid="classcasacore_1_1SPtrHolder_1a68edcde10f4a1fed2199bac2e779612f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/><ref refid="classcasacore_1_1SPtrHolder_1a68edcde10f4a1fed2199bac2e779612f" kindref="member">operator*</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="230"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>it<sp/>possible<sp/>to<sp/>use<sp/>-&gt;<sp/>on<sp/>the<sp/>pointer<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classcasacore_1_1SPtrHolder_1abf7ed67666080c0714ecaa3daf2a3dc1" refkind="member"><highlight class="normal"><sp/><sp/>T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1abf7ed67666080c0714ecaa3daf2a3dc1" kindref="member">operator-&gt;</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="235"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>pointer<sp/>for<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" refkind="member"><highlight class="normal"><sp/><sp/>T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a2169207e862291cc0709a5d012e42122" kindref="member">ptr</ref>()</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="241" refid="classcasacore_1_1SPtrHolder_1a50e2e2185b89984f4d493a7f8e3cd9ba" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T*<sp/><ref refid="classcasacore_1_1SPtrHolder_1a50e2e2185b89984f4d493a7f8e3cd9ba" kindref="member">ptr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="242"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itsPtr;<sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>SPrtHolder<sp/>cannot<sp/>be<sp/>copied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1SPtrHolder_1ad44c18f1f994bde127fd4a457750271c" kindref="member">SPtrHolder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder" kindref="compound">SPtrHolder&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1SPtrHolder" kindref="compound">SPtrHolder&lt;T&gt;</ref><sp/>&amp;operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1SPtrHolder" kindref="compound">SPtrHolder&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//#<sp/>The<sp/>pointer<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>T*<sp/>itsPtr;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="PtrHolder_8tcc" kindref="compound">casacore/casa/Utilities/PtrHolder.tcc</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//#<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Utilities/PtrHolder.h"/>
+  </compounddef>
+</doxygen>

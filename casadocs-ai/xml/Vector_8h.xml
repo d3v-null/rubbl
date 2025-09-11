@@ -1,0 +1,3084 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Vector_8h" kind="file" language="C++">
+    <compoundname>Vector.h</compoundname>
+    <includes refid="Array_8h" local="yes">Array.h</includes>
+    <includes refid="Vector_8tcc" local="yes">Vector.tcc</includes>
+    <includes refid="Vector2_8tcc" local="yes">Vector2.tcc</includes>
+    <includedby refid="ArrayUtil_8h" local="yes">casa/Arrays/ArrayUtil.h</includedby>
+    <includedby refid="LogiVector_8h" local="yes">casa/Arrays/LogiVector.h</includedby>
+    <includedby refid="Matrix2Math_8cc" local="yes">casa/Arrays/Matrix2Math.cc</includedby>
+    <includedby refid="MatrixMath_8h" local="yes">casa/Arrays/MatrixMath.h</includedby>
+    <includedby refid="Slice_8cc" local="yes">casa/Arrays/Slice.cc</includedby>
+    <includedby refid="Vector__tmpl_8cc" local="yes">casa/Arrays/Vector_tmpl.cc</includedby>
+    <includedby refid="VectorIter_8h" local="yes">casa/Arrays/VectorIter.h</includedby>
+    <includedby refid="VectorSTLIterator_8h" local="yes">casa/Arrays/VectorSTLIterator.h</includedby>
+    <includedby refid="Arrays_8h" local="no">casa/Arrays.h</includedby>
+    <includedby refid="Random_8cc" local="no">casa/BasicMath/Random.cc</includedby>
+    <includedby refid="RecordRep_8cc" local="no">casa/Containers/RecordRep.cc</includedby>
+    <includedby refid="ValueHolderRep_8cc" local="no">casa/Containers/ValueHolderRep.cc</includedby>
+    <includedby refid="Input_8cc" local="no">casa/Inputs/Input.cc</includedby>
+    <includedby refid="IPositionIO_8cc" local="no">casa/IO/IPositionIO.cc</includedby>
+    <includedby refid="JsonValue_8cc" local="no">casa/Json/JsonValue.cc</includedby>
+    <includedby refid="Directory_8cc" local="no">casa/OS/Directory.cc</includedby>
+    <includedby refid="DOos_8h" local="no">casa/OS/DOos.h</includedby>
+    <includedby refid="Path_8cc" local="no">casa/OS/Path.cc</includedby>
+    <includedby refid="Euler_8h" local="no">casa/Quanta/Euler.h</includedby>
+    <includedby refid="MeasValue_8cc" local="no">casa/Quanta/MeasValue.cc</includedby>
+    <includedby refid="MVDoppler_8h" local="no">casa/Quanta/MVDoppler.h</includedby>
+    <includedby refid="MVDouble_8h" local="no">casa/Quanta/MVDouble.h</includedby>
+    <includedby refid="MVEpoch_8h" local="no">casa/Quanta/MVEpoch.h</includedby>
+    <includedby refid="MVFrequency_8h" local="no">casa/Quanta/MVFrequency.h</includedby>
+    <includedby refid="MVPosition_8h" local="no">casa/Quanta/MVPosition.h</includedby>
+    <includedby refid="MVRadialVelocity_8cc" local="no">casa/Quanta/MVRadialVelocity.cc</includedby>
+    <includedby refid="MVRadialVelocity_8h" local="no">casa/Quanta/MVRadialVelocity.h</includedby>
+    <includedby refid="QuantumHolder_8cc" local="no">casa/Quanta/QuantumHolder.cc</includedby>
+    <includedby refid="RotMatrix_8h" local="no">casa/Quanta/RotMatrix.h</includedby>
+    <includedby refid="Aipsrc_8cc" local="no">casa/System/Aipsrc.cc</includedby>
+    <includedby refid="Aipsrc_8h" local="no">casa/System/Aipsrc.h</includedby>
+    <includedby refid="AipsrcVBool_8cc" local="no">casa/System/AipsrcVBool.cc</includedby>
+    <includedby refid="AipsrcVString_8cc" local="no">casa/System/AipsrcVString.cc</includedby>
+    <includedby refid="AppInfo_8cc" local="no">casa/System/AppInfo.cc</includedby>
+    <includedby refid="Choice_8cc" local="no">casa/System/Choice.cc</includedby>
+    <includedby refid="PGPlotter_8cc" local="no">casa/System/PGPlotter.cc</includedby>
+    <includedby refid="PGPlotterNull_8cc" local="no">casa/System/PGPlotterNull.cc</includedby>
+    <includedby refid="MUString_8cc" local="no">casa/Utilities/MUString.cc</includedby>
+    <includedby refid="Precision_8h" local="no">casa/Utilities/Precision.h</includedby>
+    <includedby refid="Sort_8cc" local="no">casa/Utilities/Sort.cc</includedby>
+    <includedby refid="taql_8cc" local="no">tables/apps/taql.cc</includedby>
+    <includedby refid="DataManInfo_8cc" local="no">tables/DataMan/DataManInfo.cc</includedby>
+    <includedby refid="DataManInfo_8h" local="no">tables/DataMan/DataManInfo.h</includedby>
+    <includedby refid="ISMColumn_8cc" local="no">tables/DataMan/ISMColumn.cc</includedby>
+    <includedby refid="MSMColumn_8cc" local="no">tables/DataMan/MSMColumn.cc</includedby>
+    <includedby refid="SSMColumn_8cc" local="no">tables/DataMan/SSMColumn.cc</includedby>
+    <includedby refid="SSMIndex_8h" local="no">tables/DataMan/SSMIndex.h</includedby>
+    <includedby refid="SSMStringHandler_8cc" local="no">tables/DataMan/SSMStringHandler.cc</includedby>
+    <includedby refid="StManAipsIO_8cc" local="no">tables/DataMan/StManAipsIO.cc</includedby>
+    <includedby refid="StManColumn_8cc" local="no">tables/DataMan/StManColumn.cc</includedby>
+    <includedby refid="TiledCellStMan_8cc" local="no">tables/DataMan/TiledCellStMan.cc</includedby>
+    <includedby refid="TiledColumnStMan_8cc" local="no">tables/DataMan/TiledColumnStMan.cc</includedby>
+    <includedby refid="TiledFileHelper_8cc" local="no">tables/DataMan/TiledFileHelper.cc</includedby>
+    <includedby refid="TiledShapeStMan_8cc" local="no">tables/DataMan/TiledShapeStMan.cc</includedby>
+    <includedby refid="TiledStMan_8cc" local="no">tables/DataMan/TiledStMan.cc</includedby>
+    <includedby refid="TSMDataColumn_8cc" local="no">tables/DataMan/TSMDataColumn.cc</includedby>
+    <includedby refid="TSMIdColumn_8cc" local="no">tables/DataMan/TSMIdColumn.cc</includedby>
+    <includedby refid="VirtScaCol_8cc" local="no">tables/DataMan/VirtScaCol.cc</includedby>
+    <includedby refid="NewFile_8cc" local="no">tables/LogTables/NewFile.cc</includedby>
+    <includedby refid="TableLogSink_8cc" local="no">tables/LogTables/TableLogSink.cc</includedby>
+    <includedby refid="ArrayColumn_8h" local="no">tables/Tables/ArrayColumn.h</includedby>
+    <includedby refid="ArrayColumnBase_8h" local="no">tables/Tables/ArrayColumnBase.h</includedby>
+    <includedby refid="ArrColData_8cc" local="no">tables/Tables/ArrColData.cc</includedby>
+    <includedby refid="BaseTable_8cc" local="no">tables/Tables/BaseTable.cc</includedby>
+    <includedby refid="ColumnSet_8cc" local="no">tables/Tables/ColumnSet.cc</includedby>
+    <includedby refid="ColumnsIndex_8h" local="no">tables/Tables/ColumnsIndex.h</includedby>
+    <includedby refid="ColumnsIndexArray_8h" local="no">tables/Tables/ColumnsIndexArray.h</includedby>
+    <includedby refid="ConcatColumn_8cc" local="no">tables/Tables/ConcatColumn.cc</includedby>
+    <includedby refid="ConcatTable_8h" local="no">tables/Tables/ConcatTable.h</includedby>
+    <includedby refid="MemoryTable_8h" local="no">tables/Tables/MemoryTable.h</includedby>
+    <includedby refid="NullTable_8cc" local="no">tables/Tables/NullTable.cc</includedby>
+    <includedby refid="PlainColumn_8cc" local="no">tables/Tables/PlainColumn.cc</includedby>
+    <includedby refid="ReadAsciiTable_8cc" local="no">tables/Tables/ReadAsciiTable.cc</includedby>
+    <includedby refid="RefColumn_8cc" local="no">tables/Tables/RefColumn.cc</includedby>
+    <includedby refid="RefTable_8h" local="no">tables/Tables/RefTable.h</includedby>
+    <includedby refid="RowCopier_8cc" local="no">tables/Tables/RowCopier.cc</includedby>
+    <includedby refid="RowNumbers_8h" local="no">tables/Tables/RowNumbers.h</includedby>
+    <includedby refid="ScaRecordColData_8cc" local="no">tables/Tables/ScaRecordColData.cc</includedby>
+    <includedby refid="SetupNewTab_8cc" local="no">tables/Tables/SetupNewTab.cc</includedby>
+    <includedby refid="Table_8cc" local="no">tables/Tables/Table.cc</includedby>
+    <includedby refid="TableCache_8cc" local="no">tables/Tables/TableCache.cc</includedby>
+    <includedby refid="TableCopy_8cc" local="no">tables/Tables/TableCopy.cc</includedby>
+    <includedby refid="TableCopy_8h" local="no">tables/Tables/TableCopy.h</includedby>
+    <includedby refid="TableDesc_8cc" local="no">tables/Tables/TableDesc.cc</includedby>
+    <includedby refid="TableIterProxy_8cc" local="no">tables/Tables/TableIterProxy.cc</includedby>
+    <includedby refid="TableIterProxy_8h" local="no">tables/Tables/TableIterProxy.h</includedby>
+    <includedby refid="TableProxy_8cc" local="no">tables/Tables/TableProxy.cc</includedby>
+    <includedby refid="TableProxy_8h" local="no">tables/Tables/TableProxy.h</includedby>
+    <includedby refid="TableRow_8cc" local="no">tables/Tables/TableRow.cc</includedby>
+    <includedby refid="TableRowProxy_8cc" local="no">tables/Tables/TableRowProxy.cc</includedby>
+    <includedby refid="TVec_8h" local="no">tables/Tables/TVec.h</includedby>
+    <includedby refid="ExprDerNode_8cc" local="no">tables/TaQL/ExprDerNode.cc</includedby>
+    <includedby refid="ExprDerNode_8h" local="no">tables/TaQL/ExprDerNode.h</includedby>
+    <includedby refid="ExprFuncNode_8cc" local="no">tables/TaQL/ExprFuncNode.cc</includedby>
+    <includedby refid="ExprFuncNodeArray_8cc" local="no">tables/TaQL/ExprFuncNodeArray.cc</includedby>
+    <includedby refid="ExprNodeSet_8cc" local="no">tables/TaQL/ExprNodeSet.cc</includedby>
+    <includedby refid="ExprNodeSetElem_8cc" local="no">tables/TaQL/ExprNodeSetElem.cc</includedby>
+    <includedby refid="ExprRange_8h" local="no">tables/TaQL/ExprRange.h</includedby>
+    <includedby refid="RecordExpr_8cc" local="no">tables/TaQL/RecordExpr.cc</includedby>
+    <includedby refid="TableParse_8cc" local="no">tables/TaQL/TableParse.cc</includedby>
+    <includedby refid="TableParseFunc_8cc" local="no">tables/TaQL/TableParseFunc.cc</includedby>
+    <includedby refid="TableParseProject_8cc" local="no">tables/TaQL/TableParseProject.cc</includedby>
+    <includedby refid="TableParseQuery_8cc" local="no">tables/TaQL/TableParseQuery.cc</includedby>
+    <includedby refid="TaQLShow_8h" local="no">tables/TaQL/TaQLShow.h</includedby>
+    <incdepgraph>
+      <node id="18">
+        <label>iterator</label>
+      </node>
+      <node id="23">
+        <label>ArrayStr.tcc</label>
+        <link refid="ArrayStr_8tcc"/>
+      </node>
+      <node id="2">
+        <label>Array.h</label>
+        <link refid="Array_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>stdexcept</label>
+      </node>
+      <node id="13">
+        <label>string</label>
+      </node>
+      <node id="20">
+        <label>ArrayStr.h</label>
+        <link refid="ArrayStr_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>ArrayError.h</label>
+        <link refid="ArrayError_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/Vector.h</label>
+        <link refid="Vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>ostream</label>
+      </node>
+      <node id="26">
+        <label>Vector2.tcc</label>
+        <link refid="Vector2_8tcc"/>
+      </node>
+      <node id="10">
+        <label>sys/types.h</label>
+      </node>
+      <node id="15">
+        <label>Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>IPosition.h</label>
+        <link refid="IPosition_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>Array.tcc</label>
+        <link refid="Array_8tcc"/>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="8">
+        <label>cstddef</label>
+      </node>
+      <node id="25">
+        <label>Vector.tcc</label>
+        <link refid="Vector_8tcc"/>
+      </node>
+      <node id="19">
+        <label>type_traits</label>
+      </node>
+      <node id="17">
+        <label>complex</label>
+      </node>
+      <node id="5">
+        <label>ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ArrayBase.h</label>
+        <link refid="ArrayBase_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="21">
+        <label>istream</label>
+      </node>
+      <node id="9">
+        <label>initializer_list</label>
+      </node>
+      <node id="14">
+        <label>MaskLogiArrFwd.h</label>
+        <link refid="MaskLogiArrFwd_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="287">
+        <label>tables/Tables/TVecScaCol.h</label>
+        <link refid="TVecScaCol_8h"/>
+      </node>
+      <node id="179">
+        <label>tables/Tables/RowCopier.cc</label>
+        <link refid="RowCopier_8cc"/>
+      </node>
+      <node id="266">
+        <label>tables/TaQL/TaQLShow.cc</label>
+        <link refid="TaQLShow_8cc"/>
+      </node>
+      <node id="225">
+        <label>tables/Tables/TableLocker.cc</label>
+        <link refid="TableLocker_8cc"/>
+      </node>
+      <node id="205">
+        <label>tables/DataMan/SSMIndColumn.cc</label>
+        <link refid="SSMIndColumn_8cc"/>
+      </node>
+      <node id="193">
+        <label>tables/apps/showtablelock.cc</label>
+        <link refid="showtablelock_8cc"/>
+      </node>
+      <node id="19">
+        <label>casa/Arrays/MatrixMath.h</label>
+        <link refid="MatrixMath_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>tables/DataMan/CompressFloat.cc</label>
+        <link refid="CompressFloat_8cc"/>
+      </node>
+      <node id="283">
+        <label>tables/Tables/TVec.h</label>
+        <link refid="TVec_8h"/>
+        <childnode refid="284" relation="include">
+        </childnode>
+        <childnode refid="287" relation="include">
+        </childnode>
+        <childnode refid="288" relation="include">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>tables/Tables/ConcatRows.cc</label>
+        <link refid="ConcatRows_8cc"/>
+      </node>
+      <node id="175">
+        <label>tables/Tables/RefColumn.cc</label>
+        <link refid="RefColumn_8cc"/>
+      </node>
+      <node id="64">
+        <label>casa/Quanta/MVRadialVelocity.h</label>
+        <link refid="MVRadialVelocity_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>casa/Quanta/MVBaseline.h</label>
+        <link refid="MVBaseline_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="249">
+        <label>tables/TaQL/ExprGroupAggrFunc.h</label>
+        <link refid="ExprGroupAggrFunc_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>tables/TaQL/ExprLogicNode.h</label>
+        <link refid="ExprLogicNode_8h"/>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>tables/DataMan/TSMOption.cc</label>
+        <link refid="TSMOption_8cc"/>
+      </node>
+      <node id="265">
+        <label>tables/TaQL/TaQLResult.cc</label>
+        <link refid="TaQLResult_8cc"/>
+      </node>
+      <node id="235">
+        <label>tables/TaQL/ExprDerNode.h</label>
+        <link refid="ExprDerNode_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>tables/DataMan/TiledCellStMan.cc</label>
+        <link refid="TiledCellStMan_8cc"/>
+      </node>
+      <node id="146">
+        <label>tables/TaQL/ExprMathNodeArray.cc</label>
+        <link refid="ExprMathNodeArray_8cc"/>
+      </node>
+      <node id="119">
+        <label>tables/DataMan/CompressComplex.cc</label>
+        <link refid="CompressComplex_8cc"/>
+      </node>
+      <node id="236">
+        <label>tables/TaQL/ExprLogicNode.cc</label>
+        <link refid="ExprLogicNode_8cc"/>
+      </node>
+      <node id="40">
+        <label>tables/DataMan/TiledStMan.cc</label>
+        <link refid="TiledStMan_8cc"/>
+      </node>
+      <node id="144">
+        <label>tables/TaQL/ExprLogicNodeArray.cc</label>
+        <link refid="ExprLogicNodeArray_8cc"/>
+      </node>
+      <node id="189">
+        <label>tables/Tables/ScaRecordColData.cc</label>
+        <link refid="ScaRecordColData_8cc"/>
+      </node>
+      <node id="150">
+        <label>tables/TaQL/ExprUDFNodeArray.h</label>
+        <link refid="ExprUDFNodeArray_8h"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>tables/DataMan/DataManInfo.cc</label>
+        <link refid="DataManInfo_8cc"/>
+      </node>
+      <node id="208">
+        <label>tables/DataMan/TiledDataStManAccessor.cc</label>
+        <link refid="TiledDataStManAccessor_8cc"/>
+      </node>
+      <node id="98">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="152">
+        <label>tables/TaQL/ExprUnitNode.h</label>
+        <link refid="ExprUnitNode_8h"/>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>tables/Tables/StorageOption.cc</label>
+        <link refid="StorageOption_8cc"/>
+      </node>
+      <node id="248">
+        <label>tables/TaQL/ExprGroup.h</label>
+        <link refid="ExprGroup_8h"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="253" relation="include">
+        </childnode>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>casa/Quanta/MVTime.cc</label>
+        <link refid="MVTime_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/TSMCubeMMap.cc</label>
+        <link refid="TSMCubeMMap_8cc"/>
+      </node>
+      <node id="85">
+        <label>casa/System/Choice.cc</label>
+        <link refid="Choice_8cc"/>
+      </node>
+      <node id="81">
+        <label>tables/Tables/TableTrace.cc</label>
+        <link refid="TableTrace_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/ArrayUtil.h</label>
+        <link refid="ArrayUtil_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>casa/Quanta/MVBaseline.cc</label>
+        <link refid="MVBaseline_8cc"/>
+      </node>
+      <node id="89">
+        <label>casa/Utilities/Precision.h</label>
+        <link refid="Precision_8h"/>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="177">
+        <label>tables/Tables/BaseTabIter.cc</label>
+        <link refid="BaseTabIter_8cc"/>
+      </node>
+      <node id="251">
+        <label>tables/TaQL/ExprGroupAggrFuncArray.h</label>
+        <link refid="ExprGroupAggrFuncArray_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>casa/Quanta/MVDirection.cc</label>
+        <link refid="MVDirection_8cc"/>
+      </node>
+      <node id="39">
+        <label>tables/DataMan/StManAipsIO.cc</label>
+        <link refid="StManAipsIO_8cc"/>
+      </node>
+      <node id="88">
+        <label>casa/Utilities/MUString.cc</label>
+        <link refid="MUString_8cc"/>
+      </node>
+      <node id="221">
+        <label>tables/Tables/TableIterProxy.h</label>
+        <link refid="TableIterProxy_8h"/>
+        <childnode refid="222" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>casa/Quanta/MVFrequency.h</label>
+        <link refid="MVFrequency_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="252">
+        <label>tables/TaQL/ExprUDFNode.cc</label>
+        <link refid="ExprUDFNode_8cc"/>
+      </node>
+      <node id="279">
+        <label>tables/TaQL/UDFBase.cc</label>
+        <link refid="UDFBase_8cc"/>
+      </node>
+      <node id="229">
+        <label>tables/Tables/TableRecordRep.cc</label>
+        <link refid="TableRecordRep_8cc"/>
+      </node>
+      <node id="242">
+        <label>tables/TaQL/TaQLNodeHandler.h</label>
+        <link refid="TaQLNodeHandler_8h"/>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="142">
+        <label>tables/TaQL/ExprGroupAggrFuncArray.cc</label>
+        <link refid="ExprGroupAggrFuncArray_8cc"/>
+      </node>
+      <node id="168">
+        <label>tables/Tables/ConcatTable.h</label>
+        <link refid="ConcatTable_8h"/>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>casa/IO/BucketFile.cc</label>
+        <link refid="BucketFile_8cc"/>
+      </node>
+      <node id="196">
+        <label>tables/DataMan/BitFlagsEngine.cc</label>
+        <link refid="BitFlagsEngine_8cc"/>
+      </node>
+      <node id="172">
+        <label>tables/Tables/MemoryTable.cc</label>
+        <link refid="MemoryTable_8cc"/>
+      </node>
+      <node id="212">
+        <label>tables/Tables/BaseTabIter.h</label>
+        <link refid="BaseTabIter_8h"/>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+      </node>
+      <node id="270">
+        <label>tables/TaQL/ExprNodeSetElem.h</label>
+        <link refid="ExprNodeSetElem_8h"/>
+        <childnode refid="271" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>casa/Quanta/MVDoppler.h</label>
+        <link refid="MVDoppler_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="273">
+        <label>tables/TaQL/ExprNodeSetOpt.h</label>
+        <link refid="ExprNodeSetOpt_8h"/>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>tables/TaQL/ExprDerNodeArray.h</label>
+        <link refid="ExprDerNodeArray_8h"/>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="139">
+        <label>tables/TaQL/ExprConeNode.cc</label>
+        <link refid="ExprConeNode_8cc"/>
+      </node>
+      <node id="75">
+        <label>casa/System/AppInfo.cc</label>
+        <link refid="AppInfo_8cc"/>
+      </node>
+      <node id="20">
+        <label>casa/Arrays/Matrix_tmpl.cc</label>
+        <link refid="Matrix__tmpl_8cc"/>
+      </node>
+      <node id="129">
+        <label>tables/TaQL/ExprDerNodeArray.cc</label>
+        <link refid="ExprDerNodeArray_8cc"/>
+      </node>
+      <node id="126">
+        <label>tables/Tables/TableRow.cc</label>
+        <link refid="TableRow_8cc"/>
+      </node>
+      <node id="55">
+        <label>casa/Quanta/MVRadialVelocity.cc</label>
+        <link refid="MVRadialVelocity_8cc"/>
+      </node>
+      <node id="233">
+        <label>tables/TaQL/ExprDerNode.cc</label>
+        <link refid="ExprDerNode_8cc"/>
+      </node>
+      <node id="147">
+        <label>tables/TaQL/ExprNodeArray.cc</label>
+        <link refid="ExprNodeArray_8cc"/>
+      </node>
+      <node id="230">
+        <label>tables/Tables/TableRow.h</label>
+        <link refid="TableRow_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>casa/Quanta/MVEarthMagnetic.cc</label>
+        <link refid="MVEarthMagnetic_8cc"/>
+      </node>
+      <node id="258">
+        <label>tables/TaQL/RecordExpr.h</label>
+        <link refid="RecordExpr_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+      </node>
+      <node id="200">
+        <label>tables/DataMan/ForwardCol.h</label>
+        <link refid="ForwardCol_8h"/>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>tables/TaQL/ExprNodeSet.cc</label>
+        <link refid="ExprNodeSet_8cc"/>
+      </node>
+      <node id="114">
+        <label>tables/DataMan/TSMIdColumn.cc</label>
+        <link refid="TSMIdColumn_8cc"/>
+      </node>
+      <node id="71">
+        <label>casa/System/AipsrcBool.cc</label>
+        <link refid="AipsrcBool_8cc"/>
+      </node>
+      <node id="11">
+        <label>tables/TaQL/MArrayUtil.h</label>
+        <link refid="MArrayUtil_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="272">
+        <label>tables/TaQL/ExprNodeSetOpt.cc</label>
+        <link refid="ExprNodeSetOpt_8cc"/>
+      </node>
+      <node id="112">
+        <label>tables/DataMan/TiledShapeStMan.cc</label>
+        <link refid="TiledShapeStMan_8cc"/>
+      </node>
+      <node id="117">
+        <label>tables/LogTables/TableLogSink.cc</label>
+        <link refid="TableLogSink_8cc"/>
+      </node>
+      <node id="86">
+        <label>casa/System/PGPlotter.cc</label>
+        <link refid="PGPlotter_8cc"/>
+      </node>
+      <node id="82">
+        <label>casa/System/AipsrcVector.h</label>
+        <link refid="AipsrcVector_8h"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="176">
+        <label>tables/Tables/RefTable.h</label>
+        <link refid="RefTable_8h"/>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>casa/Quanta/MVDouble.cc</label>
+        <link refid="MVDouble_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/TSMCube.cc</label>
+        <link refid="TSMCube_8cc"/>
+      </node>
+      <node id="254">
+        <label>tables/TaQL/TableParseGroupby.h</label>
+        <link refid="TableParseGroupby_8h"/>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>tables/Tables/RowNumbers.cc</label>
+        <link refid="RowNumbers_8cc"/>
+      </node>
+      <node id="239">
+        <label>tables/TaQL/TableParseJoin.h</label>
+        <link refid="TableParseJoin_8h"/>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>tables/TaQL/RecordGram.cc</label>
+        <link refid="RecordGram_8cc"/>
+      </node>
+      <node id="50">
+        <label>casa/Quanta/MVEpoch.h</label>
+        <link refid="MVEpoch_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>tables/Tables/RefRows.h</label>
+        <link refid="RefRows_8h"/>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="174">
+        <label>tables/Tables/PlainColumn.cc</label>
+        <link refid="PlainColumn_8cc"/>
+      </node>
+      <node id="259">
+        <label>tables/TaQL/TableParseProject.h</label>
+        <link refid="TableParseProject_8h"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+      </node>
+      <node id="260">
+        <label>tables/TaQL/TableParseSortKey.h</label>
+        <link refid="TableParseSortKey_8h"/>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>tables/DataMan/VirtualTaQLColumn.cc</label>
+        <link refid="VirtualTaQLColumn_8cc"/>
+      </node>
+      <node id="277">
+        <label>tables/TaQL/TableParseTableList.h</label>
+        <link refid="TableParseTableList_8h"/>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>tables/DataMan/ISMBase.cc</label>
+        <link refid="ISMBase_8cc"/>
+      </node>
+      <node id="56">
+        <label>casa/Quanta/MVPosition.h</label>
+        <link refid="MVPosition_8h"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="14">
+        <label>tables/TaQL/TableParseTableList.cc</label>
+        <link refid="TableParseTableList_8cc"/>
+      </node>
+      <node id="244">
+        <label>tables/TaQL/TaQLJoin.cc</label>
+        <link refid="TaQLJoin_8cc"/>
+      </node>
+      <node id="156">
+        <label>tables/TaQL/TableParseUpdate.cc</label>
+        <link refid="TableParseUpdate_8cc"/>
+      </node>
+      <node id="141">
+        <label>tables/TaQL/ExprGroupAggrFunc.cc</label>
+        <link refid="ExprGroupAggrFunc_8cc"/>
+      </node>
+      <node id="47">
+        <label>casa/Quanta/MVDoppler.cc</label>
+        <link refid="MVDoppler_8cc"/>
+      </node>
+      <node id="28">
+        <label>casa/Containers/RecordRep.cc</label>
+        <link refid="RecordRep_8cc"/>
+      </node>
+      <node id="90">
+        <label>casa/Utilities/Precision.cc</label>
+        <link refid="Precision_8cc"/>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/ArrayUtil2.cc</label>
+        <link refid="ArrayUtil2_8cc"/>
+      </node>
+      <node id="262">
+        <label>tables/TaQL/TaQLResult.h</label>
+        <link refid="TaQLResult_8h"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="265" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>casa/Arrays/Vector_tmpl.cc</label>
+        <link refid="Vector__tmpl_8cc"/>
+      </node>
+      <node id="173">
+        <label>tables/Tables/NullTable.cc</label>
+        <link refid="NullTable_8cc"/>
+      </node>
+      <node id="122">
+        <label>tables/LogTables/TableLogSink.h</label>
+        <link refid="TableLogSink_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+      </node>
+      <node id="143">
+        <label>tables/TaQL/ExprLogicNodeArray.h</label>
+        <link refid="ExprLogicNodeArray_8h"/>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>tables/Tables/TableCopy.h</label>
+        <link refid="TableCopy_8h"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>casa/System/PGPlotterNull.cc</label>
+        <link refid="PGPlotterNull_8cc"/>
+      </node>
+      <node id="153">
+        <label>tables/TaQL/ExprFuncNode.cc</label>
+        <link refid="ExprFuncNode_8cc"/>
+      </node>
+      <node id="45">
+        <label>casa/Quanta/MeasValue.cc</label>
+        <link refid="MeasValue_8cc"/>
+      </node>
+      <node id="206">
+        <label>tables/DataMan/SSMIndStringColumn.cc</label>
+        <link refid="SSMIndStringColumn_8cc"/>
+      </node>
+      <node id="250">
+        <label>tables/TaQL/TableParseGroupby.cc</label>
+        <link refid="TableParseGroupby_8cc"/>
+      </node>
+      <node id="140">
+        <label>tables/TaQL/TableParseFunc.cc</label>
+        <link refid="TableParseFunc_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/Vector.h</label>
+        <link refid="Vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="282" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="283" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="289" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="291" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>tables/TaQL/RecordExpr.cc</label>
+        <link refid="RecordExpr_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="91">
+        <label>casa/Utilities/Sort.cc</label>
+        <link refid="Sort_8cc"/>
+      </node>
+      <node id="231">
+        <label>tables/Tables/TableRowProxy.h</label>
+        <link refid="TableRowProxy_8h"/>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>casa/Quanta/MVuvw.cc</label>
+        <link refid="MVuvw_8cc"/>
+      </node>
+      <node id="23">
+        <label>casa/Arrays/Slice.cc</label>
+        <link refid="Slice_8cc"/>
+      </node>
+      <node id="4">
+        <label>casa/OS/Path.cc</label>
+        <link refid="Path_8cc"/>
+      </node>
+      <node id="290">
+        <label>tables/TaQL/ExprRange.cc</label>
+        <link refid="ExprRange_8cc"/>
+      </node>
+      <node id="44">
+        <label>casa/Quanta/RotMatrix.cc</label>
+        <link refid="RotMatrix_8cc"/>
+      </node>
+      <node id="166">
+        <label>tables/Tables/ColumnsIndexArray.h</label>
+        <link refid="ColumnsIndexArray_8h"/>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>tables/DataMan/ISMColumn.cc</label>
+        <link refid="ISMColumn_8cc"/>
+      </node>
+      <node id="215">
+        <label>tables/Tables/SetupNewTab.cc</label>
+        <link refid="SetupNewTab_8cc"/>
+      </node>
+      <node id="34">
+        <label>casa/OS/DOos.h</label>
+        <link refid="DOos_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tables/TaQL/ExprFuncNodeArray.cc</label>
+        <link refid="ExprFuncNodeArray_8cc"/>
+      </node>
+      <node id="73">
+        <label>casa/System/AppInfo.h</label>
+        <link refid="AppInfo_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="202">
+        <label>tables/DataMan/ForwardColRow.cc</label>
+        <link refid="ForwardColRow_8cc"/>
+      </node>
+      <node id="159">
+        <label>tables/Tables/ArrayColumnFunc.h</label>
+        <link refid="ArrayColumnFunc_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+      </node>
+      <node id="234">
+        <label>tables/TaQL/ExprNodeRep.h</label>
+        <link refid="ExprNodeRep_8h"/>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="268" relation="include">
+        </childnode>
+        <childnode refid="269" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="274" relation="include">
+        </childnode>
+        <childnode refid="276" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+        <childnode refid="278" relation="include">
+        </childnode>
+      </node>
+      <node id="291">
+        <label>tables/TaQL/TaQLShow.h</label>
+        <link refid="TaQLShow_8h"/>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/TSMCubeBuff.cc</label>
+        <link refid="TSMCubeBuff_8cc"/>
+      </node>
+      <node id="162">
+        <label>tables/Tables/ColumnsIndex.h</label>
+        <link refid="ColumnsIndex_8h"/>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>tables/Tables/TableRecord.cc</label>
+        <link refid="TableRecord_8cc"/>
+      </node>
+      <node id="224">
+        <label>tables/Tables/TableLocker.h</label>
+        <link refid="TableLocker_8h"/>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+      </node>
+      <node id="238">
+        <label>tables/TaQL/TaQLJoin.h</label>
+        <link refid="TaQLJoin_8h"/>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+      </node>
+      <node id="276">
+        <label>tables/TaQL/ExprUDFNode.h</label>
+        <link refid="ExprUDFNode_8h"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>tables/Tables/PlainTable.cc</label>
+        <link refid="PlainTable_8cc"/>
+      </node>
+      <node id="271">
+        <label>tables/TaQL/ExprNodeSet.h</label>
+        <link refid="ExprNodeSet_8h"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="216">
+        <label>tables/Tables/SetupNewTab.h</label>
+        <link refid="SetupNewTab_8h"/>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="289">
+        <label>tables/TaQL/ExprRange.h</label>
+        <link refid="ExprRange_8h"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="290" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="274">
+        <label>tables/TaQL/ExprNodeUtil.h</label>
+        <link refid="ExprNodeUtil_8h"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="275" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="220">
+        <label>tables/Tables/TableIter.h</label>
+        <link refid="TableIter_8h"/>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>casa/System/Aipsrc.h</label>
+        <link refid="Aipsrc_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>tables/DataMan/Adios2StManImpl.h</label>
+        <link refid="Adios2StManImpl_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+      </node>
+      <node id="275">
+        <label>tables/TaQL/ExprNodeUtil.cc</label>
+        <link refid="ExprNodeUtil_8cc"/>
+      </node>
+      <node id="204">
+        <label>tables/DataMan/IncrStManAccessor.cc</label>
+        <link refid="IncrStManAccessor_8cc"/>
+      </node>
+      <node id="219">
+        <label>tables/Tables/TableColumn.cc</label>
+        <link refid="TableColumn_8cc"/>
+      </node>
+      <node id="103">
+        <label>tables/DataMan/MSMColumn.cc</label>
+        <link refid="MSMColumn_8cc"/>
+      </node>
+      <node id="63">
+        <label>tables/apps/taql.cc</label>
+        <link refid="taql_8cc"/>
+      </node>
+      <node id="217">
+        <label>tables/Tables/TableAttr.cc</label>
+        <link refid="TableAttr_8cc"/>
+      </node>
+      <node id="99">
+        <label>tables/TaQL/TableParseQuery.cc</label>
+        <link refid="TableParseQuery_8cc"/>
+      </node>
+      <node id="241">
+        <label>tables/TaQL/TableParseQuery.h</label>
+        <link refid="TableParseQuery_8h"/>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+      </node>
+      <node id="184">
+        <label>tables/DataMan/Adios2StManColumn.cc</label>
+        <link refid="Adios2StManColumn_8cc"/>
+      </node>
+      <node id="161">
+        <label>tables/Tables/ColumnSet.cc</label>
+        <link refid="ColumnSet_8cc"/>
+      </node>
+      <node id="27">
+        <label>casa/BasicMath/Random.cc</label>
+        <link refid="Random_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/Tables/ReadAsciiTable.cc</label>
+        <link refid="ReadAsciiTable_8cc"/>
+      </node>
+      <node id="148">
+        <label>tables/TaQL/ExprNodeRecord.h</label>
+        <link refid="ExprNodeRecord_8h"/>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>tables/Tables/ConcatColumn.cc</label>
+        <link refid="ConcatColumn_8cc"/>
+      </node>
+      <node id="36">
+        <label>casa/OS/DOos.cc</label>
+        <link refid="DOos_8cc"/>
+      </node>
+      <node id="213">
+        <label>tables/Tables/TableIter.cc</label>
+        <link refid="TableIter_8cc"/>
+      </node>
+      <node id="54">
+        <label>casa/Quanta/MVFrequency.cc</label>
+        <link refid="MVFrequency_8cc"/>
+      </node>
+      <node id="107">
+        <label>tables/DataMan/SSMStringHandler.cc</label>
+        <link refid="SSMStringHandler_8cc"/>
+      </node>
+      <node id="67">
+        <label>casa/System/Aipsrc.cc</label>
+        <link refid="Aipsrc_8cc"/>
+      </node>
+      <node id="247">
+        <label>tables/TaQL/ExprAggrNode.cc</label>
+        <link refid="ExprAggrNode_8cc"/>
+      </node>
+      <node id="194">
+        <label>tables/DataMan/Adios2StMan.h</label>
+        <link refid="Adios2StMan_8h"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>casa/System/AipsrcVString.cc</label>
+        <link refid="AipsrcVString_8cc"/>
+      </node>
+      <node id="257">
+        <label>tables/LogTables/LogFilterExpr.cc</label>
+        <link refid="LogFilterExpr_8cc"/>
+      </node>
+      <node id="243">
+        <label>tables/TaQL/TableParse.cc</label>
+        <link refid="TableParse_8cc"/>
+      </node>
+      <node id="269">
+        <label>tables/TaQL/ExprMathNode.h</label>
+        <link refid="ExprMathNode_8h"/>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="164">
+        <label>tables/Tables/TableIndexProxy.h</label>
+        <link refid="TableIndexProxy_8h"/>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="137">
+        <label>tables/TaQL/ExprGroup.cc</label>
+        <link refid="ExprGroup_8cc"/>
+      </node>
+      <node id="31">
+        <label>casa/IO/IPositionIO.cc</label>
+        <link refid="IPositionIO_8cc"/>
+      </node>
+      <node id="138">
+        <label>tables/TaQL/ExprConeNode.h</label>
+        <link refid="ExprConeNode_8h"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+      </node>
+      <node id="131">
+        <label>tables/TaQL/ExprNodeRep.cc</label>
+        <link refid="ExprNodeRep_8cc"/>
+      </node>
+      <node id="127">
+        <label>tables/TaQL/ExprNodeArray.h</label>
+        <link refid="ExprNodeArray_8h"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>tables/DataMan/DataManInfo.h</label>
+        <link refid="DataManInfo_8h"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>tables/Tables/TableCopy.cc</label>
+        <link refid="TableCopy_8cc"/>
+      </node>
+      <node id="240">
+        <label>tables/TaQL/TableParseJoin.cc</label>
+        <link refid="TableParseJoin_8cc"/>
+      </node>
+      <node id="125">
+        <label>tables/Tables/ColumnsIndexArray.cc</label>
+        <link refid="ColumnsIndexArray_8cc"/>
+      </node>
+      <node id="183">
+        <label>tables/DataMan/Adios2StMan.cc</label>
+        <link refid="Adios2StMan_8cc"/>
+      </node>
+      <node id="246">
+        <label>tables/TaQL/ExprAggrNode.h</label>
+        <link refid="ExprAggrNode_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>casa/System.h</label>
+        <link refid="System_8h"/>
+      </node>
+      <node id="115">
+        <label>tables/DataMan/VirtScaCol.cc</label>
+        <link refid="VirtScaCol_8cc"/>
+      </node>
+      <node id="267">
+        <label>tables/TaQL/TableParseFunc.h</label>
+        <link refid="TableParseFunc_8h"/>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="264">
+        <label>tables/TaQL.h</label>
+        <link refid="TaQL_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>tables/TaQL/TableExprIdAggr.h</label>
+        <link refid="TableExprIdAggr_8h"/>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="223">
+        <label>tables/Tables/TableKeyword.cc</label>
+        <link refid="TableKeyword_8cc"/>
+      </node>
+      <node id="226">
+        <label>tables/Tables/TableProxy.h</label>
+        <link refid="TableProxy_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>tables/TaQL/ExprMathNode.cc</label>
+        <link refid="ExprMathNode_8cc"/>
+      </node>
+      <node id="69">
+        <label>casa/OS/HostInfo.cc</label>
+        <link refid="HostInfo_8cc"/>
+      </node>
+      <node id="171">
+        <label>tables/Tables/MemoryTable.h</label>
+        <link refid="MemoryTable_8h"/>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="256">
+        <label>tables/TaQL/ExprNode.h</label>
+        <link refid="ExprNode_8h"/>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="260" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="262" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>tables/TaQL/ExprNode.cc</label>
+        <link refid="ExprNode_8cc"/>
+      </node>
+      <node id="104">
+        <label>tables/DataMan/SSMColumn.cc</label>
+        <link refid="SSMColumn_8cc"/>
+      </node>
+      <node id="198">
+        <label>tables/DataMan/DataManager.cc</label>
+        <link refid="DataManager_8cc"/>
+      </node>
+      <node id="151">
+        <label>tables/TaQL/ExprUDFNodeArray.cc</label>
+        <link refid="ExprUDFNodeArray_8cc"/>
+      </node>
+      <node id="149">
+        <label>tables/TaQL/ExprNodeRecord.cc</label>
+        <link refid="ExprNodeRecord_8cc"/>
+      </node>
+      <node id="288">
+        <label>tables/Tables/TVecTemp.h</label>
+        <link refid="TVecTemp_8h"/>
+      </node>
+      <node id="281">
+        <label>tables/TaQL/TableParseUtil.h</label>
+        <link refid="TableParseUtil_8h"/>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="145">
+        <label>tables/TaQL/ExprMathNodeArray.h</label>
+        <link refid="ExprMathNodeArray_8h"/>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>tables/DataMan/TiledFileHelper.cc</label>
+        <link refid="TiledFileHelper_8cc"/>
+      </node>
+      <node id="163">
+        <label>tables/Tables/ColumnsIndex.cc</label>
+        <link refid="ColumnsIndex_8cc"/>
+      </node>
+      <node id="105">
+        <label>tables/DataMan/SSMIndex.h</label>
+        <link refid="SSMIndex_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>casa/Quanta/MVEarthMagnetic.h</label>
+        <link refid="MVEarthMagnetic_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>casa/System/AipsrcValue2.cc</label>
+        <link refid="AipsrcValue2_8cc"/>
+      </node>
+      <node id="222">
+        <label>tables/Tables/TableIterProxy.cc</label>
+        <link refid="TableIterProxy_8cc"/>
+      </node>
+      <node id="158">
+        <label>tables/Tables/ArrayColumnBase.cc</label>
+        <link refid="ArrayColumnBase_8cc"/>
+      </node>
+      <node id="70">
+        <label>casa/System/AipsrcValue.h</label>
+        <link refid="AipsrcValue_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>casa/Quanta/MVDouble.h</label>
+        <link refid="MVDouble_8h"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="284">
+        <label>tables/Tables/TableVector.h</label>
+        <link refid="TableVector_8h"/>
+        <childnode refid="285" relation="include">
+        </childnode>
+        <childnode refid="286" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="286">
+        <label>tables/Tables/TabVecMath.h</label>
+        <link refid="TabVecMath_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>tables/TaQL/ExprNodeSetElem.cc</label>
+        <link refid="ExprNodeSetElem_8cc"/>
+      </node>
+      <node id="209">
+        <label>tables/DataMan/TiledStManAccessor.cc</label>
+        <link refid="TiledStManAccessor_8cc"/>
+      </node>
+      <node id="170">
+        <label>tables/Tables/TableUtil.cc</label>
+        <link refid="TableUtil_8cc"/>
+      </node>
+      <node id="165">
+        <label>tables/Tables/TableIndexProxy.cc</label>
+        <link refid="TableIndexProxy_8cc"/>
+      </node>
+      <node id="32">
+        <label>casa/Json/JsonValue.cc</label>
+        <link refid="JsonValue_8cc"/>
+      </node>
+      <node id="124">
+        <label>tables/Tables/ArrayColumn_tmpl.cc</label>
+        <link refid="ArrayColumn__tmpl_8cc"/>
+      </node>
+      <node id="201">
+        <label>tables/DataMan/ForwardColRow.h</label>
+        <link refid="ForwardColRow_8h"/>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+      <node id="214">
+        <label>tables/Tables/ReadAsciiTable.h</label>
+        <link refid="ReadAsciiTable_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>tables/DataMan/TiledColumnStMan.cc</label>
+        <link refid="TiledColumnStMan_8cc"/>
+      </node>
+      <node id="188">
+        <label>tables/Tables/RefRows.cc</label>
+        <link refid="RefRows_8cc"/>
+      </node>
+      <node id="207">
+        <label>tables/DataMan/StandardStManAccessor.cc</label>
+        <link refid="StandardStManAccessor_8cc"/>
+      </node>
+      <node id="74">
+        <label>casa/Quanta/MVAngle.cc</label>
+        <link refid="MVAngle_8cc"/>
+      </node>
+      <node id="121">
+        <label>tables/Dysco/tests/testdyscostman.cc</label>
+        <link refid="testdyscostman_8cc"/>
+      </node>
+      <node id="282">
+        <label>tables/Tables/TableDesc.cc</label>
+        <link refid="TableDesc_8cc"/>
+      </node>
+      <node id="278">
+        <label>tables/TaQL/UDFBase.h</label>
+        <link refid="UDFBase_8h"/>
+        <childnode refid="276" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="279" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>casa/Quanta/Euler.cc</label>
+        <link refid="Euler_8cc"/>
+      </node>
+      <node id="18">
+        <label>casa/Arrays/Matrix2Math.cc</label>
+        <link refid="Matrix2Math_8cc"/>
+      </node>
+      <node id="280">
+        <label>tables/TaQL/RecordGram.h</label>
+        <link refid="RecordGram_8h"/>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+      </node>
+      <node id="263">
+        <label>tables/TaQL/TableParse.h</label>
+        <link refid="TableParse_8h"/>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>casa/Arrays/VectorIter.h</label>
+        <link refid="VectorIter_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>casa/Containers/ValueHolderRep.cc</label>
+        <link refid="ValueHolderRep_8cc"/>
+      </node>
+      <node id="182">
+        <label>tables/DataMan/Adios2StManColumn.h</label>
+        <link refid="Adios2StManColumn_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>tables/Tables/BaseTable.cc</label>
+        <link refid="BaseTable_8cc"/>
+      </node>
+      <node id="33">
+        <label>casa/OS/Directory.cc</label>
+        <link refid="Directory_8cc"/>
+      </node>
+      <node id="123">
+        <label>tables/LogTables/LoggerHolder.cc</label>
+        <link refid="LoggerHolder_8cc"/>
+      </node>
+      <node id="180">
+        <label>tables/Tables/RowNumbers.h</label>
+        <link refid="RowNumbers_8h"/>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>casa/Arrays/VectorSTLIterator.h</label>
+        <link refid="VectorSTLIterator_8h"/>
+      </node>
+      <node id="185">
+        <label>tables/DataMan/DataManagerColumn.cc</label>
+        <link refid="DataManagerColumn_8cc"/>
+      </node>
+      <node id="186">
+        <label>tables/Tables/ConcatRows.h</label>
+        <link refid="ConcatRows_8h"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>casa/System/AipsrcVBool.cc</label>
+        <link refid="AipsrcVBool_8cc"/>
+      </node>
+      <node id="80">
+        <label>tables/Tables/TableLock.cc</label>
+        <link refid="TableLock_8cc"/>
+      </node>
+      <node id="199">
+        <label>tables/DataMan/ForwardCol.cc</label>
+        <link refid="ForwardCol_8cc"/>
+      </node>
+      <node id="155">
+        <label>tables/TaQL/ExprUnitNode.cc</label>
+        <link refid="ExprUnitNode_8cc"/>
+      </node>
+      <node id="15">
+        <label>tables/TaQL/TableParseUtil.cc</label>
+        <link refid="TableParseUtil_8cc"/>
+      </node>
+      <node id="232">
+        <label>tables/Tables/TableUtil.h</label>
+        <link refid="TableUtil_8h"/>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="197">
+        <label>tables/DataMan/DataManAccessor.cc</label>
+        <link refid="DataManAccessor_8cc"/>
+      </node>
+      <node id="65">
+        <label>casa/Quanta/QuantumHolder.cc</label>
+        <link refid="QuantumHolder_8cc"/>
+      </node>
+      <node id="38">
+        <label>tables/DataMan/SSMBase.cc</label>
+        <link refid="SSMBase_8cc"/>
+      </node>
+      <node id="245">
+        <label>tables/TaQL/ExprFuncNode.h</label>
+        <link refid="ExprFuncNode_8h"/>
+        <childnode refid="246" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>tables/LogTables/NewFile.cc</label>
+        <link refid="NewFile_8cc"/>
+      </node>
+      <node id="113">
+        <label>tables/DataMan/TSMDataColumn.cc</label>
+        <link refid="TSMDataColumn_8cc"/>
+      </node>
+      <node id="101">
+        <label>tables/TaQL/TaQLNodeHandler.cc</label>
+        <link refid="TaQLNodeHandler_8cc"/>
+      </node>
+      <node id="22">
+        <label>casa/Quanta/MVPosition.cc</label>
+        <link refid="MVPosition_8cc"/>
+      </node>
+      <node id="285">
+        <label>tables/Tables/TabVecLogic.h</label>
+        <link refid="TabVecLogic_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>casa/Quanta/Euler.h</label>
+        <link refid="Euler_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="261">
+        <label>tables/TaQL/TableParseUpdate.h</label>
+        <link refid="TableParseUpdate_8h"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>casa/Quanta/MVEpoch.cc</label>
+        <link refid="MVEpoch_8cc"/>
+      </node>
+      <node id="169">
+        <label>tables/Tables/ConcatTable.cc</label>
+        <link refid="ConcatTable_8cc"/>
+      </node>
+      <node id="157">
+        <label>tables/Tables/ArrayColumnBase.h</label>
+        <link refid="ArrayColumnBase_8h"/>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
+        <label>tables/apps/showtableinfo.cc</label>
+        <link refid="showtableinfo_8cc"/>
+      </node>
+      <node id="218">
+        <label>tables/Tables/TableCache.cc</label>
+        <link refid="TableCache_8cc"/>
+      </node>
+      <node id="108">
+        <label>tables/DataMan/StManColumn.cc</label>
+        <link refid="StManColumn_8cc"/>
+      </node>
+      <node id="227">
+        <label>tables/Tables/TableRowProxy.cc</label>
+        <link refid="TableRowProxy_8cc"/>
+      </node>
+      <node id="100">
+        <label>tables/TaQL/TableParseProject.cc</label>
+        <link refid="TableParseProject_8cc"/>
+      </node>
+      <node id="135">
+        <label>tables/TaQL/ExprAggrNodeArray.h</label>
+        <link refid="ExprAggrNodeArray_8h"/>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>tables/Tables/Table.h</label>
+        <link refid="Table_8h"/>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+        <childnode refid="281" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+        <childnode refid="278" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>casa/Quanta/MVuvw.h</label>
+        <link refid="MVuvw_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>casa/Quanta/MVDirection.h</label>
+        <link refid="MVDirection_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>casa/Inputs/Input.cc</label>
+        <link refid="Input_8cc"/>
+      </node>
+      <node id="203">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>tables/TaQL/ExprAggrNodeArray.cc</label>
+        <link refid="ExprAggrNodeArray_8cc"/>
+      </node>
+      <node id="5">
+        <label>tables/apps/tablefromascii.cc</label>
+        <link refid="tablefromascii_8cc"/>
+      </node>
+      <node id="255">
+        <label>tables/TaQL/TableParseSortKey.cc</label>
+        <link refid="TableParseSortKey_8cc"/>
+      </node>
+      <node id="178">
+        <label>tables/Tables/RefTable.cc</label>
+        <link refid="RefTable_8cc"/>
+      </node>
+      <node id="97">
+        <label>tables/Tables/Table.cc</label>
+        <link refid="Table_8cc"/>
+      </node>
+      <node id="210">
+        <label>tables/DataMan/TSMFile.cc</label>
+        <link refid="TSMFile_8cc"/>
+      </node>
+      <node id="66">
+        <label>casa/Quanta/RotMatrix.h</label>
+        <link refid="RotMatrix_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="160">
+        <label>tables/Tables/ArrColData.cc</label>
+        <link refid="ArrColData_8cc"/>
+      </node>
+      <node id="134">
+        <label>tables/TaQL/ExprFuncNodeArray.h</label>
+        <link refid="ExprFuncNodeArray_8h"/>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>casa/Arrays/LogiVector.h</label>
+        <link refid="LogiVector_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>tables/Tables/ArrayColumn.h</label>
+        <link refid="ArrayColumn_8h"/>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1Vector" prot="public">casacore::Vector</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>Vector.h:<sp/>A<sp/>1-D<sp/>Specialization<sp/>of<sp/>the<sp/>Array<sp/>Class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1996,1998,1999,2000,2001,2002,2003</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_VECTOR_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_VECTOR_2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Array_8h" kindref="compound">Array.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#Begin<sp/>namespace<sp/>casacore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;<sp/>A<sp/>1-D<sp/>Specialization<sp/>of<sp/>the<sp/>Array<sp/>class<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;UNKNOWN&quot;<sp/>date=&quot;before2004/08/25&quot;<sp/>tests=&quot;&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector<sp/>objects<sp/>are<sp/>one-dimensional<sp/>specializations<sp/>(e.g.,<sp/>more<sp/>convenient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and<sp/>efficient<sp/>indexing)<sp/>of<sp/>the<sp/>general<sp/>Array<sp/>class.<sp/>You<sp/>might<sp/>also<sp/>want</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>look<sp/>at<sp/>the<sp/>Array<sp/>documentation<sp/>to<sp/>see<sp/>inherited<sp/>functionality.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generally<sp/>the<sp/>member<sp/>functions<sp/>of<sp/>Array<sp/>are<sp/>also<sp/>available<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector<sp/>versions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>take<sp/>an<sp/>integer<sp/>where<sp/>the<sp/>array<sp/>needs<sp/>an<sp/>IPosition.<sp/>Since<sp/>the<sp/>Vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>one-dimensional,<sp/>the<sp/>IPositions<sp/>are<sp/>overkill,<sp/>although<sp/>you<sp/>may</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>use<sp/>those<sp/>versions<sp/>if<sp/>you<sp/>want<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector&lt;int&gt;<sp/>vi(100);<sp/><sp/>//<sp/>Vector<sp/>100<sp/>elements<sp/>long.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>vi.resize(50);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>only<sp/>50<sp/>long.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Slices<sp/>may<sp/>be<sp/>taken<sp/>with<sp/>the<sp/>Slice<sp/>class.<sp/>To<sp/>take<sp/>a<sp/>slice,<sp/>one<sp/>&quot;indexes&quot;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>with<sp/>Slice(start,<sp/>length,<sp/>inc)<sp/>where<sp/>end<sp/>and<sp/>inc<sp/>are<sp/>optional.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector&lt;float&gt;<sp/>vf(100);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>vf(Slice(0,50,2))<sp/>=<sp/>vf(Slice(1,50,2));<sp/><sp/>//<sp/>Copy<sp/>values<sp/>from<sp/>odd<sp/>onto<sp/>even</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector&lt;float&gt;<sp/>firstHalf,<sp/>secondHalf;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>firstHalf.reference(vf(Slice(0,50)));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>secondHalf.reference(vf(Slice(50,50)));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//<sp/>Now<sp/>we<sp/>have<sp/>aliases<sp/>for<sp/>two<sp/>slices<sp/>into<sp/>the<sp/>Vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Element-by-element<sp/>arithmetic<sp/>and<sp/>logical<sp/>operations<sp/>are<sp/>available<sp/>(in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>aips/ArrayMath.h<sp/>and<sp/>aips/ArrayLogical.h)<sp/>as<sp/>well<sp/>as<sp/>dot<sp/>and<sp/>cross</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>products<sp/>(in<sp/>aips/MatrixMath.h).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>Vector<sp/>can<sp/>be<sp/>constructed<sp/>from<sp/>an<sp/>STL<sp/>&lt;src&gt;vector&lt;/src&gt;.<sp/>The<sp/>reverse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>operation<sp/>(&lt;src&gt;Array::tovector()&lt;/src&gt;)<sp/>can<sp/>construct<sp/>an<sp/>STL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;vector&lt;/src&gt;<sp/>from<sp/>any<sp/>Array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=tip&gt;<sp/>To<sp/>create<sp/>any<sp/>other<sp/>STL<sp/>container<sp/>from<sp/>an<sp/>Array<sp/>(or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>reverse),<sp/>always<sp/>create<sp/>from/to<sp/>a<sp/>&lt;src&gt;vector&lt;/src&gt;,<sp/>and<sp/>use<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>range<sp/>constructor<sp/>to<sp/>create<sp/>from/to<sp/>others<sp/>(like<sp/>set,<sp/>list,<sp/>deque).<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>As<sp/>with<sp/>the<sp/>Arrays,<sp/>if<sp/>the<sp/>preprocessor<sp/>symbol<sp/>AIPS_DEBUG<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>defined<sp/>at<sp/>compile<sp/>time<sp/>invariants<sp/>will<sp/>be<sp/>checked<sp/>on<sp/>entry<sp/>to<sp/>most</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>member<sp/>functions.<sp/>Additionally,<sp/>if<sp/>AIPS_ARRAY_INDEX_CHECK<sp/>is<sp/>defined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>index<sp/>operations<sp/>will<sp/>be<sp/>bounds-checked.<sp/>Neither<sp/>of<sp/>these<sp/>should</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>be<sp/>defined<sp/>for<sp/>production<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classcasacore_1_1Vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt;T&gt;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>zero-length<sp/>Vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classcasacore_1_1Vector_1ac9c52fac3c3bcfdd2e5c0413f7da9248" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ac9c52fac3c3bcfdd2e5c0413f7da9248" kindref="member">Vector</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>Vector<sp/>with<sp/>a<sp/>defined<sp/>length<sp/>and<sp/>origin<sp/>of<sp/>zero.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classcasacore_1_1Vector_1a54766ef07295afdf7610295f80a8715c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a54766ef07295afdf7610295f80a8715c" kindref="member">Vector</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Length);</highlight></codeline>
+<codeline lineno="90" refid="classcasacore_1_1Vector_1a5fa796ad390a9fe8ae3fc35e5558c4e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a5fa796ad390a9fe8ae3fc35e5558c4e3" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>Length);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>Vector<sp/>with<sp/>a<sp/>defined<sp/>length<sp/>and<sp/>origin<sp/>of<sp/>zero.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>it<sp/>with<sp/>the<sp/>initial<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classcasacore_1_1Vector_1ad8b6388e830381b7c3d4e911ea92214b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ad8b6388e830381b7c3d4e911ea92214b" kindref="member">Vector</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Length,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;initialValue);</highlight></codeline>
+<codeline lineno="97" refid="classcasacore_1_1Vector_1aa32dae1f573ff5509263eb6e831d75b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1aa32dae1f573ff5509263eb6e831d75b5" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>Length,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;initialValue);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>uninitialized<sp/>Vector<sp/>with<sp/>a<sp/>defined<sp/>length.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classcasacore_1_1Vector_1ae92fc4fe690f854b812837f36f4096e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ae92fc4fe690f854b812837f36f4096e0" kindref="member">Vector</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>Length,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;::uninitializedType</ref>);</highlight></codeline>
+<codeline lineno="103" refid="classcasacore_1_1Vector_1acaf05aeb81fb6546614a9fcb3f81696a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1acaf05aeb81fb6546614a9fcb3f81696a" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>&amp;<sp/>Length,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;::uninitializedType</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Vector<sp/>from<sp/>the<sp/>given<sp/>std::vector<sp/>&quot;other.&quot;<sp/>Make<sp/>it<sp/>length<sp/>&quot;nr&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>copy<sp/>over<sp/>that<sp/>many<sp/>elements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>used<sp/>to<sp/>take<sp/>a<sp/>&apos;Block&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classcasacore_1_1Vector_1a1b5c6e8bd04ed9bf939e1a7fba1ed782" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a1b5c6e8bd04ed9bf939e1a7fba1ed782" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;other,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>nr);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Vector<sp/>of<sp/>length<sp/>other.size()<sp/>and<sp/>copy<sp/>over<sp/>its<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>used<sp/>to<sp/>take<sp/>a<sp/>&apos;Block&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classcasacore_1_1Vector_1a891a229322e3b7947149a8fcc1aad766" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a891a229322e3b7947149a8fcc1aad766" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;other);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Vector<sp/>from<sp/>an<sp/>initializer<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classcasacore_1_1Vector_1a21ef76306c8cab4c2ecf939f06df8a1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a21ef76306c8cab4c2ecf939f06df8a1c" kindref="member">Vector</ref>(std::initializer_list&lt;T&gt;<sp/>list);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>reference<sp/>to<sp/>other.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classcasacore_1_1Vector_1aded02d0bbea8bf97a9f60623bec3185e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1aded02d0bbea8bf97a9f60623bec3185e" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classcasacore_1_1Vector_1a183ddc5c5c846e0d10ffce1b565764d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a183ddc5c5c846e0d10ffce1b565764d4" kindref="member">Vector</ref>(<ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;&amp;<sp/>source)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>other<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>always<sp/>possible<sp/>if<sp/>the<sp/>array<sp/>has<sp/>zero<sp/>or<sp/>one<sp/>axes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>it<sp/>has<sp/>&gt;<sp/>1<sp/>axes,<sp/>it<sp/>is<sp/>only<sp/>possible<sp/>if<sp/>the<sp/>array<sp/>has<sp/>at<sp/>most</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>one<sp/>axis<sp/>with<sp/>length<sp/>&gt;<sp/>1.<sp/>In<sp/>that<sp/>case<sp/>the<sp/>degenerated<sp/>axes<sp/>are<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classcasacore_1_1Vector_1a2da64a1c061b1e2628f745cc9ec4e55c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a2da64a1c061b1e2628f745cc9ec4e55c" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>Vector<sp/>of<sp/>a<sp/>given<sp/>shape<sp/>from<sp/>a<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classcasacore_1_1Vector_1a9b1a93b1e1801725054ffec06a51e8e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a9b1a93b1e1801725054ffec06a51e8e2" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;<ref refid="classcasacore_1_1Vector_1ade396b8bdd1c35919aaa1385799d7dac" kindref="member">shape</ref>,<sp/>T<sp/>*storage,<sp/><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534b" kindref="member">StorageInitPolicy</ref><sp/>policy<sp/>=<sp/><ref refid="namespacecasacore_1a44401e80192e152e570fc445a95f534ba46b2e4579af5e1f449bb55cfd9f1c9bc" kindref="member">COPY</ref>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>Vector<sp/>of<sp/>a<sp/>given<sp/>shape<sp/>from<sp/>a<sp/>pointer.<sp/>Because<sp/>the<sp/>pointer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>const,<sp/>a<sp/>copy<sp/>is<sp/>always<sp/>made.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classcasacore_1_1Vector_1a3bfad889efe10068ce185d0c0e35ec56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a3bfad889efe10068ce185d0c0e35ec56" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;<ref refid="classcasacore_1_1Vector_1ade396b8bdd1c35919aaa1385799d7dac" kindref="member">shape</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>*storage);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputIterator&gt;</highlight></codeline>
+<codeline lineno="137" refid="classcasacore_1_1Vector_1ac05c42f05bdc0e2631207eccd32a714b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ac05c42f05bdc0e2631207eccd32a714b" kindref="member">Vector</ref>(InputIterator<sp/>startIter,<sp/>InputIterator<sp/>endIter);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Vector<sp/>from<sp/>an<sp/>STL<sp/>vector<sp/>(see<sp/>&lt;src&gt;tovector()&lt;/src&gt;<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=Array&gt;Array&lt;/linkto&gt;<sp/><sp/>for<sp/>the<sp/>reverse<sp/>operation).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=tip&gt;<sp/>Both<sp/>this<sp/>constructor<sp/>and<sp/>the<sp/>tovector()<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>defined<sp/>in<sp/>&lt;src&gt;Vector2.cc&lt;/src&gt;.<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>does<sp/>implicit<sp/>promotion/demotion<sp/>of<sp/>the<sp/>type<sp/>U<sp/>if<sp/>different<sp/>from<sp/>T.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="145" refid="classcasacore_1_1Vector_1ad36616f21dcc87edc4838edac6fc730a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1ad36616f21dcc87edc4838edac6fc730a" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;U,<sp/>V&gt;<sp/>&amp;other);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>Vector<sp/>from<sp/>a<sp/>container<sp/>iterator<sp/>and<sp/>its<sp/>length.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;note&gt;<sp/>The<sp/>length<sp/>is<sp/>used<sp/>instead<sp/>of<sp/>last,<sp/>because<sp/>the<sp/>distance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>function<sp/>needed<sp/>to<sp/>calculate<sp/>the<sp/>length<sp/>can<sp/>be<sp/>expensive.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;A<sp/>third<sp/>dummy<sp/>argument<sp/>is<sp/>unfortunately<sp/>needed<sp/>to<sp/>avoid<sp/>ambiguity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>another<sp/>Vector<sp/>constructor<sp/>(taking<sp/>two<sp/>uInts).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Iterator&gt;</highlight></codeline>
+<codeline lineno="154" refid="classcasacore_1_1Vector_1a7f7e0ef03b1c1ff118b3305009fe1ffd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1a7f7e0ef03b1c1ff118b3305009fe1ffd" kindref="member">Vector</ref>(Iterator<sp/>first,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1ArrayBase_1a6d6fb11ed68abc6a6f190b2966e0fa16" kindref="member">size</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dummy);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Resize<sp/>this<sp/>Vector<sp/>to<sp/>the<sp/>given<sp/>length.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>copyValues<sp/>flag<sp/>is<sp/>false.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Note<sp/>that<sp/>the<sp/>3rd<sp/>resize<sp/>function<sp/>is<sp/>necessary,<sp/>because<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>function<sp/>is<sp/>virtual<sp/>in<sp/>the<sp/>base<sp/>class<sp/>(otherwise<sp/>it<sp/>would</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>be<sp/>hidden).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Resize<sp/>without<sp/>argument<sp/>is<sp/>equal<sp/>to<sp/>resize(0,<sp/>false).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;::resize</ref>;</highlight></codeline>
+<codeline lineno="164" refid="classcasacore_1_1Vector_1a37b4c2a2f34fac8e00cb035e25f5d5a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a37b4c2a2f34fac8e00cb035e25f5d5a6" kindref="member">resize</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copyValues=</highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len<sp/>!=<sp/>this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a6ac6abf9a184f4e270ff4a36d0be7f30" kindref="member">nelements</ref>())<sp/><ref refid="classcasacore_1_1Array_1ab41051812dde58e2e343c3860433bbf3" kindref="member">resize</ref>(<ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref>(1,len),<sp/>copyValues);<sp/>}</highlight></codeline>
+<codeline lineno="166" refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a2c22e8520f4813bc94d48ef4cc25ef6e" kindref="member">resize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copyValues=</highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>final<sp/>override;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assign<sp/>to<sp/>this<sp/>Vector.<sp/>If<sp/>this<sp/>Vector<sp/>is<sp/>zero-length,<sp/>then<sp/>resize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>be<sp/>the<sp/>same<sp/>size<sp/>as<sp/>other.<sp/>Otherwise<sp/>this<sp/>and<sp/>other<sp/>have<sp/>to<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>conformant<sp/>(same<sp/>size).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;Note<sp/>that<sp/>the<sp/>assign<sp/>function<sp/>can<sp/>be<sp/>used<sp/>to<sp/>assign<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-conforming<sp/>vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>unlike<sp/>Array,<sp/>a<sp/>Vector<sp/>assign<sp/>to<sp/>an<sp/>empty<sp/>Vector<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>create<sp/>a<sp/>reference<sp/>but<sp/>does<sp/>a<sp/>value<sp/>copy<sp/>of<sp/>the<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>should<sp/>be<sp/>made<sp/>consistent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>using<sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt;T&gt;::<ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>;</highlight></codeline>
+<codeline lineno="179" refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt;T&gt;&amp;<sp/><ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>(const<sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt;T&gt;&amp;<sp/>source)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>assign_conforming_implementation(source,<sp/>std::is_copy_assignable&lt;T&gt;());</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183" refid="classcasacore_1_1Vector_1a36463e2ee218f8aefbc738bbda9da5d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1a36463e2ee218f8aefbc738bbda9da5d0" kindref="member">assign_conforming</ref>(<ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>source<sp/>must<sp/>be<sp/>a<sp/>1-dimensional<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classcasacore_1_1Vector_1a5123b9028e8b88cc9d9096eb61512688" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1a5123b9028e8b88cc9d9096eb61512688" kindref="member">assign_conforming</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref>&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="186" refid="classcasacore_1_1Vector_1a9c8807e284f0cd0d043d13d6cc628306" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1a9c8807e284f0cd0d043d13d6cc628306" kindref="member">assign_conforming</ref>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref>&amp;&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;::operator</ref>=;</highlight></codeline>
+<codeline lineno="190" refid="classcasacore_1_1Vector_1a49bcc192c541188f6afe783f80915472" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1a49bcc192c541188f6afe783f80915472" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/>source)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>(source);<sp/>}</highlight></codeline>
+<codeline lineno="192" refid="classcasacore_1_1Vector_1ab1956b856b0a210e1651767f7f808d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1ab1956b856b0a210e1651767f7f808d09" kindref="member">operator=</ref>(<ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;&amp;<sp/>source)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>(std::move(source));<sp/>}</highlight></codeline>
+<codeline lineno="194" refid="classcasacore_1_1Vector_1af6f9e2cf6ab09acb13da7af17aeca803" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1af6f9e2cf6ab09acb13da7af17aeca803" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref>&amp;<sp/>source)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>(source);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="196" refid="classcasacore_1_1Vector_1a103db09c7b82765acfeb1eddda279748" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/><ref refid="classcasacore_1_1Vector_1a103db09c7b82765acfeb1eddda279748" kindref="member">operator=</ref>(<ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref>&amp;&amp;<sp/>source)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><ref refid="classcasacore_1_1Vector_1ad61a71fe538ac4572d03c6b9a7f6db11" kindref="member">assign_conforming</ref>(std::move(source));<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>a<sp/>Vector<sp/>to<sp/>a<sp/>Block,<sp/>resizing<sp/>the<sp/>block<sp/>and<sp/>copying<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>done<sp/>this<sp/>way<sp/>to<sp/>avoid<sp/>having<sp/>the<sp/>simpler<sp/>Block<sp/>class<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>containing<sp/>dependencies<sp/>on<sp/>the<sp/>Vector<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>toBlock(Block&lt;T&gt;<sp/>&amp;other)<sp/>const;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Single-pixel<sp/>addressing.<sp/>If<sp/>AIPS_ARRAY_INDEX_CHECK<sp/>is<sp/>defined,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bounds<sp/>checking<sp/>is<sp/>performed<sp/>(not<sp/>for<sp/>[])..</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classcasacore_1_1Vector_1aaf7063290a9dcd4c34f84229ebf0fb58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1aaf7063290a9dcd4c34f84229ebf0fb58" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a7bb4791a0a456441f19d97c36ce836b1" kindref="member">contiguous_p</ref><sp/><sp/>?<sp/><sp/>this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref>[index]<sp/>:<sp/>this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref>[index*this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a83d5bbd97070fc1e0c5f5a5596c247b0" kindref="member">inc_p</ref>(0)]);<sp/>}</highlight></codeline>
+<codeline lineno="209" refid="classcasacore_1_1Vector_1abbbb62451dd09d2321eeb2f0c6b13895" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1abbbb62451dd09d2321eeb2f0c6b13895" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="210"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a7bb4791a0a456441f19d97c36ce836b1" kindref="member">contiguous_p</ref><sp/><sp/>?<sp/><sp/>this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref>[index]<sp/>:<sp/>this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref>[index*this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a83d5bbd97070fc1e0c5f5a5596c247b0" kindref="member">inc_p</ref>(0)]);<sp/>}</highlight></codeline>
+<codeline lineno="211" refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;i)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(i);<sp/>}</highlight></codeline>
+<codeline lineno="213" refid="classcasacore_1_1Vector_1a8209cc5ffe16601af6b4f8181ec3fc17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1a8209cc5ffe16601af6b4f8181ec3fc17" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;i)</highlight><highlight class="keyword"><sp/>const<sp/></highlight></codeline>
+<codeline lineno="214"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(i);<sp/>}</highlight></codeline>
+<codeline lineno="215" refid="classcasacore_1_1Vector_1ac47df608e3853826090ca30a576c4e9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1ac47df608e3853826090ca30a576c4e9e" kindref="member">operator()</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(AIPS_ARRAY_INDEX_CHECK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a5adffbe5b38cbe247f607e1577c22ac3" kindref="member">validateIndex</ref>(index);<sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Throws<sp/>an<sp/>exception<sp/>on<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*(this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref><sp/>+<sp/>index*this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a83d5bbd97070fc1e0c5f5a5596c247b0" kindref="member">inc_p</ref>(0));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classcasacore_1_1Vector_1a06f4cf1445d2353e5a201c9b983d05ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="classcasacore_1_1Vector_1a06f4cf1445d2353e5a201c9b983d05ab" kindref="member">operator()</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="224"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(AIPS_ARRAY_INDEX_CHECK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a5adffbe5b38cbe247f607e1577c22ac3" kindref="member">validateIndex</ref>(index);<sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Throws<sp/>an<sp/>exception<sp/>on<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*(this-&gt;<ref refid="classcasacore_1_1Array_1a27c874b43e689bf220263aff190b926d" kindref="member">begin_p</ref><sp/>+<sp/>index*this-&gt;<ref refid="classcasacore_1_1ArrayBase_1a83d5bbd97070fc1e0c5f5a5596c247b0" kindref="member">inc_p</ref>(0));</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Take<sp/>a<sp/>slice<sp/>of<sp/>this<sp/>vector.<sp/>Slices<sp/>are<sp/>always<sp/>indexed<sp/>starting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>at<sp/>zero.<sp/>This<sp/>uses<sp/>reference<sp/>semantics,<sp/>i.e.<sp/>changing<sp/>a<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>slice<sp/>changes<sp/>the<sp/>original.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vector&lt;double&gt;<sp/>vd(100);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>//...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>vd(Slice(0,10))<sp/>=<sp/>-1.0;<sp/>//<sp/>First<sp/>10<sp/>elements<sp/>of<sp/>vd<sp/>set<sp/>to<sp/>-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="classcasacore_1_1Vector_1aeb32dd3a8e8bcccd3263e7f1bdbf1005" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1aeb32dd3a8e8bcccd3263e7f1bdbf1005" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice" kindref="compound">Slice</ref><sp/>&amp;slice);</highlight></codeline>
+<codeline lineno="242" refid="classcasacore_1_1Vector_1a72a2a6ffc052c7db2f24dd72d5568945" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a72a2a6ffc052c7db2f24dd72d5568945" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slice" kindref="compound">Slice</ref><sp/>&amp;slice)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Slice<sp/>using<sp/>IPositions.<sp/>Required<sp/>to<sp/>be<sp/>defined,<sp/>otherwise<sp/>the<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>class<sp/>versions<sp/>are<sp/>hidden.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classcasacore_1_1Vector_1a8e405106fb68b44d8b6a6ea6c39fea2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a8e405106fb68b44d8b6a6ea6c39fea2c" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;blc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;trc,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;incr)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(blc,trc,incr);<sp/>}</highlight></codeline>
+<codeline lineno="251" refid="classcasacore_1_1Vector_1ab482ea410a8f58b74174ba82f6a67d02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1ab482ea410a8f58b74174ba82f6a67d02" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;blc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;trc,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;incr)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="253"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(blc,trc,incr);<sp/>}</highlight></codeline>
+<codeline lineno="254" refid="classcasacore_1_1Vector_1ae6de88d623394283f96dada4cabbb489" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1ae6de88d623394283f96dada4cabbb489" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;blc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;trc)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(blc,trc);<sp/>}</highlight></codeline>
+<codeline lineno="256" refid="classcasacore_1_1Vector_1a358820d624ba18794bb21d9d2882730c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a358820d624ba18794bb21d9d2882730c" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;blc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;trc)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="257"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(blc,trc);<sp/>}</highlight></codeline>
+<codeline lineno="258" refid="classcasacore_1_1Vector_1a3df2db96a1446f8380b905af630a2baf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a3df2db96a1446f8380b905af630a2baf" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref>&amp;<sp/>slicer)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(slicer);<sp/>}</highlight></codeline>
+<codeline lineno="260" refid="classcasacore_1_1Vector_1ad3774691ddc69d876c324b72de20f7c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1ad3774691ddc69d876c324b72de20f7c6" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Slicer" kindref="compound">Slicer</ref>&amp;<sp/>slicer)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="261"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator()</ref>(slicer);<sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>array<sp/>is<sp/>masked<sp/>by<sp/>the<sp/>input<sp/>LogicalArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>mask<sp/>must<sp/>conform<sp/>to<sp/>the<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>MaskedArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classcasacore_1_1Vector_1a67f7102d574a4d61688f1563aa924e5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" kindref="member">operator() </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">LogicalArray</ref><sp/>&amp;mask)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="270"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator() </ref>(mask);<sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>MaskedArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="classcasacore_1_1Vector_1a89fa9517e871859cfa5fe839cad920a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" kindref="member">operator() </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array" kindref="compound">LogicalArray</ref><sp/>&amp;mask)</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator() </ref>(mask);<sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>array<sp/>is<sp/>masked<sp/>by<sp/>the<sp/>input<sp/>MaskedLogicalArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>mask<sp/>is<sp/>effectively<sp/>the<sp/>AND<sp/>of<sp/>the<sp/>internal<sp/>LogicalArray</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>the<sp/>internal<sp/>mask<sp/>of<sp/>the<sp/>MaskedLogicalArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>MaskedLogicalArray<sp/>must<sp/>conform<sp/>to<sp/>the<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>MaskedArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="classcasacore_1_1Vector_1a957f9391f707b544c2f7c2c85c6ebe92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" kindref="member">operator() </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedLogicalArray</ref><sp/>&amp;mask)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="287"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator() </ref>(mask);<sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>MaskedArray.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290" refid="classcasacore_1_1Vector_1a64e410fb00e99a29dc1619163d0c3bd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedArray&lt;T&gt;</ref><sp/><ref refid="classcasacore_1_1Vector_1a9b1b9a54226d0e6a6ec01ea1882e3687" kindref="member">operator() </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1MaskedArray" kindref="compound">MaskedLogicalArray</ref><sp/>&amp;mask)</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Array_1a1dc6100c12c9ef15752d40d5b14663aa" kindref="member">Array&lt;T&gt;::operator() </ref>(mask);<sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>length<sp/>of<sp/>the<sp/>Vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="classcasacore_1_1Vector_1ade396b8bdd1c35919aaa1385799d7dac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;<ref refid="classcasacore_1_1Vector_1ade396b8bdd1c35919aaa1385799d7dac" kindref="member">shape</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="298"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classcasacore_1_1ArrayBase_1ab1d08aacff0367d78e33b4d9137e8527" kindref="member">length_p</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="299" refid="classcasacore_1_1Vector_1a91d4d37ac8c81be115c079e8466a36e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a91d4d37ac8c81be115c079e8466a36e9" kindref="member">shape</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;Shape)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="300"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/>Shape<sp/>=<sp/>this-&gt;<ref refid="classcasacore_1_1ArrayBase_1ab1d08aacff0367d78e33b4d9137e8527" kindref="member">length_p</ref>(0);<sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Verify<sp/>that<sp/>dimensionality<sp/>is<sp/>1<sp/>and<sp/>then<sp/>call<sp/>Array&lt;T&gt;::ok()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1ac5aa69df627d862bcc647057436d89e2" kindref="member">ok</ref>()<sp/>const<sp/>final<sp/>override;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>the<sp/>degenerate<sp/>axes<sp/>from<sp/>other<sp/>and<sp/>store<sp/>result<sp/>in<sp/>this<sp/>vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>exception<sp/>is<sp/>thrown<sp/>if<sp/>removing<sp/>degenerate<sp/>axes<sp/>does<sp/>not<sp/>result</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>a<sp/>vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1aa8e9d092f1310869e24053be723bbf51" kindref="member">doNonDegenerate</ref>(const<sp/><ref refid="classcasacore_1_1Array" kindref="compound">Array</ref>&lt;T&gt;<sp/>&amp;other,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/><ref refid="classcasacore_1_1IPosition" kindref="compound">IPosition</ref><sp/>&amp;ignoreAxes)<sp/>final<sp/>override;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="312" refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector_1a586c220a65b6afc1b50efc6f68313401" kindref="member">fixedDimensionality</ref>()<sp/>const<sp/>final</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/>assign_conforming_implementation(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/>&amp;v,<sp/>std::false_type<sp/>isCopyable);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref>&amp;<sp/>assign_conforming_implementation(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/>&amp;v,<sp/>std::true_type<sp/>isCopyable);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Helper<sp/>functions<sp/>for<sp/>constructors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initVector(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;&amp;,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>nr);<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>semantics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>two<sp/>constructors<sp/>are<sp/>used<sp/>to<sp/>make<sp/>distinguish<sp/>between</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vector&lt;literal&gt;(literal<sp/>size,<sp/>literal<sp/>value)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vector&lt;literal&gt;(iterator,<sp/>iterator)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputIterator&gt;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ac9c52fac3c3bcfdd2e5c0413f7da9248" kindref="member">Vector</ref>(InputIterator<sp/>startIter,<sp/>InputIterator<sp/>endIter,<sp/>std::false_type<sp/></highlight><highlight class="comment">/*<sp/>T<sp/>is<sp/>not<sp/>a<sp/>literal<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputIterator&gt;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Vector_1ac9c52fac3c3bcfdd2e5c0413f7da9248" kindref="member">Vector</ref>(InputIterator<sp/>startIter,<sp/>InputIterator<sp/>endIter,<sp/>std::true_type<sp/></highlight><highlight class="comment">/*<sp/>T<sp/>is<sp/>literal<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#End<sp/>namespace<sp/>casacore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector_8tcc" kindref="compound">Vector.tcc</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector2_8tcc" kindref="compound">Vector2.tcc</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/Vector.h"/>
+  </compounddef>
+</doxygen>

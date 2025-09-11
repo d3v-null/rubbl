@@ -1,0 +1,996 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="TSMCoordColumn_8cc" kind="file" language="C++">
+    <compoundname>TSMCoordColumn.cc</compoundname>
+    <includes refid="TSMCoordColumn_8h" local="no">casacore/tables/DataMan/TSMCoordColumn.h</includes>
+    <includes refid="TiledStMan_8h" local="no">casacore/tables/DataMan/TiledStMan.h</includes>
+    <includes refid="TSMCube_8h" local="no">casacore/tables/DataMan/TSMCube.h</includes>
+    <includes refid="DataManError_8h" local="no">casacore/tables/DataMan/DataManError.h</includes>
+    <includes refid="Record_8h" local="no">casacore/casa/Containers/Record.h</includes>
+    <includes refid="RecordField_8h" local="no">casacore/casa/Containers/RecordField.h</includes>
+    <includes refid="IPosition_8h" local="no">casacore/casa/Arrays/IPosition.h</includes>
+    <includes refid="Array_8h" local="no">casacore/casa/Arrays/Array.h</includes>
+    <includes refid="String_8h" local="no">casacore/casa/BasicSL/String.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="51">
+        <label>casacore/casa/config.h</label>
+      </node>
+      <node id="80">
+        <label>casacore/casa/Utilities/COWPtr.tcc</label>
+        <link refid="COWPtr_8tcc"/>
+      </node>
+      <node id="36">
+        <label>casacore/tables/DataMan/DataManager.h</label>
+        <link refid="DataManager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>casacore/casa/BasicSL/Complex.h</label>
+        <link refid="Complex_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>casacore/casa/Containers/Block.h</label>
+        <link refid="Block_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>limits</label>
+      </node>
+      <node id="43">
+        <label>casacore/casa/Exceptions/Error.h</label>
+        <link refid="Error_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>iterator</label>
+      </node>
+      <node id="74">
+        <label>ArrayStr.tcc</label>
+        <link refid="ArrayStr_8tcc"/>
+      </node>
+      <node id="78">
+        <label>casacore/casa/Containers/RecordDescRep.h</label>
+        <link refid="RecordDescRep_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>casacore/casa/iostream.h</label>
+        <link refid="iostream_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>casacore/tables/DataMan/DataManError.h</label>
+        <link refid="DataManError_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>casacore/tables/DataMan/DataManagerColumn.h</label>
+        <link refid="DataManagerColumn_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>casacore/tables/Tables/ColumnCache.h</label>
+        <link refid="ColumnCache_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>casacore/casa/Containers/RecordInterface.h</label>
+        <link refid="RecordInterface_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>casacore/casa/Arrays/Array.h</label>
+        <link refid="Array_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>casacore/casa/iosfwd.h</label>
+        <link refid="iosfwd_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>cassert</label>
+      </node>
+      <node id="67">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="16">
+        <label>casacore/casa/iosstrfwd.h</label>
+        <link refid="iosstrfwd_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>casacore/casa/Containers/Allocator.h</label>
+        <link refid="Allocator_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="39">
+        <label>map</label>
+      </node>
+      <node id="71">
+        <label>ArrayStr.h</label>
+        <link refid="ArrayStr_8h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>casacore/casa/IO/ByteIO.h</label>
+        <link refid="ByteIO_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>ArrayError.h</label>
+        <link refid="ArrayError_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>casacore/casa/complex.h</label>
+        <link refid="complex_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>exception</label>
+      </node>
+      <node id="37">
+        <label>casacore/tables/DataMan/TSMOption.h</label>
+        <link refid="TSMOption_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>ostream</label>
+      </node>
+      <node id="47">
+        <label>casacore/casa/Utilities/Copy.h</label>
+        <link refid="Copy_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>casacore/casa/BasicSL/Complexfwd.h</label>
+        <link refid="Complexfwd_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>casacore/tables/DataMan/StManColumnBase.h</label>
+        <link refid="StManColumnBase_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>casacore/casa/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>sys/types.h</label>
+      </node>
+      <node id="54">
+        <label>typeinfo</label>
+      </node>
+      <node id="76">
+        <label>casacore/casa/Containers/RecordRep.h</label>
+        <link refid="RecordRep_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>casacore/casa/Containers/RecordField.h</label>
+        <link refid="RecordField_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>Storage.h</label>
+        <link refid="Storage_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>casacore/casa/Arrays/IPosition.h</label>
+        <link refid="IPosition_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>Array.tcc</label>
+        <link refid="Array_8tcc"/>
+      </node>
+      <node id="59">
+        <label>casacore/tables/DataMan/TSMCube.h</label>
+        <link refid="TSMCube_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>vector</label>
+      </node>
+      <node id="79">
+        <label>casacore/casa/Utilities/COWPtr.h</label>
+        <link refid="COWPtr_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>new</label>
+      </node>
+      <node id="46">
+        <label>casacore/casa/Utilities/Assert.tcc</label>
+        <link refid="Assert_8tcc"/>
+      </node>
+      <node id="60">
+        <label>casacore/tables/DataMan/TSMShape.h</label>
+        <link refid="TSMShape_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>sstream</label>
+      </node>
+      <node id="29">
+        <label>casacore/casa/Utilities/DataType.h</label>
+        <link refid="DataType_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>casacore/casa/Containers/RecordField.tcc</label>
+        <link refid="RecordField_8tcc"/>
+      </node>
+      <node id="18">
+        <label>iosfwd</label>
+      </node>
+      <node id="52">
+        <label>cstdlib</label>
+      </node>
+      <node id="21">
+        <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>casacore/casa/OS/Conversion.h</label>
+        <link refid="Conversion_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>casacore/casa/Containers/RecordDesc.h</label>
+        <link refid="RecordDesc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>cstddef</label>
+      </node>
+      <node id="49">
+        <label>casacore/casa/Utilities/Copy.tcc</label>
+        <link refid="Copy_8tcc"/>
+      </node>
+      <node id="40">
+        <label>mutex</label>
+      </node>
+      <node id="61">
+        <label>casacore/casa/Containers/Record.h</label>
+        <link refid="Record_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>casacore/casa/sstream.h</label>
+        <link refid="sstream_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore/tables/DataMan/TSMCoordColumn.h</label>
+        <link refid="TSMCoordColumn_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>type_traits</label>
+      </node>
+      <node id="45">
+        <label>casacore/casa/Exceptions/Error.tcc</label>
+        <link refid="Error_8tcc"/>
+      </node>
+      <node id="8">
+        <label>casacore/tables/DataMan/TSMColumn.h</label>
+        <link refid="TSMColumn_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>complex</label>
+      </node>
+      <node id="48">
+        <label>algorithm</label>
+      </node>
+      <node id="63">
+        <label>casacore/casa/Containers/RecordFieldId.h</label>
+        <link refid="RecordFieldId_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>casacore/casa/Arrays/ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/TSMCoordColumn.cc</label>
+        <link refid="TSMCoordColumn_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>ArrayBase.h</label>
+        <link refid="ArrayBase_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="58">
+        <label>cstring</label>
+      </node>
+      <node id="14">
+        <label>casacore/casa/BasicSL/String.h</label>
+        <link refid="String_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>casacore/tables/DataMan/TiledStMan.h</label>
+        <link refid="TiledStMan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>memory</label>
+      </node>
+      <node id="72">
+        <label>istream</label>
+      </node>
+      <node id="33">
+        <label>initializer_list</label>
+      </node>
+      <node id="42">
+        <label>casacore/casa/Utilities/Assert.h</label>
+        <link refid="Assert_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>MaskLogiArrFwd.h</label>
+        <link refid="MaskLogiArrFwd_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" prot="public" static="no">
+        <name>TSMCOORDCOLUMN_GETPUT</name>
+        <param><defname>T</defname></param>
+        <initializer>void <ref refid="aipsdef_8h_1aab897274b2d34eeda51319ee2bfb5b02" kindref="member">TSMCoordColumn::aips_name2</ref>(get,T) (rownr_t rownr, T* dataPtr) \
+{ \
+    IPosition position; \
+    TSMCube* hypercube = stmanPtr_p-&gt;getHypercube (rownr, position); \
+    RORecordFieldPtr&lt;Array&lt;T&gt; &gt; field (hypercube-&gt;valueRecord(),columnName());\
+    *dataPtr = (*field) (IPosition (1, position(axisNr_p))); \
+} \
+void <ref refid="aipsdef_8h_1aab897274b2d34eeda51319ee2bfb5b02" kindref="member">TSMCoordColumn::aips_name2</ref>(put,T) (rownr_t rownr, const T* dataPtr) \
+{ \
+    IPosition position; \
+    TSMCube* hypercube = stmanPtr_p-&gt;getHypercube (rownr, position); \
+    RecordFieldPtr&lt;Array&lt;T&gt; &gt; field (hypercube-&gt;rwValueRecord(),columnName()); \
+    (*field) (IPosition (1, position(axisNr_p))) = *dataPtr; \
+    stmanPtr_p-&gt;setDataChanged(); \
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/DataMan/TSMCoordColumn.cc" line="247" column="9" bodyfile="tables/DataMan/TSMCoordColumn.cc" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>TSMCoordColumn.cc:<sp/>Tiled<sp/>Hypercube<sp/>Storage<sp/>Manager<sp/>for<sp/>id<sp/>columns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,1997,1999,2001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TSMCoordColumn_8h" kindref="compound">casacore/tables/DataMan/TSMCoordColumn.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TiledStMan_8h" kindref="compound">casacore/tables/DataMan/TiledStMan.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TSMCube_8h" kindref="compound">casacore/tables/DataMan/TSMCube.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="DataManError_8h" kindref="compound">casacore/tables/DataMan/DataManError.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Record_8h" kindref="compound">casacore/casa/Containers/Record.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="RecordField_8h" kindref="compound">casacore/casa/Containers/RecordField.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="IPosition_8h" kindref="compound">casacore/casa/Arrays/IPosition.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Array_8h" kindref="compound">casacore/casa/Arrays/Array.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="String_8h" kindref="compound">casacore/casa/BasicSL/String.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="classcasacore_1_1TSMCoordColumn_1ac5170707b6673b1455cf766ea5b7d911" kindref="member">TSMCoordColumn::TSMCoordColumn</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TSMColumn&amp;<sp/>column,<sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>axisNr)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">:<sp/>TSMColumn<sp/>(column),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>axisNr_p<sp/><sp/>(axisNr)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">TSMCoordColumn::~TSMCoordColumn()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TSMCoordColumn::setShape<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>IPosition&amp;<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>.nelements()<sp/>!=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>(TSMError<sp/>(</highlight><highlight class="stringliteral">&quot;setShape<sp/>of<sp/>coordinate<sp/>column<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>columnName()<sp/>+</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>1-dim&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>cubeShape<sp/>=<sp/>hypercube-&gt;cubeShape();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cubeShape.nelements()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>(0)<sp/>!=<sp/>cubeShape(axisNr_p))<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>(TSMError<sp/>(</highlight><highlight class="stringliteral">&quot;setShape<sp/>of<sp/>coordinate<sp/>column<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>columnName()<sp/>+</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>match<sp/>shape<sp/>of<sp/>hypercube&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Record&amp;<sp/>rec<sp/>=<sp/>hypercube-&gt;valueRecord();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rec.isDefined<sp/>(columnName()))<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref><sp/>!=<sp/>rec.shape<sp/>(columnName()))<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>(TSMError<sp/>(</highlight><highlight class="stringliteral">&quot;setShape<sp/>of<sp/>coordinate<sp/>column<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>columnName()<sp/>+</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>already<sp/>been<sp/>done&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>stmanPtr_p-&gt;setDataChanged();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>Record&amp;<sp/>record<sp/>=<sp/>hypercube-&gt;rwValueRecord();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(dataType())<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea519d721cfe3ef7be2e3dac59a625ab18" kindref="member">TpInt</ref>:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea086f939735da476227a36680bd77c336" kindref="member">TpArrayInt</ref>:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;Int&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea5b4c4b242d96e0196e52a5527ae53b5b" kindref="member">TpUInt</ref>:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea1faf766635b681cbf146d9787241c52b" kindref="member">TpArrayUInt</ref>:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;uInt&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea86b6553e8354f25adf756d89867f6767" kindref="member">TpFloat</ref>:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea3815ab3f3a439e032500d6289691f35f" kindref="member">TpArrayFloat</ref>:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;float&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea50ae9c4fb3e089a5a00adba46418d6d7" kindref="member">TpDouble</ref>:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220eaab734a80756d1b31b6ff98ab88445aa4" kindref="member">TpArrayDouble</ref>:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;double&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220eaec8d99bea4059578d411bd3217602e98" kindref="member">TpComplex</ref>:</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea0c4a76e9bb71a7eafbadb6725315118e" kindref="member">TpArrayComplex</ref>:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;Complex&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea1d19eb5fa0382d68603226b40a79432b" kindref="member">TpDComplex</ref>:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea1de2f8f18e19b1623bf148e556388ce9" kindref="member">TpArrayDComplex</ref>:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>record.define<sp/>(columnName(),<sp/>Array&lt;DComplex&gt;(<ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">shape</ref>));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>(DataManInvDT<sp/>(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>data<sp/>type<sp/>for<sp/>coordinate<sp/>column<sp/>&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>columnName()));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>TSMCoordColumn::isShapeDefined<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>The<sp/>shape<sp/>is<sp/>defined<sp/>when<sp/>the<sp/>shape<sp/>is<sp/>fixed,<sp/>when</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>a<sp/>hypercube<sp/>has<sp/>been<sp/>defined<sp/>for<sp/>this<sp/>row<sp/>or<sp/>when<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>coordinate<sp/>values<sp/>have<sp/>already<sp/>been<sp/>defined.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(shapeColumn().<ref refid="namespacecasacore_1a2540af98959c2053f8d6f39c6f1a3972" kindref="member">nelements</ref>()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FixedShape</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hypercube-&gt;valueRecord().isDefined<sp/>(columnName()))<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>already<sp/>defined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/>(hypercube-&gt;cubeShape().nelements()<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">IPosition<sp/><ref refid="namespacecasacore_1a6c80d55c1617e8540e006c12e3dc990c" kindref="member">TSMCoordColumn::shape</ref><sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Return<sp/>the<sp/>shape<sp/>when<sp/>it<sp/>is<sp/>fixed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(shapeColumn().<ref refid="namespacecasacore_1a2540af98959c2053f8d6f39c6f1a3972" kindref="member">nelements</ref>()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>shapeColumn();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Return<sp/>coordinate<sp/>shape<sp/>if<sp/>defined.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>IPosition&amp;<sp/>cubeShape<sp/>=<sp/>hypercube-&gt;cubeShape();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cubeShape.nelements()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>IPosition<sp/>(1,<sp/>cubeShape(axisNr_p));</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<sp/>hypercube-&gt;valueRecord().isDefined<sp/>(columnName()))<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>(DataManInvOper<sp/>(</highlight><highlight class="stringliteral">&quot;TSMCoord:<sp/>no<sp/>array<sp/>in<sp/>row<sp/>&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1a33068afcd52b46c6e75a8ddeaf320e34" kindref="member">String::toString</ref>(rownr)<sp/>+</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>of<sp/>coordinate<sp/>column<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>columnName()));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hypercube-&gt;valueRecord().shape<sp/>(columnName());</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TSMCoordColumn::getfloat<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>dataPtr)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>hypercube<sp/>the<sp/>row<sp/>is<sp/>in.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>gives<sp/>the<sp/>position<sp/>of<sp/>the<sp/>row<sp/>in<sp/>the<sp/>hypercube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>position;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>vector<sp/>of<sp/>coordinate<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>a<sp/>reference<sp/>is<sp/>used,<sp/>it<sp/>has<sp/>to<sp/>be<sp/>treated<sp/>as<sp/>an<sp/>Array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>correct<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>RORecordFieldPtr&lt;Array&lt;float&gt;<sp/>&gt;<sp/>field<sp/>(hypercube-&gt;valueRecord(),</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>columnName());</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>*dataPtr<sp/>=<sp/>(*field)<sp/>(IPosition<sp/>(1,<sp/>position(axisNr_p)));</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TSMCoordColumn::putfloat<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>dataPtr)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>hypercube<sp/>the<sp/>row<sp/>is<sp/>in.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>gives<sp/>the<sp/>position<sp/>of<sp/>the<sp/>row<sp/>in<sp/>the<sp/>hypercube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>position;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>vector<sp/>of<sp/>coordinate<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>a<sp/>reference<sp/>is<sp/>used,<sp/>it<sp/>has<sp/>to<sp/>be<sp/>treated<sp/>as<sp/>an<sp/>Array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>correct<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>RecordFieldPtr&lt;Array&lt;float&gt;<sp/>&gt;<sp/>field<sp/>(hypercube-&gt;rwValueRecord(),</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>columnName());</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>(*field)<sp/>(IPosition<sp/>(1,<sp/>position(axisNr_p)))<sp/>=<sp/>*dataPtr;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>stmanPtr_p-&gt;setDataChanged();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TSMCoordColumn::getArrayV<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr,<sp/>ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>hypercube<sp/>the<sp/>row<sp/>is<sp/>in.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>gives<sp/>the<sp/>position<sp/>of<sp/>the<sp/>row<sp/>in<sp/>the<sp/>hypercube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>position;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(dtype())<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea519d721cfe3ef7be2e3dac59a625ab18" kindref="member">TpInt</ref>:</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;Int&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea5b4c4b242d96e0196e52a5527ae53b5b" kindref="member">TpUInt</ref>:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;uInt&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea86b6553e8354f25adf756d89867f6767" kindref="member">TpFloat</ref>:</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;float&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea50ae9c4fb3e089a5a00adba46418d6d7" kindref="member">TpDouble</ref>:</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;double&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220eaec8d99bea4059578d411bd3217602e98" kindref="member">TpComplex</ref>:</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;Complex&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea1d19eb5fa0382d68603226b40a79432b" kindref="member">TpDComplex</ref>:</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;valueRecord().toArray</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">Array&lt;DComplex&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>DataManInvDT<sp/>(</highlight><highlight class="stringliteral">&quot;TSMCoordColiumn::getArrayV&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TSMCoordColumn::putArrayV<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ArrayBase&amp;<sp/>dataPtr)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>hypercube<sp/>the<sp/>row<sp/>is<sp/>in.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>gives<sp/>the<sp/>position<sp/>of<sp/>the<sp/>row<sp/>in<sp/>the<sp/>hypercube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>position;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(dtype())<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea519d721cfe3ef7be2e3dac59a625ab18" kindref="member">TpInt</ref>:</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;Int&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea5b4c4b242d96e0196e52a5527ae53b5b" kindref="member">TpUInt</ref>:</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;uInt&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea86b6553e8354f25adf756d89867f6767" kindref="member">TpFloat</ref>:</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;float&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea50ae9c4fb3e089a5a00adba46418d6d7" kindref="member">TpDouble</ref>:</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;double&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220eaec8d99bea4059578d411bd3217602e98" kindref="member">TpComplex</ref>:</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;Complex&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a81df62ade83d72ba450271cdc021220ea1d19eb5fa0382d68603226b40a79432b" kindref="member">TpDComplex</ref>:</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hypercube-&gt;rwValueRecord().define</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(columnName(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Array&lt;DComplex&gt;&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dataPtr));</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>DataManInvDT<sp/>(</highlight><highlight class="stringliteral">&quot;TSMCoordColiumn::putArrayV&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>stmanPtr_p-&gt;setDataChanged();</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TSMCOORDCOLUMN_GETPUT(T)<sp/>\</highlight></codeline>
+<codeline lineno="248"><highlight class="preprocessor">void<sp/>TSMCoordColumn::aips_name2(get,T)<sp/>(rownr_t<sp/>rownr,<sp/>T*<sp/>dataPtr)<sp/>\</highlight></codeline>
+<codeline lineno="249"><highlight class="preprocessor">{<sp/>\</highlight></codeline>
+<codeline lineno="250"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>IPosition<sp/>position;<sp/>\</highlight></codeline>
+<codeline lineno="251"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);<sp/>\</highlight></codeline>
+<codeline lineno="252"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>RORecordFieldPtr&lt;Array&lt;T&gt;<sp/>&gt;<sp/>field<sp/>(hypercube-&gt;valueRecord(),columnName());\</highlight></codeline>
+<codeline lineno="253"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>*dataPtr<sp/>=<sp/>(*field)<sp/>(IPosition<sp/>(1,<sp/>position(axisNr_p)));<sp/>\</highlight></codeline>
+<codeline lineno="254"><highlight class="preprocessor">}<sp/>\</highlight></codeline>
+<codeline lineno="255"><highlight class="preprocessor">void<sp/>TSMCoordColumn::aips_name2(put,T)<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>T*<sp/>dataPtr)<sp/>\</highlight></codeline>
+<codeline lineno="256"><highlight class="preprocessor">{<sp/>\</highlight></codeline>
+<codeline lineno="257"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>IPosition<sp/>position;<sp/>\</highlight></codeline>
+<codeline lineno="258"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>TSMCube*<sp/>hypercube<sp/>=<sp/>stmanPtr_p-&gt;getHypercube<sp/>(rownr,<sp/>position);<sp/>\</highlight></codeline>
+<codeline lineno="259"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>RecordFieldPtr&lt;Array&lt;T&gt;<sp/>&gt;<sp/>field<sp/>(hypercube-&gt;rwValueRecord(),columnName());<sp/>\</highlight></codeline>
+<codeline lineno="260"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>(*field)<sp/>(IPosition<sp/>(1,<sp/>position(axisNr_p)))<sp/>=<sp/>*dataPtr;<sp/>\</highlight></codeline>
+<codeline lineno="261"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>stmanPtr_p-&gt;setDataChanged();<sp/>\</highlight></codeline>
+<codeline lineno="262"><highlight class="preprocessor">}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(<ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref>)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref>)</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(<ref refid="namespacecasacore_1a79c2dfec4363785472512dbf384675a1" kindref="member">Int64</ref>)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="comment">//#TSMCOORDCOLUMN_GETPUT(float)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(<ref refid="namespacecasacore_1ab81d263ab360e9922913a80bae6d7695" kindref="member">Complex</ref>)</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><ref refid="TSMCoordColumn_8cc_1a3dacfc5d61d40955b0998c1968202300" kindref="member">TSMCOORDCOLUMN_GETPUT</ref>(<ref refid="namespacecasacore_1a2a9616f801f0f94ac5c480453377e268" kindref="member">DComplex</ref>)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/TSMCoordColumn.cc"/>
+  </compounddef>
+</doxygen>

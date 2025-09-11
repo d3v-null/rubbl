@@ -1,0 +1,550 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="TaQLNode_8h" kind="file" language="C++">
+    <compoundname>TaQLNode.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="TaQLNodeRep_8h" local="no">casacore/tables/TaQL/TaQLNodeRep.h</includes>
+    <includes refid="TaQLStyle_8h" local="no">casacore/tables/TaQL/TaQLStyle.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="TableGram_8cc" local="no">tables/TaQL/TableGram.cc</includedby>
+    <includedby refid="TableParse_8cc" local="no">tables/TaQL/TableParse.cc</includedby>
+    <includedby refid="TableParseQuery_8cc" local="no">tables/TaQL/TableParseQuery.cc</includedby>
+    <includedby refid="TaQLNode_8cc" local="no">tables/TaQL/TaQLNode.cc</includedby>
+    <includedby refid="TaQLNodeDer_8h" local="no">tables/TaQL/TaQLNodeDer.h</includedby>
+    <includedby refid="TaQLNodeHandler_8cc" local="no">tables/TaQL/TaQLNodeHandler.cc</includedby>
+    <includedby refid="TaQLNodeRep_8cc" local="no">tables/TaQL/TaQLNodeRep.cc</includedby>
+    <includedby refid="TaQLNodeVisitor_8h" local="no">tables/TaQL/TaQLNodeVisitor.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="20">
+        <label>casacore/casa/stdmap.h</label>
+        <link refid="stdmap_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>casacore/casa/iostream.h</label>
+        <link refid="iostream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>casacore/casa/iosfwd.h</label>
+        <link refid="iosfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="13">
+        <label>casacore/casa/iosstrfwd.h</label>
+        <link refid="iosstrfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>casacore/tables/TaQL/TaQLStyle.h</label>
+        <link refid="TaQLStyle_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>map</label>
+      </node>
+      <node id="1">
+        <label>tables/TaQL/TaQLNode.h</label>
+        <link refid="TaQLNode_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore/tables/TaQL/TaQLNodeRep.h</label>
+        <link refid="TaQLNodeRep_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>vector</label>
+      </node>
+      <node id="19">
+        <label>sstream</label>
+      </node>
+      <node id="15">
+        <label>iosfwd</label>
+      </node>
+      <node id="18">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>mutex</label>
+      </node>
+      <node id="16">
+        <label>casacore/casa/sstream.h</label>
+        <link refid="sstream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="11">
+        <label>casacore/casa/BasicSL/String.h</label>
+        <link refid="String_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore/tables/TaQL/TaQLNodeResult.h</label>
+        <link refid="TaQLNodeResult_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="11">
+        <label>tables/TaQL/TaQLNodeVisitor.cc</label>
+        <link refid="TaQLNodeVisitor_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/TaQL/TaQLNodeHandler.h</label>
+        <link refid="TaQLNodeHandler_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tables/TaQL/TaQLNode.h</label>
+        <link refid="TaQLNode_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tables/TaQL/TaQLNodeDer.cc</label>
+        <link refid="TaQLNodeDer_8cc"/>
+      </node>
+      <node id="4">
+        <label>tables/TaQL/TableParseQuery.cc</label>
+        <link refid="TableParseQuery_8cc"/>
+      </node>
+      <node id="2">
+        <label>tables/TaQL/TableGram.cc</label>
+        <link refid="TableGram_8cc"/>
+      </node>
+      <node id="3">
+        <label>tables/TaQL/TableParse.cc</label>
+        <link refid="TableParse_8cc"/>
+      </node>
+      <node id="12">
+        <label>tables/TaQL/TaQLNodeRep.cc</label>
+        <link refid="TaQLNodeRep_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/TaQL/TaQLNodeDer.h</label>
+        <link refid="TaQLNodeDer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tables/TaQL/TaQLNode.cc</label>
+        <link refid="TaQLNode_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/TaQL/TaQLNodeVisitor.h</label>
+        <link refid="TaQLNodeVisitor_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tables/TaQL/TaQLNodeHandler.cc</label>
+        <link refid="TaQLNodeHandler_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1TaQLNode" prot="public">casacore::TaQLNode</innerclass>
+    <innerclass refid="classcasacore_1_1TaQLConstNode" prot="public">casacore::TaQLConstNode</innerclass>
+    <innerclass refid="classcasacore_1_1TaQLRegexNode" prot="public">casacore::TaQLRegexNode</innerclass>
+    <innerclass refid="classcasacore_1_1TaQLMultiNode" prot="public">casacore::TaQLMultiNode</innerclass>
+    <innerclass refid="classcasacore_1_1TaQLQueryNode" prot="public">casacore::TaQLQueryNode</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>TaQLNode.h:<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>in<sp/>the<sp/>raw<sp/>TaQL<sp/>parse<sp/>tree</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>2005</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TABLES_TAQLNODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TABLES_TAQLNODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TaQLNodeRep_8h" kindref="compound">casacore/tables/TaQL/TaQLNodeRep.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TaQLStyle_8h" kindref="compound">casacore/tables/TaQL/TaQLStyle.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declaration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AipsIO;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLNodeVisitor;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLMultiNode;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLConstNodeRep;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLRegexNodeRep;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLMultiNodeRep;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaQLQueryNodeRep;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>in<sp/>the<sp/>raw<sp/>TaQL<sp/>parse<sp/>tree.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tTaQLNode&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Classes<sp/>you<sp/>should<sp/>understand<sp/>before<sp/>using<sp/>this<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>&lt;linkto<sp/>group=TableGram.h#TableGramFunctions&gt;TableGram&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>Note<sp/>199<sp/>describing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;../notes/199.html&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TaQL&lt;/a&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>result<sp/>of<sp/>parsing<sp/>a<sp/>TaQL<sp/>command<sp/>is<sp/>stored<sp/>in<sp/>TaQLNode<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Each<sp/>part<sp/>of<sp/>the<sp/>command<sp/>can<sp/>have<sp/>its<sp/>own<sp/>specialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TaQLNodeRep&gt;TaQLNodeRep&lt;/linkto&gt;<sp/>object,<sp/>which<sp/>forms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>letter<sp/>in<sp/>the<sp/>TaQLNode<sp/>envelope.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>actual<sp/>scanning/parsing<sp/>of<sp/>the<sp/>command<sp/>is<sp/>done<sp/>using<sp/>flex/bison</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>as<sp/>defined<sp/>in<sp/>the<sp/>TableGram<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>letter-envelope<sp/>idiom<sp/>(counted<sp/>pointer)<sp/>makes<sp/>if<sp/>much<sp/>easier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>keep<sp/>track<sp/>of<sp/>memory,<sp/>especially<sp/>in<sp/>the<sp/>case<sp/>of<sp/>exceptions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classcasacore_1_1TaQLNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classcasacore_1_1TaQLNode_1a7773ed9086b9f581255cf43ee3f56968" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1a7773ed9086b9f581255cf43ee3f56968" kindref="member">TaQLNode</ref>()</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>for<sp/>given<sp/>letter.<sp/>It<sp/>takes<sp/>over<sp/>the<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classcasacore_1_1TaQLNode_1a05d8ebdbd475b57944411dd4dec88af1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1a05d8ebdbd475b57944411dd4dec88af1" kindref="member">TaQLNode</ref><sp/>(<ref refid="classcasacore_1_1TaQLNodeRep" kindref="compound">TaQLNodeRep</ref>*<sp/>rep)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>.reset<sp/>(rep);<sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>constructor<sp/>(reference<sp/>semantics).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classcasacore_1_1TaQLNode_1ae6890143e175a558e84e708803fb6fe5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1ae6890143e175a558e84e708803fb6fe5" kindref="member">TaQLNode</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref>&amp;<sp/>that)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref><sp/>=<sp/>that.<ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>(reference<sp/>semantics).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classcasacore_1_1TaQLNode_1afc16e7aae04237f02538cc9f71e404a6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref>&amp;<sp/><ref refid="classcasacore_1_1TaQLNode_1afc16e7aae04237f02538cc9f71e404a6" kindref="member">operator= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref>&amp;<sp/>that)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;that)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref><sp/>=<sp/>that.<ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>TaQL<sp/>style.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classcasacore_1_1TaQLNode_1a96687896934b7076509f9dd1f4cb1d49" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLStyle" kindref="compound">TaQLStyle</ref>&amp;<sp/><ref refid="classcasacore_1_1TaQLNode_1a96687896934b7076509f9dd1f4cb1d49" kindref="member">style</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>-&gt;style();<sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Destructor<sp/>deletes<sp/>the<sp/>letter<sp/>if<sp/>no<sp/>more<sp/>references.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classcasacore_1_1TaQLNode_1a7fad636008466ed782ff4e34d412251d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1a7fad636008466ed782ff4e34d412251d" kindref="member">~TaQLNode</ref>()</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>a<sp/>TaQL<sp/>command<sp/>and<sp/>return<sp/>the<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>exception<sp/>is<sp/>thrown<sp/>in<sp/>case<sp/>of<sp/>parse<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>parse<sp/>tree<sp/>is<sp/>deleted<sp/>by<sp/>function<sp/>clearNodeCreated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1a136f41ec439a32912f024e4dfc3ce024" kindref="member">parse</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>command);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>envelope<sp/>contain<sp/>a<sp/>letter?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classcasacore_1_1TaQLNode_1abf8d721d2bcb169d58f65c29d557c76d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1abf8d721d2bcb169d58f65c29d557c76d" kindref="member">isValid</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="119"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref>(<ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>type<sp/>of<sp/>letter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classcasacore_1_1TaQLNode_1af51e0e5aac69da67141407c7d497869a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1af51e0e5aac69da67141407c7d497869a" kindref="member">nodeType</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="123"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>-&gt;nodeType();<sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>read<sp/>access<sp/>to<sp/>the<sp/>letter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classcasacore_1_1TaQLNode_1a84f8247db1d5fbddf26181f295744dd5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNodeRep" kindref="compound">TaQLNodeRep</ref>*<sp/><ref refid="classcasacore_1_1TaQLNode_1a84f8247db1d5fbddf26181f295744dd5" kindref="member">getRep</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="127"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>.get();<sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>visitor<sp/>visit<sp/>the<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>no<sp/>node,<sp/>return<sp/>an<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classcasacore_1_1TaQLNode_1ad0c7a2e498e298f87ca7696486e063d4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1ad0c7a2e498e298f87ca7696486e063d4" kindref="member">visit</ref><sp/>(<ref refid="classcasacore_1_1TaQLNodeVisitor" kindref="compound">TaQLNodeVisitor</ref>&amp;<sp/>visitor)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="132"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref><sp/><sp/>?<sp/><sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>-&gt;visit<sp/>(visitor)<sp/>:<sp/><ref refid="classcasacore_1_1TaQLNodeResult" kindref="compound">TaQLNodeResult</ref>());<sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>node<sp/>(recursively)<sp/>in<sp/>the<sp/>given<sp/>stream.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classcasacore_1_1TaQLNode_1aceb3f2d2982ad4493fee0f22d0c0a750" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1aceb3f2d2982ad4493fee0f22d0c0a750" kindref="member">show</ref><sp/>(std::ostream&amp;<sp/>os)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="136"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>)<sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>-&gt;show<sp/>(os);<sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Save<sp/>and<sp/>restore<sp/>the<sp/>entire<sp/>parse<sp/>tree.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1a3cb89578f222579e579511fab4991d00" kindref="member">save</ref><sp/>(<ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref>&amp;<sp/>aio)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1a13573024a5641220f2fe13087a3186fd" kindref="member">restore</ref><sp/>(<ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref>&amp;<sp/>aio);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="145" refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" refkind="member"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;TaQLNodeRep&gt;<sp/><ref refid="classcasacore_1_1TaQLNode_1a51b9dbc7dcd4afa4b0d97b58da861369" kindref="member">itsRep</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>all<sp/>nodes<sp/>that<sp/>were<sp/>created<sp/>by<sp/>the<sp/>parser.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clearNodesCreated();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Helper<sp/>functions<sp/>for<sp/>save/restore<sp/>of<sp/>tree.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode_1ae6b59c838350c1ab3bbfdfafdcc4aaa8" kindref="member">saveNode</ref><sp/>(<ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref>&amp;<sp/>aio)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1aea4bfcbd1828b674188254b2f6ad66b6" kindref="member">restoreNode</ref><sp/>(<ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref>&amp;<sp/>aio);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1a674e382f7290eeaf7358dfd17f89268e" kindref="member">restoreMultiNode</ref><sp/>(<ref refid="classcasacore_1_1AipsIO" kindref="compound">AipsIO</ref>&amp;<sp/>aio);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>object<sp/>getting<sp/>the<sp/>final<sp/>tree.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classcasacore_1_1TaQLNode_1a55017992eb9dc610b69eb49e4a090c75" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1a55017992eb9dc610b69eb49e4a090c75" kindref="member">theirNode</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>list<sp/>of<sp/>objects<sp/>created<sp/>by<sp/>the<sp/>parser<sp/>and<sp/>deleted<sp/>at<sp/>the<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classcasacore_1_1TaQLNode_1af1e9ab937ee974d22266d1e324bfe5aa" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;TaQLNode*&gt;<sp/><ref refid="classcasacore_1_1TaQLNode_1af1e9ab937ee974d22266d1e324bfe5aa" kindref="member">theirNodesCreated</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>the<sp/>TaQL<sp/>style<sp/>to<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classcasacore_1_1TaQLNode_1af6181c659e14d03a2ef7b3052d78959b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLStyle" kindref="compound">TaQLStyle</ref><sp/><ref refid="classcasacore_1_1TaQLNode_1af6181c659e14d03a2ef7b3052d78959b" kindref="member">theirStyle</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>a<sp/>mutex<sp/>to<sp/>guard<sp/>the<sp/>statics.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classcasacore_1_1TaQLNode_1a72d3f870258e1e3c366a55d57ba84d44" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::mutex<sp/><ref refid="classcasacore_1_1TaQLNode_1a72d3f870258e1e3c366a55d57ba84d44" kindref="member">theirMutex</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>containing<sp/>a<sp/>constant<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tTaQLNode&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>specialization<sp/>of<sp/>the<sp/>envelope<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TaQLNode&gt;TaQLNode&lt;/linkto&gt;<sp/>for<sp/>a<sp/>node<sp/>containing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>constant<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classcasacore_1_1TaQLConstNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1TaQLConstNode" kindref="compound">TaQLConstNode</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLConstNode_1a3be875b6097b4c67e9aac0e8d43d5e87" kindref="member">TaQLConstNode</ref><sp/>(<ref refid="classcasacore_1_1TaQLConstNodeRep" kindref="compound">TaQLConstNodeRep</ref>*<sp/>rep);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLConstNode_1aabe6d411843583322873db26d5204029" kindref="member">setIsTableName</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/><ref refid="classcasacore_1_1TaQLConstNode_1ae27a9e0f2b9768909bd05adac34a9aae" kindref="member">getString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLConstNodeRep" kindref="compound">TaQLConstNodeRep</ref>*<sp/>itsNRep;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>containing<sp/>a<sp/>constant<sp/>regex<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tTaQLNode&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>specialization<sp/>of<sp/>the<sp/>envelope<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TaQLNode&gt;TaQLNode&lt;/linkto&gt;<sp/>for<sp/>a<sp/>node<sp/>containing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>constant<sp/>regex<sp/>or<sp/>pattern<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classcasacore_1_1TaQLRegexNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1TaQLRegexNode" kindref="compound">TaQLRegexNode</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLRegexNode_1a057116a33f6c9ce84fb967419f866473" kindref="member">TaQLRegexNode</ref><sp/>(<ref refid="classcasacore_1_1TaQLRegexNodeRep" kindref="compound">TaQLRegexNodeRep</ref>*<sp/>rep);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/><ref refid="classcasacore_1_1TaQLRegexNode_1a43f50df7a02ed9d75eca14541655b77e" kindref="member">getString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1TaQLRegexNode_1aac861e3e4433691b072b2d393ebba2af" kindref="member">caseInsensitive</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1TaQLRegexNode_1ab10b3fed717fb9b640f3218f683b71b5" kindref="member">negate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLRegexNodeRep" kindref="compound">TaQLRegexNodeRep</ref>*<sp/>itsNRep;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>containing<sp/>a<sp/>list<sp/>of<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tTaQLNode&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>specialization<sp/>of<sp/>the<sp/>envelope<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TaQLNode&gt;TaQLNode&lt;/linkto&gt;<sp/>for<sp/>a<sp/>node<sp/>containing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>list<sp/>of<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="classcasacore_1_1TaQLMultiNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1TaQLMultiNode" kindref="compound">TaQLMultiNode</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref></highlight></codeline>
+<codeline lineno="227"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1a5e0b8d2f0c9f58c6d016ef492654203e" kindref="member">TaQLMultiNode</ref>();</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1a5e0b8d2f0c9f58c6d016ef492654203e" kindref="member">TaQLMultiNode</ref><sp/>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>isSetOrArray);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1a5e0b8d2f0c9f58c6d016ef492654203e" kindref="member">TaQLMultiNode</ref><sp/>(<ref refid="classcasacore_1_1TaQLMultiNodeRep" kindref="compound">TaQLMultiNodeRep</ref>*<sp/>rep);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1ac59f446f5c51b16140fbf7a3300ca83f" kindref="member">add</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref>&amp;<sp/>node);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1ac59f446f5c51b16140fbf7a3300ca83f" kindref="member">add</ref><sp/>(<ref refid="classcasacore_1_1TaQLNodeRep" kindref="compound">TaQLNodeRep</ref>*<sp/>noderep);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1a6fc4fd6f7f638a5a34392caa45b9b0ca" kindref="member">setIsSetOrArray</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1ad150b8fcc28a2cc02276ed2d0380a1c9" kindref="member">setPPFix</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>prefix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>postfix);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1acbb31c3529e263a9f1257c1188885dca" kindref="member">setSeparator</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>sep);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNode_1acbb31c3529e263a9f1257c1188885dca" kindref="member">setSeparator</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>incr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>sep);</highlight></codeline>
+<codeline lineno="238" refid="classcasacore_1_1TaQLMultiNode_1abc0525549a4bd473933459146e925d3e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLMultiNodeRep" kindref="compound">TaQLMultiNodeRep</ref>*<sp/><ref refid="classcasacore_1_1TaQLMultiNode_1abc0525549a4bd473933459146e925d3e" kindref="member">getMultiRep</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="239"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itsNRep;<sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLMultiNodeRep" kindref="compound">TaQLMultiNodeRep</ref>*<sp/>itsNRep;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Envelope<sp/>class<sp/>for<sp/>a<sp/>node<sp/>containing<sp/>a<sp/>selection<sp/>command.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;&quot;<sp/>date=&quot;&quot;<sp/>tests=&quot;tTaQLNode&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>specialization<sp/>of<sp/>the<sp/>envelope<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=TaQLNode&gt;TaQLNode&lt;/linkto&gt;<sp/>for<sp/>a<sp/>node<sp/>containing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>selection<sp/>command.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="classcasacore_1_1TaQLQueryNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1TaQLQueryNode" kindref="compound">TaQLQueryNode</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLNode" kindref="compound">TaQLNode</ref></highlight></codeline>
+<codeline lineno="257"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLQueryNode_1a5ef39261211e9368f2ae96f813f922c8" kindref="member">TaQLQueryNode</ref><sp/>(<ref refid="classcasacore_1_1TaQLQueryNodeRep" kindref="compound">TaQLQueryNodeRep</ref>*<sp/>rep);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLQueryNode_1aa381f83eab0ac6e269faf14f8aa419ca" kindref="member">setBrackets</ref>();</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLQueryNode_1a4af92acbf7a1bbe93f360e15b7211ef1" kindref="member">setNoExecute</ref>();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TaQLQueryNode_1a6d6a69e03943d4c0b1f169bd734802cc" kindref="member">setFromExecute</ref>();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><ref refid="classcasacore_1_1TaQLQueryNodeRep" kindref="compound">TaQLQueryNodeRep</ref>*<sp/>itsNRep;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/TaQL/TaQLNode.h"/>
+  </compounddef>
+</doxygen>

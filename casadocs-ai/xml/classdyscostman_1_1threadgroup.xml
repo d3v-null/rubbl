@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classdyscostman_1_1threadgroup" kind="class" language="C++" prot="public">
+    <compoundname>dyscostman::threadgroup</compoundname>
+    <includes refid="threadgroup_8h" local="no">threadgroup.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classdyscostman_1_1threadgroup_1afaf309a1a3cccf7bb66510e29e811dc9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::thread &gt;</type>
+        <definition>std::vector&lt;std::thread&gt; dyscostman::threadgroup::_threads</definition>
+        <argsstring></argsstring>
+        <name>_threads</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="48" column="15" bodyfile="tables/Dysco/threadgroup.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdyscostman_1_1threadgroup_1aa6a324ed214d333fadf75ace3dfb6a69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::threadgroup::threadgroup</definition>
+        <argsstring>()</argsstring>
+        <name>threadgroup</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="16" column="3" bodyfile="tables/Dysco/threadgroup.h" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1threadgroup_1a426551fe293b11126b3824249987babc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::threadgroup::~threadgroup</definition>
+        <argsstring>()</argsstring>
+        <name>~threadgroup</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will join all threads that have not been joined yet. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="18" column="3" bodyfile="tables/Dysco/threadgroup.h" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1threadgroup_1a7395efe794884b21e0d54410079dfc06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void dyscostman::threadgroup::create_thread</definition>
+        <argsstring>(T threadFunc)</argsstring>
+        <name>create_thread</name>
+        <param>
+          <type>T</type>
+          <declname>threadFunc</declname>
+        </param>
+        <briefdescription>
+<para>Create a new thread that will execute the given functor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The new thread will be added to the group. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadFunc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The functor to be called. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="26" column="8" bodyfile="tables/Dysco/threadgroup.h" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1threadgroup_1a07306de69209c3741229cb2092632a3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::threadgroup::join_all</definition>
+        <argsstring>()</argsstring>
+        <name>join_all</name>
+        <briefdescription>
+<para>Join all threads in the group that have not yet been joined. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="33" column="8" bodyfile="tables/Dysco/threadgroup.h" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1threadgroup_1a35f962be99055d357aaa36773da68cac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool dyscostman::threadgroup::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>Get state of thread group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true when there are unjoined threads in the group. Not synchronized <ndash/> caller has to make sure that thread is safe. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/threadgroup.h" line="45" column="8" bodyfile="tables/Dysco/threadgroup.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Group of threads. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tables/Dysco/threadgroup.h" line="13" column="1" bodyfile="tables/Dysco/threadgroup.h" bodystart="13" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classdyscostman_1_1threadgroup_1afaf309a1a3cccf7bb66510e29e811dc9" prot="private" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>_threads</name></member>
+      <member refid="classdyscostman_1_1threadgroup_1a7395efe794884b21e0d54410079dfc06" prot="public" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>create_thread</name></member>
+      <member refid="classdyscostman_1_1threadgroup_1a35f962be99055d357aaa36773da68cac" prot="public" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>empty</name></member>
+      <member refid="classdyscostman_1_1threadgroup_1a07306de69209c3741229cb2092632a3a" prot="public" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>join_all</name></member>
+      <member refid="classdyscostman_1_1threadgroup_1aa6a324ed214d333fadf75ace3dfb6a69" prot="public" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>threadgroup</name></member>
+      <member refid="classdyscostman_1_1threadgroup_1a426551fe293b11126b3824249987babc" prot="public" virt="non-virtual"><scope>dyscostman::threadgroup</scope><name>~threadgroup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

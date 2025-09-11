@@ -30,7 +30,22 @@
 #include <casacore/casa/IO/BucketCache.h>
 #include <casacore/casa/Exceptions/Error.h>
 #include <casacore/casa/iostream.h>
+#include <iostream>
+#include <unistd.h>
+#include <sys/types.h>
+#include <casacore/casa/IO/MMapfdIO.h>
+#include <casacore/casa/IO/FilebufIO.h>
 
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -236,6 +251,7 @@ char* BucketCache::getBucket (uInt bucketNr)
 
 void BucketCache::extend (uInt nrBucket)
 {
+    CASACORE_DEBUG("BucketCache::extend: adding " << nrBucket << " buckets, bucketSize=" << its_BucketSize);
     its_NewNrOfBuckets += nrBucket;
     uInt oldSize = its_SlotNr.nelements();
     if (oldSize < its_NewNrOfBuckets) {
@@ -248,8 +264,42 @@ void BucketCache::extend (uInt nrBucket)
 	    its_SlotNr[i] = -1;
 	}
     }
+
+    // Pre-allocate file space to avoid inefficient zero-writing during bucket initialization
+    // Can be toggled via env var CASACORE_DISABLE_PREALLOC=1
+    const char* disablePreallocEnv = ::getenv("CASACORE_DISABLE_PREALLOC");
+    const char* forcePreallocEnv   = ::getenv("CASACORE_FORCE_PREALLOC");
+    bool preallocEnabled = !(disablePreallocEnv && disablePreallocEnv[0] == '1');
+    if (forcePreallocEnv && forcePreallocEnv[0] == '1') {
+        preallocEnabled = true;
+    }
+    if (preallocEnabled && its_file->isWritable() && its_CurNrOfBuckets < its_NewNrOfBuckets) {
+        Int64 currentFileSize = its_file->fileSize();
+        Int64 requiredFileSize = its_StartOffset + Int64(its_NewNrOfBuckets) * its_BucketSize;
+
+        if (requiredFileSize > currentFileSize) {
+            CASACORE_DEBUG("BucketCache::extend: pre-allocating file from " << currentFileSize
+                          << " to " << requiredFileSize << " bytes using ftruncate");
+
+            // Get file descriptor from BucketFile
+            int fileDescriptor = its_file->fileDescriptor();
+            CASACORE_DEBUG("BucketCache::extend: got file descriptor " << fileDescriptor);
+
+            if (fileDescriptor >= 0) {
+                // Use ftruncate to pre-allocate the file space
+                // This avoids the need to write zero buffers for each bucket individually
+                if (ftruncate(fileDescriptor, requiredFileSize) == 0) {
+                    CASACORE_DEBUG("BucketCache::extend: ftruncate successful");
+                } else {
+                    CASACORE_DEBUG("BucketCache::extend: ftruncate failed, will fall back to individual bucket writes");
+                }
+            } else {
+                CASACORE_DEBUG("BucketCache::extend: could not get file descriptor, will fall back to individual bucket writes");
+            }
+        }
+    }
 }
-    
+
 uInt BucketCache::addBucket (char* data)
 {
     uInt bucketNr;

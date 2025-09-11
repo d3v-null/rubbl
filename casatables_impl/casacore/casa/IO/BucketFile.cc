@@ -42,6 +42,19 @@
 #include <fcntl.h>
 #include <errno.h>                // needed for errno
 #include <casacore/casa/string.h>          // needed for strerror
+#include <iostream>
+#include <typeinfo>                           // needed for dynamic_cast
+
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 #if defined(AIPS_DARWIN) || defined(AIPS_BSD)
 #undef trace3OPEN
@@ -158,6 +171,24 @@ void BucketFile::deleteMapBuf()
     bufferedFile_p = 0;
 }
 
+int BucketFile::fileDescriptor() const
+{
+    // Return file descriptor from FiledesIO if available
+    if (file_p && dynamic_cast<FiledesIO*>(file_p.get()) != 0) {
+        return dynamic_cast<FiledesIO*>(file_p.get())->fd();
+    }
+    // Return file descriptor from mapped file if available
+    if (mappedFile_p) {
+        return mappedFile_p->fd();
+    }
+    // Return file descriptor from buffered file if available
+    if (bufferedFile_p) {
+        return bufferedFile_p->fd();
+    }
+    // Return stored file descriptor as fallback
+    return fd_p;
+}
+
 void BucketFile::remove()
 {
     close();
@@ -207,6 +238,7 @@ uInt BucketFile::read (void* buffer, uInt length)
 
 uInt BucketFile::write (const void* buffer, uInt length)
 {
+  CASACORE_DEBUG("BucketFile::write: " << name_p << " length=" << length);
   file_p->write (length, buffer);
     return length;
 }

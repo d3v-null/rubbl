@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="BinarySearch_8h" kind="file" language="C++">
+    <compoundname>BinarySearch.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="BinarySearch_8tcc" local="no">casacore/casa/Utilities/BinarySearch.tcc</includes>
+    <includedby refid="Utilities_8h" local="no">casa/Utilities.h</includedby>
+    <includedby refid="ISMBucket_8cc" local="no">tables/DataMan/ISMBucket.cc</includedby>
+    <includedby refid="ISMIndex_8cc" local="no">tables/DataMan/ISMIndex.cc</includedby>
+    <includedby refid="SSMIndex_8cc" local="no">tables/DataMan/SSMIndex.cc</includedby>
+    <includedby refid="TiledCellStMan_8cc" local="no">tables/DataMan/TiledCellStMan.cc</includedby>
+    <includedby refid="TiledColumnStMan_8cc" local="no">tables/DataMan/TiledColumnStMan.cc</includedby>
+    <includedby refid="TiledDataStMan_8cc" local="no">tables/DataMan/TiledDataStMan.cc</includedby>
+    <includedby refid="TiledShapeStMan_8cc" local="no">tables/DataMan/TiledShapeStMan.cc</includedby>
+    <includedby refid="TiledStMan_8cc" local="no">tables/DataMan/TiledStMan.cc</includedby>
+    <includedby refid="ConcatRows_8cc" local="no">tables/Tables/ConcatRows.cc</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="1">
+        <label>casa/Utilities/BinarySearch.h</label>
+        <link refid="BinarySearch_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="7">
+        <label>casacore/casa/Utilities/BinarySearch.tcc</label>
+        <link refid="BinarySearch_8tcc"/>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="11">
+        <label>tables/Tables/ConcatRows.cc</label>
+        <link refid="ConcatRows_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/TiledCellStMan.cc</label>
+        <link refid="TiledCellStMan_8cc"/>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/TiledStMan.cc</label>
+        <link refid="TiledStMan_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Utilities.h</label>
+        <link refid="Utilities_8h"/>
+      </node>
+      <node id="9">
+        <label>tables/DataMan/TiledShapeStMan.cc</label>
+        <link refid="TiledShapeStMan_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Utilities/BinarySearch.h</label>
+        <link refid="BinarySearch_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/TiledDataStMan.cc</label>
+        <link refid="TiledDataStMan_8cc"/>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/ISMIndex.cc</label>
+        <link refid="ISMIndex_8cc"/>
+      </node>
+      <node id="3">
+        <label>tables/DataMan/ISMBucket.cc</label>
+        <link refid="ISMBucket_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/TiledColumnStMan.cc</label>
+        <link refid="TiledColumnStMan_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>BinarySearch.h:<sp/>Binary<sp/>search<sp/>through<sp/>linear,<sp/>sorted,<sp/>data<sp/>structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1995,1996,1999</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASA_BINARYSEARCH_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CASA_BINARYSEARCH_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Binary<sp/>search<sp/>a<sp/>sorted,<sp/>linear,<sp/>data<sp/>structure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;Ger<sp/>van<sp/>Diepen&quot;<sp/>date=&quot;1995/03/31&quot;<sp/>tests=&quot;tBinarySearch&quot;<sp/>demos=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>binary<sp/>search<sp/>functions<sp/>work<sp/>on<sp/>sorted,<sp/>linear<sp/>data<sp/>structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>have<sp/>operator()<sp/>or<sp/>operator[]<sp/>defined<sp/>on<sp/>them<sp/>(&lt;i&gt;e.g.&lt;/i&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C-array,<sp/>Vector,<sp/>IPosition,<sp/>Block,<sp/>ScalarColumn,<sp/>&lt;i&gt;etc.&lt;/i&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Two<sp/>versions<sp/>of<sp/>the<sp/>functions<sp/>are<sp/>provided,<sp/>one<sp/>which<sp/>uses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>parentheses<sp/>()<sp/>for<sp/>indexing,<sp/>one<sp/>which<sp/>uses<sp/>square<sp/>brackets<sp/>[]<sp/>(obviously</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>latter<sp/>one<sp/>can<sp/>also<sp/>be<sp/>used<sp/>for<sp/>ordinary<sp/>C-style<sp/>pointers<sp/>and<sp/>arrays).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>assumed<sp/>that<sp/>the<sp/>container<sp/>uses<sp/>zero-based<sp/>indexing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>container<sp/>must<sp/>be<sp/>sorted<sp/>(sorting<sp/>is<sp/>available<sp/>through<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=&quot;Sort&quot;&gt;Sort&lt;/linkto&gt;<sp/>and<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=&quot;GenSort&quot;&gt;GenSort&lt;/linkto&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>classes,<sp/>and<sp/>from<sp/>various<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=&quot;Table&quot;&gt;Table&lt;/linkto&gt;<sp/>sort<sp/>functions).<sp/>The<sp/>returned<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>in<sp/>the<sp/>range<sp/>[0..n]<sp/>inclusive.<sp/>That<sp/>is,<sp/>from<sp/>the<sp/>first<sp/>element<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>container<sp/>to<sp/>one<sp/>past<sp/>the<sp/>last<sp/>element<sp/>of<sp/>the<sp/>container<sp/>(zero-based<sp/>indices).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>container<sp/>is<sp/>sorted<sp/>in<sp/>ascending<sp/>order,<sp/>the<sp/>returned<sp/>index<sp/>is<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>first<sp/>one<sp/>whose<sp/>element<sp/>is<sp/>greater<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>the<sp/>searched<sp/>for<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>it<sp/>is<sp/>sorted<sp/>in<sp/>descending<sp/>order,<sp/>the<sp/>returned<sp/>index<sp/>is<sp/>the<sp/>first<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>less<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>the<sp/>searched<sp/>for<sp/>value.<sp/>That<sp/>is,<sp/>the<sp/>returned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>index<sp/>gives<sp/>the<sp/>position<sp/>at<sp/>which<sp/>the<sp/>value<sp/>would<sp/>be<sp/>inserted<sp/>(possibly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>either<sp/>at<sp/>the<sp/>end,<sp/>or<sp/>requiring<sp/>the<sp/>existing<sp/>values<sp/>to<sp/>be<sp/>&quot;pushed&quot;<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>right)<sp/>maintaining<sp/>the<sp/>sort<sp/>order.<sp/>Obviously<sp/>index<sp/>n<sp/>can<sp/>only<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>returned<sp/>if<sp/>the<sp/>value<sp/>searched<sp/>for<sp/>is<sp/>past<sp/>the<sp/>end<sp/>of<sp/>the<sp/>array,<sp/>thus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>has<sp/>to<sp/>be<sp/>inserted<sp/>at<sp/>the<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>functions<sp/>determine<sp/>for<sp/>themselves<sp/>whether<sp/>the<sp/>container<sp/>is<sp/>sorted<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ascending<sp/>or<sp/>descending<sp/>order<sp/>by<sp/>comparing<sp/>the<sp/>first<sp/>and<sp/>last<sp/>element.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=tip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>While<sp/>normally<sp/>you<sp/>want<sp/>to<sp/>search<sp/>a<sp/>container<sp/>with<sp/>indices<sp/>in<sp/>the<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;src&gt;[0<sp/>...<sp/>n-1]&lt;/src&gt;,<sp/>any<sp/>desired<sp/>lower<sp/>bound<sp/>may<sp/>be<sp/>used<sp/>instead.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;note<sp/>role=warning&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>functions<sp/>do<sp/>not<sp/>check<sp/>if<sp/>the<sp/>container<sp/>is<sp/>valid,<sp/>&lt;i&gt;i.e.&lt;/i&gt;<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>container<sp/>is<sp/>sorted<sp/>and<sp/>if<sp/>the<sp/>container<sp/>does<sp/>not<sp/>contain<sp/>duplicate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/note&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>functions<sp/>loosely<sp/>follow<sp/>some<sp/>written<sp/>by<sp/>Ger<sp/>van<sp/>Diepen<sp/>in<sp/>a<sp/>more</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>specialized<sp/>context.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vector&lt;Int&gt;<sp/>vi;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>...<sp/><sp/>//<sp/>Sets<sp/>vi<sp/>somehow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>genSort(vi);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Int<sp/>val;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Bool<sp/>found;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>while<sp/>(cin<sp/>&gt;&gt;<sp/>val<sp/>&amp;&amp;<sp/>val<sp/>!=<sp/>-999)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>Int<sp/>where<sp/>=<sp/>binarySearch(found,<sp/>vi,<sp/>val,<sp/>vi.nelements());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(found)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;Found<sp/>&quot;<sp/>&lt;&lt;<sp/>val<sp/>&lt;&lt;<sp/>&quot;<sp/>at<sp/>position<sp/>&quot;<sp/>&lt;&lt;<sp/>where<sp/>&lt;&lt;<sp/>endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>val<sp/>&lt;&lt;<sp/>&quot;<sp/>is<sp/>not<sp/>in<sp/>the<sp/>vector,<sp/>but<sp/>it<sp/>belongs<sp/>at<sp/>&quot;<sp/>&lt;&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>where<sp/>&lt;&lt;<sp/>endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>}<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/example&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I<sp/>found<sp/>that<sp/>I<sp/>(BEG)<sp/>was<sp/>writing<sp/>binary<sp/>search<sp/>functions<sp/>several<sp/>times,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>example<sp/>when<sp/>checking<sp/>whether<sp/>the<sp/>cached<sp/>off<sp/>and<sp/>gain<sp/>scans<sp/>in<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>sorted<sp/>data<sp/>needed<sp/>to<sp/>be<sp/>refilled.<sp/>It<sp/>generally<sp/>seems<sp/>like<sp/>a<sp/>useful<sp/>little</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>utility<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;templating<sp/>arg=Container&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>&lt;li&gt;<sp/>operator(Int)<sp/>or<sp/>operator[Int]<sp/>needs<sp/>to<sp/>be<sp/>defined.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>&lt;li&gt;<sp/>The<sp/>index<sp/>must<sp/>be<sp/>zero<sp/>based.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>&lt;li&gt;<sp/>The<sp/>result<sp/>of<sp/>that<sp/>indexing<sp/>must<sp/>be<sp/>an<sp/>expression<sp/>that<sp/>can<sp/>be<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compared<sp/>with<sp/>an<sp/>object<sp/>of<sp/>class<sp/>ElType.<sp/>Normally<sp/>in<sp/>fact<sp/>it<sp/>would</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>be<sp/>a<sp/>temporary<sp/>of<sp/>class<sp/>ElType.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/templating&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;templating<sp/>arg=ElType&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>&lt;li&gt;<sp/>The<sp/>less<sp/>than<sp/>operator<sp/>(&lt;)<sp/>and<sp/>greater<sp/>than<sp/>(&gt;)<sp/>operators<sp/>need<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>be<sp/>defined,<sp/>and<sp/>have<sp/>their<sp/>usual<sp/>ordering<sp/>relations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/templating&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;todo<sp/>asof=&quot;yyyy/mm/dd&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>I<sp/>suspect<sp/>that<sp/>an<sp/>implementation<sp/>is<sp/>possible<sp/>that<sp/>only<sp/>calls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>operator()<sp/>or<sp/>[]<sp/>once<sp/>during<sp/>each<sp/>evaluation<sp/>of<sp/>the<sp/>while<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>MACROize<sp/>implementation<sp/>so<sp/>that<sp/>code<sp/>isn&apos;t<sp/>repeated<sp/>twice.<sp/>Or,<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>possibly<sp/>implement<sp/>one<sp/>using<sp/>the<sp/>other<sp/>(e.g.<sp/>by<sp/>introducing<sp/>an<sp/>adapter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>class<sp/>that<sp/>turns<sp/>(i)<sp/>into<sp/>[i].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;group<sp/>name=binarysearch&gt;<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Search<sp/>&lt;i&gt;container&lt;/i&gt;<sp/>for<sp/>&lt;i&gt;value&lt;/i&gt;.<sp/>There<sp/>are<sp/>assumed<sp/>to<sp/>be<sp/>at<sp/>least</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;i&gt;n&lt;/i&gt;<sp/>elements<sp/>in<sp/>the<sp/>container.<sp/>The<sp/>container<sp/>will<sp/>be<sp/>searched<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>indices<sp/>in<sp/>the<sp/>range<sp/>&lt;src&gt;[lower<sp/>...<sp/>lower<sp/>+<sp/>n<sp/>-<sp/>1]&lt;/src&gt;<sp/>Return<sp/>the<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>the<sp/>first<sp/>element<sp/>which<sp/>is<sp/>greater<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>(ascending<sp/>order)<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/>less<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>(descending<sp/>order)<sp/>the<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>version<sp/>of<sp/>the<sp/>function<sp/>is<sp/>for<sp/>containers<sp/>that<sp/>use<sp/>()<sp/>for<sp/>indexing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Container,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>ElType&gt;</highlight></codeline>
+<codeline lineno="141" refid="namespacecasacore_1a27e0e1900ed032fe34388642639ac5c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/><ref refid="namespacecasacore_1a27e0e1900ed032fe34388642639ac5c2" kindref="member">binarySearch</ref>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>&amp;found,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Container<sp/>&amp;container,<sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ElType<sp/>&amp;value,<sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>n,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>lower=0);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>version<sp/>of<sp/>the<sp/>function<sp/>is<sp/>for<sp/>containers<sp/>that<sp/>use<sp/>[]<sp/>for<sp/>indexing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Container,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>ElType&gt;</highlight></codeline>
+<codeline lineno="145" refid="namespacecasacore_1ae63ef9272ad73140627f6f1e46d4d1c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/><ref refid="namespacecasacore_1ae63ef9272ad73140627f6f1e46d4d1c2" kindref="member">binarySearchBrackets</ref>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>&amp;found,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Container<sp/>&amp;container,<sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ElType<sp/>&amp;value,<sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>n,<sp/><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref><sp/>lower=0);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="BinarySearch_8tcc" kindref="compound">casacore/casa/Utilities/BinarySearch.tcc</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//#<sp/>CASACORE_NO_AUTO_TEMPLATES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Utilities/BinarySearch.h"/>
+  </compounddef>
+</doxygen>

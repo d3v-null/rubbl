@@ -1,0 +1,1832 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="MaskArrMath_8tcc" kind="file" language="C++">
+    <compoundname>MaskArrMath.tcc</compoundname>
+    <includedby refid="MaskArrMath_8h" local="yes">casa/Arrays/MaskArrMath.h</includedby>
+    <invincdepgraph>
+      <node id="4">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/MaskArrMath.h</label>
+        <link refid="MaskArrMath_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/MaskArrMath2.cc</label>
+        <link refid="MaskArrMath2_8cc"/>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/MaskArrMath.tcc</label>
+        <link refid="MaskArrMath_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>MaskArrMath.cc:<sp/>Simple<sp/>mathematics<sp/>done<sp/>with<sp/>MaskedArray&apos;s.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1999,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_MASKARRMATH_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_MASKARRMATH_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayLogical.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;MaskArrMath.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Array.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayIter.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;VectorIter.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;algorithm&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_IOP_MA(IOP,STRIOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;<sp/>operator<sp/>IOP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STRIOP<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getRWArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftarrS<sp/>IOP<sp/>*rightS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_IOP_AM(IOP,STRIOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;T&gt;<sp/>&amp;<sp/>operator<sp/>IOP<sp/>(Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STRIOP<sp/>&quot;(Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftStorage<sp/>=<sp/>left.getStorage(leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftS<sp/>=<sp/>leftStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftS<sp/>IOP<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putStorage(leftStorage,<sp/>leftDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_IOP_MM(IOP,STRIOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;<sp/>operator<sp/>IOP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STRIOP<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getRWArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS<sp/>&amp;&amp;<sp/>*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftarrS<sp/>IOP<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_IOP_MM2(IOP,STRIOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T,class<sp/>S&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;<sp/>operator<sp/>IOP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;S&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.shape()!=right.shape())<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STRIOP<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;S&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getRWArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>S<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>S<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>right.getMaskStorage(rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*rightmaskS<sp/>=<sp/>rightmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS<sp/>&amp;&amp;<sp/>*rightmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftarrS<sp/>IOP<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeMaskStorage(rightmaskStorage,<sp/>rightmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_IOP_MS(IOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;<sp/>operator<sp/>IOP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getRWArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftarrS<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MA<sp/>(<sp/>+=<sp/>,<sp/>&quot;+=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MA<sp/>(<sp/>-=<sp/>,<sp/>&quot;-=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MA<sp/>(<sp/>*=<sp/>,<sp/>&quot;*=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MA<sp/>(<sp/>/=<sp/>,<sp/>&quot;/=&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_IOP_AM<sp/>(<sp/>+=<sp/>,<sp/>&quot;+=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_AM<sp/>(<sp/>-=<sp/>,<sp/>&quot;-=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_AM<sp/>(<sp/>*=<sp/>,<sp/>&quot;*=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_AM<sp/>(<sp/>/=<sp/>,<sp/>&quot;/=&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MM<sp/>(<sp/>+=<sp/>,<sp/>&quot;+=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MM<sp/>(<sp/>-=<sp/>,<sp/>&quot;-=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MM<sp/>(<sp/>*=<sp/>,<sp/>&quot;*=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MM<sp/>(<sp/>/=<sp/>,<sp/>&quot;/=&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MM2<sp/>(<sp/>/=<sp/>,<sp/>&quot;/=&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MS<sp/>(<sp/>+=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MS<sp/>(<sp/>-=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MS<sp/>(<sp/>*=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_IOP_MS<sp/>(<sp/>/=<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>MaskedArray&lt;T&gt;<sp/>operator+<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>MaskedArray&lt;T&gt;<sp/>operator-<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>-(*resultarrS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_OP_MA(OP,IOP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STROP<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_OP_AM(OP,IOP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>operator<sp/>OP<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STROP<sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy(),<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_OP_MM(OP,IOP,STROP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::operator&quot;<sp/>STROP<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(<sp/>left.getArray().copy(),<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(left.getMask()<sp/>&amp;&amp;<sp/>right.getMask())<sp/>);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_OP_MS(OP,IOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>operator<sp/>OP<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_OP_SM(OP,IOP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>operator<sp/>OP<sp/>(const<sp/>T<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>resultarray<sp/>(right.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarray<sp/>=<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(resultarray,<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>IOP<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_OP_MA<sp/>(<sp/>+,<sp/>+=<sp/>,<sp/>&quot;+&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MA<sp/>(<sp/>-,<sp/>-=<sp/>,<sp/>&quot;-&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MA<sp/>(<sp/>*,<sp/>*=<sp/>,<sp/>&quot;*&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MA<sp/>(<sp/>/,<sp/>/=<sp/>,<sp/>&quot;/&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_OP_AM<sp/>(<sp/>+,<sp/>+=<sp/>,<sp/>&quot;+&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_AM<sp/>(<sp/>-,<sp/>-=<sp/>,<sp/>&quot;-&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_AM<sp/>(<sp/>*,<sp/>*=<sp/>,<sp/>&quot;*&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_AM<sp/>(<sp/>/,<sp/>/=<sp/>,<sp/>&quot;/&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_OP_MM<sp/>(<sp/>+,<sp/>+=<sp/>,<sp/>&quot;+&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MM<sp/>(<sp/>-,<sp/>-=<sp/>,<sp/>&quot;-&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MM<sp/>(<sp/>*,<sp/>*=<sp/>,<sp/>&quot;*&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MM<sp/>(<sp/>/,<sp/>/=<sp/>,<sp/>&quot;/&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_OP_MS<sp/>(<sp/>+,<sp/>+=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MS<sp/>(<sp/>-,<sp/>-=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MS<sp/>(<sp/>*,<sp/>*=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_MS<sp/>(<sp/>/,<sp/>/=<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_OP_SM<sp/>(<sp/>+,<sp/>+=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_SM<sp/>(<sp/>-,<sp/>-=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_SM<sp/>(<sp/>*,<sp/>*=<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_OP_SM<sp/>(<sp/>/,<sp/>/=<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>void<sp/>indgen(MaskedArray&lt;T&gt;<sp/>&amp;left,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>start,<sp/>T<sp/>inc)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getRWArrayStorage(leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>ind<sp/>=<sp/>start;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*leftarrS<sp/>=<sp/>ind;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ind<sp/>+=<sp/>inc;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.putArrayStorage(leftarrStorage,<sp/>leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>void<sp/>indgen(MaskedArray&lt;T&gt;<sp/>&amp;a)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>indgen(a,<sp/>T(0),<sp/>T(1));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>void<sp/>indgen(MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>T<sp/>start)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>indgen(a,<sp/>start,<sp/>T(1));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T,<sp/>class<sp/>U&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>pow<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;U&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>if<sp/>(conform2(left,<sp/>right)<sp/>==<sp/>false)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.shape()<sp/>!=<sp/>right.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>&quot;pow&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightS<sp/>=<sp/>rightStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>std::pow<sp/>(*resultarrS,<sp/>*rightS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T,<sp/>class<sp/>U&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>pow<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;U&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>if<sp/>(conform2(left,<sp/>right)<sp/>==<sp/>false)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.shape()<sp/>!=<sp/>right.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>&quot;pow&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;U&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy(),<sp/>right.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>std::pow<sp/>(*resultarrS,<sp/>*rightarrS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T,<sp/>class<sp/>U&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>pow<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;U&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>if<sp/>(conform2(left,<sp/>right)<sp/>==<sp/>false)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.shape()<sp/>!=<sp/>right.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>&quot;pow&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(<sp/>left.getArray().copy(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(left.getMask()<sp/>&amp;&amp;<sp/>right.getMask())<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>U<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>std::pow<sp/>(*resultarrS,<sp/>*rightarrS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>pow<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>double<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>std::pow<sp/>(*resultarrS,<sp/>right);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_M(DEFNAME,<sp/>FUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>FUNC<sp/>(*resultarrS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_MA(DEFNAME,FUNC,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>STRFUNC<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>T(FUNC<sp/>(*resultarrS,<sp/>*rightS));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_AM(DEFNAME,<sp/>FUNC,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>STRFUNC<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy(),<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>T(FUNC<sp/>(*resultarrS,<sp/>*rightarrS));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_MM(DEFNAME,<sp/>FUNC,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>STRFUNC\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(<sp/>left.getArray().copy(),<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(left.getMask()<sp/>&amp;&amp;<sp/>right.getMask())<sp/>);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>T(FUNC<sp/>(*resultarrS,<sp/>*rightarrS));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_MS(DEFNAME,<sp/>FUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>FUNC<sp/>(*resultarrS,<sp/>right);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_FUNC_SM(DEFNAME,<sp/>FUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>DEFNAME<sp/>(const<sp/>T<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>resultarray<sp/>(right.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarray<sp/>=<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(resultarray,<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>FUNC<sp/>(*resultarrS,<sp/>*rightarrS);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>sin,<sp/>std::sin<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>cos,<sp/>std::cos<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>tan,<sp/>std::tan<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>asin,<sp/>std::sin<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>acos,<sp/>std::acos<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>atan,<sp/>std::atan<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>sinh,<sp/>std::sinh<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>cosh,<sp/>std::cosh<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>tanh,<sp/>std::tanh<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>exp,<sp/>std::exp<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>log,<sp/>std::log<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>log10,<sp/>std::log10<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>sqrt,<sp/>std::sqrt<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>abs,<sp/>std::abs<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>fabs,<sp/>std::abs<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>ceil,<sp/>std::ceil<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_M<sp/>(<sp/>floor,<sp/>std::floor<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MA<sp/>(<sp/>atan2,<sp/>std::atan2,<sp/>&quot;atan2&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MA<sp/>(<sp/>fmod,<sp/>std::fmod,<sp/>&quot;fmod&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_AM<sp/>(<sp/>atan2,<sp/>std::atan2,<sp/>&quot;atan2&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_AM<sp/>(<sp/>fmod,<sp/>std::fmod,<sp/>&quot;fmod&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MM<sp/>(<sp/>atan2,<sp/>std::atan2,<sp/>&quot;atan2&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MM<sp/>(<sp/>fmod,<sp/>std::fmod,<sp/>&quot;fmod&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MS<sp/>(<sp/>atan2,<sp/>std::atan2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_MS<sp/>(<sp/>fmod,<sp/>std::fmod<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_SM<sp/>(<sp/>atan2,<sp/>std::atan2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_FUNC_SM<sp/>(<sp/>fmod,<sp/>std::fmod<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>minMax(T<sp/>&amp;minVal,<sp/>T<sp/>&amp;maxVal,<sp/>IPosition<sp/>&amp;minPos,<sp/>IPosition<sp/>&amp;maxPos,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((minPos.nelements()<sp/>!=<sp/>marray.ndim())<sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(maxPos.nelements()<sp/>!=<sp/>marray.ndim()))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;void<sp/>::minMax(&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;T<sp/>&amp;minVal,<sp/>T<sp/>&amp;maxVal,<sp/>IPosition<sp/>&amp;minPos,<sp/>IPosition<sp/>&amp;maxPos,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>minPos,<sp/>maxPos<sp/>dimensionality<sp/>inconsistent<sp/>with<sp/>marray&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>marrayarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrStorage<sp/>=<sp/>marray.getArrayStorage(marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*marrayarrS<sp/>=<sp/>marrayarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>marraymaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>marray.getMaskStorage(marraymaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*marraymaskS<sp/>=<sp/>marraymaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>marray.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>minLocal<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>maxLocal<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>minNtotal=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>maxNtotal=0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minLocal<sp/>=<sp/>*marrayarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxLocal<sp/>=<sp/>minLocal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minNtotal<sp/>=<sp/>ntotal<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxNtotal<sp/>=<sp/>minNtotal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;void<sp/>::minMax(&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;T<sp/>&amp;minVal,<sp/>T<sp/>&amp;maxVal,<sp/>IPosition<sp/>&amp;minPos,<sp/>IPosition<sp/>&amp;maxPos,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marraymaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS<sp/>&lt;<sp/>minLocal)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minLocal<sp/>=<sp/>*marrayarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minNtotal<sp/>=<sp/>ntotal<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*marrayarrS<sp/>&gt;<sp/>maxLocal)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxLocal<sp/>=<sp/>*marrayarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxNtotal<sp/>=<sp/>ntotal<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marrayarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marraymaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>marray.freeArrayStorage(marrayarrStorage,<sp/>marrayarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>marray.freeMaskStorage(marraymaskStorage,<sp/>marraymaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>minVal<sp/>=<sp/>minLocal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maxVal<sp/>=<sp/>maxLocal;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>minPos<sp/>=<sp/>toIPositionInArray<sp/>(marray.nelements()<sp/>-<sp/>minNtotal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maxPos<sp/>=<sp/>toIPositionInArray<sp/>(marray.nelements()<sp/>-<sp/>maxNtotal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>marray.shape());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>minMax(T<sp/>&amp;minVal,<sp/>T<sp/>&amp;maxVal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;marray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>minPos<sp/>(marray.ndim(),<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>IPosition<sp/>maxPos<sp/>(minPos);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>minMax<sp/>(minVal,<sp/>maxVal,<sp/>minPos,<sp/>maxPos,<sp/>marray);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_M(FUNC,OP,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>FUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>result<sp/>=<sp/>*leftarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>foundOne<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>*leftarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundOne<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!foundOne)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::&quot;<sp/>STRFUNC<sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftarrS<sp/>OP<sp/>result)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>*leftarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_MA(FUNC,OP,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>FUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>STRFUNC<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightStorage<sp/>=<sp/>right.getStorage(rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightS<sp/>=<sp/>rightStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightS<sp/>OP<sp/>*resultarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>*rightS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightStorage,<sp/>rightDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_AM(FUNC,OP,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>FUNC<sp/>(const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;::&quot;<sp/>STRFUNC<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy(),<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightarrS<sp/>OP<sp/>*resultarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_MM(FUNC,OP,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>FUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.conform(right)<sp/>==<sp/>false)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;MaskedArray&lt;T&gt;<sp/>::&quot;<sp/>STRFUNC\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(<sp/>left.getArray().copy(),<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(left.getMask()<sp/>&amp;&amp;<sp/>right.getMask())<sp/>);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightarrS<sp/>OP<sp/>*resultarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_MS(FUNC,OP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>FUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>T<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(right<sp/>OP<sp/>*resultarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>right;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_SM(FUNC,OP)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>FUNC<sp/>(const<sp/>T<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>resultarray<sp/>(right.shape());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resultarray<sp/>=<sp/>left;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(resultarray,<sp/>right.getMask());<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getArrayStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*rightarrS<sp/>OP<sp/>*resultarrS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeArrayStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>MARRM_MINORMAX_AAM(FUNC,OP,STRFUNC)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>FUNC<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;result,<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;right)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!<sp/>(result.conform(left)<sp/>&amp;&amp;<sp/>result.conform(right))<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(ArrayConformanceError<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;void<sp/>::&quot;<sp/>STRFUNC<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;,<sp/>const<sp/>Array&lt;T&gt;<sp/>&amp;)&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage<sp/>=<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.getMaskStorage(resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getStorage(leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>rightarrDelete;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrStorage<sp/>=<sp/>right.getStorage(rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*rightarrS<sp/>=<sp/>rightarrStorage;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>=<sp/>(*leftarrS<sp/>OP<sp/>*rightarrS)<sp/>?<sp/>*leftarrS<sp/>:<sp/>*rightarrS;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rightarrS++;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeStorage(leftarrStorage,<sp/>leftarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>right.freeStorage(rightarrStorage,<sp/>rightarrDelete);<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_M<sp/>(<sp/>min,<sp/>&lt;,<sp/>&quot;min&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_M<sp/>(<sp/>max,<sp/>&gt;,<sp/>&quot;max&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MA<sp/>(<sp/>min,<sp/>&lt;<sp/>,<sp/>&quot;min&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MA<sp/>(<sp/>max,<sp/>&gt;<sp/>,<sp/>&quot;max&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_AM<sp/>(<sp/>min,<sp/>&lt;<sp/>,<sp/>&quot;min&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_AM<sp/>(<sp/>max,<sp/>&gt;<sp/>,<sp/>&quot;max&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MM<sp/>(<sp/>min,<sp/>&lt;<sp/>,<sp/>&quot;min&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MM<sp/>(<sp/>max,<sp/>&gt;<sp/>,<sp/>&quot;max&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MS<sp/>(<sp/>min,<sp/>&lt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_MS<sp/>(<sp/>max,<sp/>&gt;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_SM<sp/>(<sp/>min,<sp/>&lt;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_SM<sp/>(<sp/>max,<sp/>&gt;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_AAM<sp/>(<sp/>min,<sp/>&lt;<sp/>,<sp/>&quot;min&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">MARRM_MINORMAX_AAM<sp/>(<sp/>max,<sp/>&gt;<sp/>,<sp/>&quot;max&quot;<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>sum(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::sum(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>sum<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>*leftarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>sum;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>sumsquares(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::sumsquares(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>sumsquares<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sumsquares<sp/>+=<sp/>(*leftarrS<sp/>*<sp/>*leftarrS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>sumsquares;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>product(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::product(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>leftmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>left.getMaskStorage(leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>product<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>left.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>product<sp/>*=<sp/>*leftarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>product;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>mean(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::mean(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>sum(left)/T(left.nelementsValid());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>&lt;/item&gt;<sp/>ArrayError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Similar<sp/>to<sp/>numpy<sp/>the<sp/>ddof<sp/>argument<sp/>can<sp/>be<sp/>used<sp/>to<sp/>get<sp/>the<sp/>population</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>variance<sp/>(ddof=0)<sp/>or<sp/>the<sp/>sample<sp/>variance<sp/>(ddof=1).</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>pvariance(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>T<sp/>mean,<sp/>size_t<sp/>ddof)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>nr<sp/>=<sp/>a.nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(nr<sp/>&lt;<sp/>ddof+1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(&quot;::variance(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(ddof+1)<sp/>+<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>unmasked<sp/>elements&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>deviations<sp/>(abs(a<sp/>-<sp/>mean));<sp/><sp/><sp/><sp/>//<sp/>abs<sp/>is<sp/>needed<sp/>for<sp/>Complex</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>deviations<sp/>*=<sp/>deviations;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>sum(deviations)<sp/>/<sp/>T(nr<sp/>-<sp/>ddof);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>variance(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>T<sp/>mean)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pvariance<sp/>(a,<sp/>mean,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>pvariance(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>size_t<sp/>ddof)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pvariance(a,<sp/>mean(a),<sp/>ddof);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>variance(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pvariance(a,<sp/>mean(a),<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>&lt;/item&gt;<sp/>ArrayError</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>&lt;/thrown&gt;</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>pstddev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>T<sp/>mean,<sp/>size_t<sp/>ddof)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(a.nelements()<sp/>&lt;<sp/>ddof+1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(&quot;::stddev(const<sp/>Array&lt;T&gt;<sp/>&amp;)<sp/>-<sp/>Need<sp/>at<sp/>least<sp/>&quot;<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(ddof+1)<sp/>+<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>unmasked<sp/>elements&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>std::sqrt(pvariance(a,<sp/>mean,<sp/>ddof));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>stddev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>T<sp/>mean)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pstddev<sp/>(a,<sp/>mean,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>pstddev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>size_t<sp/>ddof)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pstddev<sp/>(a,<sp/>mean(a),<sp/>ddof);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>stddev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pstddev<sp/>(a,<sp/>mean(a),<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>avdev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>avdev(left,<sp/>mean(left));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>avdev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>T<sp/>mean)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::avdev(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,<sp/>T)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>avdeviations<sp/>(abs(left<sp/>-<sp/>mean));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>sum(avdeviations)/T(left.nelementsValid());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>rms(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(left.nelementsValid()<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::rms(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>T(std::sqrt(sumsquares(left)/(1.0*left.nelementsValid())));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>median(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left,<sp/>bool<sp/>sorted,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>takeEvenMean)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>nelem<sp/>=<sp/>left.nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(nelem<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError(&quot;T<sp/>::median(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;)<sp/>-<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;Need<sp/>at<sp/>least<sp/>1<sp/>unmasked<sp/>element&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//#<sp/>Mean<sp/>does<sp/>not<sp/>have<sp/>to<sp/>be<sp/>taken<sp/>for<sp/>odd<sp/>number<sp/>of<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(nelem%2<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>takeEvenMean<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>medval;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>leftarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*leftarrStorage<sp/>=<sp/>left.getArrayStorage(leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*leftarrS<sp/>=<sp/>leftarrStorage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>leftmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>left.getMaskStorage(leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*leftmaskS<sp/>=<sp/>leftmaskStorage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>n2<sp/>=<sp/>(nelem<sp/>-<sp/>1)/2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!<sp/>sorted)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Make<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>masked<sp/>elements.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;T[]&gt;<sp/>copy(new<sp/>T[nelem]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*copyS<sp/>=<sp/>copy.get();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelem;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*copyS<sp/>=<sp/>*leftarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>copyS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntotal--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::nth_element(&amp;copy[0],<sp/>&amp;copy[n2],<sp/>&amp;copy[nelem]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(takeEvenMean)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>a<sp/>=<sp/>copy[n2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::nth_element(&amp;copy[0],<sp/>&amp;copy[n2+1],<sp/>&amp;copy[nelem]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>medval<sp/>=<sp/>T(0.5<sp/>*<sp/>(a<sp/>+<sp/>copy[n2+1]));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>medval<sp/>=<sp/>copy[n2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>copy.reset();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Sorted.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>When<sp/>mean<sp/>has<sp/>to<sp/>be<sp/>taken,<sp/>we<sp/>need<sp/>one<sp/>more<sp/>element.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(takeEvenMean)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n2++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>T*<sp/>prev<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(;;)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*leftmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(n2<sp/>==<sp/>0)<sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prev<sp/>=<sp/>leftarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n2--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>leftarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>leftmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(takeEvenMean)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>medval<sp/>=<sp/>T(0.5<sp/>*<sp/>(*prev<sp/>+<sp/>*leftarrS));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>medval<sp/>=<sp/>*leftarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>left.freeArrayStorage(leftarrStorage,<sp/>leftarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>left.freeMaskStorage(leftmaskStorage,<sp/>leftmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>medval;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>T<sp/>madfm(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;a,<sp/>bool<sp/>sorted,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>takeEvenMean)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>med<sp/>=<sp/>median(a,<sp/>sorted,<sp/>takeEvenMean);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>absdiff<sp/>=<sp/>abs(a<sp/>-<sp/>med);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>median(absdiff,<sp/>false,<sp/>takeEvenMean);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>MaskedArray&lt;T&gt;<sp/>square(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>*=<sp/>*resultarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;<sp/>MaskedArray&lt;T&gt;<sp/>cube(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;left)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>result<sp/>(left.copy());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultarrDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrStorage<sp/>=<sp/>result.getRWArrayStorage(resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*resultarrS<sp/>=<sp/>resultarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>resultmaskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>result.getMaskStorage(resultmaskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*resultmaskS<sp/>=<sp/>resultmaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>result.nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*resultmaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultarrS<sp/>*=<sp/>(*resultarrS<sp/>*<sp/>*resultarrS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resultmaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.putArrayStorage(resultarrStorage,<sp/>resultarrDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>result.freeMaskStorage(resultmaskStorage,<sp/>resultmaskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T,<sp/>typename<sp/>FuncType&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>boxedArrayMath<sp/>(const<sp/>MaskedArray&lt;T&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>boxSize,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>FuncType&amp;<sp/>funcObj)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ndim<sp/>=<sp/>array.ndim();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>IPosition&amp;<sp/>shape<sp/>=<sp/>array.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>missing<sp/>axes<sp/>to<sp/>1.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>boxsz<sp/>(boxSize);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(boxsz.size()<sp/>!=<sp/>ndim)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>sz<sp/>=<sp/>boxsz.size();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>boxsz.resize<sp/>(ndim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>i=sz;<sp/>i&lt;ndim;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>boxsz[i]<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Determine<sp/>the<sp/>output<sp/>shape.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>resShape(ndim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(size_t<sp/>i=0;<sp/>i&lt;ndim;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>unspecified<sp/>axes<sp/>to<sp/>full<sp/>length.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(boxsz[i]<sp/>&lt;=<sp/>0<sp/><sp/>||<sp/><sp/>boxsz[i]<sp/>&gt;<sp/>shape[i])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>boxsz[i]<sp/>=<sp/>shape[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resShape[i]<sp/>=<sp/>(shape[i]<sp/>+<sp/>boxsz[i]<sp/>-<sp/>1)<sp/>/<sp/>boxsz[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Need<sp/>to<sp/>make<sp/>shallow<sp/>copy<sp/>because<sp/>operator()<sp/>is<sp/>non-const.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>arr<sp/>(array);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Array&lt;T&gt;<sp/>result<sp/>(resShape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Array&lt;bool&gt;<sp/>resultMask(resShape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T*<sp/>res<sp/>=<sp/>result.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool*<sp/>resMask<sp/>=<sp/>resultMask.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Loop<sp/>through<sp/>all<sp/>data<sp/>and<sp/>assemble<sp/>as<sp/>needed.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>blc(ndim,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>trc(boxsz-1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>subarr<sp/>(arr(blc,trc));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(subarr.nelementsValid()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resMask++<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*res++<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resMask++<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*res++<sp/>=<sp/>funcObj<sp/>(arr(blc,trc));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(ax=0;<sp/>ax&lt;ndim;<sp/>++ax)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blc[ax]<sp/>+=<sp/>boxsz[ax];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(blc[ax]<sp/>&lt;<sp/>shape[ax])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>trc[ax]<sp/>+=<sp/>boxsz[ax];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(trc[ax]<sp/>&gt;=<sp/>shape[ax])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>trc[ax]<sp/>=<sp/>shape[ax]-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blc[ax]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trc[ax]<sp/>=<sp/>boxsz[ax]-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(ax<sp/>==<sp/>ndim)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>MaskedArray&lt;T&gt;<sp/>(result,<sp/>resultMask);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T,<sp/>typename<sp/>FuncType&gt;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;T&gt;<sp/>slidingArrayMath<sp/>(const<sp/>MaskedArray&lt;T&gt;&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>IPosition&amp;<sp/>halfBoxSize,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>FuncType&amp;<sp/>funcObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>fillEdge)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ndim<sp/>=<sp/>array.ndim();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>IPosition&amp;<sp/>shape<sp/>=<sp/>array.shape();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>full<sp/>box<sp/>size<sp/>(-1)<sp/>and<sp/>resize/fill<sp/>as<sp/>needed.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>hboxsz<sp/>(2*halfBoxSize);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(hboxsz.size()<sp/>!=<sp/>array.ndim())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>sz<sp/>=<sp/>hboxsz.size();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>hboxsz.resize<sp/>(array.ndim());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>i=sz;<sp/>i&lt;hboxsz.size();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hboxsz[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Determine<sp/>the<sp/>output<sp/>shape.<sp/>See<sp/>if<sp/>anything<sp/>has<sp/>to<sp/>be<sp/>done.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>resShape(ndim);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(size_t<sp/>i=0;<sp/>i&lt;ndim;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>resShape[i]<sp/>=<sp/>shape[i]<sp/>-<sp/>hboxsz[i];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(resShape[i]<sp/>&lt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!fillEdge)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>Array&lt;T&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Array&lt;T&gt;<sp/>res(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>res;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Need<sp/>to<sp/>make<sp/>shallow<sp/>copy<sp/>because<sp/>operator()<sp/>is<sp/>non-const.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>arr<sp/>(array);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Array&lt;T&gt;<sp/>result<sp/>(resShape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert<sp/>(result.contiguousStorage()<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T*<sp/>res<sp/>=<sp/>result.data();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Loop<sp/>through<sp/>all<sp/>data<sp/>and<sp/>assemble<sp/>as<sp/>needed.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>blc(ndim,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>trc(hboxsz);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>pos(ndim,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*res++<sp/>=<sp/>funcObj<sp/>(arr(blc,trc));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ax;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(ax=0;<sp/>ax&lt;ndim;<sp/>ax++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(++pos[ax]<sp/>&lt;<sp/>resShape[ax])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>blc[ax]++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>trc[ax]++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pos(ax)<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>blc[ax]<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>trc[ax]<sp/>=<sp/>hboxsz[ax];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(ax<sp/>==<sp/>ndim)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!fillEdge)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Array&lt;T&gt;<sp/>fullResult(shape);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>fullResult<sp/>=<sp/>T();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>hboxsz<sp/>/=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>fullResult(hboxsz,<sp/>resShape+hboxsz-1).assign_conforming(<sp/>result<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>fullResult;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/MaskArrMath.tcc"/>
+  </compounddef>
+</doxygen>

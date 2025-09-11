@@ -45,7 +45,8 @@
 #include <casacore/casa/OS/HostInfo.h>
 #include <casacore/casa/string.h>                           // for memcpy
 #include <casacore/casa/iostream.h>
-
+#include <iostream>
+#include <cstdlib>
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -97,7 +98,7 @@ TSMCube::TSMCube (TiledStMan* stman, TSMFile* file,
   lastColAccess_p(NoAccess)
 {
     if (fileOffset < 0) {
-        // TiledCellStMan uses an empty shape; setShape is called later. 
+        // TiledCellStMan uses an empty shape; setShape is called later.
         if (! cubeShape.empty()) {
             // A shape is given, so set it.
             extensible_p = cubeShape(cubeShape.nelements()-1) == 0;
@@ -701,9 +702,22 @@ void TSMCube::deleteCallBack (void* owner, char* buffer)
 }
 char* TSMCube::initCallBack (void* owner)
 {
-    uInt64 size = ((TSMCube*)owner)->localTileLength();
+    TSMCube* cube = (TSMCube*)owner;
+    uInt64 size = cube->localTileLength();
+    CASACORE_DEBUG("TSMCube::initCallBack: allocating tile buffer size=" << size);
+
     char* buffer = new char[size];
-    memset(buffer, 0, size);
+
+    // Check if we should skip zero-initialization for performance optimization
+    // This can be enabled via environment variable to test the impact of avoiding unnecessary memset
+    static bool skip_zero_init = std::getenv("CASACORE_SKIP_ZERO_INIT") != nullptr;
+    if (!skip_zero_init) {
+        memset(buffer, 0, size);
+        CASACORE_DEBUG("TSMCube::initCallBack: initialized buffer with zeros");
+    } else {
+        CASACORE_DEBUG("TSMCube::initCallBack: skipping zero initialization (CASACORE_SKIP_ZERO_INIT set)");
+    }
+
     return buffer;
 }
 
@@ -947,7 +961,7 @@ void TSMCube::accessSection (const IPosition& start, const IPosition& end,
     }
     // Get the cache.
     BucketCache* cachePtr = getCache();
-    
+
 //    cout << "nrTileSection_p=" << nrTileSection_p << endl;
 //    cout << "startTile_p=" << startTile_p << endl;
 //    cout << "endTile_p=" << endTile_p << endl;
@@ -999,7 +1013,7 @@ void TSMCube::accessSection (const IPosition& start, const IPosition& end,
     IPosition startPixel (startPixelInFirstTile_p);
     IPosition endPixel   (endPixelInFirstTile_p);
     IPosition tilePos    (startTile_p);
-    IPosition tileIncr = 
+    IPosition tileIncr =
       expandedTilesPerDim_p.offsetIncrement (nrTileSection_p);
     IPosition dataLength(nrdim_p);
     IPosition dataPos   (nrdim_p);

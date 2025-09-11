@@ -31,6 +31,18 @@
 //# Includes
 #include <casacore/casa/aips.h>
 #include <casacore/casa/IO/BucketFile.h>
+#include <iostream>
+
+// Instrumentation for file allocation tracking
+static bool casacore_debug_enabled() {
+    static bool enabled = getenv("CASACORE_DEBUG") != nullptr;
+    return enabled;
+}
+
+#define CASACORE_DEBUG(msg) \
+    if (casacore_debug_enabled()) { \
+        std::cerr << "[CASACORE_DEBUG] " << msg << std::endl; \
+    }
 
 namespace casacore { //# NAMESPACE CASACORE - BEGIN
 
@@ -68,7 +80,7 @@ class AipsIO;
 // <p>
 // Underneath it uses a BucketFile to access the file.
 // In this way the IO details are well encapsulated.
-// </synopsis> 
+// </synopsis>
 
 // <motivation>
 // Encapsulate the Tiled Storage Manager file details.
@@ -129,7 +141,7 @@ private:
     BucketFile* file_p;
     // The (logical) length of the file.
     Int64 length_p;
-	    
+
 
     // Forbid copy constructor.
     TSMFile (const TSMFile&);
@@ -146,7 +158,10 @@ inline uInt TSMFile::sequenceNumber() const
     { return fileSeqnr_p; }
 
 inline void TSMFile::extend (Int64 increment)
-    { length_p += increment; }
+    {
+        CASACORE_DEBUG("TSMFile::extend: seq=" << fileSeqnr_p << " increment=" << increment << " new_length=" << (length_p + increment));
+        length_p += increment;
+    }
 
 inline BucketFile* TSMFile::bucketFile()
     { return file_p; }

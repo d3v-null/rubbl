@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classdyscostman_1_1StochasticEncoder" kind="class" language="C++" prot="public">
+    <compoundname>dyscostman::StochasticEncoder</compoundname>
+    <includes refid="stochasticencoder_8h" local="no">stochasticencoder.h</includes>
+    <innerclass refid="classdyscostman_1_1StochasticEncoder_1_1Dictionary" prot="private">dyscostman::StochasticEncoder::Dictionary</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename ValueType</type>
+        <defval>float</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" prot="public" static="no">
+        <type>unsigned</type>
+        <definition>typedef unsigned dyscostman::StochasticEncoder&lt; ValueType &gt;::symbol_t</definition>
+        <argsstring></argsstring>
+        <name>symbol_t</name>
+        <briefdescription>
+<para>Unsigned integer type used for representing the encoded symbols. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="65" column="20" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classdyscostman_1_1StochasticEncoder_1ac9f64635f91f6a6b2cf4a8cebf5db2c5" prot="public" static="no">
+        <type>ValueType</type>
+        <definition>typedef ValueType dyscostman::StochasticEncoder&lt; ValueType &gt;::value_t</definition>
+        <argsstring></argsstring>
+        <name>value_t</name>
+        <briefdescription>
+<para>Template type used for representing floating point values that are to be encoded. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="71" column="21" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classdyscostman_1_1StochasticEncoder_1a212ae25e711affab7629f1c470a29466" prot="private" static="no">
+        <type>long double</type>
+        <definition>typedef long double dyscostman::StochasticEncoder&lt; ValueType &gt;::num_t</definition>
+        <argsstring></argsstring>
+        <name>num_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="257" column="23" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classdyscostman_1_1StochasticEncoder_1ab44a041916b876726a0c295e03c472b2" prot="private" static="no" mutable="no">
+        <type>Dictionary</type>
+        <definition>Dictionary dyscostman::StochasticEncoder&lt; ValueType &gt;::_encDictionary</definition>
+        <argsstring></argsstring>
+        <name>_encDictionary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="262" column="14" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdyscostman_1_1StochasticEncoder_1af7bbe4fb501c57425f250148802c21b9" prot="private" static="no" mutable="no">
+        <type>Dictionary</type>
+        <definition>Dictionary dyscostman::StochasticEncoder&lt; ValueType &gt;::_decDictionary</definition>
+        <argsstring></argsstring>
+        <name>_decDictionary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="263" column="14" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a8e17dc6291bafe59c35b394c039fc8e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::StochasticEncoder&lt; ValueType &gt;::StochasticEncoder</definition>
+        <argsstring>(size_t quantCount, ValueType stddev, bool gaussianMapping=true)</argsstring>
+        <name>StochasticEncoder</name>
+        <param>
+          <type>size_t</type>
+          <declname>quantCount</declname>
+        </param>
+        <param>
+          <type>ValueType</type>
+          <declname>stddev</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>gaussianMapping</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Construct encoder for given dictionary size and Gaussian stddev. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor initializes the lookup table, and is therefore quite slow. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>quantCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of quantization levels, i.e., the dictionary size. Normally this is 2^bitcount. One quantity will be saved for storing non-finite values (NaN and infinites). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stddev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The standard deviation of the data. The closer this value is to the real stddev, the more accurate the encoder will be. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gaussianMapping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used for testing with non-gaussian distributions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="45" column="3" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="69" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a626e354453b71ef62e2adbe9f9d87cf3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" kindref="member">symbol_t</ref></type>
+        <definition>symbol_t dyscostman::StochasticEncoder&lt; ValueType &gt;::Encode</definition>
+        <argsstring>(ValueType value) const</argsstring>
+        <name>Encode</name>
+        <param>
+          <type>ValueType</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Get the quantized symbol for the given floating point value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is implemented with a binary search, so takes O(log N), with N the dictionary size (2^bitcount). Use <ref refid="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" kindref="member">Decode()</ref> on the returned symbol to get the decoded value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Floating point value to be encoded. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="81" column="12" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="81" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1ac0bb79f9d0c710f2e83459872215b77c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" kindref="member">symbol_t</ref></type>
+        <definition>symbol_t dyscostman::StochasticEncoder&lt; ValueType &gt;::EncodeWithDithering</definition>
+        <argsstring>(ValueType value, unsigned ditherValue) const</argsstring>
+        <name>EncodeWithDithering</name>
+        <param>
+          <type>ValueType</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>ditherValue</declname>
+        </param>
+        <briefdescription>
+<para>Get the quantized symbol for the given floating point value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Dithering is applied, which will cause the average error to converge to zero, assuming the error is uniformly distributed. This method is implemented with a binary search, so takes O(log N), with N the dictionary size (2^bitcount). Use <ref refid="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" kindref="member">Decode()</ref> on the returned symbol to get the decoded value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Floating point value to be encoded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ditherValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dithering value to apply. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="103" column="12" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="103" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a16f43c68d21cf532ed405b26b04a6f19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1StochasticEncoder_1ac9f64635f91f6a6b2cf4a8cebf5db2c5" kindref="member">value_t</ref></type>
+        <definition>value_t dyscostman::StochasticEncoder&lt; ValueType &gt;::RightBoundary</definition>
+        <argsstring>(symbol_t symbol) const</argsstring>
+        <name>RightBoundary</name>
+        <param>
+          <type><ref refid="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" kindref="member">symbol_t</ref></type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+<para>Will return the right boundary of the given symbol. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The right boundary is the smallest value that would not be quantized to the given symbol anymore. If no such boundary exists, 0.0 is returned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="131" column="11" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="131" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ValueType</type>
+        <definition>ValueType dyscostman::StochasticEncoder&lt; ValueType &gt;::Decode</definition>
+        <argsstring>(symbol_t symbol) const</argsstring>
+        <name>Decode</name>
+        <param>
+          <type><ref refid="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" kindref="member">symbol_t</ref></type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+<para>Get the centroid value that belongs to the given symbol. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>symbol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Symbol to be decoded </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The best estimate of the original value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="143" column="13" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a678b5f2482869a604b14e47e63e9f654" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t dyscostman::StochasticEncoder&lt; ValueType &gt;::QuantizationCount</definition>
+        <argsstring>() const</argsstring>
+        <name>QuantizationCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="147" column="10" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="147" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a43fe5825d91654232952af5c85621461" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ValueType</type>
+        <definition>ValueType dyscostman::StochasticEncoder&lt; ValueType &gt;::MaxQuantity</definition>
+        <argsstring>() const</argsstring>
+        <name>MaxQuantity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="149" column="13" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a93628b84f6f7062a7383c66c0cfeac62" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ValueType</type>
+        <definition>ValueType dyscostman::StochasticEncoder&lt; ValueType &gt;::MinQuantity</definition>
+        <argsstring>() const</argsstring>
+        <name>MinQuantity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="151" column="13" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="151" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a96d4df7fa041788cb20b1744fd5e6db4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">StochasticEncoder</ref></type>
+        <definition>static StochasticEncoder dyscostman::StochasticEncoder&lt; ValueType &gt;::StudentTEncoder</definition>
+        <argsstring>(size_t quantCount, double nu, double rms)</argsstring>
+        <name>StudentTEncoder</name>
+        <param>
+          <type>size_t</type>
+          <declname>quantCount</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="48" column="28" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1afc30fd104da7a6de3dfd92dfe5686a9a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classdyscostman_1_1StochasticEncoder" kindref="compound">StochasticEncoder</ref></type>
+        <definition>static StochasticEncoder dyscostman::StochasticEncoder&lt; ValueType &gt;::TruncatedGausEncoder</definition>
+        <argsstring>(size_t quantCount, double trunc, double rms)</argsstring>
+        <name>TruncatedGausEncoder</name>
+        <param>
+          <type>size_t</type>
+          <declname>quantCount</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>trunc</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="55" column="28" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a526b6a60b845ee128878cf7b8f7e3fe7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::uniform_int_distribution&lt; unsigned &gt;</type>
+        <definition>static std::uniform_int_distribution&lt;unsigned&gt; dyscostman::StochasticEncoder&lt; ValueType &gt;::GetDitherDistribution</definition>
+        <argsstring>()</argsstring>
+        <name>GetDitherDistribution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="88" column="40" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="88" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a8c9f059f865c66454b5c1e17b70a0ffe" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>dyscostman::StochasticEncoder&lt; ValueType &gt;::StochasticEncoder</definition>
+        <argsstring>(size_t quantCount)</argsstring>
+        <name>StochasticEncoder</name>
+        <param>
+          <type>size_t</type>
+          <declname>quantCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="154" column="12" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="154" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a64cd3049eaa8ca0a20375fec3260fa18" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::StochasticEncoder&lt; ValueType &gt;::initializeStudentT</definition>
+        <argsstring>(double nu, double rms)</argsstring>
+        <name>initializeStudentT</name>
+        <param>
+          <type>double</type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="157" column="8" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="125" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a502a6c041f710db8fdaaede31855f19b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dyscostman::StochasticEncoder&lt; ValueType &gt;::initializeTruncatedGaussian</definition>
+        <argsstring>(double truncationValue, double rms)</argsstring>
+        <name>initializeTruncatedGaussian</name>
+        <param>
+          <type>double</type>
+          <declname>truncationValue</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>rms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="159" column="8" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="146" bodyend="171"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1a9c7cc1a7eebc7b38ec1b81d94c6c16c5" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>num_t</type>
+        <definition>StochasticEncoder&lt; ValueType &gt;::num_t dyscostman::StochasticEncoder&lt; ValueType &gt;::cumulative</definition>
+        <argsstring>(num_t x)</argsstring>
+        <name>cumulative</name>
+        <param>
+          <type>num_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="259" column="16" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classdyscostman_1_1StochasticEncoder_1ae11ca2f2536bc5d36a7c7f8bd92c98ad" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>num_t</type>
+        <definition>StochasticEncoder&lt; ValueType &gt;::num_t dyscostman::StochasticEncoder&lt; ValueType &gt;::invCumulative</definition>
+        <argsstring>(num_t c, num_t err=num_t(1e-13))</argsstring>
+        <name>invCumulative</name>
+        <param>
+          <type>num_t</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>num_t</type>
+          <declname>err</declname>
+          <defval>num_t(1e-13)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tables/Dysco/stochasticencoder.h" line="260" column="16" bodyfile="tables/Dysco/stochasticencoder.cc" bodystart="23" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Lossy encoder for stochastic values. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This encoder can encode a numeric value represented by a floating point number (float, double, ...) into an integer value with a given limit. It can be made to be the least-square error quantization for some distributions.</para>
+<para>Encoding and decoding have asymetric time complexity / speeds, as decoding is easier than encoding. Decoding is a single indexing into an array, thus extremely fast and with constant time complexity. Encoding is a binary search through the quantizaton values, thus takes O(log quantcount). Typical performance of encoding is 100 MB/s.</para>
+<para>If the values are encoded into a number of bits which are not divisible by eight, the <ref refid="classdyscostman_1_1BytePacker" kindref="compound">BytePacker</ref> class can be used to pack the values.</para>
+<para><simplesect kind="author"><para>André Offringa (<ulink url="mailto:offringa@gmail.com">offringa@gmail.com</ulink>) </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="tables/Dysco/stochasticencoder.h" line="32" column="1" bodyfile="tables/Dysco/stochasticencoder.h" bodystart="32" bodyend="264"/>
+    <listofallmembers>
+      <member refid="classdyscostman_1_1StochasticEncoder_1af7bbe4fb501c57425f250148802c21b9" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>_decDictionary</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1ab44a041916b876726a0c295e03c472b2" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>_encDictionary</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a9c7cc1a7eebc7b38ec1b81d94c6c16c5" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>cumulative</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1ae8ef6e1adbf23d8db19ff8fd6383de01" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>Decode</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a626e354453b71ef62e2adbe9f9d87cf3" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>Encode</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1ac0bb79f9d0c710f2e83459872215b77c" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>EncodeWithDithering</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a526b6a60b845ee128878cf7b8f7e3fe7" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>GetDitherDistribution</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a64cd3049eaa8ca0a20375fec3260fa18" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>initializeStudentT</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a502a6c041f710db8fdaaede31855f19b" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>initializeTruncatedGaussian</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1ae11ca2f2536bc5d36a7c7f8bd92c98ad" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>invCumulative</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a43fe5825d91654232952af5c85621461" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>MaxQuantity</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a93628b84f6f7062a7383c66c0cfeac62" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>MinQuantity</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a212ae25e711affab7629f1c470a29466" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>num_t</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a678b5f2482869a604b14e47e63e9f654" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>QuantizationCount</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a16f43c68d21cf532ed405b26b04a6f19" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>RightBoundary</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a8e17dc6291bafe59c35b394c039fc8e2" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>StochasticEncoder</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a8c9f059f865c66454b5c1e17b70a0ffe" prot="private" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>StochasticEncoder</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1a96d4df7fa041788cb20b1744fd5e6db4" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>StudentTEncoder</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1acba65b23c38d1650fcdb6953d843eaba" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>symbol_t</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1afc30fd104da7a6de3dfd92dfe5686a9a" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>TruncatedGausEncoder</name></member>
+      <member refid="classdyscostman_1_1StochasticEncoder_1ac9f64635f91f6a6b2cf4a8cebf5db2c5" prot="public" virt="non-virtual"><scope>dyscostman::StochasticEncoder</scope><name>value_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

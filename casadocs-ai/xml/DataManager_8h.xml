@@ -1,0 +1,1696 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="DataManager_8h" kind="file" language="C++">
+    <compoundname>DataManager.h</compoundname>
+    <includes refid="aips_8h" local="no">casacore/casa/aips.h</includes>
+    <includes refid="DataManagerColumn_8h" local="no">casacore/tables/DataMan/DataManagerColumn.h</includes>
+    <includes refid="TSMOption_8h" local="no">casacore/tables/DataMan/TSMOption.h</includes>
+    <includes refid="ArrayFwd_8h" local="no">casacore/casa/Arrays/ArrayFwd.h</includes>
+    <includes refid="String_8h" local="no">casacore/casa/BasicSL/String.h</includes>
+    <includes refid="ByteIO_8h" local="no">casacore/casa/IO/ByteIO.h</includes>
+    <includes local="no">iosfwd</includes>
+    <includes local="no">map</includes>
+    <includes local="no">mutex</includes>
+    <includedby refid="Adios2StMan_8h" local="no">tables/DataMan/Adios2StMan.h</includedby>
+    <includedby refid="DataManAccessor_8cc" local="no">tables/DataMan/DataManAccessor.cc</includedby>
+    <includedby refid="DataManAccessor_8h" local="no">tables/DataMan/DataManAccessor.h</includedby>
+    <includedby refid="DataManager_8cc" local="no">tables/DataMan/DataManager.cc</includedby>
+    <includedby refid="DataManInfo_8cc" local="no">tables/DataMan/DataManInfo.cc</includedby>
+    <includedby refid="ForwardCol_8h" local="no">tables/DataMan/ForwardCol.h</includedby>
+    <includedby refid="ISMBase_8h" local="no">tables/DataMan/ISMBase.h</includedby>
+    <includedby refid="ISMIndex_8cc" local="no">tables/DataMan/ISMIndex.cc</includedby>
+    <includedby refid="MSMBase_8h" local="no">tables/DataMan/MSMBase.h</includedby>
+    <includedby refid="SSMBase_8h" local="no">tables/DataMan/SSMBase.h</includedby>
+    <includedby refid="TiledStMan_8h" local="no">tables/DataMan/TiledStMan.h</includedby>
+    <includedby refid="VirtArrCol_8h" local="no">tables/DataMan/VirtArrCol.h</includedby>
+    <includedby refid="VirtColEng_8h" local="no">tables/DataMan/VirtColEng.h</includedby>
+    <includedby refid="VirtScaCol_8h" local="no">tables/DataMan/VirtScaCol.h</includedby>
+    <includedby refid="VirtualTaQLColumn_8h" local="no">tables/DataMan/VirtualTaQLColumn.h</includedby>
+    <includedby refid="dyscostman_8h" local="no">tables/Dysco/dyscostman.h</includedby>
+    <includedby refid="ArrColData_8cc" local="no">tables/Tables/ArrColData.cc</includedby>
+    <includedby refid="BaseColDesc_8cc" local="no">tables/Tables/BaseColDesc.cc</includedby>
+    <includedby refid="BaseTable_8cc" local="no">tables/Tables/BaseTable.cc</includedby>
+    <includedby refid="ColDescSet_8cc" local="no">tables/Tables/ColDescSet.cc</includedby>
+    <includedby refid="ColumnSet_8cc" local="no">tables/Tables/ColumnSet.cc</includedby>
+    <includedby refid="PlainColumn_8cc" local="no">tables/Tables/PlainColumn.cc</includedby>
+    <includedby refid="ScaRecordColData_8cc" local="no">tables/Tables/ScaRecordColData.cc</includedby>
+    <includedby refid="SetupNewTab_8cc" local="no">tables/Tables/SetupNewTab.cc</includedby>
+    <includedby refid="TableCopy_8cc" local="no">tables/Tables/TableCopy.cc</includedby>
+    <includedby refid="TableSyncData_8cc" local="no">tables/Tables/TableSyncData.cc</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>casacore/casa/aipsenv.h</label>
+        <link refid="aipsenv_8h"/>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/DataManager.h</label>
+        <link refid="DataManager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>casacore/casa/BasicSL/Complex.h</label>
+        <link refid="Complex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>limits</label>
+      </node>
+      <node id="17">
+        <label>casacore/casa/iostream.h</label>
+        <link refid="iostream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casacore/tables/DataMan/DataManagerColumn.h</label>
+        <link refid="DataManagerColumn_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casacore/tables/Tables/ColumnCache.h</label>
+        <link refid="ColumnCache_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>casacore/casa/iosfwd.h</label>
+        <link refid="iosfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cassert</label>
+      </node>
+      <node id="4">
+        <label>casacore/casa/aipstype.h</label>
+        <link refid="aipstype_8h"/>
+      </node>
+      <node id="13">
+        <label>casacore/casa/iosstrfwd.h</label>
+        <link refid="iosstrfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>string</label>
+      </node>
+      <node id="28">
+        <label>map</label>
+      </node>
+      <node id="27">
+        <label>casacore/casa/IO/ByteIO.h</label>
+        <link refid="ByteIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>casacore/casa/complex.h</label>
+        <link refid="complex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore/casa/aips.h</label>
+        <link refid="aips_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>casacore/tables/DataMan/TSMOption.h</label>
+        <link refid="TSMOption_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>casacore/casa/BasicSL/Complexfwd.h</label>
+        <link refid="Complexfwd_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>sstream</label>
+      </node>
+      <node id="15">
+        <label>iosfwd</label>
+      </node>
+      <node id="18">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>casacore/casa/aipsdef.h</label>
+        <link refid="aipsdef_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>mutex</label>
+      </node>
+      <node id="16">
+        <label>casacore/casa/sstream.h</label>
+        <link refid="sstream_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>complex</label>
+      </node>
+      <node id="26">
+        <label>casacore/casa/Arrays/ArrayFwd.h</label>
+        <link refid="ArrayFwd_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>casacore/casa/aipsxtype.h</label>
+        <link refid="aipsxtype_8h"/>
+      </node>
+      <node id="11">
+        <label>casacore/casa/BasicSL/String.h</label>
+        <link refid="String_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="109">
+        <label>tables/Dysco/dyscostman.cc</label>
+        <link refid="dyscostman_8cc"/>
+      </node>
+      <node id="61">
+        <label>tables/DataMan/SSMIndColumn.cc</label>
+        <link refid="SSMIndColumn_8cc"/>
+      </node>
+      <node id="94">
+        <label>tables/DataMan/CompressFloat.cc</label>
+        <link refid="CompressFloat_8cc"/>
+      </node>
+      <node id="69">
+        <label>tables/DataMan/TiledCellStMan.cc</label>
+        <link refid="TiledCellStMan_8cc"/>
+      </node>
+      <node id="92">
+        <label>tables/DataMan/CompressComplex.cc</label>
+        <link refid="CompressComplex_8cc"/>
+      </node>
+      <node id="79">
+        <label>tables/DataMan/TiledStMan.cc</label>
+        <link refid="TiledStMan_8cc"/>
+      </node>
+      <node id="1">
+        <label>tables/DataMan/DataManager.h</label>
+        <link refid="DataManager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+      </node>
+      <node id="124">
+        <label>tables/Tables/ScaRecordColData.cc</label>
+        <link refid="ScaRecordColData_8cc"/>
+      </node>
+      <node id="9">
+        <label>tables/DataMan/DataManInfo.cc</label>
+        <link refid="DataManInfo_8cc"/>
+      </node>
+      <node id="18">
+        <label>tables/DataMan/TiledDataStManAccessor.cc</label>
+        <link refid="TiledDataStManAccessor_8cc"/>
+      </node>
+      <node id="13">
+        <label>tables/Tables.h</label>
+        <link refid="Tables_8h"/>
+      </node>
+      <node id="37">
+        <label>tables/DataMan/MemoryStMan.h</label>
+        <link refid="MemoryStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>tables/DataMan/TSMCubeMMap.cc</label>
+        <link refid="TSMCubeMMap_8cc"/>
+      </node>
+      <node id="77">
+        <label>tables/DataMan/TiledShapeStMan.h</label>
+        <link refid="TiledShapeStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>tables/Dysco/dyscodatacolumn.h</label>
+        <link refid="dyscodatacolumn_8h"/>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>tables/DataMan/StandardStMan.h</label>
+        <link refid="StandardStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>tables/DataMan/StManAipsIO.cc</label>
+        <link refid="StManAipsIO_8cc"/>
+      </node>
+      <node id="90">
+        <label>tables/DataMan/BitFlagsEngine.cc</label>
+        <link refid="BitFlagsEngine_8cc"/>
+      </node>
+      <node id="39">
+        <label>tables/Tables/MemoryTable.cc</label>
+        <link refid="MemoryTable_8cc"/>
+      </node>
+      <node id="119">
+        <label>tables/Tables/BaseColDesc.cc</label>
+        <link refid="BaseColDesc_8cc"/>
+      </node>
+      <node id="65">
+        <label>tables/DataMan/StandardStMan.cc</label>
+        <link refid="StandardStMan_8cc"/>
+      </node>
+      <node id="22">
+        <label>tables/DataMan/ForwardCol.h</label>
+        <link refid="ForwardCol_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>tables/DataMan/TSMIdColumn.cc</label>
+        <link refid="TSMIdColumn_8cc"/>
+      </node>
+      <node id="52">
+        <label>tables/DataMan/SSMBase.h</label>
+        <link refid="SSMBase_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>tables/DataMan/TiledShapeStMan.cc</label>
+        <link refid="TiledShapeStMan_8cc"/>
+      </node>
+      <node id="51">
+        <label>tables/LogTables/TableLogSink.cc</label>
+        <link refid="TableLogSink_8cc"/>
+      </node>
+      <node id="103">
+        <label>tables/DataMan/VirtualTaQLColumn.h</label>
+        <link refid="VirtualTaQLColumn_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>tables/DataMan/TSMCube.cc</label>
+        <link refid="TSMCube_8cc"/>
+      </node>
+      <node id="123">
+        <label>tables/Tables/PlainColumn.cc</label>
+        <link refid="PlainColumn_8cc"/>
+      </node>
+      <node id="104">
+        <label>tables/DataMan/VirtualTaQLColumn.cc</label>
+        <link refid="VirtualTaQLColumn_8cc"/>
+      </node>
+      <node id="91">
+        <label>tables/DataMan/CompressComplex.h</label>
+        <link refid="CompressComplex_8h"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>tables/DataMan/ISMBase.cc</label>
+        <link refid="ISMBase_8cc"/>
+      </node>
+      <node id="62">
+        <label>tables/DataMan/SSMIndex.cc</label>
+        <link refid="SSMIndex_8cc"/>
+      </node>
+      <node id="100">
+        <label>tables/DataMan/VirtArrCol.cc</label>
+        <link refid="VirtArrCol_8cc"/>
+      </node>
+      <node id="34">
+        <label>tables/DataMan/ISMIndColumn.cc</label>
+        <link refid="ISMIndColumn_8cc"/>
+      </node>
+      <node id="68">
+        <label>tables/DataMan/TiledCellStMan.h</label>
+        <link refid="TiledCellStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>tables/DataMan/BaseMappedArrayEngine.h</label>
+        <link refid="BaseMappedArrayEngine_8h"/>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>tables/DataMan/SSMDirColumn.cc</label>
+        <link refid="SSMDirColumn_8cc"/>
+      </node>
+      <node id="59">
+        <label>tables/DataMan/SSMIndStringColumn.cc</label>
+        <link refid="SSMIndStringColumn_8cc"/>
+      </node>
+      <node id="111">
+        <label>tables/Dysco/threadeddyscocolumn.h</label>
+        <link refid="threadeddyscocolumn_8h"/>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>tables/DataMan/IncrementalStMan.cc</label>
+        <link refid="IncrementalStMan_8cc"/>
+      </node>
+      <node id="20">
+        <label>tables/Tables/TableProxy.cc</label>
+        <link refid="TableProxy_8cc"/>
+      </node>
+      <node id="74">
+        <label>tables/DataMan/TiledFileHelper.h</label>
+        <link refid="TiledFileHelper_8h"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>tables/DataMan/MSMIndColumn.cc</label>
+        <link refid="MSMIndColumn_8cc"/>
+      </node>
+      <node id="31">
+        <label>tables/DataMan/ISMColumn.cc</label>
+        <link refid="ISMColumn_8cc"/>
+      </node>
+      <node id="125">
+        <label>tables/Tables/SetupNewTab.cc</label>
+        <link refid="SetupNewTab_8cc"/>
+      </node>
+      <node id="87">
+        <label>tables/DataMan/VirtArrCol.h</label>
+        <link refid="VirtArrCol_8h"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>tables/DataMan/VirtColEng.cc</label>
+        <link refid="VirtColEng_8cc"/>
+      </node>
+      <node id="25">
+        <label>tables/DataMan/ForwardColRow.cc</label>
+        <link refid="ForwardColRow_8cc"/>
+      </node>
+      <node id="46">
+        <label>tables/DataMan/StArrAipsIO.h</label>
+        <link refid="StArrAipsIO_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>tables/DataMan/ScaledComplexData.h</label>
+        <link refid="ScaledComplexData_8h"/>
+      </node>
+      <node id="82">
+        <label>tables/DataMan/TSMCubeBuff.cc</label>
+        <link refid="TSMCubeBuff_8cc"/>
+      </node>
+      <node id="60">
+        <label>tables/DataMan/SSMIndColumn.h</label>
+        <link refid="SSMIndColumn_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>tables/DataMan/MemoryStMan.cc</label>
+        <link refid="MemoryStMan_8cc"/>
+      </node>
+      <node id="113">
+        <label>tables/Dysco/dyscodatacolumn.cc</label>
+        <link refid="dyscodatacolumn_8cc"/>
+      </node>
+      <node id="3">
+        <label>tables/DataMan/Adios2StManImpl.h</label>
+        <link refid="Adios2StManImpl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tables/DataMan/DataManAccessor.h</label>
+        <link refid="DataManAccessor_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>tables/DataMan/IncrStManAccessor.cc</label>
+        <link refid="IncrStManAccessor_8cc"/>
+      </node>
+      <node id="115">
+        <label>tables/Dysco/dyscoweightcolumn.cc</label>
+        <link refid="dyscoweightcolumn_8cc"/>
+      </node>
+      <node id="41">
+        <label>tables/DataMan/MSMColumn.cc</label>
+        <link refid="MSMColumn_8cc"/>
+      </node>
+      <node id="116">
+        <label>tables/Dysco/threadeddyscocolumn.cc</label>
+        <link refid="threadeddyscocolumn_8cc"/>
+      </node>
+      <node id="93">
+        <label>tables/DataMan/CompressFloat.h</label>
+        <link refid="CompressFloat_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>tables/Tables/ColumnSet.cc</label>
+        <link refid="ColumnSet_8cc"/>
+      </node>
+      <node id="6">
+        <label>tables/DataMan/Adios2StManColumn.cc</label>
+        <link refid="Adios2StManColumn_8cc"/>
+      </node>
+      <node id="72">
+        <label>tables/DataMan/TiledDataStMan.h</label>
+        <link refid="TiledDataStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>tables/DataMan/MSMBase.h</label>
+        <link refid="MSMBase_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>tables/DataMan/TiledDataStMan.cc</label>
+        <link refid="TiledDataStMan_8cc"/>
+      </node>
+      <node id="97">
+        <label>tables/DataMan/ScaledArrayEngine.h</label>
+        <link refid="ScaledArrayEngine_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>tables/Dysco/dyscostmancol.h</label>
+        <link refid="dyscostmancol_8h"/>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>tables/DataMan/BitFlagsEngine.h</label>
+        <link refid="BitFlagsEngine_8h"/>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>tables/Tables/TableSyncData.cc</label>
+        <link refid="TableSyncData_8cc"/>
+      </node>
+      <node id="33">
+        <label>tables/DataMan/ISMIndColumn.h</label>
+        <link refid="ISMIndColumn_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>tables/DataMan/SSMStringHandler.cc</label>
+        <link refid="SSMStringHandler_8cc"/>
+      </node>
+      <node id="58">
+        <label>tables/DataMan/SSMIndStringColumn.h</label>
+        <link refid="SSMIndStringColumn_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>tables/DataMan/VirtColEng.h</label>
+        <link refid="VirtColEng_8h"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>tables/DataMan/MSMBase.cc</label>
+        <link refid="MSMBase_8cc"/>
+      </node>
+      <node id="2">
+        <label>tables/DataMan/Adios2StMan.h</label>
+        <link refid="Adios2StMan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="114">
+        <label>tables/Dysco/dyscoweightcolumn.h</label>
+        <link refid="dyscoweightcolumn_8h"/>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>tables/DataMan/ISMIndex.cc</label>
+        <link refid="ISMIndex_8cc"/>
+      </node>
+      <node id="17">
+        <label>tables/DataMan/TiledDataStManAccessor.h</label>
+        <link refid="TiledDataStManAccessor_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>tables/DataMan/StIndArrAIO.h</label>
+        <link refid="StIndArrAIO_8h"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>tables/Tables/TableCopy.cc</label>
+        <link refid="TableCopy_8cc"/>
+      </node>
+      <node id="26">
+        <label>tables/DataMan/ISMBase.h</label>
+        <link refid="ISMBase_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tables/DataMan/Adios2StMan.cc</label>
+        <link refid="Adios2StMan_8cc"/>
+      </node>
+      <node id="107">
+        <label>tables/DataMan/VirtScaCol.cc</label>
+        <link refid="VirtScaCol_8cc"/>
+      </node>
+      <node id="54">
+        <label>tables/DataMan/SSMColumn.cc</label>
+        <link refid="SSMColumn_8cc"/>
+      </node>
+      <node id="21">
+        <label>tables/DataMan/DataManager.cc</label>
+        <link refid="DataManager_8cc"/>
+      </node>
+      <node id="105">
+        <label>tables/DataMan/VSCEngine.h</label>
+        <link refid="VSCEngine_8h"/>
+      </node>
+      <node id="76">
+        <label>tables/DataMan/TiledFileHelper.cc</label>
+        <link refid="TiledFileHelper_8cc"/>
+      </node>
+      <node id="47">
+        <label>tables/DataMan/StArrAipsIO.cc</label>
+        <link refid="StArrAipsIO_8cc"/>
+      </node>
+      <node id="30">
+        <label>tables/DataMan/ISMBucket.cc</label>
+        <link refid="ISMBucket_8cc"/>
+      </node>
+      <node id="19">
+        <label>tables/DataMan/TiledStManAccessor.cc</label>
+        <link refid="TiledStManAccessor_8cc"/>
+      </node>
+      <node id="24">
+        <label>tables/DataMan/ForwardColRow.h</label>
+        <link refid="ForwardColRow_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>tables/DataMan/TiledColumnStMan.cc</label>
+        <link refid="TiledColumnStMan_8cc"/>
+      </node>
+      <node id="99">
+        <label>tables/DataMan/VACEngine.h</label>
+        <link refid="VACEngine_8h"/>
+      </node>
+      <node id="15">
+        <label>tables/DataMan/StandardStManAccessor.cc</label>
+        <link refid="StandardStManAccessor_8cc"/>
+      </node>
+      <node id="70">
+        <label>tables/DataMan/TiledColumnStMan.h</label>
+        <link refid="TiledColumnStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>tables/Dysco/tests/testdyscostman.cc</label>
+        <link refid="testdyscostman_8cc"/>
+      </node>
+      <node id="27">
+        <label>tables/DataMan/IncrementalStMan.h</label>
+        <link refid="IncrementalStMan_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>tables/Tables/BaseTable.cc</label>
+        <link refid="BaseTable_8cc"/>
+      </node>
+      <node id="5">
+        <label>tables/DataMan/Adios2StManColumn.h</label>
+        <link refid="Adios2StManColumn_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>tables/DataMan/TiledStManAccessor.h</label>
+        <link refid="TiledStManAccessor_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>tables/DataMan/ForwardCol.cc</label>
+        <link refid="ForwardCol_8cc"/>
+      </node>
+      <node id="32">
+        <label>tables/DataMan/ISMColumn.h</label>
+        <link refid="ISMColumn_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>tables/DataMan/StIndArrAIO.cc</label>
+        <link refid="StIndArrAIO_8cc"/>
+      </node>
+      <node id="7">
+        <label>tables/DataMan/DataManAccessor.cc</label>
+        <link refid="DataManAccessor_8cc"/>
+      </node>
+      <node id="14">
+        <label>tables/DataMan/StandardStManAccessor.h</label>
+        <link refid="StandardStManAccessor_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>tables/DataMan/SSMColumn.h</label>
+        <link refid="SSMColumn_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>tables/DataMan/VirtScaCol.h</label>
+        <link refid="VirtScaCol_8h"/>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>tables/DataMan/SSMBase.cc</label>
+        <link refid="SSMBase_8cc"/>
+      </node>
+      <node id="84">
+        <label>tables/DataMan/TSMDataColumn.cc</label>
+        <link refid="TSMDataColumn_8cc"/>
+      </node>
+      <node id="45">
+        <label>tables/DataMan/StManAipsIO.h</label>
+        <link refid="StManAipsIO_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>tables/DataMan/SSMDirColumn.h</label>
+        <link refid="SSMDirColumn_8h"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>tables/DataMan/MSMIndColumn.h</label>
+        <link refid="MSMIndColumn_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tables/DataMan/IncrStManAccessor.h</label>
+        <link refid="IncrStManAccessor_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>tables/DataMan/MappedArrayEngine.h</label>
+        <link refid="MappedArrayEngine_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>tables/DataMan/TSMCoordColumn.cc</label>
+        <link refid="TSMCoordColumn_8cc"/>
+      </node>
+      <node id="121">
+        <label>tables/Tables/ColDescSet.cc</label>
+        <link refid="ColDescSet_8cc"/>
+      </node>
+      <node id="42">
+        <label>tables/DataMan/MSMDirColumn.cc</label>
+        <link refid="MSMDirColumn_8cc"/>
+      </node>
+      <node id="66">
+        <label>tables/TaQL/TableParseProject.cc</label>
+        <link refid="TableParseProject_8cc"/>
+      </node>
+      <node id="108">
+        <label>tables/Dysco/dyscostman.h</label>
+        <link refid="dyscostman_8h"/>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>tables/DataMan/TiledFileAccess.cc</label>
+        <link refid="TiledFileAccess_8cc"/>
+      </node>
+      <node id="67">
+        <label>tables/DataMan/TiledStMan.h</label>
+        <link refid="TiledStMan_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tables/DataMan.h</label>
+        <link refid="DataMan_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>tables/DataMan/TSMFile.cc</label>
+        <link refid="TSMFile_8cc"/>
+      </node>
+      <node id="118">
+        <label>tables/Tables/ArrColData.cc</label>
+        <link refid="ArrColData_8cc"/>
+      </node>
+      <node id="96">
+        <label>tables/DataMan/RetypedArrayEngine.h</label>
+        <link refid="RetypedArrayEngine_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classcasacore_1_1DataManager" prot="public">casacore::DataManager</innerclass>
+    <innernamespace refid="namespacecasacore">casacore</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//#<sp/>DataManager.h:<sp/>Abstract<sp/>base<sp/>class<sp/>for<sp/>a<sp/>data<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1997,1998,1999,2001,2002,2016</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TABLES_DATAMANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TABLES_DATAMANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="aips_8h" kindref="compound">casacore/casa/aips.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="DataManagerColumn_8h" kindref="compound">casacore/tables/DataMan/DataManagerColumn.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="TSMOption_8h" kindref="compound">casacore/tables/DataMan/TSMOption.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="ArrayFwd_8h" kindref="compound">casacore/casa/Arrays/ArrayFwd.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="String_8h" kindref="compound">casacore/casa/BasicSL/String.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="ByteIO_8h" kindref="compound">casacore/casa/IO/ByteIO.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iosfwd&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecasacore" kindref="compound">casacore</ref><sp/>{<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Forward<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DataManager;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SetupNewTable;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Table;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MultiFileBase;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Record;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AipsIO;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>type<sp/>of<sp/>the<sp/>static<sp/>construction<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;Gareth<sp/>Hunt&quot;<sp/>date=&quot;94Nov17&quot;<sp/>tests=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Class<sp/>names<sp/>of<sp/>data<sp/>managers<sp/>and<sp/>pointers<sp/>to<sp/>their<sp/>associated<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>function<sp/>are<sp/>registered<sp/>in<sp/>a<sp/>static<sp/>map<sp/>to<sp/>be<sp/>able<sp/>to<sp/>create<sp/>the<sp/>correct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>data<sp/>manager<sp/>object<sp/>from<sp/>a<sp/>string<sp/>giving<sp/>the<sp/>type<sp/>name<sp/>of<sp/>the<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DataManagerCtor<sp/>is<sp/>the<sp/>type<sp/>of<sp/>the<sp/>constructor<sp/>functions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;group<sp/>name=DataManagerCtor&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="namespacecasacore_1a20bb8c6afd6ef5f8970f95cea3f4c3eb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/>(*DataManagerCtor)<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataManagerType,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>&amp;<sp/>spec);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Abstract<sp/>base<sp/>class<sp/>for<sp/>a<sp/>data<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/summary&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;use<sp/>visibility=local&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;reviewed<sp/>reviewer=&quot;Gareth<sp/>Hunt&quot;<sp/>date=&quot;94Nov17&quot;<sp/>tests=&quot;&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/reviewed&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>Classes<sp/>you<sp/>should<sp/>understand<sp/>before<sp/>using<sp/>this<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/prerequisite&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DataManager<sp/>is<sp/>the<sp/>abstract<sp/>base<sp/>class<sp/>for<sp/>all<sp/>kind<sp/>of<sp/>table<sp/>data<sp/>managers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;br&gt;<sp/>The<sp/>DataManager<sp/>class<sp/>structure<sp/>is<sp/>shown<sp/>in<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;a<sp/>href=&quot;DataManager.drawio.svg.html&quot;&gt;UML<sp/>diagram&lt;/a&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>There<sp/>are<sp/>currently<sp/>2<sp/>classes<sp/>of<sp/>data<sp/>managers:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>Storage<sp/>managers<sp/>handling<sp/>the<sp/>storage<sp/>of<sp/>data.<sp/>These<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>have<sp/>to<sp/>be<sp/>derived<sp/>from<sp/>DataManager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>StManAipsIO<sp/>is<sp/>an<sp/>example<sp/>of<sp/>a<sp/>storage<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>Virtual<sp/>column<sp/>engines<sp/>handling<sp/>the<sp/>on-the-fly<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>data,<sp/>which<sp/>are<sp/>not<sp/>stored<sp/>as<sp/>such.<sp/>The<sp/>base<sp/>class<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>these<sp/>is<sp/>VirtualColumnEngine<sp/>(which<sp/>is<sp/>derived<sp/>from<sp/>DataManager),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>which<sp/>all<sp/>virtual<sp/>columns<sp/>engine<sp/>must<sp/>be<sp/>derived<sp/>from.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DataManager<sp/>contains<sp/>some<sp/>common<sp/>data<sp/>and<sp/>defines<sp/>several<sp/>virtual</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>functions,<sp/>which<sp/>usually<sp/>have<sp/>to<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>derived<sp/>classes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>also<sp/>contains<sp/>some<sp/>helper<sp/>functions<sp/>for<sp/>the<sp/>derived<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(like<sp/>fileName().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>actual<sp/>handling<sp/>of<sp/>a<sp/>column<sp/>by<sp/>the<sp/>data<sp/>manager<sp/>is<sp/>defined<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>abstract<sp/>base<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;linkto<sp/>class=&quot;DataManagerColumn:description&quot;&gt;DataManagerColumn&lt;/linkto&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Each<sp/>data<sp/>manager<sp/>must</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/>have<sp/>an<sp/>associated<sp/>class<sp/>(derived<sp/>from<sp/>DataManagerColumn)<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/>handle<sp/>the<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>a<sp/>protocol<sp/>defined<sp/>how<sp/>a<sp/>data<sp/>manager<sp/>is<sp/>created<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>initialized.<sp/>For<sp/>a<sp/>new<sp/>table<sp/>it<sp/>is:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>user<sp/>creates<sp/>data<sp/>managers<sp/>and<sp/>binds<sp/>them<sp/>to<sp/>columns.<sp/>For<sp/>example:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>SetupNewTable<sp/>newtab(&quot;name.data&quot;,<sp/>Table::New);<sp/><sp/>//<sp/>set<sp/>up<sp/>new<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>StManAipsIO<sp/>stman;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>define<sp/>storage<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>newtab.bindColumn<sp/>(&quot;column1&quot;,<sp/>stman);<sp/><sp/><sp/><sp/>//<sp/>bind<sp/>column<sp/>to<sp/>st.man.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>newtab.bindColumn<sp/>(&quot;column2&quot;,<sp/>stman);<sp/><sp/><sp/><sp/>//<sp/>bind<sp/>column<sp/>to<sp/>st.man.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Table<sp/>tab(newtab);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>actually<sp/>create<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;/srcblock&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>When<sp/>the<sp/>given<sp/>data<sp/>manager<sp/>object<sp/>is<sp/>used<sp/>for<sp/>the<sp/>first<sp/>time<sp/>in<sp/>a<sp/>bind</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>function,<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>object<sp/>is<sp/>made<sp/>using<sp/>the<sp/>clone<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Thus<sp/>in<sp/>the<sp/>above<sp/>example<sp/>column1<sp/>and<sp/>column2<sp/>share<sp/>the<sp/>same<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>manager;<sp/>only<sp/>at<sp/>the<sp/>first<sp/>bind<sp/>the<sp/>stman<sp/>object<sp/>is<sp/>cloned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Columns<sp/>not<sp/>explicitly<sp/>bound<sp/>to<sp/>a<sp/>data<sp/>manager<sp/>get<sp/>implicitly<sp/>bound</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>to<sp/>the<sp/>default<sp/>data<sp/>manager<sp/>(as<sp/>defined<sp/>in<sp/>the<sp/>column<sp/>description)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>by<sp/>the<sp/>Table<sp/>constructor<sp/>(as<sp/>used<sp/>in<sp/>line<sp/>5).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>After<sp/>binding<sp/>the<sp/>unbound<sp/>columns,<sp/>the<sp/>PlainTable<sp/>constructor<sp/>sets<sp/>up</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>the<sp/>data<sp/>managers.<sp/>For<sp/>each<sp/>column<sp/>it<sp/>asks<sp/>the<sp/>data<sp/>manager<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>construct<sp/>a<sp/>DataManagerColumn<sp/>object<sp/>(in<sp/>fact,<sp/>an<sp/>object<sp/>of<sp/>a<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>derived<sp/>from<sp/>DataManagerColumn).<sp/>This<sp/>is<sp/>done<sp/>by<sp/>the<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>createScalarColumn,<sp/>createIndArrColumn<sp/>and<sp/>createDirArrColumn.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>For<sp/>each<sp/>data<sp/>manager<sp/>the<sp/>create<sp/>function<sp/>is<sp/>called.<sp/>This<sp/>allows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>them<sp/>to<sp/>initialize<sp/>themselves<sp/>and/or<sp/>to<sp/>call<sp/>an<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>function<sp/>in<sp/>their<sp/>column<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>This<sp/>is,<sp/>for<sp/>instance,<sp/>used<sp/>by<sp/>the<sp/>storage<sp/>managers<sp/>to<sp/>create<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Thereafter<sp/>the<sp/>prepare<sp/>function<sp/>is<sp/>called<sp/>to<sp/>allow<sp/>the<sp/>data<sp/>managers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>to<sp/>do<sp/>further<sp/>initialization<sp/>possibly<sp/>requiring<sp/>information<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>other<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>When<sp/>the<sp/>table<sp/>gets<sp/>written<sp/>(by<sp/>the<sp/>PlainTable<sp/>destructor),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>the<sp/>flush<sp/>function<sp/>is<sp/>called<sp/>for<sp/>each<sp/>data<sp/>manager.<sp/>This<sp/>allows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>the<sp/>data<sp/>manager<sp/>or<sp/>their<sp/>column<sp/>objects<sp/>to<sp/>write<sp/>or<sp/>flush<sp/>their<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>table<sp/>system<sp/>takes<sp/>care<sp/>of<sp/>storing<sp/>the<sp/>information<sp/>required</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>to<sp/>reconstruct<sp/>the<sp/>data<sp/>managers.<sp/>It<sp/>uses<sp/>the<sp/>function<sp/>dataManagerType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>to<sp/>store<sp/>the<sp/>(unique)<sp/>type<sp/>name<sp/>of<sp/>the<sp/>data<sp/>manager<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Finally<sp/>each<sp/>data<sp/>manager<sp/>object<sp/>gets<sp/>deleted.<sp/>Their<sp/>destructors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>must<sp/>delete<sp/>their<sp/>column<sp/>objects<sp/>(if<sp/>any<sp/>and<sp/>if<sp/>needed).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>an<sp/>existing<sp/>table<sp/>the<sp/>procedure<sp/>is<sp/>slightly<sp/>different:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>statement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;br&gt;&lt;src&gt;<sp/>Table<sp/>tab(&quot;name.data&quot;);<sp/>&lt;/src&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>will<sp/>create<sp/>a<sp/>table<sp/>object<sp/>for<sp/>an<sp/>existing<sp/>table.<sp/>This<sp/>has<sp/>the<sp/>effect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>that<sp/>the<sp/>given<sp/>table<sp/>file<sp/>will<sp/>be<sp/>read<sp/>to<sp/>reconstruct<sp/>the<sp/>Table<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>and<sp/>the<sp/>data<sp/>managers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>stored<sp/>data<sp/>manager<sp/>class<sp/>names<sp/>are<sp/>used<sp/>to<sp/>reconstruct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>the<sp/>data<sp/>managers.<sp/>This<sp/>uses<sp/>the<sp/>static<sp/>registration<sp/>map,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>maps<sp/>the<sp/>class<sp/>name<sp/>to<sp/>a<sp/>static<sp/>class<sp/>constructor<sp/>function<sp/>(usually</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>called<sp/>makeObject).<sp/>This<sp/>requires<sp/>that<sp/>the<sp/>type<sp/>name<sp/>and<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>for<sp/>each<sp/>possible<sp/>data<sp/>manager<sp/>are<sp/>registered<sp/>before<sp/>the<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>is<sp/>opened.<sp/>The<sp/>DataManager<sp/>function<sp/>registerMainCtor<sp/>(implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>in<sp/>DataManager.cc)<sp/>is<sp/>called<sp/>before<sp/>a<sp/>table<sp/>is<sp/>opened,<sp/>so<sp/>registration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>of<sp/>data<sp/>managers<sp/>should,<sp/>in<sp/>principle,<sp/>be<sp/>done<sp/>there.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;br&gt;However,<sp/>for<sp/>unknown<sp/>data<sp/>managers<sp/>it<sp/>is<sp/>tried<sp/>to<sp/>load<sp/>a<sp/>shared</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>library<sp/>whose<sp/>name<sp/>is<sp/>the<sp/>lowercase<sp/>version<sp/>of<sp/>the<sp/>data<sp/>manager<sp/>without<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>possible<sp/>template<sp/>argument<sp/>(e.g.<sp/>&lt;src&gt;bitflagsengine&lt;/src&gt;<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>data<sp/>manager<sp/>&lt;src&gt;BitFlagsEngine&lt;Int&gt;&lt;/src&gt;).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>It<sp/>can<sp/>be<sp/>preceeded<sp/>by<sp/>lib<sp/>or<sp/>libcasa_<sp/>and<sp/>followed<sp/>by<sp/>.so<sp/>or<sp/>.dylib.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>shared<sp/>library<sp/>has<sp/>to<sp/>have<sp/>a<sp/>function<sp/>with<sp/>a<sp/>name<sp/>like</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;src&gt;register_bitflagsengine&lt;/src&gt;<sp/>that<sp/>must<sp/>register<sp/>the<sp/>data<sp/>manager(s).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>function<sp/>must<sp/>be<sp/>declared<sp/>as<sp/>&lt;src&gt;extern<sp/>&quot;C&quot;&lt;/src&gt;,<sp/>otherwise<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>name<sp/>gets<sp/>mangled.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Each<sp/>table<sp/>column<sp/>is<sp/>bound<sp/>to<sp/>the<sp/>correct<sp/>data<sp/>manager.<sp/>The<sp/>sequence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>number<sp/>stored<sp/>in<sp/>the<sp/>table<sp/>file<sp/>is<sp/>used<sp/>for<sp/>that<sp/>purpose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>DataManager<sp/>createXXXColumn<sp/>functions<sp/>are<sp/>called<sp/>for<sp/>each<sp/>table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>column<sp/>to<sp/>let<sp/>the<sp/>data<sp/>manager<sp/>construct<sp/>a<sp/>data<sp/>manager<sp/>column<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>For<sp/>each<sp/>data<sp/>manager<sp/>the<sp/>open<sp/>function<sp/>is<sp/>called<sp/>to<sp/>allow<sp/>it<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>its<sp/>column<sp/>objects<sp/>to<sp/>read<sp/>back<sp/>the<sp/>information<sp/>stored<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>flush<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Thereafter<sp/>the<sp/>prepare<sp/>function<sp/>is<sp/>called<sp/>for<sp/>each<sp/>data<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>to<sp/>allow<sp/>it<sp/>to<sp/>initialize<sp/>some<sp/>variables.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>The<sp/>reason<sp/>that<sp/>open<sp/>and<sp/>prepare<sp/>are<sp/>separated<sp/>is<sp/>that<sp/>in<sp/>order<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>initialize<sp/>variables<sp/>it<sp/>may<sp/>be<sp/>required<sp/>to<sp/>use<sp/>other<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>So<sp/>it<sp/>may<sp/>be<sp/>needed<sp/>that<sp/>all<sp/>columns<sp/>are<sp/>read<sp/>back<sp/>before<sp/>they</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>get<sp/>initialized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>Similar<sp/>to<sp/>a<sp/>new<sp/>table<sp/>the<sp/>flush<sp/>functions<sp/>gets<sp/>called<sp/>when<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>table<sp/>gets<sp/>written.<sp/>Destruction<sp/>is<sp/>also<sp/>the<sp/>same<sp/>as<sp/>sketched</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>for<sp/>new<sp/>tables.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/ul&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/synopsis&gt;<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//<sp/>An<sp/>abstract<sp/>base<sp/>class<sp/>is<sp/>needed<sp/>to<sp/>support<sp/>data<sp/>managers<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="comment">//<sp/>virtual<sp/>column<sp/>engines<sp/>in<sp/>the<sp/>table<sp/>system<sp/>in<sp/>a<sp/>transparant<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/motivation&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;todo<sp/>asof=&quot;$DATE:$&quot;&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="comment">//#<sp/>A<sp/>List<sp/>of<sp/>bugs,<sp/>limitations,<sp/>extensions<sp/>or<sp/>planned<sp/>refinements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>&lt;li&gt;<sp/>Handle<sp/>unregistered<sp/>data<sp/>managers<sp/>in<sp/>a<sp/>better<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Instead<sp/>of<sp/>throwing<sp/>an<sp/>exception<sp/>a<sp/>subprocess<sp/>could<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>started<sp/>which<sp/>represents<sp/>the<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;/todo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classcasacore_1_1DataManager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220" refid="classcasacore_1_1DataManager_1aa05e371d2353716eaaca37b2da594ef5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1SetupNewTable" kindref="compound">SetupNewTable</ref>;</highlight></codeline>
+<codeline lineno="221" refid="classcasacore_1_1DataManager_1a09ceb6e2f74fe63ccc2fc78d993d2acd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcasacore_1_1ColumnSet" kindref="compound">ColumnSet</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManager_1a7d6511049dabf21d1db07b3019f5de52" kindref="member">DataManager</ref>();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1aa4fb277eb343c585b89bb27cbf0b0942" kindref="member">~DataManager</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>copy<sp/>constructor<sp/>cannot<sp/>be<sp/>used<sp/>for<sp/>this<sp/>base<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>clone<sp/>function<sp/>should<sp/>be<sp/>used<sp/>instead.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="classcasacore_1_1DataManager_1aff0d7b5f19dadd2748556df5db515b31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManager_1aff0d7b5f19dadd2748556df5db515b31" kindref="member">DataManager</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>cannot<sp/>be<sp/>used<sp/>for<sp/>this<sp/>base<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="classcasacore_1_1DataManager_1ac7258476d89fefd3a899b73a84dc24a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1ac7258476d89fefd3a899b73a84dc24a4" kindref="member">operator= </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>a<sp/>clone<sp/>of<sp/>the<sp/>derived<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classcasacore_1_1DataManager_1ab8d98544ba7a3fdfb204fc69da324fda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1ab8d98544ba7a3fdfb204fc69da324fda" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>name<sp/>of<sp/>the<sp/>data<sp/>manager.<sp/>This<sp/>is<sp/>the<sp/>name<sp/>of<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>instantiation<sp/>of<sp/>the<sp/>data<sp/>manager,<sp/>thus<sp/>not<sp/>its<sp/>type<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default<sp/>it<sp/>returns<sp/>an<sp/>empty<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1DataManager_1a3b8dbefb78afa0fc1ea6d47a29491955" kindref="member">dataManagerName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>type<sp/>name<sp/>of<sp/>the<sp/>data<sp/>manager<sp/>(in<sp/>fact<sp/>its<sp/>class<sp/>name).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>has<sp/>to<sp/>be<sp/>a<sp/>unique<sp/>name,<sp/>thus<sp/>if<sp/>the<sp/>class<sp/>is<sp/>templated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>template<sp/>parameter<sp/>has<sp/>to<sp/>be<sp/>part<sp/>of<sp/>the<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>used<sp/>by<sp/>the<sp/>open/flush<sp/>mechanism<sp/>to<sp/>be<sp/>able<sp/>to<sp/>reconstruct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>correct<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552" kindref="member">dataManagerType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>SEQNR<sp/>and<sp/>SPEC<sp/>(the<sp/>DataManagerSpec<sp/>subrecord)<sp/>to<sp/>the<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a209117d7fc47706def575a2fe22960e3" kindref="member">dataManagerInfo</ref><sp/>(<ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>&amp;<sp/>info)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>record<sp/>containing<sp/>data<sp/>manager<sp/>specifications.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>returns<sp/>an<sp/>empty<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref><sp/><ref refid="classcasacore_1_1DataManager_1accee76133b949ce924a3177732e62b26" kindref="member">dataManagerSpec</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>data<sp/>manager<sp/>properties<sp/>that<sp/>can<sp/>be<sp/>modified.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>a<sp/>subset<sp/>of<sp/>the<sp/>data<sp/>manager<sp/>specification.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>returns<sp/>an<sp/>empty<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref><sp/><ref refid="classcasacore_1_1DataManager_1a3f8682849666daf4331219a62c67730c" kindref="member">getProperties</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Modify<sp/>data<sp/>manager<sp/>properties<sp/>given<sp/>in<sp/>record<sp/>fields.<sp/>Only<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>properties<sp/>as<sp/>returned<sp/>by<sp/>getProperties<sp/>are<sp/>used,<sp/>others<sp/>are<sp/>ignored.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>does<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a6cf048ff56b829700ad8a9c82463a491" kindref="member">setProperties</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>&amp;<sp/>spec);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Is<sp/>the<sp/>data<sp/>manager<sp/>a<sp/>storage<sp/>manager?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>is<sp/>yes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1af2d198310351e0a876f908dfd537b7d0" kindref="member">isStorageManager</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>if<sp/>the<sp/>data<sp/>manager<sp/>wants<sp/>to<sp/>reallocate<sp/>the<sp/>data<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>used<sp/>by<sp/>the<sp/>tiling<sp/>storage<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default<sp/>it<sp/>returns<sp/>False.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1ad53fe527a1ed5b279d23524a3d95c556" kindref="member">canReallocateColumns</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reallocate<sp/>the<sp/>column<sp/>object<sp/>if<sp/>it<sp/>is<sp/>part<sp/>of<sp/>this<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>new<sp/>column<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>is<sp/>used<sp/>by<sp/>the<sp/>tiling<sp/>storage<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default<sp/>it<sp/>does<sp/>nothing<sp/>and<sp/>returns<sp/>the<sp/>input<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1ac6bc66b4a37bbdac70dfd45101ffa301" kindref="member">reallocateColumn</ref><sp/>(<ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/>column);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>(unique)<sp/>sequence<sp/>nr<sp/>of<sp/>this<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="classcasacore_1_1DataManager_1af17e5c428a9eea0605447af480893bdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/><ref refid="classcasacore_1_1DataManager_1af17e5c428a9eea0605447af480893bdc" kindref="member">sequenceNr</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="287"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>seqnr_p;<sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>nr<sp/>of<sp/>columns<sp/>in<sp/>this<sp/>data<sp/>manager<sp/>(can<sp/>be<sp/>zero).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290" refid="classcasacore_1_1DataManager_1a688716d94313790fdaa3028dc6353ecd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/><ref refid="classcasacore_1_1DataManager_1a688716d94313790fdaa3028dc6353ecd" kindref="member">ncolumn</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="291"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nrcol_p;<sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Have<sp/>the<sp/>data<sp/>to<sp/>be<sp/>stored<sp/>in<sp/>big<sp/>or<sp/>little<sp/>endian<sp/>canonical<sp/>format?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="classcasacore_1_1DataManager_1a9e06aef0c8d5cd51243a873ce7b766a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a9e06aef0c8d5cd51243a873ce7b766a0" kindref="member">asBigEndian</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="295"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>asBigEndian_p;<sp/>}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>TSM<sp/>option.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classcasacore_1_1DataManager_1acb2143f7d1af317f0a4710a23f986456" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1acb2143f7d1af317f0a4710a23f986456" kindref="member">tsmOption</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="299"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tsmOption_p;<sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>MultiFile<sp/>pointer<sp/>(can<sp/>be<sp/>0).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classcasacore_1_1DataManager_1a231c1719c0aa6b72e2a4e126afd99977" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;MultiFileBase&gt;<sp/><ref refid="classcasacore_1_1DataManager_1a231c1719c0aa6b72e2a4e126afd99977" kindref="member">multiFile</ref>()</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>multiFile_p;<sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compose<sp/>a<sp/>keyword<sp/>name<sp/>from<sp/>the<sp/>given<sp/>keyword<sp/>appended<sp/>with<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sequence<sp/>number<sp/>(e.g.<sp/>key_0).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>makes<sp/>the<sp/>keyword<sp/>name<sp/>unique<sp/>if<sp/>multiple<sp/>data<sp/>managers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>are<sp/>used<sp/>with<sp/>the<sp/>same<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1DataManager_1a6ed719b6c59e333cf3d3d001d092c82f" kindref="member">keywordName</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>keyword)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compose<sp/>a<sp/>unique<sp/>filename<sp/>from<sp/>the<sp/>table<sp/>name<sp/>and<sp/>sequence<sp/>number.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref><sp/><ref refid="classcasacore_1_1DataManager_1af977d8cb8c9969e2a9d3bb4a4301208b" kindref="member">fileName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>AipsIO<sp/>option<sp/>of<sp/>the<sp/>underlying<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1ByteIO_1afa01b2ceb18a6e7db1ef40ebcd7158df" kindref="member">ByteIO::OpenOption</ref><sp/><ref refid="classcasacore_1_1DataManager_1a151e32eb6b4e30144069a5ea1ee92e8d" kindref="member">fileOption</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Is<sp/>this<sp/>a<sp/>regular<sp/>storage<sp/>manager?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>regular<sp/>if<sp/>it<sp/>allows<sp/>addition<sp/>of<sp/>rows<sp/>and<sp/>writing<sp/>data<sp/>in<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>returns<sp/>True.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a2d8208d826c6baddc848db0aafcd67c5" kindref="member">isRegular</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>table<sp/>this<sp/>object<sp/>is<sp/>associated<sp/>with.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classcasacore_1_1DataManager_1a4fcbd405700e9deb09386c8855294adb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1a4fcbd405700e9deb09386c8855294adb" kindref="member">table</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="324"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*table_p;<sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reopen<sp/>the<sp/>data<sp/>manager<sp/>for<sp/>read/write<sp/>access.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default<sp/>it<sp/>is<sp/>assumed<sp/>that<sp/>a<sp/>reopen<sp/>for<sp/>read/write<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>have<sp/>to<sp/>do<sp/>anything.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1ad3dae6213fded06597e4fe0ea79ef623" kindref="member">reopenRW</ref>();</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>allow<sp/>to<sp/>add<sp/>rows?<sp/>(default<sp/>no)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a5fd17b46da99835c0fb9e3845e45aeee" kindref="member">canAddRow</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>allow<sp/>to<sp/>delete<sp/>rows?<sp/>(default<sp/>no)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a08d22f152525aa1402e3c8a3553f96f1" kindref="member">canRemoveRow</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>allow<sp/>to<sp/>add<sp/>columns?<sp/>(default<sp/>no)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a0221d4ddf25a1a249582231ab8a340c0" kindref="member">canAddColumn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>allow<sp/>to<sp/>delete<sp/>columns?<sp/>(default<sp/>no)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1aa85917e22ed77ce70cadae9cb63a1778" kindref="member">canRemoveColumn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>allow<sp/>to<sp/>rename<sp/>columns?<sp/>(default<sp/>yes)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a72f5eac2a1fa5b7d718218d2e200c601" kindref="member">canRenameColumn</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>maximum<sp/>cache<sp/>size<sp/>(in<sp/>bytes)<sp/>to<sp/>be<sp/>used<sp/>by<sp/>a<sp/>storage<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>does<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a03338001d9277f2791a26fa5b5726e7b" kindref="member">setMaximumCacheSize</ref><sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nMiB);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>the<sp/>data<sp/>manager&apos;s<sp/>IO<sp/>statistics.<sp/>By<sp/>default<sp/>it<sp/>does<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a1353f8b056957aa8795b6a91b0120831" kindref="member">showCacheStatistics</ref><sp/>(std::ostream&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>column<sp/>in<sp/>the<sp/>data<sp/>manager<sp/>on<sp/>behalf<sp/>of<sp/>a<sp/>table<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>calls<sp/>makeXColumn<sp/>and<sp/>checks<sp/>the<sp/>data<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>scalar<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>&lt;src&gt;dataTypeId&lt;/src&gt;<sp/>argument<sp/>is<sp/>gives<sp/>the<sp/>id<sp/>(i.e.<sp/>name)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>the<sp/>data<sp/>type<sp/>of<sp/>the<sp/>column.<sp/>It<sp/>is<sp/>only<sp/>used<sp/>for<sp/>virtual</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>columns<sp/>of<sp/>a<sp/>non-standard<sp/>data<sp/>type<sp/>to<sp/>be<sp/>able<sp/>to<sp/>check<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>correctness<sp/>of<sp/>the<sp/>column<sp/>data<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;Storage<sp/>managers<sp/>only<sp/>handle<sp/>standard<sp/>data<sp/>types<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>readily<sp/>ignore<sp/>this<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1a8922b46bfa76c62f93a9107c3459ad51" kindref="member">createScalarColumn</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>direct<sp/>array<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1a962c565e1b972ae901037be23c914eae" kindref="member">createDirArrColumn</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>indirect<sp/>array<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1a641ba58204dbd4207052994b05f7ff3c" kindref="member">createIndArrColumn</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>data<sp/>manager<sp/>will<sp/>be<sp/>deleted<sp/>(because<sp/>all<sp/>its<sp/>columns<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>requested<sp/>to<sp/>be<sp/>deleted).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>So<sp/>clean<sp/>up<sp/>the<sp/>things<sp/>needed<sp/>(e.g.<sp/>delete<sp/>files).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="classcasacore_1_1DataManager_1a2b1d0e44fa51dba277be969352d41ee1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a2b1d0e44fa51dba277be969352d41ee1" kindref="member">deleteManager</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Decrement<sp/>number<sp/>of<sp/>columns<sp/>(in<sp/>case<sp/>a<sp/>column<sp/>is<sp/>deleted).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="classcasacore_1_1DataManager_1a4c32d0e690566949850a11b26566e5aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a4c32d0e690566949850a11b26566e5aa" kindref="member">decrementNcolumn</ref>()</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/>{<sp/>nrcol_p--;<sp/>}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>data<sp/>manager<sp/>if<sp/>big<sp/>or<sp/>little<sp/>endian<sp/>format<sp/>is<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388" refid="classcasacore_1_1DataManager_1a24fbb90ac53537e80eabe9297b5cbb5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a24fbb90ac53537e80eabe9297b5cbb5e" kindref="member">setEndian</ref><sp/>(<ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>bigEndian)</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>asBigEndian_p<sp/>=<sp/>bigEndian;<sp/>}</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>data<sp/>manager<sp/>which<sp/>TSM<sp/>option<sp/>to<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1af75fa312b6f7e9133115e280caaebe6c" kindref="member">setTsmOption</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1acb2143f7d1af317f0a4710a23f986456" kindref="member">tsmOption</ref>);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>data<sp/>manager<sp/>that<sp/>MultiFile<sp/>can<sp/>be<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Because<sp/>MultiFile<sp/>cannot<sp/>be<sp/>used<sp/>with<sp/>mmapped<sp/>files,<sp/>it<sp/>sets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>TSMOption<sp/>accordingly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a200030aeec61463beaa2dc65b0182c46" kindref="member">setMultiFile</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;MultiFileBase&gt;&amp;<sp/>mfile);</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>the<sp/>data<sp/>manager<sp/>support<sp/>use<sp/>of<sp/>MultiFile?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>derived<sp/>class<sp/>has<sp/>to<sp/>return<sp/>True<sp/>if<sp/>it<sp/>can<sp/>use<sp/>the<sp/>MultiFile.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>returns<sp/>False.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1aa5cde57b96e9a7af0b655709d8e7affb" kindref="member">hasMultiFileSupport</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Throw<sp/>an<sp/>exception<sp/>in<sp/>case<sp/>data<sp/>type<sp/>is<sp/>TpOther,<sp/>because<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>storage<sp/>managers<sp/>(and<sp/>maybe<sp/>other<sp/>data<sp/>managers)<sp/>do<sp/>not<sp/>support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>such<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a11d99c84457b69a3634c84cb98992f6c" kindref="member">throwDataTypeOther</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nrcol_p;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>#columns<sp/>in<sp/>this<sp/>st.man.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seqnr_p;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Unique<sp/>nr<sp/>of<sp/>this<sp/>st.man.<sp/>in<sp/>a<sp/>Table</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>asBigEndian_p;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>store<sp/>data<sp/>in<sp/>big<sp/>or<sp/>little<sp/>endian</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1TSMOption" kindref="compound">TSMOption</ref><sp/><sp/><sp/><sp/>tsmOption_p;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;MultiFileBase&gt;<sp/>multiFile_p;<sp/><sp/></highlight><highlight class="comment">//#<sp/>Possible<sp/>MultiFile<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1Table" kindref="compound">Table</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>table_p;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Table<sp/>this<sp/>data<sp/>manager<sp/>belongs<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/>clone_p;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Pointer<sp/>to<sp/>clone<sp/>(used<sp/>by<sp/>SetupNewTab)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>column<sp/>in<sp/>the<sp/>data<sp/>manager<sp/>on<sp/>behalf<sp/>of<sp/>a<sp/>table<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>Should<sp/>be<sp/>private,<sp/>but<sp/>has<sp/>to<sp/>be<sp/>public<sp/>because<sp/>friend</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>declaration<sp/>gave<sp/>internal<sp/>CFront<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>scalar<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/>makeScalarColumn<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>direct<sp/>array<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/>makeDirArrColumn<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>indirect<sp/>array<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/>makeIndArrColumn<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>the<sp/>data<sp/>type<sp/>of<sp/>the<sp/>created<sp/>data<sp/>manager<sp/>column<sp/>is<sp/>correct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>checkDataType<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*<sp/>colPtr,</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>columnName,</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dataType,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>dataTypeId)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>rows<sp/>to<sp/>all<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>calls<sp/>the<sp/>uInt<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addRow64<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>a<sp/>row<sp/>from<sp/>all<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>calls<sp/>the<sp/>uInt<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeRow64<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>rownr);</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>a<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>throws<sp/>a<sp/>&quot;not<sp/>possible&quot;<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addColumn<sp/>(<ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>a<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>throws<sp/>a<sp/>&quot;not<sp/>possible&quot;<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeColumn<sp/>(<ref refid="classcasacore_1_1DataManagerColumn" kindref="compound">DataManagerColumn</ref>*);</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>sequence<sp/>number<sp/>of<sp/>this<sp/>data<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setSeqnr<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nr)</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>{<sp/>seqnr_p<sp/>=<sp/>nr;<sp/>}</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Link<sp/>the<sp/>data<sp/>manager<sp/>to<sp/>the<sp/>Table<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>linkToTable<sp/>(Table&amp;<sp/>tab);</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flush<sp/>and<sp/>optionally<sp/>fsync<sp/>the<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>AipsIO<sp/>stream<sp/>represents<sp/>the<sp/>main<sp/>table<sp/>file<sp/>and<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>by<sp/>virtual<sp/>column<sp/>engines<sp/>to<sp/>store<sp/>SMALL<sp/>amounts<sp/>of<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>returns<sp/>a<sp/>True<sp/>status<sp/>if<sp/>it<sp/>had<sp/>to<sp/>flush<sp/>(i.e.<sp/>if<sp/>data<sp/>have<sp/>changed).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>flush<sp/>(AipsIO&amp;<sp/>ios,<sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/>fsync)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>data<sp/>manager<sp/>initialize<sp/>itself<sp/>for<sp/>a<sp/>new<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>calls<sp/>the<sp/>uInt<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create64<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>data<sp/>manager<sp/>initialize<sp/>itself<sp/>for<sp/>an<sp/>existing<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>AipsIO<sp/>stream<sp/>represents<sp/>the<sp/>main<sp/>table<sp/>file<sp/>and<sp/>must<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>by<sp/>virtual<sp/>column<sp/>engines<sp/>to<sp/>retrieve<sp/>the<sp/>data<sp/>stored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>flush<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>data<sp/>manager<sp/>returns<sp/>0<sp/>or<sp/>the<sp/>nr<sp/>of<sp/>rows<sp/>it<sp/>thinks<sp/>there<sp/>are.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>particularly<sp/>useful<sp/>for<sp/>data<sp/>managers<sp/>like<sp/>LofarStMan<sp/>whose</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>are<sp/>written<sp/>outside<sp/>the<sp/>table<sp/>system,<sp/>thus<sp/>for<sp/>which<sp/>no<sp/>rows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>have<sp/>been<sp/>added.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>calls<sp/>the<sp/>uInt<sp/>version<sp/>of<sp/>open<sp/>and<sp/>open1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>open64<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow,<sp/>AipsIO&amp;<sp/>ios);</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Resync<sp/>the<sp/>data<sp/>by<sp/>rereading<sp/>cached<sp/>data<sp/>from<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>called<sp/>when<sp/>a<sp/>lock<sp/>is<sp/>acquired<sp/>on<sp/>the<sp/>file<sp/>and<sp/>it<sp/>appears<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>data<sp/>in<sp/>this<sp/>data<sp/>manager<sp/>has<sp/>been<sp/>changed<sp/>by<sp/>another<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>data<sp/>manager<sp/>returns<sp/>0<sp/>or<sp/>the<sp/>number<sp/>of<sp/>rows<sp/>it<sp/>thinks<sp/>there<sp/>are.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>particularly<sp/>useful<sp/>for<sp/>data<sp/>managers<sp/>like<sp/>LofarStMan<sp/>whose</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>are<sp/>written<sp/>outside<sp/>the<sp/>table<sp/>system,<sp/>thus<sp/>for<sp/>which<sp/>no<sp/>rows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>have<sp/>been<sp/>added.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;br&gt;The<sp/>default<sp/>implementation<sp/>calls<sp/>the<sp/>uInt<sp/>version<sp/>of<sp/>resync<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>resync1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>resync64<sp/>(<ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>data<sp/>manager<sp/>initialize<sp/>itself<sp/>further.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prepare<sp/>is<sp/>called<sp/>after<sp/>create/open<sp/>has<sp/>been<sp/>called<sp/>for<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>columns.<sp/>In<sp/>this<sp/>way<sp/>one<sp/>can<sp/>be<sp/>sure<sp/>that<sp/>referenced<sp/>columns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>are<sp/>read<sp/>back<sp/>and<sp/>partly<sp/>initialized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementation<sp/>does<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>prepare();</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Backward<sp/>compatibility<sp/>function<sp/>using<sp/>uInt<sp/>instead<sp/>of<sp/>rownr_t.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>implementations<sp/>throw<sp/>an<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addRow<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>removeRow<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>rownr);</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>open<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow,<sp/>AipsIO&amp;<sp/>ios);</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>open1<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow,<sp/>AipsIO&amp;<sp/>ios);</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>resync<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>resync1<sp/>(<ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref><sp/>nrrow);</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/group&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"></highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Declare<sp/>the<sp/>mapping<sp/>of<sp/>the<sp/>data<sp/>manager<sp/>type<sp/>name<sp/>to<sp/>a<sp/>static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;makeObject&quot;<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::map&lt;String,DataManagerCtor&gt;<sp/>theirRegisterMap;</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::recursive_mutex<sp/>theirMutex;</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Has<sp/>the<sp/>object<sp/>already<sp/>been<sp/>cloned?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="524" refid="classcasacore_1_1DataManager_1a853a481aea8b3c6dae22ffceab926c4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1a853a481aea8b3c6dae22ffceab926c4d" kindref="member">getClone</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="525"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>clone_p;<sp/>}</highlight></codeline>
+<codeline lineno="526"><highlight class="normal"></highlight></codeline>
+<codeline lineno="527"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>pointer<sp/>to<sp/>the<sp/>clone.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="528" refid="classcasacore_1_1DataManager_1a945d12b4499a1402a786f9da74b59636" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1a945d12b4499a1402a786f9da74b59636" kindref="member">setClone</ref><sp/>(<ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1ab8d98544ba7a3fdfb204fc69da324fda" kindref="member">clone</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="529"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/>clone_p<sp/>=<sp/><ref refid="classcasacore_1_1DataManager_1ab8d98544ba7a3fdfb204fc69da324fda" kindref="member">clone</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>a<sp/>mapping<sp/>of<sp/>a<sp/>data<sp/>manager<sp/>type<sp/>to<sp/>its<sp/>static<sp/>construction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>function.<sp/>It<sp/>is<sp/>fully<sp/>thread-safe.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager_1ad483f4eeff332c91d71b151eef7be10f" kindref="member">registerCtor</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/>type,<sp/><ref refid="namespacecasacore_1a20bb8c6afd6ef5f8970f95cea3f4c3eb" kindref="member">DataManagerCtor</ref><sp/>func);</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"></highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>&quot;constructor&quot;<sp/>of<sp/>a<sp/>data<sp/>manager<sp/>(thread-safe).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1a20bb8c6afd6ef5f8970f95cea3f4c3eb" kindref="member">DataManagerCtor</ref><sp/><ref refid="classcasacore_1_1DataManager_1a277810fa1f83b4d6a9dadf9ed263bf33" kindref="member">getCtor</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552" kindref="member">dataManagerType</ref>);</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>if<sp/>a<sp/>data<sp/>manager<sp/>is<sp/>registered<sp/>(thread-safe).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref><sp/><ref refid="classcasacore_1_1DataManager_1a87ff60d722861b7a0c43f13fb32659d5" kindref="member">isRegistered</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552" kindref="member">dataManagerType</ref>);</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Serve<sp/>as<sp/>default<sp/>function<sp/>for<sp/>theirRegisterMap,<sp/>which<sp/>catches<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unknown<sp/>data<sp/>manager<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;li&gt;<sp/>TableUnknownDataManager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/thrown&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1DataManager" kindref="compound">DataManager</ref>*<sp/><ref refid="classcasacore_1_1DataManager_1a4c61c04749fd55bd625b82a4579b7360" kindref="member">unknownDataManager</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1String" kindref="compound">String</ref>&amp;<sp/><ref refid="classcasacore_1_1DataManager_1a03a6c5d513990679a001c5ae37db4552" kindref="member">dataManagerType</ref>,</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref>&amp;<sp/>spec);</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>highest<sp/>row<sp/>number<sp/>that<sp/>can<sp/>be<sp/>represented<sp/>as<sp/>signed<sp/>32-bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>principle<sp/>it<sp/>is<sp/>the<sp/>maximum<sp/>uInt<sp/>number,<sp/>but<sp/>for<sp/>test<sp/>purposes<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>reset<sp/>(to<sp/>a<sp/>lower<sp/>number).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="552" refid="classcasacore_1_1DataManager_1af8e69129a6b42ff06aec5c43066c5b01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacecasacore_1aee1c00a44176a614b010746741ae16a9" kindref="member">rownr_t</ref><sp/><ref refid="classcasacore_1_1DataManager_1af8e69129a6b42ff06aec5c43066c5b01" kindref="member">MAXROWNR32</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//#<sp/>set<sp/>to<sp/>2147483647</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="554"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>the<sp/>main<sp/>data<sp/>managers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::map&lt;String,DataManagerCtor&gt;<sp/>initRegisterMap();</highlight></codeline>
+<codeline lineno="557"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"></highlight></codeline>
+<codeline lineno="559"><highlight class="normal"></highlight></codeline>
+<codeline lineno="560"><highlight class="normal">}<sp/></highlight><highlight class="comment">//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/DataMan/DataManager.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,2505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classcasacore_1_1PGPlotter" kind="class" language="C++" prot="public">
+    <compoundname>casacore::PGPlotter</compoundname>
+    <basecompoundref refid="classcasacore_1_1PGPlotterInterface" prot="public" virt="non-virtual">casacore::PGPlotterInterface</basecompoundref>
+    <includes refid="PGPlotter_8h" local="no">PGPlotter.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcasacore_1_1PGPlotter_1a4cae8038d2bbd17b716add168296dd72" prot="public" static="no">
+        <type><ref refid="classcasacore_1_1PGPlotter" kindref="compound">PGPlotter</ref></type>
+        <definition>typedef PGPlotter casacore::PGPlotter::CreateFunction(const String &amp;device, uInt mincolors, uInt maxcolors, uInt sizex, uInt sizey)</definition>
+        <argsstring>(const String &amp;device, uInt mincolors, uInt maxcolors, uInt sizex, uInt sizey)</argsstring>
+        <name>CreateFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="96" column="23" bodyfile="casa/System/PGPlotter.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1PGPlotter_1a0abcffe855ee5a01941925113b4fb784" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classcasacore_1_1PGPlotterInterface" kindref="compound">PGPlotterInterface</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PGPlotterInterface&gt; casacore::PGPlotter::worker_p</definition>
+        <argsstring></argsstring>
+        <name>worker_p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="290" column="21" bodyfile="casa/System/PGPlotter.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcasacore_1_1PGPlotter_1a407ab1fd128116c95c5348517eba4edd" prot="private" static="yes" mutable="no">
+        <type><ref refid="classcasacore_1_1PGPlotter_1a4cae8038d2bbd17b716add168296dd72" kindref="member">CreateFunction</ref> *</type>
+        <definition>PGPlotter::CreateFunction * casacore::PGPlotter::creator_p</definition>
+        <argsstring></argsstring>
+        <name>creator_p</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="291" column="27" bodyfile="casa/System/PGPlotter.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a23c0b47d1ec18f866a60fd6999b7cea0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::PGPlotter::PGPlotter</definition>
+        <argsstring>()</argsstring>
+        <name>PGPlotter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="103" column="5" bodyfile="casa/System/PGPlotter.cc" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aff3d6fa041d4ed4eede50a4caadd6bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::PGPlotter::PGPlotter</definition>
+        <argsstring>(const String &amp;device, uInt mincolors=2, uInt maxcolors=100, uInt sizex=600, uInt sizey=450)</argsstring>
+        <name>PGPlotter</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>mincolors</declname>
+          <defval>2</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>maxcolors</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>sizex</declname>
+          <defval>600</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>sizey</declname>
+          <defval>450</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="106" column="5" bodyfile="casa/System/PGPlotter.cc" bodystart="49" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a2a8d909598293b4e226446f29fe82c38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::PGPlotter::PGPlotter</definition>
+        <argsstring>(PGPlotterInterface *)</argsstring>
+        <name>PGPlotter</name>
+        <param>
+          <type><ref refid="classcasacore_1_1PGPlotterInterface" kindref="compound">PGPlotterInterface</ref> *</type>
+          <defname>worker</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="112" column="5" bodyfile="casa/System/PGPlotter.cc" bodystart="43" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a1cdbef767642fae95137efc95716d2cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>casacore::PGPlotter::PGPlotter</definition>
+        <argsstring>(const PGPlotter &amp;other)</argsstring>
+        <name>PGPlotter</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1PGPlotter" kindref="compound">PGPlotter</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="117" column="5" bodyfile="casa/System/PGPlotter.cc" bodystart="56" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a5f0352d744b4030d05d3862c4a7caa27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PGPlotter" kindref="compound">PGPlotter</ref> &amp;</type>
+        <definition>PGPlotter &amp; casacore::PGPlotter::operator=</definition>
+        <argsstring>(const PGPlotter &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1PGPlotter" kindref="compound">PGPlotter</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="118" column="15" bodyfile="casa/System/PGPlotter.cc" bodystart="63" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1acd154e7b9c1baf39a1860454c2b6187b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>casacore::PGPlotter::~PGPlotter</definition>
+        <argsstring>()</argsstring>
+        <name>~PGPlotter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="122" column="13" bodyfile="casa/System/PGPlotter.cc" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a789f19397ef510bd0d8c8855995e665f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+        <definition>Bool casacore::PGPlotter::isAttached</definition>
+        <argsstring>() const</argsstring>
+        <name>isAttached</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a9217b99cce70e9675028d197a5c74c44">isAttached</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="138" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7da22f086609f6c339522ec04f2d3227" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::detach</definition>
+        <argsstring>()</argsstring>
+        <name>detach</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="142" column="10" bodyfile="casa/System/PGPlotter.cc" bodystart="96" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a99b3a58587d221b11267700b407f9326" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::message</definition>
+        <argsstring>(const String &amp;text)</argsstring>
+        <name>message</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a552f4f56c8345c0e23220bd90845e43a">message</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="148" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a985b40328b225984a7ac546e3f5f3c89" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Record" kindref="compound">Record</ref></type>
+        <definition>Record casacore::PGPlotter::curs</definition>
+        <argsstring>(Float x, Float y)</argsstring>
+        <name>curs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a410f3d8d96489949d567ea492902761a">curs</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="156" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="114" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a23f9a12f18c35ecfb1ae63bf39481b5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::arro</definition>
+        <argsstring>(Float x1, Float y1, Float x2, Float y2)</argsstring>
+        <name>arro</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a7642ed522edd1f7c9ed4979c77cf7f07">arro</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="169" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="122" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aea6ff0eb3597001e754b30a671b5d0c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ask</definition>
+        <argsstring>(Bool flag)</argsstring>
+        <name>ask</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1af3c8bf2bd6eb82da4ac92118a29bdae3">ask</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>flag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="170" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="129" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a1d27086cb4bba72ca5214b2319dd1005" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::bbuf</definition>
+        <argsstring>()</argsstring>
+        <name>bbuf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a68f66eae24ddb273be76d4a1874593cb">bbuf</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="171" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="136" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a790ab8de57eb6e47ca1cd7e9022b3b83" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::bin</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;x, const Vector&lt; Float &gt; &amp;data, Bool center)</argsstring>
+        <name>bin</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad22b2c642f96614f06f3f57a896ec3ee">bin</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>center</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="172" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="523" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a36258e2d9a835381dc9f7b01dad3116a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::box</definition>
+        <argsstring>(const String &amp;xopt, Float xtick, Int nxsub, const String &amp;yopt, Float ytick, Int nysub)</argsstring>
+        <name>box</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1afaf5043e733fbf2d94b08f69cb736d4f">box</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>xopt</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xtick</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nxsub</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>yopt</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ytick</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nysub</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="174" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="143" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a0b5c36c6a348c843107cda3d69436918" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::circ</definition>
+        <argsstring>(Float xcent, Float ycent, Float radius)</argsstring>
+        <name>circ</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad375671aeb18642ff129140a1f15daba">circ</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xcent</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ycent</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="176" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="151" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a91febf797541510a8e7196662c0c812e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::conb</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, const Vector&lt; Float &gt; &amp;c, const Vector&lt; Float &gt; &amp;tr, Float blank)</argsstring>
+        <name>conb</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1aa10be454de4efa481744bc2ce476032d">conb</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>blank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="177" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="531" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1abf1eb23379835bd0172a745fbb4030d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::conl</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, Float c, const Vector&lt; Float &gt; &amp;tr, const String &amp;label, Int intval, Int minint)</argsstring>
+        <name>conl</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a68030df0a9cc0edbc1c02a28b13a2a09">conl</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>intval</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>minint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="179" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="445" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ac7f39f9e13fd76a0b14eb2d8f1e7cbeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::cons</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, const Vector&lt; Float &gt; &amp;c, const Vector&lt; Float &gt; &amp;tr)</argsstring>
+        <name>cons</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ac7238586df3da794a0c723b2e2cd7d67">cons</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="182" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="539" bodyend="545"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a14f4b82428b47aac308190cf4d1b87f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::cont</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, const Vector&lt; Float &gt; &amp;c, Bool nc, const Vector&lt; Float &gt; &amp;tr)</argsstring>
+        <name>cont</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad1ddf48bbfa48d08c342742fd0e69408">cont</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>nc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="184" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="454" bodyend="460"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a0586943ec3b0fa3282f0dafd5dba9f2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ctab</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;l, const Vector&lt; Float &gt; &amp;r, const Vector&lt; Float &gt; &amp;g, const Vector&lt; Float &gt; &amp;b, Float contra, Float bright)</argsstring>
+        <name>ctab</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a370feb4592c939dbb413c60cbb2b5e46">ctab</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>contra</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>bright</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="186" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="462" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a321e10483f91c6ea64d59dafd0472c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::draw</definition>
+        <argsstring>(Float x, Float y)</argsstring>
+        <name>draw</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a4582db334a5648dc213466a0d0b536a9">draw</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="189" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="158" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7f9412464b0ab00d088cf698a47f6f40" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ebuf</definition>
+        <argsstring>()</argsstring>
+        <name>ebuf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1af38eba8dd34afe9ea13c718c59d19e9f">ebuf</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="190" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="165" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a44f01efa160d8db276401716488eb165" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::env</definition>
+        <argsstring>(Float xmin, Float xmax, Float ymin, Float ymax, Int just, Int axis)</argsstring>
+        <name>env</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad41d801612d6034b5ca949391d5800e3">env</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xmin</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xmax</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ymin</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ymax</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>just</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="191" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="172" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1acff8201823595929ae95e8775419ea84" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::eras</definition>
+        <argsstring>()</argsstring>
+        <name>eras</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad8241a5863f3329351ed19a810af8ac4">eras</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="193" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="180" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7fde011a9e296276906e594905780f3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::errb</definition>
+        <argsstring>(Int dir, const Vector&lt; Float &gt; &amp;x, const Vector&lt; Float &gt; &amp;y, const Vector&lt; Float &gt; &amp;e, Float t)</argsstring>
+        <name>errb</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ae54b60b4fca6489eaebae6419c9e6ba4">errb</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="194" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="187" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a9645f6f57a85a81c357c8f9592a1a9a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::errx</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;x1, const Vector&lt; Float &gt; &amp;x2, const Vector&lt; Float &gt; &amp;y, Float t)</argsstring>
+        <name>errx</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a3ae1fd5d0bce7a3f125f458e3920c933">errx</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="196" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="547" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ae1c7d6b124b03b2f9818533a483834bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::erry</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;x, const Vector&lt; Float &gt; &amp;y1, const Vector&lt; Float &gt; &amp;y2, Float t)</argsstring>
+        <name>erry</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1adfbb07d627da8950956673b760d8d029">erry</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="198" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="195" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a70238e588e97c2da5508b42e734aa621" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::gray</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, Float fg, Float bg, const Vector&lt; Float &gt; &amp;tr)</argsstring>
+        <name>gray</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a9a55176c668f03c6c5303cbd2acf114b">gray</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>fg</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>bg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="200" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="470" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aa1e60f1821790a0de6754fb70c73e812" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::hi2d</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;data, const Vector&lt; Float &gt; &amp;x, Int ioff, Float bias, Bool center, const Vector&lt; Float &gt; &amp;ylims)</argsstring>
+        <name>hi2d</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a0a082049acc44b89a3aa6b0ffbcc2a0b">hi2d</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ioff</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>bias</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>ylims</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="202" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="555" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7730b5bbbc27124084ae36dbfbf54eb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::hist</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;data, Float datmin, Float datmax, Int nbin, Int pcflag)</argsstring>
+        <name>hist</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1add125b96a37c998572a102938050fd37">hist</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>datmin</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>datmax</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nbin</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>pcflag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="205" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="203" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aeb946c9e1ce78b1b1d23c71d3acb6bba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::iden</definition>
+        <argsstring>()</argsstring>
+        <name>iden</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a450459c16129e7eb119439ba7c2cf5a8">iden</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="207" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="478" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a3afef490e5beee057de93839197b3d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::imag</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, Float a1, Float a2, const Vector&lt; Float &gt; &amp;tr)</argsstring>
+        <name>imag</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a69002360dda99e4aced9af3f08662f85">imag</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>a1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>a2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="208" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="485" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a700eb67cd22119f96993647718f0e564" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::lab</definition>
+        <argsstring>(const String &amp;xlbl, const String &amp;ylbl, const String &amp;toplbl)</argsstring>
+        <name>lab</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a50c3f617cd2c1e5a91dc5fba5124e53a">lab</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>xlbl</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>ylbl</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>toplbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="210" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="211" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ab514ef9e2bfd0dcae65ceb76b845d238" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ldev</definition>
+        <argsstring>()</argsstring>
+        <name>ldev</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a886e61cf3d2a50415e9ba036def1720a">ldev</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="212" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="564" bodyend="569"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a948d75af43d579220ed0f8f434123b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::len</definition>
+        <argsstring>(Int units, const String &amp;string)</argsstring>
+        <name>len</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1adfc15d3639f19f35acfaa5e0ac16827c">len</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>units</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="213" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="571" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a59c0cff0d347a664575e6c2e44baa076" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::line</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;xpts, const Vector&lt; Float &gt; &amp;ypts)</argsstring>
+        <name>line</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a43462b1ab707f215332bde9626281b04">line</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>xpts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>ypts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="214" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="219" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a2c9368b7bc7e6f6344ae73504647a6ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::move</definition>
+        <argsstring>(Float x, Float y)</argsstring>
+        <name>move</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a4a616ad1504a9432ecee7f767d11a5db">move</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="215" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="226" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a3be0ce708bfdfea44e33c41c9e97c0df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::mtxt</definition>
+        <argsstring>(const String &amp;side, Float disp, Float coord, Float fjust, const String &amp;text)</argsstring>
+        <name>mtxt</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1acb55d09fb3ac4bb962dadf8050957f25">mtxt</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>disp</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>fjust</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="216" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="233" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1adde1b5740a08d4c33d55c391b51e58d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::PGPlotter::numb</definition>
+        <argsstring>(Int mm, Int pp, Int form)</argsstring>
+        <name>numb</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a3dec4c830d7ff706b8965f58a143b86b">numb</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>mm</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>pp</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>form</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="218" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="579" bodyend="585"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a2afd6affda96510d76e844f562f94430" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::page</definition>
+        <argsstring>()</argsstring>
+        <name>page</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1af776013338b4228202dc27469bdf3cb7">page</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="219" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="241" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a44bbccf9d729f0abcde428b3381dbd91" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::panl</definition>
+        <argsstring>(Int ix, Int iy)</argsstring>
+        <name>panl</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1abdb5653ee4848d74f63cf6d478439b7c">panl</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ix</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>iy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="220" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="587" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a05033631dfd699dd111e9d55b85c8bee" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::pap</definition>
+        <argsstring>(Float width, Float aspect)</argsstring>
+        <name>pap</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1acb0766a23ba84fc4e121373ab06faec1">pap</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>aspect</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="221" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="594" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a5025afc9f4026af144e3efd9d4e1f1a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::pixl</definition>
+        <argsstring>(const Matrix&lt; Int &gt; &amp;ia, Float x1, Float x2, Float y1, Float y2)</argsstring>
+        <name>pixl</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a3746d7e211007dba0b80aa56c096e29f">pixl</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt; &amp;</type>
+          <declname>ia</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="222" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="601" bodyend="607"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1af20ced59dc3bcd02ed450fab9093cc7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::pnts</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;x, const Vector&lt; Float &gt; &amp;y, const Vector&lt; Int &gt; symbol)</argsstring>
+        <name>pnts</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad1a6b62e50c887219bac1b9b01655120">pnts</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt;</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="224" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="609" bodyend="615"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a5e36b8bc5649c57098d98853fef7c22c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::poly</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;xpts, const Vector&lt; Float &gt; &amp;ypts)</argsstring>
+        <name>poly</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a6f66233e4d512cdfff4320f31dd2af3c">poly</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>xpts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>ypts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="226" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="248" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a2ca4536e1ca98487430a8c622d10dc29" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::pt</definition>
+        <argsstring>(const Vector&lt; Float &gt; &amp;xpts, const Vector&lt; Float &gt; &amp;ypts, Int symbol)</argsstring>
+        <name>pt</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ac8d49395cd07b317e209d6e13055adf8">pt</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>xpts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>ypts</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="227" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="255" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ac108d73c2452129b4a98ae161fc5da35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ptxt</definition>
+        <argsstring>(Float x, Float y, Float angle, Float fjust, const String &amp;text)</argsstring>
+        <name>ptxt</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5add406a53defdb0e7d25fc56f8e9027">ptxt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>fjust</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="229" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="263" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a59cd4476cf15caa8d952290c5acf03d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qah</definition>
+        <argsstring>()</argsstring>
+        <name>qah</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a36dffbc109cf996fedf5ce705a09887f">qah</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="231" column="21" bodyfile="casa/System/PGPlotter.cc" bodystart="617" bodyend="623"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ab806cd6addd86b521d108ea7bc09ed32" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qcf</definition>
+        <argsstring>()</argsstring>
+        <name>qcf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5d6c660415389d245d5bbf8b2f8a0127">qcf</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="232" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="625" bodyend="631"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a496beaa4501426aa9059171b4766f51e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+        <definition>Float casacore::PGPlotter::qch</definition>
+        <argsstring>()</argsstring>
+        <name>qch</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad3895f441458b9bc9d6a5765b9aa0cc9">qch</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="233" column="19" bodyfile="casa/System/PGPlotter.cc" bodystart="633" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a1a5206596ef5cefd41a95e13741aa50e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qci</definition>
+        <argsstring>()</argsstring>
+        <name>qci</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a317560ede3dc56ae352629a43e1f30dc">qci</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="234" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="271" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1af7e0b55a8659a98e98a7052dbd87fab7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt;</type>
+        <definition>Vector&lt; Int &gt; casacore::PGPlotter::qcir</definition>
+        <argsstring>()</argsstring>
+        <name>qcir</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a9f26d4b8649868677a8386569e08017f">qcir</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="235" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="493" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a1e78070adbec99c85f95b690d4c16db2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref> &gt;</type>
+        <definition>Vector&lt; Int &gt; casacore::PGPlotter::qcol</definition>
+        <argsstring>()</argsstring>
+        <name>qcol</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5215677c423de476c09117bb62ce0ea5">qcol</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="236" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="501" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a66d18d593d1e19d00d54548486a31e4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qcr</definition>
+        <argsstring>(Int ci)</argsstring>
+        <name>qcr</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1af1bfc168ed8d457d1ec9d4855549d087">qcr</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ci</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="237" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="641" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a43d78331bcebfbcf0f07d1540bf930d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qcs</definition>
+        <argsstring>(Int units)</argsstring>
+        <name>qcs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad9f7df623cf661979e5e4da7ec4f9b94">qcs</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>units</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="238" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="649" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a4f9228779025dbe7cef1ed684d9aae12" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qfs</definition>
+        <argsstring>()</argsstring>
+        <name>qfs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a9d3adabaea671ca068baceeccf6b059b">qfs</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="239" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="657" bodyend="663"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a977d2603d57e6e80eb47a52b214d39e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qhs</definition>
+        <argsstring>()</argsstring>
+        <name>qhs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1abf7ad624552163126842cdfd59948082">qhs</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="240" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="665" bodyend="671"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7af94c5a7aa751f0be83f1213b911d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qid</definition>
+        <argsstring>()</argsstring>
+        <name>qid</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1aed59c87aac4b34c288ab76cb116670f6">qid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="241" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="673" bodyend="679"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a52ca1de89a754f2a88502de407a7e724" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1String" kindref="compound">String</ref></type>
+        <definition>String casacore::PGPlotter::qinf</definition>
+        <argsstring>(const String &amp;item)</argsstring>
+        <name>qinf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1adc9bda7bf8b532c36757a5c914f0eadf">qinf</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="242" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="681" bodyend="687"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a19abde5cf2be82afec9d17c7537aea82" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qitf</definition>
+        <argsstring>()</argsstring>
+        <name>qitf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a85c4a23c5a7599dbbd54395a3734f2a6">qitf</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="243" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="689" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1af7d358524da1d5853c68b8f2f4e7858c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qls</definition>
+        <argsstring>()</argsstring>
+        <name>qls</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a949373ff8c8731cb38c9bc541319a1a5">qls</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="244" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="697" bodyend="703"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a4a9588ddf95e6c25e0281488369b8a99" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qlw</definition>
+        <argsstring>()</argsstring>
+        <name>qlw</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a3b73da9e915545eba50d39a75e29391c">qlw</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="245" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="705" bodyend="711"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a5ad80eb79629eb8f6c6661112abf977c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qpos</definition>
+        <argsstring>()</argsstring>
+        <name>qpos</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ab4c993b03f128ccb745b7d35c6b9298b">qpos</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="246" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="713" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1adc4621c7cfab6ccacf8e4716d839d848" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+        <definition>Int casacore::PGPlotter::qtbg</definition>
+        <argsstring>()</argsstring>
+        <name>qtbg</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a2160e7aa71c43afc559679baefad70df">qtbg</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="247" column="17" bodyfile="casa/System/PGPlotter.cc" bodystart="279" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a40f4b3d4c4f3dfabb04e505bdbf3653b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qtxt</definition>
+        <argsstring>(Float x, Float y, Float angle, Float fjust, const String &amp;text)</argsstring>
+        <name>qtxt</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1afd40b07020dddc168d9cf989e97fe5e6">qtxt</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>fjust</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="248" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="287" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a7b2c8b00c82364570ece32ed7cbe2d82" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qvp</definition>
+        <argsstring>(Int units)</argsstring>
+        <name>qvp</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ae1be3e20b55f654e02aea4380ff908ba">qvp</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>units</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="250" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="721" bodyend="727"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a45c84b51ffb2ca2f590c6343fde68a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qvsz</definition>
+        <argsstring>(Int units)</argsstring>
+        <name>qvsz</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1afcd29fa093b4e1c8676d89392c9c8380">qvsz</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>units</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="251" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="729" bodyend="735"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a8f8d944fb5c392f9e24bad5b2dcd7a21" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::qwin</definition>
+        <argsstring>()</argsstring>
+        <name>qwin</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a0923639b5f75d837121687be9a50869b">qwin</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="252" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="296" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ab6613e0e276ae13d7d1505dc70c2e209" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::rect</definition>
+        <argsstring>(Float x1, Float x2, Float y1, Float y2)</argsstring>
+        <name>rect</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1af7598950c906b302a2cd0f07028c859d">rect</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="253" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="304" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a2f0823e62f7a271b6767e7805eefee8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+        <definition>Float casacore::PGPlotter::rnd</definition>
+        <argsstring>(Float x, Int nsub)</argsstring>
+        <name>rnd</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a754a2996ac3db960537aa4f7c465fc30">rnd</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nsub</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="254" column="19" bodyfile="casa/System/PGPlotter.cc" bodystart="737" bodyend="743"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a226c84505df9ace74219fed2bd534914" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt;</type>
+        <definition>Vector&lt; Float &gt; casacore::PGPlotter::rnge</definition>
+        <argsstring>(Float x1, Float x2)</argsstring>
+        <name>rnge</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5dd01b35ae51db9d7601e1133863d658">rnge</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="255" column="20" bodyfile="casa/System/PGPlotter.cc" bodystart="745" bodyend="751"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a989cc02bfa8965e88667e28fa820bab7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sah</definition>
+        <argsstring>(Int fs, Float angle, Float vent)</argsstring>
+        <name>sah</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1aaf77bc1dd4923c3b62127d79d86ca0a0">sah</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>fs</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>vent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="256" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="311" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a93da5f107bfae3fe734dde658e37556f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::save</definition>
+        <argsstring>()</argsstring>
+        <name>save</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5a9cf89e4eb923670ceeba8074bbc693">save</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="257" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="318" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ae8b69bada37221317b780adecdb5bdac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::scf</definition>
+        <argsstring>(Int font)</argsstring>
+        <name>scf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a95c91e67ff3cc76ab8d0739b46c07cd3">scf</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>font</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="258" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="753" bodyend="758"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ab6c387087b4e5d125b2ed4561acb50df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sch</definition>
+        <argsstring>(Float size)</argsstring>
+        <name>sch</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a4a185e9da457ac7e691506119689328c">sch</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="259" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="325" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ae5041135a73b773646e416d6319568ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sci</definition>
+        <argsstring>(Int ci)</argsstring>
+        <name>sci</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1abf6c13ad774ee3136038a0c90eadd937">sci</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ci</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="260" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="332" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a5a150a7bed4302e904118e3b7e0a1b0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::scir</definition>
+        <argsstring>(Int icilo, Int icihi)</argsstring>
+        <name>scir</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad92cb3bd5cddd4ed954e35f7976ef749">scir</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>icilo</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>icihi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="261" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="509" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a4d4f78f66bdec754a1804067df6598a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::scr</definition>
+        <argsstring>(Int ci, Float cr, Float cg, Float cb)</argsstring>
+        <name>scr</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a31da8848ff2124ae8cf68fa8cb1f36e9">scr</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ci</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>cr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>cg</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="262" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="339" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a723c2aa65ac92d0ae8d06ce34cb6e24a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::scrn</definition>
+        <argsstring>(Int ci, const String &amp;name)</argsstring>
+        <name>scrn</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1aca7b07738da2b1e7d4e6102680b8d597">scrn</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ci</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="263" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="760" bodyend="765"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a0de4311c66fb3bf14ccf681ef8484bd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sfs</definition>
+        <argsstring>(Int fs)</argsstring>
+        <name>sfs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a6986060d80719b01d5d3cb3b2d8b0f96">sfs</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>fs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="264" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="346" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a1d290371f6873ca783ca1c42fdc10d09" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::shls</definition>
+        <argsstring>(Int ci, Float ch, Float cl, Float cs)</argsstring>
+        <name>shls</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a62e116b6c67ce1084b8551b37c865dd4">shls</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ci</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>cl</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>cs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="265" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="767" bodyend="772"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a665f903ce5eaaa67923418678c29dac4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::shs</definition>
+        <argsstring>(Float angle, Float sepn, Float phase)</argsstring>
+        <name>shs</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ac7e286bb2523a0be695d7b133b51a5c8">shs</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>sepn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>phase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="266" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="774" bodyend="779"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ad30b95037ae29482a0d0d0fe6725436a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sitf</definition>
+        <argsstring>(Int itf)</argsstring>
+        <name>sitf</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ae3e3452ce6833a01ac78a20505698b88">sitf</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>itf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="267" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="516" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aa58024d0c7c25f625d1f6e4979b550b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::sls</definition>
+        <argsstring>(Int ls)</argsstring>
+        <name>sls</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1acaf5e9963fdd3401bfd40e2d9c45adfd">sls</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>ls</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="268" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="353" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1af682e129b4567519bf99c51abbd00f3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::slw</definition>
+        <argsstring>(Int lw)</argsstring>
+        <name>slw</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ab0e4027f81762fab7d9863883b430812">slw</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>lw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="269" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="360" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a3e64b7a1d0df51d57ab7f87727811ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::stbg</definition>
+        <argsstring>(Int tbci)</argsstring>
+        <name>stbg</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a9552da3a04e15ad3e82edd0eb7a5e957">stbg</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>tbci</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="270" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="367" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ab5b75df9aa80ae53b986879024235b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::subp</definition>
+        <argsstring>(Int nxsub, Int nysub)</argsstring>
+        <name>subp</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a05a5f2de32dcc132dc4252912522b6dc">subp</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nxsub</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nysub</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="271" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="374" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aca7b0e0cfc0efdaf9a4b129a4afc0dcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::svp</definition>
+        <argsstring>(Float xleft, Float xright, Float ybot, Float ytop)</argsstring>
+        <name>svp</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1abda2b785eab1603472779793fe4aec7c">svp</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xleft</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xright</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ybot</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ytop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="272" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="381" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a00d21942a7b186adc7dabb5cecc1210a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::swin</definition>
+        <argsstring>(Float x1, Float x2, Float y1, Float y2)</argsstring>
+        <name>swin</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a7f5b781fc4824cd0debeacee745ff1be">swin</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="273" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="388" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aad872fb643bb17cd519b109a2d7d2d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::tbox</definition>
+        <argsstring>(const String &amp;xopt, Float xtick, Int nxsub, const String &amp;yopt, Float ytick, Int nysub)</argsstring>
+        <name>tbox</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a4ecd8fec6009d6cee580fd00f971d3aa">tbox</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>xopt</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xtick</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nxsub</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>yopt</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ytick</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nysub</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="274" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="395" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a490ebf9de3cfb6215a4e47cc987e2106" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::text</definition>
+        <argsstring>(Float x, Float y, const String &amp;text)</argsstring>
+        <name>text</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1ad3cf7b9f5807b3a4fcf298f20433403b">text</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="276" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="403" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1abd508710da960384fc8507cf687c19a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::unsa</definition>
+        <argsstring>()</argsstring>
+        <name>unsa</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a56cc308d98207e0d8e64a92cdc98ba79">unsa</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="277" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="410" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a05755e2482056ba8dda54a36cf2fbc66" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::updt</definition>
+        <argsstring>()</argsstring>
+        <name>updt</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a8e9d59507922c8adbe06f5ad257a6dd9">updt</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="278" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="417" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a747a3c2adbeadac85574094c6f386233" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::vect</definition>
+        <argsstring>(const Matrix&lt; Float &gt; &amp;a, const Matrix&lt; Float &gt; &amp;b, Float c, Int nc, const Vector&lt; Float &gt; &amp;tr, Float blank)</argsstring>
+        <name>vect</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a437d1dbcf80a4010dd772593c2d49cf1">vect</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Matrix" kindref="compound">Matrix</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abb6e2c1bac472ca1ebadadf96cc8426f" kindref="member">Int</ref></type>
+          <declname>nc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1Vector" kindref="compound">Vector</ref>&lt; <ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref> &gt; &amp;</type>
+          <declname>tr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>blank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="279" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="781" bodyend="788"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a85a76369bf3aa714fa10cb7cc29063a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::vsiz</definition>
+        <argsstring>(Float xleft, Float xright, Float ybot, Float ytop)</argsstring>
+        <name>vsiz</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1abe9fbca630344371c10ad306b5f881f3">vsiz</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xleft</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>xright</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ybot</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>ytop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="282" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="790" bodyend="796"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a0e5c07e6e370a21c65e6b46a451b3bb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::vstd</definition>
+        <argsstring>()</argsstring>
+        <name>vstd</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a492cea7a7377c506a8882195cdc4ecbd">vstd</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="284" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="424" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1a169c73ccba39b49afe8da7260b87d9f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::wedg</definition>
+        <argsstring>(const String &amp;side, Float disp, Float width, Float fg, Float bg, const String &amp;label)</argsstring>
+        <name>wedg</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a7c5607ed371a1194cf1b42a76553eeea">wedg</reimplements>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>disp</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>fg</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>bg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="285" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="798" bodyend="804"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1aa2a97813c3c42225f8680a8eceee9940" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::wnad</definition>
+        <argsstring>(Float x1, Float x2, Float y1, Float y2)</argsstring>
+        <name>wnad</name>
+        <reimplements refid="classcasacore_1_1PGPlotterInterface_1a5ed47ac2688833cb843b1595a1fbc422">wnad</reimplements>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a8e2f856944a61553ab74cd041314f696" kindref="member">Float</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="287" column="18" bodyfile="casa/System/PGPlotter.cc" bodystart="431" bodyend="436"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1abdb718dcbc4e7243dbafa568616a963b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PGPlotter" kindref="compound">PGPlotter</ref></type>
+        <definition>PGPlotter casacore::PGPlotter::create</definition>
+        <argsstring>(const String &amp;device, uInt mincolors=2, uInt maxcolors=100, uInt sizex=600, uInt sizey=450)</argsstring>
+        <name>create</name>
+        <param>
+          <type>const <ref refid="classcasacore_1_1String" kindref="compound">String</ref> &amp;</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>mincolors</declname>
+          <defval>2</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>maxcolors</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>sizex</declname>
+          <defval>600</defval>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1a5c559d8d8bf2ae7f67b439955d6be88a" kindref="member">uInt</ref></type>
+          <declname>sizey</declname>
+          <defval>450</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="125" column="22" bodyfile="casa/System/PGPlotter.cc" bodystart="74" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1adc9aae2b8cd5a537d428c7b0b0131f4a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcasacore_1_1PGPlotter_1a4cae8038d2bbd17b716add168296dd72" kindref="member">CreateFunction</ref> *</type>
+        <definition>PGPlotter::CreateFunction * casacore::PGPlotter::setCreateFunction</definition>
+        <argsstring>(CreateFunction *, Bool override=True)</argsstring>
+        <name>setCreateFunction</name>
+        <param>
+          <type><ref refid="classcasacore_1_1PGPlotter_1a4cae8038d2bbd17b716add168296dd72" kindref="member">CreateFunction</ref> *</type>
+          <defname>func</defname>
+        </param>
+        <param>
+          <type><ref refid="namespacecasacore_1abd5691f9e13acc90d901e4007740ff98" kindref="member">Bool</ref></type>
+          <declname>override</declname>
+          <defval><ref refid="namespacecasacore_1ad5c850f9e177173e0f7d0ad57091501d" kindref="member">True</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="134" column="27" bodyfile="casa/System/PGPlotter.cc" bodystart="86" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcasacore_1_1PGPlotter_1ad1cc66fc2394a2fb661f10d8bcdbdbc2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casacore::PGPlotter::ok</definition>
+        <argsstring>() const</argsstring>
+        <name>ok</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="casa/System/PGPlotter.h" line="294" column="10" bodyfile="casa/System/PGPlotter.cc" bodystart="438" bodyend="443"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>casacore::PGPlotter</label>
+        <link refid="classcasacore_1_1PGPlotter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::PGPlotterInterface</label>
+        <link refid="classcasacore_1_1PGPlotterInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>casacore::PGPlotter</label>
+        <link refid="classcasacore_1_1PGPlotter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>casacore::PGPlotterInterface</label>
+        <link refid="classcasacore_1_1PGPlotterInterface"/>
+      </node>
+    </collaborationgraph>
+    <location file="casa/System/PGPlotter.h" line="92" column="1" bodyfile="casa/System/PGPlotter.h" bodystart="93" bodyend="295"/>
+    <listofallmembers>
+      <member refid="classcasacore_1_1PGPlotter_1a23f9a12f18c35ecfb1ae63bf39481b5a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>arro</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aea6ff0eb3597001e754b30a671b5d0c1" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>ask</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a1d27086cb4bba72ca5214b2319dd1005" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>bbuf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a790ab8de57eb6e47ca1cd7e9022b3b83" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>bin</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a36258e2d9a835381dc9f7b01dad3116a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>box</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a0b5c36c6a348c843107cda3d69436918" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>circ</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a91febf797541510a8e7196662c0c812e" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>conb</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1abf1eb23379835bd0172a745fbb4030d9" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>conl</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ac7f39f9e13fd76a0b14eb2d8f1e7cbeb" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>cons</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a14f4b82428b47aac308190cf4d1b87f6" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>cont</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1abdb718dcbc4e7243dbafa568616a963b" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>create</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a4cae8038d2bbd17b716add168296dd72" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>CreateFunction</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a407ab1fd128116c95c5348517eba4edd" prot="private" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>creator_p</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a0586943ec3b0fa3282f0dafd5dba9f2e" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>ctab</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a985b40328b225984a7ac546e3f5f3c89" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>curs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7da22f086609f6c339522ec04f2d3227" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>detach</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a321e10483f91c6ea64d59dafd0472c31" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>draw</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7f9412464b0ab00d088cf698a47f6f40" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>ebuf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a44f01efa160d8db276401716488eb165" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>env</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1acff8201823595929ae95e8775419ea84" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>eras</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7fde011a9e296276906e594905780f3c" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>errb</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a9645f6f57a85a81c357c8f9592a1a9a5" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>errx</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ae1c7d6b124b03b2f9818533a483834bc" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>erry</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a70238e588e97c2da5508b42e734aa621" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>gray</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aa1e60f1821790a0de6754fb70c73e812" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>hi2d</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7730b5bbbc27124084ae36dbfbf54eb4" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>hist</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aeb946c9e1ce78b1b1d23c71d3acb6bba" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>iden</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a3afef490e5beee057de93839197b3d04" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>imag</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a789f19397ef510bd0d8c8855995e665f" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>isAttached</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a700eb67cd22119f96993647718f0e564" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>lab</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ab514ef9e2bfd0dcae65ceb76b845d238" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>ldev</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a948d75af43d579220ed0f8f434123b65" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>len</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a59c0cff0d347a664575e6c2e44baa076" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>line</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a99b3a58587d221b11267700b407f9326" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>message</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a2c9368b7bc7e6f6344ae73504647a6ec" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>move</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a3be0ce708bfdfea44e33c41c9e97c0df" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>mtxt</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1adde1b5740a08d4c33d55c391b51e58d3" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>numb</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ad1cc66fc2394a2fb661f10d8bcdbdbc2" prot="private" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>ok</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a5f0352d744b4030d05d3862c4a7caa27" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>operator=</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a2afd6affda96510d76e844f562f94430" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>page</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a44bbccf9d729f0abcde428b3381dbd91" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>panl</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a05033631dfd699dd111e9d55b85c8bee" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>pap</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a23c0b47d1ec18f866a60fd6999b7cea0" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>PGPlotter</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aff3d6fa041d4ed4eede50a4caadd6bcb" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>PGPlotter</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a2a8d909598293b4e226446f29fe82c38" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>PGPlotter</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a1cdbef767642fae95137efc95716d2cd" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>PGPlotter</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a5025afc9f4026af144e3efd9d4e1f1a0" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>pixl</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1af20ced59dc3bcd02ed450fab9093cc7e" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>pnts</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a5e36b8bc5649c57098d98853fef7c22c" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>poly</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a2ca4536e1ca98487430a8c622d10dc29" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>pt</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ac108d73c2452129b4a98ae161fc5da35" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>ptxt</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a59cd4476cf15caa8d952290c5acf03d7" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qah</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ab806cd6addd86b521d108ea7bc09ed32" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qcf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a496beaa4501426aa9059171b4766f51e" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qch</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a1a5206596ef5cefd41a95e13741aa50e" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qci</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1af7e0b55a8659a98e98a7052dbd87fab7" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qcir</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a1e78070adbec99c85f95b690d4c16db2" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qcol</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a66d18d593d1e19d00d54548486a31e4b" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qcr</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a43d78331bcebfbcf0f07d1540bf930d5" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qcs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a4f9228779025dbe7cef1ed684d9aae12" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qfs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a977d2603d57e6e80eb47a52b214d39e6" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qhs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7af94c5a7aa751f0be83f1213b911d7a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qid</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a52ca1de89a754f2a88502de407a7e724" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qinf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a19abde5cf2be82afec9d17c7537aea82" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qitf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1af7d358524da1d5853c68b8f2f4e7858c" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qls</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a4a9588ddf95e6c25e0281488369b8a99" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qlw</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a5ad80eb79629eb8f6c6661112abf977c" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qpos</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1adc4621c7cfab6ccacf8e4716d839d848" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qtbg</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a40f4b3d4c4f3dfabb04e505bdbf3653b" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qtxt</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a7b2c8b00c82364570ece32ed7cbe2d82" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qvp</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a45c84b51ffb2ca2f590c6343fde68a65" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qvsz</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a8f8d944fb5c392f9e24bad5b2dcd7a21" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>qwin</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ab6613e0e276ae13d7d1505dc70c2e209" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>rect</name></member>
+      <member refid="classcasacore_1_1PGPlotterInterface_1ab66a13c9233850ea593516b2f1af0b12" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>resetPlotNumber</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a2f0823e62f7a271b6767e7805eefee8a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>rnd</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a226c84505df9ace74219fed2bd534914" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>rnge</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a989cc02bfa8965e88667e28fa820bab7" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sah</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a93da5f107bfae3fe734dde658e37556f" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>save</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ae8b69bada37221317b780adecdb5bdac" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>scf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ab6c387087b4e5d125b2ed4561acb50df" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sch</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ae5041135a73b773646e416d6319568ca" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sci</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a5a150a7bed4302e904118e3b7e0a1b0c" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>scir</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a4d4f78f66bdec754a1804067df6598a6" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>scr</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a723c2aa65ac92d0ae8d06ce34cb6e24a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>scrn</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1adc9aae2b8cd5a537d428c7b0b0131f4a" prot="public" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>setCreateFunction</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a0de4311c66fb3bf14ccf681ef8484bd8" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sfs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a1d290371f6873ca783ca1c42fdc10d09" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>shls</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a665f903ce5eaaa67923418678c29dac4" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>shs</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ad30b95037ae29482a0d0d0fe6725436a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sitf</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aa58024d0c7c25f625d1f6e4979b550b6" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>sls</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1af682e129b4567519bf99c51abbd00f3a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>slw</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a3e64b7a1d0df51d57ab7f87727811ec1" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>stbg</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1ab5b75df9aa80ae53b986879024235b65" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>subp</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aca7b0e0cfc0efdaf9a4b129a4afc0dcd" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>svp</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a00d21942a7b186adc7dabb5cecc1210a" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>swin</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aad872fb643bb17cd519b109a2d7d2d94" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>tbox</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a490ebf9de3cfb6215a4e47cc987e2106" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>text</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1abd508710da960384fc8507cf687c19a1" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>unsa</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a05755e2482056ba8dda54a36cf2fbc66" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>updt</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a747a3c2adbeadac85574094c6f386233" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>vect</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a85a76369bf3aa714fa10cb7cc29063a2" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>vsiz</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a0e5c07e6e370a21c65e6b46a451b3bb8" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>vstd</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a169c73ccba39b49afe8da7260b87d9f6" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>wedg</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1aa2a97813c3c42225f8680a8eceee9940" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>wnad</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1a0abcffe855ee5a01941925113b4fb784" prot="private" virt="non-virtual"><scope>casacore::PGPlotter</scope><name>worker_p</name></member>
+      <member refid="classcasacore_1_1PGPlotter_1acd154e7b9c1baf39a1860454c2b6187b" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>~PGPlotter</name></member>
+      <member refid="classcasacore_1_1PGPlotterInterface_1aa7891ab3b0b5b6cba39edfd94bc56a99" prot="public" virt="virtual"><scope>casacore::PGPlotter</scope><name>~PGPlotterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ScaColData_8tcc" kind="file" language="C++">
+    <compoundname>ScaColData.tcc</compoundname>
+    <includedby refid="ScaColData_8h" local="no">tables/Tables/ScaColData.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>tables/Tables/ScaColData.h</label>
+        <link refid="ScaColData_8h"/>
+      </node>
+      <node id="1">
+        <label>tables/Tables/ScaColData.tcc</label>
+        <link refid="ScaColData_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>ScaColData.cc:<sp/>Access<sp/>to<sp/>a<sp/>table<sp/>column<sp/>containing<sp/>scalars</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1994,1995,1996,1997,1998,2000,2001</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TABLES_SCACOLDATA_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TABLES_SCACOLDATA_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScaColData.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ScaColDesc.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/ColumnSet.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableTrace.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/RefRows.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Arrays/Vector.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/DataMan/DataManager.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/ValType.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/tables/Tables/TableError.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/Utilities/Sort.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;casacore/casa/IO/AipsIO.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnData&lt;T&gt;::ScalarColumnData<sp/>(const<sp/>ScalarColumnDesc&lt;T&gt;*<sp/>cd,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ColumnSet*<sp/>csp)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>PlainColumn<sp/><sp/>(cd,<sp/>csp),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>scaDescPtr_p<sp/>(cd),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>undefFlag_p<sp/><sp/>(False),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>undefVal_p<sp/><sp/><sp/>(cd-&gt;defaultValue())</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>((cd-&gt;options()<sp/>&amp;<sp/>ColumnDesc::Undefined)<sp/><sp/>==<sp/><sp/>ColumnDesc::Undefined)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>undefFlag_p<sp/>=<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">ScalarColumnData&lt;T&gt;::~ScalarColumnData()</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::createDataManagerColumn()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p<sp/>=<sp/>dataManPtr_p-&gt;createScalarColumn</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(colDescPtr_p-&gt;name(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colDescPtr_p-&gt;dataType(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colDescPtr_p-&gt;dataTypeId());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Set<sp/>the<sp/>maximum<sp/>length<sp/>of<sp/>an<sp/>item.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;setMaxLength<sp/>(colDescPtr_p-&gt;maxLength());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::initialize<sp/>(rownr_t<sp/>startRow,<sp/>rownr_t<sp/>endRow)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(colDescPtr_p-&gt;dataType()<sp/>!=<sp/>TpOther)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(rownr_t<sp/>i=startRow;<sp/>i&lt;=endRow;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;put<sp/>(i,<sp/>&amp;(scaDescPtr_p-&gt;defaultValue()));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Bool<sp/>ScalarColumnData&lt;T&gt;::isDefined<sp/>(rownr_t<sp/>rownr)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!undefFlag_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>True;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;get<sp/>(rownr,<sp/>&amp;val);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>(<sp/>(!(val<sp/>==<sp/>undefVal_p)));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::get<sp/>(rownr_t<sp/>rownr,<sp/>void*<sp/>val)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(rtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;r&apos;,<sp/>rownr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkReadLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;get<sp/>(rownr,<sp/>static_cast&lt;T*&gt;(val));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::getScalarColumn<sp/>(ArrayBase&amp;<sp/>val)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(rtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;r&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val.ndim()<sp/>!=<sp/>1<sp/><sp/>||<sp/><sp/>val.nelements()<sp/>!=<sp/>nrow())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(TableArrayConformanceError(&quot;ScalarColumnData::getScalarColumn&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkReadLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;getScalarColumnV<sp/>(val);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::getScalarColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ArrayBase&amp;<sp/>val)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(rtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;r&apos;,<sp/>rownrs);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val.ndim()<sp/>!=<sp/>1<sp/><sp/>||<sp/><sp/>val.nelements()<sp/>!=<sp/>rownrs.nrow())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(TableArrayConformanceError(&quot;ScalarColumnData::getScalarColumnCells&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkReadLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;getScalarColumnCellsV<sp/>(rownrs,<sp/>val);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::put<sp/>(rownr_t<sp/>rownr,<sp/>const<sp/>void*<sp/>val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(wtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;w&apos;,<sp/>rownr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkValueLength<sp/>(static_cast&lt;const<sp/>T*&gt;(val));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkWriteLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;put<sp/>(rownr,<sp/>static_cast&lt;const<sp/>T*&gt;(val));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::putScalarColumn<sp/>(const<sp/>ArrayBase&amp;<sp/>val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(wtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;w&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val.ndim()<sp/>!=<sp/>1<sp/><sp/>||<sp/><sp/>val.nelements()<sp/>!=<sp/>nrow())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(TableArrayConformanceError(&quot;ScalarColumnData::putColumn&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkValueLength<sp/>(static_cast&lt;const<sp/>Array&lt;T&gt;*&gt;(&amp;val));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkWriteLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;putScalarColumnV<sp/>(val);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::putScalarColumnCells<sp/>(const<sp/>RefRows&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ArrayBase&amp;<sp/>val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(wtraceColumn_p)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TableTrace::trace<sp/>(traceId(),<sp/>columnDesc().name(),<sp/>&apos;w&apos;,<sp/>rownrs);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(val.ndim()<sp/>!=<sp/>1<sp/><sp/>||<sp/><sp/>val.nelements()<sp/>!=<sp/>rownrs.nrow())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>throw<sp/>(TableArrayConformanceError(&quot;ScalarColumnData::putColumn&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkValueLength<sp/>(static_cast&lt;const<sp/>Array&lt;T&gt;*&gt;(&amp;val));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkWriteLock<sp/>(True);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataColPtr_p-&gt;putScalarColumnCellsV<sp/>(rownrs,<sp/>val);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>autoReleaseLock();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::makeSortKey<sp/>(Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ArrayBase&gt;&amp;<sp/>dataSave)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Get<sp/>the<sp/>data<sp/>as<sp/>a<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Save<sp/>the<sp/>pointer<sp/>to<sp/>the<sp/>vector<sp/>for<sp/>deletion<sp/>by<sp/>freeSortKey().</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;*<sp/>vecPtr<sp/>=<sp/>new<sp/>Vector&lt;T&gt;(nrow());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataSave.reset<sp/>(vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>getScalarColumn<sp/>(*vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fillSortKey<sp/>(vecPtr,<sp/>sortobj,<sp/>cmpObj,<sp/>order);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::makeRefSortKey<sp/>(Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Vector&lt;rownr_t&gt;&amp;<sp/>rownrs,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ArrayBase&gt;&amp;<sp/>dataSave)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Get<sp/>the<sp/>data<sp/>as<sp/>a<sp/>column.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Vector&lt;T&gt;*<sp/>vecPtr<sp/>=<sp/>new<sp/>Vector&lt;T&gt;(rownrs.size());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataSave.reset<sp/>(vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>getScalarColumnCells<sp/>(rownrs,<sp/>*vecPtr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>fillSortKey<sp/>(vecPtr,<sp/>sortobj,<sp/>cmpObj,<sp/>order);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::fillSortKey<sp/>(const<sp/>Vector&lt;T&gt;*<sp/>vecPtr,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Sort&amp;<sp/>sortobj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Int<sp/>order)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Pass<sp/>the<sp/>real<sp/>vector<sp/>storage<sp/>as<sp/>the<sp/>sort<sp/>data.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Use<sp/>the<sp/>compare<sp/>function<sp/>if<sp/>given,<sp/>otherwise<sp/>pass<sp/>data<sp/>type.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>Throw<sp/>an<sp/>exception<sp/>if<sp/>no<sp/>compare<sp/>function<sp/>is<sp/>given<sp/>for</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//#<sp/>an<sp/>unknown<sp/>data<sp/>type.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>AlwaysAssert<sp/>(vecPtr-&gt;contiguousStorage(),<sp/>AipsError);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!cmpObj)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmpObj<sp/>=<sp/>std::make_shared&lt;ObjCompare&lt;T&gt;&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sortobj.sortKey<sp/>(vecPtr-&gt;data(),<sp/>cmpObj,<sp/>sizeof(T),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>order<sp/>==<sp/>Sort::Descending<sp/><sp/>?<sp/><sp/>Sort::Descending</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Sort::Ascending);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::allocIterBuf<sp/>(void*&amp;<sp/>lastVal,<sp/>void*&amp;<sp/>curVal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;BaseCompare&gt;&amp;<sp/>cmpObj)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/>valp<sp/>=<sp/>new<sp/>T[2];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>lastVal<sp/>=<sp/>valp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>curVal<sp/><sp/>=<sp/>valp<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!cmpObj)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmpObj<sp/>=<sp/>std::make_shared&lt;ObjCompare&lt;T&gt;&gt;();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::freeIterBuf<sp/>(void*&amp;<sp/>lastVal,<sp/>void*&amp;<sp/>curVal)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delete<sp/>[]<sp/>static_cast&lt;T*&gt;(lastVal);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>lastVal<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>curVal<sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>It<sp/>was<sp/>felt<sp/>that<sp/>putstart<sp/>takes<sp/>too<sp/>much<sp/>space,<sp/>so<sp/>therefore</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>version<sp/>is<sp/>put<sp/>&quot;manually&quot;.</highlight></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::putFileDerived<sp/>(AipsIO&amp;<sp/>ios)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&lt;&lt;<sp/>(uInt)1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>class<sp/>version<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&lt;&lt;<sp/>dataManPtr_p-&gt;sequenceNr();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ScalarColumnData&lt;T&gt;::getFileDerived<sp/>(AipsIO&amp;<sp/>ios,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>ColumnSet&amp;<sp/>colset)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/>version;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&gt;&gt;<sp/>version;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uInt<sp/>seqnr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ios<sp/>&gt;&gt;<sp/>seqnr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dataManPtr_p<sp/>=<sp/>colset.getDataManager<sp/>(seqnr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>createDataManagerColumn();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="tables/Tables/ScaColData.tcc"/>
+  </compounddef>
+</doxygen>

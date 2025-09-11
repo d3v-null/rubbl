@@ -1,0 +1,1043 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="MaskedArray_8tcc" kind="file" language="C++">
+    <compoundname>MaskedArray.tcc</compoundname>
+    <includedby refid="MaskedArray_8h" local="yes">casa/Arrays/MaskedArray.h</includedby>
+    <invincdepgraph>
+      <node id="5">
+        <label>casa/Arrays.h</label>
+        <link refid="Arrays_8h"/>
+      </node>
+      <node id="9">
+        <label>casa/System/AppInfo.cc</label>
+        <link refid="AppInfo_8cc"/>
+      </node>
+      <node id="6">
+        <label>casa/Arrays/MaskArrMath.h</label>
+        <link refid="MaskArrMath_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>casa/Arrays/Array_tmpl.cc</label>
+        <link refid="Array__tmpl_8cc"/>
+      </node>
+      <node id="4">
+        <label>casa/Arrays/MaskArrLogi.h</label>
+        <link refid="MaskArrLogi_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>casa/Arrays/MaskLogiArr.h</label>
+        <link refid="MaskLogiArr_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>casa/Arrays/MaskArrMath2.cc</label>
+        <link refid="MaskArrMath2_8cc"/>
+      </node>
+      <node id="2">
+        <label>casa/Arrays/MaskedArray.h</label>
+        <link refid="MaskedArray_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>casa/Arrays/MaskedArray.tcc</label>
+        <link refid="MaskedArray_8tcc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//#<sp/>MaskedArray.cc:<sp/>A<sp/>templated<sp/>N-D<sp/>masked<sp/>array<sp/>class<sp/>with<sp/>variable<sp/>origin.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Copyright<sp/>(C)<sp/>1993,1994,1995,1996,1997,1999,2001,2005</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Associated<sp/>Universities,<sp/>Inc.<sp/>Washington<sp/>DC,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at<sp/>your</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>This<sp/>library<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but<sp/>WITHOUT</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of<sp/>MERCHANTABILITY<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Library<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>along<sp/>with<sp/>this<sp/>library;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Inc.,<sp/>675<sp/>Massachusetts<sp/>Ave,<sp/>Cambridge,<sp/>MA<sp/>02139,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="normal">//#</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/>Correspondence<sp/>concerning<sp/>AIPS++<sp/>should<sp/>be<sp/>addressed<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Internet<sp/>email:<sp/>casa-feedback@nrao.edu.</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Postal<sp/>address:<sp/>AIPS++<sp/>Project<sp/>Office</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>National<sp/>Radio<sp/>Astronomy<sp/>Observatory</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>520<sp/>Edgemont<sp/>Road</highlight></codeline>
+<codeline><highlight class="normal">//#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Charlottesville,<sp/>VA<sp/>22903-2475<sp/>USA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CASA_MASKEDARRAY_2_TCC</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CASA_MASKEDARRAY_2_TCC</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;MaskedArray.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Array.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayLogical.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Slicer.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ArrayError.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;cassert&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">namespace<sp/>casacore<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>BEGIN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>()<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">pArray<sp/>(),</highlight></codeline>
+<codeline><highlight class="normal">pMask<sp/>(),</highlight></codeline>
+<codeline><highlight class="normal">nelemValid<sp/>(0),</highlight></codeline>
+<codeline><highlight class="normal">nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(false)</highlight></codeline>
+<codeline><highlight class="normal">{}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>array_type<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArray<sp/>&amp;inmask,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray(const<sp/>array_type<sp/>&amp;,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>LogicalArray<sp/>&amp;,<sp/>bool)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inmask.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask-&gt;assign_conforming(inmask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>array_type<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArray<sp/>&amp;inmask)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),<sp/>isRO<sp/>(false)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/><sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray(const<sp/>array_type<sp/>&amp;,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>LogicalArray<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inmask.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask-&gt;assign_conforming(inmask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArray<sp/>&amp;inmask,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(<sp/>(inarray.isRO<sp/>||<sp/>isreadonly))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>LogicalArray<sp/>&amp;,<sp/>bool)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray.getArray())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inmask.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*pMask<sp/>=<sp/>(inmask<sp/>&amp;&amp;<sp/>inarray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>LogicalArray<sp/>&amp;inmask)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(inarray.isRO)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>LogicalArray<sp/>&amp;)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray.getArray())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inmask.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*pMask<sp/>=<sp/>(inmask<sp/>&amp;&amp;<sp/>inarray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>array_type<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedLogicalArray<sp/>&amp;inmask,</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray(const<sp/>array_type<sp/>&amp;inarray,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedLogicalArray<sp/>&amp;inmask,<sp/>bool<sp/>isreadonly)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inarray.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask-&gt;assign_conforming(inmask.getArray()<sp/>&amp;&amp;<sp/>inmask.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>array_type<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedLogicalArray<sp/>&amp;inmask)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),<sp/>isRO<sp/>(false)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray(const<sp/>array_type<sp/>&amp;inarray,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedLogicalArray<sp/>&amp;inmask)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inarray.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask-&gt;assign_conforming(inmask.getArray()<sp/>&amp;&amp;<sp/>inmask.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedLogicalArray<sp/>&amp;inmask)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(inarray.isRO)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedLogicalArray<sp/>&amp;inmask)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray.getArray())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inarray.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*pMask<sp/>=<sp/>(inmask.getArray()<sp/>&amp;&amp;<sp/>inmask.getMask()<sp/>&amp;&amp;<sp/>inarray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>MaskedLogicalArray<sp/>&amp;inmask,</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),<sp/>nelemValid<sp/>(0),<sp/>nelemValidIsOK<sp/>(false),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(<sp/>(inarray.isRO<sp/>||<sp/>isreadonly))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/><sp/>if<sp/>(!<sp/>conform2<sp/>(inarray,<sp/>inmask))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(inarray.shape()<sp/>!=<sp/>inmask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::MaskedArray<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;inarray,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>MaskedLogicalArray<sp/>&amp;inmask,<sp/>bool<sp/>isreadonly)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(inarray.getArray())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(inarray.shape())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*pMask<sp/>=<sp/>(inmask.getArray()<sp/>&amp;&amp;<sp/>inmask.getMask()<sp/>&amp;&amp;<sp/>inarray.getMask());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other,<sp/>bool<sp/>isreadonly)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),</highlight></codeline>
+<codeline><highlight class="normal">nelemValid<sp/>(other.nelemValid),<sp/>nelemValidIsOK<sp/>(other.nelemValidIsOK),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(<sp/>(other.isRO<sp/>||<sp/>isreadonly))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(*(other.pArray))<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(*(other.pMask))<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(),<sp/>pMask<sp/>(),</highlight></codeline>
+<codeline><highlight class="normal">nelemValid<sp/>(other.nelemValid),<sp/>nelemValidIsOK<sp/>(other.nelemValidIsOK),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(other.isRO)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type<sp/>(*(other.pArray))<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray<sp/>(*(other.pMask))<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::MaskedArray(MaskedArray&lt;T&gt;&amp;&amp;<sp/>source)</highlight></codeline>
+<codeline><highlight class="normal">:<sp/>pArray<sp/>(std::move(source.pArray)),</highlight></codeline>
+<codeline><highlight class="normal">pMask<sp/>(std::move(source.pMask)),</highlight></codeline>
+<codeline><highlight class="normal">nelemValid<sp/>(source.nelemValid),</highlight></codeline>
+<codeline><highlight class="normal">nelemValidIsOK<sp/>(source.nelemValidIsOK),</highlight></codeline>
+<codeline><highlight class="normal">isRO<sp/>(source.isRO)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>source.nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>source.nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>source.isRO<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(source.ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::setData<sp/>(const<sp/>array_type<sp/>&amp;data,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>mask_type<sp/>&amp;mask,</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>isReadOnly)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(data.shape()<sp/>!=<sp/>mask.shape())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::setData(const<sp/>array_type<sp/>&amp;,&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>const<sp/>LogicalArray<sp/>&amp;,<sp/>bool)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>arrays<sp/>do<sp/>not<sp/>conform&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type(data)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>mask_type<sp/>(mask.copy())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isRO<sp/><sp/>=<sp/>isReadOnly;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;::setData<sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;<sp/>array,</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>isReadOnly){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type(array.getArray())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask.reset(<sp/>new<sp/>LogicalArray(array.getMask().copy())<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>isRO<sp/><sp/>=<sp/>isReadOnly;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::copy(bool<sp/>isreadonly)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>retval<sp/>(pArray-&gt;copy(),<sp/>*pMask,<sp/>isreadonly);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>retval.nelemValid<sp/>=<sp/>nelemValid;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>retval.nelemValidIsOK<sp/>=<sp/>nelemValidIsOK;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::copy()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>retval<sp/>(pArray-&gt;copy(),<sp/>*pMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>retval.nelemValid<sp/>=<sp/>nelemValid;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>retval.nelemValidIsOK<sp/>=<sp/>nelemValidIsOK;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>retval;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::operator()<sp/>(const<sp/>LogicalArray<sp/>&amp;mask)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>ret<sp/>(*this,<sp/>mask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::operator()</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>MaskedLogicalArray<sp/>&amp;mask)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>ret<sp/>(*this,<sp/>mask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>ret;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::operator()<sp/>(const<sp/>IPosition<sp/>&amp;start,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>IPosition<sp/>&amp;end)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>MaskedArray&lt;T&gt;<sp/>((*pArray)(start,end),<sp/>(*pMask)(start,end),<sp/>isRO);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::operator()<sp/>(const<sp/>IPosition<sp/>&amp;start,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>IPosition<sp/>&amp;end,</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>IPosition<sp/>&amp;inc)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>MaskedArray&lt;T&gt;<sp/>((*pArray)(start,end,inc),<sp/>(*pMask)(start,end,inc),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>isRO);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::operator()<sp/>(const<sp/>Slicer<sp/>&amp;slicer)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>MaskedArray&lt;T&gt;<sp/>((*pArray)(slicer),<sp/>(*pMask)(slicer),<sp/>isRO);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>Array&lt;T&gt;<sp/>&amp;MaskedArray&lt;T&gt;::getArray()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*pArray;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>Array&lt;LogicalArrayElem&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::getMask()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*pMask;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>size_t<sp/>MaskedArray&lt;T&gt;::ndim()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;ndim();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>size_t<sp/>MaskedArray&lt;T&gt;::nelementsValid()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!nelemValidIsOK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Calculate<sp/>nelemValid;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>maskDelete;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage<sp/>=<sp/>getMaskStorage(maskDelete);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>nelemValidTmp<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nelemValidTmp++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>freeMaskStorage(maskStorage,<sp/>maskDelete);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MaskedArray&lt;T&gt;<sp/>*nonconstThis<sp/>=<sp/>(MaskedArray&lt;T&gt;<sp/>*)<sp/>this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nonconstThis-&gt;nelemValid<sp/>=<sp/>nelemValidTmp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nonconstThis-&gt;nelemValidIsOK<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>nelemValid;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>size_t<sp/>MaskedArray&lt;T&gt;::nelements()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;nelements();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>bool<sp/>MaskedArray&lt;T&gt;::ok()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray<sp/>&amp;&amp;<sp/>!pMask)<sp/>return<sp/>true;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>default<sp/>constructed<sp/>is<sp/>ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray<sp/>||<sp/>!pMask)<sp/>return<sp/>false;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>not<sp/>both<sp/>set<sp/>is<sp/>not<sp/>ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>(pArray-&gt;ok()<sp/>&amp;&amp;<sp/>pMask-&gt;ok())<sp/>?<sp/>true<sp/>:<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>bool<sp/>MaskedArray&lt;T&gt;::conform(const<sp/>array_type<sp/>&amp;other)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;conform(other);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>MaskedArray&lt;T&gt;::conform(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;conform(*(other.pArray));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/>MaskedArray&lt;T&gt;::setReadOnly()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MaskedArray&lt;T&gt;<sp/>*nonconstThis<sp/>=<sp/>(MaskedArray&lt;T&gt;<sp/>*)<sp/>this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>nonconstThis-&gt;isRO<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::getCompressedArray<sp/>()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>array_type<sp/>result<sp/>(IPosition<sp/>(1,nelementsValid()));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteResult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*resultStorage<sp/>=<sp/>result.getStorage<sp/>(deleteResult);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*resultS<sp/>=<sp/>resultStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrStorage<sp/>=<sp/>getArrayStorage<sp/>(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>=<sp/>getMaskStorage<sp/>(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultS<sp/>=<sp/>*arrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resultS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ntotal--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>result.putStorage<sp/>(resultStorage,<sp/>deleteResult);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeArrayStorage<sp/>(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage<sp/>(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;T&gt;<sp/>MaskedArray&lt;T&gt;::getCompressedArray<sp/>(const<sp/>IPosition<sp/>&amp;<sp/>shape)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(int(nelementsValid())<sp/>!=<sp/>shape.product())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;void<sp/>MaskedArray&lt;T&gt;::getCompressedArray<sp/>(const<sp/>IPosition<sp/>&amp;<sp/>shape)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>input<sp/>shape<sp/>will<sp/>create<sp/>Array<sp/>with<sp/>incorrect<sp/>number<sp/>of<sp/>elements&quot;));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>array_type<sp/>result<sp/>(shape);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteResult;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*resultStorage<sp/>=<sp/>result.getStorage<sp/>(deleteResult);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*resultS<sp/>=<sp/>resultStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrStorage<sp/>=<sp/>getArrayStorage<sp/>(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>=<sp/>getMaskStorage<sp/>(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*resultS<sp/>=<sp/>*arrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resultS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ntotal--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>result.putStorage<sp/>(resultStorage,<sp/>deleteResult);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeArrayStorage<sp/>(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage<sp/>(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>MaskedArray&lt;T&gt;::getCompressedArray<sp/>(array_type<sp/>&amp;<sp/>inarr)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(nelementsValid()<sp/>!=<sp/>inarr.nelements())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;void<sp/>MaskedArray&lt;T&gt;::getCompressedArray<sp/>(array_type<sp/>&amp;<sp/>inarr)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>input<sp/>Array<sp/>number<sp/>of<sp/>elements<sp/>is<sp/>incorrect&quot;));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteInarr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*inarrStorage<sp/>=<sp/>inarr.getStorage<sp/>(deleteInarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*inarrS<sp/>=<sp/>inarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrStorage<sp/>=<sp/>getArrayStorage<sp/>(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>=<sp/>getMaskStorage<sp/>(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*inarrS<sp/>=<sp/>*arrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>inarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ntotal--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>inarr.putStorage<sp/>(inarrStorage,<sp/>deleteInarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeArrayStorage<sp/>(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage<sp/>(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>MaskedArray&lt;T&gt;::setCompressedArray<sp/>(const<sp/>array_type<sp/>&amp;<sp/>inarr)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(nelementsValid()<sp/>!=<sp/>inarr.nelements())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw<sp/>(ArrayError</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(&quot;void<sp/>MaskedArray&lt;T&gt;::setCompressedArray<sp/>(const<sp/>array_type<sp/>&amp;<sp/>inarr)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/>-<sp/>input<sp/>array<sp/>number<sp/>of<sp/>elements<sp/>is<sp/>incorrect&quot;));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteInarr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*inarrStorage<sp/>=<sp/>inarr.getStorage<sp/>(deleteInarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*inarrS<sp/>=<sp/>inarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrStorage<sp/>=<sp/>getRWArrayStorage<sp/>(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>=<sp/>getMaskStorage<sp/>(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>nelementsValid();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*arrS<sp/>=<sp/>*inarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>inarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ntotal--;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>inarr.freeStorage<sp/>(inarrStorage,<sp/>deleteInarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>putArrayStorage<sp/>(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage<sp/>(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>T<sp/>*<sp/>MaskedArray&lt;T&gt;::getArrayStorage<sp/>(bool<sp/>&amp;deleteIt)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;getStorage<sp/>(deleteIt);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>MaskedArray&lt;T&gt;::freeArrayStorage(const<sp/>T<sp/>*&amp;storage,<sp/>bool<sp/>deleteIt)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray-&gt;freeStorage<sp/>(storage,<sp/>deleteIt);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>LogicalArrayElem<sp/>*<sp/>MaskedArray&lt;T&gt;::getMaskStorage<sp/>(bool<sp/>&amp;deleteIt)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pMask-&gt;getStorage<sp/>(deleteIt);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>void<sp/><sp/>MaskedArray&lt;T&gt;::freeMaskStorage</highlight></codeline>
+<codeline><highlight class="normal">(const<sp/>LogicalArrayElem<sp/>*&amp;storage,<sp/>bool<sp/>deleteIt)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pMask-&gt;freeStorage<sp/>(storage,<sp/>deleteIt);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;&amp;<sp/>MaskedArray&lt;T&gt;::operator=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(const<sp/>array_type<sp/>&amp;inarray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pMask.reset(<sp/>new<sp/>mask_type(inarray.shape(),<sp/>true)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>isRO<sp/><sp/>=<sp/>false;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!conform(inarray))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::operator=<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>array_type<sp/>&amp;inarray)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>Conformance<sp/>error.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::operator=<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>array_type<sp/>&amp;inarray)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrStorage<sp/>=<sp/>getRWArrayStorage(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage<sp/>=<sp/>getMaskStorage(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteInarr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*inarrStorage<sp/>=<sp/>inarray.getStorage(deleteInarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*inarrS<sp/>=<sp/>inarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>pArray-&gt;nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*arrS<sp/>=<sp/>*inarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>inarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>putArrayStorage(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>inarray.freeStorage(inarrStorage,<sp/>deleteInarr);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;&amp;<sp/>MaskedArray&lt;T&gt;::operator=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(array_type&amp;&amp;<sp/>inarray)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pMask.reset(<sp/>new<sp/>mask_type(inarray.shape(),<sp/>true)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pArray.reset(<sp/>new<sp/>array_type(inarray)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>isRO<sp/><sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>operator=(inarray);<sp/>//<sp/>do<sp/>ordinary<sp/>copy<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;&amp;<sp/>MaskedArray&lt;T&gt;::operator=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(this<sp/>==<sp/>&amp;other)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>setData(other.copy());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!conform(other))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayConformanceError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::operator=<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>Conformance<sp/>error.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::operator=<sp/>&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;(const<sp/>MaskedArray&lt;T&gt;<sp/>&amp;other)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrStorage<sp/>=<sp/>getRWArrayStorage(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage<sp/>=<sp/>getMaskStorage(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteOarr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*oarrStorage<sp/>=<sp/>other.getArrayStorage(deleteOarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>T<sp/>*oarrS<sp/>=<sp/>oarrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteOmask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*omaskStorage<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>other.getMaskStorage(deleteOmask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*omaskS<sp/>=<sp/>omaskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>pArray-&gt;nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS<sp/>&amp;&amp;<sp/>*omaskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*arrS<sp/>=<sp/>*oarrS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>oarrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>omaskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>putArrayStorage(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>other.freeArrayStorage(oarrStorage,<sp/>deleteOarr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>other.freeMaskStorage(omaskStorage,<sp/>deleteOmask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">MaskedArray&lt;T&gt;&amp;<sp/>MaskedArray&lt;T&gt;::operator=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(MaskedArray&lt;T&gt;&amp;&amp;<sp/>other)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(other.isReadOnly())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>operator=(other);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(this<sp/>==<sp/>&amp;other)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pArray<sp/>=<sp/>std::move(other.pArray);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pMask<sp/>=<sp/>std::move(other.pMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>isRO<sp/><sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>other.nelemValid<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>other.nelemValidIsOK<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>other.isRO<sp/>=<sp/>false;<sp/>//<sp/>we<sp/>already<sp/>know<sp/>this<sp/>is<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>operator=(other);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;<sp/>MaskedArray&lt;T&gt;<sp/>&amp;MaskedArray&lt;T&gt;::operator=(const<sp/>T<sp/>&amp;val)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!pArray)<sp/>return<sp/>*this;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::operator=<sp/>(const<sp/>T<sp/>&amp;val)&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteArr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrStorage<sp/>=<sp/>getRWArrayStorage(deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>T<sp/>*arrS<sp/>=<sp/>arrStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>deleteMask;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskStorage<sp/>=<sp/>getMaskStorage(deleteMask);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>LogicalArrayElem<sp/>*maskS<sp/>=<sp/>maskStorage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>size_t<sp/>ntotal<sp/>=<sp/>pArray-&gt;nelements();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(ntotal--)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(*maskS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*arrS<sp/>=<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arrS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>maskS++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>putArrayStorage(arrStorage,<sp/>deleteArr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>freeMaskStorage(maskStorage,<sp/>deleteMask);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*this;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">T<sp/>*<sp/>MaskedArray&lt;T&gt;::getRWArrayStorage<sp/>(bool<sp/>&amp;deleteIt)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::getRWArrayStorage<sp/>(bool<sp/>&amp;deleteIt)<sp/>const&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>pArray-&gt;getStorage<sp/>(deleteIt);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>MaskedArray&lt;T&gt;::putArrayStorage(T<sp/>*&amp;storage,<sp/>bool<sp/>deleteAndCopy)<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MaskedArray&lt;T&gt;::putArrayStorage<sp/>(bool<sp/>deleteAndCopy)<sp/>const&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pArray-&gt;putStorage<sp/>(storage,<sp/>deleteAndCopy);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;T&gt;&amp;<sp/>MaskedArray&lt;T&gt;::getRWArray()<sp/>const</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>assert(ok());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(isRO)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>throw(ArrayError(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;array_type<sp/>&amp;<sp/>MaskedArray&lt;T&gt;::getRWArray<sp/>()<sp/>const&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;-<sp/>this<sp/>is<sp/>read<sp/>only.&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>*pArray;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//#<sp/>Global<sp/>functions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>TLLL,<sp/>typename<sp/>TRR&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>conform2<sp/>(const<sp/>MaskedArray&lt;TLLL&gt;<sp/>&amp;left,<sp/>const<sp/>Array&lt;TRR&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>leftShape<sp/>(left.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>rightShape<sp/>(right.shape());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>(<sp/>(leftShape.conform<sp/>(rightShape))<sp/>&amp;&amp;<sp/>(leftShape<sp/>==<sp/>rightShape)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>?<sp/>true<sp/>:<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>TLL,<sp/>typename<sp/>TRRR&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>conform2<sp/>(const<sp/>Array&lt;TLL&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;TRRR&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>leftShape<sp/>(left.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>rightShape<sp/>(right.shape());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>(<sp/>(leftShape.conform<sp/>(rightShape))<sp/>&amp;&amp;<sp/>(leftShape<sp/>==<sp/>rightShape)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>?<sp/>true<sp/>:<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">template&lt;typename<sp/>TLLL,<sp/>typename<sp/>TRRR&gt;</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>conform2<sp/>(const<sp/>MaskedArray&lt;TLLL&gt;<sp/>&amp;left,<sp/>const<sp/>MaskedArray&lt;TRRR&gt;<sp/>&amp;right)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>leftShape<sp/>(left.shape());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IPosition<sp/>rightShape<sp/>(right.shape());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>(<sp/>(leftShape.conform<sp/>(rightShape))<sp/>&amp;&amp;<sp/>(leftShape<sp/>==<sp/>rightShape)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>?<sp/>true<sp/>:<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//#<sp/>NAMESPACE<sp/>CASACORE<sp/>-<sp/>END</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+    </programlisting>
+    <location file="casa/Arrays/MaskedArray.tcc"/>
+  </compounddef>
+</doxygen>

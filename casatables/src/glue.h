@@ -85,6 +85,7 @@ typedef enum GlueDataType
 
 typedef struct GlueTable GlueTable;
 typedef struct GlueTableRow GlueTableRow;
+typedef void GlueColumnHandle;
 typedef struct GlueTableDesc GlueTableDesc;
 typedef struct GlueTableRecord GlueTableRecord;
 
@@ -122,6 +123,24 @@ typedef void (*StringBridgeCallback)(const StringBridge *name, void *ctxt);
 typedef void (*KeywordInfoCallback)(const StringBridge *name, GlueDataType dtype, void *ctxt);
 typedef void (*KeywordReprCallback)(const StringBridge *name, GlueDataType dtype, const StringBridge *repr, void *ctxt);
 
+/** Tiled Storage Manager Option
+
+See: casatables_impl/casacore/tables/DataMan/TSMOption.h
+*/
+typedef enum TSMOption
+{
+    /**Use unbuffered file IO with internal TSM caching*/
+    TSM_CACHE,
+    /**Use memory-mapped IO*/
+    TSM_MMAP,
+    /**Use buffered file IO*/
+    TSM_BUFFER,
+    /**MMap for existing files on 64-bit systems, otherwise Buffer*/
+    TSM_DEFAULT,
+    /**Use the option as defined in the aipsrc file*/
+    TSM_AIPSRC,
+} TSMOption;
+
 typedef enum TableOpenMode
 {
     TOM_OPEN_READONLY = 1,
@@ -139,12 +158,29 @@ typedef enum TableCreateMode
     TCM_SCRATCH = 3,
 } TableCreateMode;
 
-/**Different modes for creating a CASA table description.*/
+/**Modes for creating a CASA table description.
+
+see: casatables_impl/casacore/tables/Tables/TableDesc.h
+
+additional options which could be enabled if needed:
+<ul>
+  <li> Old
+    Open an existing table description file as readonly.
+  <li> Update
+    Open an existing table description file as read/write
+    The TableDesc destructor will rewrite the possibly changed
+    description.
+  <li> Delete
+    Delete the table description file. This gets done by the destructor.
+</ul>
+
+Limited subset of GlueTableDesc::TDOption to avoid
+*/
 typedef enum TableDescCreateMode
 {
     // NB: bindgenc can't handle multiline docstrings here.
     /** Create a new table description file.*/
-    // "The TableDesc destructor will write the table description into the file.""
+    // "The TableDesc destructor will write the table description into the file."
     TDM_NEW,
 
     /** Create a new file, raising an error if it already exists.*/
@@ -157,19 +193,48 @@ typedef enum TableDescCreateMode
     // description (i.e. it copies the description when being constructed)."
     TDM_SCRATCH,
 
-    // Note, there are other options here which could be enabled if needed.
-    //  <li> Old
-    //    Open an existing table description file as readonly.
-    //  <li> Update
-    //    Open an existing table description file as read/write
-    //    The TableDesc destructor will rewrite the possibly changed
-    //    description.
-    //  <li> Delete
-    //    Delete the table description file. This gets done by the destructor.
 } TableDescOption;
 
 extern "C"
 {
+    // Minimal column handle API (barebones) to mirror C++ Column::put fast path
+    // Open a scalar column handle for the given data type
+    void *table_open_scalar_column(GlueTable &table, const StringBridge &col_name,
+                                   const GlueDataType data_type, ExcInfo &exc);
+    // Put a scalar value into a previously opened scalar column
+    int scalar_column_put(void *col_handle, const GlueDataType data_type,
+                          const unsigned long row_number, void *data, ExcInfo &exc);
+    // Free a scalar column handle
+    int scalar_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc);
+
+    // Open an array column handle for the given data type
+    void *table_open_array_column(GlueTable &table, const StringBridge &col_name,
+                                  const GlueDataType data_type, ExcInfo &exc);
+    // Put an array value into a previously opened array column
+    int array_column_put(void *col_handle, const GlueDataType data_type,
+                         const unsigned long row_number, const unsigned long n_dims,
+                         const unsigned long *dims, void *data, ExcInfo &exc);
+    // Put an array value for fixed-shape columns (bypasses shape validation)
+    int array_column_put_fixed_shape(void *col_handle, const GlueDataType data_type,
+                                     const unsigned long row_number, void *data, ExcInfo &exc);
+    // Put an entire column (all rows) in one call; dims describes a single cell shape
+    int array_column_put_column(void *col_handle, const GlueDataType data_type,
+                                const unsigned long n_rows, const unsigned long n_dims,
+                                const unsigned long *dims, void *data, ExcInfo &exc);
+    // Put an entire column using shared storage (no copy from input buffer)
+    int array_column_put_column_shared(void *col_handle, const GlueDataType data_type,
+                                       const unsigned long n_rows, const unsigned long n_dims,
+                                       const unsigned long *dims, void *data, ExcInfo &exc);
+    // Create a persistent Matrix object for reuse
+    void *array_column_create_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                               const unsigned long n_dims, const unsigned long *dims, ExcInfo &exc);
+    // Put data using a persistent Matrix object
+    int array_column_put_persistent_matrix(void *col_handle, const GlueDataType data_type,
+                                          const unsigned long row_number, void *matrix_handle, void *data, ExcInfo &exc);
+    // Free a persistent Matrix object
+    int array_column_free_persistent_matrix(void *matrix_handle, const GlueDataType data_type, ExcInfo &exc);
+    // Free an array column handle
+    int array_column_free(void *col_handle, const GlueDataType data_type, ExcInfo &exc);
     int data_type_get_element_size(const GlueDataType ty);
 
     // Table Records
@@ -291,7 +356,8 @@ extern "C"
     // Table
 
     GlueTable *table_create(const StringBridge &path, GlueTableDesc &table_desc,
-                            unsigned long n_rows, const TableCreateMode mode, ExcInfo &exc);
+                            unsigned long n_rows, const TableCreateMode mode,
+                            bool initialize, TSMOption tsm_opt, ExcInfo &exc);
     GlueTable *table_alloc_and_open(const StringBridge &path, const TableOpenMode mode, ExcInfo &exc);
     void table_close_and_free(GlueTable *table, ExcInfo &exc);
     unsigned long table_n_rows(const GlueTable &table);
@@ -340,6 +406,8 @@ extern "C"
                                      const unsigned long *dims, bool direct, bool undefined, ExcInfo &exc);
     int table_get_scalar_column_data(const GlueTable &table, const StringBridge &col_name,
                                      void *data, ExcInfo &exc);
+    int table_put_scalar_column_data(GlueTable &table, const StringBridge &col_name,
+                                     const GlueDataType data_type, void *data, ExcInfo &exc);
     int table_get_scalar_column_data_string(const GlueTable &table, const StringBridge &col_name,
                                             StringBridgeCallback callback, void *ctxt,
                                             ExcInfo &exc);
