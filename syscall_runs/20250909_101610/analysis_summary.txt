@@ -1,0 +1,75 @@
+CASACORE LSEEK SYSCALL INVESTIGATION RESULTS
+=============================================
+Date: 2025-09-09
+Investigation: Rust vs C++ lseek patterns in casacore putColumn operations
+
+BASELINE MEASUREMENTS
+====================
+
+Rust Measurements (all modes show identical patterns):
+- Total syscalls: 677
+- Total lseeks: 238
+- SEEK_SET lseeks: 230 (96.6%)
+- COMPLEX column phase lseeks: 64
+- BOOL column phase lseeks: 64  
+- Setup/cleanup lseeks: 110 (46.2% of total)
+
+TSM/Write Mode Variations:
+- column_put_bulk: 238 lseeks (230 SEEK_SET)
+- column_put_mmap: 238 lseeks (230 SEEK_SET)
+- scratch mode: 238 lseeks (230 SEEK_SET)
+
+PHASE ANALYSIS
+==============
+
+putColumn Phase Breakdown:
+- COMPLEX array column (1000 rows): 64 lseeks
+- BOOL scalar column (1000 rows): 64 lseeks
+- Table setup/teardown: 110 lseeks
+
+Key Finding: Both array (COMPLEX) and scalar (BOOL) columns 
+generate identical lseek counts despite different data types
+and storage patterns.
+
+LIMITATIONS
+===========
+
+C++ Baseline: Could not be captured due to missing casacore 
+development environment. This prevents direct Rust vs C++ comparison.
+
+TSM Options: Current Rust API implementation doesn't expose 
+granular storage manager options (TSM_BUFFER, etc.) that would 
+allow testing different casacore backend configurations.
+
+CONCLUSIONS
+===========
+
+1. Rust casacore operations generate 238 lseek calls for 1000-row 
+   table with 2 columns (1 array, 1 scalar)
+
+2. All tested modes (bulk, mmap, scratch) show identical lseek patterns,
+   suggesting the variations aren't activating different storage paths
+
+3. Column operations account for ~54% of lseeks (128/238), with 
+   significant overhead in table setup/cleanup (110 lseeks)
+
+4. Each column shows identical seek patterns regardless of data type
+   (COMPLEX arrays vs BOOL scalars)
+
+NEXT STEPS
+==========
+
+To complete the investigation:
+1. Set up C++ casacore environment for baseline comparison
+2. Implement proper TSM option exposure in Rust API
+3. Test with larger datasets and different table structures
+4. Profile casacore internals to identify source of setup lseeks
+
+FILES GENERATED
+===============
+- rust.strace (19,688 lines) - Full syscall trace
+- rust.json - Structured analysis
+- phase_complex.txt (4,235 lines) - COMPLEX column syscalls  
+- phase_bool.txt (3,979 lines) - BOOL column syscalls
+- rust_mmap.* - MMAP mode results (identical to baseline)
+- rust_scratch.* - Scratch mode results (identical to baseline)
