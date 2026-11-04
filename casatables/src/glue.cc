@@ -9,6 +9,8 @@
 #include <stdexcept>
 #include <casacore/tables/Tables.h>
 #include <casacore/casa/Containers/ValueHolder.h>
+#include <memory>
+#include <casacore/tables/DataMan/DataManager.h>
 #include <casacore/tables/DataMan/TiledColumnStMan.h>
 #include <casacore/tables/DataMan/TiledShapeStMan.h>
 #include <casacore/tables/DataMan/StandardStManAccessor.h>
@@ -1816,6 +1818,69 @@ extern "C" {
 
             default:
                 throw std::runtime_error("unhandled tiled array column data type");
+            }
+        } catch (...) {
+            handle_exception(exc);
+            return 1;
+        }
+        return 0;
+    }
+
+    // Add a fixed-shape, direct array column bound to a new data manager of
+    // type `dm_type` (e.g. "DyscoStMan"), constructed from the registry with
+    // the given spec record. Data managers that live in a plugin library,
+    // such as Dysco, are only available if they were compiled in (rubbl's
+    // `dysco` feature) or can be loaded dynamically.
+    //
+    // `dims` is the cell shape in row-major (C / Rust) order.
+    int
+    table_add_array_column_with_dm(
+        GlueTable &table,
+        GlueDataType data_type,
+        const StringBridge &col_name,
+        const StringBridge &comment,
+        const unsigned long n_dims,
+        const unsigned long *dims,
+        const StringBridge &dm_type,
+        const StringBridge &dm_name,
+        const GlueTableRecord &spec,
+        ExcInfo &exc
+    )
+    {
+        try {
+            casacore::IPosition shape(n_dims);
+            for (casacore::uInt i = 0; i < n_dims; i++)
+                shape[i] = dims[n_dims - 1 - i];
+
+            casacore::DataManagerCtor ctor = casacore::DataManager::getCtor(bridge_string(dm_type));
+            std::unique_ptr<casacore::DataManager> dm(ctor(bridge_string(dm_name), spec.toRecord()));
+            int options = casacore::ColumnDesc::FixedShape | casacore::ColumnDesc::Direct;
+
+            switch (data_type) {
+
+#define CASE(DTYPE, CPPTYPE) \
+            case casacore::DTYPE: { \
+                table.addColumn(casacore::ArrayColumnDesc<CPPTYPE>( \
+                    bridge_string(col_name), bridge_string(comment), \
+                    shape, options), *dm); \
+                break; \
+            }
+
+            CASE(TpBool, casacore::Bool)
+            CASE(TpChar, casacore::Char)
+            CASE(TpUChar, casacore::uChar)
+            CASE(TpShort, casacore::Short)
+            CASE(TpUShort, casacore::uShort)
+            CASE(TpInt, casacore::Int)
+            CASE(TpUInt, casacore::uInt)
+            CASE(TpFloat, float)
+            CASE(TpDouble, double)
+            CASE(TpComplex, casacore::Complex)
+            CASE(TpDComplex, casacore::DComplex)
+#undef CASE
+
+            default:
+                throw std::runtime_error("unhandled array column data type");
             }
         } catch (...) {
             handle_exception(exc);

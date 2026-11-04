@@ -636,6 +636,20 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
+    pub fn table_add_array_column_with_dm(
+        table: *mut GlueTable,
+        data_type: GlueDataType,
+        col_name: *const StringBridge,
+        comment: *const StringBridge,
+        n_dims: ::std::os::raw::c_ulong,
+        dims: *const ::std::os::raw::c_ulong,
+        dm_type: *const StringBridge,
+        dm_name: *const StringBridge,
+        spec: *const GlueTableRecord,
+        exc: *mut ExcInfo,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
     pub fn table_set_standard_stman_cache_size(
         table: *mut GlueTable,
         dm_name: *const StringBridge,

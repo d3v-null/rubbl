@@ -368,6 +368,11 @@ extern "C"
                                      const unsigned long n_dims, const unsigned long *dims,
                                      const unsigned long *tile_dims, const StringBridge &dm_name,
                                      bool fixed_shape, ExcInfo &exc);
+    int table_add_array_column_with_dm(GlueTable &table, GlueDataType data_type,
+                                       const StringBridge &col_name, const StringBridge &comment,
+                                       const unsigned long n_dims, const unsigned long *dims,
+                                       const StringBridge &dm_type, const StringBridge &dm_name,
+                                       const GlueTableRecord &spec, ExcInfo &exc);
     int table_set_standard_stman_cache_size(GlueTable &table, const StringBridge &dm_name,
                                             const unsigned long n_buckets, ExcInfo &exc);
     int table_add_rows(GlueTable &table, const unsigned long n_rows, ExcInfo &exc);

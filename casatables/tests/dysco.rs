@@ -59,3 +59,105 @@ fn dysco_weights_match_casacore_decoding() {
         assert_eq!(w, decoded, "row {}", row);
     }
 }
+
+#[test]
+fn dysco_write_roundtrip() {
+    use rubbl_casatables::{
+        DyscoSpec, GlueDataType, TableCreateMode, TableDesc, TableDescCreateMode,
+    };
+
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let path = tmp_dir.path().join("dysco_write.tab");
+
+    let (n_ant, n_time, n_chan, n_pol) = (4i32, 3usize, 8u64, 4u64);
+    let mut desc = TableDesc::new("", TableDescCreateMode::TDM_SCRATCH).unwrap();
+    for col in ["ANTENNA1", "ANTENNA2", "FIELD_ID", "DATA_DESC_ID"] {
+        desc.add_scalar_column(GlueDataType::TpInt, col, None, false, false)
+            .unwrap();
+    }
+    desc.add_scalar_column(GlueDataType::TpDouble, "TIME", None, false, false)
+        .unwrap();
+
+    let mut baselines = Vec::new();
+    for a1 in 0..n_ant {
+        for a2 in (a1 + 1)..n_ant {
+            baselines.push((a1, a2));
+        }
+    }
+    let n_rows = baselines.len() * n_time;
+    let mut t = Table::new(&path, desc, n_rows, TableCreateMode::New).unwrap();
+    let spec = DyscoSpec::default();
+    let shape = [n_chan, n_pol];
+    t.add_dysco_array_column(
+        GlueDataType::TpComplex,
+        "DATA",
+        None,
+        &shape,
+        "DyscoData",
+        &spec,
+    )
+    .unwrap();
+    t.add_dysco_array_column(
+        GlueDataType::TpFloat,
+        "WEIGHT_SPECTRUM",
+        None,
+        &shape,
+        "DyscoWeights",
+        &spec,
+    )
+    .unwrap();
+
+    // Deterministic pseudo-noise.
+    let mut state = 12345u32;
+    let mut next = move || {
+        state = state.wrapping_mul(1664525).wrapping_add(1013904223);
+        (state >> 8) as f32 / (1u32 << 24) as f32 - 0.5
+    };
+
+    let n_cell = (n_chan * n_pol) as usize;
+    let mut orig = Vec::new();
+    for row in 0..n_rows {
+        let (a1, a2) = baselines[row % baselines.len()];
+        let time = 5e9 + 8.0 * (row / baselines.len()) as f64;
+        t.put_cell("ANTENNA1", row as u64, &a1).unwrap();
+        t.put_cell("ANTENNA2", row as u64, &a2).unwrap();
+        t.put_cell("TIME", row as u64, &time).unwrap();
+        let data: Vec<Complex<f32>> = (0..n_cell).map(|_| Complex::new(next(), next())).collect();
+        let weights: Vec<f32> = vec![1.0 + row as f32; n_cell];
+        let cell_shape = (n_chan as usize, n_pol as usize);
+        let data_arr = ndarray::Array2::from_shape_vec(cell_shape, data.clone()).unwrap();
+        let weights_arr = ndarray::Array2::from_shape_vec(cell_shape, weights.clone()).unwrap();
+        t.put_cell("DATA", row as u64, &data_arr).unwrap();
+        t.put_cell("WEIGHT_SPECTRUM", row as u64, &weights_arr)
+            .unwrap();
+        orig.push((data, weights));
+    }
+    drop(t);
+
+    let mut t = Table::open(&path, TableOpenMode::Read).unwrap();
+    let mut sum_err2 = 0.0f64;
+    let mut sum_orig2 = 0.0f64;
+    for (row, (data, weights)) in orig.iter().enumerate() {
+        let d: Vec<Complex<f32>> = t.get_cell_as_vec("DATA", row as u64).unwrap();
+        let w: Vec<f32> = t.get_cell_as_vec("WEIGHT_SPECTRUM", row as u64).unwrap();
+        for (a, b) in d.iter().zip(data.iter()) {
+            sum_err2 += (a - b).norm_sqr() as f64;
+            sum_orig2 += b.norm_sqr() as f64;
+        }
+        for (a, b) in w.iter().zip(weights.iter()) {
+            assert!(
+                (a - b).abs() / b < 1e-3,
+                "row {}: weight {} vs {}",
+                row,
+                a,
+                b
+            );
+        }
+    }
+    let rel_rms = (sum_err2 / sum_orig2).sqrt();
+    assert!(
+        rel_rms > 0.0 && rel_rms < 0.05,
+        "relative RMS error {}",
+        rel_rms
+    );
+}

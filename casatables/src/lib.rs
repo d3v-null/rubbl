@@ -2208,6 +2208,81 @@ impl Table {
         Ok(())
     }
 
+    /// Add a fixed-shape, direct array column stored in a new data manager of
+    /// type `dm_type` named `dm_name`, constructed from casacore's data
+    /// manager registry with the specification record `spec` (the same
+    /// record that `getdminfo()["SPEC"]` shows in python-casacore).
+    ///
+    /// This is mainly useful for storage managers without a dedicated
+    /// method, such as `DyscoStMan` (see [`Self::add_dysco_array_column`]).
+    #[allow(clippy::too_many_arguments)]
+    pub fn add_array_column_with_data_manager(
+        &mut self,
+        data_type: glue::GlueDataType,
+        col_name: &str,
+        comment: Option<&str>,
+        shape: &[u64],
+        dm_type: &str,
+        dm_name: &str,
+        spec: &TableRecord,
+    ) -> Result<(), TableError> {
+        let ccol_name = glue::StringBridge::from_rust(col_name);
+        let ccomment = glue::StringBridge::from_rust(comment.unwrap_or(""));
+        let cdm_type = glue::StringBridge::from_rust(dm_type);
+        let cdm_name = glue::StringBridge::from_rust(dm_name);
+
+        let rv = unsafe {
+            glue::table_add_array_column_with_dm(
+                self.handle,
+                data_type,
+                &ccol_name,
+                &ccomment,
+                shape.len() as u64,
+                shape.as_ptr(),
+                &cdm_type,
+                &cdm_name,
+                spec.handle,
+                &mut self.exc_info,
+            )
+        };
+        if rv != 0 {
+            return self.exc_info.as_err();
+        }
+        Ok(())
+    }
+
+    /// Add a fixed-shape array column compressed with the
+    /// [Dysco](https://github.com/aroffringa/dysco) storage manager.
+    ///
+    /// Dysco is meant for the `DATA`-like (complex) and `WEIGHT_SPECTRUM`
+    /// (float) columns of a MeasurementSet main table: the table must have
+    /// `ANTENNA1`, `ANTENNA2`, `FIELD_ID`, `DATA_DESC_ID` and `TIME` columns,
+    /// and rows should be written in time order with those columns filled
+    /// before the compressed ones. Complex columns are encoded with
+    /// `spec.data_bit_count` bits per value and float columns with
+    /// `spec.weight_bit_count`. Requires the `dysco` feature (or a
+    /// dynamically loadable `libdyscostman`).
+    pub fn add_dysco_array_column(
+        &mut self,
+        data_type: glue::GlueDataType,
+        col_name: &str,
+        comment: Option<&str>,
+        shape: &[u64],
+        dm_name: &str,
+        spec: &DyscoSpec,
+    ) -> Result<(), TableError> {
+        let rec = spec.to_record()?;
+        self.add_array_column_with_data_manager(
+            data_type,
+            col_name,
+            comment,
+            shape,
+            "DyscoStMan",
+            dm_name,
+            &rec,
+        )
+    }
+
     /// Set the number of buckets cached in memory by the `StandardStMan`
     /// data manager named `dm_name` (typically `"StandardStMan"`).
     ///
@@ -2648,6 +2723,53 @@ impl Drop for TableRow {
         unsafe {
             glue::table_row_free(self.handle, &mut self.exc_info);
         }
+    }
+}
+
+/// Parameters of the Dysco storage manager; see
+/// [`Table::add_dysco_array_column`] and the
+/// [Dysco documentation](https://github.com/aroffringa/dysco/wiki).
+/// The defaults are those of DP3's `msout.storagemanager=dysco`.
+#[derive(Clone, Debug, PartialEq)]
+pub struct DyscoSpec {
+    /// Bits per encoded value of complex (visibility) columns.
+    pub data_bit_count: u32,
+    /// Bits per encoded value of float (weight) columns.
+    pub weight_bit_count: u32,
+    /// One of `"Uniform"`, `"Gaussian"`, `"TruncatedGaussian"`, `"StudentsT"`.
+    pub distribution: String,
+    /// Truncation of the `TruncatedGaussian` distribution, in sigma.
+    pub distribution_truncation: f64,
+    /// One of `"AF"`, `"RF"`, `"Row"`.
+    pub normalization: String,
+    /// Degrees of freedom of the `StudentsT` distribution.
+    pub students_t_nu: f64,
+}
+
+impl Default for DyscoSpec {
+    fn default() -> Self {
+        DyscoSpec {
+            data_bit_count: 10,
+            weight_bit_count: 12,
+            distribution: "TruncatedGaussian".to_owned(),
+            distribution_truncation: 2.5,
+            normalization: "AF".to_owned(),
+            students_t_nu: 0.0,
+        }
+    }
+}
+
+impl DyscoSpec {
+    /// The specification record understood by `DyscoStMan`.
+    pub fn to_record(&self) -> Result<TableRecord, TableError> {
+        let mut rec = TableRecord::new()?;
+        rec.put_field("dataBitCount", &(self.data_bit_count as i32))?;
+        rec.put_field("weightBitCount", &(self.weight_bit_count as i32))?;
+        rec.put_field("distribution", &self.distribution)?;
+        rec.put_field("distributionTruncation", &self.distribution_truncation)?;
+        rec.put_field("normalization", &self.normalization)?;
+        rec.put_field("studentTNu", &self.students_t_nu)?;
+        Ok(rec)
     }
 }
 
